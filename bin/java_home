@@ -1,0 +1,22 @@
+#!/usr/bin/env -S java --source 11
+// #!/usr/bin/env -S java --source 11 --add-modules=ALL-DEFAULT
+
+// https://openjdk.java.net/jeps/330 introduces a way to run a java program from a single file using shebang (above).
+// In this case, we're printing out the system property `java.home`. This is useful to find the right jdk without searching
+// on any platform.
+
+import static java.lang.System.out;
+import java.lang.System;
+
+public class Main {
+    public static void main(String[] args) {
+        if (args.length == 0) {
+            out.println(System.getProperty("java.home"));
+        } else {
+            for (var a: args) {
+                out.print(System.getProperty(a) + " ");
+            }
+            out.println();
+        }
+    }
+}

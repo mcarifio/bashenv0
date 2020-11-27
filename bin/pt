@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# Mike Carifio <mike@carif.io>
+
+here=$(readlink -f $(dirname $BASH_SOURCE))
+me=$(basename ${BASH_SOURCE})
+
+function error {
+    echo "$1" 1>&2
+    exit 1
+}
+
+function urlify {
+  project=${2:-1157508}
+  echo https://www.pivotaltracker.com/n/projects/${project}/stories/$1
+}
+
+story=${1:-${pt}}
+[[ -z "$story" ]] && error "expecting a story id, none found."
+
+gnome-open $(urlify ${story})

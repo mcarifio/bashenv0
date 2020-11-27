@@ -1,0 +1,80 @@
+bashdb 
+bum 
+byobu 
+conky 
+schroot 
+bzr 
+git-all 
+graphviz 
+lighttpd
+markdown
+emacs 
+nmap 
+openssh-server 
+socat 
+xmlto 
+xchat-gnome 
+skype 
+wireshark 
+apt-file 
+meld
+flashplugin-{installer,downloader} 
+gimp 
+graphviz 
+xdot 
+lua50 
+chromium-browser
+lxc
+tree 
+attr 
+libsaxonb-java 
+fpo 
+ack-grep 
+sshfs 
+autofs 
+fuse-utils 
+xclip
+python-quickly-core 
+python-quickly.widgets
+quickly
+maven3
+libcurl4-gnutls-dev
+libdb-dev libcurl4-gnutls-dev debiandoc-sgml po4a
+groff libcap-dev hardening-wrapper
+ekiga
+cloud-utils
+twinkle
+libpanel-applet2-dev libwnck-dev docbook-to-man libnotify-dev docbook-utils gnome-doc-utils libdevkit-power-gobject-dev libcanberra-gtk-dev libunique-dev libgnome-keyring-dev libappindicator-dev
+ack
+
+glibc-pic libslang2-pic libnewt-pic genext2fs mklibs tofrodos upx-ucl
+
+kdelibs-bin
+
+libqt4-dev kdelibs5-dev
+libqt4-dev kdelibs5-dev
+libqrencode-dev libzbar-dev libzbarqt-dev
+yubikey-personalization
+freerdp
+freerdp-dev
+libfreerdp-dev
+cheese
+libc-bin-dbg
+libc6-dbg
+systemtap
+swig
+freerdp-dbg
+swig2.0
+
+shutter
+xdotool
+moreutils
+libfreerdp1-dev
+
+
+ppa-purge
+
+qt5-defaults
+
+python3-qt5
+python3-pyqt5

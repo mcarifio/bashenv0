@@ -1,0 +1,67 @@
+#!/usr/bin/env python3
+# -*- mode: python; -*-
+
+# @debug: python -m pdb $(type -f git-sclone) ${url}
+
+import sys
+import fire
+import git
+import os.path
+from giturlparse import parse
+from textwrap import dedent
+from datetime import date;
+from . import utils
+
+# todo:
+# git fork --fork=gh:${team}/${project} --public [--prefix=${path}]
+# git start ${project} does:
+#   git init ${prefix}/${project}
+#   "populate ${prefix} and ${project} with template expansion"
+#   git commit -m 'start' ${prefix}/${project}
+#   gh repo create ${project}
+#   git push -u origin master
+#   git browse ${project}
+
+
+def start(r:str, prefix:str="~/src"):
+    # fork template-${project}
+    # clone ${project}, record template(?)
+    # expand templates
+    # commit changes
+    # push changes
+    print("start tbs")
+    
+def clone(r:str, prefix:str="~/src")->git.Repo:
+    sys.exit(1)
+
+    p = parse(r)
+    # resource is usually hostname, e.g. `github.com`
+    # owner is name, e.g. `mcarifio`
+    # name is the name of the repo, e.g. `interviewpy`
+    target_top = os.path.join(os.path.expanduser(prefix), p.resource, p.owner, p.name)
+    target = os.path.join(target_top, p.name)
+    # TODO mike@carif.io: need a progress reporter progress=
+    try:
+        local = git.Repo.clone_from(r, target)
+    except git.CommandError as e:
+        print(e.stderr, file=sys.stderr)
+        return None
+
+    pwd:str = local.working_tree_dir
+    origin = r.remotes.origin.url
+    # assert r == origin # leave this?
+    message:str = f"{origin} -> {pwd} created on {date.today()} with {__file__}"
+    comment:str = '# ' + message
+    # git sclone ${url} | source /dev/stdin
+
+    print(comment, file=sys.stderr)
+    cat(f'''# {p.name}
+        {message}
+
+        By convention, this directory wraps the actual cloned repo in ./{p.name}.
+    ''', os.path.join(target_top, "README.md"))
+    print(f"cd {pwd} && (pwd ; git status) # advise:bash:next")
+    # return local
+
+if '__main__' == __name__:
+    fire.Fire(start)

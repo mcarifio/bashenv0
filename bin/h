@@ -1,0 +1,6 @@
+#!/bin/bash
+# -*- tab-indent: 2 -*-
+# compliments short form of PS1.env.sh
+
+echo "$(hostname):$PWD $(id -un):$(id -gn)"
+

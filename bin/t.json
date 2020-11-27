@@ -1,0 +1,33 @@
+{
+  "result": [
+    {
+      "id": "4b004a1aabc12c032aedc5da088e7431",
+      "type": "A",
+      "name": "office.carif.io",
+      "content": "24.198.127.214",
+      "proxiable": true,
+      "proxied": false,
+      "ttl": 1,
+      "locked": false,
+      "zone_id": "4594c39e4233a7a65f8ccabda020439a",
+      "zone_name": "carif.io",
+      "modified_on": "2018-04-02T21:10:30.799501Z",
+      "created_on": "2018-04-02T21:10:30.799501Z",
+      "meta": {
+        "auto_added": false,
+        "managed_by_apps": false,
+        "managed_by_argo_tunnel": false
+      }
+    }
+  ],
+  "result_info": {
+    "page": 1,
+    "per_page": 20,
+    "total_pages": 1,
+    "count": 1,
+    "total_count": 1
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}

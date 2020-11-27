@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+token=${PIVOTAL_TOKEN:?'need a pivotal token'}
+story=${1:?'need a story integer'}
+
+curl --silent -X GET -H "X-TrackerToken: ${token}" https://www.pivotaltracker.com/services/v5/projects/1157508/stories/${story}|jq .name

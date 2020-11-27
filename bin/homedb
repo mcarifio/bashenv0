@@ -1,0 +1,9 @@
+#!/bin/bash
+
+name=${1:-$USERNAME}
+db=~/$name.path.db
+root=${2:-~}
+
+# Really just a placeholder to get the arguments right
+updatedb --prunenames '.bzr .git .svn .hg .cache .mozilla .eclipse .metadata .Skype .skype .icedove ' -l 0 -o $db -U $root
+

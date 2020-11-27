@@ -1,0 +1,4 @@
+function zcd {
+   local root=${1:-$PWD}
+   if pwd=$(find ${root} -type d | fzf); then cd ${pwd} ; fi
+}

@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+me=$(readlink -e ${BASH_SOURCE})
+key=$(basename ${me} .sh)
+
+# gdoc1 /path/to/file [gdoc-url]
+# Open the current file in the preferred browser in a new tab with the gdoc-url.
+# If the url isn't passed explicitly, it's searched for in various places.
+
+function gdoc1 {
+    local pathname=$(readlink -e ${1:?'expecting pathname'})
+    local fkey=user.${key}
+    
+    url=$2
+    [[ -z "${url}" ]] && url=$(getfattr -n ${fkey} --only-values ${pathname} 2>/dev/null)
+    [[ -z "${url}" && -r ${pathname}.url ]] && url=$(< ${pathname}.url)
+    if [[ -z "${url}" ]] ; then
+        if [[ "SYNCED" = $(insync-headless get_file_status ${pathname}) ]] ; then
+            url=$(insync-headless get_domain_link ${pathname})
+            echo ${url} > ${pathname}.url
+        fi
+    fi
+
+    # Got a url? Open it.
+    if [[ -z "${url}" ]] ; then
+        echo "${me}: no url found for '${pathname}'. Skipping..." > /dev/stderr
+    else
+        ( set -x; xdg-open ${url} )
+    fi    
+}
+
+# Confusing ux if multiple files?
+for p in "$*" ; do
+    gdoc1 ${p}
+done

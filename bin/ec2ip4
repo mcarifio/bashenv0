@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+# 1) install aws and jq: sudo apt-get install aws jq
+# 2) get your aws access key and aws secret access key and capture them: aws configure # |> ~/.aws/credentials
+# 3) cat ~/.aws/credentials, look for [default] section
+# cat <<EOF > ~/.aws/config
+# [default]
+# region = us-east-1
+# output=json
+# EOF
+# 4) aws describe-instances | jq .  # see  your instances, pretty-printed and color coded
+
+here=$(readlink -f $(dirname ${BASH_SOURCE}))
+# instance=${1:?'expecting an instance-id'}
+instance=${1:-i-b663e95f}
+
+
+aws ec2 describe-instances --instance-ids=${instance} | \
+  jq '.Reservations[0].Instances[0].NetworkInterfaces[0].Association.PublicIp'

@@ -1,0 +1,395 @@
+# generated with 
+# https://unix.stackexchange.com/questions/288024/how-can-i-get-a-list-of-packages-that-i-have-installed-using-apt-get/288028
+# You would think this was easier.
+
+i aptitude
+i  afuse # automounting file system implemented in user-space using FUSE
+i  amtterm # Serial-over-lan (sol) client for Intel AMT, console version
+# i  anbox-modules-dkms Android kernel driver (binder, ashmem) in DKMS format.
+i  android-file-transfer # Android File Transfer for Linux (Qt client)
+i  android-sdk # Software development kit for Android platform
+i  android-sdk-platform-tools # Tools for interacting with an Android platform
+i  android-tools-adb # transitional package
+i  ansible # Configuration management, deployment, and task execution system
+i  apache2-utils # Apache HTTP Server (utility programs for web servers)
+i  apt-fast # shellscript wrapper for apt-get or aptitude
+i  apt-file # search for files within Debian packages (command-line interface)
+i  aptitude # terminal-based package manager
+i  aria2 # High speed download utility
+i  arp-scan # arp scanning and fingerprinting tool
+i  atom # A hackable text editor for the 21st Century.
+i  attr # utilities for manipulating filesystem extended attributes
+i  autoconf # automatic configure script builder
+i  autossh # Automatically restart SSH sessions and tunnels
+i  avahi-utils # Avahi browsing, publishing and discovery utilities
+i  avfs # virtual filesystem to access archives, disk images, remote locations
+i  awscli # Universal Command Line Environment for AWS
+i  azure-cli # Azure CLI
+i  balena-etcher-electron # balenaEtcher is a powerful OS image flasher built with web technologies to ensure flashing an SDCard or USB drive is a pleasant and safe experience. It protects you from accidentally writing to your hard-drives, ensures every byte of data was written correctly and much more.
+i  ballerina-1.0.0 # Ballerina
+i  bats # bash automated testing system
+i  bazel # Bazel is a tool that automates software builds and tests.
+i  bcc-tools # Command line tools for BPF Compiler Collection (BCC)
+i  beanstalkd # simple, in-memory, workqueue service
+i  bison # YACC-compatible parser generator
+i  blueman # Graphical bluetooth manager
+i  bpftrace # high-level tracing language for Linux eBPF
+i  bpython3 # fancy interface to the Python 3 interpreter
+i  brave-browser The web browser from Brave
+i  bridge-utils # Utilities for configuring the Linux Ethernet bridge
+i  build-essential # Informational list of build-essential packages
+# i  buildkite-agent # The Buildkite Agent is an open-source toolkit written in Golang for securely running build jobs on any device or network
+i  busybox-initramfs # Standalone shell setup for initramfs
+# i  bzr # easy to use distributed version control system
+i  cabal-install # command-line interface for Cabal and Hackage
+i  cabal-install-head # Command-line interface for Cabal and Hackage
+i  calibre # powerful and easy to use e-book manager
+i  cassandra # distributed storage system for structured data
+i  certbot # automatically configure HTTPS using Let's Encrypt
+# i  charon-cmd standalone IPsec client
+i  checkinstall # installation tracker
+i  chef # The full stack of chef
+i  chef-workstation # The full stack of chef-workstation
+# snap i  chromium-browser # Transitional package chromium-browser -> chromium snap
+i  chrony # Versatile implementation of the Network Time Protocol
+i  clang # C, C++ and Objective-C compiler (LLVM based)
+# i  clementine # modern music player and library organizer
+i  clojure # Lisp dialect for the JVM
+i  clonezilla # bare metal backup and recovery of disk drives
+i  cmake # cross-platform, open-source make system
+# i  cockpit # Web Console for Linux servers
+i  compiz # OpenGL window and compositing manager
+i  containerd # daemon to control runC
+i  copyq # Advanced clipboard manager with editing and scripting features
+# i  couchdb # RESTful document oriented database
+i  cpio # GNU cpio -- a program to manage archives of files
+# i  cron # process scheduling daemon
+i  cronopete # A backup utility for Linux.
+i  cuda-repo-ubuntu1810 # cuda repository configuration files
+i  curl # command line tool for transferring data with URL syntax
+i  dart # Dart SDK
+i  dbschema # dbschema
+i  dconf-editor # simple configuration storage system graphical editor
+i  ddclient # address updating utility for dynamic DNS services
+# i  default-jdk # Standard Java or Java compatible Development Kit
+# i  devilspie2 # Lua-based window matching utility
+i  dh-python # Debian helper tools for packaging Python libraries and applications
+i  dia # Diagram editor
+# snap i  direnv # Utility to set directory specific environment variables
+i  dirmngr # GNU privacy guard network certificate management service
+i  dos2unix # convert text file line endings between CRLF and LF
+# snap i  dotnet-sdk-3.0 # Microsoft .NET Core SDK 3.0.100
+i  doxygen # Documentation system for C, C++, Java, Python and other languages
+i  drbl # diskless remote boot, and a disk cloning utility
+# i  dropbox # cloud synchronization engine CLI and Nautilus extension
+i  e2fslibs # transitional package to libext2fs2
+i  efibootmgr # Interact with the EFI Boot Manager
+i  elasticsearch # Distributed RESTful search engine built for the cloud
+i  erlang-solutions # A package to add repository.
+i  esl-erlang # Erlang
+i  elixir # Elixir functional meta-programming language
+i  elvish # Friendly and expressive shell
+i  emacs26 # GNU Emacs editor (with GTK+ user interface)
+i  emacs26-el # GNU Emacs editor (uncompiled Elisp files)
+i  entr # Run arbitrary commands when files change
+i  epson-inkjet-printer-escpr # Epson Inkjet Printer Driver (ESC/P-R) for Linux
+i  equivs # Circumvent Debian package dependencies
+i  et # Remote terminal for the busy and impatient
+i  etckeeper # store /etc in git, mercurial, brz, bzr or darcs
+i  etherwake # tool to send magic Wake-on-LAN packets
+i  exfat-fuse # read and write exFAT driver for FUSE
+i  exfat-utils # utilities to create, check, label and dump exFAT filesystem
+i  f2fs-tools # Tools for Flash-Friendly File System
+i  fasd # command-line productivity booster
+i  fastboot # Android fastboot tool
+i  fetchmail # SSL enabled POP3, APOP, IMAP mail gatherer/forwarder
+# i  filebeat # Filebeat sends log files to Logstash or directly to Elasticsearch.
+i  firefox-locale-en # English language pack for Firefox
+# i  fish # friendly interactive shell
+i  flameshot # Powerful yet simple-to-use screenshot software
+i  flashrom # Identify, read, write, erase, and verify BIOS/ROM/flash chips
+i  flatpak # Application deployment framework for desktop apps
+i  flatpak-builder # Flatpak application building helper
+i  fonts-crosextra-carlito # Sans-serif font metric-compatible with Calibri font
+i  fonts-stix # Scientific and Technical Information eXchange fonts
+# i  fossil # DSCM with built-in wiki, http interface and server, tickets database
+i  freeglut3-dev # OpenGL Utility Toolkit development files
+i  fsarchiver # file system archiver
+i  fwupdate # Transitional package for fwupd
+i  g++ # GNU C++ compiler
+i  galternatives # graphical setup tool for the alternatives system
+i  gdebi # simple tool to view and install deb files GNOME GUI
+i  genisoimage # Creates ISO-9660 CD-ROM filesystem images
+i  getmail4 # transitional dummy package
+i  ghc # The Glasgow Haskell Compilation system
+i  ghc-head # The Glasgow Haskell Compilation system
+i  gigolo # frontend to manage connections to remote filesystems using GIO/GVfs
+i  gimagereader # Graphical GTK+ front-end to tesseract-ocr
+i  gimp # GNU Image Manipulation Program
+i  gir1.2-gtk-2.0 # GTK graphical user interface library -- gir bindings
+i  gir1.2-gtk-3.0 # GTK graphical user interface library -- gir bindings
+i  git # fast, scalable, distributed revision control system
+i  git-annex # manage files with git, without checking their contents into git
+i  git-lfs # Git Large File Support
+i  gitter # Where developers come to talk
+i  gjs # Mozilla-based javascript bindings for the GNOME platform
+# i  gkermit # A serial and network communications package
+# i  gmtp # simple file transfer program for MTP based devices
+i  gnome-tweaks # tool to adjust advanced configuration settings for GNOME
+i  gnupg # GNU privacy guard a free PGP replacement
+i  gnupg-agent # GNU privacy guard cryptographic agent (dummy transitional package)
+i  gnupg-l10n # GNU privacy guard localization files
+# i  go-agent # GoCD Agent Component
+# i  go-mtpfs # Mount MTP devices over FUSE
+# i  go-server # GoCD Server
+i  google-chrome-stable # The web browser from Google
+i  google-cloud-sdk # Utilities for the Google Cloud Platform
+i  gosu # Simple Go-based setuid+setgid+setgroups+exec
+i  gparted # GNOME partition editor
+i  gpaste # Clipboard management system for GNOME
+i  gperf # Perfect hash function generator
+i  graphicsmagick # collection of image processing tools
+i  grub-gfxpayload-lists # GRUB gfxpayload blacklist
+i  gtk-recordmydesktop # Graphical frontend for recordMyDesktop screencast tool
+i  guile-2.2 # GNU extension language and Scheme interpreter
+i  gxkb # X11 keyboard indicator and switcher
+i  haproxy # fast and reliable load balancing reverse proxy
+i  hardinfo # Displays system information
+i  haskell-platform # Standard Haskell libraries and tools
+#i  heimdall-flash # tool for flashing firmware on Samsung Galaxy S devices
+#i  heimdall-flash-frontend # tool for flashing firmware on Samsung Galaxy S devices Qt GUI
+i  hexchat # IRC client for X based on X-Chat 2
+i  httpie # CLI, cURL-like tool for humans
+i  hwdata # hardware identification / configuration data
+i  hyper # A terminal built on web technologies
+i  hyphen-en-us # English (US) hyphenation patterns
+#i  ifenslave # configure network interfaces for parallel routing (bonding)
+#i  ifupdown # high level tools to configure network interfaces
+i  imagemagick-common # image manipulation programs -- infrastructure dummy package
+i  imagescan # next generation image acquisition utilities
+i  imagescan-plugin-gt-s650 # Image Scan v3 GT-S650 Interpreter Plugin
+i  imagescan-plugin-networkscan # Network scan plugin
+i  imagescan-plugin-ocr-engine # Image Scan v3 OCR Engine Plugin
+i  initramfs-tools # generic modular initramfs generator (automation)
+i  initramfs-tools-bin # binaries used by initramfs-tools
+i  initramfs-tools-core # generic modular initramfs generator (core tools)
+i  inkscape # vector-based drawing program
+i  inotify-tools # command-line programs providing a simple interface to inotify
+i  insync # Sync all your Google Drive & OneDrive accounts to your local filesystem
+i  insync-nautilus # Sync all your Google Drive & OneDrive accounts to your local filesystem
+i  intel-microcode # Processor microcode firmware for Intel CPUs
+i  ion-shell # A next generation system shell, written for Redox in Rust.
+i  ipfs-desktop # A desktop client for IPFS
+i  ipsec-tools # IPsec utilities
+i  ipxe # PXE boot firmware
+i  ipxe-qemu # PXE boot firmware ROM images for qemu
+i  iscan # simple, easy to use scanner utility for EPSON scanners
+i  iscan-data # Image Scan! for Linux data files
+i  iscan-network-nt # Image Scan! Network Plugin
+i  jenkins # Jenkins is an open source automation server which enables developers around the world to reliably automate  their development lifecycle processes of all kinds, including build, document, test, package, stage, deployment, static analysis and many more.
+i  jid # json incremental digger
+i  jmtpfs # FUSE based filesystem for accessing MTP devices
+i  jq # lightweight and flexible command-line JSON processor
+i  key-mon # Utility to show live keyboard and mouse status
+i  keychain # key manager for OpenSSH
+#i  kitematic # Simple Docker Container management for Mac OS X, Windows and Ubuntu.
+i  klibc-utils # small utilities built with klibc for early boot
+i  language-pack-en # translation updates for language English
+i  language-pack-en-base # translations for language English
+i  language-pack-gnome-en # GNOME translation updates for language English
+i  language-pack-gnome-en-base # GNOME translations for language English
+i  libzmq3-dev # lightweight messaging kernel (development files)
+i  linux-base # Linux image base package
+i  linux-firmware # Firmware for Linux kernel drivers
+i  linux-generic # Complete Generic Linux kernel and headers
+i  linux-image-generic # Generic Linux kernel image
+i  lldb # Next generation, high-performance debugger
+i  llvm # Low-Level Virtual Machine (LLVM)
+i  logstash # An extensible logging pipeline
+i  lp-solve # Solve (mixed integer) linear programming problems
+i  lshw-gtk # graphical information about hardware configuration
+i  lxc # Transitional package lxc -> lxc-utils
+i  maildir-utils # Set of utilities to deal with Maildirs (upstream name mu)
+i  make # utility for directing compilation
+i  makeself # utility to generate self-extractable archives
+i  mc # Midnight Commander a powerful file manager
+i  meld # graphical tool to diff and merge files
+i  min # Min is a faster, smarter web browser.
+i  mmc-utils # Userspace tools for MMC/SD devices
+i  moc # ncurses based console audio player
+i  moc-ffmpeg-plugin # ncurses based console audio player ffmpeg plugin
+i  mongodb-org # MongoDB open source document-oriented database system (metapackage)
+i  mosh # Mobile shell that supports roaming and intelligent local echo
+i  mpack # tools for encoding/decoding MIME messages
+i  mtd-utils # Memory Technology Device Utilities
+i  mtp-tools # Media Transfer Protocol (MTP) library tools
+i  musl-tools # standard C library tools
+i  mythes-en-us # English (USA) Thesaurus for LibreOffice
+i  nailgun # client, protocol, and server for running Java programs from CLI
+i  neo4j # graph database server
+i  net-tools # NET-3 networking toolkit
+i  netcat # TCP/IP swiss army knife -- transitional package
+i  network-manager-strongswan # network management framework (strongSwan plugin)
+i  nfs-common # NFS support files common to client and server
+i  nfs-kernel-server # support for NFS kernel server
+i  ninja-build # small build system closest in spirit to Make
+i  nmap # The Network Mapper
+i  notify-osd # daemon that displays passive pop-up notifications
+i  nullmailer # simple relay-only mail transport agent
+i  nvidia-driver-435 # NVIDIA driver metapackage
+i  oathtool # OATH Toolkit oathtool command line tool
+i  ocaml # ML language implementation with a class-based object system
+i  opam # package manager for OCaml
+i  openjdk-14-jdk # OpenJDK Development Kit (JDK)
+# i  openrazer-meta # OpenRazer peripheral drivers (metapackage)
+i  openshot # create and edit videos and movies (transitional package)
+i  openssh-known-hosts # download, filter and merge known_hosts for OpenSSH
+i  openssh-server # secure shell (SSH) server, for secure access from remote machines
+i  opus-tools # Opus codec command line tools
+i  os-prober # utility to detect other OSes on a set of drives
+i  owasp-zap # Zed Attack Proxy
+i  p7zip-full # 7z and 7za file archivers with high compression ratio
+i  p7zip-rar # non-free rar module for p7zip
+i  packages-microsoft-prod # Apt configuration for packages.microsoft.com
+i  pandoc # general markup converter
+i  pavucontrol # PulseAudio Volume Control
+i  peek # Simple screen recorder with an easy to use interface
+i  pinentry-curses # curses-based PIN or pass-phrase entry dialog for GnuPG
+i  pitivi # non-linear audio/video editor using GStreamer
+i  pkg-config # manage compile and link flags for libraries
+i  polo-file-manager # A modern file manager for Linux
+# i  ponyc # pony language compiler
+i  postgresql # object-relational SQL database (supported version)
+i  postgresql-12 # object-relational SQL database, version 12 server
+i  postgresql-client-common # manager for multiple PostgreSQL client versions
+i  postgresql-common # PostgreSQL database-cluster manager
+i  postgresql-plpython3-12 # PL/Python 3 procedural language for PostgreSQL 12
+i  postgresql-server-dev-12 # development files for PostgreSQL 11 server-side programming
+i  printer-driver-escpr # printer driver for Epson Inkjet that use ESC/P-R
+i  pulseeffects # Sound input and output effects for PulseAudio
+i  python3-apt # Python 3 interface to libapt-pkg
+i  python3-dev # header files and a static library for Python (default)
+i  python3-openssl # Python 3 wrapper around the OpenSSL library
+i  python3-pip # Python package installer
+i  python3-pygments # syntax highlighting package written in Python 3
+i  python3-venv # pyvenv-3 binary for python3 (default python3 version)
+i  python3.7-venv # Interactive high-level object-oriented language (pyvenv binary, version 3.7)
+i  qemu # fast processor emulator, dummy package
+i  qemu-kvm # QEMU Full virtualization on x86 hardware
+i  qemu-system-x86 # QEMU full system emulation binaries (x86)
+i  qemu-utils # QEMU utilities
+i  qml-module-qtquick-controls # Qt 5 Quick Controls QML module
+i  qt5-default # Qt 5 development defaults package
+i  qtdeclarative5-dev # Qt 5 declarative development files
+i  qtquickcontrols2-5-dev # Qt 5 Quick Controls 2 development files
+i  qttools5-dev # Qt 5 tools development files
+i  racket # extensible programming language in the Scheme family
+i  rakudo # Perl 6 implementation on top of Moar virtual machine
+#i  rdesktop # RDP client for Windows NT/2000 Terminal Server and Windows Servers
+i  recordmydesktop # Captures audio-video data of a Linux desktop session
+i  redis # Persistent key-value database with network interface (metapackage)
+i  remmina # GTK+ Remote Desktop Client
+i  reptyr # Tool for moving running programs between ptys
+#i  republicanywhere # Republic Wireless Anywhere
+i  resolvconf # name server information handler
+#i  rethinkdb # RethinkDB is built to store JSON documents, and scale to multiple
+i  riot-web # A feature-rich client for Matrix.org
+i  ripgrep # Recursively searches directories for a regex pattern
+i  rkt # CLI for running App Containers
+#i  rocketchat # Rocket.Chat Native Cross-Platform Desktop Application via Electron.
+i  s-nail # feature-rich BSD mail(1)
+i  s3fs # FUSE-based file system backed by Amazon S3
+#i  sagemath # Open Source Mathematical Software
+i  sbcl # Common Lisp compiler and development system
+i  sbsigntool # Tools to manipulate signatures on UEFI binaries and drivers
+i  screenfetch # Bash Screenshot Information Tool
+i  secure-delete # tools to wipe files, free disk space, swap and memory
+#i  secureboot-db # Secure Boot updates for DB and DBX
+i  shellcheck # lint tool for shell scripts
+i  silversearcher-ag # very fast grep-like program, alternative to ack-grep
+i  simpledockerui # Simple UI and Manager for Docker
+i  sni-qt # indicator support for Qt
+i  socat # multipurpose relay for bidirectional data transfer
+i  software-properties-common # manage the repositories that you install software from (common)
+i  sox # Swiss army knife of sound processing
+i  sqlitebrowser # GUI editor for SQLite databases
+#i  squid # Full featured Web Proxy cache (HTTP proxy)
+i  sshfs # filesystem client based on SSH File Transfer Protocol
+#i  steamcmd:i386 # Command-line interface for Valve's Steam
+i  stow # Organizer for /usr/local software packages
+i  stripe # Stripe CLI utility
+#i  strongswan # IPsec VPN solution metapackage
+#i  strongswan-libcharon # strongSwan charon library
+#i  strongswan-nm # strongSwan plugin to interact with NetworkManager
+i  swaks # SMTP command-line test tool
+#i  sylph-searcher # Full-text search program for Sylpheed or MH folders
+#i  sylpheed # Light weight e-mail client with GTK+
+#i  sylpheed-plugins # Loadable modules for extending Sylpheed features
+i  synaptic # Graphical package manager
+i  systemtap # instrumentation system for Linux
+#i  teamviewer # Remote control and meeting solution.
+#i  telegram-desktop # official telegram messaging app
+i  terminator # multiple GNOME terminals in one window
+i  tesseract-ocr # Tesseract command line OCR tool
+i  texinfo # Documentation system for on-line information and printed output
+i  texlive-fonts-recommended # TeX Live: Recommended fonts
+i  texlive-latex-base # TeX Live: LaTeX fundamental packages
+i  texlive-latex-recommended # TeX Live: LaTeX recommended packages
+i  thunderbird # Email, RSS and newsgroup client with integrated spam filter
+i  thunderbird-locale-en # English language pack for Thunderbird
+i  thunderbird-locale-en-us # Transitional English language pack for Thunderbird
+i  tigervnc-viewer # Virtual network computing client for X
+i  tilix # Tiling terminal emulator for GNOME
+i  timeshift # System restore utility
+#i  tk-dev # Toolkit for Tcl and X11 (default version) development files
+i  tmate # Fork of tmux, provides an instant pairing solution
+i  tmux # terminal multiplexer
+i  tofrodos # Converts DOS <-> Unix text files, alias tofromdos
+#i  tor # anonymizing overlay network for TCP
+i  traceroute # Traces the route taken by packets over an IPv4/IPv6 network
+i  tree # displays an indented directory tree, in color
+i  tripwire # file and directory integrity checker
+i  typora # a minimal Markdown reading & writing app. Change Log: (https://typora.io/windows/dev_release.html)
+i  unity-settings-daemon # daemon handling the Unity session settings
+i  update-manager-core # manage release upgrades
+i  usbview # USB device viewer
+i  utop # improved OCaml toplevel
+i  vagga # A containerisation tool without daemons
+i  vagrant # no description given
+i  virt-manager # desktop application for managing virtual machines
+i  virt-viewer # Displaying the graphical console of a virtual machine
+i  virtualbox # x86 virtualization solution base binaries
+i  virtualbox-ext-pack # extra capabilities for VirtualBox, downloader.
+i  vlc # multimedia player and streamer
+i  vlc-bin # binaries from VLC
+i  vokoscreen # easy to use screencast creator
+i  vorbis-tools # several Ogg Vorbis tools
+i  vscodium # Code editing. Redefined.
+i  wamerican # American English dictionary words for /usr/share/dict
+#i  wavebox # Wavebox
+i  wbritish # British English dictionary words for /usr/share/dict
+i  wget # retrieves files from the web
+i  wget2 # file and recursive website downloader
+i  whois # intelligent WHOIS client
+i  wickr-qt-5.9 # Secure Internet Chat and Media Exchange agent
+i  wine64 # Windows API implementation 64-bit binary loader
+i  wireguard # fast, modern, secure kernel VPN tunnel (metapackage)
+i  wireshark # network traffic analyzer meta-package
+i  wmctrl # control an EWMH/NetWM compatible X Window Manager
+#i  woeusb # Bootable Windows installation/PE USB storage creator
+i  xclip # command line interface to X selections
+i  xdotool # simulate (generate) X11 keyboard/mouse input events
+i  xmount # tool to crossmount between multiple input and output harddisk images
+i  xorg-dev # X.Org X Window System development libraries
+#i  xserver-xorg-input-wacom # X.Org X server -- Wacom input driver
+i  xsltproc # XSLT 1.0 command line processor
+i  yad # tool for creating graphical dialogs from shell scripts
+i  yamllint # Linter for YAML files
+i  yarn # Fast, reliable, and secure dependency management.
+i  yasm # modular assembler with multiple syntaxes support
+i  youtube-dl # downloader of videos from YouTube and other sites
+i  yubikey-personalization-gui # Graphical personalization tool for YubiKey tokens
+i  yubikey-piv-manager # Graphical tool for managing your PIV-enabled YubiKey
+i  zenmap # The Network Mapper Front End
+i  zoom # Zoom, #1 Video Conferencing and Web Conferencing Service
+i dart

@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+# Put this script along $PATH and invoke with 'git github'.
+# Will open browser in the github branch url based on remote.origin.url and current branch.
+# If you haven't pushed the current branch to github, it uses master.
+
+here=$(readlink -f $(dirname ${BASH_SOURCE}))
+
+# 
+prefix=https://www.github.com
+suffix=$(git config --get remote.origin.url)
+branch=tree/$(git rev-parse --abbrev-ref HEAD)
+suffix=${suffix##git@github.com:}
+suffix=${suffix%%.git}
+url=${prefix}/${suffix}/${branch}
+
+if curl -s ${url} > /dev/null ; then
+  gnome-open ${url}
+else
+  master=tree/master
+  url=${prefix}/${suffix}/${master}
+  echo "branch '${branch}' not pushed? Opening master via '${url}'"
+  gnome-open${url}
+fi
+

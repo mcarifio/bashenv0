@@ -1,0 +1,92 @@
+#!/usr/bin/env python
+# -*- mode: python; -*-
+
+#!/usr/bin/env -S python -m pdb # git sclone ${url}  # invokes debugger
+# alternatively: pythom -m pdb $(type -p git-sclone) ${url}
+
+# https://google.github.io/python-fire/guide/
+# python3 -m pip install --upgrade git+https://github.com/google/python-fire@v0.3.1#egg=fire
+# python3 -m pip install --upgrade git-url-parse gitpython dotmap
+
+
+import sys
+import fire
+import git
+import os.path
+from giturlparse import parse
+from textwrap import dedent
+from datetime import date;
+import yaml
+import json
+# https://github.com/drgrib/dotmap
+import dotmap
+
+# module docstring in yaml format with three "streams": 1) a declarative repr, 2) a narrative and 3) an optional history
+"""
+self:
+  version:
+    kind: semver
+    id: 0.1.1
+  usage:
+    bash: 
+      cmd: git sclone {url}
+      example: git sclone git@github.com:mcarifio/interviewpy
+      debug: python -m pdb $(type -f git-sclone) {url}
+      notes:
+        - uses git convention that git-${cmd} is executed for `git ${cmd}` iff `git-${cmd}` is executable and on PATH
+---
+description:
+---
+history:
+"""
+
+# reminescent of bash idiom: cat <<EOF ... EOF > /some/path/name
+def cat(contents:str, pn:str)->str:
+    # Fix pathname `pn` if it's a directory to be pn/README.md. Raise an io exception instead?
+    if os.path.isdir(pn): pn = os.join(pn, "README.md")
+    with open(pn, "w") as f:
+        # doesn't dedent?
+        f.write(dedent(contents))
+    
+
+def clone(r:str, prefix:str="~/src")->git.Repo:
+    p = parse(r)
+    # resource is usually hostname, e.g. `github.com`
+    # owner is name, e.g. `mcarifio`. Use the project name if no owner is given.
+    # name is the name of the repo, e.g. `interviewpy`
+    target_top = os.path.join(os.path.expanduser(prefix), p.resource, p.owner or p.name, p.name)
+    target = os.path.join(target_top, p.name)
+    # TODO mike@carif.io: need a progress reporter progress=
+    local = git.Repo.clone_from(r, target) # local is a Repo, raise exception here
+    
+    pwd:str = local.working_tree_dir
+    origin:str = next(local.remote().urls) # return the first item of the urls iterator
+    # assert r == origin # leave this?
+    message:str = f"{origin} -> {pwd} created on {date.today()} with {__file__}"
+    comment:str = '# ' + message
+
+    print(comment, file=sys.stderr)
+    cat(f'''# {p.name}
+        {message}
+
+        By convention, this directory wraps the actual cloned repo in ./{p.name}.
+    ''', os.path.join(target_top, "README.md"))
+
+    # clique: `git sclone ${url} | source /dev/stdin` # a little hacky, but works    
+    return local
+
+def version():
+    print("git-sclone 0.1.1 # rest tbs")
+    sys.exit(0)
+
+if '__main__' == __name__:
+    try:
+        advise = dotmap.DotMap()
+        result = fire.Fire(clone)
+        advise.bash.next.cmds = (f"cd {result.working_tree_dir}", "pwd", "git status")
+        advise.pprint(pformat='json')
+        sys.exit(0)
+    except git.exc.GitCommandError as ce:
+        print(ce)
+        sys.exit(ce.status)
+

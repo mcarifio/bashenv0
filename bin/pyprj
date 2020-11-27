@@ -1,0 +1,176 @@
+!/usr/bin/env bash
+# See usage function
+
+
+# hook_dir is where to find git client side hook scripts. You
+# must explicitly ask to wire up the local hooks. If you do
+# they will be in ${PROJECT_ROOT}/git/hooks by default unless you
+# override the location.
+hook_dir=''
+PROJECT_ROOT=$(git rev-parse --show-toplevel)
+
+g# branch_name is the branch you want to end up in after configuring.
+# My personal convention is to name it 'story-${pivotal_story}'. If you
+# don't explicitly ask for a new branch, you will stay on master.
+branch_name=master
+
+# Be talkative if asked.
+let verbose=0
+let bump=0
+
+# Create a usage string
+function usage {
+   [[ -z "$1" ]] || echo "$1\n\n"
+   echo $0 ${BASH_SOURCE} '[--hooks[=${dir}] [--branch=${story-\d{8}}]'
+   echo "default hook directory: '${hook_dir}'"
+   echo "default branch: '${branch_name}'"
+}
+
+
+# Parse command line. Do it manually without getopt for greater control.
+# I don't check for multiple switches, last one wins. I do check for bogus
+# switches and exit if I see one.
+for i in "$@" ; do
+case $i in
+
+    -h | --help)
+       usage
+       exit 1 # NOT exit since this file is sourced
+       ;;
+
+    -v | --verbose)
+       verbose=1
+       shift
+       ;;
+
+    --bump)
+       bump=1
+       shift
+       ;;
+
+    --hooks)
+       hook_dir=${GIT_HOOKS:-${PROJECT_ROOT}/git/hooks}
+       shift
+       ;;
+    --hooks=*)
+       hook_dir=${i#*=}
+       shift
+       ;;
+
+    --story=*)
+       story=${i#*=}
+       branch_name=story-${story}
+       shift
+       ;;
+    *)
+       usage "unknown '${i}"
+       return 1
+       ;;
+esac
+done
+
+# if verbose, announce values
+if (( verbose )) ; then
+   echo "hooks: ${hook_dir}"
+   echo "branch: ${branch_name}"
+fi
+
+# Get yourself on the right branch whether it exists or not.
+# As a safeguard, you can only create new branches off master, not off
+# other branches. Allowing branches of branches is more flexible but
+# more confusing.
+current_branch=$(git rev-parse --abbrev-ref HEAD)
+if [[ ${current_branch} == master && ${branch_name} != ${current_branch} && ${branch_name} != master ]] ; then
+  if git show-ref --verify --quiet refs/heads/${branch_name} ; then
+    # branch exists
+    git checkout ${branch_name}
+  else
+    # branch doesn't exist. Create and checkout.
+    git checkout -b ${branch_name}
+  fi
+fi
+# Get the current branch again (you might have changed it).
+# Yak at the user if s/he wants yakking.
+current_branch=$(git rev-parse --abbrev-ref HEAD)
+if (( verbose )) ; then
+  echo "git branch: ${current_branch}"
+fi
+
+# tbs
+install -d ${PROJECT_ROOT}/.coach
+
+
+
+(echo "PROJECT_ROOT: ${PROJECT_ROOT}"
+ echo "VIRTUAL_ENV: '${VIRTUAL_ENV}'"
+ pip --version
+ pip list) > ${PROJECT_ROOT}/.coach/$(basename ${BASH_SOURCE})
+
+
+# Generate local configuration if there's input.
+# Assumes setup knows how (it might not).
+if [[ -r ${PROJECT_ROOT}/setup.py && -r ${PROJECT_ROOT}/*/configs.txt ]] ; then
+   echo "configure local environment"
+   python setup.py configure -e local
+fi
+
+
+# find all "top level" modules
+modules=$(find ${PROJECT_ROOT} -maxdepth 2 -name __init__.py -printf "%h ")
+# find all version files based on contents
+versions=$(grep -l -r '^__version__' ${modules})
+# add a b1 to each current version
+for v in ${versions} ; do
+   sed -r 's/^[[:space:]]*__version__[[:space:]]*=[[:space:]]*\"([[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+)\"/__version__ = "\1\b1"/' ${v}
+done
+
+#token=$(<${here}/.token)
+token=${PIVOTAL_TOKEN:-''}
+project=1157508 # WRAP
+
+if [[ ${current_branch} == ${branch_name} ]] ; then
+    git add ${versions}
+    # First commit message is the name of the pivotal story
+    if [[ -n "${token}" && -n "$(type -t jq)" ]] ; then
+        message="$(curl --silent -X GET -H "X-TrackerToken: ${token}" "https://www.pivotaltracker.com/services/v5/projects/${project}/stories/${story}" | jq .name) [#${story}]"
+    else
+        message="Starting story ${story} [#${story}]"
+    fi
+    git commit -m "${message}"
+fi
+
+
+
+# Smoketest the build and sdist actions of this setup.py iff its there.
+if [[ -r ${PROJECT_ROOT}/setup.py ]] ; then
+    # Build something to make sure setup works
+    python setup.py build
+    # Build a kit. Is the version bumped?
+    python setup.py sdist
+fi
+
+
+# Run pyflakes on all top level modules
+for m in ${modules} ; do
+   # flake8 instead? Confusing
+   flake8 $(dirname $m)
+done
+
+# Run nosetests. Assumes nose can find the tests.
+nosetests
+
+
+# Set up client side git hooks in ${hook_dir} iff executable.
+for f in ${hook_dir} ; do
+   if [[ -x $f ]] ; then
+     ln -sfv $f ${GIT_DIR}/hooks/$(basename $f)
+   fi
+done
+# Here: git hooks wired up
+
+echo "tbs: configuring the pycharm project"
+
+echo -e "\n\n\nSTART HACKING\n\n\n"
+
+
+

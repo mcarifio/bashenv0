@@ -1,0 +1,3 @@
+#!/usr/bin/env python3
+
+print("tbs, read stdin and colorizes stdout based on re matches or http://pygments.org/docs/")

@@ -1,0 +1,1 @@
+alias rmqctl='sudo rabbitmqctl'

@@ -1,0 +1,39 @@
+#!/usr/bin/env python3
+# -*- mode: python; -*-
+
+# See ./pip.sh to install dependencies.
+# TODO: use pyproject.toml to define dependencies aka poetry
+
+import sys
+import fire
+import git
+import os.path
+from giturlparse import parse
+
+
+def ignore1(key, pathname):
+    return key, pathname
+
+def global_mkpathname(key):
+    return key
+
+def gitignore_pathname(key):
+    return key
+
+def repo_gitignore_pathname(key):
+    return key
+
+
+def ignore(*rest):
+    mkpathname = global_mkpathname
+    try:
+        r = git.Repo('.', search_parent_directories=True)
+    except git.CommandError as e:
+        print(e.stderr, file=sys.stderr)
+        return None
+    result = [ignore1(r, mkpathname(r)) for r in rest]
+    return result
+    
+if '__main__' == __name__:
+    print("tbs fully", file=sys.stderr)
+    fire.Fire(ignore)

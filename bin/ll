@@ -1,0 +1,14 @@
+#!/bin/bash
+
+name=$USERNAME
+if [[ "$1" == '-d' ]] ; then
+  name=$2; shift; shift
+fi
+
+db=~/$name.path.db
+if [[ ! -f "$db" ]] ; then
+  echo "'$db' missing. Generate it with 'lldb'"
+  exit 1
+fi
+
+locate -d $db $*

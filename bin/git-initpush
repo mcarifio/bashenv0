@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+# TODO mike@carif.io: reimplement in python3
+# @install: ssh git@git.{suffix} bin/mkrepo.sh ${name} # must work, embeds know about how to set up remote repos
+
+# @see ./git-initclone, that clones the remote repo after creating it. ./git-initpush assumes the local repo already exists.
+# ./git-initpush will probably be used more often.
+
+# TODO: reimplement in python3? typescript?
+
+me=$(readlink -e ${BASH_SOURCE})
+name=${1:?'expecting a repo name'}
+suffix=${2:-'carif.io'}
+machine=git@git.${suffix}
+#url=${machine}:repos/${name}.git
+url=${machine}:${path}
+
+# Create the remote repository on machine using ssh and remote shell script. Brittle.
+path=$(ssh ${machine} bin/mkrepo.sh ${name})
+if [[ -z "${path}" ]] ; then
+    echo "${url} not created. Nothing to push to. Exiting..." > /dev/stderr
+    exit 1
+fi
+
+
+# Hook up origin to remote repo. 
+git remote add origin ${url}
+git remote -v origin
+git push -u origin master
+
+

@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+# Put this script along $PATH and invoke with 'git jenkins'.
+# Will open browser in the github branch url based on remote.origin.url and current branch.
+# If you haven't pushed the current branch to github, it uses master.
+
+here=$(readlink -f $(dirname ${BASH_SOURCE}))
+build=${1}
+
+
+
+
+# if branch starts with 'story-', then url is a pull-request
+branch=tree/$(git rev-parse --abbrev-ref HEAD)
+git_root=$(git rev-parse --show-toplevel)
+dir=$(basename ${git_root})
+dir=${dir%%-wip}
+
+
+
+# kick off a build
+if [[ -n "${build}" ]] ; then
+   sha1=$(git rev-parse --verify HEAD)
+   echo "kickoff build with '${sha1}'"
+   curl -X POST http://jenkins.pazien.com:8080/job/${dir}-pull-requests/buildWithParameters?delay=0sec&sha1=${sha1}
+   url=http://jenkins.pazien.com:8080/view/${dir}/job/${dir}-pull-requests/lastBuild/console
+else
+   # http://jenkins.pazien.com:8080/view/merchant-matcher/job/merchant-matcher-pull-requests/ 
+   url=http://jenkins.pazien.com:8080/view/${dir}/job/${dir}-pull-requests/
+fi
+
+
+if curl -s ${url} > /dev/null ; then
+  gnome-open ${url}
+fi
+

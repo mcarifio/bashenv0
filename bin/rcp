@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+owner=${1:?'need a username'}
+from=$2
+to=$3
+
+cp --verbose --recursive ${from} ${to}
+chown --recursive ${owner} ${to}

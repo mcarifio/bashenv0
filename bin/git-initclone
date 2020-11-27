@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+# TODO mike@carif.io: reimplement in python3
+# @install: ssh git@git.{suffix} bin/mkrepo.sh ${name} # must work, embeds know about how to set up remote repos
+
+me=$(readlink -e ${BASH_SOURCE})
+name=${1:?'expecting a repo name'}
+suffix=${2:-'carif.io'}
+machine=git@git.${suffix}
+path=$(ssh ${machine} bin/mkrepo.sh ${name})
+#url=${machine}:repos/${name}.git
+url=${machine}:${path}
+git clone ${url}
+

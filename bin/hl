@@ -1,0 +1,7 @@
+#!/bin/bash
+# -*- tab-indent: 2 -*-
+# compliments short form of PS1.env.sh
+# hl is the longer form of h
+
+echo "$(hostname):$PWD $(id -un):$(id -gn)"
+# tree -L 1 -d

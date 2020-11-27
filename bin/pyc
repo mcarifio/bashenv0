@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+# create or reassert a virtualenv and then start pycharm in git root
+
+here=$(readlink -f $(dirname $BASH_SOURCE))
+
+# use git to find the project root.
+# TODO mcarifio: GIT_DIR?
+root=$(git rev-parse --show-toplevel)
+
+# Establish a virtual env if there isn't one.
+if [[ -z "${VIRTUAL_ENV}" ]] ; then
+   pyvenva
+fi
+
+# Run pycharm.
+pycharm.sh $root
+

@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+# lifted from https://superuser.com/questions/358037/emacsclient-create-a-frame-if-a-frame-does-not-exist
+# Used longer argument switches for readability, simplified the lisp expression.
+
+# Assume the emacs server was run by systemd
+if emacsclient --no-wait --eval '(> (length (frame-list)) 1)' | grep -q t ; then
+    emacsclient --no-wait "$@"
+else
+    emacsclient --create-frame --no-wait "$@"
+fi
+

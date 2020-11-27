@@ -1,0 +1,16 @@
+---
+update-cf-dns:
+   # global api key https://dash.cloudflare.com/profile/api-tokens
+   auth_key: 469891ab11e28eac9fdcf86923c6b4c55cfc3  # https://www.cloudflare.com/a/profile
+   # global origin ca key
+   ca: v1.0-16ed6563f9ef1f1b03705863-f2f6c2b64ce60b0ae4ea80a178e9a065684290a2b39cd97d3d92713f0bb24b0a8c2030a2055c1e70427fe0a99f064ac540584b08373d02a2ab78dc0d86841d810eed0530a08448
+   email: mike@carif.io
+   echo: http://bin.mailgun.net/b848da4a  # postbin http://bin.mailgun.net/b848da4a
+   account: 65f9e2d8dff914ced3b7f84aa3ce795e
+   zones:
+     carif.io:
+       cfzone: 4594c39e4233a7a65f8ccabda020439a
+     m00nlit.com:
+       cfzone: d62a7c0f380c9835e8c47ad9f6a657ed
+
+

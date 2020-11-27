@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+
+
+# print an error message and exit 1.
+function _error() {
+  echo ${1:-"error, exit 1"}
+  exit 1
+}
+
+# Forward to a command, usually yourself. If you have nothing to forward to,
+#  error out. Forward finds the "real" command you are shadowing with your
+#  wrapping command.
+# Usage:
+#   forward next => /usr/local/bin/next
+#   forward ls |> error  # usually
+
+function _forward() {
+  local command=${1:?'expecting a command'}
+  local position=${2:- -1}
+  local all=( $(which -a ${command}) )
+  local count=${#all[@]}
+  if (( count < 2 )) ; then _error "${command} has no forward (${all})" ; fi
+  echo ${all[${position}]} 
+}
+
+
+
+# me is the "command name" for this script, e.g. for ~/bin/foo.sh, me is 'foo'
+me=$(basename ${BASH_SOURCE} .sh)
+
+function _main() {
+  export GDK_SCALE=2 GDK_DPI_SCALE=0.5
+  exec $(_forward ${me}) $*
+}
+
+
+# exec $(_forward ${me})
+# $(_forward ${me})
+# echo $(_forward ${me})
+
+# keyboard input doesn't work
+_main
+
+
+
+
+

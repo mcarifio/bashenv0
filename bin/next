@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+
+# @see: ~/.local/share/applications/next.desktop
+
+# print an error message and exit 1.
+# TODO mike@carif.io: .desktop files don't respect this?
+function _error() {
+  echo ${1:-"error, exit 1"}
+  exit 1
+}
+
+# Forward to a command, usually yourself. If you have nothing to forward to,
+#  error out. Forward finds the "real" command you are shadowing with your
+#  wrapping command.
+# Usage:
+#   forward next => /usr/local/bin/next
+#   forward ls |> error  # usually
+
+# me is the "command name" for this script, e.g. for ~/bin/foo.sh, me is 'foo'
+me=$(basename ${BASH_SOURCE} .sh)
+
+function _forward() {
+  local command=${1:-${me}}
+  local position=${2:- -1}
+  # final is the final command if nothing is on the search path
+  local final=${3:-/usr/local/bin/next}
+  local all=( $(which -a ${command}) )
+  local count=${#all[@]}
+  if (( count < 2 )) ; then
+      if [[ -n "${final}" ]] ; then
+          echo ${final}
+          return
+      fi
+          _error "${command} has no forward (${all})"
+  fi
+  echo ${all[${position}]} 
+}
+
+
+
+function _main() {
+  export GDK_SCALE=2 GDK_DPI_SCALE=0.5
+  exec $(_forward) $*
+}
+
+
+# exec $(_forward ${me})
+# $(_forward ${me})
+# echo $(_forward ${me})
+
+# keyboard input doesn't work?
+_main
+
+
+
+
+

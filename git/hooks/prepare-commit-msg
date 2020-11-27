@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+# TODO carif: implementation below sucks
+# redo this is python3?
+# setup: ln -s {., ~/bashenv}/git/hooks/prepare-commit-msg
+
+(git log -n1 --format=oneline | cut -c42- ;
+ echo;
+ # gross
+ sed -n '/^# Changes to be committed:$/,/^#$/p' .git/COMMIT_EDITMSG|head -n -1|tail -n +2|sed 's/^#\s+/ * /g'
+ echo;
+ cat .git/COMMIT_EDITMSG) > /tmp/$$
+
+gzip -f .git/COMMIT_EDITMSG
+mv /tmp/$$ .git/COMMIT_EDITMSG
+
+
+

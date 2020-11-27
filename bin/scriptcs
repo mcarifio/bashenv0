@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+scriptcs=~/.nuget/packages/scriptcs/0.17.1/tools/scriptcs.exe
+cd $(dirname ${scriptcs})
+exec ${scriptcs}

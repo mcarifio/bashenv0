@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+# Put this script along $PATH and invoke with 'git github'.
+# Will open browser in the github branch url based on remote.origin.url and current branch.
+# If you haven't pushed the current branch to github, it uses master.
+
+here=$(readlink -f $(dirname ${BASH_SOURCE}))
+# completion?
+project=${1:?'expecting a pazien project at github.com'}
+github="git@github.com:Pazien/${project}.git"
+git clone ${github}

@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Mike Carifio <mike@carif.io>
+# Intended to be dispatched by function docker, see bashrc.d/docker.function.sh
+
+docker ps $@
