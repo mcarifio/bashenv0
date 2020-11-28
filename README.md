@@ -1,17 +1,20 @@
 Mike Carifio <mike@carif.io>
 
-bashenv is local environment for your bash login session and provides
-an easy way to share scripts across many machines.
+bashenv is local environment for your bash login session and provides an easy way to share scripts across several machines.
 
 Install
 
-cd $HOME; git clone slicehost.usys.com:/srv/git/bashenv.git # fetch the source
-ln -s ~/bashenv/.bash_aliases ~/.bash_aliases
+```bash
+git clone git@github.com:mcarifio/bashenv.git ~/.local/share/bashenv
+source ~/.local/share/bashenv/install/install.sh # tbs
+```
 
+Update (periodically):
 
-Update
+```bash
+~/.local/share/bashenv/install/update.sh
+```
 
-cd ~/bashenv; git pull # do this periodically to get changes
+Note that if you change or add a script, you should push it here and then `update.sh` on other machines.
 
-Note that if you change or add a script, you can push it to the master repo.
 
