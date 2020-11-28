@@ -1,5 +1,10 @@
 # Mike Carifio <mike@carif.io>
 export ISHELL=$(basename ${SHELL}) # :-$(type -p bash)} # bash, inherited by other execs
+_bash_aliases=$(realpath -s ${BASH_SOURCE})
+export BASHENV=$(realpath $(dirname ${_bash_aliases})/..)
+_bashenv=$(basename ${BASHENV})
+BASHENV_LOGROOT=/tmp/${USER}/${_bashenv}/source_1/$(date -Iseconds)
+mkdir -p ${BASHENV_LOGROOT}
 
 # TODO mike@carif.io: move into separate file and source
 
@@ -25,7 +30,7 @@ function _m {
 # usage: local _v=$(_must "$1" "expecting 1")
 function _must {
   local _caller=${FUNCNAME[1]}:${LINENO[1]}
-  [[ -z "${1} ]] &&  _e "${_caller} ${2:-'expecting an argument, none found'}"
+  [[ -z "${1}" ]] &&  _e "${_caller} ${2:-'expecting an argument, none found'}"
   echo "${1}"
 }
 
@@ -49,22 +54,26 @@ function first { echo $1; }
 
 
 
-
-LOGROOT=/tmp/bashenv/source_1/$$
-mkdir -p ${LOGROOT}
-
 # source all *.sh files in a directory.
 # TODO mcarifio: source from stdin
 function source_d {
   local d=${1:-${PWD}}
-  if [[ -d "${d}" ]] ; then  
+  declare -i _announce=0
+  if [[ -d "${d}" ]] ; then
+     shopt -s nullglob
      for f in ${d}/*.sh ; do
          source_1 ${f}
+         (( _announce ||= $? ))
      done
   fi
-  _show_logs ${LOGROOT}/*.log
+  # _show_logs ${BASHENV_LOGROOT}/*.log
+  (( _announce )) && echo ${BASHENV_LOGROOT}
 }
 
+function _show_logs {
+  shopt -s nullglob
+  for l in "$*"; do cat ${l} ; done
+}
 
 function source_1 {
   local _self=${FUNCNAME[0]}@${LINENO[0]}
@@ -73,14 +82,18 @@ function source_1 {
   local _there=$(dirname ${_s})
   local _name=$(basename ${_s})
   # echo ${_s} ${_name}
-  local _log=${LOGROOT}/${_name}.log
-  if source ${s} &> ${log} ; then
-      : # >&2 echo "${s} loaded."
+  local _log=${BASHENV_LOGROOT}/${_name}.txt
+  if source ${_s} &> ${_log} ; then
+      local _log_status=${_log}.0.log
+      mv ${_log} ${_log_status}
+      xz ${_log_status}
   else
       local _status=$?
-      local _backpointer=$(realpath --relative-to ${_there} {_s})
+      local _log_status=${log}.${_status}.log
+      mv ${_log} ${_log_status}
+      local _backpointer=$(realpath --relative-to ${_there} ${_s})
       ln -sr ${_s} ${_backpointer}
-      _w "${_s} status ${_status} log ${_log} backpointer ${_backpointer}"
+      _w "${_s} status ${_status} log ${_log}.${_status}.log backpointer ${_backpointer}"
   fi
 }
 
@@ -95,14 +108,17 @@ function have-command {
 # source a collection of files for each one that exists
 
 function source_if_exists {
+  shopt -s nullglob
   for f in "$*"; do source_1 $f 0; done
 }
 
 function source_a {
+  shopt -s nullglob
   for f in "$*"; do source_1 $f; done
 }
 
 function path_if_exists {
+  shopt -s nullglob
   for p in "$*"; do
     path_if_exists_var PATH ${p}
   done
@@ -130,11 +146,15 @@ function eval_if_executable {
 }
 
 # source function definitions into the current environment
-export BASHENV=$(realpath $(dirname $(realpath ${BASH_SOURCE}))/..)
-# source_d ~/bashenv/bashrc.d
-source_d ${BASHENV}/bashrc.d
-# source completions into the current environment
-source_d ${BASHENV}/bash-completions.d
 
-# ssh autocomplete "plugin"
-# source_if_exists ~/.ssh/config.d/bin/italian-autocomplete.env.sh
+if [[ "${PWD}" == "${HOME}" ]] ; then
+  # source function definitions into the current environment
+  source_d ${BASHENV}/bashrc.d
+  # source completions into the current environment
+  source_d ${BASHENV}/bash-completions.d
+
+  # ssh autocomplete "plugin"
+  # source_if_exists ~/.ssh/config.d/bin/italian-autocomplete.env.sh
+else
+  >&2 echo "Loading functions only. To simulate a login: cd ~;source .bash_aliases"
+fi
