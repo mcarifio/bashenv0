@@ -60,7 +60,7 @@ function source_d {
   local d=${1:-${PWD}}
   declare -i _announce=0
   if [[ -d "${d}" ]] ; then
-     shopt -s nullglob
+     shopt -u nullglob
      for f in ${d}/*.sh ; do
          source_1 ${f}
          (( _announce ||= $? ))
@@ -71,7 +71,7 @@ function source_d {
 }
 
 function _show_logs {
-  shopt -s nullglob
+  shopt -u nullglob
   for l in "$*"; do cat ${l} ; done
 }
 
@@ -108,17 +108,17 @@ function have-command {
 # source a collection of files for each one that exists
 
 function source_if_exists {
-  shopt -s nullglob
+  shopt -u nullglob
   for f in "$*"; do source_1 $f 0; done
 }
 
 function source_a {
-  shopt -s nullglob
+  shopt -u nullglob
   for f in "$*"; do source_1 $f; done
 }
 
 function path_if_exists {
-  shopt -s nullglob
+  shopt -u nullglob
   for p in "$*"; do
     path_if_exists_var PATH ${p}
   done
