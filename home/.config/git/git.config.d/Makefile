@@ -11,13 +11,15 @@ m = $(BANNER)
 # make -B will force a build
 $(TARGET) : $(CONFIG_TREE)
 	test -f $@ || mv --backup=numbered --update $@ attic/ || true	
-	git status || git init
-	git add .
-	git commit -m "$(m)"
 	echo "# $(BANNER) on $$(date)\n[$$USERNAME.$@]\n    generated = '$$(date)'\n    [$$USERNAME.$@.$(RELROOT)]\n        path = '$(ROOT)/$@'\n\n[include]" > $(TARGET)
 	for p in $(CONFIG_TREE); do echo "    path = $${p}"; done >> $(TARGET)
 	echo "\n# eof" >> $(TARGET)
 
+.PHONY: git-commit
+git-commit:
+	git status || git init
+	git add .
+	git commit -m "$(m)"
 
 # TODO <mike@carif.io>: make -d and make -p -f/dev/null don't actually print vars below? Must be a way.
 .PHONY: show
