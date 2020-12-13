@@ -6,4 +6,4 @@ def cat(contents:str, pn:str)->str:
         # doesn't dedent?
         f.write(dedent(contents))
     
-
+    

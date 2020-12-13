@@ -1,12 +1,21 @@
 #!/usr/bin/env bash
 
-# lifted from https://superuser.com/questions/358037/emacsclient-create-a-frame-if-a-frame-does-not-exist
-# Used longer argument switches for readability, simplified the lisp expression.
+function emacsclient {
+    local -i _frames=$(command emacsclient --no-wait --eval '(length (frame-list))')
+    local _create_frame=''
+    (( _frames < 2 )) && _create_frame='--create-frame'
+    local -a _args=($@)
+    (( ${#_args[*]} == 0 )) && _args=(.)
+    command emacsclient ${_create_frame} --no-wait "${_args[*]}"
+}
 
-# Assume the emacs server was run by systemd
-if emacsclient --no-wait --eval '(> (length (frame-list)) 1)' | grep -q t ; then
-    emacsclient --no-wait "$@"
-else
-    emacsclient --create-frame --no-wait "$@"
-fi
+function _ec {
+    emacsclient "$*"
+}
+
+# TODO mike@carif.io: fix was-run so scripts can be sourced.
+# was-run && _$(basename ${BASH_SOURCE} .sh) "$@"
+_$(basename ${BASH_SOURCE} .sh) "$@"
+
+
 

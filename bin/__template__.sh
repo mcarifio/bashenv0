@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
-# -*- mode: shell-script; eval: (setq-local indent-tabs-mode nil tab-width 4 indent-line-function 'insert-tab) -*-
+# -*- mode: shell-script; -*- # eval: (setq-local indent-tabs-mode nil tab-width 4 indent-line-function 'insert-tab) -*-
+#!/usr/bin/env -S sudo -i /usr/bin/env bash # run as root under sudo
+
 # @author: Mike Carifio <mike@carif.io>
 # Note that emacs can be configured for [editorconfig](https://editorconfig.org/)
 #   with [editorconfig-emacs](https://github.com/editorconfig/editorconfig-emacs)
@@ -13,15 +15,11 @@ IFS=$'\n\t'
 _me=$(realpath -s ${BASH_SOURCE:-$0})
 _here=$(dirname ${_me})
 _name=$(basename ${_me} .sh)
+_ap_shell=$(realpath /proc/$$/exe) # absolute pathname of current shell
+_shell=$(basename ${_ap_shell}) # current shell: 'bash' (unless you change the shebang line).
 
 source utils.lib.sh &> /dev/null || true
 source ${_me}.conf &> /dev/null || true
-
-# run as root?
-# if [[ $(id -un) != root ]] ; then
-#     exec sudo ${_me} --for=${USERNAME} $@
-# fi
-
 
 _version() {
     local v=${_me}.version.txt

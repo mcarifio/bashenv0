@@ -1,1 +1,1 @@
-path_if_exists "$HOME/.pub-cache/bin"
+path.add "$HOME/.pub-cache/bin"

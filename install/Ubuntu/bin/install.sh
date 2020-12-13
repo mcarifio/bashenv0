@@ -12,6 +12,12 @@ function _e {
     exit ${_status}
 }
 
+function _w {
+    local _status=${2:-1}
+    >&2 echo "$1"
+    return ${_status}
+}
+
 [[ ${_id} != Ubuntu ]] && _e "Expecting Ubuntu, found ${_id}."    
 [[ ${_you} != 0 ]] && _e "Could not elevate to root to run ${_me}"
 
@@ -27,9 +33,6 @@ function ssource {
     
 ssource lib.fn.sh ${_id}.fn.sh
 
-apt+install ${_me}.log whois xdg-utils
+apt+install ${_me}.log whois xdg-utils cloud-init ttyrec python3
 
-# add users
-useradd git bashenv skippy
-
-
+install-all

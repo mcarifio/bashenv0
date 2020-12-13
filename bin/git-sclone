@@ -1,15 +1,35 @@
 #!/usr/bin/env python
 # -*- mode: python; -*-
 
+#!/usr/bin/env python
+#!/usr/bin/python
+# asdf shell python system should get this, but doesn't
+
 #!/usr/bin/env -S python -m pdb # git sclone ${url}  # invokes debugger
-# alternatively: pythom -m pdb $(type -p git-sclone) ${url}
+# alternatively: python -m pdb $(type -p git-sclone) ${url}
 
 # https://google.github.io/python-fire/guide/
+# python3 -m pip install --upgrade fire git-url-parse gitpython dotmap
 # python3 -m pip install --upgrade git+https://github.com/google/python-fire@v0.3.1#egg=fire
-# python3 -m pip install --upgrade git-url-parse gitpython dotmap
+
 
 
 import sys
+if sys.version_info.major < 3 or sys.version_info.minor < 7:
+    printf(f"'{sys.executable}' version '{sys.version_info}' isn't 3.7 or later. Stopping.", file=sys.stderr)
+    sys.exit(1)
+    
+import os
+if os.environ.get('DEBUG', False):
+    import pdb # a convenience
+    breakpoint()
+
+import logging as l
+default_level:str = 'WARN'
+l.basicConfig(level=getattr(l, os.environ.get('LEVEL', 'WARN').upper(), None))
+l.debug(f"{__file__} now logging at level '{l.getLevelName(l.getLogger().getEffectiveLevel())}'")
+
+import importlib
 import fire
 import git
 import os.path
@@ -20,6 +40,7 @@ import yaml
 import json
 # https://github.com/drgrib/dotmap
 import dotmap
+import rich
 
 # module docstring in yaml format with three "streams": 1) a declarative repr, 2) a narrative and 3) an optional history
 """
@@ -65,14 +86,14 @@ def clone(r:str, prefix:str="~/src")->git.Repo:
     message:str = f"{origin} -> {pwd} created on {date.today()} with {__file__}"
     comment:str = '# ' + message
 
-    print(comment, file=sys.stderr)
+    rich.print(comment, file=sys.stderr)
     cat(f'''# {p.name}
         {message}
 
         By convention, this directory wraps the actual cloned repo in ./{p.name}.
     ''', os.path.join(target_top, "README.md"))
 
-    # clique: `git sclone ${url} | source /dev/stdin` # a little hacky, but works    
+    # cliche: `git sclone ${url} | source /dev/stdin` # a little hacky, but works    
     return local
 
 def version():
@@ -81,9 +102,9 @@ def version():
 
 if '__main__' == __name__:
     try:
-        advise = dotmap.DotMap()
         result = fire.Fire(clone)
-        advise.bash.next.cmds = (f"cd {result.working_tree_dir}", "pwd", "git status")
+        advise = dotmap.DotMap(_dynamic=False)
+        advise.bash._next.cmds = (f"cd {result.working_tree_dir}", "pwd", "git status")
         advise.pprint(pformat='json')
         sys.exit(0)
     except git.exc.GitCommandError as ce:

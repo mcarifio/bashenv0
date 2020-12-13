@@ -1,6 +1,7 @@
-# usage: export PYTHONSTARTUP=~/bashenv/rc/python3rc
-
+# usage: export PYTHONSTARTUP=${BASHENV}/rc/python3rc
+# According to the site package, I shouldn't need this.
 # http://stackoverflow.com/questions/5837259/installing-pythonstartup-file
+
 try:
     import readline
 except ImportError:

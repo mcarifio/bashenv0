@@ -4,11 +4,14 @@
 # doc: https://cli.github.com/manual/index
 
 # configure only if gh somehow installed and available
-have-command gh || return 1
+u.have.command gh || return 0
 
 # gh help completion
 # ISHELL defined in ~/.bash_aliases 
-gh completion --shell=${ISHELL:-$(basename ${SHELL})} | source /dev/stdin
+source <(gh completion --shell=$(me.shell))
+
+# TODO redo functions below
+
 
 # gh help environment
 # https://github.com/settings/tokens/486892018, `all scopes for gh at mcarifio@shuttle`, value `fa43f0f7259fd3348efe030e61782acdc58e3f63`

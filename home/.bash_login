@@ -1,0 +1,24 @@
+# https://linuxize.com/post/bashrc-vs-bash-profile/
+# why isn't this getting sourced on first login?
+
+_bash_login=$(realpath ${BASH_SOURCE[0]})
+export BASHENV=$(realpath -s $(dirname ${_bash_login})/..)
+_bashenv=$(basename ${BASHENV})
+_bash_logind=$(basename ${BASH_SOURCE[0]})
+_bash_logind=${_bash_logind#.}.d
+_froot=${BASHENV}/${_bash_logind}
+
+# bootstrap useful bashenv functions using an explicit load script load.sh.
+# load.sh controls the "source order" of the files. This step is fragile.
+source ${_froot}/bootstrap/load.sh
+
+# Set this shell's options including 
+u.init.shopt
+
+# Add useful directories to path iff they exist and are _not_ already there.
+path.add $(path.bins)
+u.source.all ${_froot}/rest/**/*.{fn,env}.sh ~/.local/etc/bash_completion.d/* ${BASHENV}/bashrc.d/*.sh ${BASHENV}/bash_completion.d/*.completion.sh ~/.bashrc
+
+
+
+

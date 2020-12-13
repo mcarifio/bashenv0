@@ -1,1 +1,1 @@
-source_if_exists /opt/wasmer/current/wasmer.sh
+u.source /opt/wasmer/current/wasmer.sh

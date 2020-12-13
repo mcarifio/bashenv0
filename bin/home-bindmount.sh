@@ -23,12 +23,6 @@ fi
 source utils.lib.sh &> /dev/null || true
 source ${_me}.conf &> /dev/null || true
 
-# run as root?
-# if [[ $(id -un) != root ]] ; then
-#     exec sudo ${_me} --for=${USERNAME} $@
-# fi
-
-
 _version() {
     local v=${_me}.version.txt
     if [[ -r ${v} ]] ; then
@@ -74,7 +68,7 @@ _dispatch() {
     
     local _entry=_start
     declare -a _args # don't pass --start to "real" function
-    local _user=${USERNAME}
+    local _user=${USER}
 
 
     while (( $# )); do
