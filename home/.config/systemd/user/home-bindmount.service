@@ -1,0 +1,19 @@
+# systemctl enable --user home-bindmount
+# then:
+# systemctl --user daemon-reload  ## if you change this file
+# systemctl restart --user home-bindmount  ## or start
+# systemctl status --user home-bindmount
+[Unit]
+Description=bind mount global directories under $HOME
+
+[Service]
+# Type=simple
+ExecStart=/home/mcarifio/.local/share/bashenv/bin/%N.sh 
+# ExecStop=
+# Restart=on-failure
+# TODO mike@carif.io: template files in units https://www.freedesktop.org/software/systemd/man/systemd.unit.html
+# Environment=DISPLAY=:%i 
+TimeoutStartSec=0
+
+[Install]
+WantedBy=default.target
