@@ -26,6 +26,7 @@ function u.env {
 }
 export -f u.env
 
+
 # when called in a script, knows if the script file has been sourced. not currently working.
 function u.script.source {
     local _self=${FUNCNAME[0]}

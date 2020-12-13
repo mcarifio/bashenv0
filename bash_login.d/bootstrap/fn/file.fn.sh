@@ -1,3 +1,11 @@
+function file.__template__ {
+    local _self=${FUNCNAME[0]}
+    echo ${_self} tbs
+}
+export -f file.__template__
+
+
+
 function cd {
     local dir=${1:-${HOME}}
     [[ -d $dir ]] || mkdir -vp $dir
