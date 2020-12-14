@@ -71,7 +71,7 @@ export -f u.first
 function u.a.values {
     local _delim=${1:-':'} ; shift
     local _result=$(f.must.value "$1" "array length>0"); shift
-    for _i in $*; _result+=$(printf '%s%s' ${_delim} ${_i})
+    for _i in $*; do _result+=$(printf '%s%s' ${_delim} ${_i}) ; done
     [[ -n ${_result} ]] && echo ${_result}
 }
 export -f u.a.values

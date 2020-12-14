@@ -43,8 +43,8 @@ function sudo.mkdir {
     local _username=${2:-${USER}}
     local -i _uid=$(id -u ${_username})
     local -i _gid=$(id -g ${_username})
-    local _mode=''
-    [[ -n ${mode} ]] _mode=" --mode=${mode} "
+    local _mode=""
+    [[ -n "${mode}" ]] && _mode=" --mode=${mode} "
     sudo install --owner=${_uid} --group=${_gid} ${_mode} --directory ${_d}
 }
 export -f sudo.mkdir
@@ -57,8 +57,8 @@ function sudo.cp {
 
     local -i _uid=$(id -u ${_username})
     local -i _gid=$(id -g ${_username})
-    local _mode=''
-    [[ -n ${mode} ]] _mode=" --mode=${mode} "
+    local _mode=""
+    [[ -n "${mode}" ]] && _mode=" --mode=${mode} "
 
     sudo install --owner=${_uid} --group=${_gid} ${_mode} -D ${_src} ${_dst}
 }
@@ -78,7 +78,7 @@ function sudo.ssh.mkssh {
     sudo.ssh.keygen ${_username} ${_key}
     mode=0600 sudo.cp ${_key} ${_ssh_d}/id_rsa ${_username} 
 }
-function ssh.mkssh
+export -f sudo.ssh.mkssh
 
 function sudo.ssh.keygen {
     local _self=${FUNCNAME[0]}
@@ -88,7 +88,7 @@ function sudo.ssh.keygen {
     file.mkdir $(file.dirname ${_f})
     command -p ssh-keygen -f ${_f} -P'' -C "${USER}@${HOSTNAME}:${_f}"
 }
-function ssh.keygen
+export -f sudo.ssh.keygen
 
 
 
