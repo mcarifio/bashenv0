@@ -1,8 +1,29 @@
 u.have.command az || return 1
+
 export AZURE_ACCOUNT=${2:-default}
 export AZURE_CONFIG_ROOT=${HOME}/.config/azure
 export AZURE_CONFIG_DIR=${AZURE_CONFIG_ROOT}/${AZURE_ACCOUNT}
 [[ -d ${AZURE_CONFIG_DIR} ]] || return 1
+
+function az.fn.__template__ {
+    local _self=${FUNCNAME[0]}
+    declare -F ${_self}
+}
+
+function az.fn.defines {
+    local _self=${FUNCNAME[0]}
+    export -f  2>&1 | grep "declare -fx az"
+}
+export -f az.fn.defines
+
+function az.fn.pathname {
+    local _self=${FUNCNAME[0]}
+    u.value $(me.pathname)    
+}
+export -f az.fn.pathname
+
+
+
 
 function az.account {
     local folder=$1

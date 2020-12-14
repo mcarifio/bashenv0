@@ -57,11 +57,24 @@ function u.init.shopt {
 }
 export -f u.init.shopt
 
-function u.first {
-    echo $1
+
+function u.value {
+    [[ -n "$1" ]] && echo $1
 }
+export -f u.value
 
+function u.first {
+    u.value $1
+}
+export -f u.first
 
+function u.a.values {
+    local _delim=${1:-':'} ; shift
+    local _result=$(f.must.value "$1" "array length>0"); shift
+    for _i in $*; _result+=$(printf '%s%s' ${_delim} ${_i})
+    [[ -n ${_result} ]] && echo ${_result}
+}
+export -f u.a.values
 
 # source all readable files
 function u.source.all {

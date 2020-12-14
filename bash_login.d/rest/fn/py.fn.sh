@@ -1,15 +1,20 @@
-function py.__template__ {
+function py.fn.__template__ {
     local _self=${FUNCNAME[0]}
-    echo ${_self} tbs
+    u.value $(py.fn.pathname)
 }
-export -f $_
+# don't export __template__
 
-
-function py.bootstrap {
+function py.fn.defines {
     local _self=${FUNCNAME[0]}
-    apt.install python3
+    export -f  2>&1 | grep "declare -fx py"
 }
-export -f $_
+export -f py.fn.defines
+
+function py.fn.pathname {
+    local _self=${FUNCNAME[0]}
+    u.value $(me.pathname)    
+}
+export -f py.fn.pathname
 
 
 # `python -m pip install --user ${package}` can sometimes install command line binaries 
@@ -21,7 +26,7 @@ function py.site.bin {
     local _user_base=$(python3 -m site --user-base) # always returns a directory?
     [[ -n "${_user_base}" ]] && file.is.dir "${_user_base}" && echo ${_user_base}/bin
 }
-export -f $_
+export -f py.site.bin
 
 
 
@@ -33,23 +38,24 @@ function py.pip+install {
     fi
     python3 -m pip install --upgrade "$*"
 }
-export -f $_
+export -f py.pip+install
 
 function py.pip+install.start {
     local _self=${FUNCNAME[0]}
     pip.install wheel git git-url-parse gitpython dotmap fire rich dotmap maya fabric patchwork invocations poetry 'xonsh[full]' prompt_toolkit xfr
 }
-export -f $_
+export -f py.pip+install.start
 
 
 function py.env.PYTHONSTARTUP {
     local _self=${FUNCNAME[0]}
     u.env -r $(py.env.rc)
 }
-export -f $_
+export -f py.env.PYTHONSTARTUP
 
 function py.env.rc {
     local _py_env_rc=$(f.first (f.filter file.is.read $1 ${BASHENV:-${XDG_DATA_DIR:-~/.local/share}/bashenv}/rc/python/python3rc.py))
     [[ -n "${_py_env_rc}" ]] && echo "${_py_env_rc}"
 } 
-export -f $_
+export -f py.env.rc
+

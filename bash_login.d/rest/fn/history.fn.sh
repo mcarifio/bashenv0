@@ -11,12 +11,35 @@
 # shopt -s nullglob # remove pattern if nothing matches, bashref p 24
 
 # https://www.gnu.org/software/bash/manual/html_node/The-Shopt-Builtin.html
- 
+
+
+function history.fn.__template__ {
+    local _self=${FUNCNAME[0]}
+    declare -F ${_self}
+}
+export -f history.fn.__template__
+
+function history.fn.defines {
+    local _self=${FUNCNAME[0]}
+    export -f  2>&1 | grep "declare -fx history"
+}
+export -f history.fn.defines
+
+function history.fn.pathname {
+    local _self=${FUNCNAME[0]}
+    u.value $(me.pathname)    
+}
+export -f history.fn.pathname
+
+
+
+
 # see ./bash.env.sh as well
 shopt -s histappend
 export HISTCONTROL=${HISTCONTROL}:ignoredups:erasedups:ignoreboth:ignorespace
 export HISTFILESIZE=-1
 export HISTSIZE=-1
+
 
 
 function history.background {
