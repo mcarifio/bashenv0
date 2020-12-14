@@ -57,6 +57,11 @@ function u.init.shopt {
 }
 export -f u.init.shopt
 
+function u.first {
+    echo $1
+}
+
+
 
 # source all readable files
 function u.source.all {
@@ -68,45 +73,19 @@ export -f u.source.all
 function u.source {
     local _self=${FUNCNAME[0]}
     local _s=$(f.must.have "$1" "bash script") || return 1
-    [[ -n "${verbose}" ]] && >&2 echo $(realpath ${_s})
-    source ${_s}
+
+    [[ -n "${verbose}" ]] && f.info $(realpath ${_s}) $*
+    source ${_s} $*
 }
-export -f u.source.all
+export -f u.source
 
 
-
-
-##########################
-
-
-# source all *.sh files in a directory.
-# TODO mcarifio: source from stdin
-# I don't think I actually need this?
-function u.source_d {
-    local _self=${FUNCNAME[0]}
-    local _d=${1:-${PWD}}
-    local _pattern=${2:-'*.sh'}
-    [[ -d "${_d}" ]] && u.apply u.source_1 ${_d}/${_pattern}
-}
-export -f u.source_d
-
-# don't need this
-function u.show-logs {
-    # shopt -u nullglob
-    u.apply cat "$*"
-}
-export -f u.show-logs
-
-
-
-
-# export BASHENV_LOGROOT=${BASHENV_LOGROOT:-$(u.mkdir /tmp/${USER}/bashenv)}
 
 # I'm not sure I need this.
 function u.source_1 {
     local _self=${FUNCNAME[0]}
     local _selfno=${FUNCNAME[0]}@${LINENO[0]}
-    local _s=$(realpath -s $(u.must.have "${1}" "expecting a pathname")) ; shift
+    local _s=$(realpath -s $(u.must.have-ck "${1}" file.is.readable)) ; shift
     [[ -r ${_s} ]] || return ${2:-1} ; shift
     local _there=$(dirname ${_s})
     local _name=$(basename ${_s})
@@ -126,11 +105,3 @@ function u.source_1 {
     fi
 }
 export -f u.source_1
-
-function u.source.all {
-    local _self=${FUNCNAME[0]}
-    f.apply source $*
-}
-export -f u.source.all
-
-

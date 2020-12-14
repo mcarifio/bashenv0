@@ -14,14 +14,20 @@ function cd {
 export -f cd
 
 # http://seanbowman.me/blog/fzf-fasd-and-bash-aliases/
-function jd {
+function rcd {
     local _d=$(find ${1:-*} -path '*/\.*'\
         -prune -o -type d\
         -print 2> /dev/null | fzf +m)
     [ -d "${_d}" ] && pushd "${_d}"
 }
-export -f jd
-complete -d jd
+export -f rcd
+complete -d rcd
+
+function fcd {
+    pushd $(find ${1:-${HOME}} -type d -print 2> /dev/null | fzf +m)
+}
+
+
 
 
 function file.newest { 
@@ -29,6 +35,11 @@ function file.newest {
 }
 export -f file.newest
 
+function file.is.readable {
+    local _self=${FUNCNAME[0]}
+    local _f=$(f.must.have "$f" ${_self%%.*})
+    [[ -r ${_f} ]]
+}
 
 
 function file.is.dir {

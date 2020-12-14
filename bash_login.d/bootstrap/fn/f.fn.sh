@@ -8,16 +8,29 @@ export -f f.__template__
 
 
 # usage: local _v=$(f.must "$1" "pathname")
+function f.must.have+ck {
+    local _self="${FUNCNAME[0]}"
+    local _caller="${FUNCNAME[1]:-main}:${BASH_LINENO[1]:-0}"
+    if [[ -n "${1}" && $(${2:-false} $1) ]] ; then
+        echo "${1}"
+    else
+        f.err "${_caller} expected a '${2}'"
+    fi
+}
+export -f f.must.have+ck
+
+# deprecated
 function f.must.have {
     local _self="${FUNCNAME[0]}"
     local _caller="${FUNCNAME[1]:-main}:${BASH_LINENO[1]:-0}"
-    if [[ -z "${1}" ]] ; then
-        f.err "${_caller} expected a '${2}'"
-    else
+    if [[ -n "${1}" ]] ; then
         echo "${1}"
+    else
+        f.err "${_caller} expected a '${2}'"
     fi
 }
 export -f f.must.have
+
 
 function f.msg {
     local -i _status=${2:-$?}
