@@ -11,13 +11,12 @@ _froot=${BASHENV}/${_bash_logind}
 # bootstrap useful bashenv functions using an explicit load script load.sh.
 # load.sh controls the "source order" of the files. This step is fragile.
 source ${_froot}/bootstrap/load.sh
-
-# Set this shell's options including 
+u.source.all ${_froot}/rest/*/*.sh ${BASHENV}/bashrc.d/env/*.sh
 u.init.shopt
 
 # Add useful directories to path iff they exist and are _not_ already there.
 path.add $(path.bins)
-u.source.all ${_froot}/rest/**/*.{fn,env}.sh ~/.local/etc/bash_completion.d/* ${BASHENV}/bashrc.d/*.sh ${BASHENV}/bash_completion.d/*.completion.sh ~/.bashrc
+u.source.all ~/.local/etc/bash_completion.d/* ${BASHENV}/bash_completion.d/*.sh ~/.bashrc
 
 
 
