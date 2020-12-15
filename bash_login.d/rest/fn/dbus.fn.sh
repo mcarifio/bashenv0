@@ -15,14 +15,20 @@ function dbus.fn.pathname {
 }
 export -f dbus.fn.pathname
 
+function dbus.fn.reload {
+    verbose=1 u.source $(dbus.fn.pathname)
+}
+export -f dbus.fn.reload
+
 
 
 function dbus.DBus.ListNames {
     local _self=${FUNCNAME[0]}
     local _prefix=org.freedesktop
-    local _full=${_prefix}.${_self}
-    local _dbus=${_self%.*}
-    local _service=${1:-${_prefix}.${_dbus}}
+    local _fn=${_self#*.}
+    local _full=${_prefix}.${_fn}
+    local _DBus=${_self%.*}; _DBus=${_DBus#*.}
+    local _service=${1:-${_prefix}}.${_DBus}
     local _path=/${_service//./\/}
     # dbus-send --session --dest=org.freedesktop.DBus --type=method_call --print-reply /org/freedesktop/DBus org.freedesktop.DBus.ListNames
     dbus-send --session --dest=${_service} --type=method_call --print-reply ${_path} ${_full}
