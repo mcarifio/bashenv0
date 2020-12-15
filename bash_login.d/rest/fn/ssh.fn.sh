@@ -40,7 +40,7 @@ function ssh.keygen {
     local _f=${HOME}/.ssh/keys.d/by-quad/${USER}/${HOSTNAME}/${_UserName}/${_Host}/${USER}@${HOSTNAME}4${_UserName}@${_Host}_id_rsa
     local _d=$(dirname ${_f})
     file.mkdir ${_d}
-    command -p ssh-keygen -C "${USER}@${HOSTNAME}:${_f}" -f ${_f} -N ''
+    command -p ssh-keygen -q -C "${USER}@${HOSTNAME}:${_f}" -f ${_f} -N ''
     ln -srf ${_f} ${_d}/private.key
     echo ${_Host} > ${_d}/${_Host}
     echo ${_f}
