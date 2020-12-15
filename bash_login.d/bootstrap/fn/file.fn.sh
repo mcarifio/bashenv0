@@ -60,8 +60,8 @@ export -f file.is.readable
 
 function file.mkdir {
     local _self=${FUNCNAME[0]}
-    local _d=$(file.must.have "$1" "directory") ; shift
-    [[ -d ${_d} ]] || install "$*" --directory ${_d}
+    local _d=$(f.must.have "$1" "directory") ; shift
+    [[ -d ${_d} ]] || install $* --directory ${_d}
 }
 export -f file.mkdir
 
