@@ -48,6 +48,13 @@ function ssh.keygen {
 export -f ssh.keygen
 
 
+function ssh.pub4 {
+    local _f=$(f.must.have "$1" "file")
+    local _pub=${_f}.pub
+    [[ -f ${_pub} ]] || ssh-keygen -v -y -f ${_f} > ${_f}.pub
+}
+export -f ssh.pub4
+
 # ssh.ssh ccgdev [-o ForwardX11=yes]
 function ssh.ssh {
     local _self=${FUNCNAME[0]}
@@ -63,6 +70,8 @@ function ssh.ssh {
     fi
     local _f=${HOME}/.ssh/keys.d/by-quad/${USER}/${HOSTNAME}/${_UserName}/${_Host}/private.key
     [[ -f ${_f} ]] || { local _key=$(ssh.keygen ${_Host} ${_UserName}) ; f.err "scp ${_f}.pub to ${_Host}" ; }
+    # Generate a pub key from the private key if it isn't already co-located. Stops an ssh-warning.
+    ssh.pub4 ${_f}
     
     local _Host2Hostname=$(dirname ${_f})/${_Host}
     [[ -f "${_Host2Hostname}" ]] && _Hostname=$(<${_Host2Hostname})
