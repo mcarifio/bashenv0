@@ -1,22 +1,31 @@
 function dbus.fn.__template__ {
     local _self=${FUNCNAME[0]}
-    declare -F ${_self}
+    local _fn=${_self%%.*}
+
+    u.value $(ssh.fn.pathname)
 }
 
 function dbus.fn.defines {
     local _self=${FUNCNAME[0]}
+    local _fn=${_self%%.*}
+
     export -f  2>&1 | grep "declare -fx dbus"
 }
 export -f dbus.fn.defines
 
 function dbus.fn.pathname {
     local _self=${FUNCNAME[0]}
+    local _fn=${_self%%.*}
+
     u.value $(me.pathname)    
 }
 export -f dbus.fn.pathname
 
 function dbus.fn.reload {
-    verbose=1 u.source $(dbus.fn.pathname)
+    local _self=${FUNCNAME[0]}
+    local _fn=${_self%%.*}
+
+    verbose=1 u.source $(${_fn}.fn.pathname)
 }
 export -f dbus.fn.reload
 

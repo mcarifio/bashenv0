@@ -5,7 +5,30 @@ function u.__template__ {
     local _self=${FUNCNAME[0]}
     echo ${_self} tbs
 }
-export -f u.__template__
+
+function u.fn.defines {
+    local _self=${FUNCNAME[0]}
+    local _prefix=${_self%%.*}
+    export -f  2>&1 | grep "declare -fx ${_prefix}."
+}
+export -f u.fn.defines
+
+function u.fn.pathname {
+    local _self=${FUNCNAME[0]}
+    u.value $(me.pathname)    
+}
+export -f u.fn.pathname
+
+# Reload this file. Todo: using inotify to reload automatically.
+function u.fn.reload {
+    verbose=1 u.source $(ssh.fn.pathname)
+}
+export -f u.fn.reload
+
+
+
+
+
 
 # usage: u.is.command gh && f.warn "gh defined"
 function u.have.command {
@@ -76,6 +99,17 @@ function u.a.values {
 }
 export -f u.a.values
 
+
+
+function u.source {
+    local _self=${FUNCNAME[0]}
+    local _s=$(f.must.have "$1" "bash script") || return 1
+    
+    source ${_s} $* && [[ -n "${verbose}" ]] && f.info $(realpath ${_s})
+}
+export -f u.source
+
+
 # source all readable files
 function u.source.all {
     local _self=${FUNCNAME[0]}
@@ -83,14 +117,13 @@ function u.source.all {
 }
 export -f u.source.all
 
-function u.source {
+function u.source.tree {
     local _self=${FUNCNAME[0]}
-    local _s=$(f.must.have "$1" "bash script") || return 1
-
-    [[ -n "${verbose}" ]] && f.info $(realpath ${_s}) $*
-    source ${_s} $*
+    local _root=${1:-$PWD}
+    local _ext=${2:-.sh}
+    f.apply u.source $(find ${_root} -type f -perm /222 -name \*${_ext})
 }
-export -f u.source
+export -f u.source.tree
 
 
 
@@ -118,3 +151,5 @@ function u.source_1 {
     fi
 }
 export -f u.source_1
+
+
