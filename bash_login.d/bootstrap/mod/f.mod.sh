@@ -109,7 +109,9 @@ function f.none { : ; }
 function f.false { : ; }
 
 
-# Italian anonymous function.
+# Italian anonymous function. Creates a string with is a function definition suitable for eval.
+# $1 is the entire expression body. When evaluated, it creates a new function wrapping the expression.
+# Parameters from the call are bound in the usual way, $1 $2 etc.
 function f.lambda {
     local _f=${2:-__}
     echo "function ${_f} { eval '$1'; } ; echo ${_f};"
@@ -121,6 +123,7 @@ function f.apply {
     local _mod=${_self%.*};
 
     local _f=$(f.must.have "$1" "function") ; shift
+    # If you passed a function definition, evaluate it and the use the bound function as the first argument. Brittle.
     [[ "${_f}" =~ ^"function " ]] && _f=$(eval "${_f}")
     # don't quote $*    
     local __; for __ in $* ; do
@@ -158,5 +161,10 @@ function f.apply.json {
 }
 
 
-mod.mkmod ${1:-${BASH_SOURCE[0]%%.*}} ${2:-$(realpath ${BASH_SOURCE[0]})}
+# Make this file a "module".
+# Extract mod from pathname.
+function pn2mod { local _result=${1##*/}; echo ${_result%%.*}; }
+# Augment functions above with "module" conventions.
+mod.mkmod $(pn2mod ${1:-${BASH_SOURCE[0]}}) ${2:-$(realpath ${BASH_SOURCE[0]})}
+
 

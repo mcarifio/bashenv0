@@ -6,9 +6,19 @@ function cd {
     local _mod=${_self%.*};
 
     local _d=${1:-${HOME}}
-    [[ -d "${_d}" ]] || ${_mod_name}.mkdir ${_d}
-    pushd ${_d}
+    file.mkdir ${_d}
+    # pushd ${_d}
+    command cd ${_d}
 }
+
+function pcd {
+    local _self=${FUNCNAME[0]};
+    local _mod_name=${_self%%.*};
+    local _mod=${_self%.*};
+
+    local _d=${1:-${HOME}} ; ${_mod_name}.cd ${_d} && pushd ${_d}
+}
+
 
 function rcnt {
     local _self=${FUNCNAME[0]};
@@ -161,6 +171,8 @@ function file.xz {
     xz -c $_from ${_tmp} && file.mv ${_tmp} $(file.path2 ${_to})
 }
 
-mod.mkmod ${1:-${BASH_SOURCE[0]%%.*}} ${2:-$(realpath ${BASH_SOURCE[0]})} f
-
-
+# Make this file a "module".
+# Extract mod from pathname.
+function pn2mod { local _result=${1##*/}; echo ${_result%%.*}; }
+# Augment functions above with "module" conventions.
+mod.mkmod $(pn2mod ${1:-${BASH_SOURCE[0]}}) ${2:-$(realpath ${BASH_SOURCE[0]})}
