@@ -1,6 +1,6 @@
 # file.mod.sh
 
-function cd {
+function mkcd {
     local _self=${FUNCNAME[0]};
     local _mod_name=${_self%%.*};
     local _mod=${_self%.*};
@@ -11,12 +11,12 @@ function cd {
     command cd ${_d}
 }
 
-function pcd {
+function mkpushd {
     local _self=${FUNCNAME[0]};
     local _mod_name=${_self%%.*};
     local _mod=${_self%.*};
 
-    local _d=${1:-${HOME}} ; ${_mod_name}.cd ${_d} && pushd ${_d}
+    local _d=${1:-${HOME}} ; file.mkdir ${_d} && pushd ${_d} > /dev/null
 }
 
 
