@@ -53,7 +53,7 @@ function ${_that_mod}.${_mod_name}.__template__ {
     u.value ${_pathname};
 } ;' \${_fname}; };
 
-function ${_that_mod}.${_mod_name}.exported {
+function ${_that_mod}.${_mod_name}.exports {
     local _self=\${FUNCNAME[0]};
     local _mod_name=\${_self%%.*};
     local _mod=\${_self%.*};
@@ -85,13 +85,12 @@ function ${_that_mod}.${_mod_name}.reload {
     for _f in \$(declare -f | grep "^\${_mod_name}\..* ()"|cut -d' ' -f1); do [[ \${_f} != \${_self} ]] && unset -f \${_f}; done || true;
     source ${_pathname} \${_mod_name} ${_pathname} && >&2 echo "${_pathname} => $?"; 
 };
-${_that_mod}.${_mod}.reload;
+# ${_that_mod}.${_mod}.reload; # infinite loop
 EOF
           )
     # echo ${_eval}
     eval ${_eval}
-
-    
+    ${_that_mod}.${_mod}.export    
 }
 
 

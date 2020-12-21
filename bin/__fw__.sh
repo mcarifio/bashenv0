@@ -169,13 +169,13 @@ function _fw_catch {
 
     #local -ir _the_lineno="${_rest[0]:-${LINENO}}"
     local -ir _the_lineno=${BASH_LINENO[1]}
-    local -r _message="${_rest[1]:-${FUNCNAME[0]}}"
+    local -r _message="${_rest[*]:-${FUNCNAME[0]}}"
     if (( ${_flags[--print]} )) ; then
         _message ${_the_lineno} ${_message} ${_flags[--status]} > ${_flags[--to]}
         # _message ${_the_lineno} ${_message} ${_status} | jq . > ${_to}
     fi
     if (( ${_flags[--exit]} )) ; then
-        exit ${_flags[--status]}
+        exit ${_flags[--exit]}
     fi
 }
 function _catch {

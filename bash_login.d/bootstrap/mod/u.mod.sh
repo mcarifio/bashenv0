@@ -77,11 +77,11 @@ function u.get+mod {
 
 }
 
-# Assign environment variable iff it's value passes a test.
-# unset FOO; u.env+assign -z FOO -d ${HOME} ; echo $FOO |> /home/mcarifio  # assign env var FOO to directory home iff FOO is unassigned
-# u.env+assign -z FOO -d /root; echo $FOO |> /home/mcarifio # FOO already assigned, therefore untouched. A kind of "noclobber".
-# u.env+assign true FOO -d /root |> /root # true is always true
-function u.env+assign {
+# Export an environment variable iff it's value passes a test.
+# unset FOO; u.env.export -z FOO -d ${HOME} ; echo $FOO |> /home/mcarifio  # assign env var FOO to directory home iff FOO is unassigned
+# u.env.export -z FOO -d /root; echo $FOO |> /home/mcarifio # FOO already assigned, therefore untouched. A kind of "noclobber".
+# u.env.export true FOO -d /root |> /root # true is always true
+function u.env.export {
     local _self=${FUNCNAME[0]}
     local _mod_name=${_self%%.*}
     local _mod=${_self%.*}
@@ -164,6 +164,8 @@ function u.a.values {
 
 
 
+
+# fix all the u.source* functions. they don't work.
 function u.source {
     local _self=${FUNCNAME[0]}
     local _mod_name=${_self%%.*};
@@ -222,7 +224,7 @@ function u.source.all {
     local _mod_name=${_self%%.*}
     local _mod=${_self%.*}
 
-    f.apply u.source $(f.filter file.is.readable $*)
+    f.apply u.source $(f.apply file.is.readable $*)
 }
 
 

@@ -51,7 +51,7 @@ self:
   usage:
     bash: 
       cmd: git sclone {url}
-      example: git sclone git@github.com:mcarifio/interviewpy
+      example: git sclone gh-mcarifio:mcarifio/interviewpy
       debug: python -m pdb $(type -f git-sclone) {url}
       notes:
         - uses git convention that git-${cmd} is executed for `git ${cmd}` iff `git-${cmd}` is executable and on PATH
@@ -71,7 +71,7 @@ def cat(contents:str, pn:str)->str:
     
 
 def clone(r:str, prefix:str="~/src")->git.Repo:
-    p = parse(r)
+    p = parse('git@' + r + '.git')
     # resource is usually hostname, e.g. `github.com`
     # owner is name, e.g. `mcarifio`. Use the project name if no owner is given.
     # name is the name of the repo, e.g. `interviewpy`
@@ -103,9 +103,9 @@ def version():
 if '__main__' == __name__:
     try:
         result = fire.Fire(clone)
-        advise = dotmap.DotMap(_dynamic=False)
-        advise.bash._next.cmds = (f"cd {result.working_tree_dir}", "pwd", "git status")
-        advise.pprint(pformat='json')
+        # advise = dotmap.DotMap(_dynamic=False)
+        # advise.bash._next.cmds = (f"cd {result.working_tree_dir}", "pwd", "git status")
+        # advise.pprint(pformat='json')
         sys.exit(0)
     except git.exc.GitCommandError as ce:
         print(ce)

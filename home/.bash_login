@@ -3,17 +3,21 @@
 
 _bash_login=$(realpath ${BASH_SOURCE[0]})
 export BASHENV=$(realpath -s $(dirname ${_bash_login})/..)
-_bashenv=$(basename ${BASHENV})
-_bash_logind=$(basename ${BASH_SOURCE[0]})
-_bash_logind=${_bash_logind#.}.d
-_froot=${BASHENV}/${_bash_logind}
+if source $BASHENV/load.mod.sh ; then
+#_bashenv=$(basename ${BASHENV})
+#_bash_logind=$(basename ${BASH_SOURCE[0]})
+#_bash_logind=${_bash_logind#.}.d
+#_froot=${BASHENV}/${_bash_logind}
 
 # bootstrap useful bashenv functions using an explicit load script load.sh.
 # load.sh controls the "source order" of the files. This step is fragile.
-source ${_froot}/bootstrap/load.sh
-u.init.shopt
-path.add $(path.bins)
-u.source.all ${_froot}/rest/**/*.sh ~/.local/etc/bash_completion.d/* ${BASHENV}/bash_completion.d/*.sh ~/.bashrc
+# source ${_froot}/load.sh
+    u.init.shopt
+    path.add $(path.bins)
+else
+    >&2 echo "source $BASHENV/load.sh => $?"
+fi
+
 
 
 

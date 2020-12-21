@@ -11,13 +11,14 @@ trap '_catch --lineno default-catcher $?' ERR
 function _fw_start {
     local _self=${FUNCNAME[0]}
 
-    declare -Ag _flags+=([--root]=$(xdg-user-dir DOCUMENTS)/edoc)
+    declare -Ag _flags+=([--root]=$(xdg-user-dir DOCUMENTS)/edoc, [--area]='' [--topic]='')
     local -a _rest=()
     
     while (( $# )); do
         local _it=${1}
         case "${_it}" in
-            --library=*) _flags[--library]=${_it#--library=};;
+            --area=*) _flags[--area]=${_it#--area=};; # csharp
+            --topic=*) _flags[--topic]=${_it#--topic=};; # asp.net-core
             --) shift; _rest+=($*); break;;
             -*|--*) _catch --exit=1 --print --lineno "${_it} unknown flag" ;;
             *) _rest+=(${_it});;
@@ -25,6 +26,10 @@ function _fw_start {
         shift
     done
 
+    [[ -v "${_flags[--area]}" ]] || _catch --lineno "--area required" 1
+    [[ -v "${_flags[--topic]}" ]] || _catch --lineno "--topic required" 1
+
+    
     # echo the command line with default flags added.
     if (( ${_flags[--verbose]} )) ; then
         printf "${_self} "
@@ -43,8 +48,8 @@ function _start {
     local -r _self=${FUNCNAME[0]}
 
     declare -Ag _flags
-
-    (set -x; evince ${_flags[--root]}/${_flags[--library]}/*.pdf)
+    local _d=$(realpath -s ${_flags[--root]}/**/${_flags[--area]}/**/${_flags[--topic]})
+    evince ${_d}/*.pdf &
 }
 
 
