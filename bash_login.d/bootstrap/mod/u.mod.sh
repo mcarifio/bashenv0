@@ -93,7 +93,7 @@ function u.env.export {
 
     # not working
     [[ "true" != "${_name_test}" ]] && test "${_name_test}" "${!_name}" || return 0
-    [[ "true" != "${_value_test}" ]] && test "${_value_test}" "${_value}" || return 0
+    [[ "true" != "${_value_test}" ]] && test "${_value_test:--n}" "${_value}" || return 0
     export "${_name}"="${_value}"
 }
 
