@@ -5,17 +5,17 @@
 # systemctl restart --user bindmount-home  ## or start
 # systemctl status --user bindmount-home
 
-
+# todo mike@carif.io: user-generated + .automount systemd files?
 
 
 [Unit]
 Description=bind mount global directories under $HOME
 
 [Service]
-# Type=simple
+Type=simple
 # TODO mike@carif.io: how does systemd --user set PATH?
 # ExecStart=/home/mcarifio/.local/share/bashenv/bin/%N.sh
-ExecStart=env bash --login /home/mcarifio/.local/share/bashenv/bin/%N.sh 
+ExecStart=/home/mcarifio/.local/share/bashenv/bin/%N.sh 
 # ExecStop=
 # Restart=on-failure
 # TODO mike@carif.io: template files in units https://www.freedesktop.org/software/systemd/man/systemd.unit.html

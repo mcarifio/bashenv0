@@ -38,13 +38,21 @@ function _fw_start {
 
 
 # Specific work.
-function _start {
+function _start-echo {
     declare -Ag _flags
     local _k; for _k in  ${!_flags[*]}; do printf '%s:%s ' ${_k} ${_flags[${_k}]}; done; echo $*
 }
 
+function _start-ln.sh {
+    declare -Ag _flags
+    local _root=${XDG_DATA_DIR:-~/.local/share}
+    local _leaf=${1:-$(basename ${_here})}
+    ln -s ${_here} ${_root}/${_leaf}
+}
+
+
 # skip specific option parsing
-_start_at --start=_start $@
+_start_at --start=_start-ln.sh $@
 
 # add specific option parsing
 # _start_at --start=_fw_start --forward=_start

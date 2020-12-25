@@ -1,3 +1,6 @@
+shopt -s extglob
+[[ -z "${BASHENV}" ]] && source ~/.bash_login 
+
 set -euo pipefail
 # If passing an array in a function, modify IFS or comment out.
 # IFS=$'\n\t'
@@ -156,6 +159,7 @@ function _fw_catch {
             --return=*) _flags[--exit]=0; _flags[--status]=${_it#--return=} ;;
             --exit) _flags[--exit]=1 ;;
             --exit=*) _flags[--print]=1; _flags[--status]=${_it#--exit=} ;;
+            --status=*) _flags[--print]=1; _flags[--exit]=1; _flags[--status]=${_it#--status=} ;;
             --lineno) _flags[--lineno]=1 ;;
             --print) _flags[--print]=1 ;;
             --print=*) _flags[--print]=1; _flags[--to]=${_it#--print=} ;;

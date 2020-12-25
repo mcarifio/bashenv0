@@ -1,0 +1,10 @@
+# https://gist.github.com/proprietary/96f6f08758fb98da8467880904191f64
+[Unit]
+Description=Automount backup partition
+# ConditionPathExists=${HOME}/mnt/sshfs
+
+[Automount]
+Where=/home/mcarifio/mnt/sshfs/discovery
+
+[Install]
+WantedBy=multi-user.target
