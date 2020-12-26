@@ -50,10 +50,10 @@ function _start-USER.sh {
     [[ ${_flags[--force]} = 1 ]] && _force='--force'
 
 
-    ln -sr ${_force} -t ${HOME} ${_here}}/.bash_* || true
+    ln -sr ${_force} -t ${HOME} ${_here}/.bash_* || true
     local _d
     for _d in .config .local/share; do
-        ln -sr ${_force} -t ${HOME} ${_here}/${_d} || true
+        # ln -sr ${_force} -t ${HOME} ${_here}/${_d} || true
         find ${HOME}/${_d} -name ln.sh -type l -exec {} ${_force} \;
        # find ${HOME}/${_d} -name Makefile -type f -exec make -f {} \;
     done
