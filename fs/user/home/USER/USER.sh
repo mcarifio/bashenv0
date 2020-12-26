@@ -10,13 +10,14 @@ source __fw__.sh || { >&2 echo "$0 cannot find __fw__.sh"; exit 1; }
 function _fw_start {
     local _self=${FUNCNAME[0]}
 
-    declare -Ag _flags+=([--force]=0)
+    declare -Ag _flags+=([--force]='' [--systemd]='')
     local -a _rest=()
     
     while (( $# )); do
         local _it=${1}
         case "${_it}" in
-            --force) _flags[--force]=1;;
+            --force) _flags[--force]='--force' ;;
+            --systemd) _flags[--systemd]='--systemd';;
             --) shift; _rest+=($*); break;;
             -*|--*) _catch --exit=1 --print --lineno "${_it} unknown flag" ;;
             *) _rest+=(${_it});;
@@ -46,13 +47,13 @@ function _start-echo {
 function _start-USER.sh {
     declare -Ag _flags
     local _root=${XDG_DATA_DIR:-~/.local/share}
-    local _force=''
-    [[ ${_flags[--force]} = 1 ]] && _force='--force'
 
+    ln -sr ${_flags[--force]} -t ${HOME} ${_here}/.bash_* || true
+    ln -sr ${_flags[--force]} -t ${HOME} ${_here}/.gdbinit || true
 
-    ln -sr ${_force} -t ${HOME} ${_here}/.bash_* || true
-    ${_here}/.config/ln.sh
-    ${_here}/.local/share/ln.sh --systemd
+    # graft subfolders here into ${HOME} using relative symlinks.
+    ${_here}/.config/ln.sh ${_flags[--force]}
+    ${_here}/.local/share/ln.sh ${_flags[--force]} ${_flags[--systemd]}
 }
 
 

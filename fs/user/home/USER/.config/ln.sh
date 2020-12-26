@@ -5,13 +5,13 @@
 # [[ -z "${BASHENV}" ]] && source ~/.bash_login
 # __fw__ framework
 source __fw__.sh || { >&2 echo "$0 cannot find __fw__.sh"; exit 1; }
-trap '_catch --lineno default-catcher $?' ERR
+# trap '_catch --lineno default-catcher $?' ERR
 
 # Specific option parsing
 function _fw_start {
     local _self=${FUNCNAME[0]}
 
-    declare -Ag _flags+=() # [--template-flag]=default)
+    declare -Ag _flags+=([--force]='') # [--template-flag]=default)
     local -a _rest=()
     
     while (( $# )); do
@@ -19,6 +19,7 @@ function _fw_start {
         case "${_it}" in
             # --template-flag=*) _flags[--template-flag]=${_it#--template-flag=};;
             --) shift; _rest+=($*); break;;
+            --force) _flags[--force]='--force' ;;
             -*|--*) _catch --exit=1 --print --lineno "${_it} unknown flag" ;;
             *) _rest+=(${_it});;
         esac
@@ -48,12 +49,11 @@ function _start-echo {
 function _start-ln.sh {
     local _self=${FUNCNAME[0]}
     declare -Ag _flags
-    local _target=~/$(basename ${_here})
-    local -a _folders=$(find ${_here} -mindepth 1 -maxdepth 1 -type d ! -name .attic -exec realpath --relative-to ${_here} {} \;)
-    ln -srft ${_target} ${_folders[*]}
-    &> /dev/null find ${_here} -name Makefile -type f -exec make -f {} \; 
-    local _d
-    for _d in ${_folders[*]}; do stat --printf='%N\n' ${_target}/${_d}; done
+    local _top=$(realpath ${_here} --relative-to ${_here}/..)
+    local _target=~/${_top}
+    local -a _folders=$(find ${_here} -mindepth 1 -maxdepth 1 -type d ! -name .attic -exec realpath --relative-to ${_here/..} {} \;)
+    ln -vsrdf ${_flags[--force]} -t ${_target} ${_folders[*]} || true
+    &> /dev/null find ${_here} -name Makefile -type f -exec make -f {} \; || true
 }
 
 _start_at --start=_fw_start --forward=_start-ln.sh
