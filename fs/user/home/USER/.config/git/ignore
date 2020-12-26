@@ -1,0 +1,130 @@
+# Rebuilding ignore with /home/mcarifio/.config/git-src/git.ignore.d/make on Sat 16 May 2020 11:05:34 AM EDT
+
+#* git.ignore.d/idea.config
+# ignore intellij idea support files
+
+# uncomment this to ignore all idea config files
+# .idea/
+# *.iml
+
+TAGS
+
+### JetBrains template
+# Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio and Webstorm
+# Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
+
+# User-specific stuff:
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/dictionaries
+.idea/vcs.xml
+.idea/jsLibraryMappings.xml
+
+# Sensitive or high-churn files:
+.idea/dataSources.ids
+.idea/dataSources.xml
+.idea/dataSources.local.xml
+.idea/sqlDataSources.xml
+.idea/dynamic.xml
+.idea/uiDesigner.xml
+
+# Gradle:
+.idea/gradle.xml
+.idea/libraries
+
+# Mongo Explorer plugin:
+.idea/mongoSettings.xml
+
+## File-based project format:
+*.iws
+
+## Plugin-specific files:
+
+# IntelliJ
+**/out/
+
+# mpeltonen/sbt-idea plugin
+.idea_modules/
+
+# JIRA plugin
+atlassian-ide-plugin.xml
+
+# Crashlytics plugin (for Android Studio and IntelliJ)
+com_crashlytics_export_strings.xml
+crashlytics.properties
+crashlytics-build.properties
+fabric.properties
+
+#* git.ignore.d/idea.config eof
+
+
+#* git.ignore.d/local.config
+# my local work
+scratch
+scratchpad
+todo
+todo-*
+#* git.ignore.d/local.config eof
+
+
+#* git.ignore.d/backup.config
+# ignore tar files and gzip files
+*.tar.gz
+*.tgz
+*.gz
+*.t
+*.bak
+*.xz
+*.txz
+*.old
+*.log 
+
+**/dump/
+**/tmp/
+**/attic/
+#* git.ignore.d/backup.config eof
+
+
+#* git.ignore.d/python.config
+# python file to ignore
+# ignore __pycache__ a working directory for compiling python source files
+__pycache__
+
+# compiled stuff
+*.pyc
+*.pyi
+
+# reports
+f8.txt
+flake8.txt
+
+# virtual environments
+venv/**
+venv-*/**
+
+
+#* git.ignore.d/python.config eof
+
+
+#* git.ignore.d/gtags.config
+# ignore gtags working files
+G* 
+#* git.ignore.d/gtags.config eof
+
+
+#* git.ignore.d/emacs.config
+# ignore emacs working files
+*~
+\#*\#
+\.\#*
+
+#* git.ignore.d/emacs.config eof
+
+
+#* git.ignore.d/node.config
+node_modules/*
+#* git.ignore.d/node.config eof
+
+
+
+# eof

@@ -1,0 +1,9 @@
+# Rebuilding manifest.config with /home/mcarifio/.config/git/git.config.d/make on Sat 09 May 2020 02:08:26 PM EDT
+[manifest.config]
+    git.config.d = /home/mcarifio/.config/git/git.config.d
+    generated = Sat 09 May 2020 02:08:26 PM EDT
+
+[include]
+    path = git.config.d/loaded.config
+
+# eof

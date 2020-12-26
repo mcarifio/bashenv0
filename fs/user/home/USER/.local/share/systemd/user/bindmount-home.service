@@ -1,0 +1,26 @@
+# @see https://wiki.archlinux.org/index.php/systemd/User
+# systemctl enable --user bindmount-home
+# then:
+# systemctl --user daemon-reload  ## if you change this file
+# systemctl restart --user bindmount-home  ## or start
+# systemctl status --user bindmount-home
+
+# todo mike@carif.io: user-generated + .automount systemd files?
+
+
+[Unit]
+Description=bind mount global directories under $HOME
+
+[Service]
+Type=simple
+# TODO mike@carif.io: how does systemd --user set PATH?
+# ExecStart=/home/mcarifio/.local/share/bashenv/bin/%N.sh
+ExecStart=/home/mcarifio/.local/share/bashenv/bin/%N.sh 
+# ExecStop=
+# Restart=on-failure
+# TODO mike@carif.io: template files in units https://www.freedesktop.org/software/systemd/man/systemd.unit.html
+# Environment=DISPLAY=:%i 
+TimeoutStartSec=0
+
+[Install]
+WantedBy=default.target
