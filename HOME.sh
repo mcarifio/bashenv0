@@ -2,23 +2,21 @@
 # -*- mode: shell-script; -*- # eval: (setq-local indent-tabs-mode nil tab-width 4 indent-line-function 'insert-tab) -*-
 #!/usr/bin/env -S sudo -i /usr/bin/env bash # run as root under sudo
 
-# [[ -z "${BASHENV}" ]] && source ~/.bash_login
 # __fw__ framework
 source __fw__.sh || { >&2 echo "$0 cannot find __fw__.sh"; exit 1; }
-trap '_catch --lineno default-catcher $?' ERR
+# trap '_catch --lineno default-catcher $?' ERR
 
 # Specific option parsing
 function _fw_start {
     local _self=${FUNCNAME[0]}
 
-    declare -Ag _flags+=([--template-flag]=default)
+    declare -Ag _flags+=([--force]=0)
     local -a _rest=()
     
     while (( $# )); do
         local _it=${1}
         case "${_it}" in
-            # --template-flag=*) _flags[--template-flag]=${_it#--template-flag=};;
-            --template-flag=*) _flags[--template-flag]=${_it#--template-flag=};;
+            --force) _flags[--force]=1;;
             --) shift; _rest+=($*); break;;
             -*|--*) _catch --exit=1 --print --lineno "${_it} unknown flag" ;;
             *) _rest+=(${_it});;
@@ -42,21 +40,28 @@ function _fw_start {
 # Specific work.
 function _start-echo {
     declare -Ag _flags
-    local _k; for _k in  ${!_flags[*]}; do printf '%s:%s ' ${_k} ${_flags[${_k}]}; done
-    echo $*
+    local _k; for _k in  ${!_flags[*]}; do printf '%s:%s ' ${_k} ${_flags[${_k}]}; done; echo $*
 }
 
-function _start-rename.me.sh {
-    local _self=${FUNCNAME[0]}
+function _start-HOME.sh {
     declare -Ag _flags
-    local _k; for _k in  ${!_flags[*]}; do printf '%s:%s ' ${_k} ${_flags[${_k}]}; done; echo $*
-    >&2 echo -e "\n\n\n\tRENAME and REWRITE ${_self}\n\n\n"
+    local _root=${XDG_DATA_DIR:-~/.local/share}
+    local _force=''
+    [[ ${_flags[--force]} = 1 ]] && _force='--force'
+
+
+    ln -sr ${_force} -t {${HOME},${_here}/HOME}/.bash_*
+    local _d
+    for _d in .config .share; do
+       ln -sr ${_force} -t {${HOME},${_here}/HOME}/${_d}
+       find -D exec ${HOME}/${_d} -name ln.sh -type l -exec {} ${_force} \;
+       find ${HOME}/${_d} -name Makefile -type f -exec make -f {} \;
+    done
 }
+
 
 # skip specific option parsing
-# _start_at --start=_start $@
+# _start_at --start=_start-${_basename} $@
 
 # add specific option parsing
-# _start_at --start=_fw_start --forward=_start-${_basename}
-_start_at --start=_fw_start --forward=_start-rename.me.sh
-
+_start_at --start=_fw_start --forward=_start-${_basename} $@

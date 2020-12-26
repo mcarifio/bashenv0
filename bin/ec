@@ -10,11 +10,15 @@ function emacsclient {
 }
 
 function _ec {
-    emacsclient "$*"
+    # Expecting systemd emacsd to be running. Reload if not.
+    if [[ active != $(systemctl is-active --user emacsd) ]] ; then
+        >&2 printf "Reloading systemd user service emacsd..."
+        systemctl reload --user emacsd
+        >&2 u.status || true
+    fi
+    emacsclient "$*" && wmctrl -a emacs || true
 }
 
-# TODO mike@carif.io: fix was-run so scripts can be sourced.
-# was-run && _$(basename ${BASH_SOURCE} .sh) "$@"
 _$(basename ${BASH_SOURCE} .sh) "$@"
 
 

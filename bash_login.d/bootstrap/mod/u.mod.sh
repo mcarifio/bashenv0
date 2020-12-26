@@ -133,6 +133,16 @@ function u.init.shopt {
     shopt -s autocd cdable_vars
     shopt -s checkhash
     shopt -s no_empty_cmd_completion
+    shopt -s extglob
+}
+
+function u.status {
+    local _status=$?
+    if [[ $? = 0 ]] ; then
+        printf 'done'
+    else
+        printf 'failed (%s)' ${_status}
+    fi
 }
 
 
@@ -161,6 +171,10 @@ function u.a.values {
     local _result=$(f.must.value "$1" "array length>0") || return 1; shift
     u.value "${_result}$(printf '${_delim}%s' ${_delim} $*)"
 }
+
+
+
+
 
 
 
