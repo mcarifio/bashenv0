@@ -51,12 +51,8 @@ function _start-USER.sh {
 
 
     ln -sr ${_force} -t ${HOME} ${_here}/.bash_* || true
-    local _d
-    for _d in .config .local/share; do
-        # ln -sr ${_force} -t ${HOME} ${_here}/${_d} || true
-        find ${HOME}/${_d} -name ln.sh -type l -exec {} ${_force} \;
-       # find ${HOME}/${_d} -name Makefile -type f -exec make -f {} \;
-    done
+    ${_here}/.config/ln.sh
+    ${_here}/.local/share/ln.sh --systemd
 }
 
 
