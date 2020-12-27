@@ -2,7 +2,13 @@
 
 # Centralized path hacking. Returns list of directories if they exist.
 function path.bins {
-    local _self=${FUNCNAME[0]}
+    local _self=${FUNCNAME[0]};
+    local _mod_name=${_self%%.*};
+    local _mod=${_self%.*};
+
+    local _xdg_data_home=${XDG_DATA_HOME:~/.local/share}
+    local _bashenv=${BASHENV:-${_xdg_data_home}/bashenv}
+    
     local _py3=$(type -p python3)
     local -a _py3a=()
     if [[ -x ~/.asdf/bin/asdf ]] ; then
@@ -11,19 +17,25 @@ function path.bins {
     else
         _py3a=($(${_py} -m site --user-base)/bin $(dirname ${_py3}))
     fi
-    f.apply file.is.dir ~/bin ~/.cargo/bin $(go env GOPATH) ~/.local/bin ~/*/bin ${_py3a[*]}  ~/.local/share/*/bin
+    f.apply file.is.dir ~/bin ~/.cargo/bin $(go env GOPATH)/bin ~/.local/bin ~/*/bin ${_py3a[*]}  ${_xdg_data_home}/*/bin ${_bashenv}/bin.d/*/bin 
 }
 
 # true iff ${directory} on $PATH
 function path.on.path {
-    local _self=${FUNCNAME[0]}
+    local _self=${FUNCNAME[0]};
+    local _mod_name=${_self%%.*};
+    local _mod=${_self%.*};
+
     local _d=$(f.must.have "$1" "directory")
     [[ "${PATH}" =~ (^|:)${_d}(:|$) ]] && printf '%s' ${_d}
 }
 
 # true iff ${directory} not on PATH
 function path.noton.path {
-    local _self=${FUNCNAME[0]}
+    local _self=${FUNCNAME[0]};
+    local _mod_name=${_self%%.*};
+    local _mod=${_self%.*};
+
     local _d=$(f.must.have "$1" "directory")
     [[ "${PATH}" =~ (^|:)${_d}(:|$) ]] || printf '%s' ${_d}
 }
@@ -31,7 +43,10 @@ function path.noton.path {
 
 # Given a list of directories, returns the filtered list of those that exist _and_ are not on PATH.
 function path.needed {
-    local _self=${FUNCNAME[0]}
+    local _self=${FUNCNAME[0]};
+    local _mod_name=${_self%%.*};
+    local _mod=${_self%.*};
+
     f.apply path.noton.path $(f.apply file.is.dir $*)
 }
 
@@ -41,7 +56,10 @@ export -a BASHENV_PATHS BASHENV_PATHADDS
 
 # Added needed directories to PATH
 function path.add {
-    local _self=${FUNCNAME[0]}
+    local _self=${FUNCNAME[0]};
+    local _mod_name=${_self%%.*};
+    local _mod=${_self%.*};
+
     # local -a _left=($(f.apply path.noton.path $(f.apply file.is.dir $*)))
     local -a _needed=($(path.needed $*))
     (( ${#_needed} )) || return 0
