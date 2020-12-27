@@ -1,0 +1,10 @@
+# python 3.8.1
+python 3.9.0
+# graalvm 19.3.0-java11
+maven 3.6.3
+scala 2.13.1
+groovy apache-groovy-binary-3.0.0-rc-2
+# mill 0.5.6
+mill 0.5.6
+nodejs 14.11.0
+
