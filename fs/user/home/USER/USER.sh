@@ -1,4 +1,4 @@
-let _bottom=$(( ${#BASH_SOURCE[*]} - 1 ))
+declare -i _bottom=$(( ${#BASH_SOURCE[*]} - 1 ))
 [[ $0 != ${BASH_SOURCE[${_bottom}]} ]] && (( _bottom-- ))
 _me=$(realpath -s ${BASH_SOURCE[${_bottom}]:-$0})
 _here=$(dirname ${_me})
@@ -9,9 +9,11 @@ _name=$(basename ${_me} .sh)
 # usage: [BASHENV=''] source USER.sh --echo [--force] [--systemd]
 
 # --force --echo --systemd
+
 if [[ -z "${BASHENV}" ]] ; then
     # load all the bash "modules"
-    source ${_here}/../../../../load.mod.sh
+    export BASHENV=$(realpath ${_here}/../../../../)
+    source ${BASHENV}/load.mod.sh || { >&2 echo "load.mod.sh failed"; return 1; } 
 
     # using the path module, bootstrap PATH
     path.add $(path.bins)
