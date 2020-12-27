@@ -8,14 +8,15 @@ function path.bins {
 
     local _xdg_data_home=${XDG_DATA_HOME:~/.local/share}
     local _bashenv=${BASHENV:-${_xdg_data_home}/bashenv}
-    
+
+    # TODO mike@carif.io: mv ~/.asdf -> ~/.local/asdf?
     local _py3=$(type -p python3)
     local -a _py3a=()
     if [[ -x ~/.asdf/bin/asdf ]] ; then
         _py3=$(~/.asdf/bin/asdf which python)
         _py3a=($(${_py3} -m site --user-base)/bin $(dirname ${_py3}) ~/.asdf/{bin,shims})
     else
-        _py3a=($(${_py} -m site --user-base)/bin $(dirname ${_py3}))
+        _py3a=($(${_py3} -m site --user-base)/bin $(dirname ${_py3}))
     fi
     f.apply file.is.dir ~/bin ~/.cargo/bin $(go env GOPATH)/bin ~/.local/bin ~/*/bin ${_py3a[*]}  ${_xdg_data_home}/*/bin ${_bashenv}/bin.d/*/bin 
 }
@@ -69,9 +70,13 @@ function path.add {
     export PATH="${_prefix}${PATH}"
 }
 
-# Report successive adds. Useful for debugging.
-function path.added {
-    printf '%s\n' ${BASHENV_PATHADDS[*]}
+# Report successive adds. Useful for debugging. Difficult to read.
+function path.adds {
+    printf '%s\n\n' ${BASHENV_PATHADDS[*]}
+}
+
+function path.history {
+    printf '%s\n\n' ${BASHENV_PATHS[*]}
 }
 
 # Report PATH vertically. It's easier to read.
