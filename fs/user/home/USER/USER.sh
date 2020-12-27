@@ -61,6 +61,7 @@ function _start-USER.sh {
     # graft subfolders here into ${HOME} using relative symlinks.
     ${_here}/.config/ln.sh ${_flags[--force]} ${_flags[--echo]} || true
     ${_here}/.local/share/ln.sh ${_flags[--force]} ${_flags[--systemd]} ${_flags[--echo]} || true
+    path.mod.exists || source ${_here}/../../../../load.mod.sh || true
     path.add $(path.bins) || true
 }
 
