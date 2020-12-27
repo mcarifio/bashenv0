@@ -66,7 +66,7 @@ function _start-ln.sh {
     fi
         
     ln -vsdf ${_flags[--force]} -t ${_target} ${_folders[*]} || true
-    for _d in ${_folders[*]}; do stat --printf='%N\n' ~/$(pathname ${_d} --relative-to ${_here}/..); done
+    for _d in ${_folders[*]}; do stat --printf='%N\n' ~/$(realpath ${_d} --relative-to ${_here}/..); done
     
     &> /dev/null find ${_here} -name Makefile -type f -exec make -f {} \; || true
     [[ -n "${_flags[--echo]}" ]] && echo -n "\n\n\n"
