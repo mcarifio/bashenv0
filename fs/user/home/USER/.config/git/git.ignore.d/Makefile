@@ -20,6 +20,6 @@ $(TARGET) : $(CONFIG_TREE)
 	test -f $@ && mkdir -p $(@D) && mv --backup=numbered --update $@ $(@D)/.attic || true	
 	echo "# $(BANNER) on $$(date -I)" > $(TARGET)
 	cat $(CONFIG_TREE) >> $(TARGET)
-	echo "\n# eof" >> $(TARGET)
+	echo -e "\n# eof" >> $(TARGET)
 	ln -srf -t $(@D)/../.. $@
 

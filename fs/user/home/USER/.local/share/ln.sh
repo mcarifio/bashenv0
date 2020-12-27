@@ -2,6 +2,10 @@
 # -*- mode: shell-script; -*- # eval: (setq-local indent-tabs-mode nil tab-width 4 indent-line-function 'insert-tab) -*-
 #!/usr/bin/env -S sudo -i /usr/bin/env bash # run as root under sudo
 
+shopt -s extglob
+[[ -z "${BASHENV}" ]] && source ~/.bash_login || true
+[[ -z "${BASHENV}" ]] && { export BASHENV=~/.local/share/bashenv; export PATH=${BASHENV}/bin:$PATH; }
+
 # [[ -z "${BASHENV}" ]] && source ~/.bash_login
 # __fw__ framework
 source __fw__.sh || { >&2 echo "$0 cannot find __fw__.sh"; exit 1; }
@@ -11,7 +15,7 @@ source __fw__.sh || { >&2 echo "$0 cannot find __fw__.sh"; exit 1; }
 function _fw_start {
     local _self=${FUNCNAME[0]}
 
-    declare -Ag _flags+=([--force]='' [--systemd]='') # [--template-flag]=default)
+    declare -Ag _flags+=([--force]='' [--systemd]='' [--echo]='') # [--template-flag]=default)
     local -a _rest=()
     
     while (( $# )); do
@@ -20,6 +24,7 @@ function _fw_start {
             # --template-flag=*) _flags[--template-flag]=${_it#--template-flag=};;
             --systemd) _flags[--systemd]='--systemd' ;;
             --force) _flags[--force]='--force' ;;
+            --echo) _flags[--echo]='--echo' ;;
             --) shift; _rest+=($*); break;;
             -*|--*) _catch --exit=1 --print --lineno "${_it} unknown flag" ;;
             *) _rest+=(${_it});;
@@ -50,18 +55,26 @@ function _start-echo {
 function _start-ln.sh {
     local _self=${FUNCNAME[0]}
     declare -Ag _flags
+
     local _top=$(realpath ${_here} --relative-to ${_here}/../..)
     local _target=~/${_top}
-    local -a _folders=$(find ${_here} -mindepth 1 -maxdepth 1 -type d ! -name .attic -exec realpath --relative-to ${_here/../..} {} \;)
-    ln -vdsrf ${_flags[--force]} -t ${_target} ${_folders[*]} || true
+    local -a _folders=$(find ${_here} -mindepth 1 -maxdepth 1 -type d ! -name .attic)
+
+    if [[ -n "${_flags[--echo]}" ]] ; then
+        >&2 echo "_me: ${_me}"        
+        >&2 echo "_here: ${_here}"
+        >&2 echo "_top: ${_top}"
+        >&2 echo "_target: ${_target}"
+        >&2 echo -e "_folders: ${_folders[*]}"
+    fi
+        
+    ln -vdsf ${_flags[--force]} -t ${_target} ${_folders[*]} || true
+    local _d
+    for _d in ${_folders[*]}; do stat --printf='%N\n' ~/$(realpath ${_d} --relative-to ${_here}/../..); done
     &> /dev/null find ${_here} -name Makefile -type f -exec make -f {} \; || true
-
-    # TODO mike@carif.io: find a better way to "postprocess" directories after they've been linked.
-    # Something like: for every directory in ${_here}/** with a script of the one level up named ${_d}.sh, run that script
-    # so ${_here}/systemd/user has a script ${_here}/systemd/user.sh. So run that. Seems hacky though.
     [[ -n "${_flags[--systemd]}" ]] && ${_here}/systemd/user/user.sh || true
-
+    [[ -n "${_flags[--echo]}" ]] && echo -n "\n\n\n"
 }
 
-_start_at --start=_fw_start --forward=_start-ln.sh
+_start_at --start=_fw_start --forward=_start-ln.sh $@
 
