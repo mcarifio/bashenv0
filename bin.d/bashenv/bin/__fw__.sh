@@ -1,5 +1,5 @@
 shopt -s extglob
-[[ -z "${BASHENV}" ]] && source ~/.bash_login 
+[[ -z "${BASHENV}" ]] && { >&2 echo "BASHENV not defined. bashenv isn't loaded?"; return 1; }
 
 set -euo pipefail
 # If passing an array in a function, modify IFS or comment out.

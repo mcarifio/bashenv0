@@ -2,7 +2,6 @@
 # -*- mode: shell-script; -*- # eval: (setq-local indent-tabs-mode nil tab-width 4 indent-line-function 'insert-tab) -*-
 #!/usr/bin/env -S sudo -i /usr/bin/env bash # run as root under sudo
 
-# Simulate installation. Gross.
 shopt -s extglob
 [[ -z "${BASHENV}" && -f ~/.bash_login ]] && source ~/.bash_login || true
 if [[ -z "${BASHENV}" ]] ; then
@@ -13,23 +12,23 @@ if [[ -z "${BASHENV}" ]] ; then
     path.add $(path.bins)
 fi
 
-
 # __fw__ framework
 source __fw__.sh || { >&2 echo "$0 cannot find __fw__.sh"; exit 1; }
-trap '_catch --lineno default-catcher $?' ERR
+# trap '_catch --lineno default-catcher $?' ERR
 
 # Specific option parsing
 function _fw_start {
     local _self=${FUNCNAME[0]}
 
-    declare -Ag _flags+=([--template-flag]=default)
+    declare -Ag _flags+=([--force]='' [--systemd]='' [--echo]=--echo)
     local -a _rest=()
     
     while (( $# )); do
         local _it=${1}
         case "${_it}" in
-            # --template-flag=*) _flags[--template-flag]=${_it#--template-flag=};;
-            --template-flag=*) _flags[--template-flag]=${_it#--template-flag=};;
+            --force) _flags[--force]=--force ;;
+            --systemd) _flags[--systemd]=--systemd;;
+            --echo) _flags[--echo]=--echo;;
             --) shift; _rest+=($*); break;;
             -*|--*) _catch --exit=1 --print --lineno "${_it} unknown flag" ;;
             *) _rest+=(${_it});;
@@ -53,21 +52,26 @@ function _fw_start {
 # Specific work.
 function _start-echo {
     declare -Ag _flags
-    local _k; for _k in  ${!_flags[*]}; do printf '%s:%s ' ${_k} ${_flags[${_k}]}; done
-    echo $*
+    local _k; for _k in  ${!_flags[*]}; do printf '%s:%s ' ${_k} ${_flags[${_k}]}; done; echo $*
 }
 
-function _start-rename.me.sh {
-    local _self=${FUNCNAME[0]}
+function _start-ln.sh {
+    shopt -s nullglob
     declare -Ag _flags
-    local _k; for _k in  ${!_flags[*]}; do printf '%s:%s ' ${_k} ${_flags[${_k}]}; done; echo $*
-    >&2 echo -e "\n\n\n\tRENAME and REWRITE ${_self}\n\n\n"
+
+    ln -vsf ${_flags[--force]} -t ${HOME} ${_here}/.bash_log* || true
+    ln -vsf ${_flags[--force]} -t ${HOME} ${_here}/.gdbinit || true
+    stat --printf='%N\n' ${HOME}/.bash_log*
+    stat --printf='%N\n' ${HOME}/.gdbinit
+
+    # graft subfolders here into ${HOME} using relative symlinks.
+    ${_here}/.config/ln.sh ${_flags[--force]} ${_flags[--echo]} || true
+    ${_here}/.local/share/ln.sh ${_flags[--force]} ${_flags[--systemd]} ${_flags[--echo]} || true
 }
+
 
 # skip specific option parsing
-# _start_at --start=_start $@
+# _start_at --start=_start-${_basename} $@
 
 # add specific option parsing
-# _start_at --start=_fw_start --forward=_start-${_basename}
-_start_at --start=_fw_start --forward=_start-rename.me.sh
-
+_start_at --start=_fw_start --forward=_start-${_basename} $@

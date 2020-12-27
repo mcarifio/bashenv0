@@ -33,6 +33,5 @@ function ssource {
     
 ssource lib.fn.sh ${_id}.fn.sh
 
-apt+install ${_me}.log whois xdg-utils cloud-init ttyrec python3
+apt.install.all
 
-install-all
