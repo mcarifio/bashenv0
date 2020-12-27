@@ -73,7 +73,7 @@ function _start-ln.sh {
     for _d in ${_folders[*]}; do stat --printf='%N\n' ~/$(realpath ${_d} --relative-to ${_here}/../..); done
     &> /dev/null find ${_here} -name Makefile -type f -exec make -f {} \; || true
     [[ -n "${_flags[--systemd]}" ]] && ${_here}/systemd/user/user.sh || true
-    [[ -n "${_flags[--echo]}" ]] && echo -n "\n\n\n"
+    [[ -n "${_flags[--echo]}" ]] && echo -e "\n\n\n"
 }
 
 _start_at --start=_fw_start --forward=_start-ln.sh $@
