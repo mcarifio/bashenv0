@@ -4,6 +4,7 @@
 
 # usage: ./user.sh # copies user/*.system into ~/.local/share/systemd/use/ then enable and start each service
 
+shopt -s extglob nullglob
 # __fw__ framework
 source __fw__.sh || { >&2 echo "$0 cannot find __fw__.sh"; exit 1; }
 # trap '_catch --lineno --status=$? error' ERR
@@ -46,8 +47,9 @@ function _start-echo {
 }
 
 function _unit {
-    local _u=$(basename $(f.must.have "$1" "unit")) || return 1
-    systemctl --user reenable ${_u}
+    # local _u=$(f.must.have "$1" "unit") || return 1
+    local _u=${1:-'expecting a unit'}
+    systemctl --user enable ${_u}
     systemctl --user reload-or-restart ${_u}
 }
 
@@ -58,7 +60,7 @@ function _start-user.sh {
     # https://www.linuxjournal.com/content/bash-extended-globbing
     # https://unix.stackexchange.com/questions/157541/parenthesis-works-in-bash-shell-itself-but-not-in-bash-script
     local _s
-    for _s in $(basename -as ${_here}/!(*.mount|*.xz|*.gz|*~)); do _unit ${_s}; done
+    for _s in $(basename -as ${_here}/!(*.mount|*.xz|*.gz|*~)); do _unit ${_s} & ; done
 }
 
 
