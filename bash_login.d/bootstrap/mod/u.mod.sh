@@ -1,8 +1,8 @@
 # utility functions
 # test with ./u.fn.test.sh
 
-# Given a pathname, return the (ostensible) module based on the naming convention ${mod}.mod.sh
 function u.pn2mod {
+    : 'public, usage: u.pn2mod ${pathname} # extract the module name in a pathname, e.g. some/path/mod.mod.sh => mod.mod.sh'
     local _self=${FUNCNAME[0]}
     local _mod_name=${_self%%.*};
     local _mod=${_self%.*};
@@ -10,9 +10,9 @@ function u.pn2mod {
     u.re+extract $(f.must.have "$1" "string") ^".*/"'([^.]+).?'
 }
 
-# Find the possible pathnames given a module name based on naming conventions and locations.
-# Generally should find a single pathname.
+# Find the possible pathnames given a module name based on naming conventions and locations. Generally should find a single pathname.
 function u.mod2pn {
+    : 'public, usage: u.mod2pn ${mod} # Find pathname candidates to load along PATH given ${mod}'
     local _self=${FUNCNAME[0]}
     local _mod_name=${_self%%.*};
     local _mod=${_self%.*};
@@ -23,24 +23,43 @@ function u.mod2pn {
 }
 
 function u.mod+exists {
+    : 'public, usage: u.mod+exists ${mod} # returns 1 iff ${mod} is loaded.'
     local _mod=$(f.must.have "$1" module) || return 1
     ${_mod}.mod.exists &> /dev/null
 }
 
-# usage: u.have.command gh emacs /bin/ls && echo "have 'em"
 function u.have.command {
+    : 'public, usage: u.have.command ${cmd}... # returns 1 iff all ${cmd}s are on PATH'
+    : 'example: u.have.command gh emacs /bin/ls && echo "have em all"'
     local _self=${FUNCNAME[0]}
-    local _mod_name=${_self%%.*};
-    local _mod=${_self%.*};
+    local _mod_name=${_self%%.*}
+    local _mod=${_self%.*}
 
     local _command=$(f.must.have "$1" "expecting a command on PATH") || return 1
     local _c; for _c in $*; do type ${_c} &> /dev/null || return 1 ; done
 }
 
+function u.usage {
+    : 'public, usage: u.usage ${function} # extract a usage string from a bash function'
+    local _self=${FUNCNAME[0]}
+    local _mod_name=${_self%%.*}
+    local _mod=${_self%.*}
 
-# usage: u.re+extract ${string} ${pattern} ${group:-1} -> ${string} # status 0
+    local _f=$(f.must.have "$1" "function name") || return
+    [[ "function" = $(type -t ${_f}) ]] || { >&2 echo "{_f} not a function"; return 1; }
+    # Note:
+    # * need gnu grep to handle \s in regular expression below
+    # * relies on author cooperation to use, e.g a "noop" command that looks like ': ... usage: ...'
+    # The usage string can be anywhere in the function, but the first line makes sense.
+    # Note that bash ':' still evaluates it's arguments, hence a literal string after ':'.
+    type ${_f} | grep --extended-regexp '^\s+:\s.*\busage\s*:\s*'
+}
+
+
+# usage: 
 # note: you can match with extract if no group 1 in pattern.
 function u.re1 {
+    : 'public, usage: u.re+extract ${string} ${pattern} [${group:-1}] # => ${matched:string} (status 0) or "" (status 1)'
     local _self=${FUNCNAME[0]}
     local _mod_name=${_self%%.*}
     local _mod=${_self%.*}
@@ -55,6 +74,7 @@ function u.re1 {
 # Does the function's name follow the mod naming convention ${name}.(mod.)?something.
 # Not exactly sure what good this is.
 function u.modly+named {
+    : 'public, usage: u.modly+named ${function} # => return 1 iff ${function} follows the mod naming convention.'
     local _self=${FUNCNAME[0]}
     local _mod_name=${_self%%.*};
     local _mod=${_self%.*};
@@ -66,6 +86,7 @@ function u.modly+named {
 }
 
 function u.get+mod {
+    : 'public, usage: u.get+mod ${function} # => ${mod} of ${function} e.g. u.get+mod u.get+mod => "u"'
     local _self=${FUNCNAME[0]}
     local _mod_name=${_self%%.*};
     local _mod=${_self%.*};
@@ -82,6 +103,8 @@ function u.get+mod {
 # u.env.export -z FOO -d /root; echo $FOO |> /home/mcarifio # FOO already assigned, therefore untouched. A kind of "noclobber".
 # u.env.export true FOO -d /root |> /root # true is always true
 function u.env.export {
+    : 'public, usage: u.env.export ${test} ${name} ${test} ${value} # assigns exports ${name}=${value} if both pass tests'
+    : 'example: u.env.export -z TRY -n "${HOME}" # exports TRY if it is not assigned with $HOME if it has a value.'
     local _self=${FUNCNAME[0]}
     local _mod_name=${_self%%.*}
     local _mod=${_self%.*}
@@ -91,15 +114,23 @@ function u.env.export {
     local _value_test=$(f.must.have "$3" "value predicate") || return 1
     local _value=$(f.must.have "$4" "value") || return 1
 
-    # not working
-    [[ "true" != "${_name_test}" ]] && test "${_name_test}" "${!_name}" || return 0
-    [[ "true" != "${_value_test}" ]] && test "${_value_test:--n}" "${_value}" || return 0
+    case ${_name_test} in
+        -*) test ${_name_test} ${_name} || return 0 ;;
+        *) ${_name_test} ${_name} &> /dev/null || return 0 ;;
+    esac
+
+    case ${_value_test} in
+        -*) test ${_value_test} ${_value} || return 0 ;;
+        *) ${_value_test} ${_value} &> /dev/null || return 0 ;;
+    esac
+
     export "${_name}"="${_value}"
 }
 
 
 # when called in a script, knows if the script file has been sourced. not currently working.
 function u.script.sourced {
+    : 'public, usage: u.usage ${function} # extract a usage string from a bash function'
     local _self=${FUNCNAME[0]}
     local _mod_name=${_self%%.*};
     local _mod=${_self%.*};
@@ -110,6 +141,7 @@ function u.script.sourced {
 }
 
 function u.script.run {
+    : 'public, usage: u.script.run # => ${pathname}, the file actually run'
     local _self=${FUNCNAME[0]}
     local _mod_name=${_self%%.*};
     local _mod=${_self%.*};
@@ -122,6 +154,7 @@ function u.script.run {
 
 # https://www.gnu.org/software/bash/manual/html_node/The-Shopt-Builtin.html
 function u.init.shopt {
+    : 'public, usage: u.init.shopt # set bash options'
     local _self=${FUNCNAME[0]}
     local _mod_name=${_self%%.*};
     local _mod=${_self%.*};
@@ -138,6 +171,7 @@ function u.init.shopt {
 
 function u.status {
     local _status=$?
+    : 'public, usage: u.status # => echo status to stdout'
     if [[ $? = 0 ]] ; then
         printf 'done'
     else
@@ -147,6 +181,7 @@ function u.status {
 
 
 function u.value {
+    : 'public, usage: u.value [${value}] # |> ${value} to stdout iff it is defined.'
     local _self=${FUNCNAME[0]}
     local _mod_name=${_self%%.*};
     local _mod=${_self%.*};
@@ -155,6 +190,7 @@ function u.value {
 }
 
 function u.first {
+    : 'public, usage: u.first $* # |> the first non-empty value'
     local _self=${FUNCNAME[0]}
     local _mod_name=${_self%%.*};
     local _mod=${_self%.*};
@@ -162,30 +198,31 @@ function u.first {
     u.value $1
 }
 
-function u.a.values {
+function u.values {
+    : 'public, usage: u.values ${delim} $* # |> "$1:$2:..."'
     local _self=${FUNCNAME[0]}
     local _mod_name=${_self%%.*};
     local _mod=${_self%.*};
 
     local _delim=${1:-':'} ; shift
-    local _result=$(f.must.value "$1" "array length>0") || return 1; shift
-    u.value "${_result}$(printf '${_delim}%s' ${_delim} $*)"
+    local _result=$(printf "%s${_delim}" $*)
+    [[ -n "${_result}" ]] && echo ${_result::-1}
 }
-
-
-
-
-
-
 
 
 # fix all the u.source* functions. they don't work.
 function u.source {
+    : 'public, usage: [verbose=1] u.source ${pathname} # source ${pathname}'
+    
+    : 'until fixed'
+    return $(f.is.broken)
+
     local _self=${FUNCNAME[0]}
     local _mod_name=${_self%%.*};
     local _mod=${_self%.*};
 
-    local -r _s=$(f.must.have "$1" "bash script") || return 1 ; shift
+    local -r _s=$(f.must.have "$1" "bash script") || return 1
+    shift
     
     { set -x; source ${_s}; set +x; } && [[ -n "${verbose}" ]] && f.info ${_s}
 }
@@ -193,6 +230,11 @@ function u.source {
 
 # source a script starting at pathname and then looking up in successive directories.
 function u.source.up {
+    : 'public, usage: [verbose=1] u.source.up ${pathname} # source ${pathname} up directory tree'
+
+    : 'until fixed'
+    return $(f.is.broken)
+
     local _self=${FUNCNAME[0]}
     local _mod_name=${_self%%.*};
     local _mod=${_self%.*};
@@ -212,6 +254,8 @@ function u.source.up {
 
 
 function u.source.r {
+    : 'public, usage: u.usage ${function} # extract a usage string from a bash function'
+    return $(f.is.broken)
     local _self=${FUNCNAME[0]}
     local _mod_name=${_self%%.*}
     local _mod=${_self%.*}
@@ -234,6 +278,11 @@ function u.source.r {
 
 # source all readable files
 function u.source.all {
+    : 'public, usage: u.usage ${function} # extract a usage string from a bash function'
+
+    : 'until fixed'
+    return $(f.is.broken)
+
     local _self=${FUNCNAME[0]}
     local _mod_name=${_self%%.*}
     local _mod=${_self%.*}
@@ -243,6 +292,11 @@ function u.source.all {
 
 
 function u.source.tree {
+    : 'public, usage: u.usage ${function} # extract a usage string from a bash function'
+
+    : 'until fixed'
+    return $(f.is.broken) # until fixed
+    
     local _self=${FUNCNAME[0]}
     local _mod_name=${_self%%.*}
     local _mod=${_self%.*}

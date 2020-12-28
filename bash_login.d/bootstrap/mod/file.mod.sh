@@ -90,7 +90,8 @@ function file.is.dir {
     local _mod=${_self%.*};
 
     local _d=$(f.must.have "$1" "directory") || return 1
-    [[ -d "${_d}" ]] && printf '%s' ${_d} && true
+    [[ -d "${_d}" ]] && printf '%s' ${_d} && return 0
+    return 1
 }
 
 
@@ -107,46 +108,52 @@ function file.is.readable {
 
 
 function file.mkdir {
+    : 'public, usage: local _d=$(file.mkdir ${HOME}/some/where)'
     local _self=${FUNCNAME[0]};
     local _mod_name=${_self%%.*};
     local _mod=${_self%.*};
 
     local _d=$(f.must.have "$1" "directory") || return 1; shift
-    [[ -d "${_d}" ]] || install $* --directory ${_d}
+    [[ -d "${_d}" ]] || install $* --directory ${_d} || return 1
+    echo "${_d}"
 }
 
 
 function file.mv {
+    : 'public, usage: file.mv here there # backs up there'
     local _self=${FUNCNAME[0]};
     local _mod_name=${_self%%.*};
     local _mod=${_self%.*};
 
     local _src=$(f.must.have "$1" "directory") || return 1
     local _dest=$(f.must.have "$2" "directory") || return 1
+    # TODO mike@carif.io: use install instead?
     mv --backup ${_src} ${_dest} &> /dev/null
 }
 
 
 function file.sudo.install { 
+    : 'public, usage: file.sudo.install /from /to [${owner} [${group}]]'
     local _self=${FUNCNAME[0]};
     local _mod_name=${_self%%.*};
     local _mod=${_self%.*};
 
     local _src=$(f.must.have "$1" "directory") || return 1
     local _dest=$(f.must.have "$2" "directory") || return 1
-    local _owner=$(f.must.have "${3:-${USER}}" "user") || return 1
-    local _group=$(f.must.have "${4:-${USER}}" "user") || return 1
+    local _owner=${3:-${USER}}
+    local _group=${4:-${USER}}
     sudo install -o ${_owner} -g ${_group} -D ${_src} ${_dest} 
 }
 
 
 function file.exec {
+    : 'public, usage: file.exec ${pathname} $* # exec ${pathname} with $* iff ${pathname} exists'
     local _self=${FUNCNAME[0]};
     local _mod_name=${_self%%.*};
     local _mod=${_self%.*};
 
     local _cmd=$(u.must.have "$1" "pathname") || return 1; shift
-    [[ -x {_cmd} ]] && ${_cmd} "${*}"
+    [[ -x {_cmd} ]] && ${_cmd} "$*"
 }
 
 

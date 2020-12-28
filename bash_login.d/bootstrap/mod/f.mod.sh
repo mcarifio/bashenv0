@@ -45,6 +45,7 @@ function f.msg {
 }
 
 
+
 function f.err {
     local _self=${FUNCNAME[0]};
     local _mod_name=${_self%%.*};
@@ -80,6 +81,40 @@ function f.is.defined {
 
     [[ function ==  $(type -t $(f.must.have "$1" "function name")) ]]
 }
+
+
+function f.is {
+    : 'private, usage: f.is ${state:-broken} # announces the current state of the implementation'
+    local _self=${FUNCNAME[0]}
+    local _mod_name=${_self%%.*}
+    local _mod=${_self%.*}
+
+    local _state=${1:-${FUNCNAME[1]##*.}}
+    f.err "${FUNCNAME[2]:-main} is ${_state}"
+    return 1
+}
+
+function f.is.broken {
+    : 'private, usage: f.is.broken # indicates current function is broken'
+    local _self=${FUNCNAME[0]}
+    local _mod_name=${_self%%.*}
+    local _mod=${_self%.*}
+
+    # f.is broken
+    ${_self%.*} ${_self##*.}
+}
+
+function f.is.tbs {
+    : 'private, usage: f.is.tbs # indicates current function needs an implementation'
+    local _self=${FUNCNAME[0]}
+    local _mod_name=${_self%%.*}
+    local _mod=${_self%.*}
+
+    # f.is tbs
+    ${_self%.*} ${_self##*.}
+}
+
+
 
 
 # https://stackoverflow.com/questions/1203583/how-do-i-rename-a-bash-function

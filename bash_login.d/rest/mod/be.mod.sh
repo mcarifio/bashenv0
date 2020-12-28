@@ -25,13 +25,14 @@ function be.root.from {
 
 
 
-# Reload all the functions in "bootstrap" order.
+# Reload all the *other* functions in "bootstrap" order.
 function be.reload {
     local _self=${FUNCNAME[0]};
     local _mod_name=${_self%%.*};
     local _mod=${_self%.*};
 
     verbose=1 source $(${_mod_name}.root)/load.sh
+    be.mod.reload # reload yourself
 }
 
 # Make this file a "module".
