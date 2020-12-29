@@ -74,13 +74,19 @@ function file.newest {
 }
 
 
-function file.is.readable {
+function file.is {
     local _self=${FUNCNAME[0]};
     local _mod_name=${_self%%.*};
     local _mod=${_self%.*};
 
-    local _f=$(f.must.have "$f" "${_mod_name}") || return 1
-    [[ -r ${_f} ]]
+    local _test=$(f.must.have "$1" "test") || return $(f.err "expected a test")
+    local _thing=$(f.must.have "$2" "thing") || return $(f.err "expected a thing")
+
+    if test ${_test} ${_thing} ; then
+        printf '%s' ${_thing}
+        return 0
+    fi
+    return 1
 }
 
 
@@ -89,11 +95,20 @@ function file.is.dir {
     local _mod_name=${_self%%.*};
     local _mod=${_self%.*};
 
-    local _d=$(f.must.have "$1" "directory") || return 1
+    local _d=$(f.must.have "$1" "directory") || return $(f.err "expected a directory")
     [[ -d "${_d}" ]] && printf '%s' ${_d} && return 0
     return 1
 }
 
+function file.is.file {
+    local _self=${FUNCNAME[0]};
+    local _mod_name=${_self%%.*};
+    local _mod=${_self%.*};
+
+    local _expected='file'
+    local _f=$(f.must.have "$1" ${_expected}) || return $(f.err "expected a ${_expected}")
+    file.is '-f' ${_f}
+}
 
 function file.is.readable {
     local _self=${FUNCNAME[0]};
@@ -101,8 +116,9 @@ function file.is.readable {
     local _mod=${_self%.*};
 
     local _self=${FUNCNAME[0]}
-    local _f=$(f.must.have "$1" "file") || return 1
-    [[ -r ${_f} ]] && printf '%s' ${_f} && true
+    local _f=$(f.must.have "$1" "file") || return $(f.err "expected a file")
+    [[ -r ${_f} ]] && printf '%s' ${_f} && return 0
+    return 1
 }
 
 

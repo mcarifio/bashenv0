@@ -1,8 +1,9 @@
-# f.fn.sh brings simple functional programming to bash
+# f.mod.sh "brings" simple functional programming to bash
 
 function f.must.have {
-    local _self=${FUNCNAME[0]};
-    local _mod_name=${_self%%.*};
+    : 'public, usage: f.must.have ${value} ${label} # |> ${value} if not empty && returns 0, otherwise writes an error && returns 1'
+    local _self=${FUNCNAME[0]}
+    local _mod_name=${_self%%.*}
     local _mod=${_self%.*};
 
     local _caller="${FUNCNAME[1]:-main}:${BASH_LINENO[0]:-0}"
@@ -16,20 +17,33 @@ function f.must.have {
 
 # usage: local _v=$(f.must.have+ck "$1" "file.exists" "file")
 function f.must.have+ck {
-    local _self=${FUNCNAME[0]};
-    local _mod_name=${_self%%.*};
+    : 'public, usage: f.must.have+ck ${value} ${test} ${label} # |>&2 formats ${msg}, labels it an error, prints to stderr'
+    : 'example: local _v=$(f.must.have+ck "${_HOME}/.bashrc" "-f" "file") # |> /home/mcarifio/.bashrc'
+    local _self=${FUNCNAME[0]}
+    local _mod_name=${_self%%.*}
     local _mod=${_self%.*};
 
     local _caller="${FUNCNAME[1]:-main}:${BASH_LINENO[0]:-0}"
-    if [[ -n "${1}" && $(${2:-false} $1) ]] ; then
-        echo "${1}"
-    else
-        f.err "${_caller} expected a '${3:-${2:-value}}'"
+    local _value=$(f.must.have "$1" "value")
+    local _test=$(f.must.have "$2" "test")
+    local _label=${3:-${_test}}
+
+    case ${_test} in
+         -*) test ${_test} ${_value} ;;
+         *) $({_test} ${_value}) &> /dev/null ;;
+    esac
+    if [[ $? = 0 ]]; then
+        echo "${_value}"
+        return 0
     fi
+
+    f.err "${_caller} expected a '${_label}'"
+    return 1
 }
 
 function f.msg {
     local -i _status=${2:-$?}
+    : 'internal, usage: f.err ${msg} [$?] # |>&2 formats ${msg}, labels it based on caller, prints to stderr'
 
     local _self=${FUNCNAME[0]};
     local _mod_name=${_self%%.*};
@@ -47,6 +61,7 @@ function f.msg {
 
 
 function f.err {
+    : 'public, usage: f.err ${msg} # |>&2 formats ${msg}, labels it an error, prints to stderr'
     local _self=${FUNCNAME[0]};
     local _mod_name=${_self%%.*};
     local _mod=${_self%.*};
@@ -57,6 +72,7 @@ function f.err {
 
 
 function f.warn {
+    : 'public, usage: f.warn ${msg} # |>&2 formats ${msg}, labels it a warning, prints to stderr'
     local _self=${FUNCNAME[0]};
     local _mod_name=${_self%%.*};
     local _mod=${_self%.*};
@@ -66,15 +82,18 @@ function f.warn {
 
 
 function f.info {
+    : 'public, usage: f.info ${msg} # |>&2 formats ${msg}, labels it informational, prints to stderr'
     local _self=${FUNCNAME[0]};
     local _mod_name=${_self%%.*};
     local _mod=${_self%.*};
+
 
     >&2 f.msg "$1" 
 }
 
 
 function f.is.defined {
+    : 'public, usage: f.is.defined ${function} # => 0 iff ${function} is a function'
     local _self=${FUNCNAME[0]};
     local _mod_name=${_self%%.*};
     local _mod=${_self%.*};
@@ -119,16 +138,18 @@ function f.is.tbs {
 
 # https://stackoverflow.com/questions/1203583/how-do-i-rename-a-bash-function
 function f.copy {
+    : 'public, usage: f.copy ${f0} ${f1} # copies function f0 to f1, removing f1'
     local _self=${FUNCNAME[0]};
     local _mod_name=${_self%%.*};
     local _mod=${_self%.*};
 
-    local _f=$(declare -f "$1") || f.err "no function $1"
+    local _f=$(declare -f "$1") || return $(f.err "no function $1")
     eval "${_f/$1/$2}" || f.err "$1 not copied to $2"
 }
 
 
 function f.rename {
+    : 'public, usage: f.rename ${f0} ${f1} # renames f0 to f1'
     local _self=${FUNCNAME[0]};
     local _mod_name=${_self%%.*};
     local _mod=${_self%.*};
@@ -149,51 +170,63 @@ function f.false { : ; }
 # Parameters from the call are bound in the usual way, $1 $2 etc.
 function f.lambda {
     local _f=${2:-__}
-    echo "function ${_f} { eval '$1'; } ; echo ${_f};"
+    echo "function ${_f} { eval '$1'; } ; echo ${_f} ;"
 }
 
 function f.apply {
+    : 'public, usage: f.apply ${f} $* # applies function ${f} to each element of $*, echoing the result iff it succeeds.'
     local _self=${FUNCNAME[0]};
     local _mod_name=${_self%%.*};
     local _mod=${_self%.*};
 
-    local _f=$(f.must.have "$1" "function") ; shift
+    local _f=$(f.must.have "$1" "function") || return $(f.err "expected a function")
+    f.is.defined ${_f} || return $(f.err "${_f} not defined.")
+    shift
     # If you passed a function definition, evaluate it and the use the bound function as the first argument. Brittle.
     [[ "${_f}" =~ ^"function " ]] && _f=$(eval "${_f}")
-    # don't quote $*    
+
+    local -a _all=($*)
+    local _a
+    for _a in ${_all[@]::${#_all}}; do printf '%s ' $(${_f} ${_a}) ; done
+    printf '%s' $(${_f} ${_all[-1]})
+    return $?
+}
+
+function f.apply0 {
+    : 'public, usage: f.apply ${f} $* # applies function ${f} to each element of $*, echoing the result iff it succeeds.'
+    local _self=${FUNCNAME[0]};
+    local _mod_name=${_self%%.*};
+    local _mod=${_self%.*};
+
+    local _f=$(f.must.have "$1" "function") || return $(f.err "expected a function")
+    f.is.defined ${_f} || return $(f.err "${_f} not defined.")
+    shift
+    # If you passed a function definition, evaluate it and the use the bound function as the first argument. Brittle.
+    [[ "${_f}" =~ ^"function " ]] && _f=$(eval "${_f}")
+    # don't quote $*
     local __; for __ in $* ; do
         local _result=$(${_f} ${__}) && [[ -n "${_result}" ]] && printf '%s ' ${_result}
     done
 }
 
-
-
-# Glad this works. Very brittle.
-# Usage: f.apply.json ${function} ${list} | jq .
-function f.jsonify {
-    local _status=$?
-    printf '{"result": "%s", "status": %s}' $1 ${_status}  
-}
-
-
-function f.wrap {
-    printf "function $1 { f.jsonify \$($2 \$1); }"
-}
-
-
 function f.apply.json {
+    : 'public, usage: f.apply.json ${f} $* | jq .'
     local _self=${FUNCNAME[0]};
     local _mod_name=${_self%%.*};
     local _mod=${_self%.*};
 
-    local _f=$(f.must.have "$1" "function") ; shift
-    local _wrapped=f.wrap.${_f}
-    eval "$(f.wrap ${_wrapped} ${_f})" || f.err "${_wrapped} cannot wrap ${_f} $?"
+    local _f=$(f.must.have "$1" "function") || return $(f.err "expected a function")
+    f.is.defined ${_f} || return $(f.err "${_f} not defined.")
+    shift
 
-    # don't quote $*
-    local _result=$(f.apply ${_wrapped} $*)
-    echo "[${_result//\} \{/\}, \{}]"
+    local -a _all=($*)
+    local _a
+    printf '['
+    # printf '%s,' ${_a[@]::${#_a}}
+    for _a in ${_all[@]::${#_all}}; do printf '{"result": "%s", "status": %s},' $(${_f} ${_a}) $? ; done
+    printf '{"result": "%s", "status": %s}]' $(${_f} ${_all[-1]}) $?
 }
+
 
 
 # Make this file a "module".
