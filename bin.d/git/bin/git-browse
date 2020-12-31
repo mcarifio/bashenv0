@@ -1,5 +1,24 @@
 #!/usr/bin/env bash
 
-# https://gist.github.com/igrigorik/6666860, I couldn't get an alias to workin'saturday5
-xdg-open $(git config remote.origin.url | sed 's/git@\(.*\):\(.*\).git/https:\/\/\1\/\2/')/tree/$(git symbolic-ref --quiet --short HEAD )/$(git rev-parse --show-prefix)
+set -euo pipefail; IFS=$'\n\t'
+
+# https://gist.github.com/igrigorik/6666860, I couldn't get an alias to work
+declare _url=$(git config remote.origin.url | sed 's/.git//')
+
+if [[ ${_url} =~ ^https?:// ]] ; then
+    _target=${_url}
+elif [[ ${_url} =~ ^((gh|gl|bb)-([^:]+)):(.*)$ ]] ; then
+    _hostname=$(ssh -G ${BASH_REMATCH[1]} | grep ^hostname | cut -d' ' -f2)
+    _prefix=${BASH_REMATCH[4]}
+    _branch=$(git symbolic-ref --quiet --short HEAD )
+    _folder=$(git rev-parse --show-prefix)
+    _target=https://${_hostname}/${_prefix}/tree/${_branch}/${_folder}
+    _profile=${BASH_REMATCH[3]}
+else
+    >&2 echo "website for url ${_url} unknown"
+    exit 1
+fi
+
+
+$(xdg-settings get default-web-browser | sed 's/.desktop//') --profile=${_profile} ${_target} &
 
