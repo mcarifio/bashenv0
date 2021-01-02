@@ -41,7 +41,7 @@ function apt.install.all {
 
     local _forward=${_self%.all}
 
-    apt.install openssl openssh-server ssh-import-id whois xdg-utils cloud-init ttyrec python3 emacs inotify-tools incron wmctrl gpg2
+    apt.install openssl openssh-server ssh-import-id whois xdg-utils cloud-init ttyrec python3 emacs inotify-tools incron wmctrl gnupg2
     apt.install --name=osquery --key=1484120AC4E9F8A1A577AEEE97A80C63C9D8B80B --deb="'deb [arch=amd64] https://pkg.osquery.io/deb deb main'" osquery
 }
 
