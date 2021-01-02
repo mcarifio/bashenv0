@@ -29,14 +29,23 @@ function u.mod+exists {
 }
 
 function u.have.command {
-    : 'public, usage: u.have.command ${cmd}... # returns 1 iff all ${cmd}s are on PATH'
+    : 'public, usage: [BASHENV_AUTOINSTALL=1] u.have.command ${cmd}... # returns 1 iff all ${cmd}s are on PATH'
     : 'example: u.have.command gh emacs /bin/ls && echo "have em all"'
     local _self=${FUNCNAME[0]}
     local _mod_name=${_self%%.*}
     local _mod=${_self%.*}
 
-    local _command=$(f.must.have "$1" "expecting a command on PATH") || return 1
-    local _c; for _c in $*; do type ${_c} &> /dev/null || return 1 ; done
+    local _command=$(f.must.have "$1" "command") || return $(f.err "expecting $1 on PATH")
+    local _c
+    for _c in $*; do
+        if ! type ${_c} &> /dev/null ; then
+            if [[ -n "${BASHENV_AUTOINSTALL}" ]] ; then
+                (set -x; apt.install ${_c}) || return $(f.err "autoinstall could not install ${_c}")
+            fi
+            : 'try again'
+            type ${_c} &> /dev/null || return 1
+        fi
+    done
 }
 
 function u.usage {

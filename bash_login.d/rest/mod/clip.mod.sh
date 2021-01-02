@@ -1,4 +1,5 @@
 u.have.command xclip || return $(f.err "missing xclip")
+# BASHENV_AUTOINSTALL=1 u.have.command xclip
 
 function clip.in {
     : 'public, usage: cmd | clip.in'

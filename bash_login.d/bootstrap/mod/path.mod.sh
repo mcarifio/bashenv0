@@ -18,7 +18,7 @@ function path.bins {
     else
         _py3a=($(${_py3} -m site --user-base)/bin $(dirname ${_py3}))
     fi
-    f.apply file.is.dir ~/bin ~/.cargo/bin $(go env GOPATH)/bin ~/.local/bin ~/*/bin ${_py3a[*]}  ${_xdg_data_home}/*/bin ${_bashenv}/bin.d/*/bin 
+    f.apply file.is.dir ~/bin ~/.cargo/bin $(go env GOPATH)/bin ~/.local/bin ~/*/bin ${_py3a[*]}  ~/.local/share/*/bin ${_xdg_data_home}/*/bin ${_bashenv}/bin.d/*/bin 
 }
 
 # true iff ${directory} on $PATH
