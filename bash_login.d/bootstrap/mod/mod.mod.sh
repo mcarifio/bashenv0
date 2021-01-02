@@ -122,5 +122,38 @@ function mod.parse {
     done
 }
 
-# usage: mod.mkmod ${1:-${BASH_SOURCE[0]%%.*}} ${2:-$(realpath ${BASH_SOURCE[0]})}
-export -f mod.mkmod mod.parse
+
+function mod.ec {
+    local _self=${FUNCNAME[0]}
+    local _mod_name=${_self%%.*};
+    local _mod=${_self%.*};
+
+    local _thing=$(f.must.have "$1" "mod || file") || return 1 ; shift
+    local _kind=$(type -t ${_thing}) 2>/dev/null
+    case "${_kind}" in
+        
+    esac
+    
+    
+    local _template=$(f.must.have "$2" "array") || return 1 ; shift 2
+
+}
+
+
+function mod.source {
+    local _self=${FUNCNAME[0]}
+    local _mod_name=${_self%%.*};
+    local _mod=${_self%.*};
+
+    local _that_mod=$(f.must.have "$1" "mod") || return 1 ; shift
+    local _m; for _m in $(find ${BASHENV}/bash_login.d -name ${_that_mod} -type f); do source ${_m}; done
+}
+
+
+# Make myself a module!
+# Make this file a "module".
+# Extract mod from pathname.
+function pn2mod { local _result=${1##*/}; echo ${_result%%.*}; }
+# Augment functions above with "module" conventions.
+mod.mkmod $(pn2mod ${1:-${BASH_SOURCE[0]}}) ${2:-$(realpath ${BASH_SOURCE[0]})}
+

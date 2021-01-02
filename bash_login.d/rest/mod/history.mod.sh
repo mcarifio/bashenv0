@@ -47,7 +47,7 @@ function history.dump_history_every_minute {
     history.background &
 }
 
-export PROMPT_COMMAND+=';history.dump_history_every_minute'
+export PROMPT_COMMAND='history.dump_history_every_minute;'${PROMPT_COMMAND}
 
 # Make this file a "module".
 # Extract mod from pathname.
