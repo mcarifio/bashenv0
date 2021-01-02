@@ -13,26 +13,6 @@
 # https://www.gnu.org/software/bash/manual/html_node/The-Shopt-Builtin.html
 
 
-function history.fn.__template__ {
-    local _self=${FUNCNAME[0]}
-    declare -F ${_self}
-}
-export -f history.fn.__template__
-
-function history.fn.defines {
-    local _self=${FUNCNAME[0]}
-    export -f  2>&1 | grep "declare -fx history"
-}
-export -f history.fn.defines
-
-function history.fn.pathname {
-    local _self=${FUNCNAME[0]}
-    u.value $(me.pathname)    
-}
-export -f history.fn.pathname
-
-
-
 
 # see ./bash.env.sh as well
 shopt -s histappend
@@ -43,12 +23,11 @@ export HISTSIZE=-1
 
 
 function history.background {
-    local interval=${1:-60s}
-    local command=${2:-'history.historic'}
+    local _interval=${1:-60s}
+    local _command=${2:-'history.historic'}
     # while true ; do sleep ${interval} ; (set -x ; ${command} ) ; done    # verbose version
-    while true ; do sleep ${interval} ; ${command} ; done  
+    while true ; do sleep ${_interval} ; ${_command} ; done  
 }
-export -f history.background
 
 # TODO mike@carif.io: ssh, tmux and mongodb versions of this
 # http://www.linuxjournal.com/content/using-bash-history-more-efficiently-histcontrol
@@ -62,13 +41,21 @@ function history.historic {
     history -n
     # echo "historic ran for $$" >> /tmp/historic.log
 }
-export -f history.historic
 
 # jobs will report a clearer function name.
 function history.dump_history_every_minute {
     history.background &
 }
-export -f history.dump_history_every_minute
+
+export PROMPT_COMMAND+=';history.dump_history_every_minute'
+
+# Make this file a "module".
+# Extract mod from pathname.
+function pn2mod { local _result=${1##*/}; echo ${_result%%.*}; }
+# Augment functions above with "module" conventions.
+mod.mkmod $(pn2mod ${1:-${BASH_SOURCE[0]}}) ${2:-$(realpath ${BASH_SOURCE[0]})}
+
+
 
 
 

@@ -8,7 +8,7 @@ function apt.install {
     local _mod_name=${_self%%.*};
     local _mod=${_self%.*};
 
-    local _name
+    local _name=${_self}
     local -a _rest=()
     while (( $# )); do
         local _it=${1}
@@ -17,7 +17,7 @@ function apt.install {
             --name=*) _name="${it#--name=}" ;;
             --deb=*) echo "${_it#--deb=}" | sudo tee -a /etc/sources.list.d/${_name}.list ;;
             --sign=*) local _sign="${_it#--sign=}"
-                      (cd /etc/apt/trusted.gpg.d; sudo curl ${_sign} -sSO) ;;
+                      (cd /etc/apt/trusted.gpg.d; sudo curl ${_sign} -fsSlO) ;;
 
             # https://blog.sleeplessbeastie.eu/2018/08/08/how-to-download-public-key-used-to-verify-gnupg-signature-for-the-repository/
             --key=*) local _key="${_it#--key=}"
