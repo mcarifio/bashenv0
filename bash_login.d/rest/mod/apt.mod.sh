@@ -19,7 +19,7 @@ function apt.install {
                       (cd /etc/apt/trusted.gpg.d; sudo curl ${_sign} -sSO) ;;
 
             # https://blog.sleeplessbeastie.eu/2018/08/08/how-to-download-public-key-used-to-verify-gnupg-signature-for-the-repository/
-            --key=*) local _key="${_it#key=}"
+            --key=*) local _key="${_it#--key=}"
                      sudo gpg2 --no-default-keyring --keyring gnupg-ring:/etc/apt/trusted.gpg.d/${name}.gpg --keyserver keyserver.ubuntu.com --receive-key ${_key}
                      chmod 644 /etc/apt/trusted.gpg.d/${name}.gpg ;;
             *) _rest+=(${_it}) ;;
