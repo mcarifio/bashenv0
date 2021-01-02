@@ -3,24 +3,46 @@
 
 
 function apt.install {
+    : 'public, usage: apt.install [--key=${url}] [--deb="deb [arch=amd64] ${url} ${parts...}"'
     local _self=${FUNCNAME[0]};
     local _mod_name=${_self%%.*};
     local _mod=${_self%.*};
+
+    local -a _rest=()
+    while (( $# )); do
+        local _it=${1}
+        case "${_it}" in
+            # --template-flag=*) _flags[--template_flag]=${_it#--template-flag=};;
+            --name=*) local _name=${it#--name} ;;
+            --deb=*) echo "${_it#--deb=}" | sudo tee -a /etc/sources.list.d/${_name}.list ;;
+            --sign=*) local _sign="${_it#--sign=}"
+                      (cd /etc/apt/trusted.gpg.d; sudo curl ${_sign} -sSO) ;;
+
+            # https://blog.sleeplessbeastie.eu/2018/08/08/how-to-download-public-key-used-to-verify-gnupg-signature-for-the-repository/
+            --key=*) local _key="${_it#key=}"
+                     sudo gpg2 --no-default-keyring --keyring gnupg-ring:/etc/apt/trusted.gpg.d/${name}.gpg --keyserver keyserver.ubuntu.com --receive-key ${_key}
+                     chmod 644 /etc/apt/trusted.gpg.d/${name}.gpg ;;
+            *) _rest+=(${_it}) ;;
+        esac
+        shift
+    done
     
     sudo apt update || return 1
     sudo apt upgrade -y || return 1
-    sudo apt install -y $* || return 1
-    sudo apt-mark auto $* || return 1
+    sudo apt install -y ${_rest[*]} || return 1
+    sudo apt-mark auto ${_rest[*]} || return 1
 }
 
 
 function apt.install.all {
+    : ''
     local _self=${FUNCNAME[0]}
     local _fn=${_self%%.*}
 
     local _forward=${_self%.all}
 
-    printf '%s\n' $(f.apply ${_forward} openssl openssh-server ssh-import-id whois xdg-utils cloud-init ttyrec python3 emacs inotify-tools incron wmctrl) | sort | uniq
+    apt.install openssl openssh-server ssh-import-id whois xdg-utils cloud-init ttyrec python3 emacs inotify-tools incron wmctrl gpg2
+    apt.install --key=1484120AC4E9F8A1A577AEEE97A80C63C9D8B80B --deb="'deb [arch=amd64] https://pkg.osquery.io/deb deb main'" osquery
 }
 
 

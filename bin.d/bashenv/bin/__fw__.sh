@@ -9,8 +9,8 @@ IFS=$'\n\t'
 
 let _bottom=$(( ${#BASH_SOURCE[*]} - 1 ))
 [[ $0 != ${BASH_SOURCE[${_bottom}]} ]] && (( _bottom-- ))
-_me=$(realpath -s ${BASH_SOURCE[${_bottom}]:-$0})
-_here=$(dirname ${_me})
+_here=$(cd $(dirname $0) && pwd)
+_me=${_here}/$(basename $0)
 _basename=$(basename ${_me})
 _name=$(basename ${_me} .sh)
 _ap_shell=$(realpath /proc/$$/exe) # absolute pathname of current shell

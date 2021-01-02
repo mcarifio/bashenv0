@@ -59,6 +59,11 @@ function xdg.CONFIG_HOME {
 }
 
 
+function xdg.browse {
+    : 'public, usage: xdg.browse [${url}] [${profile:-Default}]'
+    $(xdg-settings get default-web-browser | sed 's/.desktop//') --profile=${2:-Default} ${1} &
+}
+
 # Make this file a "module".
 # Extract mod from pathname.
 function pn2mod { local _result=${1##*/}; echo ${_result%%.*}; }
