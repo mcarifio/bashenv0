@@ -13,7 +13,7 @@ function apt.install {
         local _it=${1}
         case "${_it}" in
             # --template-flag=*) _flags[--template_flag]=${_it#--template-flag=};;
-            --name=*) local _name=${it#--name} ;;
+            --name=*) local _name=${it#--name=} ;;
             --deb=*) echo "${_it#--deb=}" | sudo tee -a /etc/sources.list.d/${_name}.list ;;
             --sign=*) local _sign="${_it#--sign=}"
                       (cd /etc/apt/trusted.gpg.d; sudo curl ${_sign} -sSO) ;;
