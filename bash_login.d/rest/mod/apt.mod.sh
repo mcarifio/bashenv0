@@ -8,25 +8,30 @@ function apt.install {
     local _mod_name=${_self%%.*};
     local _mod=${_self%.*};
 
-    local _name=${_self}
+    local -A _flags=([--name]=${_self} [--url]='' [--suffix]='' [--sign]='' [--key]='' [--ppa]='')
     local -a _rest=()
     while (( $# )); do
         local _it=${1}
         case "${_it}" in
             # --template-flag=*) _flags[--template_flag]=${_it#--template-flag=};;
-            --name=*) _name="${it#--name=}" ;;
-            --deb=*) echo "${_it#--deb=}" | sudo tee -a /etc/sources.list.d/${_name}.list ;;
-            --sign=*) local _sign="${_it#--sign=}"
-                      (cd /etc/apt/trusted.gpg.d; sudo curl ${_sign} -fsSlO) ;;
+            --name=*) _flags[--name]=${it#--name=} ;;
+            --url=*) _flags[--url]=${_it#--url=} ;;
+            --ppa=*) _flags[--ppa]=${_it#--ppa=} ;;
+            --suffix=*) _flags[--suffix]=${_it#--suffix=} ;;
+            --sign=*) _flags[--sign]=${_it#--sign=} ;;
 
             # https://blog.sleeplessbeastie.eu/2018/08/08/how-to-download-public-key-used-to-verify-gnupg-signature-for-the-repository/
-            --key=*) local _key="${_it#--key=}"
-                     sudo gpg2 --no-default-keyring --keyring gnupg-ring:/etc/apt/trusted.gpg.d/${_name}.gpg --keyserver keyserver.ubuntu.com --receive-key ${_key}
-                     chmod 644 /etc/apt/trusted.gpg.d/${_name}.gpg ;;
+            --key=*) _flags[--key]=${_it#--key=} ;;
             *) _rest+=(${_it}) ;;
         esac
         shift
     done
+
+    _name=${_flags[--name]:-${_rest[0]}}
+    [[ -n "${_flags[--sign]}" ]] && (cd /etc/apt/trusted.gpg.d; sudo curl ${_flags[--sign]} -fsSlO)
+    [[ -n "${_flags[--key]}" ]] && apt.key ${_flags[--key]} ${_name}
+    [[ -n "${_flags[--url]}" ]] && echo "deb [arch=amd64] ${_flags[--url]} ${_flags[--suffix]}" | sudo install /dev/stdin /etc/apt/sources.list.d/${_name}.list
+    [[ -n "${_flags[--ppa]}" ]] && sudo add-apt-repository -y ppa:${_flags[--ppa]}
     
     sudo apt update || return 1
     sudo apt upgrade -y || return 1
@@ -38,14 +43,19 @@ function apt.install {
 function apt.install.all {
     : 'public, usage: apt.install.all'
     local _self=${FUNCNAME[0]}
-    local _fn=${_self%%.*}
+    local _mod_name=${_self%%.*};
+    local _mod=${_self%.*};
 
     local _forward=${_self%.all}
 
     apt.install openssl openssh-server ssh-import-id whois xdg-utils cloud-init ttyrec python3 emacs inotify-tools incron wmctrl gnupg2
-    apt.install --name=osquery --key=1484120AC4E9F8A1A577AEEE97A80C63C9D8B80B --deb="'deb [arch=amd64] https://pkg.osquery.io/deb deb main'" osquery
+    apt.install --key=1484120AC4E9F8A1A577AEEE97A80C63C9D8B80B --url='https://pkg.osquery.io/deb' --suffix='deb main' osquery
+    apt.install --ppa=jgmath2000/et et
 }
 
+function apt.key {
+     sudo gpg2 --export --no-default-keyring --keyring gnupg-ring:/etc/apt/trusted.gpg.d/${2:-$1}.gpg --keyserver keyserver.ubuntu.com --receive-key ${1:-$(return $(f.err "expecting key"))}    
+}
 
 # Make this file a "module".
 # Extract mod from pathname.
