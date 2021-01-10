@@ -15,7 +15,7 @@ Description=bind mount global directories under $HOME
 Type=simple
 # TODO mike@carif.io: how does systemd --user set PATH?
 # ExecStart=/home/mcarifio/.local/share/bashenv/bin/%N.sh
-ExecStart=/home/mcarifio/.local/share/bashenv/bin/%N.sh 
+ExecStart=/home/mcarifio/.local/share/bashenv/bin.d/bashenv/bin/%N.sh 
 # ExecStop=
 # Restart=on-failure
 # TODO mike@carif.io: template files in units https://www.freedesktop.org/software/systemd/man/systemd.unit.html
