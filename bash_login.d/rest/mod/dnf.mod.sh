@@ -6,9 +6,41 @@ function dnf.install {
     local _self=${FUNCNAME[0]};
     local _mod_name=${_self%%.*};
     local _mod=${_self%.*};
+
+    local -A _flags=([--name]=${_self} [--repo]='' [--suffix]='' [--sign]='' [--key]='' [--ppa]='')
+    local -a _rest=()
+    while (( $# )); do
+        local _it=${1}
+        case "${_it}" in
+            # --template-flag=*) _flags[--template_flag]=${_it#--template-flag=};;
+            --name=*) _flags[--name]=${it#--name=} ;;
+            --repo=*) _flags[--repo]=${_it#--repo=} ;;
+            --sign=*) _flags[--sign]=${_it#--sign=} ;;
+            *) _rest+=(${_it}) ;;
+        esac
+        shift
+    done
+
+    _name=${_flags[--name]:-${_rest[0]}}
+    [[ -n "${_flags[--sign]}" ]] && dnf.sign ${_name} ${_flags[--sign]}
+    [[ -n "${_flags[--repo]}" ]] && dnf.repo ${_flags[--repo]}
     
     sudo dnf upgrade --refresh --best --allowerasing -y | return 1
-    sudo dnf install -y $* || return 1
+    sudo dnf install -y ${_rest[*]} || return 1
+}
+
+
+function dnf.repo {
+    local _repo=$1
+    # sudo yum-config-manager --add-repo https://pkg.osquery.io/rpm/osquery-s3-rpm.repo
+    sudo yum-config-manager --add-repo ${_repo} # assume enabled
+}
+
+function dnf.sign {
+    local _name=$1
+    local _sign=$2
+    # curl -L https://pkg.osquery.io/rpm/GPG | sudo tee /etc/pki/rpm-gpg/RPM-GPG-KEY-osquery
+    curl -L ${_sign} | sudo tee /etc/pki/rpm-gpg/RPM-GPG-KEY-${_name}
 }
 
 

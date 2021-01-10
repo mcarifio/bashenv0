@@ -1,0 +1,747 @@
+T 1507141233 18<jakkn18>	how is sda2 mounted then?
+T 1507141246 18<neilhwatson18>	If it helps: https://hastebin.com/qecalinebo.scala
+T 1507141260 18<ada18>	jakkn: should be /dev/sda2 on /
+T 1507141279 18<neilhwatson18>	I currently have one container stopped.
+T 1507141290 18<ada18>	I bet if you ls -lha /mnt you would have the same files as ls -lha /
+T 1507141348 18<jakkn18>	ada: yes I do. I see it's redundant. I'm just not seeing any mounts to / in fstab so where does that mount happen?
+T 1507141373 18<ada18>	what does /etc/fstab look like?
+T 1507141379 18<ada18>	it might be using UUIDs instead of device names
+T 1507141440 18<jakkn18>	sda1 on /boot, sda2 on /mnt, sda3 as swap. UUIDs are set up yes
+T 1507141486 18<ada18>	can you show me?  cat /etc/fstab | nc termbin.com 9999
+T 1507141490 18<ada18>	super fast paste
+T 1507141501 18<jakkn18>	https://hastebin.com/zitiyadoju.makefile
+T 1507141552 18<ada18>	weird
+T 1507141553 18<jakkn18>	I don't have any good enough routines on copy-pasting from terminal
+T 1507141560 18<jakkn18>	so it takes a bit of time
+T 1507141565 18<programmerq18>	I never knew about termbin. neat.
+T 1507141570 18<ada18>	alias tb="nc termbin.com 9999"
+T 1507141573 18<ada18>	cat foo | tb
+T 1507141587 18<neilhwatson18>	my firewall blocks 9999 so can't use ada's super cool paste hack :(
+T 1507141606 18<ada18>	aww
+T 1507141612 18*	neilhwatson is sad
+T 1507141645 18<neilhwatson18>	Dat fstab. How does it even boot?
+T 1507141671 18<jakkn18>	what package is nc?
+T 1507141687 18<neilhwatson18>	netcat
+T 1507141692 18<jakkn18>	lol
+T 1507141708 18<ada18>	gnu-netcat on arch
+T 1507141719 18<ada18>	or openbsd-netcat
+T 1507141720 18<jakkn18>	getting heat about my fstab on a wednesday afternoon. Nice
+T 1507141724 18<ada18>	lol
+T 1507141728 18<ada18>	but really do
+T 1507141731 18<ada18>	doe*
+T 1507141777 18<jakkn18>	I hear ya, I'll fix it. Really appreciating the input here :)
+T 1507141803 18<jakkn18>	any difference between gnu-netcat and openbsd-netcat?
+T 1507141805 18<neilhwatson18>	be sure you fix it and don't render it unbootable ;)
+T 1507141819 18<ada18>	im sure there is but idk
+T 1507141822 18<ada18>	off the top of my head
+T 1507141828 18<ada18>	either one will work for this simple case
+T 1507141831 18<jakkn18>	done that a couple times already. Got usb sticks at the hand ;)
+T 1507141849 18<jakkn18>	cool
+T 1507141896 18<ada18>	jakkn: you can try to auto-generate the fstab file with `genfstab`
+T 1507141904 18<neilhwatson18>	I'd the BSD one is older, less features, but efficient and compact while gnu is sprawling with features.
+T 1507141906 18<ada18>	`genfstab -U -p / | less` to read it
+T 1507142012 18<jakkn18>	that gave me nada
+T 1507142013 18<ada18>	apparently the openbsd- one is the rewrite
+T 1507142025 18<ada18>	sudo?
+T 1507142029 18<ada18>	make a difference?
+T 1507142034 18<jakkn18>	doesn't autocomplete
+T 1507142037 18<jakkn18>	which package?
+T 1507142050 18<ada18>	I was talking about openbsd-netcat
+T 1507142064 18<ada18>	is actually the rewrite of the gnu package which is the older one
+T 1507142131 18<jakkn18>	oh, so openbsd is newer
+T 1507142139 18<jakkn18>	where does the output end up?
+T 1507142154 18<ada18>	from genfstab?  it gets printed to stdout
+T 1507142161 18<ada18>	which is why I pipe to less to read it
+T 1507142180 18<ada18>	then you can do genfstab -U -p / > /etc/fstab once you know it's correct
+T 1507142201 18<ada18>	you can also do 'lsblk -f' to get the uuid's of your block devices and fix /etc/fstab manually
+T 1507142203 18<jakkn18>	I'm getting nothing on stdout
+T 1507142217 18<ada18>	weird
+T 1507142234 18<ada18>	what does `lsblk -f` look like
+T 1507142239 18<jakkn18>	genfstab command not found
+T 1507142244 18<ada18>	ohh
+T 1507142259 18<jakkn18>	I need the package no?
+T 1507142265 18<ada18>	how did this system get installed? haha
+T 1507142277 18<ada18>	yeah instlal the package
+T 1507142286 18<ada18>	I guess genfstab is on the install iso
+T 1507142296 18<jakkn18>	lol it's too long ago to remember
+T 1507142374 18<jakkn18>	ok now I got something
+T 1507142414 18<neilhwatson18>	My workstaion at home has software raid, and two HD changes, and multipe rolling upgrades and fstab is less wierd. Nice jakkn .
+T 1507142417 18<jakkn18>	it's safe to put that output in fstab then?
+T 1507142429 18<ada18>	I would double check it so it's correct
+T 1507142435 18<ada18>	compare to the output of 'lsblk -f'
+T 1507142445 18<ada18>	the uuid's and mount points should match
+T 1507142482 18<jakkn18>	what's so bad about my fstab really? :D
+T 1507142494 18<ada18>	I mean, if the system works...
+T 1507142548 18<neilhwatson18>	It's like that old gray box every server room used to have. It works, but no one knows why.
+T 1507142615 18<unixwitch18>	i don't see what's weird about that fstab other than the slightly unusual fat32 /boot
+T 1507142616 18<jakkn18>	and now you have me start fiddling with it. I'm going to back up my shitty fstab before I do anything
+T 1507142641 18<killown18>	how can I fix this http://sprunge.us/GBBJ ?
+T 1507142661 18<jakkn18>	//var/lib/docker/devicemapper	/var/lib/docker/devicemapper	none      	rw,relatime,data=ordered,bind	0 0
+T 1507142665 18<jakkn18>	is that line correct?
+T 1507142675 18<jakkn18>	with the double leading slash?
+T 1507142702 18<ada18>	I dont think so
+T 1507142727 18<neilhwatson18>	unixwitch: there's no '/' mount.
+T 1507142795 18<ada18>	killown: what host os?  what docker version?  what docker-compose version?
+T 1507142803 18<killown18>	ubuntu xenial
+T 1507142809 18<ada18>	killown: how did you install docker-compose?
+T 1507142813 18<killown18>	Docker version 17.06.2-ce, build cec0b72
+T 1507142875 18<killown18>	working now, apt-get install docker-compose
+T 1507142910 18<jakkn18>	rebooting. Assume my fstab is broken if I don't pop back in soonish :P
+T 1507142971 18<vans16318>	is there a way to wait for a background process to spawn/start?
+T 1507142985 18<vans16318>	before continuing in your entry script
+T 1507142996 18<vans16318>	i guess this is not docker related but bash/sh related
+T 1507143010 18<kgirthofer18>	is anyone using docker/jenkins build slaves? I've got some questions i'm a little stuck on
+T 1507143021 18<kgirthofer18>	oh and ecs
+T 1507143041 18<nkuttler18>	when on irc, just ask your real question
+T 1507143081 18<ada18>	vans163: while <condition ! true>; sleep 10s; done
+T 1507143124 18<ada18>	vans163: if you are bringing up multiple processes in the same ocntainer that are long-running, I recommend a process supervisor like supervisord
+T 1507143129 18<ada18>	or runit
+T 1507143130 18<vans16318>	ada: thanks, condition is the hard part, yea
+T 1507143134 18<kgirthofer18>	i'm trying to get my jenkins slaves to launch community images
+T 1507143148 18<ada18>	vans163: sometimes a good ol sleep 60s; is all you need
+T 1507143153 18<neilhwatson18>	++ on supervisord
+T 1507143216 18<vans16318>	ada: i think il go with the sleep approach heh :P
+T 1507143223 18<vans16318>	would take me like 2hours+ to parse the condition
+T 1507143522 18<nkuttler18>	vans163: what kind of processes?
+T 1507143591 18<nkuttler18>	vans163: if it listens anywhere, wait-for-it.sh is nice. but then it probably wouldn't be one container?
+T 1507143621 18<vans16318>	nkuttler: X server lol,  il have to parse the condition when it outputs certain lines basically when DISPLAY gets created
+T 1507143645 18<vans16318>	ah yea.. actually i can just somehow check for condition is DISPLAY=x:y created
+T 1507143648 18<nkuttler18>	x is network capable
+T 1507143666 18<vans16318>	im aware it has a tcp socket it opens
+T 1507143675 18<vans16318>	but does it open that socket as soon as display is availble
+T 1507143686 18<vans16318>	im trying to start X server in background then run smething on the display it created in 1 entry script
+T 1507143797 18<neilhwatson18>	sounds like two containers. One to run X, and one to run a client app.
+T 1507143977 18<OnkelTem18>	Guys I have problem with building image with apache
+T 1507143991 18<OnkelTem18>	When I do: a2enmod or a2dismod - it doesn't actually work
+T 1507144002 18<OnkelTem18>	After the image is built, my changes ain't applied
+T 1507144006 18<OnkelTem18>	Any ideas?
+T 1507144019 18<ada18>	afaik all it does is create a symlink
+T 1507144027 18<neilhwatson18>	vans163: There are a few X, kde, and gnome related projects on docker hub. Have a look at them if you havne't.
+T 1507144033 18<ada18>	OnkelTem: show step by step reproduction
+T 1507144054 18<ada18>	OnkelTem: dockerfile & some evidence that the module is not loaded
+T 1507144430 18<OnkelTem18>	ada: https://apaste.info/EGXN
+T 1507144500 18<OnkelTem18>	First it says that the modules are already disabled. That's fine, because the original image don't have them enabled.
+T 1507144514 18<OnkelTem18>	But then - why do I have them all enabled after all?
+T 1507144572 18<OnkelTem18>	Btw, if I now run a2dismod rewire from the container, it works and really disables the module
+T 1507144710 18<ada18>	what base image is being used here?
+T 1507144788 18<ada18>	did you check your assumptions?  that the container you spawned is using the correct image that was just built?
+T 1507144800 18<ada18>	you left out the "run" step so it's hard to follow step by step
+T 1507144812 18<OnkelTem18>	Oh, well
+T 1507144829 18<OnkelTem18>	I'll show the full Dockerfile
+T 1507144853 18<OnkelTem18>	https://gist.github.com/OnkelTem/facbe5ec28811782708af6187c7b5472
+T 1507144890 18<OnkelTem18>	https://hub.docker.com/_/php/ - the mother project
+T 1507144917 18<OnkelTem18>	https://github.com/docker-library/php/blob/4c0766729088fa5c37d46ccd837386f0e91a33ac/7.1/apache/Dockerfile - parent Dockerfie
+T 1507144958 18<ada18>	can I see your entrypoint script too
+T 1507145028 18<snf_gh18>	how do i shut down swarm cluser?
+T 1507145039 18<OnkelTem18>	ada: https://gist.github.com/OnkelTem/facbe5ec28811782708af6187c7b5472 (updated)
+T 1507145054 18<neilhwatson18>	Are you trying to run sshd in the container?
+T 1507145061 18<snf_gh18>	** learning ** so i dont know whether such features as "stopping" exist for docker :s
+T 1507145111 18<OnkelTem18>	ada: updated one more time - added supervisord.conf (though it's trivial)
+T 1507145123 18<ada18>	snf_gh: remove all nodes
+T 1507145152 18<snf_gh18>	docker stop $(docker ps -a -q) dindu nuffin ;s
+T 1507145163 18<ada18>	that would stop containers
+T 1507145164 18<neilhwatson18>	sshd in container is bad idea. Not secure, or needed.
+T 1507145181 18<snf_gh18>	it didnt actually stop them, guess containers got restarted ultra fast
+T 1507145201 18<snf_gh18>	so i shouled docker-machine leave swarm ?
+T 1507145206 18<ada18>	snf_gh: stop
+T 1507145211 18<ada18>	snf_gh: what is your end goal?
+T 1507145229 18<ada18>	you are conflating all sorts of different components
+T 1507145230 18<akik18>	neilhwatson: do you mean sshd is not secure or that docker with sshd is not secure?
+T 1507145233 18<snf_gh18>	i just want to shut down pc, without next time going with whole setup ;p
+T 1507145241 18<ada18>	snf_gh: what setup?
+T 1507145243 18<neilhwatson18>	sshd on docker not secure.
+T 1507145250 18<ada18>	snf_gh: explain what you are trying to accomplish
+T 1507145253 18<akik18>	neilhwatson: where can i read more about it?
+T 1507145256 18<snf_gh18>	ada: i am just learning, i created stuf from tutorial.
+T 1507145276 18<OnkelTem18>	ada: and updated two more times, now with docker-php-entrypoint and apache2-foreground scripts
+T 1507145288 18<snf_gh18>	i want to shut down containers so i can resume my work when startup my linux again in future
+T 1507145309 18<neilhwatson18>	with sshd on docker you get: the same hostkey on every instance or a a new one on every restart. So ssh can never be sure of the remote h ost.
+T 1507145315 18<snf_gh18>	now i just want to make containers to shut down ~gracefully~
+T 1507145333 18<akik18>	neilhwatson: of course the docker container would have its own host keys
+T 1507145338 18<snf_gh18>	but i suspect i just shut toss them away like trash
+T 1507145344 18<ada18>	snf_gh: you should
+T 1507145349 18<ada18>	snf_gh: containers are disposable
+T 1507145356 18<snf_gh18>	ok got it
+T 1507145357 18<ada18>	snf_gh: data that you to persist should be in a volume
+T 1507145377 18<snf_gh18>	i got volume part
+T 1507145422 18<snf_gh18>	what is good way of leaving swarm by label ?
+T 1507145440 18<snf_gh18>	or should I rpc on each container ?
+T 1507145458 18<ada18>	snf_gh: why do you need ot leave the swarm?
+T 1507145468 18<snf_gh18>	i want to shut down pc
+T 1507145474 18<snf_gh18>	i am testing this on my pc.
+T 1507145474 18<ada18>	snf_gh: just shut it down
+T 1507145476 18<neilhwatson18>	OnkelTem: strip it all down. focus on getting modules setup up. Check how the modules are, or are not installed, before you hadd all the extra scripts.
+T 1507145490 18<snf_gh18>	ada: last time i did this - i had to remove images too
+T 1507145508 18<snf_gh18>	or atleast this is how i restore my swarm, elephant in china shop
+T 1507145509 18<ada18>	snf_gh: thats unnecessary
+T 1507145520 18<ada18>	snf_gh: is it a 1-node swarm?
+T 1507145526 18<snf_gh18>	so how one should act with this ?
+T 1507145529 18<snf_gh18>	its 2 nodes
+T 1507145543 18<ada18>	just shut your computer down then
+T 1507145543 18<neilhwatson18>	akik: https://jpetazzo.github.io/2014/06/23/docker-ssh-considered-evil/
+T 1507145548 18<snf_gh18>	or 1 swarm with 2 servers, with 7 services
+T 1507145563 18<ada18>	swarm will see that the tasks have gone missing and will redistribute them to the other worker
+T 1507145573 18<ada18>	of course, if your swarm node that you shut down is the manager, then that won't work
+T 1507145607 18<snf_gh18>	ill just rpc shut down
+T 1507145640 18<snf_gh18>	but thank you, knowing how devs are doing it - is also informative
+T 1507145677 18<akik18>	neilhwatson: it says "…Unless your container is an SSH server, of course."
+T 1507145689 18<ada18>	akik: and only an SSH server
+T 1507145736 18<akik18>	even docker.com documents it: https://docs.docker.com/engine/examples/running_ssh_service/
+T 1507145753 18<ada18>	the only thing this container does is serve ssh
+T 1507145774 18<snf_gh18>	docker-machine ssh myvm2 "docker swarm leave" ; docker-machine ssh myvm1 "docker swarm leave -f" ; docker stop $(docker ps -a -q) <-- this did what i wanted
+T 1507145775 18<ada18>	the point is: don't run sshd as a companion process in all your containers - if the container's purpose is to run sshd, then so be it.  but don't tack sshd onto everything
+T 1507145777 18<ada18>	is the point
+T 1507145780 18<akik18>	if it would be a security issue, wouldn't you think that page would list it?
+T 1507145783 18<snf_gh18>	but there just has to be smarter way of doing it
+T 1507145810 18<ada18>	snf_gh: when I shut down my swarm vms, i just turn them off
+T 1507145818 18<ada18>	snf_gh: vagrant halt.  done
+T 1507145825 18<snf_gh18>	ok got it
+T 1507145851 18<snf_gh18>	seems all "automation tools" are really crude and... well - primitive
+T 1507145859 18<snf_gh18>	world we living, thank you ada.
+T 1507145870 18<snf_gh18>	gotta go get my daily amount of zombies killed.
+T 1507145971 18<foodSurprise18>	After updating my docker in windows, I keep getting vpnkit.exe has stopped working
+T 1507145980 18<foodSurprise18>	is there a way to fix this
+T 1507146128 18<jakkn18>	ada: well that didn't work
+T 1507146176 18<neilhwatson18>	clearly :)
+T 1507146282 18<harushimo18>	neilhwatson: thanks
+T 1507146286 18<harushimo18>	gebbione: thank you
+T 1507146402 18<jakkn18>	I was forced through fsck and got several "multiply-claimed blocks" errors in /var/lib/docker
+T 1507147097 18<foodSurprise18>	Can anyone help me? Docker crashes on startup, and I get a vpnkit.exe crash
+T 1507147130 18<foodSurprise18>	Here is my log: https://hastebin.com/ayicuvotof.md
+T 1507147274 18<strk18>	how can I have the docker registry contains listen to port 5000 but only on localhost ?
+T 1507147291 18<strk18>	-e REGISTRY_HTTP_ADDR=127.0.0.1:5000
+T 1507147303 18<strk18>	seems to do it, but then http connections from apache proxy fail
+T 1507147328 18<neilhwatson18>	You hvae a separate httpd container?
+T 1507147344 18<strk18>	httpd is on th ehost
+T 1507147366 18<strk18>	and I ProxyPass http://localhost:5000/
+T 1507147371 18<strk18>	(apache2)
+T 1507147390 18<strk18>	BUT even from localy, netcat to port 5000 is immediately drop
+T 1507147398 18<strk18>	port is open, but connection is drop
+T 1507147406 18<strk18>	omitting -e REGISTRY_HTTP_ADDR=127.0.0.1:5000 works
+T 1507147409 18<neilhwatson18>	Put both in containers, use user defined network so httpd can reach docker reg, export httdp port but not docker rege port.
+T 1507147413 18<strk18>	but it works from everywhere
+T 1507147429 18<strk18>	neilhwatson: is that really the only way ?
+T 1507147438 18<strk18>	it's ok for httpd port to be reachable from the outside
+T 1507147469 18<neilhwatson18>	That is typical service arch for docker and mult service services. Registry is not special.
+T 1507147506 18<strk18>	my tipical setup is: apache on the host serves everything, via reverse proxy, different containers have specific srevices
+T 1507147529 18<strk18>	I only need to make sure that the specific services (like registry) only listen on the loopback device
+T 1507147560 18<strk18>	would sound like an easy thing to do?
+T 1507147585 18<neilhwatson18>	I don't think it's deisgned to alllow that.
+T 1507147731 18<strk18>	how's that different from adding another layer ?
+T 1507147827 18<foodSurprise18>	nevermind had to downgrade and it works
+T 1507148664 18<strk18>	where does the docker registry log its operations ?
+T 1507148723 18<ra21vi18>	somehow my machine crashed, I had a new fresh ubuntu install. Is there a way to load docker images from existing paritions (i see, they r saved)
+T 1507148728 18<vans16318>	is there a 100% unique name you can give to a run command to prevent a second container with the same unique name from starting?
+T 1507148785 18<ada18>	vans163: docker run --name $(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1) <...>
+T 1507148798 18<ada18>	cant guarantee that
+T 1507148837 18<vans16318>	i want the opposite effect :P
+T 1507148851 18<vans16318>	is that default then.. let me try
+T 1507148851 18<ada18>	i dont understand the quesion then
+T 1507148893 18<ra21vi18>	vans163: do u want to prevent two containers from same image?
+T 1507148909 18<ada18>	ra21vi: name != image
+T 1507148927 18<vans16318>	sorry premature Q
+T 1507148932 18<vans16318>	i did not test things.  --name is unique
+T 1507148936 18<vans16318>	what confused me is
+T 1507148952 18<vans16318>	--name my_name  the docker api returns name like this Names: ["/my_name"]
+T 1507148967 18<vans16318>	so i thought name was like a label.   name is the behavior i need
+T 1507149015 18<vans16318>	can docker swarm ensure the same name does not exist in the whole swarm?
+T 1507149031 18<ada18>	vans163: if you are using "docker service" yes - they will be unique
+T 1507149084 18<vans16318>	basically i want to make it easy to do this.  i have 4 physical seperate servers
+T 1507149096 18<vans16318>	and i want to run 1 docker --name redis,   1 docker --name mysql, etc
+T 1507149103 18<vans16318>	on any of those 4, and i want to be able topick
+T 1507149131 18<vans16318>	and if for some reason something goes wrong and i do another docker --name redis, when redis is already running, i want an error and the second container does not spin up
+T 1507149150 18<ada18>	that will already happen afaik
+T 1507149213 18<vans16318>	hum.. so i dont need docker swarm, just docker service and read in that direction?
+T 1507149499 18<ada18>	no,
+T 1507149504 18<ada18>	"service" implies swarm
+T 1507149517 18<vans16318>	ah
+T 1507149553 18<ada18>	"service" are swarm-mode containers
+T 1507149567 18<ada18>	you can still use 'docker run' but they are treated as non-swarm-mode containers
+T 1507149616 18<ada18>	swarm tasks belong to the swarm - they can be redistributed among nodes if a node goes down, you can apply rolling update policies to them, etc.
+T 1507149620 18<tycoon17718>	is there a way to have all of my environment variables added to a docker container when i build it? or something like `RAILS_ENV=production docker build -t imageName .`
+T 1507149623 18<ada18>	lots of swarm-specific behaviour
+T 1507149636 18<ada18>	tycoon177: define "all"
+T 1507149653 18<tycoon17718>	ada: all is not what i should've asked
+T 1507149664 18<fx918>	Is it possible to tar up the whole docker container from inside, then start a new container and extract all the contents into it? I'm asking because our network ports have changed so I no longer need to publish those ports anymore.
+T 1507149665 18<tycoon17718>	just passing environment variables easily
+T 1507149671 18<ada18>	if they are not defined in the Dockerfile or in compose, they don't get sent to the container
+T 1507149707 18<tycoon17718>	ada: would i just use `ENV` in my dockerfile to set environment variables then?
+T 1507149709 18<ada18>	fx9: yes it is, but I don't have the explanation handy
+T 1507149712 18<ada18>	tycoon177: yes
+T 1507149716 18<tycoon17718>	alright, ty
+T 1507149749 18<fx918>	ada, nothing will explode on me? :D
+T 1507149765 18<ada18>	It's not pretty, but can be used to recover a container
+T 1507149785 18<ada18>	fx9: I never use it.  I kill and recreate without pity
+T 1507149833 18<fx918>	i want to kill it but it seems the files have been modified by other team members and I don't wanna destroy their work just to remove publish ports
+T 1507149852 18<strk18>	git grep REGISTRY_HTTP_ADDR # no hits, in https://github.com/docker/distribution
+T 1507149860 18<strk18>	is registry:2 not docker/distribution ?
+T 1507149888 18<ada18>	fx9: IMO that's their fault - they should not expect things in the container fs to persist.  I know that's the nuclear option but I am mean
+T 1507149910 18<ada18>	fx9: programmerq wrote out a good explanation of doing this, i have to go find it
+T 1507149937 18<fx918>	okay thanks
+T 1507150468 18<strk18>	it looks like I could fix my reverse-proxy thing by directly proxying into the docker local IP address
+T 1507150479 18<strk18>	any way to make that local IP address predictable ?
+T 1507150556 18<fx918>	can't you white a script to parse our the IP section of docker inspect?
+T 1507150586 18<fx918>	its like a bash one liner
+T 1507150601 18<ada18>	strk: whats your goal?
+T 1507150639 18<strk18>	ada: protect registry use by apache mediated auth
+T 1507150678 18<strk18>	or, more easily said: only allow accessing docker services via apache reverse-proxy
+T 1507150690 18<strk18>	^docker^container
+T 1507150706 18<strk18>	initially I was proxying port 5000 on localhost
+T 1507150716 18<strk18>	but hadn't found a way for that port 5000 to be only available locally
+T 1507150730 18<strk18>	not sure if it's something that can be done by docker itself or needs to be done by the container image
+T 1507150741 18<ada18>	use an external load balancer/proxy
+T 1507150742 18<fryguy18>	strk: you might want to take a look at traefik
+T 1507150749 18<fryguy18>	it's a reverse proxy that will do most of this stuff for you
+T 1507150753 18<strk18>	I want to use the _least_ number of things
+T 1507150761 18<strk18>	I know how to have apache do reverse proxy
+T 1507150763 18<strk18>	all is working
+T 1507150779 18<strk18>	only problem I have is that apache is configured to proxy the IP address of the container
+T 1507150784 18<strk18>	which I guess may change over time
+T 1507150792 18<strk18>	depending on which container starts first
+T 1507150795 18<fryguy18>	you are doing this fundamentally wrong
+T 1507150801 18<ada18>	strk: ^
+T 1507150814 18<ada18>	strk: publish a port onthe machine - put a load balancer in front of machine to filter requests
+T 1507150816 18<ada18>	done.
+T 1507150820 18<strk18>	well, if doing it right means having more components, I'm not sure I want to do that
+T 1507150850 18<strk18>	ada: publish a port on the machine means necessarely making that port available to *all* interfaces ?
+T 1507150850 18<fryguy18>	you could also register the components into DNS, but that would also require more components
+T 1507150854 18<strk18>	becuase that's my only grief
+T 1507150862 18<strk18>	couldn't a port be only published to be reachable by loopback ?
+T 1507150870 18<fryguy18>	strk: you can publish the port on the machine to an ip other than 0.0.0.0
+T 1507150889 18<strk18>	fryguy: that's what I want to do, perfect ! how do I do that ?
+T 1507150899 18<fryguy18>	when you bind the port, specify the IP
+T 1507150905 18<fryguy18>	if you don't specify an ip, it binds to 0.0.0.0
+T 1507150925 18<ada18>	https://docs.docker.com/engine/userguide/networking/default_network/binding/
+T 1507150926 18<strk18>	I'm talking about the -p switch to docker
+T 1507150930 18<strk18>	dunno what you're talking about
+T 1507150931 18<fryguy18>	strk: so am I
+T 1507150932 18<ada18>	this is in the docs
+T 1507150968 18<strk18>	what I'd expect owuld be: -p localhost:5000:5000
+T 1507150975 18<ada18>	localhost is not an IP addres
+T 1507150982 18<ada18>	but yes
+T 1507151038 18<strk18>	oh, it was that simple !
+T 1507151041 18<strk18>	sheesh
+T 1507151056 18<strk18>	load balancers, docker compose ... phewww
+T 1507151063 18<ada18>	distributed apps are hard
+T 1507151073 18<strk18>	now, I'd have liked "localhost" to be looked up in /etc/hosts but ok :)
+T 1507151109 18<ada18>	I can't confirm or deny; the instructions say to use an IP so thats what I'd do
+T 1507151113 18<ada18>	personally have not tested it yet
+T 1507151139 18<strk18>	I confirm, it's working great now
+T 1507151213 18<ada18>	great
+T 1507151234 18<strk18>	thank you
+T 1507151260 18<strk18>	it would be a good idea to have that example in the "deplying registry" page
+T 1507151281 18<strk18>	here: https://github.com/docker/docker.github.io/blob/master/registry/deploying.md
+T 1507151303 18<ada18>	I would argue that its an edge use case - if you feel strongly about it, please submit a PR with a change or description of the change
+T 1507151326 18<ada18>	i'll bring it to the Docs team
+T 1507151884 18<dunpeal18>	Hi. I just a new image. How do I create a container from that image, that just gives me an interactive bash session?
+T 1507151903 18<ada18>	dunpeal: it depends
+T 1507151916 18<ada18>	dunpeal: you wrote the dockerfile?  can you show it?
+T 1507151930 18<ada18>	normally it's something like 'docker run -it <image> bash'
+T 1507151933 18<dunpeal18>	ada: nope, it's an image I pulled from an open-source priject
+T 1507151943 18<ada18>	and the container will start and drop you into a shell, and then when you exit the shell the container will stop
+T 1507151958 18<dunpeal18>	ada: yup, that worked, thanks!
+T 1507151971 18<ada18>	fyi nothing you do in that shell will persist
+T 1507151982 18<dunpeal18>	now, I suppose the only way to copy files to such a container is scp?
+T 1507151991 18<ada18>	no
+T 1507151999 18<programmerq18>	If there is an entry point getting in the way, you can always do: docker run --entrypoint="" -it <image> bash
+T 1507152012 18<programmerq18>	dunpeal▸ docker cp
+T 1507152015 18<ada18>	scp won't work - you can use `docker cp` to copy files into a running container
+T 1507152104 18<dunpeal18>	scp won't work?  I thought I could run an ssh server on the container?
+T 1507152122 18<ada18>	I would dissuade you from going down that road
+T 1507152134 18<ada18>	people start using containers like they're vm's - they're not - a container should run 1 process
+T 1507152153 18<dunpeal18>	Fair enough. Any other reason to avoid that?
+T 1507152183 18<ada18>	the whole idea of using containers is to isolate processes.  if you lump an entire desktop environment into a container, that defeats the purpose somehwat
+T 1507152194 18<ada18>	it couples all the processes in the same container to each other
+T 1507152226 18<ada18>	forexample, a LAMP stack - what happens if you need to upgrade mysql?  you have to rebuild a hwole new image with all the pieces in it, dependencies, etc.  if you are using separate containers, you just swap out the mysql container
+T 1507152248 18<ada18>	separation of concerns is the main idea
+T 1507152260 18<ada18>	also, that separation lets you scale services
+T 1507152288 18<dunpeal18>	*nod*, thanks!
+T 1507152842 18<tycoon17718>	if i wanted something in a docker container to be conditional based on an environment variable, would it be best to just script that if statement in a run command?
+T 1507152865 18<tycoon17718>	in my dockerfile
+T 1507152936 18<OscarAkaElvis18>	you'll probably need an entrypoint script
+T 1507152941 18<ada18>	tycoon177: ^
+T 1507152950 18<OscarAkaElvis18>	there you can do the logic you need
+T 1507152955 18<ada18>	can't do it in RUN because environment variables are not there
+T 1507152963 18<ada18>	you can use ARGs in the build process, though
+T 1507152977 18<ada18>	so the answer is: maybe, using ARG's instead of ENV
+T 1507153030 18<tycoon17718>	can an ARG be checked for conditionals?
+T 1507153045 18<tycoon17718>	if not, an entrypoint script is probably going to be ideal for me
+T 1507153049 18<ada18>	tycoon177: its just a variable
+T 1507153074 18<tycoon17718>	i didn't know if docker had built-in conditional statements in dockerfiles
+T 1507153086 18<ada18>	shell code in a RUN statement
+T 1507153091 18<tycoon17718>	ok
+T 1507153101 18<ada18>	there's no branching logic to Dockerfile instructions
+T 1507153109 18<ada18>	you have to write that in shell
+T 1507153128 18<ada18>	what are you trying to do?
+T 1507153139 18<ada18>	some operations are not easily done during build - even with ARGs
+T 1507153522 18<tycoon17718>	ada: basically, i am setting it up so that i pass a rails_env arg to set the environment to production. the default for the arg is development and in production, i need to compile the assets. in development, this is done on each request so it's not needed in development
+T 1507153569 18<ada18>	you have options - you can either compile assets when needed, at runtime
+T 1507153573 18<ada18>	or you can do it during build
+T 1507153588 18<ada18>	so that would dictate how you send that variable into the container
+T 1507153600 18<ada18>	personally, I think asset compilation should happen at runtime, in a volume
+T 1507153607 18<tycoon17718>	either way, the variable needs to be sent to tell the server which database to use
+T 1507153609 18<ada18>	for development
+T 1507153639 18<tycoon17718>	this is just default RoR behavior.
+T 1507153671 18<ada18>	does it actually change anything in your build process
+T 1507153716 18<tycoon17718>	yes. the assets are minified and combined into single files in production up front to decrease load times. in development, they're served in separate files and compiled slowly on the fly
+T 1507153905 18<tycoon17718>	i'll read into entrypoint scripts and decide which would be better suited for our needs. thanks for your insight ada
+T 1507153933 18<ada18>	tycoon177: its super common pattern - entrypoint is a bash script that does a bunch of setup steps, then "exec" your main process
+T 1507156350 18<elsevero18>	How I can ssh into this image (https://hub.docker.com/r/tensorflow/tensorflow/) ?
+T 1507156384 18<elsevero18>	runned this command: docker run -it -p 8888:8888 tensorflow/tensorflow
+T 1507156438 18<ada18>	elsevero: most images do not include ssh server
+T 1507156521 18<ada18>	elsevero: you can try to 'exec' a shell in the container with something like `docker exec -it <container id> bash`
+T 1507157183 18<Ceryn18>	Hey. I have a question. I want my docker container "container1" to have "bridge" network access AND "my_net" network (where "my_net" is a bridge based network). Meanwhile, docker container "container2" should only have "my_net" network access.
+T 1507157207 18<Ceryn18>	I accomplished this by running a bunch of docker commands at run time. But that's cumbersome. Can I build the network into the dockerfiles?
+T 1507157258 18<ada18>	Ceryn: no
+T 1507157265 18<ada18>	you can use a docker-compose.yml file to set those, however
+T 1507157283 18<ada18>	Dockerfile instructions contain only steps to build the image, but you can set runtime options in a compose file
+T 1507157314 18<Ceryn18>	ada: I did a docker compose test. I get the "my_net" implicitly. However, I didn't have any luck giving "container1" bridge access (unless I want to give both containers bridge access, which I don't).
+T 1507157363 18<ada18>	http://termbin.com/r9112 as a quick example
+T 1507157371 18<Ceryn18>	ada: Am I supposed to register both an external network for bridge, and a local network "my_net", and then specify which network each container has access to?
+T 1507157373 18<ada18>	a container can be on multiple networks
+T 1507157394 18<ada18>	you might have to create an isolated network beforehand with 'docker network create' and then use compose with the external: true option set
+T 1507157471 18<Ceryn18>	Hm. Do "frontend" and "backend" need to be created in advance in your example, or are they created on the fly? And if they're created on the fly, are they removed again once the instances end?
+T 1507157684 18<ada18>	Ceryn: in my link, they are created/destroyed by docker-compose
+T 1507157703 18<Ceryn18>	@ada: That's nice.
+T 1507157724 18<Ceryn18>	I'm attempting to get the external bridge network loaded now.
+T 1507157729 18<ada18>	https://docs.docker.com/compose/networking/#using-a-pre-existing-network
+T 1507157763 18<Ceryn18>	ada: I don't want the external bridge network to be default for the containers though.
+T 1507157777 18<ada18>	then you have t oput them on a different network
+T 1507157807 18<ada18>	they have to be attached to SOME network, so if you don't want them on the default bridge, you have to assign them somewhere else
+T 1507159507 18<Ceryn18>	Man, I can't seem to give "bridge" network to a container. It'll only accept user defined networks. Can I make a copy of bridge, which actually has internet access?
+T 1507159598 18<ada18>	Ceryn: you can create another bridge sure
+T 1507159614 18<ada18>	tbh I always recommend that people use user-defined networks
+T 1507159623 18<ada18>	the default "bridge" network lacks dns resolution for container names
+T 1507159656 18<ada18>	in the learning stages, it helps abstract away that part
+T 1507159664 18<Ceryn18>	Well, the user-defined network I'll create is also outside of the compose scope, so it won't have dns resolution either, right?
+T 1507159670 18<ada18>	no it will
+T 1507159685 18<ada18>	all of them, except the default bridge, are user-defined
+T 1507159694 18<ada18>	compose creates the network for you
+T 1507159698 18<ada18>	but its just a wrapper to the docker api
+T 1507159705 18<ada18>	its user-defined too
+T 1507159735 18<Ceryn18>	ls
+T 1507159741 18<Ceryn18>	Oops.
+T 1507159748 18<valzant18>	users r stoopid
+T 1507159774 18<ada18>	heres some docs on networking https://docs.docker.com/engine/userguide/networking/work-with-networks/#basic-container-networking-example
+T 1507159797 18<ada18>	https://docs.docker.com/engine/userguide/networking/#user-defined-networks
+T 1507160481 18<Ceryn18>	ada: Thanks. I've got the networks set up now. However, much to my surprise, my bridge-based user-defined network has internet access. So I've been doing the wrong thing. Can I create a network where nothing is accessible except other containers on the same network?
+T 1507160501 18<atomi18>	how can i troubleshoot `--detach-keys` not working
+T 1507161165 18<Ceryn18>	I can create a network using "bridge" as driver and even specify its subnet. But the containers on that network still have internet access. I'd want them to only be able to communicate with each other, nothing else.
+T 1507163276 18<Ceryn18>	EUREKA! docker network create --internal!
+T 1507163320 18<fryguy18>	what goes into the decision making process about when to use traefik versus linkerd versus istio?
+T 1507164185 18<Ceryn18>	ada: Thanks for the help! I got it all spinning now.
+T 1507164323 18<Ceryn18>	Docker's pretty sweet.
+T 1507165460 18<vans16318>	is there a way to speed up shutdown of docker container?
+T 1507165490 18<vans16318>	example. cntrl+c the running program in -it mode kills the container almost instantly, but using docker stop <name> takes like 10 sec
+T 1507175662 18<webguy02418>	hello, i moved a seeds.sql file into docker-entrypoint-initdb.d but it didn't seem to run. is there more I need to do?
+T 1507175677 18<[Kid]18>	anyone know why a bind-mount that is a NFS share on the host system would get operation not permitted in the container logs?
+T 1507175694 18<[Kid]18>	what is it trying to do to all the files i am mapping?
+T 1507175701 18<webguy02418>	using volumes `- ./assets/seeds.sql:/docker-entrypoint-initdb.d/seeds.sql`
+T 1507176545 18<webguy02418>	the answer is to my question apparently is restart it 3x :|
+T 1507176808 18<[Kid]18>	no ideas on my issues?
+T 1507194559 18<Nirvanko18>	Hi, I am getting npm ERR! code EAI_AGAIN when building am image. Those error issues rather npm or bower.The thing is it works fine if I start a container and run those programs from within it rather then in Dockerfile. Any ideas what might be wrong?
+T 1507194664 18<Nirvanko18>	EAI_AGAIN relates to nodejs dnslookup function, that thing is asynchronous and it makes plenty of that calls.
+T 1507201751 18<nazarewk18>	i've wrote a python script that prints stuff every second, when i run it with docker-compose run it works, but when i run it with docker-compose up it doesn't print anything at all or with a great delay
+T 1507202279 18<Lachezar18>	Hello all. Here it goes *sigh*...
+T 1507202357 18<Lachezar18>	I'm trying to test a PKCS#11 library with OpenSC's pkcs11-tool and PCSC/D in a docker (due to ugly dependencies). I have to somehow link the USB devices from the host into the docker container. Please advise! (Ubuntu 17.04 x86)
+T 1507203121 18<bweston9218>	Newb question, I use Docker swarm and I want to perform a dig to find all the ip addresses of a service that is replicated however it comes back with just one, how would I use dig (or any other DNS tool) to find all ip address of containers?
+T 1507206281 18<sheesh18>	Heh, I'm trying to do something similar
+T 1507206327 18<sheesh18>	Talking to the swarm master with the API, is it possible to get the addresses and port lists of containers that are running elsewhere?
+T 1507206350 18<sheesh18>	I'm trying to do some discovery, but it seems harder than it should be
+T 1507206398 18<sheesh18>	I mean containers that are managed as part of a swarm service, if that wasn't clear
+T 1507207198 18<bweston9218>	sheesh: I just want to learn the DNS lookup to get a list of all A records for services with the service name provided in the query
+T 1507207407 18<sheesh18>	bweston92: It's the service name that will get registered in DNS, which will route you to any one of the available containers
+T 1507207439 18<bweston9218>	Yes but it only returns 1 A record not an A record for each instance
+T 1507207444 18<sheesh18>	That's correct
+T 1507207450 18<bweston9218>	It is like it is a record for a load balancer
+T 1507207455 18<bweston9218>	Rather then an instance
+T 1507207456 18<sheesh18>	It works like that
+T 1507207461 18<sheesh18>	As a load balancer
+T 1507207476 18<bweston9218>	Yeah, so how would I stop that :p
+T 1507207481 18<sheesh18>	So you just connect to the name and it will route you to one of the instances
+T 1507207488 18<bweston9218>	I need them separated
+T 1507207498 18<sheesh18>	I guess run them as separate services?
+T 1507207506 18<sheesh18>	Then each one will get its own registration
+T 1507207525 18<bweston9218>	sheesh got to be a way of doing it without that :/
+T 1507207548 18<sheesh18>	The point of a service is to provide a load balanced group to access some thing
+T 1507207549 18<bweston9218>	I basically need to tell prometheus some service ip addresses to scrape
+T 1507207557 18<bweston9218>	Ah :/
+T 1507207559 18<sheesh18>	Heh, that's what I'm doing too :)
+T 1507207574 18<bweston9218>	Oh man
+T 1507207746 18<sheesh18>	The best I've been able to do so far is get the IP address(es) for the containers out of the API
+T 1507207762 18<sheesh18>	But it doesn't know about the exposed ports on the containers at that level
+T 1507207785 18<sheesh18>	They are listed if you're mapping them in swarm, but not if they're just exposed on the container
+T 1507208671 18<sheesh18>	bweston92: You might be able to use this: https://github.com/ContainerSolutions/prometheus-swarm-discovery
+T 1507208689 18<sheesh18>	Haven't tried it, but it looks sensible enough
+T 1507210130 18<GivenToCode18>	If I su $USER inside of my container, what is the right way to set the $PATH in my Dockerfile so that it is preserved?
+T 1507210246 18<jamiejackson18>	hi folks. i have source code, an app server, and a reverse proxy. i think the source code should be baked into the app server, but that source also needs to be available to the reverse proxy. how do i share that source code with the reverse proxy?
+T 1507210395 18<jamiejackson18>	GivenToCode: is this helpful? https://stackoverflow.com/a/38742545/1026263
+T 1507211354 18<gfurlan18>	Hello! I've got a docker-compose file with the definition of a volume, as follows: https://pastebin.com/ZjxvBHgh - problem is that when I try to mount it to a container's directory, it complains: "ERROR: for mongodb_rs0  Cannot create container for service mongodb_rs0: missing device in volume options". What am I missing?
+T 1507211461 18<larsks18>	GivenToCode: when you `su $USER`, bash will run the `.bashrc` file for `$USER` (assuming the shell is bash). You could modify that file to set $PATH to your desired value.  If you install sudo and run `sudo -u $USER somecommand`, $PATH will be preserved.
+T 1507211564 18<larsks18>	GivenToCode: the "runuser" command will also preserve the environment, and may already be installed.  e.g.: runuser -u $USER -- sh -c 'echo $PATH'
+T 1507212156 18<_geoff18>	can someone help me with this dilemma https://i.imgur.com/HLByo50.png
+T 1507212355 18<basro18>	is it possible to provide a github url to the FROM statement in a Dockerfile?
+T 1507212581 18<_geoff18>	basro: i don't think it would be
+T 1507212603 18<_geoff18>	the from is pointing at a reference to a built container
+T 1507212625 18<_geoff18>	if you wanted to use it as a base, you would have to build it your self and then reference it
+T 1507212645 18<basro18>	ok
+T 1507212680 18<basro18>	it's possible make something like it with docker compose?
+T 1507212702 18<_geoff18>	should be possible without docker compose too, but yes
+T 1507212704 18<saml_18>	how do I copy a file from docker container to host?  didn't start docker run with --volume   or port map
+T 1507212739 18<saml_18>	docker cp
+T 1507212890 18<basro18>	my problem is: I want to base a docker image on another docker image that is in a github repo, I could clone and build that image from the repo and then base my image on that
+T 1507212908 18<basro18>	but I'd like it to be automated
+T 1507212957 18<saml_18>	script it
+T 1507213017 18<_geoff18>	basro: i would have dockerhub build it for you
+T 1507213025 18<_geoff18>	then just reference it that way
+T 1507213153 18<basro18>	_geoff, what if the image needed to be private
+T 1507213182 18<basro18>	it's not the case, but I might need to do it like this for private things in the future
+T 1507213477 18<_geoff18>	then i suppose you would have to build it yourself locally
+T 1507213497 18<_geoff18>	which could be easily scripted
+T 1507213540 18<_geoff18>	there may be a dockerhub like thing you could use locally
+T 1507213862 18<ada18>	basro: you can have private image repos on dockerhub
+T 1507214582 18<Bubo18>	Error response from daemon: service and secret must have the same owner access label value: "username" != "admin"
+T 1507214586 18<Bubo18>	how do I fix this?
+T 1507214599 18<Bubo18>	"username" has admin permissions in UCP
+T 1507214842 18<Bubo18>	okay I set the label com.docker.ucp.access=admin and it works now
+T 1507215934 18<alpha112518>	https://pastebin.com/6FYSynFF <-- for some reason mysql won't take the root password set in the yaml.  I'm running "docker-compose up --build" to startup.  Ideas?
+T 1507215983 18<alpha112518>	if I'm not suppose to set the root password in there, and need to do so somewhere else, please do let me know.
+T 1507216598 18<gagalicious18>	how do i ulimit -l 10240 insde a docker container???
+T 1507217202 18<jamiejackson18>	hi folks. i have source code, an app server, and a reverse proxy. i think the source code should be baked into the app server, but that source also needs to be available to the reverse proxy. how do i share that source code with the reverse proxy?
+T 1507217245 18<gagalicious18>	how do i ulimit -l 10240 insde a docker container???
+T 1507217295 18<jamiejackson18>	gagalicious, is this helpful? https://stackoverflow.com/a/24331638/1026263
+T 1507217674 18<gagalicious18>	jamie, will try, thanks
+T 1507217704 18<gagalicious18>	for your question, u can use docker volume. and share the volume between two docker containers
+T 1507218222 18<mgolisch18>	why do your proxy need access to the application sourcecode..
+T 1507218665 18<programmerq18>	it's pretty common for static files to be checked in alongside the app server sourcecode.
+T 1507218826 18<vans16318>	damn
+T 1507218832 18<vans16318>	is there a way to get the commandline docker was run with?
+T 1507218853 18<vans16318>	docker-containerd-shim seems to kill my cmdline
+T 1507221814 18<lz1irq18>	Hello. I am trying to create an IPv6-only network in Docker with the macvlan driver. I use "--ipv6" and give the appropriate subnet and IP range information, but I still get a random IPv4 subnet assigned by docker.
+T 1507221836 18<lz1irq18>	I looked through github issues and this seems to be a known problem and requested feature. Does anyone have a workaround?
+T 1507221866 18<FinalX18>	simple answer is you can't; I've been thoroughly researching it as well
+T 1507221872 18<FinalX18>	and it's kinda really, really stupid
+T 1507221896 18<lz1irq18>	I've been thinking about adding code in my application to remove the ipv4 addresses, but that's starting to get into ugly hack teritorry
+T 1507221922 18<FinalX18>	i wouldn't recommend it; you can disable NAT for the range and/or use a non-routable range, but both are icky as well
+T 1507221972 18*	FinalX would also like a real ipv6-only network in docker
+T 1507221973 18<lz1irq18>	I'm starting to think a custom network driver is my only option, although I don't want to go that way either
+T 1507221979 18<FinalX18>	yeah..
+T 1507222004 18<lz1irq18>	So basically I'm SOL :(
+T 1507222016 18<ada18>	ipv6 support in docker is still very work-in-progress
+T 1507222068 18<lz1irq18>	I've also been looking into using LXD for this, with their new network mgmt feature (which seems rather Docker-like) it might be doable
+T 1507222073 18<FinalX18>	at least you have it.... we got a peering request from some hosting company that doesn't, we rejected it on basis of not doing ipv6 :)
+T 1507222086 18<lz1irq18>	although I think my use case is more suited to docker
+T 1507222129 18<FinalX18>	lz1irq: LXD is more limited than plain LXC as well, mind you. It's set to make things easier if you don't want much, but custom stuff is harder to do than just using plain LXC.
+T 1507222193 18<lz1irq18>	I think it's flexible enough for my needs (if it does not have similar issues with IPv6)
+T 1507222277 18<lz1irq18>	I need to be able to switch between several different network configurations on the fly
+T 1507223617 18<bgupta18>	Is there a way to use docker pull without storing my image in hub or registry? It would be really useful to just be able to store an image repo in something like s3 and have it be able to pull and update images straight from there.
+T 1507223643 18<bgupta18>	(Like move some of the smarts into the docker cli)
+T 1507223719 18<ada18>	bgupta: you can run your own registry on your network
+T 1507223781 18<bgupta18>	ada: Thanks.. I saw that, I can use an s3 storage driver with oss docker registry, but I was trying to avoid running even that.
+T 1507224119 18<harushimo18>	can someone tell me the difference between the store and hub for docker?
+T 1507224127 18<harushimo18>	did the store replace the hub?
+T 1507224130 18<programmerq18>	it's kind of the same thing
+T 1507224143 18<programmerq18>	store has paid image as a feature, and hub is more community-centric.
+T 1507224152 18<programmerq18>	store is more curated content
+T 1507224163 18<harushimo18>	that makes sense
+T 1507224165 18<programmerq18>	but at the end of the day, they are both basically frontends to the same official registry.
+T 1507224177 18<programmerq18>	and you log in to both with the same docker id system.
+T 1507224197 18<harushimo18>	thank you
+T 1507224214 18<programmerq18>	sure thing. :)
+T 1507224234 18<harushimo18>	I need to get the hello world container because I'm setting up was was scenario 2
+T 1507224237 18<harushimo18>	I mean aws
+T 1507224263 18<harushimo18>	i'm finishing up the script for terraform. thats why I asking
+T 1507225963 18<linuxhiker18>	In newer versions of Docker we can use realtime as well as CFS for the scheduler, how does that interact with setting the underlying OS to DEADLINE for database applications?
+T 1507226463 18<vans16318>	is there a way to -v mount a volume to have COW inside the container?
+T 1507226592 18<vans16318>	seems overlayfs is the way to go?
+T 1507227077 18<vans16318>	but that requires caps :(
+T 1507227080 18<vans16318>	SYS_ADMIN
+T 1507228573 18<saml_18>	how do i copy a file from host to running container
+T 1507228615 18<saml_18>	docker cp
+T 1507233907 18<xterm18>	Hello everyone, can anyone please correct my assumption? in the following scenario, i assumed that c1 and c2 cannot *see* each others without being explicitely --link'ed https://dpaste.de/0WiX
+T 1507234246 18<Ceryn18>	xterm: Afaik docker containers are run with the "bridge" network by default.
+T 1507234268 18<xterm18>	Ceryn: I _just_ reached that section in the docs, thanks a lot. It's clear now!
+T 1507234358 18<Ceryn18>	xterm: :) If you want them to be isolated from each other you can just run them with --network mynet1 for one and --network mynet2 for the other, where the networks are created using `docker network create --driver bridge mynet1`
+T 1507234493 18<applecrumble18>	Hello, I'm getting an odd error in one of my containers, 'local user with ID 1000050000 does not exist'
+T 1507234527 18<applecrumble18>	It seems as though docker uses this UID, because when I check processes running under that name, I find the name of the container
+T 1507234593 18<mgolisch18>	where do you get that error?
+T 1507234688 18<applecrumble18>	While trying to connect to a separate PostgreSQL container through SQLAlchemy in python3.5
+T 1507235079 18<mgolisch18>	do you connect to the db using a username and password?
+T 1507235120 18<Kingsy18>	whats the easiest way of getting a docker container up and running with docker-compose that has mysql running on it?
+T 1507235143 18<applecrumble18>	mgolisch: yes, would that change anything though?
+T 1507235143 18<Kingsy18>	I also have some fixtures I want to import into mysql so I guess I'll need to modify the dockerfile
+T 1507235478 18<mgolisch18>	applecrumble: iam just wondering why it tries to lookup a system user, like it was configured to authenticate using os level authentication or something
+T 1507235621 18<Forlorn18>	Hi, is it possible to create like a docker-compose or something similar, where I can have all the containers running on a virtual network?
+T 1507235684 18<Forlorn18>	Like I might have the entire backend on some arbitrary network slot e.g 172.16.0.1 (runs multiple containers)
+T 1507235698 18<Forlorn18>	e.g mongodb, memcache, and an api.
+T 1507235907 18<Kingsy18>	actually rephrase, if I use this --> https://docs.docker.com/samples/library/mysql/ <- can I supply some fixtures that will import into mysql on compose?
+T 1507236033 18<programmerq18>	Kingsy▸ see https://hub.docker.com/_/mysql/ See the "Initializing a fresh instance" section.
+T 1507236093 18<Kingsy18>	perfect thankyou
+T 1507236381 18<dex198318>	hi
+T 1507236411 18<dex198318>	I always get: Error response from daemon: No such container: alpine
+T 1507236465 18<programmerq18>	you probably don't have a container named 'alpine'
+T 1507236474 18<dex198318>	"docker images" says: alpine              latest              76da55c8019d        3 weeks ago         3.97MB
+T 1507236482 18<programmerq18>	images and container's aren't the same thing.
+T 1507236484 18<dex198318>	so I do not understand that :(
+T 1507236494 18<dex198318>	oh :-(
+T 1507236503 18<dex198318>	😃
+T 1507236516 18<programmerq18>	an image is an immutable filesystem image that can have one or more layers. a container requires an image to work since it will need something in its own filesystem to be able to do anything.
+T 1507236553 18<dex198318>	Ah alright
+T 1507236708 18<Kingsy18>	programmerq: have you used this before? I have put the .sql file mounted within the folder it stated, I also set a root password mysql user and password however when I exec in the container I cant login to mysql, it says access denied
+T 1507236717 18<Kingsy18>	so I am don't konw if the import happened successfully
+T 1507236748 18<mgolisch18>	using the same password
+T 1507236755 18<Kingsy18>	yes
+T 1507236762 18<mgolisch18>	that should work unless your imported sql changes the users or something
+T 1507236782 18<Kingsy18>	hrm, let me remove the .sql file
+T 1507236784 18<Kingsy18>	see if it works
+T 1507236785 18<dex198318>	great thanks :)
+T 1507236977 18<Kingsy18>	mgolisch: naa that just doesnt work, when I change the docker-compose do I need to do anything special other than just stopping the cotnainer than running docker-compose up again?
+T 1507237027 18<Kingsy18>	I cant login regardless of the .sql being thre, strange.
+T 1507237058 18<mgolisch18>	try to echo the $MYSQL_USER $MYSQL_PASSWORD and see if they are what you think
+T 1507237082 18<mgolisch18>	also those passwords are only applied if the container creates a new mysql datadir
+T 1507237093 18<mgolisch18>	if you use existng database files the passwords will not be changed
+T 1507237105 18<mgolisch18>	like if reusing volumes from a previous container
+T 1507237128 18<Kingsy18>	yeah the username and password is correct
+T 1507237150 18<Kingsy18>	hm what do you mean? how do you get it to create a new mysql datadir? is that a variable I set in dockre-compose ?
+T 1507237246 18<Kingsy18>	I mean the docker-compose doenst really get any simpler --> https://hastebin.com/agunirapej.pl
+T 1507237275 18<dex198318>	And how I can autostart a docker container after rebooting I am using Ubuntu for docker hosting?
+T 1507237337 18<mgolisch18>	set its restart-policy
+T 1507237368 18<Kingsy18>	what do you mean? rather than restart: always?
+T 1507237389 18<Kingsy18>	there isnt any information about that ont he mysql doc page
+T 1507237393 18<Kingsy18>	just says to use that
+T 1507237394 18<dex198318>	when I reboot the host machine all docker container are offline
+T 1507237415 18<mgolisch18>	dex1983: yeah change their restart-policy its no by default
+T 1507237430 18<mgolisch18>	https://docs.docker.com/engine/admin/start-containers-automatically/
+T 1507237439 18<Kingsy18>	oh, haha sorry I thought you were talking to me there.
+T 1507237594 18<mgolisch18>	Kingsy: the compose file seems fine
+T 1507237600 18<Kingsy18>	:(
+T 1507237605 18<mgolisch18>	sure you didnt have other passwords before or something?
+T 1507237636 18<Kingsy18>	what do you by before? its a brand new image right? totally clean
+T 1507237696 18<mgolisch18>	maybe try docker-compose down just to be sure it deletes the volumes you start fresh
+T 1507237772 18<Kingsy18>	oh bloody hell
+T 1507237774 18<Kingsy18>	tthqt worked
+T 1507237788 18<Kingsy18>	so it was caching an old version or soemthing?
+T 1507237851 18<mgolisch18>	no idea, my guess was you changed the passwords between runs or something
+T 1507238069 18<Kingsy18>	well thanks for the help :)
+T 1507238791 18<Forlorn18>	How can my containers find each other in a network?
+T 1507238806 18<Forlorn18>	Like for instance if I have mongodb and some api?
+T 1507238812 18<Forlorn18>	how can the api connect to the mongodb?
+T 1507238820 18<Forlorn18>	should I map some hostname to each container?
+T 1507238901 18<dex198318>	thank you worked :)
+T 1507239147 18<mgolisch18>	Forlorn: put them into the same network then you can access them by their container name
+T 1507239190 18<mgolisch18>	https://docs.docker.com/engine/userguide/networking/#user-defined-networks
+T 1507241212 18<Forlorn18>	mgolisch, yes, I got that working!
+T 1507241251 18<Forlorn18>	however a docker-composer has a network gateway e.g 172.23.0.1
+T 1507241270 18<Forlorn18>	for all the different containers
+T 1507241288 18<Forlorn18>	I would like to expose all ports there
+T 1507241306 18<Forlorn18>	172.23.0.1:80, 172.23.0.1:3000, etc.
+T 1507241322 18<Forlorn18>	but I don't want to expose it to localhost
+T 1507241335 18<Forlorn18>	because that means I could have multiple networks containing stacks
+T 1507241355 18<Forlorn18>	and eventually I could map each network with a name e.g some-project
+T 1507241434 18<Forlorn18>	the I could have multiple stacks running simultaneously, e.g multiple mongodb, nodejs applications
+T 1507241450 18<Forlorn18>	running on the same ports but on different virtual networks
+T 1507241494 18<mgolisch18>	?
+T 1507241604 18<Forlorn18>	If I have containers A,B,C running in a network running on ports 1,2,3. Can I port forward 1,2,3 to the gateway or something like that?
+T 1507241614 18<Forlorn18>	like I would do with a router?
+T 1507241620 18<mgolisch18>	why?
+T 1507241639 18<Forlorn18>	because A,B,C is one project stack
+T 1507241759 18<mgolisch18>	think you can publish ports on a specific interface
+T 1507241812 18<Forlorn18>	but doesn't the network act like a router? Can't I just portforward?
+T 1507241872 18<mgolisch18>	thats what publishing ports does
+T 1507242625 18<Forlorn18>	Why can't I port forward the networks interface instead of directly on to the host machine?
+T 1507242648 18<Forlorn18>	Maybe I can achieve this with swarms
+T 1507242651 18<Forlorn18>	or with kubernetes
+T 1507242671 18<Forlorn18>	but it seems I could achieve this without them.
+T 1507242731 18<mgolisch18>	?
+T 1507242746 18<mgolisch18>	all ips docker uses are on the host machine, not sure what you mean
+T 1507242976 18<Forlorn18>	I see, I thought that docker added virtual NICs
+T 1507242990 18<Forlorn18>	What I really want to simulate
+T 1507243003 18<Forlorn18>	is to have a virtual host machine
+T 1507243015 18<Forlorn18>	like an in-between host
+T 1507243036 18<Forlorn18>	like a proxy
+T 1507243041 18<Forlorn18>	proxy host
+T 1507243084 18<Forlorn18>	as it is now, I can't have multiple stacks up and runing at the same time
+T 1507243088 18<Forlorn18>	since ports clashes
+T 1507243114 18<mgolisch18>	use a proxy container?
+T 1507243127 18<mgolisch18>	or like it said publish to different ips on the host
+T 1507243214 18<Forlorn18>	what ips are available for the host?
+T 1507243238 18<mgolisch18>	all that you configured on it?
+T 1507243255 18<Forlorn18>	so I need to configure ips on the host, I see.
+T 1507243297 18<Forlorn18>	and the procedure to configure ips on the host is different depending on the OS environment
+T 1507243322 18<Forlorn18>	^ not a solid solution
+T 1507243409 18<mgolisch18>	why?
+T 1507243438 18<mgolisch18>	if it were apps running on the host directly the same would be required
+T 1507243503 18<mgolisch18>	maybe just use a proxy container then
+T 1507243511 18<Forlorn18>	If I have a home network, with a router
+T 1507243518 18<Forlorn18>	I could have 6 machines with different applications
+T 1507243528 18<Forlorn18>	I could choose to expose whatever from each machine
+T 1507243548 18<Forlorn18>	then I can go to the router and port forward 1,2,3 from any machine of my choice
+T 1507243560 18<Forlorn18>	then my network is exposing 1,2,3
+T 1507243582 18<mgolisch18>	yeah same with docker published ports
+T 1507243588 18<Forlorn18>	so the public address to that router is exposing 1,2,3 which are then routed to the machines
+T 1507243683 18<mgolisch18>	still dont understand the problem
+T 1507243685 18<Forlorn18>	mgolisch, but the router in this case is the localhost
+T 1507243709 18<Forlorn18>	router public address it the localhost or 0.0.0.0 by default
+T 1507243739 18<Forlorn18>	I want it to be the network gateway
+T 1507243781 18<mgolisch18>	still dont get it
+T 1507243848 18<Forlorn18>	(machines) -> (router) -> (the world)
+T 1507243862 18<Forlorn18>	(containers) -> (network) -> (the host machine)
+T 1507243904 18<Forlorn18>	machines are behind a router.
+T 1507243908 18<Forlorn18>	containers are behind a network
+T 1507243952 18<Forlorn18>	a router can port forward, and then we can access its public IP and the port forwarded
+T 1507243962 18<Forlorn18>	how can we do the same for a docker network?
+T 1507243969 18<mgolisch18>	yeah same with docker published port
+T 1507243978 18<Bubo18>	I don't think you can, need to go through the host
+T 1507244013 18<Forlorn18>	mgolisch, no, it is not the same. Because you have a different public IP than me
+T 1507244028 18<mgolisch18>	it does exactly that, creates portforwarding(destination nat) so you external host can access those ports of your containers
+T 1507244029 18<Forlorn18>	mgolisch, meaning that you can host port 3000, and I can host port 3000
+T 1507244074 18<Forlorn18>	with how docker currently does it, I can't host the same port
+T 1507244089 18<Forlorn18>	all Iwant to be able to do is: some_project:3000, some_other_project:3000
+T 1507244091 18<mgolisch18>	same port?
+T 1507244113 18<mgolisch18>	you cant with your router either unless you had multiple public ips
+T 1507244113 18<Forlorn18>	hosting simultaneously two projects on my machine
+T 1507244121 18<Forlorn18>	mgolisch, yes
+T 1507244141 18<Forlorn18>	mgolisch, you are on a network with a router, and I am on a network with a router.
+T 1507244195 18<mgolisch18>	use different ports? or different ips
+T 1507244200 18<mgolisch18>	like you would with your router
+T 1507244279 18<Forlorn18>	so I need to create a virtual network to get a new ip address?
+T 1507244282 18<Bubo18>	so you need something like a reverse proxy?
+T 1507244289 18<Bubo18>	that routes based on domain or w/e
+T 1507244294 18<mgolisch18>	yeah or use a proxy container
+T 1507244372 18<Forlorn18>	maybe I could create more loopback devices?
+T 1507244379 18<Forlorn18>	with different addresses?
+T 1507244390 18<mgolisch18>	no you just another ip to you network interface
+T 1507244391 18<Forlorn18>	and then publish ports to them
+T 1507244399 18<Forlorn18>	ah
+T 1507244405 18<mgolisch18>	or do you only need it localy on the host
+T 1507244407 18<mgolisch18>	?
+T 1507244411 18<Forlorn18>	only locally
+T 1507244417 18<mgolisch18>	then the loopback stuff might be enough
+T 1507244427 18<mgolisch18>	or just use different ports? if its just localy anyways
+T 1507244441 18<Forlorn18>	but I have like 7 projects
+T 1507244507 18<Forlorn18>	I would like docker to just create a new loopback device and assign a hostname to it for each project
+T 1507244526 18<Forlorn18>	so I can access my project stacks directly
+T 1507244558 18<mgolisch18>	using different ports prevents that?
+T 1507244618 18<Forlorn18>	it is much harder keeping track of 7 times 4 different ports
+T 1507244624 18<Forlorn18>	than just hostnames
+T 1507244648 18<Forlorn18>	somewebsite.local
+T 1507244657 18<Forlorn18>	some_other_website.local
+T 1507244662 18<Forlorn18>	it's easy
+T 1507244698 18<Forlorn18>	then you can have as many as you like without caring about memorizing a ton of ports
+T 1507244810 18<mgolisch18>	create some more loopback interfaces then with additional addresses
+T 1507248140 18<vans16318>	any creative solutions for an overlay fs?
+T 1507248149 18<vans16318>	without giving SYS_ADMIN cap
+T 1507252103 18<Cyb3r-Assassin18>	I'm just starting to look into docker options and had a couple fundamental questions. How does it differ from a packed VM? Does it not invoke all the hardware virtualized? Secondly if the application being ran in a docker e.g. apache Tomcat with Jboss is the full system compromised or just the data inside the docker?
+T 1507252153 18<Cyb3r-Assassin18>	application being ran is compromised*
+T 1507252582 18<bankai18>	docker is user-level virtualisation, i guess you'd say, your application lives inside a container and can only see the resources (ports,network, mountpoints) that you let it. If your application gets compromised, then everything in your container can be affected. If you have mountpoints shared between containers, the compromise 'can' spread
+T 1507252642 18<Spec18>	it's not really virtualization
+T 1507252665 18<bankai18>	there's "little" (not none) chance that a compromised container will leak into the host
+T 1507252937 18<Cyb3r-Assassin18>	bankai: what is preventing me from seeing the host data on ~/ from a compromised container?
+T 1507253041 18<Cyb3r-Assassin18>	or from executing data as host @USER from any shared mount point residing on ~/?
+T 1507253054 18<Cyb3r-Assassin18>	"I'm looking to understand lateral movement"
+T 1507253083 18<bankai18>	unless you've mounted directories in, your container won't be able to see the host filesystem
+T 1507253136 18<Cyb3r-Assassin18>	bankai: so any RCE would exist inside the container. Any breakout would require executing code in a memory space outside of the container.
+T 1507253450 18<bankai18>	have a read of this: https://docs.docker.com/engine/security/security/ it explains it better than i can
+T 1507253496 18<bankai18>	you would need to exploit multiple levels to 1) gain root in a container, 2) break out of the container, 3) get around SELinux (if you're using it) and 4) get 'real' root
+T 1507253606 18<bankai18>	there's also a few different ways to DOS, but it depeneds on your setup, like anything
+T 1507254005 18<Cyb3r-Assassin18>	bankai: thank you for the information. Much appreciated.

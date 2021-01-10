@@ -1,0 +1,4 @@
+T 1587147379 19*	Now talking on 22#channel
+T 1587147398 Python interface unloaded
+T 1587147412 19*	Now talking on 22#channel
+T 1587147517 19*	Now talking on 22#channel

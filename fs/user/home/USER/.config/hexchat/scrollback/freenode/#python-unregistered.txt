@@ -1,0 +1,502 @@
+T 1551758987 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551758987 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551759527 20*	Disconnected (20Remote host closed socket)
+T 1551759553 19*	Now talking on 22#python-unregistered
+T 1551759553 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551759553 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551761816 20*	Disconnected (20Connection timed out)
+T 1551761839 19*	Now talking on 22#python-unregistered
+T 1551761839 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551761839 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551763317 20*	Disconnected (20Connection timed out)
+T 1551763341 19*	Now talking on 22#python-unregistered
+T 1551763341 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551763341 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551764503 20*	Disconnected (20Invalid argument)
+T 1551764526 19*	Now talking on 22#python-unregistered
+T 1551764526 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551764526 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551766702 20*	Disconnected (20Connection timed out)
+T 1551766728 19*	Now talking on 22#python-unregistered
+T 1551766728 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551766728 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551767188 20*	Disconnected (20Remote host closed socket)
+T 1551767214 19*	Now talking on 22#python-unregistered
+T 1551767214 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551767214 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551769930 20*	Disconnected (20Connection timed out)
+T 1551769956 19*	Now talking on 22#python-unregistered
+T 1551769956 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551769956 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551771053 20*	Disconnected (20Remote host closed socket)
+T 1551771076 19*	Now talking on 22#python-unregistered
+T 1551771076 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551771076 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551772723 20*	Disconnected (20Connection timed out)
+T 1551772790 20*	Disconnected (20Remote host closed socket)
+T 1551772816 19*	Now talking on 22#python-unregistered
+T 1551772816 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551772816 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551774886 20*	Disconnected (20Connection timed out)
+T 1551774910 19*	Now talking on 22#python-unregistered
+T 1551774910 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551774910 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551777520 20*	Disconnected (20Connection timed out)
+T 1551777546 19*	Now talking on 22#python-unregistered
+T 1551777546 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551777546 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551778533 20*	Disconnected (20Invalid argument)
+T 1551778558 19*	Now talking on 22#python-unregistered
+T 1551778558 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551778558 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551780172 20*	Disconnected (20Invalid argument)
+T 1551780196 19*	Now talking on 22#python-unregistered
+T 1551780196 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551780196 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551781542 20*	Disconnected (20Invalid argument)
+T 1551781566 19*	Now talking on 22#python-unregistered
+T 1551781566 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551781566 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551784442 20*	Disconnected (20Connection timed out)
+T 1551784466 19*	Now talking on 22#python-unregistered
+T 1551784466 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551784466 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551785027 20*	Disconnected (20Remote host closed socket)
+T 1551785049 19*	Now talking on 22#python-unregistered
+T 1551785049 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551785049 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551786463 20*	Disconnected (20Invalid argument)
+T 1551786489 19*	Now talking on 22#python-unregistered
+T 1551786489 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551786489 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551787080 20*	Disconnected (20Connection reset by peer)
+T 1551787105 19*	Now talking on 22#python-unregistered
+T 1551787105 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551787105 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551788495 20*	Disconnected (20Connection reset by peer)
+T 1551788521 19*	Now talking on 22#python-unregistered
+T 1551788521 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551788521 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551790725 20*	Disconnected (20Connection timed out)
+T 1551790751 19*	Now talking on 22#python-unregistered
+T 1551790751 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551790751 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551793576 20*	Disconnected (20Connection timed out)
+T 1551793598 19*	Now talking on 22#python-unregistered
+T 1551793598 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551793598 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551795812 20*	Disconnected (20Connection timed out)
+T 1551795839 19*	Now talking on 22#python-unregistered
+T 1551795839 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551795839 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551797211 20*	Disconnected (20Connection timed out)
+T 1551797234 19*	Now talking on 22#python-unregistered
+T 1551797234 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551797234 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551798710 20*	Disconnected (20Connection timed out)
+T 1551798734 19*	Now talking on 22#python-unregistered
+T 1551798734 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551798734 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551800207 20*	Disconnected (20Connection timed out)
+T 1551800231 19*	Now talking on 22#python-unregistered
+T 1551800231 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551800231 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551800837 20*	Disconnected (20Remote host closed socket)
+T 1551800861 19*	Now talking on 22#python-unregistered
+T 1551800861 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551800861 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551803146 20*	Disconnected (20Connection timed out)
+T 1551803168 19*	Now talking on 22#python-unregistered
+T 1551803168 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551803168 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551804832 20*	Disconnected (20Connection timed out)
+T 1551804856 19*	Now talking on 22#python-unregistered
+T 1551804856 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551804856 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551806505 20*	Disconnected (20Connection timed out)
+T 1551806527 19*	Now talking on 22#python-unregistered
+T 1551806527 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551806527 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551808098 20*	Disconnected (20Connection timed out)
+T 1551808126 19*	Now talking on 22#python-unregistered
+T 1551808126 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551808126 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551809565 20*	Disconnected (20Connection timed out)
+T 1551809590 19*	Now talking on 22#python-unregistered
+T 1551809590 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551809590 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551811107 20*	Disconnected (20Connection timed out)
+T 1551811132 19*	Now talking on 22#python-unregistered
+T 1551811132 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551811132 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551812512 20*	Disconnected (20Connection timed out)
+T 1551812537 19*	Now talking on 22#python-unregistered
+T 1551812537 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551812537 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551814160 20*	Disconnected (20Connection timed out)
+T 1551814186 19*	Now talking on 22#python-unregistered
+T 1551814186 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551814186 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551815686 20*	Disconnected (20Connection timed out)
+T 1551815711 19*	Now talking on 22#python-unregistered
+T 1551815711 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551815711 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551817392 20*	Disconnected (20Connection timed out)
+T 1551817418 19*	Now talking on 22#python-unregistered
+T 1551817418 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551817418 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551818924 20*	Disconnected (20Connection timed out)
+T 1551818950 19*	Now talking on 22#python-unregistered
+T 1551818950 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551818950 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551820341 20*	Disconnected (20Connection timed out)
+T 1551820364 19*	Now talking on 22#python-unregistered
+T 1551820364 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551820364 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551821902 20*	Disconnected (20Connection timed out)
+T 1551821926 19*	Now talking on 22#python-unregistered
+T 1551821926 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551821926 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551823401 20*	Disconnected (20Connection timed out)
+T 1551823426 19*	Now talking on 22#python-unregistered
+T 1551823426 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551823426 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551823733 20*	Disconnected (20Remote host closed socket)
+T 1551823758 19*	Now talking on 22#python-unregistered
+T 1551823758 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551823758 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551825078 20*	Disconnected (20Connection timed out)
+T 1551825100 19*	Now talking on 22#python-unregistered
+T 1551825100 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551825100 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551826526 20*	Disconnected (20Invalid argument)
+T 1551826551 19*	Now talking on 22#python-unregistered
+T 1551826551 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551826551 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551827962 20*	Disconnected (20Connection timed out)
+T 1551827986 19*	Now talking on 22#python-unregistered
+T 1551827986 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551827986 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551829230 20*	Disconnected (20Invalid argument)
+T 1551829256 19*	Now talking on 22#python-unregistered
+T 1551829256 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551829256 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551829507 20*	Disconnected (20Remote host closed socket)
+T 1551829530 19*	Now talking on 22#python-unregistered
+T 1551829530 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551829530 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551832285 20*	Disconnected (20Connection timed out)
+T 1551832308 19*	Now talking on 22#python-unregistered
+T 1551832308 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551832308 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551834497 20*	Disconnected (20Connection timed out)
+T 1551834521 19*	Now talking on 22#python-unregistered
+T 1551834521 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551834521 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551836062 20*	Disconnected (20Connection timed out)
+T 1551836086 19*	Now talking on 22#python-unregistered
+T 1551836086 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551836086 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551837315 20*	Disconnected (20Connection timed out)
+T 1551837341 19*	Now talking on 22#python-unregistered
+T 1551837341 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551837341 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551839625 20*	Disconnected (20Connection timed out)
+T 1551839651 19*	Now talking on 22#python-unregistered
+T 1551839651 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551839651 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551840856 20*	Disconnected (20Invalid argument)
+T 1551840880 19*	Now talking on 22#python-unregistered
+T 1551840880 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551840880 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551841731 20*	Disconnected (20Remote host closed socket)
+T 1551841755 19*	Now talking on 22#python-unregistered
+T 1551841755 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551841755 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551842904 20*	Disconnected (20Connection timed out)
+T 1551842931 19*	Now talking on 22#python-unregistered
+T 1551842931 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551842931 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551843480 20*	Disconnected (20Connection reset by peer)
+T 1551843506 19*	Now talking on 22#python-unregistered
+T 1551843506 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551843506 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551844387 20*	Disconnected (20Remote host closed socket)
+T 1551844410 19*	Now talking on 22#python-unregistered
+T 1551844410 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551844410 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551845853 20*	Disconnected (20Invalid argument)
+T 1551845876 19*	Now talking on 22#python-unregistered
+T 1551845876 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551845876 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551847692 20*	Disconnected (20Connection timed out)
+T 1551847716 19*	Now talking on 22#python-unregistered
+T 1551847716 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551847716 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551849406 20*	Disconnected (20Connection timed out)
+T 1551849430 19*	Now talking on 22#python-unregistered
+T 1551849430 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551849430 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551850893 20*	Disconnected (20Invalid argument)
+T 1551850919 19*	Now talking on 22#python-unregistered
+T 1551850919 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551850919 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551852947 20*	Disconnected (20Connection timed out)
+T 1551852971 19*	Now talking on 22#python-unregistered
+T 1551852971 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551852971 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551854504 20*	Disconnected (20Invalid argument)
+T 1551854528 19*	Now talking on 22#python-unregistered
+T 1551854528 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551854528 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551855026 20*	Disconnected (20Remote host closed socket)
+T 1551855048 19*	Now talking on 22#python-unregistered
+T 1551855048 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551855048 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551856851 20*	Disconnected (20Connection timed out)
+T 1551856876 19*	Now talking on 22#python-unregistered
+T 1551856876 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551856876 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551859333 20*	Disconnected (20Connection timed out)
+T 1551859359 19*	Now talking on 22#python-unregistered
+T 1551859359 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551859359 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551859807 20*	Disconnected (20Remote host closed socket)
+T 1551859830 19*	Now talking on 22#python-unregistered
+T 1551859830 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551859830 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551861713 20*	Disconnected (20Connection timed out)
+T 1551861739 19*	Now talking on 22#python-unregistered
+T 1551861739 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551861739 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551863058 20*	Disconnected (20Invalid argument)
+T 1551863084 19*	Now talking on 22#python-unregistered
+T 1551863084 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551863084 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551865426 20*	Disconnected (20Connection timed out)
+T 1551865450 19*	Now talking on 22#python-unregistered
+T 1551865450 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551865450 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551866847 20*	Disconnected (20Connection timed out)
+T 1551866871 19*	Now talking on 22#python-unregistered
+T 1551866871 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551866871 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551868070 20*	Disconnected (20Invalid argument)
+T 1551868127 20*	Disconnected (20Remote host closed socket)
+T 1551868151 19*	Now talking on 22#python-unregistered
+T 1551868151 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551868151 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551870081 20*	Disconnected (20Connection timed out)
+T 1551870108 19*	Now talking on 22#python-unregistered
+T 1551870108 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551870108 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551870727 20*	Disconnected (20Remote host closed socket)
+T 1551870750 19*	Now talking on 22#python-unregistered
+T 1551870750 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551870750 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551873266 20*	Disconnected (20Connection timed out)
+T 1551873312 20*	Disconnected (20Remote host closed socket)
+T 1551873370 20*	Disconnected (20Remote host closed socket)
+T 1551873392 19*	Now talking on 22#python-unregistered
+T 1551873392 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551873392 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551874910 20*	Disconnected (20Connection timed out)
+T 1551874932 19*	Now talking on 22#python-unregistered
+T 1551874932 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551874932 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551877478 20*	Disconnected (20Connection timed out)
+T 1551877502 19*	Now talking on 22#python-unregistered
+T 1551877502 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551877502 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551880821 20*	Disconnected (20Connection timed out)
+T 1551880847 19*	Now talking on 22#python-unregistered
+T 1551880847 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551880847 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551883149 20*	Disconnected (20Connection timed out)
+T 1551883172 19*	Now talking on 22#python-unregistered
+T 1551883172 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551883172 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551885230 20*	Disconnected (20Connection timed out)
+T 1551885257 19*	Now talking on 22#python-unregistered
+T 1551885257 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551885257 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551886838 20*	Disconnected (20Connection timed out)
+T 1551886863 19*	Now talking on 22#python-unregistered
+T 1551886863 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551886863 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551888355 20*	Disconnected (20Invalid argument)
+T 1551888382 19*	Now talking on 22#python-unregistered
+T 1551888382 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551888382 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551888647 20*	Disconnected (20Remote host closed socket)
+T 1551888669 19*	Now talking on 22#python-unregistered
+T 1551888669 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551888669 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551889541 20*	Disconnected (20Connection reset by peer)
+T 1551889567 19*	Now talking on 22#python-unregistered
+T 1551889567 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551889567 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551891433 20*	Disconnected (20Connection timed out)
+T 1551891457 19*	Now talking on 22#python-unregistered
+T 1551891457 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551891457 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551892207 20*	Disconnected (20Remote host closed socket)
+T 1551892230 19*	Now talking on 22#python-unregistered
+T 1551892230 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551892230 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551894522 20*	Disconnected (20Connection timed out)
+T 1551894545 19*	Now talking on 22#python-unregistered
+T 1551894545 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551894545 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551896273 20*	Disconnected (20Connection timed out)
+T 1551896299 19*	Now talking on 22#python-unregistered
+T 1551896299 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551896299 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551897553 20*	Disconnected (20Connection timed out)
+T 1551897577 19*	Now talking on 22#python-unregistered
+T 1551897577 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551897577 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551898722 20*	Disconnected (20Remote host closed socket)
+T 1551898745 19*	Now talking on 22#python-unregistered
+T 1551898745 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551898745 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551900152 20*	Disconnected (20Invalid argument)
+T 1551900175 19*	Now talking on 22#python-unregistered
+T 1551900175 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551900175 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551901999 20*	Disconnected (20Connection timed out)
+T 1551902025 19*	Now talking on 22#python-unregistered
+T 1551902025 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551902025 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551904303 20*	Disconnected (20Connection timed out)
+T 1551904353 20*	Disconnected (20Remote host closed socket)
+T 1551904375 19*	Now talking on 22#python-unregistered
+T 1551904375 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551904375 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551905604 20*	Disconnected (20Connection timed out)
+T 1551906601 20*	Disconnected (20Connection timed out)
+T 1551906626 19*	Now talking on 22#python-unregistered
+T 1551906626 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551906626 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551907175 20*	Disconnected (20Remote host closed socket)
+T 1551907201 19*	Now talking on 22#python-unregistered
+T 1551907201 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551907201 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551908680 20*	Disconnected (20Connection timed out)
+T 1551908706 19*	Now talking on 22#python-unregistered
+T 1551908706 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551908706 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551910304 20*	Disconnected (20Connection timed out)
+T 1551910330 19*	Now talking on 22#python-unregistered
+T 1551910330 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551910330 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551911414 20*	Disconnected (20Invalid argument)
+T 1551911440 19*	Now talking on 22#python-unregistered
+T 1551911440 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551911440 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551913607 20*	Disconnected (20Connection timed out)
+T 1551913630 19*	Now talking on 22#python-unregistered
+T 1551913630 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551913630 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551914867 20*	Disconnected (20Remote host closed socket)
+T 1551914890 19*	Now talking on 22#python-unregistered
+T 1551914890 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551914890 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551915997 20*	Disconnected (20Connection timed out)
+T 1551916273 20*	Disconnected (20Remote host closed socket)
+T 1551916297 19*	Now talking on 22#python-unregistered
+T 1551916297 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551916297 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551916397 24*	Blue__Hat has quit (Ping timeout: 255 seconds)
+T 1551916467 23*	Blue__Hat (~TwinKam20@216.10.217.23323) has joined
+T 1551918168 20*	Disconnected (20Connection timed out)
+T 1551918190 19*	Now talking on 22#python-unregistered
+T 1551918190 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551918190 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551918207 24*	sgt_chuckles has quit (Ping timeout: 240 seconds)
+T 1551919667 20*	Disconnected (20Connection timed out)
+T 1551919689 19*	Now talking on 22#python-unregistered
+T 1551919689 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551919689 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551919730 23*	ron_frown (~ronaldqfr@71-9-59-212.dhcp.atsc.ca.charter.com23) has joined
+T 1551919732 23*	python744 (c02983ff@gateway/web/freenode/ip.192.41.131.25523) has joined
+T 1551920824 20*	Disconnected (20Connection timed out)
+T 1551920851 19*	Now talking on 22#python-unregistered
+T 1551920851 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551920851 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551920852 24*	jmorris has quit (Ping timeout: 255 seconds)
+T 1551920852 24*	devbaka has quit (Ping timeout: 255 seconds)
+T 1551920874 23*	devbaka (~devbaka@p200300EAEBC3D9004C7157FFFE9E4C88.dip0.t-ipconnect.de23) has joined
+T 1551920906 23*	SickzZ (~SickzZ@p200300EAEBC3D9004C7157FFFE9E4C88.dip0.t-ipconnect.de23) has joined
+T 1551921071 24*	n7flysagain_ has quit (Remote host closed the connection)
+T 1551921079 23*	n7flysagain_ (~n7flysaga@104.251.94.5823) has joined
+T 1551921107 23*	Lanie (~Thunderbi@2001:5b0:42c7:ec58:e05a:5d8:1d23:9fb223) has joined
+T 1551921147 24*	bethebun1y has quit (Ping timeout: 240 seconds)
+T 1551921249 23*	v01d4lph4_ (~v01d4lph4@122.162.6.12023) has joined
+T 1551921278 24*	harisu___ has quit (Quit: Connection closed for inactivity)
+T 1551921354 23*	elfatherbrown (~elfather@187.131.254.9823) has joined
+T 1551923030 20*	Disconnected (20Connection timed out)
+T 1551923055 19*	Now talking on 22#python-unregistered
+T 1551923055 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551923055 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551923064 23*	shmoon (~shmoon@li847-102.members.linode.com23) has joined
+T 1551923163 24*	Cesarr has quit (Ping timeout: 250 seconds)
+T 1551923201 23*	talin (~unknown@hydra.org23) has joined
+T 1551923201 24*	talin has quit (Changing host)
+T 1551923201 23*	talin (~unknown@unaffiliated/talin23) has joined
+T 1551923202 23*	sonicdee (~linushec@linus.powered.by.lunarbnc.net23) has joined
+T 1551923217 23*	Cesarr (~Cesar@celestin.ircube.org23) has joined
+T 1551923327 23*	fayesafe (~fayesafe@163.172.183.8823) has joined
+T 1551923481 24*	n7flysagain_ has quit (Remote host closed the connection)
+T 1551923489 23*	n7flysagain_ (~n7flysaga@104.251.94.5823) has joined
+T 1551923569 24*	tm007 has quit (Quit: Connection closed for inactivity)
+T 1551923880 24*	LKoen_ has quit (Quit: “It’s only logical. First you learn to talk, then you learn to think. Too bad it’s not the other way round.”)
+T 1551924004 24*	tomasfarias has quit (Quit: Leaving)
+T 1551924078 24*	up2late has quit (Ping timeout: 245 seconds)
+T 1551924087 24*	kingofme_ has quit (Quit: Textual IRC Client: www.textualapp.com)
+T 1551924099 23*	golden_shower (bb30afb5@gateway/web/cgi-irc/kiwiirc.com/ip.187.48.175.18123) has joined
+T 1551924152 24*	golden_shower (bb30afb5@gateway/web/cgi-irc/kiwiirc.com/ip.187.48.175.18124) has left
+T 1551924201 23*	kingofmemes (~kingofmem@2605:a601:a240:e7a6:c4cc:1db4:e44e:327823) has joined
+T 1551924324 24*	n7flysagain_ has quit (Remote host closed the connection)
+T 1551924332 23*	n7flysagain_ (~n7flysaga@104.251.94.5823) has joined
+T 1551924513 24*	Garen (garen@cpe-76-178-180-167.natnow.res.rr.com24) has left
+T 1551925688 20*	Disconnected (20Connection timed out)
+T 1551925714 19*	Now talking on 22#python-unregistered
+T 1551925714 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551925714 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551925903 24*	Blue_Hat has quit (Ping timeout: 245 seconds)
+T 1551925962 24*	28AkshayG is now known as 18AkshayG|afk
+T 1551925984 24*	gdoteof has quit (Quit: Lost terminal)
+T 1551926005 23*	Blue_Hat (~TwinKam20@216.10.217.10523) has joined
+T 1551926012 23*	tfarias (~tomasfari@190.18.76.16923) has joined
+T 1551926041 24*	looprock_ has quit (Quit: My MacBook has gone to sleep. ZZZzzz…)
+T 1551926044 24*	tfarias (~tomasfari@190.18.76.16924) has left
+T 1551926114 23*	davr0s (~textual@host109-150-28-226.range109-150.btcentralplus.com23) has joined
+T 1551926117 24*	Blue_Hat has quit (Max SendQ exceeded)
+T 1551926390 20*	Disconnected (20)
+T 1551926407 19*	Now talking on 22#python-unregistered
+T 1551926407 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551926407 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551926502 24*	carif has quit (Ping timeout: 245 seconds)
+T 1551926508 24*	soxhlet has quit (Ping timeout: 252 seconds)
+T 1551926535 23*	soxhlet (~soxhlet@i59F5F4C3.versanet.de23) has joined
+T 1551926557 20*	Disconnected (20)
+T 1551926575 19*	Now talking on 22#python-unregistered
+T 1551926575 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551926575 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551926584 24*	kiltzman has quit (Ping timeout: 246 seconds)
+T 1551926632 20*	Disconnected (20)
+T 1551926665 19*	Now talking on 22#python-unregistered
+T 1551926665 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551926665 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551928292 20*	Disconnected (20Connection reset by peer)
+T 1551928324 19*	Now talking on 22#python-unregistered
+T 1551928324 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551928324 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551928958 20*	Disconnected (20)
+T 1551929085 19*	Now talking on 22#python-unregistered
+T 1551929085 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551929085 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)
+T 1551929959 19*	Now talking on 22#python-unregistered
+T 1551929959 22*	Topic for 22#python-unregistered is: Welcome to #python-unregistered! You've been put here because #python requires you to register your nickname with Freenode. For more information about registering on Freenode, ask #freenode. For more information about #python,#python-* moderation, #python-ops.
+T 1551929959 22*	Topic for 22#python-unregistered set by 26lvh!~lvh@python/psf/lvh (24Fri Jul  1 04:44:19 2011)

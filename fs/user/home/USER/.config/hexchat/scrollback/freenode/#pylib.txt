@@ -1,0 +1,502 @@
+T 1586558501 18<dude-x18>	indeed, but i can only speculate since there's no digital trail
+T 1586558541 18<dude-x18>	and this channel has only 93 peeps so it's a risk i took
+T 1586559207 18<untitaker18>	Just don't then 
+T 1586559293 18<nedbat18>	dude-x: no need to speculate at all
+T 1586559409 18<dude-x18>	nedbat i'm just feeling sad that 2 long term core team members have left and 1 person who contributed a lot of hard fixes recently suddenly quit and there's no sign of ...discord.
+T 1586559492 18<dude-x18>	nedbat and i was excited for all the internal changes that were coming along (Albeit slowly) to make pytest better and less ambiguous
+T 1586559506 18<dude-x18>	and now that's not going to happen.
+T 1586559525 18<dude-x18>	it's not the end of the project, but the core crowd is small.
+T 1586559570 18<dude-x18>	i'll still use pytest so long I use python
+T 1586559572 18<nedbat18>	dude-x: i am bothered by this also, for a number of reasons.  but we have to be careful not to add to the problems.
+T 1586559634 18<dude-x18>	nedbat i  don't mean to be stirring the pot or whatever metaphor applies, but I've talked to r on ny and Anthony and they were circumspect about who was the trouble maker.
+T 1586559789 18<nedbat18>	then we have to leave it at that
+T 1586580692 19*	Now talking on 22#pylib
+T 1586580692 22*	Topic for 22#pylib is: Welcome to pytest, tox and execnet development | https://mail.python.org/mailman/listinfo/pytest-dev | This is irc, please wait a while for an answer
+T 1586580692 22*	Topic for 22#pylib set by 26flub!~flub@coronation.devork.be (24Wed Oct  2 15:00:38 2019)
+T 1586589244 18<famubu18>	Hi. I was trying to create two tests grouped under a test class to be used with pytest. These two test functions use the same data for conducting their tests. Is there some way I can declare it as part of the test class and use it in the test functions? I tried just declaring outside the functions but inside the class but that didn't work. Any ideas?
+T 1586600194 18<linovia18>	That's strange. py.test would not override asserts when the function is written along with source code but is imported and executed with the tests
+T 1586600359 18<linovia18>	Is there a way to tell pytest to apply its introspecting assert to a file but not execute the tests for class - though still executing the tests for any class that merits from it ?
+T 1586600421 18<linovia18>	My use case is to have a base test suite that I derive from for the different implementations
+T 1586600476 18<linovia18>	Let me restart the use case: I ship an interface and provide a full test coverage for the implementations to comply to
+T 1586600550 18<linovia18>	the idea was to have a TestCase class with all the tests and any of the interface implementation would override that class and define the implementation class that needs to be tests against
+T 1586609174 18<famubu18>	Hi. I was trying to create two tests grouped under a test class to be used with pytest. These two test functions use the same data for conducting their tests. Is there some way I can declare it as part of the test class and use it in the test functions? I tried just declaring outside the functions but inside the class but that didn't work. Any ideas? 
+T 1586609290 18<nedbat18>	famubu: sounds like you want a fixture
+T 1586610757 18<famubu18>	nedbat: Thanks! That fits my need well.
+T 1586633263 18<ronny18>	dude-x : bluetech is good and was recently added to core
+T 1586633363 18<ronny18>	untitaker : ill finish unpacking myself and then do more
+T 1586633410 18<dude-x18>	ronny i watched Anthony's video
+T 1586633509 18<dude-x18>	ronny and it triggered my memory.... i remember seeing a spat one morning in this channel and I remember having the feeling of "wait, what's going on here." but then i lost the log.
+T 1586633520 18<dude-x18>	so i forgot about it
+T 1586633526 18<dude-x18>	but it makes sense.
+T 1586634637 18<ronny18>	Dude-x : im part of the group that quit the project for now, i can attest for bluetech on the good side, Bruno and me initiated adding him to core very recently,
+T 1586634870 18<dude-x18>	ronny i know who it is. but i hope that in time, the situation will resolve to everyone's satisfaction. 
+T 1586714462 18<Zago18>	Hello All !
+T 1586714489 18<Zago18>	It feels good getting back to some geeky communication system :)
+T 1586714576 18<Zago18>	If I may, I need help using pytest-mysql, which I have no idea how to use, I didn't find any tutorial that walks me through it
+T 1586714622 18<Zago18>	What I exactly need is a mysql db mockup to run our tests against, I have the sql file containing all statements to create and populate such a base, but no idea how to mock it
+T 1586714798 18<Zago18>	if anyone can help me ? thanks in advance :)
+T 1586718490 18<Zago18>	Hey
+T 1586718502 18<Zago18>	I am so sorry my network got disconnected 
+T 1586718519 18<Zago18>	Anyone is available to help ? :)
+T 1586900901 19*	Now talking on 22#pylib
+T 1586900901 22*	Topic for 22#pylib is: Welcome to pytest, tox and execnet development | https://mail.python.org/mailman/listinfo/pytest-dev | This is irc, please wait a while for an answer
+T 1586900901 22*	Topic for 22#pylib set by 26flub!~flub@coronation.devork.be (24Wed Oct  2 15:00:38 2019)
+T 1586969966 18<graingert18>	I want to spit out a load of json at the end of a test run
+T 1586969971 18<graingert18>	where's the best place to do it
+T 1586969982 18<graingert18>	and can I aggregate it between pytest-xdist runs
+T 1586970062 18<dude-x18>	probably a reporting hook would be a good time for that
+T 1586970080 18<dude-x18>	how do you solve the race condition, file locking
+T 1586970318 18<graingert18>	dude-x: it's keyed by nodeid
+T 1586970339 18<graingert18>	and could be keyed by workerid
+T 1586970900 18<dude-x18>	ah that's good
+T 1586970957 18<graingert18>	obviously print gets logged later
+T 1586970965 18<graingert18>	but only with verbose enabled
+T 1586970976 18<graingert18>	and with "-s"
+T 1586970986 18<graingert18>	but I want it added to the report
+T 1586972148 18<dude-x18>	to add to the report you have to use a terminal writer hook
+T 1586972161 18<dude-x18>	i would look at pytest-html to see how that works
+T 1587058690 18<seppestas18>	Hi. Does anyone know if it's possible to update pytest configuration in a fixture?
+T 1587058729 18<seppestas18>	Context: I'm working on an integration test of embedded firmware using a simple RPC over uart. Since this requires a lot of configuration (uart config for at least 2 devices) I load the config from a JSON file. One of the configuration options is a report file location. I would like to pass this on to pytest-csv.
+T 1587058800 18<seppestas18>	I'm currently loading the configuration in a fixture. Is there a better option to to this? 
+T 1587147426 19*	Now talking on 22#pylib
+T 1587147426 22*	Topic for 22#pylib is: Welcome to pytest, tox and execnet development | https://mail.python.org/mailman/listinfo/pytest-dev | This is irc, please wait a while for an answer
+T 1587147426 22*	Topic for 22#pylib set by 26flub!~flub@coronation.devork.be (24Wed Oct  2 15:00:38 2019)
+T 1587154391 18<joaogui118>	Hi o/
+T 1587154436 18<joaogui118>	A project I'm contributing to has a pytest.ini that turns warnings into errors
+T 1587154461 18<joaogui118>	but we wanted to ignore warnings from a few tests
+T 1587154466 18<joaogui118>	is that possible?
+T 1587154575 18<joaogui118>	I tried @pytest.mark.filterwarnings, but didn't understand what was supposed to be inside the brackets 
+T 1587155878 18<The-Compiler18>	joaogui1: https://docs.python.org/3/library/warnings.html#warning-filter
+T 1587155995 18<joaogui118>	Thanks!
+T 1587155999 18<joaogui118>	it worked
+T 1587230412 19*	Now talking on 22#pylib
+T 1587230412 22*	Topic for 22#pylib is: Welcome to pytest, tox and execnet development | https://mail.python.org/mailman/listinfo/pytest-dev | This is irc, please wait a while for an answer
+T 1587230412 22*	Topic for 22#pylib set by 26flub!~flub@coronation.devork.be (24Wed Oct  2 15:00:38 2019)
+T 1587264595 18<Beefy_Swain18>	Hey all. I'm working on a module for parsing Tiled map editor TMX files, and I'm hitting a wall as far as how to best test it
+T 1587264606 18<Beefy_Swain18>	hopefully this is the right forum for questions of the sort
+T 1587306742 19*	Now talking on 22#pylib
+T 1587306742 22*	Topic for 22#pylib is: Welcome to pytest, tox and execnet development | https://mail.python.org/mailman/listinfo/pytest-dev | This is irc, please wait a while for an answer
+T 1587306742 22*	Topic for 22#pylib set by 26flub!~flub@coronation.devork.be (24Wed Oct  2 15:00:38 2019)
+T 1587399725 18<barneygale18>	Hi folks, getting this error in tox 3.14.6: "ConfigError: ConfigError: substitution key 'posargs' not found"
+T 1587399772 18<barneygale18>	Struggling to understand as I think this worked in previous versions. Has something changed about how `posargs` is handled?
+T 1587400035 18<barneygale18>	^ ignore this! I hadn't properly closed a `{` expression earlier on.
+T 1587559620 18<foxxx018>	how do i disable any potential interactive mode in pytest? it keeps spitting out errors and dropping me into a prompt: "Show: [B]ody [H]eaders [S]tatus [U]RL; [I]gnore, [R]aise, or sys.e[X]it >>"
+T 1587559636 18<foxxx018>	i just want it to run through and print a summary of failures with `-ra`
+T 1587560623 18<The-Compiler18>	foxxx0: that's coming from some kind of plugin or conftest.py
+T 1587560747 18<foxxx018>	ah, so adding --noconftest should help?
+T 1587560919 18<foxxx018>	mh nope, doesn't help
+T 1587560942 18<foxxx018>	trying to invoke it like so: py.test -vvv -s -ra --showlocals --noconftest cherrypy/test/
+T 1587563809 18<Odd_Bloke18>	foxxx0: If you run `pytest --trace-config`, it will give you a list of active plugins.  Take a look through that for anything that looks like it might not be a builtin pytest plugin, and that might be the source of this.
+T 1587566294 18<nedbat18>	foxxx0: looks like it's a thing called webtest_intercept? https://github.com/search?l=Python&q=ody+eaders+tatus+gnore&type=Code  (fun query)
+T 1587566630 18<The-Compiler18>	foxxx0: looks like https://github.com/cherrypy/cheroot/blob/master/cheroot/test/webtest.py is cherrypy's thing
+T 1587566668 18<The-Compiler18>	foxxx0: and that reveals a WEBTEST_INTERACTIVE environment variable you can apparently set to false
+T 1587566789 18<foxxx018>	wow, thank you for digging into that, haven't had time yet. i'll try using the env var
+T 1587567089 18<foxxx018>	indeed it prevents the interactive prompts, thanks!
+T 1587567617 18<The-Compiler18>	yay :)
+T 1587620831 19*	Now talking on 22#pylib
+T 1587620831 22*	Topic for 22#pylib is: Welcome to pytest, tox and execnet development | https://mail.python.org/mailman/listinfo/pytest-dev | This is irc, please wait a while for an answer
+T 1587620831 22*	Topic for 22#pylib set by 26flub!~flub@coronation.devork.be (24Wed Oct  2 15:00:38 2019)
+T 1587699339 19*	Now talking on 22#pylib
+T 1587699339 22*	Topic for 22#pylib is: Welcome to pytest, tox and execnet development | https://mail.python.org/mailman/listinfo/pytest-dev | This is irc, please wait a while for an answer
+T 1587699339 22*	Topic for 22#pylib set by 26flub!~flub@coronation.devork.be (24Wed Oct  2 15:00:38 2019)
+T 1587700052 19*	Now talking on 22#pylib
+T 1587700052 22*	Topic for 22#pylib is: Welcome to pytest, tox and execnet development | https://mail.python.org/mailman/listinfo/pytest-dev | This is irc, please wait a while for an answer
+T 1587700052 22*	Topic for 22#pylib set by 26flub!~flub@coronation.devork.be (24Wed Oct  2 15:00:38 2019)
+T 1587764539 18<tga18>	greetings. in a django app using factoryboy factories I'm getting a lot of `function uses no argument user__name` kind of errors on collection
+T 1587764576 18<tga18>	it almost looks like the django-specific part of pytest-factoryboy isn't working, my suspicions are with a bad import somewhere, but I haven't found anything yet
+T 1587764633 18<tga18>	any hints on how to debug this?
+T 1587778364 19*	Now talking on 22#pylib
+T 1587778364 22*	Topic for 22#pylib is: Welcome to pytest, tox and execnet development | https://mail.python.org/mailman/listinfo/pytest-dev | This is irc, please wait a while for an answer
+T 1587778364 22*	Topic for 22#pylib set by 26flub!~flub@coronation.devork.be (24Wed Oct  2 15:00:38 2019)
+T 1587865570 18<altendky18>	in ci i like to build my sdist and wheel(s) first then use them in subsequent jobs when running tox.  i've done a couple things to identify the proper file to use so i can pass --installpkg to tox, but this is a pain.  i've tried a few things but they don't seem to do what i want.  ideas?  it would be nice to have a cli option for this so it's most easily used in ci and not elsewhere.  i guess for now i'll get into 
+T 1587865571 18<altendky18>	conditional commands and trigger them via py38-ci or whatever in the env request.
+T 1587866492 18<altendky18>	hmm, fun, `skipsdist = ci: true` triggers an exception https://bpaste.net/IIOQ
+T 1587869412 18<altendky18>	and when i fix the default to be a set, `skipsdist = ci: true` doesn't make -ci a valid marker (yeah, i'll try to formalize this tomorrow into an issue and pr)
+T 1587869464 18<altendky18>	and when i pointlessly add a ci: to validate the marker, it still doesn't set skipsdist to true
+T 1587869877 19*	Now talking on 22#pylib
+T 1587869877 22*	Topic for 22#pylib is: Welcome to pytest, tox and execnet development | https://mail.python.org/mailman/listinfo/pytest-dev | This is irc, please wait a while for an answer
+T 1587869877 22*	Topic for 22#pylib set by 26flub!~flub@coronation.devork.be (24Wed Oct  2 15:00:38 2019)
+T 1587913943 18<gp18>	Is there any way to specify commands to run before installing deps in the tox.ini?
+T 1587913964 18<gp18>	I.e. I need to fetch a template and render it to generate constraints
+T 1587914164 18<gp18>	I guess a custom install_command is what I am after?
+T 1587916995 18<altendky18>	tickets from my comments yesterday.  https://github.com/tox-dev/tox/issues/1567 -- https://github.com/tox-dev/tox/issues/1566
+T 1587942191 19*	Now talking on 22#pylib
+T 1587942191 22*	Topic for 22#pylib is: Welcome to pytest, tox and execnet development | https://mail.python.org/mailman/listinfo/pytest-dev | This is irc, please wait a while for an answer
+T 1587942191 22*	Topic for 22#pylib set by 26flub!~flub@coronation.devork.be (24Wed Oct  2 15:00:38 2019)
+T 1587952970 18<bl1nk1n18>	Hey!  I have some questions regarding using pytest for testing and was wondering if someone would be willing to help me out.
+T 1587953042 18<bl1nk1n18>	Basically I used to do tests by having separate functions with input data and asserting an output data.  I realized a lot of my functions have similar input data so I want to parametrize that....but then how do I share this across multiple functions (via a class?) and have corresponding outputs that are separate?
+T 1587953080 18<bl1nk1n18>	e.g. in = [ 1, 2, 3, 4] foo_out = [4,5,6,7] bar_out = [8, 9, 10, 11]
+T 1587953127 18<bl1nk1n18>	both foo and bar tests take input "in" but each have a different output
+T 1588003278 19*	Now talking on 22#pylib
+T 1588003278 22*	Topic for 22#pylib is: Welcome to pytest, tox and execnet development | https://mail.python.org/mailman/listinfo/pytest-dev | This is irc, please wait a while for an answer
+T 1588003278 22*	Topic for 22#pylib set by 26flub!~flub@coronation.devork.be (24Wed Oct  2 15:00:38 2019)
+T 1588211512 19*	Now talking on 22#pylib
+T 1588211512 22*	Topic for 22#pylib is: Welcome to pytest, tox and execnet development | https://mail.python.org/mailman/listinfo/pytest-dev | This is irc, please wait a while for an answer
+T 1588211512 22*	Topic for 22#pylib set by 26flub!~flub@coronation.devork.be (24Wed Oct  2 15:00:38 2019)
+T 1588214349 19*	Now talking on 22#pylib
+T 1588214349 22*	Topic for 22#pylib is: Welcome to pytest, tox and execnet development | https://mail.python.org/mailman/listinfo/pytest-dev | This is irc, please wait a while for an answer
+T 1588214349 22*	Topic for 22#pylib set by 26flub!~flub@coronation.devork.be (24Wed Oct  2 15:00:38 2019)
+T 1588248371 18<fijal18>	hi
+T 1588248384 18<fijal18>	I have an error that explodes when I try to use pytest-asyncio on 3.7
+T 1588248394 18<fijal18>	https://www.irccloud.com/pastebin/DBBLNRRU/
+T 1588248503 18<The-Compiler18>	fijal: what pytest version?
+T 1588248525 18<fijal18>	how do I check? pytest --version crashes same way
+T 1588248531 18<fijal18>	whatever is the latest installed from pip
+T 1588248545 18<The-Compiler18>	hm, I thought this hook was something more recent, but apparently it's been around for a while
+T 1588249574 18<fijal18>	The-Compiler: any clue?
+T 1588249582 18<fijal18>	seems like that plain does not work
+T 1588249922 18<The-Compiler18>	fijal: no idea what's going wrong there
+T 1588250064 18<The-Compiler18>	fijal: I assume with "on 3.7" you mean Python 3.7?
+T 1588250071 18<fijal18>	yeah
+T 1588250080 18<fijal18>	ok, so pytest and asyncio is just plain unusable, nice
+T 1588250096 18<The-Compiler18>	fijal: does "pytest -p no:asyncio --version" work?
+T 1588250098 18<cdunklau18>	fijal: what error
+T 1588250109 18<cdunklau18>	huh
+T 1588250120 18<cdunklau18>	it doesn't load for me outside of incognito
+T 1588250144 18<The-Compiler18>	the IRCCloud pastebin is weird, I wish it wouldn't need JS to display some text, but that's another story
+T 1588250186 18<cdunklau18>	fijal: try useing pytest-asyncio==0.10.0
+T 1588250216 18<The-Compiler18>	fijal: no issues here FWIW (with pytest-asyncio 0.11.0, pytest 5.4.1 and Python 3.7.7)
+T 1588250218 18<cdunklau18>	fijal: oh hold up
+T 1588250234 18<fijal18>	I have pytest 2.9.2
+T 1588250236 18<fijal18>	I wonder why
+T 1588250250 18<cdunklau18>	fijal: make sure you have pytest 3.4+
+T 1588250250 18<The-Compiler18>	fijal: well, that's... ancient
+T 1588250253 18<cdunklau18>	lol yep
+T 1588250275 18<The-Compiler18>	almost 4 years old :)
+T 1588260132 18<simukis_18>	I’ve a pytest suite that takes anywhere from 2 minutes to >30 mins (times out using external mechanisms) to 
+T 1588260156 18<simukis_18>	collect. How can I get pytest print out/report what it is collecting and/or times it takes for it to do so?
+T 1588295445 18<Raito_Bezarius18>	Hello, I'm trying to convert old unittest styles to pytest with Django (pytest-django too), but I have a lot of imports and pytest-django seems to not init the app enough early on
+T 1588295450 18<Raito_Bezarius18>	I'm not sure what should I do
+T 1588295468 18<Raito_Bezarius18>	I have some transient dependencies which depends on Django models which in turn depend on app initialization
+T 1588295473 18<Raito_Bezarius18>	So the collection always fails
+T 1588295626 18<Raito_Bezarius18>	ahm, that's more complex it seems
+T 1588295632 18<Raito_Bezarius18>	when I do pytest $direct_path_to_my_test
+T 1588295634 18<Raito_Bezarius18>	it works fine
+T 1588295636 18<Raito_Bezarius18>	but when I do "pytest"
+T 1588295638 18<Raito_Bezarius18>	it does not
+T 1588295713 18<Raito_Bezarius18>	is there any precise docs on how pytest-django is basing its assumptions on path stuff?
+T 1588295870 18<Raito_Bezarius18>	it seems like when I do pytest directorycontainingpytestdotini/ it works fine and when I just do pytest, it does not
+T 1588322940 18<The-Compiler18>	Raito_Bezarius: what's the rootpath shown by pytest in those two cases?
+T 1588339284 18<ronny18>	aloha
+T 1588341499 18<dude-x18>	hi
+T 1588344031 18<Odd_Bloke18>	o/
+T 1588344376 18<ashay_cs18>	Why do print statements get captured once there is a logging call (less than or equal) to the --log-cli-level?
+T 1588344383 18<ashay_cs18>	https://pastebin.com/qzeJ6dF7
+T 1588348807 18<The-Compiler18>	ashay_cs: I can't reproduce (the HOOK line always gets printed for me), and I don't see any print statements in your code
+T 1588348869 18<The-Compiler18>	ashay_cs: same with Python 3.6.10 and 5.3.2 on Linux (which is about as close I can get to your environment at the moment)
+T 1588349062 18<ashay_cs18>	The printing is handled by pytest itself. I implement `pytest_report_collectionfinish`
+T 1588349075 18<ashay_cs18>	Interesting that you can't repro this
+T 1588349527 18<ashay_cs18>	Happens with Python 3.7.6 too hmm
+T 1588349823 18<ashay_cs18>	Oh it's not reproing for me on Win 10
+T 1588352270 18<ashay_cs18>	Asking some colleagues to test this as well. My host Mojave machine and Mojave VM have this issue.
+T 1588436924 18<bodik18>	hi, is anyone using pytest-factoryboy in tests ? i used to write my own fixtures for models (both persistent and volatile) used in tests. recently i've came across pytest-factoryboy which looks very nice, less code for me and almost same functionality. what i'm concerned of is the "fixtures namespace polution", i've used to kind of naming convention in my tests and i've to sacrifice it in order to use 
+T 1588436930 18<bodik18>	factoryboy. i wonder if there's another (sqlalchemy enabled) library or if everyone is just happy with it (living with just generated fixture names) ??
+T 1588440824 18<ronny18>	hmm, it been some years since i used it, my old workplace used it to generate data for integration tests
+T 1588557462 19*	Now talking on 22#pylib
+T 1588557462 22*	Topic for 22#pylib is: Welcome to pytest, tox and execnet development | https://mail.python.org/mailman/listinfo/pytest-dev | This is irc, please wait a while for an answer
+T 1588557462 22*	Topic for 22#pylib set by 26flub!~flub@coronation.devork.be (24Wed Oct  2 15:00:38 2019)
+T 1588608259 18<rootbox18>	Hi, is there a way to run multiple setup parts, e.g. one with option a and one with b and run all tests for both?
+T 1588608481 18<rootbox18>	https://stackoverflow.com/questions/61594859/running-the-same-pytest-with-different-setup
+T 1588608504 18<rootbox18>	that's basically my question :D
+T 1588608812 18<Odd_Bloke18>	rootbox: You probably want to create a fixture for your devices, and parameterize that: https://docs.pytest.org/en/latest/fixture.html#fixture-parametrize
+T 1588715533 18<sveinse18>	I have an app under test which uses logging and I want to be able to view its logs. How can I view the log on a successful build? -sv --show-capture does not help. Failing tests however, show the log perfectly. pytest 5.4.1.
+T 1588715680 18<sveinse18>	The other alternative is to enable the stderr logger built into the app. But if I do, I get double logging on errors, one stderr capture and one logs. Hence, I'd like to disable pytest log, and I use --no-print-logs. However, this function is deprecated, so I get a warning, refering me to --show-capture instead
+T 1588715887 18<sveinse18>	And now begins the fun: 1) I am unable to use -W ignore::PytestDeprecationWarning to suppress it. The PytestDeprec... is an unknown warning catergory, 2) I am unable to only disable log, e.g. --show-capture=stdout,stderr doesn't work neither does --show-capture=stdout --show-capture=stderr. So what am I doing wrong?
+T 1588716084 18<sveinse18>	It would be very helpful if I could get some feedback on this, please. Humbly. I've raised the questions repeatedly over the last three days on #python without any useful replies. I wait a bit longer, but I've burned a few hours trying to figure this thing out.
+T 1588738810 20*	Disconnected (20Connection timed out)
+T 1588738837 19*	Now talking on 22#pylib
+T 1588738837 22*	Topic for 22#pylib is: Welcome to pytest, tox and execnet development | https://mail.python.org/mailman/listinfo/pytest-dev | This is irc, please wait a while for an answer
+T 1588738837 22*	Topic for 22#pylib set by 26flub!~flub@coronation.devork.be (24Wed Oct  2 15:00:38 2019)
+T 1588769991 18<chitrank18>	Hii 
+T 1588770089 18<chitrank18>	I am using pytest with junit xml reports for our projects CI reports in gitlab, But I want to exclude skipped tests from reports, cause those skipped test were run before. I am not finding any option in pytest or settings in pytest to not report the skipped tests, do anyone know about this  ?
+T 1588776823 18<Odd_Bloke18>	Hey folks!  We have some tests that we only want to run if an optional dependency is available.  I'd like to mark them with something that indicates this requirement, and then automatically skip them if we don't find the dependency available.  I'm not really sure how to do that latter part, can someone give me an idea of which part of the docs I should be reading?
+T 1588782385 18<yup818>	Hey, Can anyone point me to a big proejct that uses pytest? I've looked in the "Projects" page but had a hard time finding anything useful or accessible.
+T 1588782398 18<yup818>	Looking for good examples and practices for my team
+T 1588782489 18<yup818>	Looking for something very extensive
+T 1588831759 18<ronny18>	gm
+T 1588831796 18<ronny18>	yup8: pypy, crpytography come to mind, but thats not necessaty "good examples"
+T 1588831816 18<ronny18>	big projects ofte have the problem that they grow bad examples out of need/lack of resources as well
+T 1588831848 18<ronny18>	(some of the internal big projects i worked on carrid bad examples for a while since we had other priorities than makin things "good")
+T 1588831892 18<ronny18>	Odd_Bloke: typically people ue importorskip, or usinga conditional xfail marker 
+T 1588831951 18<ronny18>	chitrank: how do you pick/choose tests that run/ran before? we have a internal setup at a work project that "deselects and removes" tests before the testrun, as skp is not really a good indicator for never to be run here tests
+T 1588831980 18<ronny18>	sveinse: i dont really graps your use-case at all, can you post a example on stackoverflow and link me
+T 1588832113 18<chitrank18>	Hi ronny, I just ignore the tests using the command pytest --ignore=tests/test_http_api.py --junitxml=pytest_other.xml and expect --junitxml to not add skipped tests in the report, but it keeps the ignored tests in the skipped column.
+T 1588832392 18<ronny18>	chitrank: that sound wrong, are those tests in the actual report or is this from the artifact handling
+T 1588832429 18<ronny18>	chitrank: the thing is, ignore shouldnt just skip, it should actually completely ignore the files and report no tests in them at all ever
+T 1588832525 18<chitrank18>	ronny: this is from the artifact building, where it shows the skipped ones and it reduces the success rate.
+T 1588832528 18<ronny18>	chitrank: are those included if you do a --collectonly
+T 1588832550 18<ronny18>	bascially pytest is nto at fault then, its your artifact handling
+T 1588832962 18<chitrank18>	alright ronny, I just check with this 
+T 1588859796 18<Odd_Bloke18>	ronny: Good morning, and thank you for the pointers!
+T 1588867781 18<omry18>	I have a collection of tests in a class that I am parametrizing on from subclasses. in some subclasses I want to pass additional arguments to the tests. I thought about using optional members but pytest is complaining that I have an init to the subclass (even though it takes no parameters).
+T 1588867835 18<omry18>	any other suggestions? I would rather not force all subclasses to pass the new parameter, does parametrization support optional parameters?
+T 1588867923 18<omry18>	Here is the actual test class: https://github.com/facebookresearch/hydra/blob/master/hydra/test_utils/launcher_common_tests.py#L20
+T 1588867929 18<omry18>	and here is an example of a subclass: https://github.com/facebookresearch/hydra/blob/master/tests/test_basic_launcher.py#L11-L13
+T 1588867973 18<omry18>	Also, I kinda came up with this pattern myself. if there is a better way of doing this I am all ears :)
+T 1588868061 18<omry18>	Here is an example of what is failing for me: https://paste.ubuntu.com/p/mBX4hT3QNC/
+T 1588868073 18<omry18>	the reported error is: PytestCollectionWarning: cannot collect test class 'TestAxSweeper' because it has a __init__ constructor (from: plugins/hydra_ax_sweeper/tests/test_ax_sweeper_plugin.py)
+T 1588868128 18<dude-x18>	parameterized tests should have well defined parameters, but otherwise i would use a function if parameters need to be defereed
+T 1588868213 18<omry18>	All the test functions in the class need to take the same arguments.
+T 1588868224 18<omry18>	(populated by the subclass parametrize).
+T 1588868241 18<omry18>	not sure what you mean by using a function
+T 1588868363 18<dude-x18>	parametrize('params,params', some_function())
+T 1588868389 18<dude-x18>	but the problem i see is that pytest will evaluate this function during test collection i think
+T 1588868396 18<omry18>	ah, but that would require a change to the signature of the subclass tests right?
+T 1588868438 18<omry18>	in effect, I want the subclass to have some hard coded state that would change the behavior of the test functions in the parent class. there is nothing dynamic here.
+T 1588868484 18<dude-x18>	omry okay so the base class should have default parameters
+T 1588868500 18<dude-x18>	the base clas shold not be parameterized
+T 1588868510 18<omry18>	in the member test function signatures?
+T 1588868526 18<omry18>	I think I tried that at some point, but let me try again.
+T 1588868552 18<dude-x18>	base class should be comprised of functions and class attributes that you want "globally" available
+T 1588868618 18<omry18>	yes, I have a sensible default value for this variable (in this case 'task_function')
+T 1588868625 18<omry18>	but I am not sure how to override it from the subclass.
+T 1588868692 18<dude-x18>	a subclass that has a matching name for a class attribute will override the base class
+T 1588868719 18<dude-x18>	if you use parametrize, that will only affect arguments in a class test method
+T 1588868729 18<omry18>	I tried to create an empty init() in the subclass, but collect failed (see above)
+T 1588868742 18<dude-x18>	you can't use __init__ in any of the classes for pytest test classes
+T 1588868802 18<dude-x18>	you can work around the __init__ issue with an init() method that you call in the test body. but that's cumbersome.
+T 1588868821 18<dude-x18>	i've done something like that in the past.
+T 1588868906 18<omry18>	here is a small snippet to play with: https://paste.ubuntu.com/p/vJyKH3wPBS/
+T 1588868936 18<omry18>	this is already failing because the init in the parent.
+T 1588868944 18<omry18>	* because of 
+T 1588869017 18<omry18>	My problem in introducing a new parameter to all functions is that this is used to test plugins that are not in my repo. so adding that parameter would cause failures to all those tests I can't fix.
+T 1588869028 18<omry18>	it's not the end of the world but I would rather avoid it.
+T 1588869073 18<omry18>	let me try your init() suggestion.
+T 1588869133 18<omry18>	yeah, that works.
+T 1588869174 18<omry18>	Updated snippet: https://paste.ubuntu.com/p/XKy2pFcBry/
+T 1588869198 18<omry18>	dude-x, thanks. I would be happy to hear of there are other suggestions but this will do the trick for now.
+T 1588869331 18<dude-x18>	omry i would make the attribute y an attribute in the class
+T 1588869556 18<omry18>	nice, no need for init with it.
+T 1588869582 18<omry18>	https://paste.ubuntu.com/p/w6vgfB9zfP/
+T 1588869597 18<omry18>	much better.
+T 1588869625 18<dude-x18>	yup
+T 1588869665 18<omry18>	awesome. 
+T 1588869671 18<omry18>	this is surprisingly hard to get to.
+T 1588869680 18<omry18>	seems obvious now :)
+T 1588869835 18<dude-x18>	it's the python object model
+T 1588869849 18<dude-x18>	it may not be obvious if you're used to, say Java
+T 1588869914 18<omry18>	yeah, I am still getting used to it.
+T 1588870169 18<omry18>	I take it that the overall approach I took here is reasonable?
+T 1588870251 18<dude-x18>	yes
+T 1588870287 18<omry18>	cool, thanks for your help.
+T 1588870990 18<omry18>	dude-x, any idea why this blows up? https://paste.ubuntu.com/p/XWs54spg77/
+T 1588870998 18<omry18>	TypeError: <lambda>() takes 0 positional arguments but 1 was given
+T 1588871113 18<dude-x18>	omry you may want a staticmethod for y
+T 1588871131 18<dude-x18>	alternatively
+T 1588871235 18<dude-x18>	instead of lambda:10
+T 1588871266 18<dude-x18>	create a @classmethod that will take the value to initialize y and call it y
+T 1588871348 18<dude-x18>	hmm i think in your case
+T 1588871358 18<dude-x18>	you will just want to use @staticmetho
+T 1588871372 18<dude-x18>	@staticmethod def y(): <calculate stuff>
+T 1588871391 18<dude-x18>	then your tests will simply replace y
+T 1588871399 18<omry18>	my initial try was a global function.
+T 1588871403 18<omry18>	which had the same error.
+T 1588871408 18<dude-x18>	that could work 
+T 1588871412 18<omry18>	it didn't 
+T 1588871413 18<omry18>	same error.
+T 1588871415 18<dude-x18>	but you will have to import it
+T 1588871422 18<omry18>	hmm
+T 1588871426 18<omry18>	why? it's just an object no?
+T 1588871438 18<dude-x18>	can you show me a more realistic example
+T 1588871453 18<omry18>	this is very close to what I need.
+T 1588871455 18<omry18>	but let me edit.
+T 1588871473 18<omry18>	I want the test to call a function as a part of the test. and I want to override this function from the subclass.
+T 1588871490 18<dude-x18>	let me experiment a bit
+T 1588871490 18<dude-x18>	brb
+T 1588871595 18<omry18>	https://paste.ubuntu.com/p/S7B9MZZzSz/
+T 1588871600 18<omry18>	closer to my actual thing.
+T 1588871630 18<omry18>	still single file, in reality global_foo and TestXSuiteSubclass_y20 are not in the same file as XTestSuite
+T 1588871635 18<omry18>	but I get the same error here.
+T 1588871748 18<dude-x18>	hmm i get an error too
+T 1588871760 18<omry18>	good. this one got me scratching my head.
+T 1588871938 18<omry18>	has nothing to to with pytest though.
+T 1588871941 18<omry18>	class YYY(XTestSuite):
+T 1588871941 18<omry18>	    y = global_foo
+T 1588871946 18<dude-x18>	i have a solution
+T 1588872114 18<dude-x18>	https://paste.ubuntu.com/p/xrp9Vd6fnv/
+T 1588872130 18<dude-x18>	this should just work without anything crazy
+T 1588872294 18<omry18>	hmm, you side stepped the issue. I am actually passing that method downstream.
+T 1588872301 18<omry18>	but I will try it.
+T 1588872626 18<dude-x18>	you can define stuff in Base class where the variable doesn't exist
+T 1588872636 18<dude-x18>	in the function
+T 1588872719 18<dude-x18>	you can also alias stuff: def calculate_foo(self);...    y = calculate_foo (just the function object)
+T 1588873399 18<omry18>	dude-x, seems to work. (and of course now I got some real issues  to fix :) , thanks a lot.
+T 1588873425 18<dude-x18>	omry good to hear. best wishes.
+T 1588873626 18<omry18>	dude-x, any intuition about that bound function crap?
+T 1588873633 18<omry18>	that really caught me by surprise.
+T 1588873707 18<dude-x18>	omry show me an example
+T 1588873757 18<omry18>	this one: https://paste.ubuntu.com/p/S7B9MZZzSz/
+T 1588873844 18<dude-x18>	what's the stack trace for that example
+T 1588873873 18<dude-x18>	i'll try the module function inside the class
+T 1588873875 18<dude-x18>	see how that works
+T 1588873907 18<omry18>	dude-x, we have established that a proper method in the class works.
+T 1588873918 18<omry18>	I am just curious as to what the cause of the problem with this example is.
+T 1588873941 18<omry18>	this should be similar to a @staticmethod,  I think
+T 1588873964 18<dude-x18>	y = global_foo is kind of like a function defined without self
+T 1588874155 18<dude-x18>	without staticmethod, you will have to do something like Class.y 
+T 1588874432 18<omry18>	ohh, gotcha. so Python does not know how to call this weird method like that.
+T 1588874479 18<dude-x18>	well typically with classes you work with instances
+T 1588874500 18<dude-x18>	so if you have an instance, it will do a thing where it passes itself into a function
+T 1588874524 18<omry18>	yeah, the reason I went that way is that the function I am normally dealing with is a global one and not a member.
+T 1588874539 18<omry18>	https://hydra.cc/docs/tutorial/simple_cli
+T 1588874561 18<dude-x18>	you can probably do y = staticmethod(global_foo)
+T 1588874568 18<dude-x18>	then self.y will work
+T 1588874571 18<omry18>	cool.
+T 1588874629 18<dude-x18>	yeah that works
+T 1588874664 18<dude-x18>	then self.y will work in regular methods
+T 1588874857 18<omry18>	still getting used to decorators being used as regular methods :)
+T 1588874875 18<dude-x18>	a decorator is synatic sugar for x = wrapper(x)
+T 1588874888 18<dude-x18>	x = func(x)
+T 1588874893 18<omry18>	yup, I know. it just throws me off every time.
+T 1588874901 18<dude-x18>	i know the feeling
+T 1588874912 18<omry18>	if you look at the hydra link above you will see that I use a decorator there.
+T 1588874914 18<dude-x18>	"ooh, yeah i didn't think of doing that but that makes sense"
+T 1588874920 18<omry18>	so at the very least, I know enough about how to write one :)
+T 1589052531 20*	Disconnected (20Connection timed out)
+T 1589052559 19*	Now talking on 22#pylib
+T 1589052559 22*	Topic for 22#pylib is: Welcome to pytest, tox and execnet development | https://mail.python.org/mailman/listinfo/pytest-dev | This is irc, please wait a while for an answer
+T 1589052559 22*	Topic for 22#pylib set by 26flub!~flub@coronation.devork.be (24Wed Oct  2 15:00:38 2019)
+T 1589297169 18<dude-x18>	agronholm if you have a job in apscheduler, is there a way to tell the scheduler to execute it now instead of its future start date (and still maintain that future start date)
+T 1589297214 18<agronholm18>	dude-x: you could just run it directly...?
+T 1589297254 18<agronholm18>	apscheduler v4 will have a separation between "tasks" and "schedules" which should make this easier
+T 1589297430 18<dude-x18>	call the function? works for me.
+T 1589297457 18<dude-x18>	agronholm what's your progress on v4? it sounds like it has a lot of good stuff in it
+T 1589297481 18<agronholm18>	I still have a mountain of work to do on that
+T 1589297503 18<agronholm18>	I just worked on it the other day, currently refactoring triggers to be stateful and json-serializable
+T 1589297519 18<agronholm18>	plus adding type annotations
+T 1589297533 18<agronholm18>	aps v4 will support only py3.6+
+T 1589297614 18<dude-x18>	fine with me. i have a new project that works well with py3.8 so far 
+T 1589297628 18<dude-x18>	with the libraries i use.
+T 1589460969 19*	Now talking on 22#pylib
+T 1589460969 22*	Topic for 22#pylib is: Welcome to pytest, tox and execnet development | https://mail.python.org/mailman/listinfo/pytest-dev | This is irc, please wait a while for an answer
+T 1589460969 22*	Topic for 22#pylib set by 26flub!~flub@coronation.devork.be (24Wed Oct  2 15:00:38 2019)
+T 1589565109 18<acetakwas18>	I am using with pytest.raises.
+T 1589565117 18<acetakwas18>	But the an error is still raised.
+T 1589565133 18<acetakwas18>	I expect it to silence the expected error.
+T 1589566547 18<dude-x18>	acetakwas is the error a custom error?
+T 1589566596 18<acetakwas18>	Yes. I raised `RuntimeError` in a route function, then called the route with `test_client.get`
+T 1589566613 18<acetakwas18>	It raises the error as expected.
+T 1589566635 18<dude-x18>	problem with runtime error is that it's not an error based off Exception
+T 1589566648 18<acetakwas18>	But I expected it not to fail my test since I wrote it within a `with pytest.raises`
+T 1589566673 18<acetakwas18>	dude-x: I also did `ValueError`. Same thing.
+T 1589566857 18<dude-x18>	acetakwas is it possible the exception is chained?
+T 1589566872 18<dude-x18>	i guess it doesn't matter.
+T 1589566904 18<dude-x18>	RuntimeException should work. it's in one of the tests in the pytest suite for testing raises
+T 1589566927 18<dude-x18>	are you using a particular matcher
+T 1589566986 18<dude-x18>	or are you passing a custom function to handle the exception
+T 1589567711 18<The-Compiler18>	acetakwas: can you show how you're calling pytest.raises and the exact output you get?
+T 1589568431 18<acetakwas18>	dude-x, The-Compiler:: https://gist.github.com/takwas/9cda2cd2b92630f71d5423ca5b82a60c
+T 1589568533 18<dude-x18>	acetakwas RuntimeError is not a subclass of Exception
+T 1589568569 18<dude-x18>	acetakwas you will have to catch BaseException
+T 1589568634 18<The-Compiler18>	dude-x: yes it is
+T 1589568640 18<dude-x18>	it is?
+T 1589568641 18<dude-x18>	huh
+T 1589568642 18<The-Compiler18>	dude-x: https://docs.python.org/3/library/exceptions.html#exception-hierarchy
+T 1589568671 18<dude-x18>	my mistake.
+T 1589568674 18<The-Compiler18>	acetakwas: looks like there's asyncio involved, so probably it's not your client.get that's failing (that also doesn't seem to be in the stacktrace), but something else
+T 1589568756 18<acetakwas18>	The-Compiler: But it raise the exact error I raise here: https://gist.github.com/takwas/9cda2cd2b92630f71d5423ca5b82a60c#file-pytest_raises-py-L16
+T 1589568764 18<dude-x18>	acetakwas i also notice that the arrow points to a block that is not inside the `with raises` 
+T 1589568777 18<acetakwas18>	When I change the type of exc, it raises the new type.
+T 1589568785 18<acetakwas18>	Hmm.
+T 1589568827 18<The-Compiler18>	acetakwas: yes, but asynchronously
+T 1589568843 18<The-Compiler18>	acetakwas: this is something pytest-asyncio might be able to help with, but I've never used it
+T 1589568849 18<dude-x18>	oh yeah that makes sense.
+T 1589568855 18<The-Compiler18>	and GitHub gives me a nice HTTP 500 when visiting https://github.com/pytest-dev/pytest-asyncio
+T 1589568856 18<dude-x18>	it's not synchronous.
+T 1589568956 18<acetakwas18>	Okay. Thanks.
+T 1589568961 18<acetakwas18>	I'm short on time.
+T 1589568971 18<acetakwas18>	In the meantime, I've used a try/except.
+T 1589568998 18<The-Compiler18>	acetakwas: does the try/except work?
+T 1589569016 18<acetakwas18>	The-Compiler: Yes, it does.
+T 1589569025 18<The-Compiler18>	hm, weird, I wouldn't expect it to
+T 1589569176 18<The-Compiler18>	ah, looks like their testclient is based on requests, so the requests.sessions.get on top of the stacktrace probably is the "client.get"
+T 1589569228 18<The-Compiler18>	acetakwas: does it work if you move the "continue" outside of the with-block?
+T 1589569320 18<The-Compiler18>	*ah*, I see it now!
+T 1589569325 18<acetakwas18>	The-Compiler: Wow!
+T 1589569328 18<acetakwas18>	That worked!
+T 1589569332 18<The-Compiler18>	acetakwas: if you have the try/except with the continue inside it (like now), you'd see the same
+T 1589569356 18<acetakwas18>	Why is that?
+T 1589569377 18<The-Compiler18>	acetakwas: because there's a (suppressed) exception, so the "continue" never gets called, so your second client.get(endpoint).json() gets called *too*, and *that* fails (also see the > on line 83)
+T 1589569405 18<acetakwas18>	Ah!
+T 1589569407 18<acetakwas18>	Right!
+T 1589569428 18<acetakwas18>	If I had used and if/else, I wouldn't have gotten in this situation as well.
+T 1589569494 18<The-Compiler18>	right
+T 1589569552 18<acetakwas18>	Thanks.
+T 1589569561 18<The-Compiler18>	acetakwas: also FWIW I'd probably make _add_transient_routes a fixture, use @pytest.mark.parametrize instead of a for loop, and maybe even split the good/bad ones into two separate tests
+T 1589569598 18<acetakwas18>	Right. But there's a reason I'm doing things this way.
+T 1589569622 18<acetakwas18>	I'm trying to debug an error where a dictionary is persisting data across requests.
+T 1589569630 18<acetakwas18>	So I need to simulate multiple requests/.
+T 1589681358 18<msalvatore18>	I'm having an issue where when I run pytest and attempt to create an html coverage report, the htmlcov directory is created with 600 permissions. I've run strace and mkdir gets called with 777 permissions, so I'm not sure why the permissions are being set to 600. Here's the exact error that I'm getting: https://pastebin.com/fiS8QniQ
+T 1589681747 18<msalvatore18>	hmm.. I think this is my fault. please ignore me for now.
+T 1589682218 18<msalvatore18>	Yeah, I had some code that was setting a super restrictive umask but not setting it back on destruction. Thanks for being my rubber ducky.
+T 1589801113 19*	Now talking on 22#pylib
+T 1589801113 22*	Topic for 22#pylib is: Welcome to pytest, tox and execnet development | https://mail.python.org/mailman/listinfo/pytest-dev | This is irc, please wait a while for an answer
+T 1589801113 22*	Topic for 22#pylib set by 26flub!~flub@coronation.devork.be (24Wed Oct  2 15:00:38 2019)
+T 1589804747 18<mrossinek18>	Hi guys! I am developing a program which also provides a curses TUI and I am wondering whether/how I am able to properly test this interface. Does anyone have experience with this or any resources to share? Thanks in advance :)
+T 1589815787 18<rootbox18>	hi, we want to execute a set of tests without teardown between the single tests we tried "@pytest.fixture(params=list, autouse=True, scope='session') but when we try this we always get the error "AttributeError: 'TestLogin' object has no attribut 'driver'" 
+T 1589815833 18<rootbox18>	without "scope" it's working fine, but execute the teardown after each test"
+T 1589815865 18<dude-x18>	is your driver in a function scope fixture?
+T 1589815897 18<dude-x18>	are you using pytest-selenium rootbox ?
+T 1589816743 18<rootbox18>	we using the normal pytest with appium, should we user the selnium version
+T 1589816744 18<rootbox18>	?
+T 1589816762 18<rootbox18>	wait i can share my code
+T 1589817033 18<rootbox18>	https://pastebin.com/jrdxqmnT
+T 1589817287 18<dude-x18>	can you use bpaste.net
+T 1589817294 18<dude-x18>	pastebin is blocked my corporate firewall
+T 1589817333 18<rootbox18>	https://bpa.st/5TUA
+T 1589817397 18<dude-x18>	hmm this is weird you're putting a fixture on a method called "setup"
+T 1589817426 18<dude-x18>	do you need to use classes?
+T 1589817430 18<dude-x18>	it's not necessary
+T 1589817434 18<dude-x18>	regardless
+T 1589817456 18<rootbox18>	actually we don't need the classes.
+T 1589817456 18<rootbox18>	o
+T 1589817456 18<dude-x18>	i would make a fixture (preferably in a conftest.py at the root of your test directory) called appium or driver
+T 1589817484 18<dude-x18>	the driver would look like your code
+T 1589817511 18<dude-x18>	then i would simply use driver in the argument list for methods
+T 1589817528 18<dude-x18>	def test_one(driver): ... or def test_one(self, driver) if you want to use a class.
+T 1589817545 18<rootbox18>	we'll try that
+T 1589817551 18<rootbox18>	thank you :-)
+T 1589817559 18<rootbox18>	i'll report back
+T 1600044734 19*	Now talking on 22#pylib
+T 1600044734 22*	Topic for 22#pylib is: Welcome to pytest, tox and execnet development | https://mail.python.org/mailman/listinfo/pytest-dev | This is irc, please wait a while for an answer
+T 1600044734 22*	Topic for 22#pylib set by 26flub!~flub@coronation.devork.be (24Wed Oct  2 15:00:38 2019)
+T 1600238972 18<Guest3760618>	Heya, I d like to ask if pytest fixtures are lazy evaluated. - If I use them as param in my test functions, but they are never used inside test for example. Do they slow down the code of the test?
+T 1600243170 18<The-Compiler18>	Guest37606: yes they would, they are evaluated before your test is called
+T 1600243183 18<The-Compiler18>	Guest37606: --setup-show might help you see what's going on :)
+T 1600250766 18<AutomatedTester18>	Hey all, I am trying to upgrade an old version of pytest to the latest. In our `conftest.py` https://github.com/SeleniumHQ/selenium/blob/trunk/py/conftest.py#L86-L87 we were using `MarkEvaluator` to help with skipping tests. is using the `iter_marks` in https://docs.pytest.org/en/latest/example/markers.html#custom-marker-and-command-line-option-to-control-test-runs the new way to do that?
+T 1600262995 18<Please_help_me18>	Hello, can someone help me with unit testing
+T 1600263228 18<The-Compiler18>	Please_help_me: just ask your actual question :)
+T 1600263471 18<Please_help_me18>	ah sorry, so I have a simple flask api that uses sqlalchemy to connect to a postgresql , I have some simple controllers that I want to test using pytest. I want to use pytest_pgsql (specifiacally their transacted_postgresql_db for quick teardown and creation) but I couldn't figure out how to after looking at the documentation
+T 1600263579 18<Please_help_me18>	for example let's say I want to test a very simple controller:
+T 1600263639 18<Please_help_me18>	it gets the sqlalchemy table from an import, and an id as a parameter, it simply queries the db and returns the the row for the given ID in a json format
+T 1600264538 18<Please_help_me18>	https://pastebin.com/tPE4MZ0b
+T 1600264592 18<The-Compiler18>	I'm not really familiar with Flask/SQLAlchemy/pytest_pgsql, so not sure I can be of much help :)
+T 1600264617 18<Please_help_me18>	that's a how I'm creating a table and my controller, I want to use pytest-pgsql or any library that can spin up an in memory instance of postgres
+T 1600264641 18<Please_help_me18>	thats alright, thank you The-Compiler 
+T 1600264725 18<The-Compiler18>	I suppose you can't easily run your tests against sqlite instead? AFAIK that's the standard choice for in-memory databases
+T 1600265150 18<Please_help_me18>	hmm I will try that, there is something called tempfile that will probably help
+T 1600287412 18<jim4718>	Hi folks. how to check from the plugin view, if a custom_hook has been put in the users's conftest file ?
+T 1600341893 18<AutomatedTester18>	Hi All, I am trying to do custom xfails in a fixture based on options passed in when running the tests
+T 1600341933 18<AutomatedTester18>	we used to have it but now I am trying to update pytest since we're on an older version
+T 1600341966 18<AutomatedTester18>	I have https://github.com/SeleniumHQ/selenium/blob/trunk/py/conftest.py#L85-L94
+T 1600342009 18<AutomatedTester18>	I have tried `get_closest_marker` which gives me a bit of what I need
+T 1600349879 18<dude-x18>	AutomatedTester what do you mean by custom xfails
+T 1600349922 18<dude-x18>	okay i understand now after looking at the code
+T 1600349923 18<AutomatedTester18>	well... it's a custom marker that we then tell our conftest that it's a xfail
+T 1600350075 18<dude-x18>	this code is using a lot of internals.... also i think this particular bit of code belongs in a pytest hook during the collection phase, but it seems that the test defines the driver used...
+T 1600350149 18<dude-x18>	yes i would use request.iter_mark i think
+T 1600350159 18<dude-x18>	to look for the xfail_browser mark
+T 1600350508 18<AutomatedTester18>	I tried that but it's not always working
+T 1600350714 18<dude-x18>	AutomatedTester so for mark in request.iter_markers() is not working?
+T 1600350734 18<dude-x18>	well i mean it works but is it xfailing the wrong node
+T 1600350819 18<AutomatedTester18>	that's a good question
+T 1600350829 18<AutomatedTester18>	I didn't look too deeply and I should have
+T 1600350849 18<AutomatedTester18>	I am getting cases where it's not entering `fin` for the cases where it has the marker
+T 1600350853 18<AutomatedTester18>	I should look deeper
+T 1600350975 18<dude-x18>	in theory, a function with xfail_firefox should be among the first set of markers found, but if a class or higher scope is marked for failure then it may do the wrong thing.
+T 1600351005 18<dude-x18>	well it's function scoped so that should limit the "damage"
+T 1600351024 18<AutomatedTester18>	yea
+T 1600351043 18<AutomatedTester18>	I am going through multiple rabbit holes at the same time here... which is "fun"
+T 1609963181 19*	Now talking on 22#pylib
+T 1609963182 22*	Topic for 22#pylib is: Welcome to pytest, tox and execnet development | https://mail.python.org/mailman/listinfo/pytest-dev | This is irc, please wait a while for an answer
+T 1609963182 22*	Topic for 22#pylib set by 26flub!~flub@coronation.devork.be (24Wed Oct  2 15:00:38 2019)

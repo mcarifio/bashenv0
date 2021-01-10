@@ -1,0 +1,798 @@
+T 1545259269 19*	Now talking on 22#rust
+T 1545259269 22*	Topic for 22#rust is: Rust general discussion | Playground https://play.rust-lang.org/ | Forum https://users.rust-lang.org | New user channel: #rust-beginners | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1545259269 22*	Topic for 22#rust set by 26niconii!nicole@moz-hmr3fs.midco.net (24Thu Dec  6 17:50:10 2018)
+T 1545259484 18<Guest1118>	https://www.youtube.com/watch?v=w9qZnp6Q_Q4
+T 1545260791 20*	Disconnected (20Connection timed out)
+T 1545260803 22*	26carif sets mode 24+x on 22carif
+T 1545260803 19*	Now talking on 22#rust
+T 1545260803 22*	Topic for 22#rust is: Rust general discussion | Playground https://play.rust-lang.org/ | Forum https://users.rust-lang.org | New user channel: #rust-beginners | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1545260803 22*	Topic for 22#rust set by 26niconii!nicole@moz-hmr3fs.midco.net (24Thu Dec  6 17:50:10 2018)
+T 1545262379 20*	Disconnected (20Connection timed out)
+T 1545262390 22*	26carif sets mode 24+x on 22carif
+T 1545262390 19*	Now talking on 22#rust
+T 1545262390 22*	Topic for 22#rust is: Rust general discussion | Playground https://play.rust-lang.org/ | Forum https://users.rust-lang.org | New user channel: #rust-beginners | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1545262390 22*	Topic for 22#rust set by 26niconii!nicole@moz-hmr3fs.midco.net (24Thu Dec  6 17:50:10 2018)
+T 1545262402 18<Jezza18>	It actually does help point me towards a better idea.
+T 1545262414 18<Jezza18>	That... sounds like overkill.
+T 1545262421 18<Jezza18>	Because it's not just for os stuff.
+T 1545262430 18<Jezza18>	It's just a generic module decl macro.
+T 1545262448 18<Jezza18>	It just works well with os stuff.
+T 1545262474 18<_Vi18>	Jezza, Why just OS stuff? Isn't it an organized way to have separate files depending on #[cfg] with a common interface?
+T 1545262499 18<Jezza18>	Currently, it only expands those shorthand attributes to cfg target_os
+T 1545262500 18<_Vi18>	Jezza, It should allow users to use arbitrary #[cfg] options, not just target_os.
+T 1545264148 20*	Disconnected (20Connection timed out)
+T 1545264159 22*	26carif sets mode 24+x on 22carif
+T 1545264159 19*	Now talking on 22#rust
+T 1545264159 22*	Topic for 22#rust is: Rust general discussion | Playground https://play.rust-lang.org/ | Forum https://users.rust-lang.org | New user channel: #rust-beginners | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1545264159 22*	Topic for 22#rust set by 26niconii!nicole@moz-hmr3fs.midco.net (24Thu Dec  6 17:50:10 2018)
+T 1545267388 20*	Disconnected (20Connection timed out)
+T 1545267399 22*	26carif sets mode 24+x on 22carif
+T 1545267399 19*	Now talking on 22#rust
+T 1545267399 22*	Topic for 22#rust is: Rust general discussion | Playground https://play.rust-lang.org/ | Forum https://users.rust-lang.org | New user channel: #rust-beginners | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1545267399 22*	Topic for 22#rust set by 26niconii!nicole@moz-hmr3fs.midco.net (24Thu Dec  6 17:50:10 2018)
+T 1545267409 18<ralexstokes18>	i've tried a few things but can't get the lifetimes to line up
+T 1545267428 18<ralexstokes18>	in general i just want to produce a series of refs, not copy the input at all
+T 1545267611 18<sarnold18>	self.input.clone().next() ... how much might be cloned on that line?
+T 1545267679 18<SpaceManiac18>	sarnold: the iterator is cloned, which if it's something like vec.into_iter(), it could clone all elements not yet visited
+T 1545267755 18<sarnold18>	SpaceManiac: any chance the MIR or LLVM levels would 'know' that it's only got to go one element deep?
+T 1545267884 18<ralexstokes18>	i was following this -- have not confirmed it is true
+T 1545267885 18<ralexstokes18>	https://users.rust-lang.org/t/takewhile-iterator-over-chars-to-string-slice/11014
+T 1545267908 22*	26ChanServ sets mode 24+a on 22#rust pcwalton
+T 1545267908 22*	26ChanServ gives channel operator status to 18pcwalton
+T 1545267924 18<ralexstokes18>	but im thinking cloning `std::chars::Chars` is just a few pointers while leaving the underlying `str` in place
+T 1545269608 20*	Disconnected (20Connection timed out)
+T 1545269619 22*	26carif sets mode 24+x on 22carif
+T 1545269619 19*	Now talking on 22#rust
+T 1545269619 22*	Topic for 22#rust is: Rust general discussion | Playground https://play.rust-lang.org/ | Forum https://users.rust-lang.org | New user channel: #rust-beginners | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1545269619 22*	Topic for 22#rust set by 26niconii!nicole@moz-hmr3fs.midco.net (24Thu Dec  6 17:50:10 2018)
+T 1545271287 20*	Disconnected (20Connection timed out)
+T 1545271299 22*	26carif sets mode 24+x on 22carif
+T 1545271299 19*	Now talking on 22#rust
+T 1545271299 22*	Topic for 22#rust is: Rust general discussion | Playground https://play.rust-lang.org/ | Forum https://users.rust-lang.org | New user channel: #rust-beginners | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1545271299 22*	Topic for 22#rust set by 26niconii!nicole@moz-hmr3fs.midco.net (24Thu Dec  6 17:50:10 2018)
+T 1545272668 20*	Disconnected (20Connection timed out)
+T 1545272679 22*	26carif sets mode 24+x on 22carif
+T 1545272679 19*	Now talking on 22#rust
+T 1545272679 22*	Topic for 22#rust is: Rust general discussion | Playground https://play.rust-lang.org/ | Forum https://users.rust-lang.org | New user channel: #rust-beginners | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1545272679 22*	Topic for 22#rust set by 26niconii!nicole@moz-hmr3fs.midco.net (24Thu Dec  6 17:50:10 2018)
+T 1545273016 18<blackbeard42018>	im using AsRawFd on linux to pass a socket with Stdio::from_raw_fd to  have a process::Command output on a socket.... How would i do this on windows. There seems to only be as_raw_socket for TcpStream on windows while Stdio:: only has from_raw_handle
+T 1545274470 20*	Disconnected (20Connection timed out)
+T 1545274481 22*	26carif sets mode 24+x on 22carif
+T 1545274481 19*	Now talking on 22#rust
+T 1545274481 22*	Topic for 22#rust is: Rust general discussion | Playground https://play.rust-lang.org/ | Forum https://users.rust-lang.org | New user channel: #rust-beginners | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1545274481 22*	Topic for 22#rust set by 26niconii!nicole@moz-hmr3fs.midco.net (24Thu Dec  6 17:50:10 2018)
+T 1545276028 20*	Disconnected (20Connection timed out)
+T 1545276040 22*	26carif sets mode 24+x on 22carif
+T 1545276040 19*	Now talking on 22#rust
+T 1545276040 22*	Topic for 22#rust is: Rust general discussion | Playground https://play.rust-lang.org/ | Forum https://users.rust-lang.org | New user channel: #rust-beginners | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1545276040 22*	Topic for 22#rust set by 26niconii!nicole@moz-hmr3fs.midco.net (24Thu Dec  6 17:50:10 2018)
+T 1545276282 18<bkhl18>	dtoebe, this works for me in regular Vim 8: ':%!rustup run nightly rustfmt --emit stdout'
+T 1545276385 18<dtoebe18>	@bkhl That works. The rust.vim doesn't seem to be working. I'll add the command manually
+T 1545276394 18<dtoebe18>	Thanks
+T 1545277589 20*	Disconnected (20Connection timed out)
+T 1545277600 22*	26carif sets mode 24+x on 22carif
+T 1545277600 19*	Now talking on 22#rust
+T 1545277600 22*	Topic for 22#rust is: Rust general discussion | Playground https://play.rust-lang.org/ | Forum https://users.rust-lang.org | New user channel: #rust-beginners | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1545277600 22*	Topic for 22#rust set by 26niconii!nicole@moz-hmr3fs.midco.net (24Thu Dec  6 17:50:10 2018)
+T 1545279152 20*	Disconnected (20Connection timed out)
+T 1545279163 22*	26carif sets mode 24+x on 22carif
+T 1545279163 19*	Now talking on 22#rust
+T 1545279163 22*	Topic for 22#rust is: Rust general discussion | Playground https://play.rust-lang.org/ | Forum https://users.rust-lang.org | New user channel: #rust-beginners | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1545279163 22*	Topic for 22#rust set by 26niconii!nicole@moz-hmr3fs.midco.net (24Thu Dec  6 17:50:10 2018)
+T 1545279402 22*	26ChanServ sets mode 24+a on 22#rust pcwalton
+T 1545279402 22*	26ChanServ gives channel operator status to 18pcwalton
+T 1545279681 18<lpg18>	It looks like 'cargo build' is skipping my build script (and failing to actually build) -- what's the best way to diagnose that?
+T 1545280888 20*	Disconnected (20Connection timed out)
+T 1545280900 22*	26carif sets mode 24+x on 22carif
+T 1545280900 19*	Now talking on 22#rust
+T 1545280900 22*	Topic for 22#rust is: Rust general discussion | Playground https://play.rust-lang.org/ | Forum https://users.rust-lang.org | New user channel: #rust-beginners | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1545280900 22*	Topic for 22#rust set by 26niconii!nicole@moz-hmr3fs.midco.net (24Thu Dec  6 17:50:10 2018)
+T 1545281243 18<lpg18>	What's the best library to reference for an absolutely complete, correct example of how to create a -sys library with dynamic/static linking that works everywhere with up-to-date cc and such?
+T 1545282392 20*	Disconnected (20Connection timed out)
+T 1545282403 22*	26carif sets mode 24+x on 22carif
+T 1545282403 19*	Now talking on 22#rust
+T 1545282403 22*	Topic for 22#rust is: Rust general discussion | Playground https://play.rust-lang.org/ | Forum https://users.rust-lang.org | New user channel: #rust-beginners | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1545282403 22*	Topic for 22#rust set by 26niconii!nicole@moz-hmr3fs.midco.net (24Thu Dec  6 17:50:10 2018)
+T 1545284069 20*	Disconnected (20Connection timed out)
+T 1545284080 22*	26carif sets mode 24+x on 22carif
+T 1545284080 19*	Now talking on 22#rust
+T 1545284080 22*	Topic for 22#rust is: Rust general discussion | Playground https://play.rust-lang.org/ | Forum https://users.rust-lang.org | New user channel: #rust-beginners | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1545284080 22*	Topic for 22#rust set by 26niconii!nicole@moz-hmr3fs.midco.net (24Thu Dec  6 17:50:10 2018)
+T 1545284599 18<mitologi18>	The succession of these flame emperors, from Shennong, the first Yan Emperor, until the time of the last Yan Emperor's defeat by the Yellow Emperor, may have been some 500 years.
+T 1545285838 20*	Disconnected (20Connection timed out)
+T 1545285850 22*	26carif sets mode 24+x on 22carif
+T 1545285850 19*	Now talking on 22#rust
+T 1545285850 22*	Topic for 22#rust is: Rust general discussion | Playground https://play.rust-lang.org/ | Forum https://users.rust-lang.org | New user channel: #rust-beginners | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1545285850 22*	Topic for 22#rust set by 26niconii!nicole@moz-hmr3fs.midco.net (24Thu Dec  6 17:50:10 2018)
+T 1545285880 18<lpg18>	and... since building shared libraries is out-of-scope for cc, maintaining a good Lua 5.1 -sys crate is more pain than I care to take on :(
+T 1545287219 20*	Disconnected (20Connection timed out)
+T 1545287230 22*	26carif sets mode 24+x on 22carif
+T 1545287230 19*	Now talking on 22#rust
+T 1545287230 22*	Topic for 22#rust is: Rust general discussion | Playground https://play.rust-lang.org/ | Forum https://users.rust-lang.org | New user channel: #rust-beginners | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1545287230 22*	Topic for 22#rust set by 26niconii!nicole@moz-hmr3fs.midco.net (24Thu Dec  6 17:50:10 2018)
+T 1545287298 18<SpaceManiac18>	sounds like you will need to invoke ld or the msvc equivalent manually
+T 1545287380 18<lpg18>	pretty sure invoking ld manually is not a good idea, I did look into going down that road though
+T 1545287400 18<lpg18>	I can also just invoke $(CC) and have it produce a shared object instead of producing objects and assembling them into a .a
+T 1545287582 18<Arnavion18>	ld binds lazily by default, so I'd think if the application had already loaded its copy of lua51.so before using anything from your Rust cdylib, the rust cdylib would just bind its imports to it
+T 1545287613 18<Arnavion18>	Though maybe you'll have to fiddle with rpath to convince it of that. Not sure
+T 1545287743 18<Arnavion18>	The alternative is to have the bindings be thunks that dlopen the lua51.so and then forward to it (ie poor man's lazily-linking)
+T 1545289797 20*	Disconnected (20Connection timed out)
+T 1545289809 22*	26carif sets mode 24+x on 22carif
+T 1545289809 19*	Now talking on 22#rust
+T 1545289809 22*	Topic for 22#rust is: Rust general discussion | Playground https://play.rust-lang.org/ | Forum https://users.rust-lang.org | New user channel: #rust-beginners | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1545289809 22*	Topic for 22#rust set by 26niconii!nicole@moz-hmr3fs.midco.net (24Thu Dec  6 17:50:10 2018)
+T 1545289815 18<dpc118>	xD
+T 1545290115 18<Raticide18>	Anyone use vim-lldb to debug rust?  When I run :Lattach I get the error: `unable to locate lldb-server-8.0.0`, but lldb-server-8.0.0 works just fine in my terminal.
+T 1545290157 18<Raticide18>	i.e. it's in my PATH
+T 1545290308 18<rbraley18>	Hi folks, quick question: Is it feasible to serialize a closure in rust, send it over the wire, deserialize it and run it on another node?
+T 1545290469 18<Mutabah18>	rbraley: Not really...
+T 1545290491 18<Mutabah18>	but if both nodes have the same program image, you can send some value that represents the closure
+T 1545291137 18<rbraley18>	@Mutabah looks like this might be a way https://github.com/rust-lang/rfcs/issues/668
+T 1545292857 20*	Disconnected (20Connection timed out)
+T 1545292868 22*	26carif sets mode 24+x on 22carif
+T 1545292868 19*	Now talking on 22#rust
+T 1545292868 22*	Topic for 22#rust is: Rust general discussion | Playground https://play.rust-lang.org/ | Forum https://users.rust-lang.org | New user channel: #rust-beginners | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1545292868 22*	Topic for 22#rust set by 26niconii!nicole@moz-hmr3fs.midco.net (24Thu Dec  6 17:50:10 2018)
+T 1545294307 20*	Disconnected (20Connection timed out)
+T 1545294318 22*	26carif sets mode 24+x on 22carif
+T 1545294318 19*	Now talking on 22#rust
+T 1545294318 22*	Topic for 22#rust is: Rust general discussion | Playground https://play.rust-lang.org/ | Forum https://users.rust-lang.org | New user channel: #rust-beginners | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1545294318 22*	Topic for 22#rust set by 26niconii!nicole@moz-hmr3fs.midco.net (24Thu Dec  6 17:50:10 2018)
+T 1545295712 20*	Disconnected (20Connection timed out)
+T 1545295723 22*	26carif sets mode 24+x on 22carif
+T 1545295723 19*	Now talking on 22#rust
+T 1545295723 22*	Topic for 22#rust is: Rust general discussion | Playground https://play.rust-lang.org/ | Forum https://users.rust-lang.org | New user channel: #rust-beginners | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1545295723 22*	Topic for 22#rust set by 26niconii!nicole@moz-hmr3fs.midco.net (24Thu Dec  6 17:50:10 2018)
+T 1545296922 18<j_ey18>	there's no way to pattern match into exisitng variables right?
+T 1545297304 18<stephaneyfx18>	j_ey: Do you mean using the values of existing variables in a pattern?
+T 1545297393 18<Moongoodboy{K}18>	let mut foo; match bar { Ok(Some(foo)) => { /* the outer foo has not been assigned to; instead, it is shadowed in this scope. */ }, .. }  // j_ey?
+T 1545297418 18<j_ey18>	I meant I have variables a and b, I want to do (a, b) = (some, tuple);
+T 1545297428 18<Wizord18>	no
+T 1545297431 18<Moongoodboy{K}18>	Ahh. Yeah, that's not possible yet.
+T 1545297460 18<j_ey18>	temporary variables it is!
+T 1545297467 18<Moongoodboy{K}18>	Would be really nice though.
+T 1545297472 18<Wizord18>	although, I don't see why it /shouldn't/ be possible
+T 1545297489 18<Moongoodboy{K}18>	(a, b) = (b, a + b);  // fibonacci anyone?
+T 1545297517 18<Wizord18>	oooh
+T 1545297517 18<j_ey18>	relet (a, b) = (b, a + b);
+T 1545297522 18<Mutabah18>	It'd need a new/repurposed keyword
+T 1545297529 18<Mutabah18>	`where`?
+T 1545297533 18<Moongoodboy{K}18>	ew
+T 1545297537 18<Mutabah18>	`move`
+T 1545297539 18<Wizord18>	why does it need a keyword?
+T 1545297540 18<Moongoodboy{K}18>	Why a keyword?
+T 1545297559 18<Mutabah18>	To put the compiler into "pattern" parsing mode
+T 1545297560 18<Moongoodboy{K}18>	Patterns currently aren't valid on the left side of `=`, right?
+T 1545297569 18<Mutabah18>	Patterns have different syntax to expressions
+T 1545297590 18<Moongoodboy{K}18>	ooohhh the left side can be an expression, right.
+T 1545297624 18<Moongoodboy{K}18>	let become (a, b) = (b, a + b);  // >:D
+T 1545299159 20*	Disconnected (20Connection timed out)
+T 1545299170 22*	26carif sets mode 24+x on 22carif
+T 1545299170 19*	Now talking on 22#rust
+T 1545299170 22*	Topic for 22#rust is: Rust general discussion | Playground https://play.rust-lang.org/ | Forum https://users.rust-lang.org | New user channel: #rust-beginners | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1545299170 22*	Topic for 22#rust set by 26niconii!nicole@moz-hmr3fs.midco.net (24Thu Dec  6 17:50:10 2018)
+T 1545300451 20*	Disconnected (20Connection timed out)
+T 1545300462 22*	26carif sets mode 24+x on 22carif
+T 1545300462 19*	Now talking on 22#rust
+T 1545300462 22*	Topic for 22#rust is: Rust general discussion | Playground https://play.rust-lang.org/ | Forum https://users.rust-lang.org | New user channel: #rust-beginners | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1545300462 22*	Topic for 22#rust set by 26niconii!nicole@moz-hmr3fs.midco.net (24Thu Dec  6 17:50:10 2018)
+T 1545302218 20*	Disconnected (20Connection timed out)
+T 1545302230 22*	26carif sets mode 24+x on 22carif
+T 1545302230 19*	Now talking on 22#rust
+T 1545302230 22*	Topic for 22#rust is: Rust general discussion | Playground https://play.rust-lang.org/ | Forum https://users.rust-lang.org | New user channel: #rust-beginners | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1545302230 22*	Topic for 22#rust set by 26niconii!nicole@moz-hmr3fs.midco.net (24Thu Dec  6 17:50:10 2018)
+T 1545303840 20*	Disconnected (20Connection timed out)
+T 1545303852 22*	26carif sets mode 24+x on 22carif
+T 1545303852 19*	Now talking on 22#rust
+T 1545303852 22*	Topic for 22#rust is: Rust general discussion | Playground https://play.rust-lang.org/ | Forum https://users.rust-lang.org | New user channel: #rust-beginners | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1545303852 22*	Topic for 22#rust set by 26niconii!nicole@moz-hmr3fs.midco.net (24Thu Dec  6 17:50:10 2018)
+T 1545305612 20*	Disconnected (20Connection timed out)
+T 1545305623 22*	26carif sets mode 24+x on 22carif
+T 1545305623 19*	Now talking on 22#rust
+T 1545305623 22*	Topic for 22#rust is: Rust general discussion | Playground https://play.rust-lang.org/ | Forum https://users.rust-lang.org | New user channel: #rust-beginners | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1545305623 22*	Topic for 22#rust set by 26niconii!nicole@moz-hmr3fs.midco.net (24Thu Dec  6 17:50:10 2018)
+T 1545305747 18<nf318>	how can I do bitfields in structs?
+T 1545305785 18<Arnavion18>	u8's and masks
+T 1545305800 18<Lumpio-18>	There's a "bitfield" crate that can generate accessor functions for bitfields
+T 1545305975 18<bitonic18>	why does this: https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=7ec323e8b3f3d52a99a827c8cb5e1494 not work with the `mut`? it works without
+T 1545305975 18<bitonic18>	isn't the lifetime handling orthogonal to mutability?
+T 1545305975 18<bitonic18>	e.g. the implicit lifetime of the `self` there should always be longer than `'a`, regardless of mutability
+T 1545305991 18<nf318>	so bitfield provides BitFieldExt, but how do I tell it the width - or does it just store 1bit?
+T 1545306026 18<Lumpio-18>	What crate are you looking at?
+T 1545306036 18<Lumpio-18>	I meant this one https://docs.rs/bitfield/0.13.1/bitfield/macro.bitfield.html
+T 1545306049 18<nf318>	oh lol
+T 1545306091 18<nf318>	right back
+T 1545306225 18<stephaneyfx18>	bitonic: The handling of &mut is different from & because you can have only one mutable ref to any value.
+T 1545306266 18<bitonic18>	stephaneyfx: that makes sense, but the error references different lifetimes
+T 1545306277 18<bitonic18>	while it seems to be an aliasing problem
+T 1545306286 18<stephaneyfx18>	bitonic: Your code has two issues: The first one is that a `&&mut Foo` does not give you mutable access to the Foo
+T 1545306372 18<stephaneyfx18>	bitonic: The second is that getting at the `&'a mut str` in the Test requires borrowing mutably the Test instance so that you don't end up with 2 mutable references to the same str
+T 1545306429 18<stephaneyfx18>	bitonic: This works (with explicit lifetimes, but you can elide 'b): https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=41b2a0a2868e44045eed00c3e91a7625
+T 1545306507 18<bitonic18>	stephaneyfx: thank you! the error threw me off, but that all makes sense
+T 1545306519 18<stephaneyfx18>	bitonic: You're welcome :)
+T 1545307068 18<AlecTaylor18>	How do I parse, modify, then emit Rust code?
+T 1545307084 18<j_ey18>	syn I think
+T 1545307841 18<zed2k18>	hi
+T 1545307878 18<zed2k18>	i'm looking to understand how std:error:Error will change with 1.33. are there any articles written about that somewhere?
+T 1545307989 18<zed2k18>	fn description is documented as "soft-deprecated". I wonder what that means? is it discouraged to use it?
+T 1545308116 18<zed2k18>	and what about source() and cause() -- when I create a new Error type, do I need to implement these? I am confused by the documentation
+T 1545308328 18<stephaneyfx18>	zed2k: I think description is deprecated because you can just use the Display implementation that every Error has (since Error implies Display)
+T 1545308356 18<stephaneyfx18>	zed2k: And you don't need to implement cause. Just implement source.
+T 1545308528 18<zed2k18>	stephaneyfx: apparently not writing "fn source" compiles fine, so it's not really required?
+T 1545308550 18<zed2k18>	or will the compiler insert a generated implemenation for source?
+T 1545308560 18<stephaneyfx18>	zed2k: The default impl always returns None
+T 1545308568 18<zed2k18>	I see, thanks
+T 1545308570 18<Shibe18>	how do you import crates with a custom derive without using #[macro_use] extern crate foo?
+T 1545308579 18<Shibe18>	i assume there is some new syntax since extern crate is deprecated?
+T 1545308586 18<stephaneyfx18>	zed2k: `cause` calls `source` in the default impl, so implementing `source` is good enough
+T 1545308623 18<stephaneyfx18>	Shibe: `use derive_macro_crate::DeriveMacro;`
+T 1545308625 18<zed2k18>	ah, okay, that makes it clearer. thanks :)
+T 1545308656 18<Shibe18>	stephaneyfx: what would be DeriveMacro in the case of a crate like failure?
+T 1545308660 18<Shibe18>	would it be the name of the trait?
+T 1545308677 18<stephaneyfx18>	Shibe: I think `use failure::Fail;`
+T 1545308907 18<mib_ymtxka18>	Hey, what's the difference between pub(self) and private?
+T 1545309050 18<stephaneyfx18>	mib_ymtxka: I'm not aware of any
+T 1545309256 18<M-ou-se18>	I have a vec![(1, 2), (3, 4), (5, 6)]. How do i flatten that into a sequence of [1, 2, 3, 4, 5, 6]? i can't return (1, 2) or [1, 2] from the lambda i give to flat_map, as those are not IntoIter.
+T 1545309352 18<stephaneyfx18>	M-ou-se: You can use a crate like smallvec -- you could use Vec but that always allocate dynamically
+T 1545310498 20*	Disconnected (20Connection timed out)
+T 1545310510 22*	26carif sets mode 24+x on 22carif
+T 1545310510 19*	Now talking on 22#rust
+T 1545310510 22*	Topic for 22#rust is: Rust general discussion | Playground https://play.rust-lang.org/ | Forum https://users.rust-lang.org | New user channel: #rust-beginners | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1545310510 22*	Topic for 22#rust set by 26niconii!nicole@moz-hmr3fs.midco.net (24Thu Dec  6 17:50:10 2018)
+T 1545310973 18<mib_ymtxka18>	Is there any difference between pub(crate) and pub(in crate)?
+T 1545312151 20*	Disconnected (20Connection timed out)
+T 1545312163 22*	26carif sets mode 24+x on 22carif
+T 1545312163 19*	Now talking on 22#rust
+T 1545312163 22*	Topic for 22#rust is: Rust general discussion | Playground https://play.rust-lang.org/ | Forum https://users.rust-lang.org | New user channel: #rust-beginners | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1545312163 22*	Topic for 22#rust set by 26niconii!nicole@moz-hmr3fs.midco.net (24Thu Dec  6 17:50:10 2018)
+T 1545312217 18<mib_ymtxka18>	I mean, if there is a place to find out whether or not pub(self) is equivalent to private, then it should surely be in a section about visibility, shouldn't it?
+T 1545312222 18<stephaneyfx18>	The reference states that "pub(self) makes an item visible to the current module.", which is also what the lack of a visibility specifier does, a.k.a. private
+T 1545312248 18<bitonic18>	let's say that i have  `struct Foo<'a>{ x: &'a str }` with some operations defined on it. now, the data referenced by `x` is not mutable, regardless of whether i have a `mut Foo` (which makes sense). is there a way to have a `struct MutFoo<'a> {x: &'a mut str }` without redefining everything?
+T 1545312312 18<mib_ymtxka18>	Yes, that's my guess, but why wouldn't you write something like (equivalent to private) next to it?
+T 1545312330 18<mib_ymtxka18>	Because that would be the most obvious thing to do in my opinion.
+T 1545312382 18<stephaneyfx18>	mib_ymtxka: You can submit a PR. Doc improvements are always welcome AFAIK.
+T 1545313560 20*	Disconnected (20Connection timed out)
+T 1545313571 22*	26carif sets mode 24+x on 22carif
+T 1545313571 19*	Now talking on 22#rust
+T 1545313571 22*	Topic for 22#rust is: Rust general discussion | Playground https://play.rust-lang.org/ | Forum https://users.rust-lang.org | New user channel: #rust-beginners | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1545313571 22*	Topic for 22#rust set by 26niconii!nicole@moz-hmr3fs.midco.net (24Thu Dec  6 17:50:10 2018)
+T 1545313625 18<nifker18>	cant I "impl Foo" if "type Foo = u16"?
+T 1545313681 18<zed2k18>	nifker: I believe you need to write struct Foo(u16) to do that
+T 1545313695 18<zed2k18>	otherwise you are trying to implement for a type of another crate
+T 1545313712 18<nifker18>	zed2k: this does not add overhead bc of the struct or?
+T 1545313721 18<dpc118>	nifker: you can't impl a concrete type
+T 1545313733 18<zed2k18>	nifker: i don't know
+T 1545313770 18<zed2k18>	I could imagine the compiler being smart enough to optimize the overhead away
+T 1545313839 18<nifker18>	dpc1: so type is no more than an alias
+T 1545313863 18<j_ey18>	yep
+T 1545315149 20*	Disconnected (20Connection timed out)
+T 1545315161 22*	26carif sets mode 24+x on 22carif
+T 1545315161 19*	Now talking on 22#rust
+T 1545315161 22*	Topic for 22#rust is: Rust general discussion | Playground https://play.rust-lang.org/ | Forum https://users.rust-lang.org | New user channel: #rust-beginners | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1545315161 22*	Topic for 22#rust set by 26niconii!nicole@moz-hmr3fs.midco.net (24Thu Dec  6 17:50:10 2018)
+T 1545315511 18<Mutabah18>	Hmm... I'm having odd errors with xargo using a custom-built libstd, is there a way to get rustc to dump the rlib's it's loaded
+T 1545316919 20*	Disconnected (20Connection timed out)
+T 1545316930 22*	26carif sets mode 24+x on 22carif
+T 1545316930 19*	Now talking on 22#rust
+T 1545316930 22*	Topic for 22#rust is: Rust general discussion | Playground https://play.rust-lang.org/ | Forum https://users.rust-lang.org | New user channel: #rust-beginners | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1545316930 22*	Topic for 22#rust set by 26niconii!nicole@moz-hmr3fs.midco.net (24Thu Dec  6 17:50:10 2018)
+T 1545320220 20*	Disconnected (20Connection timed out)
+T 1545320232 22*	26carif sets mode 24+x on 22carif
+T 1545320232 19*	Now talking on 22#rust
+T 1545320232 22*	Topic for 22#rust is: Rust general discussion | Playground https://play.rust-lang.org/ | Forum https://users.rust-lang.org | New user channel: #rust-beginners | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1545320232 22*	Topic for 22#rust set by 26niconii!nicole@moz-hmr3fs.midco.net (24Thu Dec  6 17:50:10 2018)
+T 1545320661 18<_Vi18>	What is status of `if !let x = something { some fallback that must return }; use x` feature?   Is there an RFC?
+T 1545321840 20*	Disconnected (20Connection timed out)
+T 1545321852 22*	26carif sets mode 24+x on 22carif
+T 1545321852 19*	Now talking on 22#rust
+T 1545321852 22*	Topic for 22#rust is: Rust general discussion | Playground https://play.rust-lang.org/ | Forum https://users.rust-lang.org | New user channel: #rust-beginners | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1545321852 22*	Topic for 22#rust set by 26niconii!nicole@moz-hmr3fs.midco.net (24Thu Dec  6 17:50:10 2018)
+T 1545323042 20*	Disconnected (20Connection timed out)
+T 1545323054 22*	26carif sets mode 24+x on 22carif
+T 1545323054 19*	Now talking on 22#rust
+T 1545323054 22*	Topic for 22#rust is: Rust general discussion | Playground https://play.rust-lang.org/ | Forum https://users.rust-lang.org | New user channel: #rust-beginners | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1545323054 22*	Topic for 22#rust set by 26niconii!nicole@moz-hmr3fs.midco.net (24Thu Dec  6 17:50:10 2018)
+T 1545323058 18<nifker18>	faern: I now implemented Into<Enum> for u8 for now
+T 1545323128 18<jschievink18>	nifker: Into must not fail
+T 1545323155 18<jschievink18>	look into num-traits/num-derive for a deriveable FromPrimitive trait
+T 1545323163 18<nifker18>	jschievink: The enum doesnt use arguments
+T 1545323168 18<faern18>	nifker: That sounds very dangerous. What does it do if it gets a u8 that is not a variant?
+T 1545323180 18<tgr18>	udoprog: I did that, it's quite powerful given a small number of enum cases (say, < 20)
+T 1545323181 18<jschievink18>	nifker: this isn't about arguments
+T 1545323185 18<nifker18>	faern: unimplemented!()
+T 1545323196 18<jschievink18>	nifker: yeah don't do that
+T 1545323199 18<faern18>	nifker: Then you will risk panicking. Does not sound optimal
+T 1545323229 18<faern18>	nifker: Look at the crates I link in the first post in the forum thread I linked. There are a number of crates there that does exactly this, but with error handling of invalid values.
+T 1545323256 18<tgr18>	udoprog: I did a whole thing around strings where the range of values is known at compile time https://github.com/1tgr/rust-static-atom
+T 1545323519 18<faern18>	nifker: Also, you almost never want to implement Into for anything. Infallible conversion should likely implement From instead, because then the compiler will generate the corresponding Into automatically.
+T 1545323521 18<tgr18>	heh, just noticed it was around the time I was working with you on https://github.com/udoprog/fixed-vec-deque
+T 1545323554 18<faern18>	nifker: But in this case you more likely want something like MyEnum::try_from(i: u8) -> Option<MyEnum>
+T 1545323586 18<nifker18>	faern: tryfrom is nightly-only
+T 1545323636 18<faern18>	nifker: Yes, but that does not stop you from just adding a method named try_from to the enum type.
+T 1545323643 18<faern18>	It does not have to be a trait impl
+T 1545323680 22*	26ChanServ gives channel operator status to 18jdm
+T 1545323707 18<elichai218>	Is there a noop thread::JoinHandle?
+T 1545323764 18<faern18>	elichai2: What does that mean? What do you want it to do?
+T 1545323868 18<elichai218>	I want to generate a thread in an if but join it outside
+T 1545323882 18<elichai218>	so if the if won't happen it will join nothing
+T 1545323892 18<faern18>	Put it in an Option<JoinHandle> and only join if the option is filled?
+T 1545323922 18<elichai218>	that's an option :P
+T 1545323931 18<faern18>	let join_handle = if should_spawn { Some(thread::spawn(...)) } else { None };
+T 1545325230 20*	Disconnected (20Connection timed out)
+T 1545325241 22*	26carif sets mode 24+x on 22carif
+T 1545325241 19*	Now talking on 22#rust
+T 1545325241 22*	Topic for 22#rust is: Rust general discussion | Playground https://play.rust-lang.org/ | Forum https://users.rust-lang.org | New user channel: #rust-beginners | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1545325241 22*	Topic for 22#rust set by 26niconii!nicole@moz-hmr3fs.midco.net (24Thu Dec  6 17:50:10 2018)
+T 1545327960 20*	Disconnected (20Connection timed out)
+T 1545327971 22*	26carif sets mode 24+x on 22carif
+T 1545327971 19*	Now talking on 22#rust
+T 1545327971 22*	Topic for 22#rust is: Rust general discussion | Playground https://play.rust-lang.org/ | Forum https://users.rust-lang.org | New user channel: #rust-beginners | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1545327971 22*	Topic for 22#rust set by 26niconii!nicole@moz-hmr3fs.midco.net (24Thu Dec  6 17:50:10 2018)
+T 1545327993 18<dsd18>	but I just did do that :-?
+T 1545328080 18<dsd18>	https://pastebin.com/vLHwNqnK <- here I'm passing a reference to print_str and a mutable reference to push_str.
+T 1545328129 18<tgr18>	here the compiler knows that `push_str` and `print_str` don't use the reference after they have returned
+T 1545328165 18<dsd18>	Hence, if the functions resides in another module, the compiler would complain?
+T 1545328187 18<FenrirWolf18>	it would complain if you did something that tried to use that mutable ref again after taking the shared ref
+T 1545328259 18<dsd18>	I'm puzzled. I can duplicate the calls to push_str and print_str and nothing happens ...
+T 1545328273 18<FenrirWolf18>	or wait, i think i misread it
+T 1545328283 18<tgr18>	"where someF would start a thread and do something in the background" - I think it's possible to write this only if `someF` is declared `fn someF(&'static mut s: String)`
+T 1545328325 18<tgr18>	or some other lifetime that you know outlives the function call
+T 1545328350 18<tgr18>	"Hence, if the functions resides in another module, the compiler would complain?" - no, the borrow checker can't see inside the function
+T 1545328363 18<tgr18>	but when the function is compiled, the lifetimes of the input and output references are inferred automatically
+T 1545328390 18<tgr18>	the borrow checker works from these lifetimes; you can also insert the lifetime into the function prototype and make it explicit
+T 1545328441 18<dsd18>	Ok, but what confuses me is that I can do the following: push_str(&mut s); print_str(&s); push_str(&mut s); print_str(&s);
+T 1545328467 18<tgr18>	sure, in all those cases, the lifetime of the reference lasts only as long as a single function call
+T 1545328471 18<FenrirWolf18>	that's because you're passing a new reference to each function call
+T 1545328477 18<FenrirWolf18>	each of them expires when the function returns
+T 1545328486 18<tgr18>	the compiler knows `push_str` is finished before `print_str` starts
+T 1545328507 18<tgr18>	I don't think it's possible to write the hypothetical thread-spawning version of `push_str`
+T 1545328540 18<FenrirWolf18>	you have purely sequential code here. if you did have code that spawns a thread, then either the lifetime requirements would be different or the function would have to have some mechanism that ensures the spawned thread returns before the calling function does
+T 1545328625 18<spear218>	how can i run one specific test with cargo test?
+T 1545328652 18<patapon18>	i'm using a custom derive that generates a private module, and I'm getting the warning "names from parent modules are not accessible without an explicit import"
+T 1545328653 18<dsd18>	Ok, I see. So let me ask you another question just to make sure I undertand what's going on: If I add let r = &mut s; before the first function call to push_str(), the compiler complains. So, I guess this is because r outlives the other mutable references?
+T 1545328665 18<FenrirWolf18>	yeah
+T 1545328670 18<mbrubeck18>	spear2: Is it an "integration test" (tests/foo.rs") or a "unit test" (test functions within the main "src" folder)?
+T 1545328683 18<dsd18>	I see ...
+T 1545328685 18<patapon18>	i understand the error, but i'm not sure on how to solve it: should I add `use super::*` in the module that I generate?
+T 1545328693 18<dsd18>	Many thanks for your answers! :-)
+T 1545328698 18<spear218>	mbrubeck: a unit test
+T 1545328716 18<mbrubeck18>	spear2: `cargo test -- foo` will run only test functions with "foo" in their names
+T 1545328718 18<spear218>	mbrubeck: i have multiple tests like foo, foo_bar, foo_bar_baz, but i only want to run 'foo'
+T 1545328727 18<mbrubeck18>	Hmm
+T 1545328728 18<tgr18>	patapon: either a `use super::whatever`, or qualify each usage with `super::`
+T 1545328758 18<spear218>	maybe i just need to reverse the way i've named them, like baz_bar_foo, bar_foo, foo
+T 1545328768 18<mbrubeck18>	spear2: cargo test -- --exact foo
+T 1545328800 18<spear218>	ah, ty!
+T 1545329999 20*	Disconnected (20Connection timed out)
+T 1545330011 22*	26carif sets mode 24+x on 22carif
+T 1545330011 19*	Now talking on 22#rust
+T 1545330011 22*	Topic for 22#rust is: Rust general discussion | Playground https://play.rust-lang.org/ | Forum https://users.rust-lang.org | New user channel: #rust-beginners | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1545330011 22*	Topic for 22#rust set by 26niconii!nicole@moz-hmr3fs.midco.net (24Thu Dec  6 17:50:10 2018)
+T 1545330046 18<talchas18>	cschneid: yeah, you have a lot of options; tokio has some small examples, and there's larger frameworks like actix/actix-web if you like their models
+T 1545330069 18<talchas18>	(a lot of options and not as far as I know a standard agreed-on answer)
+T 1545330090 18<cschneid18>	talchas: I guess I'm getting tripped up by the fact it's a whole ecosystem of libraries, rather than one with examples :) I'll go dig into tokio more since that seems core to things
+T 1545332492 20*	Disconnected (20Connection timed out)
+T 1545332503 22*	26carif sets mode 24+x on 22carif
+T 1545332503 19*	Now talking on 22#rust
+T 1545332503 22*	Topic for 22#rust is: Rust general discussion | Playground https://play.rust-lang.org/ | Forum https://users.rust-lang.org | New user channel: #rust-beginners | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1545332503 22*	Topic for 22#rust set by 26niconii!nicole@moz-hmr3fs.midco.net (24Thu Dec  6 17:50:10 2018)
+T 1545332539 18<sfackler18>	digital[m]: use ```ignore to have rustdoc ignore the example when testing
+T 1545332624 18<digital[m]18>	sfackler (IRC): good to know. I do like the effect of having this function somewhat tested though
+T 1545332646 18<digital[m]18>	or at least the syntax verified
+T 1545332794 18<Arnavion18>	digital[m]: ```rust,no_run
+T 1545332807 18<Arnavion18>	will compile but not run it
+T 1545332839 18<talchas18>	it probably won't compile though if it relies on private stuff
+T 1545332855 18<digital[m]18>	it doesn't compile
+T 1545332868 18<Arnavion18>	Then there's nothing for the test to verify
+T 1545334560 20*	Disconnected (20Connection timed out)
+T 1545334574 22*	26carif sets mode 24+x on 22carif
+T 1545334574 19*	Now talking on 22#rust
+T 1545334574 22*	Topic for 22#rust is: Rust general discussion | Playground https://play.rust-lang.org/ | Forum https://users.rust-lang.org | New user channel: #rust-beginners | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1545334574 22*	Topic for 22#rust set by 26niconii!nicole@moz-hmr3fs.midco.net (24Thu Dec  6 17:50:10 2018)
+T 1545334691 18<zachcarter18>	are there any plans for Rust to support per-allocation custom allocators?
+T 1545334722 18<sfackler18>	yes, there's a (large) issue about them on rust-lang/rust
+T 1545334728 18<zachcarter18>	or is the default / per-process|lib allocator model the final destination?
+T 1545334741 18<zachcarter18>	cool
+T 1545334948 18<j_ey18>	I have this: struct FBEdgesCoord<T: IsFixedBlock = NotFixed> {. but Im getting cannot infer type T errors.. I thought that was the point of the default?
+T 1545334963 18<sfackler18>	parameter defaults don't factor into type inference
+T 1545334984 18<j_ey18>	sfackler: what does that mean really?
+T 1545334987 18<sfackler18>	the default just means that the type FBEdgesCoord is equivalent to FBEdgesCoord<NotFixed>
+T 1545335960 20*	Disconnected (20Connection reset by peer)
+T 1545335972 22*	26carif sets mode 24+x on 22carif
+T 1545335972 19*	Now talking on 22#rust
+T 1545335972 22*	Topic for 22#rust is: Rust general discussion | Playground https://play.rust-lang.org/ | Forum https://users.rust-lang.org | New user channel: #rust-beginners | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1545335972 22*	Topic for 22#rust set by 26niconii!nicole@moz-hmr3fs.midco.net (24Thu Dec  6 17:50:10 2018)
+T 1545336034 18<awakecoding18>	SpaceManiac: this is indeed a direct, standard equivalent of the "stream util" I have I C
+T 1545336291 18<ted18>	awakecoding: FYI you might find scroll interesting: https://github.com/m4b/scroll/
+T 1545336304 18<ted18>	it's a bunch of traits (including derive) for reading/writing structs to and from byte streams
+T 1545336347 18<ted18>	he wrote it to use in his goblin (ELF/Mach-O/PE parser) crate, but i've used it in a few other places and it's really nice
+T 1545336407 18<awakecoding18>	ted: looks nice, I'll keep a bookmark
+T 1545338581 20*	Disconnected (20Connection timed out)
+T 1545338592 22*	26carif sets mode 24+x on 22carif
+T 1545338592 19*	Now talking on 22#rust
+T 1545338592 22*	Topic for 22#rust is: Rust general discussion | Playground https://play.rust-lang.org/ | Forum https://users.rust-lang.org | New user channel: #rust-beginners | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1545338592 22*	Topic for 22#rust set by 26niconii!nicole@moz-hmr3fs.midco.net (24Thu Dec  6 17:50:10 2018)
+T 1545338640 18<musicmatze-M18>	I might even be able to optimize the execution to be build with zero sized types .. So that the runtime overhead of my lib would vanish almost completely. 
+T 1545338641 18<musicmatze-M18>	And that while being data format agnostic over all serde supported formats. 
+T 1545338641 18<musicmatze-M18>	Sounds almost too good to be true, right?
+T 1545338731 18<talchas18>	monomorphized Data.Generic gets you quite a bit
+T 1545339473 18<j_ey18>	talchas: got any clever insignths on this https://gist.github.com/jgouly/7e5f6e0974e3d455316daeaea6c4cd71 ? I want to share most of the code, apart from one small part that is different. I dont want this as runtime behaviour as this is quite hot code
+T 1545339540 18<j_ey18>	(and this default trait thing doesnt work too well since I need to specify T in places)
+T 1545339616 18<talchas18>	it certainly /works/, and you can have wrappers or type aliases for fixed/notfixed
+T 1545339634 18<talchas18>	there might be easier ways to share code, there might not
+T 1545339695 18<talchas18>	it might make more sense to put from_cube in IsFixedBlock if it's the only thing different and doesn't share any/much code between branches
+T 1545339700 18<j_ey18>	fair, I'll just share the code by writing a free standing function
+T 1545339723 22*	26ChanServ sets mode 24+a on 22#rust pcwalton_
+T 1545339723 22*	26ChanServ gives channel operator status to 18pcwalton_
+T 1545339773 18<j_ey18>	if I had const generics.. it might be worth it. but making a new trait etc, doesnt seem worth it
+T 1545341849 20*	Disconnected (20Connection timed out)
+T 1545341861 22*	26carif sets mode 24+x on 22carif
+T 1545341861 19*	Now talking on 22#rust
+T 1545341861 22*	Topic for 22#rust is: Rust general discussion | Playground https://play.rust-lang.org/ | Forum https://users.rust-lang.org | New user channel: #rust-beginners | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1545341861 22*	Topic for 22#rust set by 26niconii!nicole@moz-hmr3fs.midco.net (24Thu Dec  6 17:50:10 2018)
+T 1545342197 22*	26ChanServ sets mode 24+a on 22#rust pcwalton
+T 1545342197 22*	26ChanServ gives channel operator status to 18pcwalton
+T 1545342290 22*	26ChanServ sets mode 24+a on 22#rust pcwalton
+T 1545342290 22*	26ChanServ gives channel operator status to 18pcwalton
+T 1545342447 18<peeves18>	also, is there a shorter way to initialize the array? Rather than typing [[value; size_y]; size_x]
+T 1545342476 18<talchas18>	there's Default::default()
+T 1545342488 18<peeves18>	is that all 0s?
+T 1545342490 18<talchas18>	yeah
+T 1545342493 18<peeves18>	cool
+T 1545342555 18<peeves18>	not shorter, but at least more understandable
+T 1545342631 18<talchas18>	yeah
+T 1545342679 18<talchas18>	there's std::mem::zeroed(), which is unsafe (you could use it for [&T; n], which is invalid, while Default::default() would just fail to compile)
+T 1545342729 18<rovar18>	in 2018 edition.. how do I reference the module. src/foo/bar.rs from. src/lib.rs? 
+T 1545342739 18<rovar18>	i've tried.   use foo;   and use foo::bar;  
+T 1545342794 18<sfackler18>	use crate::foo::bar
+T 1545342920 18<rovar18>	sfackler,   err.. I misstyped.. 
+T 1545342926 18<rovar18>	how do I specify the mod?
+T 1545342956 18<rovar18>	mod foo;  do I still need a foo/mod.rs?
+T 1545343005 18<sfackler18>	yes
+T 1545343014 18<sfackler18>	src/foo.rs will also work
+T 1545343050 18<rovar18>	:(
+T 1545343057 18<rovar18>	I thought we got rid of mod.rs 
+T 1545343079 22*	26ChanServ gives channel operator status to 18jdm
+T 1545344249 20*	Disconnected (20Connection timed out)
+T 1545344261 22*	26carif sets mode 24+x on 22carif
+T 1545344261 19*	Now talking on 22#rust
+T 1545344261 22*	Topic for 22#rust is: Rust general discussion | Playground https://play.rust-lang.org/ | Forum https://users.rust-lang.org | New user channel: #rust-beginners | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1545344261 22*	Topic for 22#rust set by 26niconii!nicole@moz-hmr3fs.midco.net (24Thu Dec  6 17:50:10 2018)
+T 1545346320 20*	Disconnected (20Connection timed out)
+T 1545346331 22*	26carif sets mode 24+x on 22carif
+T 1545346331 19*	Now talking on 22#rust
+T 1545346331 22*	Topic for 22#rust is: Rust general discussion | Playground https://play.rust-lang.org/ | Forum https://users.rust-lang.org | New user channel: #rust-beginners | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1545346331 22*	Topic for 22#rust set by 26niconii!nicole@moz-hmr3fs.midco.net (24Thu Dec  6 17:50:10 2018)
+T 1545346336 18<Jezza18>	They just can't declare new generics.
+T 1545346352 18<Jezza18>	So, if I wanted to do that, I'd need some work around with declaring those generics.
+T 1545346482 18<Jezza18>	Either attaching them to the function the code will be placed in, which is gonna be messy if multiple types have the same generic symbols, but differing types.
+T 1545346497 18<Jezza18>	So, that's gonna be messy, as I'll have to some term rewriting.
+T 1545346532 18<Jezza18>	The next solution would be to generate an separate function that actually holds those values...
+T 1545346544 18<Jezza18>	Eugh
+T 1545346548 18<Jezza18>	I hate both solutions...
+T 1545347006 18<Jezza18>	Welp, I was wrong.
+T 1545347020 18<Jezza18>	I just tried declaring the generics on an outer function, and it doesn't work...
+T 1545347027 18<mbrubeck18>	maxharris9: I can reproduce your problem...
+T 1545347035 18<Jezza18>	Oh, wait, that might be because I'm using a const to verify it...
+T 1545347063 18<maxharris918>	@mbrubeck yeah?
+T 1545347066 18<maxharris918>	what's going on?
+T 1545347070 18<mbrubeck18>	maxharris9: I get "InvalidStateError: An attempt was made to use an object that is not, or is no longer, usable" after just one call to `fill`
+T 1545347090 18<mbrubeck18>	maxharris9: So for some reason I think it's leaving the buffer in a bad state
+T 1545347097 18<mbrubeck18>	and then the JS throws an exception
+T 1545347114 18<maxharris918>	huh, I wonder what's wrong with my setup - I don't see any of that
+T 1545347213 18<maxharris918>	oh this thing is doing a release build :facepalm:
+T 1545347236 18<mbrubeck18>	Just calling `parse(&someFont)` isn't enough to trigger the failure...
+T 1545347243 22*	26ChanServ sets mode 24+a on 22#rust pcwalton
+T 1545347243 22*	26ChanServ gives channel operator status to 18pcwalton
+T 1545347382 18<mbrubeck18>	but calling `render_glyph` seems to do it
+T 1545348630 20*	Disconnected (20Connection timed out)
+T 1545348641 22*	26carif sets mode 24+x on 22carif
+T 1545348641 19*	Now talking on 22#rust
+T 1545348641 22*	Topic for 22#rust is: Rust general discussion | Playground https://play.rust-lang.org/ | Forum https://users.rust-lang.org | New user channel: #rust-beginners | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1545348641 22*	Topic for 22#rust set by 26niconii!nicole@moz-hmr3fs.midco.net (24Thu Dec  6 17:50:10 2018)
+T 1545350162 20*	Disconnected (20Connection timed out)
+T 1545350173 22*	26carif sets mode 24+x on 22carif
+T 1545350173 19*	Now talking on 22#rust
+T 1545350173 22*	Topic for 22#rust is: Rust general discussion | Playground https://play.rust-lang.org/ | Forum https://users.rust-lang.org | New user channel: #rust-beginners | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1545350173 22*	Topic for 22#rust set by 26niconii!nicole@moz-hmr3fs.midco.net (24Thu Dec  6 17:50:10 2018)
+T 1545350189 18<sarnold18>	the fatrace tool may help
+T 1545350287 18<Mutabah18>	... or strace, hmm.. it's loading the right crate, so why is it complaining about unstable features
+T 1545350382 18<sarnold18>	definitely strace would do the job, but I figured fatrace would probably have lower performance hit.. strace is really useful but not quick :) hehe
+T 1545350443 18<Mutabah18>	Oooh... wait a tick... could xargo be building my custom libstd with the "unstable if unmarked" flag?
+T 1545352470 20*	Disconnected (20Connection timed out)
+T 1545352481 22*	26carif sets mode 24+x on 22carif
+T 1545352481 19*	Now talking on 22#rust
+T 1545352481 22*	Topic for 22#rust is: Rust general discussion | Playground https://play.rust-lang.org/ | Forum https://users.rust-lang.org | New user channel: #rust-beginners | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1545352481 22*	Topic for 22#rust set by 26niconii!nicole@moz-hmr3fs.midco.net (24Thu Dec  6 17:50:10 2018)
+T 1545352695 22*	26ChanServ gives channel operator status to 18jdm
+T 1545355859 20*	Disconnected (20Connection timed out)
+T 1545355871 22*	26carif sets mode 24+x on 22carif
+T 1545355871 19*	Now talking on 22#rust
+T 1545355871 22*	Topic for 22#rust is: Rust general discussion | Playground https://play.rust-lang.org/ | Forum https://users.rust-lang.org | New user channel: #rust-beginners | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1545355871 22*	Topic for 22#rust set by 26niconii!nicole@moz-hmr3fs.midco.net (24Thu Dec  6 17:50:10 2018)
+T 1545356048 18<staa18>	Is there any reason I shouldn't use std::mem::zeroed on a PhantomData? I'm getting an annoying type error but the thing only exists as a placeholder to begin with.
+T 1545356075 18<staa18>	I don't know what the effect of zeroed is for a ZST though
+T 1545356209 18<talchas18>	it's fine, but unless you're doing zeroed on a larger object you can just do "PhantomData" to construct it
+T 1545356223 18<talchas18>	(and zeroed may not be safe on the rest of the object)
+T 1545356253 18<staa18>	If I construct it with PhantomData I get a type error. But... I just removed my phantomdata field from my struct and it compiles now? So maybe I'm good to go.
+T 1545356303 18<talchas18>	if you were then most likely somethig else was wrong
+T 1545356317 18<talchas18>	or you were trying to construct the whole type with it?
+T 1545356332 18<staa18>	The PhantomData was apparently superfluous - not sure how that's the case since the type parameter is only used in another type parameter.
+T 1545356334 18<talchas18>	(or the PhantomData _type_ was invalid, rather than the constructor?)
+T 1545356378 18<staa18>	I had a callback (Vec<u8>) -> Result<E, Error> and a PhantomData<E>. I passed a callback where E: Message, and got an error that PhantomData does not impl Message
+T 1545356412 18<deifacted18>	I want to parse a String (or similar thing) whose format is basically a mini markup language: something like "[{artist|red} - {album|blue}][{filename | green}]"
+T 1545356455 18<deifacted18>	shoudl i use nom, pest, or...?
+T 1545356499 18<talchas18>	staa: I'm not sure what you are trying to say the types were there, but that sounds like either an error coming from a derive or you passing PhantomData in as E somewhere by accident
+T 1545357989 20*	Disconnected (20Connection timed out)
+T 1545358002 22*	26carif sets mode 24+x on 22carif
+T 1545358002 19*	Now talking on 22#rust
+T 1545358002 22*	Topic for 22#rust is: Rust general discussion | Playground https://play.rust-lang.org/ | Forum https://users.rust-lang.org | New user channel: #rust-beginners | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1545358002 22*	Topic for 22#rust set by 26niconii!nicole@moz-hmr3fs.midco.net (24Thu Dec  6 17:50:10 2018)
+T 1545359550 20*	Disconnected (20Connection timed out)
+T 1545359561 22*	26carif sets mode 24+x on 22carif
+T 1545359561 19*	Now talking on 22#rust
+T 1545359561 22*	Topic for 22#rust is: Rust general discussion | Playground https://play.rust-lang.org/ | Forum https://users.rust-lang.org | New user channel: #rust-beginners | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1545359561 22*	Topic for 22#rust set by 26niconii!nicole@moz-hmr3fs.midco.net (24Thu Dec  6 17:50:10 2018)
+T 1545361324 20*	Disconnected (20Connection timed out)
+T 1545361335 22*	26carif sets mode 24+x on 22carif
+T 1545361335 19*	Now talking on 22#rust
+T 1545361335 22*	Topic for 22#rust is: Rust general discussion | Playground https://play.rust-lang.org/ | Forum https://users.rust-lang.org | New user channel: #rust-beginners | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1545361335 22*	Topic for 22#rust set by 26niconii!nicole@moz-hmr3fs.midco.net (24Thu Dec  6 17:50:10 2018)
+T 1545362790 20*	Disconnected (20Connection timed out)
+T 1545362801 22*	26carif sets mode 24+x on 22carif
+T 1545362801 19*	Now talking on 22#rust
+T 1545362801 22*	Topic for 22#rust is: Rust general discussion | Playground https://play.rust-lang.org/ | Forum https://users.rust-lang.org | New user channel: #rust-beginners | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1545362801 22*	Topic for 22#rust set by 26niconii!nicole@moz-hmr3fs.midco.net (24Thu Dec  6 17:50:10 2018)
+T 1545362918 18<gchristensen18>	:( doesn't work, because `cc` doesn't work on my rust. :(
+T 1545363009 18<gchristensen18>	brings up that semver doesn't consider minimum interpreter/compiler version part of the api
+T 1545363034 18<sarnold18>	hmm, what do you mean about 'cc' and 'your rust'?
+T 1545363076 18<gchristensen18>	cc doesn't compile for 1.27
+T 1545363172 18<sarnold18>	cc is the usual name for the C compiler; it'd compile e.g. C90 or C99 or C11 ..
+T 1545363215 18<gchristensen18>	and also the name of a fairly popular crate, which is a dependency of flate2 -- https://crates.io/crates/cc
+T 1545363227 18<sarnold18>	o_O
+T 1545363257 18<gchristensen18>	https://github.com/alexcrichton/cc-rs/issues/364 
+T 1545364412 20*	Disconnected (20Connection timed out)
+T 1545364423 22*	26carif sets mode 24+x on 22carif
+T 1545364423 19*	Now talking on 22#rust
+T 1545364423 22*	Topic for 22#rust is: Rust general discussion | Playground https://play.rust-lang.org/ | Forum https://users.rust-lang.org | New user channel: #rust-beginners | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1545364423 22*	Topic for 22#rust set by 26niconii!nicole@moz-hmr3fs.midco.net (24Thu Dec  6 17:50:10 2018)
+T 1545365880 20*	Disconnected (20Connection timed out)
+T 1545365892 22*	26carif sets mode 24+x on 22carif
+T 1545365892 19*	Now talking on 22#rust
+T 1545365892 22*	Topic for 22#rust is: Rust general discussion | Playground https://play.rust-lang.org/ | Forum https://users.rust-lang.org | New user channel: #rust-beginners | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1545365892 22*	Topic for 22#rust set by 26niconii!nicole@moz-hmr3fs.midco.net (24Thu Dec  6 17:50:10 2018)
+T 1545367379 20*	Disconnected (20Connection timed out)
+T 1545367391 22*	26carif sets mode 24+x on 22carif
+T 1545367391 19*	Now talking on 22#rust
+T 1545367391 22*	Topic for 22#rust is: Rust general discussion | Playground https://play.rust-lang.org/ | Forum https://users.rust-lang.org | New user channel: #rust-beginners | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1545367391 22*	Topic for 22#rust set by 26niconii!nicole@moz-hmr3fs.midco.net (24Thu Dec  6 17:50:10 2018)
+T 1545368793 20*	Disconnected (20Connection timed out)
+T 1545368804 22*	26carif sets mode 24+x on 22carif
+T 1545368804 19*	Now talking on 22#rust
+T 1545368804 22*	Topic for 22#rust is: Rust general discussion | Playground https://play.rust-lang.org/ | Forum https://users.rust-lang.org | New user channel: #rust-beginners | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1545368804 22*	Topic for 22#rust set by 26niconii!nicole@moz-hmr3fs.midco.net (24Thu Dec  6 17:50:10 2018)
+T 1545368863 18<pepper_chico18>	stephaneyfx: indented after foo()? a level more than needed, didn't try it before ?
+T 1545368909 18<pepper_chico18>	stephaneyfx: yes, it indents to same level either way I press enter
+T 1545368924 18<stephaneyfx18>	pepper_chico: It might be expecting you to type ".method()"
+T 1545369022 18<stephaneyfx18>	pepper_chico: Like this maybe? https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=14111940fb80e5aac0c067b6557b7b0d
+T 1545370591 20*	Disconnected (20Connection timed out)
+T 1545370602 22*	26carif sets mode 24+x on 22carif
+T 1545370602 19*	Now talking on 22#rust
+T 1545370602 22*	Topic for 22#rust is: Rust general discussion | Playground https://play.rust-lang.org/ | Forum https://users.rust-lang.org | New user channel: #rust-beginners | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1545370602 22*	Topic for 22#rust set by 26niconii!nicole@moz-hmr3fs.midco.net (24Thu Dec  6 17:50:10 2018)
+T 1545372215 20*	Disconnected (20Invalid argument)
+T 1545372226 22*	26carif sets mode 24+x on 22carif
+T 1545372226 19*	Now talking on 22#rust
+T 1545372226 22*	Topic for 22#rust is: Rust general discussion | Playground https://play.rust-lang.org/ | Forum https://users.rust-lang.org | New user channel: #rust-beginners | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1545372226 22*	Topic for 22#rust set by 26niconii!nicole@moz-hmr3fs.midco.net (24Thu Dec  6 17:50:10 2018)
+T 1545372812 18<mib_iyc0ab18>	Hey all. I am using Rusqlite in a project, and for some reason it is not finding the module `rusqlite::backup`, even though I have the correct version of rusqlite referenced in Cargo.toml and my intellisense is giving me a description of the `backup` module...
+T 1545372864 18<stephaneyfx18>	mib_iyc0ab: Do you have `edition = "2018"` in your Cargo.toml?
+T 1545372887 18<mib_iyc0ab18>	where would i put that?
+T 1545372977 18<mib_iyc0ab18>	stephaneyfx: I just tried putting `edition="2018"` under `[dependencies.rusqlite]` and the problem is still here :(
+T 1545372983 18<stephaneyfx18>	mib_iyc0ab: You don't have to put it anywhere. I just asked because this has consequences with the module system. So, am I correct to assume you don't have this setting in your Cargo.toml?
+T 1545372999 18<mib_iyc0ab18>	yep, i didn't have it
+T 1545373034 18<stephaneyfx18>	mib_iyc0ab: Ok, so let's not add it for now as it may require you to change other parts of your code. Let me take a quick lock at rusqlite...
+T 1545373061 18<statu18>	Having an issue with type inference. I just want to decode some json into a generic type. https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=a9fe918ec53a5fba86c3a9ef9cf0b1bd
+T 1545373070 18<mib_iyc0ab18>	stephaneyfx: thanks so much
+T 1545373081 18<stephaneyfx18>	mib_iyc0ab: Is your project a lib or bin?
+T 1545373119 18<mib_iyc0ab18>	bin
+T 1545373409 18<stephaneyfx18>	mib_iyc0ab: Do you have `extern crate rusqlite;` in main.rs?
+T 1545373409 18<mib_iyc0ab18>	stephaneyfx: yep
+T 1545373409 18<stephaneyfx18>	mib_iyc0ab: May you share the full error message?
+T 1545373409 18<stephaneyfx18>	!paste
+T 1545373409 18<rustbot18>	Paste code at https://play.rust-lang.org/ and click "Share" or paste large text at https://paste.rs/
+T 1545373409 18<mib_iyc0ab18>	stephaneyfx: did you get it?
+T 1545373409 18<mib_iyc0ab18>	error[E0433]: failed to resolve: could not find `backup` in `rusqlite`   --> src/main.rs:59:28    | 59 |     let backup = rusqlite::backup::Backup::new(main_connection, &mut backup_connection).unwrap();    |                            ^^^^^^ could not find `backup` in `rusqlite`  error: aborting due to previous error  For more information about this error, tr
+T 1545373409 18<mib_iyc0ab18>	oops: https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=573aa52046f0e989ddb4e0eda10a613e
+T 1545373409 18<stephaneyfx18>	statu: This code seems to be missing some definitions (e.g. Error). Plus you're not stating that E is Clone.
+T 1545373409 18<stephaneyfx18>	mib_iyc0ab: What version of rusqlite did you specify in Cargo.toml?
+T 1545373409 18<mib_iyc0ab18>	stephaneyfx: I have `rusqlite = "0.16.0"`
+T 1545373425 18<stephaneyfx18>	mib_iyc0ab: Is it possible for you to share the entirety of main.rs?
+T 1545373442 18<mib_iyc0ab18>	sure
+T 1545373481 18<mib_iyc0ab18>	stephaneyfx: Problem is on line 59 https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=c8b706b296c68247eb6ec6b6c3a899ba
+T 1545373511 18<statu18>	Ah, sorry stephaneyfx. The clone was a workaround, forgot. The real issue is with lifetimes. serde_json doesn't appear to be taking ownership, but my data is local to the function. https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=a9fe918ec53a5fba86c3a9ef9cf0b1bd
+T 1545373540 18<statu18>	I thought maybe I could move the `decoded` buffer into the `ZstdJsonDecoder` but I could not get that working either, more lifetime issues
+T 1545373694 18<stephaneyfx18>	mib_iyc0ab: Hmm I don't see anything wrong with how you refer to this module. What if you comment out the use of rusqlite in do_backup? Do you get errors about the other functions using this crate?
+T 1545373729 18<stephaneyfx18>	statu: Don't be sorry, that's fine :) Let me take a closer look...
+T 1545373744 18<statu18>	Ah, got it
+T 1545373754 18<statu18>	where E: for<'a> Deserialize<'a>
+T 1545373775 18<stephaneyfx18>	statu: Yeah, good catch
+T 1545373776 18<statu18>	After something like 3 years of Rust I have still never bothered to understand `for<'a>`
+T 1545373781 18<statu18>	or when to use it
+T 1545373836 18<mib_iyc0ab18>	stephaneyfx: yep, everything else works fine if i comment out lines 59 and 60
+T 1545373915 18<stephaneyfx18>	statu: This means the bound applies for any lifetime, even one that's shorter than the decode function. With your original code, the lifetime lasts always at least as long as the decode function. Does it make sense?
+T 1545374071 18<stephaneyfx18>	statu: In your original code, the impl and thus `decode` are generic over 'a, but 'a is always chosen to encompass the duration of the call to `decode`. `for<'a>` allows you to state that it works for any lifetime, even one that lasts for only a part of the `decode` function
+T 1545374119 22*	26ChanServ gives channel operator status to 18Havvy
+T 1545374270 18<stephaneyfx18>	mib_iyc0ab: What if you try using rusqlite in do_backup, just not the backup module? Maybe something like opening a connection in this function -- it does not matter if it does not make sense; I'm just interested in the compiler's result. Do you get an error?
+T 1545374355 18<statu18>	That helps, yeah - thank you
+T 1545374373 18<mib_iyc0ab18>	stephaneyfx: "failed to resolve: could not find `Backup` in `rusqlite`"
+T 1545374419 18<mib_iyc0ab18>	this `Backup` would be the struct, instead of the module though
+T 1545374457 18<stephaneyfx18>	mib_iyc0ab: I didn't mean to use stuff defined in the backup module, just something else from the rusqlite crate but not in the backup module
+T 1545374480 18<stephaneyfx18>	mib_iyc0ab: For example:
+T 1545374514 18<stephaneyfx18>	mib_iyc0ab: Add this to do_backup: `let _ = rusqlite::ErrorCode::PermissionDenied;`
+T 1545374537 18<stephaneyfx18>	mib_iyc0ab: And keep the use of the backup module commented out. Do you get any error?
+T 1545374577 18<mib_iyc0ab18>	stephanyfx: nope, no error
+T 1545374673 18<stephaneyfx18>	mib_iyc0ab: Hmm strange. Ok, please keep your code with the modifications so far and do one more:
+T 1545374759 18<stephaneyfx18>	mib_iyc0ab: Can you add `let _ = rusqlite::backup::StepResult::Done;` to the main function? Does it still compile?
+T 1545376333 20*	Disconnected (20Connection timed out)
+T 1545376344 22*	26carif sets mode 24+x on 22carif
+T 1545376344 19*	Now talking on 22#rust
+T 1545376344 22*	Topic for 22#rust is: Rust general discussion | Playground https://play.rust-lang.org/ | Forum https://users.rust-lang.org | New user channel: #rust-beginners | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1545376344 22*	Topic for 22#rust set by 26niconii!nicole@moz-hmr3fs.midco.net (24Thu Dec  6 17:50:10 2018)
+T 1545377978 20*	Disconnected (20Connection timed out)
+T 1545377989 22*	26carif sets mode 24+x on 22carif
+T 1545377989 19*	Now talking on 22#rust
+T 1545377989 22*	Topic for 22#rust is: Rust general discussion | Playground https://play.rust-lang.org/ | Forum https://users.rust-lang.org | New user channel: #rust-beginners | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1545377989 22*	Topic for 22#rust set by 26niconii!nicole@moz-hmr3fs.midco.net (24Thu Dec  6 17:50:10 2018)
+T 1545379542 20*	Disconnected (20Connection timed out)
+T 1545379554 22*	26carif sets mode 24+x on 22carif
+T 1545379554 19*	Now talking on 22#rust
+T 1545379554 22*	Topic for 22#rust is: Rust general discussion | Playground https://play.rust-lang.org/ | Forum https://users.rust-lang.org | New user channel: #rust-beginners | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1545379554 22*	Topic for 22#rust set by 26niconii!nicole@moz-hmr3fs.midco.net (24Thu Dec  6 17:50:10 2018)
+T 1545380399 18<ishitatsuyuki18>	I think somebody annouced a command completion tool written in Rust, which uses some kind of machine learning. Do any of you remember the name?
+T 1545381852 20*	Disconnected (20Connection timed out)
+T 1545381864 22*	26carif sets mode 24+x on 22carif
+T 1545381864 19*	Now talking on 22#rust
+T 1545381864 22*	Topic for 22#rust is: Rust general discussion | Playground https://play.rust-lang.org/ | Forum https://users.rust-lang.org | New user channel: #rust-beginners | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1545381864 22*	Topic for 22#rust set by 26niconii!nicole@moz-hmr3fs.midco.net (24Thu Dec  6 17:50:10 2018)
+T 1545399867 20*	Disconnected (20Connection timed out)
+T 1545399878 22*	26carif sets mode 24+x on 22carif
+T 1545399878 19*	Now talking on 22#rust
+T 1545399878 22*	Topic for 22#rust is: Rust general discussion | Playground https://play.rust-lang.org/ | Forum https://users.rust-lang.org | New user channel: #rust-beginners | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1545399878 22*	Topic for 22#rust set by 26niconii!nicole@moz-hmr3fs.midco.net (24Thu Dec  6 17:50:10 2018)
+T 1545400446 18<gchristensen18>	is there a way to tell cargo to only ever compile with --release mode?
+T 1545400488 18<Mutabah18>	You can change the 'dev' profile to enable optimisation
+T 1545400553 18<Desetude18>	Hi, I'm trying to `cargo run`, but I am getting the following error: "Error: couldn't prepare build directories. Caused by: Input/output error (os error 5)"
+T 1545400575 18<Desetude18>	supposedly while it's "Updating git repository `https://github.com/gfx-rs/d3d12-rs.git`"
+T 1545400622 18<gchristensen18>	awesome, thank you Mutabah 
+T 1545400669 18<j_ey18>	gchristensen: but why?
+T 1545400690 18<gchristensen18>	j_ey: --release mode takes my execution time from near 1hr to less than 3 minutes
+T 1545400724 18<j_ey18>	gchristensen: nice
+T 1545400761 18<gchristensen18>	:)
+T 1545400782 18<j_ey18>	gchristensen: optimise your code so it runs faster in debug :D
+T 1545400816 18<gchristensen18>	I mentioned wondering what I did to make it so slow in debug
+T 1545400907 18<j_ey18>	gchristensen: ah, I didnt see the earlier conversation
+T 1545400978 18<gchristensen18>	opt-level=3, debug=true makes it pretty fast. a better idea would be to have a smaller data set to experiment with
+T 1545401000 18<neachdainn18>	Is there any plan for `--out-dir` to be stabilized in the near future?
+T 1545401340 18<sirak18>	hi guys 
+T 1545402478 20*	Disconnected (20Connection timed out)
+T 1545402489 22*	26carif sets mode 24+x on 22carif
+T 1545402489 19*	Now talking on 22#rust
+T 1545402489 22*	Topic for 22#rust is: Rust general discussion | Playground https://play.rust-lang.org/ | Forum https://users.rust-lang.org | New user channel: #rust-beginners | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1545402489 22*	Topic for 22#rust set by 26niconii!nicole@moz-hmr3fs.midco.net (24Thu Dec  6 17:50:10 2018)
+T 1545404129 20*	Disconnected (20Connection timed out)
+T 1545404140 22*	26carif sets mode 24+x on 22carif
+T 1545404140 19*	Now talking on 22#rust
+T 1545404140 22*	Topic for 22#rust is: Rust general discussion | Playground https://play.rust-lang.org/ | Forum https://users.rust-lang.org | New user channel: #rust-beginners | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1545404140 22*	Topic for 22#rust set by 26niconii!nicole@moz-hmr3fs.midco.net (24Thu Dec  6 17:50:10 2018)
+T 1545407158 20*	Disconnected (20Connection timed out)
+T 1545407169 22*	26carif sets mode 24+x on 22carif
+T 1545407169 19*	Now talking on 22#rust
+T 1545407169 22*	Topic for 22#rust is: Rust general discussion | Playground https://play.rust-lang.org/ | Forum https://users.rust-lang.org | New user channel: #rust-beginners | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1545407169 22*	Topic for 22#rust set by 26niconii!nicole@moz-hmr3fs.midco.net (24Thu Dec  6 17:50:10 2018)
+T 1545408659 20*	Disconnected (20Connection timed out)
+T 1545408670 22*	26carif sets mode 24+x on 22carif
+T 1545408670 19*	Now talking on 22#rust
+T 1545408670 22*	Topic for 22#rust is: Rust general discussion | Playground https://play.rust-lang.org/ | Forum https://users.rust-lang.org | New user channel: #rust-beginners | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1545408670 22*	Topic for 22#rust set by 26niconii!nicole@moz-hmr3fs.midco.net (24Thu Dec  6 17:50:10 2018)
+T 1545408689 18<yoda18>	am asking about macro_rules! macros
+T 1545409035 18<durka4218>	yoda: it happens at the same time as name resolution and cfg resolution
+T 1545409111 18<yoda18>	durka42: what is that stage called ?
+T 1545409124 18<durka4218>	I don't think it has a name overall
+T 1545410307 20*	Disconnected (20Connection timed out)
+T 1545410319 22*	26carif sets mode 24+x on 22carif
+T 1545410319 19*	Now talking on 22#rust
+T 1545410319 22*	Topic for 22#rust is: Rust general discussion | Playground https://play.rust-lang.org/ | Forum https://users.rust-lang.org | New user channel: #rust-beginners | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1545410319 22*	Topic for 22#rust set by 26niconii!nicole@moz-hmr3fs.midco.net (24Thu Dec  6 17:50:10 2018)
+T 1545411778 20*	Disconnected (20Connection timed out)
+T 1545411789 22*	26carif sets mode 24+x on 22carif
+T 1545411789 19*	Now talking on 22#rust
+T 1545411789 22*	Topic for 22#rust is: Rust general discussion | Playground https://play.rust-lang.org/ | Forum https://users.rust-lang.org | New user channel: #rust-beginners | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1545411789 22*	Topic for 22#rust set by 26niconii!nicole@moz-hmr3fs.midco.net (24Thu Dec  6 17:50:10 2018)
+T 1545411846 18<talchas18>	ah, yeah
+T 1545411889 18<yoda18>	hey, could someone point me to rust src code where "a macro invocation is detected and is handed off to expansion" ? I want to explore how that happens
+T 1545411908 18<mortisha18>	@stephaneyfx that's even better! amazing!
+T 1545411929 18<theotherphil18>	Hi all. I'm a bit confused by the performance impact of using RefCell - I assumed that the only runtime cost would be in the checks in borrow_mut. However, it seems that using RefMut<T> leads to much slower code than using T directly. See blur3_inline and trace_blur3_inline at https://github.com/theotherphil/prism/blob/54a9dbcb15822942653f14c53d1a1674a77f61ee/src/lib.rs#L24 the latter is about 8x slower than the former. 
+T 1545411929 18<theotherphil18>	I can't read assembly, but I've had a look at what gets generated for both functions and the first one contains a load of vector instructions of some kind, while the latter doesn't. Is this just an issue with the extra dereference from RefMut inhibiting optimisations, or am I wrong to expect this to be zero cost?
+T 1545412106 18<talchas18>	assuming that it's not just different image types/etc, yeah that's weird
+T 1545412135 18<talchas18>	you could try doing let image = &mut *image.borrow_mut(); to reduce that bit of difference
+T 1545412304 18<theotherphil18>	Thanks, didn't realise I could do that. I had a go and it makes no difference
+T 1545413457 20*	Disconnected (20Connection timed out)
+T 1545413469 22*	26carif sets mode 24+x on 22carif
+T 1545413469 19*	Now talking on 22#rust
+T 1545413469 22*	Topic for 22#rust is: Rust general discussion | Playground https://play.rust-lang.org/ | Forum https://users.rust-lang.org | New user channel: #rust-beginners | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1545413469 22*	Topic for 22#rust set by 26niconii!nicole@moz-hmr3fs.midco.net (24Thu Dec  6 17:50:10 2018)
+T 1545413531 18<theotherphil18>	I've just tried timing manually for images of side length 10, 100, 1000, 100000 and the ratio is > 5 for all of those. Thanks for looking - I'm not a bit more confident that this is down to optimiser weirdness
+T 1545413631 18<theotherphil18>	s/100000/10000
+T 1545413646 18<theotherphil18>	s/I'm not/I'm now !
+T 1545414178 18<Jingbee18>	Hi, can someone explain to me how references are evaluated in const expressions ? Does the referenced value become static and placed somewhere in static memory ?
+T 1545414223 18<Jingbee18>	Doesn't that violates the "no reference to statics in const expressions" principle?
+T 1545414378 18<theotherphil18>	(Not sure; hopefully more experience people will answer, but in the meantime...) https://github.com/rust-lang/rfcs/blob/master/text/1414-rvalue_static_promotion.md this might help
+T 1545414405 18<pepper_chico18>	not rust specific, but my general knowledge tells that references can be simply syntactical and eliminated at compile time if you just end up dereferencing to produce values
+T 1545414640 18<Jingbee18>	thanks theotherphil I think that answer my question. however its seems that there is indeed a reference to a static value. So now I don't really understand the "no references to statics in consts" limitation...
+T 1545414739 18<slabity-M18>	Anyone know of some completed projects that use the relm crate? I'd like to look at their code.
+T 1545415069 18<talchas18>	Jingbee: I suspect that it's things like "if you have a reference to foo_static, everyone has to agree on that pointer value", while if it's &5 it can be a different static location for each user
+T 1545415585 18*	jdm is surprised that there is no Default implementation for *T and *mut T
+T 1545415694 18*	emerent_ is thankful there is no Default implementation for *T and *mut T
+T 1545415728 18<theobromine18>	hey uh i'd like to ask a question which is a bit more general (not rust-specific) because you guys are pretty knowledgeable programmers... but if it isn't ok to do that let me know and i won't do it next time i have a general question... the question is this: my (web) application needs authentication and permissions and i am realizing that i have made some mistakes in the design of the authentication scheme, which i thought would 
+T 1545415728 18<theobromine18>	be simple. do people usually make these things up ad-hoc or are there battle-tested ways of thinking about permissions and soforth...?
+T 1545417058 20*	Disconnected (20Connection timed out)
+T 1545417069 22*	26carif sets mode 24+x on 22carif
+T 1545417069 19*	Now talking on 22#rust
+T 1545417069 22*	Topic for 22#rust is: Rust general discussion | Playground https://play.rust-lang.org/ | Forum https://users.rust-lang.org | New user channel: #rust-beginners | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1545417069 22*	Topic for 22#rust set by 26niconii!nicole@moz-hmr3fs.midco.net (24Thu Dec  6 17:50:10 2018)
+T 1545417092 18<talchas18>	theotherphil: :llvm:
+T 1545417175 18<theotherphil18>	talchas: this is at least much less baffling than a previous case I had where deleting an unrelated function doubled the runtime of a benchmark test. At least in this case the code that's being run is actually different...
+T 1545417183 18<talchas18>	you could try to minimize an example (is it still there if you do fn blur<I: WhateverImageTrait>(image: &I, result: &mut I) {...}, etc), but I don't know if it would tell you anything interesting in the ned
+T 1545417336 18<theotherphil18>	Yeah, I think I'll just leave it for now. I'm not actually trying to get the fastest performance here - I just want to be able to re-use the same code for experimenting with the performance of different layouts/storage strategies and for generating visualisations like those on the readme https://github.com/theotherphil/prism
+T 1545417344 18<samrg47218>	Is there any alternative to atomic integers (e.g. AtomicU32) that can run on stable rust?
+T 1545417383 18<theotherphil18>	My (excessively ambitious) goal is to write something along the lines of http://halide-lang.org/ - this is just some early experimentation to help me understand what's going on
+T 1545418569 20*	Disconnected (20Connection timed out)
+T 1545418580 22*	26carif sets mode 24+x on 22carif
+T 1545418580 19*	Now talking on 22#rust
+T 1545418580 22*	Topic for 22#rust is: Rust general discussion | Playground https://play.rust-lang.org/ | Forum https://users.rust-lang.org | New user channel: #rust-beginners | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1545418580 22*	Topic for 22#rust set by 26niconii!nicole@moz-hmr3fs.midco.net (24Thu Dec  6 17:50:10 2018)
+T 1545418822 18<theobromine18>	yeah arrayvec looks more appropriate provided that it tries to work on the stack...
+T 1545418864 18<j_ey18>	theobromine: thats the point of it
+T 1545419765 22*	26ChanServ sets mode 24+a on 22#rust pcwalton
+T 1545419765 22*	26ChanServ gives channel operator status to 18pcwalton
+T 1545420766 22*	26ChanServ sets mode 24+a on 22#rust niconii
+T 1545420766 22*	26ChanServ gives channel operator status to 18niconii
+T 1545421917 20*	Disconnected (20Connection timed out)
+T 1545421929 22*	26carif sets mode 24+x on 22carif
+T 1545421929 19*	Now talking on 22#rust
+T 1545421929 22*	Topic for 22#rust is: Rust general discussion | Playground https://play.rust-lang.org/ | Forum https://users.rust-lang.org | New user channel: #rust-beginners | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1545421929 22*	Topic for 22#rust set by 26niconii!nicole@moz-hmr3fs.midco.net (24Thu Dec  6 17:50:10 2018)
+T 1545423331 20*	Disconnected (20Connection timed out)
+T 1545423342 22*	26carif sets mode 24+x on 22carif
+T 1545423342 19*	Now talking on 22#rust
+T 1545423342 22*	Topic for 22#rust is: Rust general discussion | Playground https://play.rust-lang.org/ | Forum https://users.rust-lang.org | New user channel: #rust-beginners | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1545423342 22*	Topic for 22#rust set by 26niconii!nicole@moz-hmr3fs.midco.net (24Thu Dec  6 17:50:10 2018)
+T 1545425010 20*	Disconnected (20Connection timed out)
+T 1545425021 22*	26carif sets mode 24+x on 22carif
+T 1545425021 19*	Now talking on 22#rust
+T 1545425021 22*	Topic for 22#rust is: Rust general discussion | Playground https://play.rust-lang.org/ | Forum https://users.rust-lang.org | New user channel: #rust-beginners | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1545425021 22*	Topic for 22#rust set by 26niconii!nicole@moz-hmr3fs.midco.net (24Thu Dec  6 17:50:10 2018)
+T 1545425133 18<woo18>	hi when is next edition of rust being planned, what comes after Rust 2018 ?
+T 1545426538 20*	Disconnected (20Connection timed out)
+T 1545426549 22*	26carif sets mode 24+x on 22carif
+T 1545426549 19*	Now talking on 22#rust
+T 1545426549 22*	Topic for 22#rust is: Rust general discussion | Playground https://play.rust-lang.org/ | Forum https://users.rust-lang.org | New user channel: #rust-beginners | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1545426549 22*	Topic for 22#rust set by 26niconii!nicole@moz-hmr3fs.midco.net (24Thu Dec  6 17:50:10 2018)
+T 1545426740 18<Yatekii18>	ahhhhrghh this all sucks :P
+T 1545428520 20*	Disconnected (20Connection timed out)
+T 1545428532 22*	26carif sets mode 24+x on 22carif
+T 1545428532 19*	Now talking on 22#rust
+T 1545428532 22*	Topic for 22#rust is: Rust general discussion | Playground https://play.rust-lang.org/ | Forum https://users.rust-lang.org | New user channel: #rust-beginners | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1545428532 22*	Topic for 22#rust set by 26niconii!nicole@moz-hmr3fs.midco.net (24Thu Dec  6 17:50:10 2018)
+T 1545428610 18<moony_18>	I hate myself for writing this
+T 1545428611 18<moony_18>	let selector = std::intrinsics::transmute::<__m128i, __m128>(_mm_setr_epi32(std::intrinsics::transmute(state as u32), 0, 0, 0));
+T 1545428640 18<moony_18>	all that just for a small amount of magic
+T 1545428685 18<Arnavion18>	KiChjang: No way except to read the code
+T 1545428707 18<KiChjang18>	well that's sort of bad
+T 1545428715 18<KiChjang18>	i was hoping there could be a quick way to now
+T 1545428723 18<KiChjang18>	know*
+T 1545428730 18<KiChjang18>	the docs doesn't say anything i think?
+T 1545428735 18<moony_18>	i'm doing so much unsafe magic it's not even funny lol
+T 1545428738 18<Arnavion18>	KiChjang: No they don't
+T 1545429135 18<Jezza18>	How can I check if a feature was enabled for a crate?

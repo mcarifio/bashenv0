@@ -6,8 +6,8 @@ function mod.mkmod {
     local _mod_name=${_self%%.*};
     local _mod=${_self%.*};
 
-    local _that_mod=$(f.must.have "$1" "mod") || return 1
-    local _pathname=$(f.must.have "$2" "pathname") || return 1
+    local _that_mod="$1"; [[ -n "${_that_mod}" ]] || { >&2 echo "${_self} expecting a mod file"; return 1; }
+    local _pathname="$2"; [[ -n "${_pathname}" ]] || { >&2 echo "${_self} expecting a pathname"; return 1; }
     shift 2
     
     # No comments in evaled code. All code ends up on a simple line so always need semi-colons.
@@ -151,9 +151,7 @@ function mod.source {
 
 
 # Make myself a module!
-# Make this file a "module".
 # Extract mod from pathname.
 function pn2mod { local _result=${1##*/}; echo ${_result%%.*}; }
 # Augment functions above with "module" conventions.
-mod.mkmod $(pn2mod ${1:-${BASH_SOURCE[0]}}) ${2:-$(realpath ${BASH_SOURCE[0]})}
-
+mod.mkmod $(pn2mod ${BASH_SOURCE[0]}) $(realpath -s ${BASH_SOURCE[0]})

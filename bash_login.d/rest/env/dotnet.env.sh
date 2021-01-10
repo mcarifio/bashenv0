@@ -9,3 +9,10 @@ export DOTNET_CLI_TELEMETRY_OPTOUT=1
 # FIX mike@carif.io: snap dotnet-sdk seems to be almost completely broken?
 # alias scriptcs=~/.nuget/packages/scriptcs/0.17.1/tools/scriptcs.exe
 
+function dn-get-tool {
+    u.have.command $1 || u.have.command dotnet || dotnet tool install -g $1 &
+}
+
+dn-get-tool dotnet-script # https://github.com/filipw/dotnet-script
+dn-get-tool dotnet-ildasm # https://github.com/pjbgf/dotnet-ildasm
+

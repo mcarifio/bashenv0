@@ -35,12 +35,13 @@ import git
 import os.path
 from giturlparse import parse
 from textwrap import dedent
-from datetime import date;
+from datetime import date
 import yaml
 import json
 # https://github.com/drgrib/dotmap
 import dotmap
 import rich
+import requests
 
 # module docstring in yaml format with three "streams": 1) a declarative repr, 2) a narrative and 3) an optional history
 """
@@ -70,15 +71,43 @@ def cat(contents:str, pn:str)->str:
         f.write(dedent(contents))
     
 
-def clone(r:str, prefix:str="~/src")->git.Repo:
-    p = parse('git@' + r + '.git')
+def sclone(resource:str, prefix:str="~/src", install:bool=False, debug:bool=False, loglevel:str='WARN')->git.Repo:
+    '''
+    git sclone [--install] [--debug] [--loglevel='DEBUG'] [--prefix=~/src/foo/bar] https://www.github.com/remacs/remacs
+    '''
+    if install:
+        l.info(f"Reinstalling/upgrading packages for '{__file__}'")
+        import pip
+        try:
+            pass
+            # pip.main('install --upgrade pip').split(' ')
+        finally:
+            pass
+        pip.main('install --upgrade git+https://github.com/google/python-fire#egg=fire git-url-parse gitpython dotmap rich requests'.split(' '))
+        exit(1)
+
+    if debug: breakpoint()
+        
+        
+    if resource == '':
+        l.error("Expected a git url to clone. None found.")
+        exit(1)
+
+    
+
+    # Parsed(pathname='/mcarifio/foo.git', protocols=['https'], protocol='https', href='https://www.github.com/mcarifio/foo.git', resource='www.github.com', user=None, port=None, name='foo', owner='mcarifio')
+    p = parse(resource)
+    if p.protocol.startswith('http') and p.resource.endswith('github.com'):
+        if 'mcarifio' == p.owner or 'ccg-mcarifio' == p.owner or 'm00nlit-mcarifio' == p.owner:
+            p = parse('gh-' + p.owner + ':' + p.pathname[1:])
+    # p = parse('git@' + resource + '.git')
     # resource is usually hostname, e.g. `github.com`
     # owner is name, e.g. `mcarifio`. Use the project name if no owner is given.
     # name is the name of the repo, e.g. `interviewpy`
     target_top = os.path.join(os.path.expanduser(prefix), p.resource, p.owner or p.name, p.name)
     target = os.path.join(target_top, p.name)
     # TODO mike@carif.io: need a progress reporter progress=
-    local = git.Repo.clone_from(r, target) # local is a Repo, raise exception here
+    local = git.Repo.clone_from(resource, target) # local is a Repo, raise exception here
     
     pwd:str = local.working_tree_dir
     origin:str = next(local.remote().urls) # return the first item of the urls iterator
@@ -94,7 +123,7 @@ def clone(r:str, prefix:str="~/src")->git.Repo:
     ''', os.path.join(target_top, "README.md"))
 
     # cliche: `git sclone ${url} | source /dev/stdin` # a little hacky, but works    
-    return local
+    return local.working_tree_dir
 
 def version():
     print("git-sclone 0.1.1 # rest tbs")
@@ -102,7 +131,8 @@ def version():
 
 if '__main__' == __name__:
     try:
-        result = fire.Fire(clone)
+        # TODO mike@carif.io: git sclone --debug # starts up pdb
+        result = fire.Fire(sclone)
         # advise = dotmap.DotMap(_dynamic=False)
         # advise.bash._next.cmds = (f"cd {result.working_tree_dir}", "pwd", "git status")
         # advise.pprint(pformat='json')

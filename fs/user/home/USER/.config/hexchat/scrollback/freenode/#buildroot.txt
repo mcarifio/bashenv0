@@ -1,0 +1,504 @@
+T 1600196664 18<uclibc-bot18>	buildroot:2020.08.x thomas.petazzoni * 2020.08-60-g1776fe4213 package/pkg-meson: ensure the global cross-compilation.conf file is correct
+T 1600196947 18<uclibc-bot18>	buildroot:master fontaine.fabrice * 2020.08-421-g79f8bfbb76 package/micropython: fix license hash
+T 1600197095 18<kos_tom18>	Jacmet: y_morin: how do we get started ?
+T 1600197364 18<y_morin18>	kos_tom: As usual: I fumble my microphone to make it work?
+T 1600197379 18<kos_tom18>	is arnout around?
+T 1600197389 18<kos_tom18>	do we start a video call to discuss patches?
+T 1600197414 18<y_morin18>	I'm online if need be.
+T 1600197417 18<arnout18>	kos_tom: I wasn't expecting video...
+T 1600197422 18<arnout18>	We didn't use it last time :-)
+T 1600197441 18<arnout18>	And I don't have a room to myself today
+T 1600197447 18<y_morin18>	No fun... ;-)
+T 1600197508 18<kos_tom18>	arnout: it can be just audio as well
+T 1600197513 18<kos_tom18>	or nothing at all
+T 1600197516 18<y_morin18>	So I've set myself a goal for tonight: look at handle (apply or reply) all pending patches that have a reviewd-by or acked-by, starting from the oldest ones.
+T 1600197519 18<kos_tom18>	I think https://patchwork.ozlabs.org/project/buildroot/patch/20191021123810.23135-1-thomas.preston@codethink.co.uk/ makes sense
+T 1600197541 18<kos_tom18>	since we're indeed overriding PKG_CONFIG_SYSTEM_{INCLUDE,LIBRARY}_PATH in package/pkgconf/pkg-config.in
+T 1600197562 18<kos_tom18>	so pkg-config defaults to considering $(STAGING_DIR)/usr/include $(STAGING_DIR)/usr/lib as the system_include_path / system_library_path
+T 1600197576 18<kos_tom18>	but when pkg-config is used for host packages it should /usr/include and /usr/lib that are considered as such
+T 1600197603 18<kos_tom18>	so unless you have something to say against this patch, I think I'll apply
+T 1600197659 18<y_morin18>	kos_tom: looks legit to me, indeed.
+T 1600197740 18<y_morin18>	Oldest patches with reviews: https://patchwork.ozlabs.org/project/buildroot/list/?series=157316 <- python patches, I'l handle the series
+T 1600197788 18<y_morin18>	One thing I'd like to adres tonioght too: the fallout from the meson cross-compile patch I applied yesterday.
+T 1600197804 18<y_morin18>	*address
+T 1600197902 18<kos_tom18>	oldest patches with review: I was looking at https://patchwork.ozlabs.org/project/buildroot/patch/1582909540-10901-1-git-send-email-nford@westpond.com/ and its PATCH 2/2
+T 1600197924 18<kos_tom18>	but well, qt5webengine probably takes more than an evening to build, so I'm not sure to be done, but at least I've started looking at the topic and started a build
+T 1600197935 18<Jacmet18>	kos_tom: should the system includes for host packages not be our host/usr/include?
+T 1600197946 18<kos_tom18>	Jacmet: no
+T 1600197956 18<kos_tom18>	Jacmet: the system includes is the path for which the compiler does not need an explicit -I
+T 1600197972 18<kos_tom18>	(at least this is my understanding)
+T 1600197972 18<Jacmet18>	kos_tom: or what is this about exactly? Just where host-gcc will look automatically?
+T 1600197987 18<Jacmet18>	kos_tom: how can we be sure that it is really /usr/include?
+T 1600198018 18<Jacmet18>	kos_tom: I mean, on some funky system with a manually built host-gcc
+T 1600198116 18<arnout18>	kos_tom, Jacmet, y_morin: darn, I have to leave... So I'm not attending tonight after all.
+T 1600198133 18<kos_tom18>	Jacmet: that is a good comment.
+T 1600198143 18<kos_tom18>	I have the impression that by default, this variable is empty
+T 1600198149 18<kos_tom18>	unless the "personality" mechanism defines it
+T 1600198183 18<kos_tom18>	no, sorry
+T 1600198187 18<kos_tom18>	it is defined to SYSTEM_INCLUDEDIR by default
+T 1600198213 18<kos_tom18>	which is the compile-time value of --includedir
+T 1600198357 18<Jacmet18>	kos_tom: so if we would build a host-pkgconfig (and not configure it for the target) - It would point to $HOST_DIR/usr/include?
+T 1600198407 18<kos_tom18>	well, we are building host-pkgconf with --prefix=$(HOST_DIR), which implies its includedir is $(HOST_DIR)/include
+T 1600198460 18<uclibc-bot18>	buildroot:master yann.morin.1998 * 2020.08-422-gab19f5492f DEVELOPERS: fix alphabetical ordering
+T 1600198471 18<Jacmet18>	kos_tom: yes, sorry - $HOST_DIR/include, not ../usr/include
+T 1600198650 18<kos_tom18>	so pkg-config is filtering cflags like this:
+T 1600198651 18<kos_tom18>	        if (!(want_flags & PKG_KEEP_SYSTEM_CFLAGS) && pkgconf_fragment_has_system_dir(client, frag))
+T 1600198651 18<kos_tom18>	                return false;
+T 1600198674 18<kos_tom18>	in the host packages case, we pass PKG_CONFIG_ALLOW_SYSTEM_CFLAGS=1, which means the PKG_KEEP_SYSTEM_CFLAGS flag is enabled
+T 1600198701 18<kos_tom18>	so this condition will anyway never be true
+T 1600198722 18<kos_tom18>	and since the filtering based on PKG_CONFIG_SYSTEM_INCLUDE_PATH happens in pkgconf_fragment_has_system_dir()
+T 1600198725 18<arnout18>	But I still cranked out one patch to fix gitlab CI :-)
+T 1600198767 18<Jacmet18>	kos_tom: so the patch doesn't do anything?
+T 1600198885 18<y_morin18>	arnout: I disagree with that patch, I'll reply.
+T 1600198922 18<kos_tom18>	Jacmet: I'm not sure.
+T 1600199092 18<Jacmet18>	kos_tom: :/
+T 1600199158 18<kos_tom18>	https://paste.ack.tf/9f0fc6@raw <-- somewhat puzzling
+T 1600199356 18<kos_tom18>	so our pkg-config wrapper passes --keep-system-cflags, which explains why -I$(HOST_DIR)/include appears even though it's the "system include path"
+T 1600199438 18<kos_tom18>	to me this ALLOW_SYSTEM_CFLAGS looks bogus
+T 1600199444 18<Jacmet18>	kos_tom: and without it we end up with $STAGING_DIR/$HOST_DIR/include?
+T 1600199481 18<kos_tom18>	Jacmet: I don't see where we end up with STAGING_DIR/HOST_DIR/include
+T 1600199503 18<kos_tom18>	the ALLOW_SYSTEM_CFLAGS was added in commit 0d1830b07db4ebfd14e77a258de6fb391e57e960, which was a while ago, and was an attempt at using LD_LIBRARY_PATH
+T 1600199518 18<y_morin18>	Kubu: Hey! Seems we jinxed eachother on the gitlab-ci patch. ;-)
+T 1600199538 18<Kubu18>	y_morin: lol
+T 1600199578 18<kos_tom18>	no, it is not bogus
+T 1600199590 18<kos_tom18>	PKG_CONFIG_ALLOW_SYSTEM_CFLAGS=1 and --keep-system-cflags do exactly the same thing
+T 1600199632 18<kos_tom18>	ah, but we're not passing --keep-system-cflags, only --keep-system-libs
+T 1600199718 18<kos_tom18>	overall, perhaps we should consider this: https://patchwork.ozlabs.org/project/buildroot/patch/20191205171517.96639-3-michael.drake@codethink.co.uk/
+T 1600199766 18<y_morin18>	kos_tom: In the grand scheme of things, the personality seems like it is indeed the best solution.
+T 1600199779 18<y_morin18>	kos_tom: We just need to ensure that autostuff uses it.
+T 1600199802 18<y_morin18>	kos_tom: But then, do cmake, meson, et al. know to call tuple-pkg-config ?
+T 1600199820 18<kos_tom18>	y_morin: this doesn't really matter if you look at the patch I just linked
+T 1600199823 18<y_morin18>	If they don;t we can shoehorn that in the infras
+T 1600199904 18<y_morin18>	kos_tom: Ah, inded, it's a neat trick.
+T 1600199927 18<y_morin18>	(I haven't looked in the details, though.)
+T 1600199940 18<kos_tom18>	what's not so nice is that he is still passing all those env variables for all those cases where pkg-config is called directly, without using a PKG_CONFIG env variable
+T 1600200092 18<y_morin18>	kos_tom: Ah, but ultimately, we would want to have the host pkg-config named just pkg-config, and the target one named tuple-pkg-config
+T 1600200120 18<y_morin18>	Because that is how the traditional host and cross- tools are named
+T 1600200138 18<y_morin18>	With that patch, the logic is reversed, which is not nice.
+T 1600200143 18<kos_tom18>	y_morin: yes, I have proposed this several times, but arnout was not convinced
+T 1600200153 18<y_morin18>	kos_tom: And neither was I, to be hinest.
+T 1600200159 18<y_morin18>	*honest
+T 1600200169 18<y_morin18>	I agree that ideally, that would be wonderful.
+T 1600200194 18<y_morin18>	However, we still have the bad, hand-written build systems that we'll have to chase around.
+T 1600200218 18<y_morin18>	But if we can fix autostuff, cmake, meson et al, then all the better.
+T 1600200260 18<y_morin18>	And until we have erdicated all hard-coded cals to pkg-config, we'll have to live with both the current wrapper, and the personality one.
+T 1600200300 18<y_morin18>	kos_tom: I may have something to suggest, though (rough idea):
+T 1600200320 18<y_morin18>	we extend the existign wwrapper to look at its argv[0]
+T 1600200340 18<y_morin18>	then, if called as tuple-pkg-config, we do the personality stuff
+T 1600200380 18<y_morin18>	if not, then we look at whther the variables are set for host or for target, and we abide by this,
+T 1600200393 18<y_morin18>	eventually, as a fallback, we keep the existing heuristic.
+T 1600200431 18<y_morin18>	And if we fallback to the falback heuristic, we can also emit a warning....
+T 1600200545 18<kos_tom18>	ok, we're opening a big can of worms here
+T 1600200556 18<kos_tom18>	another topic is the system vs. normal users stuff at https://patchwork.ozlabs.org/project/buildroot/patch/20191023211313.6758-1-stephan+buildroot@asklandd.dk/
+T 1600200612 18<kos_tom18>	something that was proposed again in https://patchwork.ozlabs.org/project/buildroot/patch/20200113153516.486106-1-nolange79@gmail.com/ by a different contributor
+T 1600200685 18<y_morin18>	I like systemd features, but I dislike the policy burden it imposes...
+T 1600200724 18<smvoss18>	speaking of systemd... we were talking yesterday about disabling services in a buildroot build, for packages which auto-install a service into /usr/lib/systemd
+T 1600200741 18<smvoss18>	is the "buildroot" method to use that 80-buildroot.rules? put a disable <service>.service for each we don't want launched?
+T 1600200741 18<y_morin18>	kos_tom: The first patch is not OK: there is not commit log to explain the change
+T 1600200790 18<kos_tom18>	y_morin: so does systemd really makes a difference between system uids and "normal" user uids ?
+T 1600200883 18<y_morin18>	kos_tom: Well, I have no idea. But a few systemd referent (e.g. érémy) said systemd has a noption of "system" users vs. "non-system" users.
+T 1600200909 18<Jacmet18>	kos_tom: -I./output/host/bin/../arm-buildroot-linux-uclibcgnueabi/sysroot/home/thomas/projets/buildroot/output/host/include looks like $STAGING_DIR/$HOST_DIR/include to me (from your paste)
+T 1600200915 18<y_morin18>	kos_tom: I think it relates to the auto-user assignment that some services use, where the uid is picked at runtime in a specific pool
+T 1600200930 18<y_morin18>	smvoss: Depends what you want to do, in fact:
+T 1600200951 18<kos_tom18>	Jacmet: ah, yes. But I had forgotten to pass PKG_CONFIG_SYSROOT_DIR=/
+T 1600200968 18<y_morin18>	smvoss: 1) in package/foo/foo.mk, override the foo's behaviour, or
+T 1600200975 18<kos_tom18>	y_morin: https://systemd.io/UIDS-GIDS/ says "Moreover, some older systems placed the boundary at 499/500, or even 99/100. In systemd, the boundary is configurable only during compilation time, as this should be a decision for distribution builders, not for users."
+T 1600200976 18<Jacmet18>	kos_tom: ahh, ok
+T 1600200978 18<kos_tom18>	so there seems to be a boundary
+T 1600200989 18<y_morin18>	2) in your system configuration, override a package's behaviour?
+T 1600201016 18<y_morin18>	kos_tom: System does impose a biundary by policy, yes.
+T 1600201019 18<y_morin18>	*systemd
+T 1600201033 18<duckula18>	smoss: the clean systemd way would be to disable it using the .preset files i guess
+T 1600201059 18<smvoss18>	y_morin: does that make sense in general? Would it be reasonable to have sub-options for IF <package> && <init_systemd>: [ ] don't install systemd service?
+T 1600201066 18<kos_tom18>	y_morin: so https://patchwork.ozlabs.org/project/buildroot/patch/20191023211313.6758-1-stephan+buildroot@asklandd.dk/ wants system UIDs just for the beauty/convention
+T 1600201070 18<smvoss18>	and then let them install otherwise?
+T 1600201085 18<kos_tom18>	y_morin: and https://patchwork.ozlabs.org/project/buildroot/patch/20200113153516.486106-1-nolange79@gmail.com/ seems to want them for systemd reasons, but doesn't really explain the reasons
+T 1600201106 18<y_morin18>	smvoss: No, that is you to override with an overlay, a post-build script, or a post-fakeroot script....
+T 1600201135 18<y_morin18>	kos_tom: Yes, that is a good summary!
+T 1600201156 18<smvoss18>	y_morin: well what we ran into, is that with systemd generating what targets are enabled, and you'd have to prune out every service in /usr before that point
+T 1600201179 18<kos_tom18>	y_morin: so perhaps, the way forward is to ask Norbert Lange (author of the second proposal) to give some more details about why this is needed
+T 1600201200 18<kos_tom18>	y_morin: we can probably point him to the previous proposal (which interestingly, seems to require a lot more significant changes in mkusers)
+T 1600201234 18<y_morin18>	smvoss: Sorry, that goes beyond my knowledge.
+T 1600201257 18<y_morin18>	smvoss: However, know that we do run 'systemctl preset -all' at the end of the build.
+T 1600201272 18<kos_tom18>	Jacmet: but overall, I think we agree that https://patchwork.ozlabs.org/project/buildroot/patch/20191021123810.23135-1-thomas.preston@codethink.co.uk/ indeed doesn't account for the fact that /usr/include and /usr/lib may not necessarily be the correct system header/lib paths
+T 1600201275 18<y_morin18>	smvoss: So only then is the whole enable/disable machinery actually enforced.
+T 1600201281 18<smvoss18>	y_morin: no problem, somebody came to me noticing it and I didn't personally dig in. I can look further
+T 1600201298 18<kos_tom18>	Jacmet: so should I reject the patch based on that fact, and the fact that it doesn't fix any known issue ?
+T 1600201305 18<Jacmet18>	kos_tom: correct (even if they probably are right for 95%)
+T 1600201333 18<duckula18>	smvoss, y_morin: I ran into this issue when buildroot changed to using the 'preset -all' way. I now have a /usr/lib/systemd/system-preset/10-my.preset in the overlay which disables everything I don't want.
+T 1600201335 18<y_morin18>	smvoss: See commits:  231ad359bcc0f352c48df1f0b88ab62e2d7241d3 and 65b63785a642bbc565924edf365b5d7c080f961c
+T 1600201352 18<Jacmet18>	kos_tom: I guess so, yes. If it doesn't fix anything and we know it also isn't correct it doesn't make much sense to apply it
+T 1600201362 18<y_morin18>	duckula: I think this is exactly the thing to do, indeed.
+T 1600201490 18<duckula18>	y_morin: it caught me by surprise when i was upgrading. But from the systemd documentation that's exactly how it should be done. And it really is pretty handy.
+T 1600201561 18<y_morin18>	duckula: And it is just a text file, so is easy to maintain in your overlay (presumably in a VCS).
+T 1600201580 18<Kubu18>	kos_tom: y_morin: I guess we can mark the clang series from last year "Changes requested"
+T 1600201580 18<Kubu18>	http://patchwork.ozlabs.org/project/buildroot/list/?series=129565
+T 1600201619 18<y_morin18>	Kubu: Can't you do it?
+T 1600201622 18<duckula18>	usually when a package brings a .service you want this service. a bad example would be iputils. nobody wants rdisc and ninfod service. But I've seen that you can now disable those components in the packge.
+T 1600201636 18<kos_tom18>	Jacmet: do you have some thoughts about the system vs. normal users debate ?
+T 1600201687 18<duckula18>	smvoss: do you have a specific package that you install but don't want its service started?
+T 1600201736 18<smvoss18>	duckula: not specifically, there was a handful of software that needed to be on the system but not running by default (disable requested by another team)
+T 1600201746 18<smvoss18>	duckula: ended up being ~8 packages iirc
+T 1600201865 18<duckula18>	smvoss: so i'd say for specialisation cases I would go with disabling them via .preset. Only if it is a package where it is most probable that most users don't want the service I would think about adding an option to exlicitly deploy the .service.
+T 1600201870 18<y_morin18>	Kubu: So I've now marked the entire series as changes-requested....
+T 1600201877 18<smvoss18>	duckula: didn't notice I missed a message above, I did the same, I just used 80-buildroot.preset as that's what they had templated in package/systemd
+T 1600201913 18<y_morin18>	smvoss: Ithink you should name it 99-your-corp-project,preset
+T 1600201928 18<y_morin18>	smvoss: And not overwrite the 80-buildroot one
+T 1600201928 18<duckula18>	I'd go with an additional file so that your system doesn't break when systemd changes this file
+T 1600201933 18<smvoss18>	duckula: in general I agree, I guess it just feels awkward configuring in both the defconfig and then also another .preset
+T 1600201938 18<y_morin18>	duckula: +1
+T 1600201967 18<smvoss18>	yeah, that's fair. Actually I think that hasn't been merged yet and I'll mention it to them.
+T 1600202003 18<uclibc-bot18>	buildroot:master raphael.melotte * 2020.08-423-g8abe87184a package/python-jmespath: new package.
+T 1600202005 18<uclibc-bot18>	buildroot:master raphael.melotte * 2020.08-424-gc8d721b5ba package/python-botocore: new package.
+T 1600202005 18<uclibc-bot18>	buildroot:master raphael.melotte * 2020.08-425-g2b8ffe69b2 package/python-s3transfer: new package.
+T 1600202007 18<uclibc-bot18>	buildroot:master raphael.melotte * 2020.08-426-gf8a387e525 package/python-boto3: new package.
+T 1600202083 18<Kubu18>	y_morin: sorry, I was afk a moment
+T 1600202091 18<y_morin18>	Kubu: No worries.
+T 1600202108 18<iTitou18>	Hello all !
+T 1600202129 18*	y_morin waves at iTitou.
+T 1600202137 18<Kubu18>	iTitou: Hello!
+T 1600202252 18<iTitou18>	I'm going through pw, looking for accessible patches to test / review
+T 1600202298 18<iTitou18>	Also some patches whose status can simply be changed, I linked them on the pad
+T 1600202449 18<y_morin18>	iTitou: Thanks, done.
+T 1600202668 18<hthiery18>	Kubu: do you know if Jugurtha is on irc
+T 1600202688 18<hthiery18>	iTitou: hi
+T 1600202830 18<Kubu18>	hthiery: no he is not
+T 1600202857 18<Kubu18>	but he is my co-worker at Smile Nantes
+T 1600202869 18<hthiery18>	Kubu: ok .. just went though the ettercap package and had some questions
+T 1600202884 18<hthiery18>	Kubu: yes i saw his email .. therefore i asked you ;-)
+T 1600202913 18<hthiery18>	Kubu: I answer/ask by mail
+T 1600203034 18<Kubu18>	hthiery: yes but not all people at smile are located at Nantes :)
+T 1600203117 18<hthiery18>	Kubu: ok ;-) the initial question was about the nickname .. if present
+T 1600203140 18<smvoss18>	if I want to test version bump/small patches in between stuff in free time, what's the best use of my time?
+T 1600203180 18<smvoss18>	running utils/test-pkg, or a real build/test on aarch64 tend to be my go-to's
+T 1600203265 18<y_morin18>	smvoss: utils/test-pkg and reporting is nice, yes
+T 1600203299 18<y_morin18>	smvoss: If you do actual run test on aarch64, then I thin better would be to add an actual runtimwe test in-tree
+T 1600203320 18<y_morin18>	smvoss: See support/testing/tests/
+T 1600203358 18<smvoss18>	y_morin: sounds good. I tend to test my packages this way, but I know you guys have been swamped so hoping to spend a bit more time testing patches instead of just always throwing wrenches at stuff :)
+T 1600203374 18<smvoss18>	rusty..wrenches you might say
+T 1600203396 18<y_morin18>	smvoss: To be clear: we almost never manualy test patches; wwhat takes time is the review of patches.
+T 1600203441 18<y_morin18>	smvoss: But knowing that a patch does pass runtime tests and/or test-pkg is defeinitely a plus for me.
+T 1600203447 18<smvoss18>	y_morin: oh absolutely, but testing new features and stuff is what I can more appropriately review
+T 1600203497 18<y_morin18>	smvoss: Even if I am not happy with a patch's code, knowing that it runs as expected is always a bonus, as it at least puts a known-working mark that we can improve upon.
+T 1600203516 18<y_morin18>	smvoss: Sure, thanks for the proposal, much appreciated! :-)
+T 1600203564 18<y_morin18>	And in the comming days/weeks, I'll try to dedicate as much time as possible to ensure we have no un-addressed but reviewed/tested patches in the backlog.
+T 1600203616 18<y_morin18>	Anyway, 's been a scorching and tiring day here; I need some rest...
+T 1600203691 18<smvoss18>	y_morin: enjoy
+T 1600203885 18<uclibc-bot18>	buildroot:master titouan.christophe * 2020.08-427-g882a8550bc package/redis: security bump to 6.0.8
+T 1600204321 18<aduskett18>	heh
+T 1600204894 18<aduskett18>	Sorry, what yann said was funny
+T 1600206705 18<sambristow_nz[m]18>	I'm having a bit of trouble getting a rust package to compile
+T 1600206705 18<sambristow_nz[m]18>	https://pastebin.com/zDe6p3Xc
+T 1600206729 18<sambristow_nz[m]18>	I keep getting errors about `error: Unrecognized option: 'json'`
+T 1600206755 18<sambristow_nz[m]18>	none of which happen if I do a `cargo build` for the project directly
+T 1600206769 18<sambristow_nz[m]18>	anyone have any ideas what's going on?
+T 1600215250 18<smvoss18>	sambristow_nz[m]: Still around?
+T 1600215846 18<smvoss18>	sambristow nz[m]: https://pastebin.com/c72jmabe worked for me (note the change around line 17 for the folder building, there was a bugfix done here recently that doesn't seem to have made it back into the docs). What version of buildroot are you using?
+T 1600216508 18<sambristow_nz[m]18>	2020.05.2-54-g5935b68772
+T 1600216919 18<sambristow_nz[m]18>	@smvoss I can't see any difference on line 17?
+T 1600216967 18<smvoss18>	whoops, I pasted yours back to you
+T 1600216969 18<smvoss18>	one moment
+T 1600217004 18<smvoss18>	sambristow nz[m]: https://pastebin.com/L5gDNpNT
+T 1600217175 18<sambristow_nz[m]18>	I'm just running a clean build. Will report back once that's done
+T 1600217232 18<smvoss18>	I just reverted to your version and am trying as well
+T 1600218156 18<smvoss18>	sure enough, failed in your version
+T 1600218157 18<smvoss18>	lets take a look
+T 1600218253 18<smvoss18>	my guess, and one reason ripgrep is so old, is due to older version of rustc
+T 1600218927 18<smvoss18>	sambristow nz[m]: I didn't dig too much further, but looking at this: https://github.com/rust-lang/rust/issues/69096#issuecomment-585880012
+T 1600218952 18<smvoss18>	seems as though cargo is doing something non-backwards compatible passing --json and causing issues
+T 1600218985 18<smvoss18>	doesn't seem to be an issue on master, if possible you may wish to backport the current available version
+T 1600219490 18<sambristow_nz[m]18>	Thanks for your help
+T 1600219534 18<sambristow_nz[m]18>	I'll do some more digging. Jumping on to master might be the simplest short-term solution for me
+T 1600219631 18<smvoss18>	sounds good - good luck.
+T 1600219647 18<smvoss18>	when I got past that issue, I did notice there was an issuing cc'ing
+T 1600219670 18<smvoss18>	which was fixed at some point also, but I don't remember when, but it could have been a non-reproducible issue from debugging...
+T 1600226121 18<lucascastro18>	How can I get linux kernel version from in post-build.sh script?
+T 1600226576 18<smvoss18>	lucascastro: looks like the manual mentions you can pass $BR2_CONFIG and do a quick parse out of that
+T 1600226590 18<smvoss18>	(as a variable to your post_build script)
+T 1600226641 18<lucascastro18>	I saw that, but if set linux kernel version to custom so that BR2_LINUX_VERSION is just custom.
+T 1600226658 18<lucascastro18>	I was looking at linux.mk
+T 1600226683 18<lucascastro18>	inside it, it get from internal make command.
+T 1600226712 18<smvoss18>	well in that vein you could just pass in the build dir, do a pushd into your linux folder, and run a quick command before pop'ing back out
+T 1600226717 18<lucascastro18>	it's called LINUX_VERSION_PROBED
+T 1600226735 18<lucascastro18>	in linux.mk
+T 1600226800 18<urjaman18>	i mean, my first thought was looking at the directory name in lib/modules (but that ofc depends on you having modules...), and maybe there are better solutions
+T 1600226852 18<smvoss18>	update that LINUX_VERSION_PROBED to drop a stamp of it's context down somewhere? :)
+T 1600226862 18<[R]18>	you could add a POST_BUILD_HOOK to the kernel that touches a file somewhere with LINUX_VERSION_PROBED and then read that in your post-build.sh
+T 1600226903 18<smvoss18>	^ that's what I was getting at, but less eloquently
+T 1600226926 18<lucascastro18>	I'll try
+T 1600226938 18<lucascastro18>	something like that
+T 1600230537 18<sambristow_nz[m]18>	<smvoss "sounds good - good luck."> It seems to work from the `2020.08.x` branch too. Which is a decent compromise compared to sitting on `master`
+T 1600239778 18<_bilgus_18>	just a shot in the dark here anyone have this 2.16 MB pdf for JZ4760B Mobile Application Processor User Interfaces Programming Manual??
+T 1600243296 18<ysionneau18>	16:04 < rfs613> ysionneau: i patched common-generic and now vim works. Ship it! :P < great :) Let's see Waldamar's review on uClibc-ng mailing list then
+T 1600264396 18<smvoss18>	sambristow nz[m]: Glad to hear it. I agree, much better than sitting on master.
+T 1600270722 18<duckula18>	considering my f... up on the ML. is there any sensible way to use git send-email with --in-reply-to for patchsets?
+T 1600270797 18<kos_tom18>	duckula: could you define "sensible" ? :-)
+T 1600270875 18<duckula18>	that the coverletter is recognized as reply to a previous version but the single patches are  replies to the coverletter
+T 1600270947 18<kos_tom18>	patches being replies to the cover letter is normal
+T 1600270987 18<kos_tom18>	duckula: who are you on the mailing list ?
+T 1600270991 18<duckula18>	if you look at this: http://lists.busybox.net/pipermail/buildroot/2020-September/292444.html
+T 1600271026 18<duckula18>	all subsequent patches are shown as response to the same mail as the coverletter
+T 1600271081 18<duckula18>	my resend try looks good on the archive. but on patchwork the series has the title of the first patch
+T 1600271158 18<duckula18>	at least they are not collected under the same series
+T 1600271163 18<duckula18>	*now
+T 1600271226 18<kos_tom18>	we generally don't use --in-reply-to to send new iterations of a patch series
+T 1600271240 18<duckula18>	in my first try the error was, that I put the --in-reply-to after the outgoing folder.
+T 1600271354 18<duckula18>	i wasn't sure. the documentation wasn't really clear to me. (last paragraph in 21.5.4.)
+T 1600271651 18<duckula18>	since patchwork is also not picking it up for single patches (at least in all my tries) i'll just avoid using --in-reply-to from now on.
+T 1600287062 18<aduskett18>	huh, cool. glib 2.66 and gobject introspection 2.66 are out
+T 1600287144 18<kos_tom18>	aduskett: some good new features you were waiting for ?
+T 1600287152 18<aduskett18>	Nothing in particular.
+T 1600287258 18<uclibc-bot18>	buildroot:master thomas.petazzoni * 2020.08-428-ge5f92758ff package/qt5/qt5webengine: fix build with Bison 3.7
+T 1600291268 18<y_morin18>	Aggg... Handled the two oldest reviewed-by patches, from Feb. Now the oldest reviewed-by patch is from March.
+T 1600291301 18<y_morin18>	Maybe I can keep up the one-month-per-day pace in the coming days?
+T 1600291304 18<y_morin18>	Lol... :-]
+T 1600346191 18<pdgendt18>	hi, when running a build in a docker container we get an error which we don't have on any other system when linux tries to add files from CONFIG_EXTRA_FIRMWARE
+T 1600346196 18<pdgendt18>	make[6]: *** No rule to make target '/lib/firmware/imx/sdma/sdma-imx7d.bin', needed by 'drivers/base/firmware_loader/builtin/imx/sdma/sdma-imx7d.bin.gen.o'.  Stop.
+T 1600346236 18<pdgendt18>	the file is available in the target folder
+T 1600349760 18<rfs61318>	pdgendt: just a guess, but seems you might be missing some environment variable.
+T 1600349794 18<rfs61318>	it should not be building anything in /lib/firmware... but perhaps it is trying for $VARIABLE/lib/firmware where VARIABLE is not defined in your docker env.
+T 1600349921 18<pdgendt18>	rfs613: sure but it's built with buildroot, internal toolchain
+T 1600349991 18<pdgendt18>	building with buildroot (make clean && make) on other PC builds just fine
+T 1600350073 18<rfs61318>	pdgendt: right, but the environment may differ. Try runing "env" command to display the env on your PC, and the same in docker... compare the variables you see there, esp things like HOME.
+T 1600350172 18<rfs61318>	also note that firmware_loader is part of linux kernel... buildroot is compiling it, but the rules for building it are coming from kernel.
+T 1600350234 18<rfs61318>	i have not used firmware_loader, but perhaps you need to have installed, in your docker environment, the linux-firwmare binary blobs (esp the /lib/firmware/imx/sdma/sdma-imx7d.bin in your case)
+T 1600350257 18<pdgendt18>	they are built with buildroot as well
+T 1600350284 18<rfs61318>	are you sure about that? Usually the stuff in /lib/firmware is binary blobs obtained from vendors...
+T 1600350325 18<pdgendt18>	BR2_PACKAGE_FIRMWARE_IMX is enabled, and adds the files to /lib/firmware/imx/sdma
+T 1600350346 18<pdgendt18>	the package just downloads bin files basically
+T 1600350430 18<kos_tom18>	pdgendt: These files should exist under
+T 1600350430 18<kos_tom18>	          the directory specified by the EXTRA_FIRMWARE_DIR option, which is
+T 1600350430 18<kos_tom18>	          /lib/firmware by default.
+T 1600350452 18<kos_tom18>	so I guess you need to set CONFIG_EXTRA_FIRMWARE_DIR to a meaningful value
+T 1600350456 18<pdgendt18>	exactly
+T 1600350457 18<rfs61318>	oh I see... are you able to tell if this package ran successfully (eg. did it download the files, maybe it was unable to write to $EXTRA_FIRMWARE_DIR perhaps?
+T 1600350476 18<pdgendt18>	no the files are copied as expected
+T 1600350494 18<pdgendt18>	they are @ <BUILDROOT_OUTPUT>/target/lib/firmware
+T 1600350514 18<rfs61318>	right, but that is different from /lib/firmware
+T 1600350586 18<pdgendt18>	hmn so the issue is that it uses the files from the host pc
+T 1600350593 18<pdgendt18>	right
+T 1600350597 18<rfs61318>	yep
+T 1600350627 18<rfs61318>	as kos_tom said, seems you need to set CONFIG_EXTRA_FIRMWARE_DIR
+T 1600350664 18<pdgendt18>	and can I make it point to the $TARGET_DIR?
+T 1600350705 18<rfs61318>	yes, i think so
+T 1600350809 18<rfs61318>	note this is a kernel config setting, not a buildroot one. So passing the right path may be a bit tricky. Yuch...
+T 1600350882 18<rfs61318>	another option might be to make a symlink in your docker world, so that /lib/firmware... points to the target/lib/firmware.
+T 1600351283 18<pdgendt18>	setting ${TARGET_DIR}/lib/firmware in the linux config seems to work
+T 1600351285 18<pdgendt18>	thx
+T 1600351318 18<rfs61318>	great!
+T 1600353147 18<wdouglass18>	I'm trying to build uboot for imx8mm with buildroot. I need to build the u-boot.imx style image. I'm using these instructions as a template: https://variwiki.com/index.php?title=Yocto_Build_U-Boot&release=RELEASE_ZEUS_V1.0_DART-MX8M-MINI
+T 1600353149 18<wdouglass18>	i'
+T 1600353156 18<wdouglass18>	i'm having two problems
+T 1600353173 18<wdouglass18>	1) how do i tell buildroot about the binary firmware files that the imx8mm needs?
+T 1600353203 18<wdouglass18>	2) when i try to build the .imx image, i get this error message:
+T 1600353211 18<wdouglass18>	spl/u-boot-spl-ddr.bin: Can't open: No such file or directory
+T 1600353225 18<wdouglass18>	I suspect it may be related to the missing ddr firmware, meantioned above
+T 1600353646 18<kos_tom18>	apparently some variscite boards need a different DDR firmware than many other i.MX8 boards
+T 1600353671 18<wdouglass18>	yeah, i have the binaries. I guess i need to modify the uboot.mk stuff in buildroot to get them put in the right place
+T 1600353674 18<kos_tom18>	I think there was a patch on the list about this recently, as I remember replying to it
+T 1600353685 18<wdouglass18>	oh ok, i'll search the list archives
+T 1600353699 18<kos_tom18>	ah no it was the padding that had to be different: https://patchwork.ozlabs.org/project/buildroot/patch/20200915130414.3286332-1-pieter.degendt@basalte.be/
+T 1600353711 18<kos_tom18>	the submitter of this patch is on this IRC channel, it's pdgendt
+T 1600353729 18<kos_tom18>	so I'm sure he can give insights on how he has gotten the i.MX8 Variscite stuff to work :)
+T 1600353737 18<rfs61318>	hehe, we were just talking about imx firmware earlier ;-)
+T 1600353772 18<wdouglass18>	most of my buildroot experience is with the jetson, the nxp stuff seems easier to me
+T 1600353918 18<kos_tom18>	we should perhaps have a location in the Buildroot manual for some platform-specific information
+T 1600353955 18<wdouglass18>	maybe; or maybe have seperate documents to capture that stuff per-platform. The manual is already so good
+T 1600354962 18<pdgendt18>	wdouglass: you need the firmware-imx package enabled, and add the firmware files to the kernel
+T 1600355044 18<pdgendt18>	as kos_tom mentioned we added some DDR training configuration because of a u-boot change by variscite
+T 1600355451 18<wdouglass18>	oh, that's what i was missing! thanks!
+T 1600355518 18<pdgendt18>	the patch refers to this change by variscite https://github.com/varigit/uboot-imx/commit/5f8d814f
+T 1600355885 18<SHC18>	Hello
+T 1600355915 18<SHC18>	Is 2018.11.4 is LTS release?
+T 1600355936 18<y_morin18>	SHC: No. LTS is 2020.02.x
+T 1600355971 18<y_morin18>	SHC the latest release on the LTS branch is 2020.02.6
+T 1600356017 18<SHC18>	So sad. 2018.11.4 is the last qt4 release. So, ok, will make a patches locally :)
+T 1600356028 18<wdouglass18>	SHC: the LTS releases are the first release every year
+T 1600356089 18<SHC18>	tnx all!
+T 1600356094 18<y_morin18>	SHC: qt4 had had no release in years.
+T 1600356139 18<y_morin18>	That we carried it so long was already beyond duty, I would say. :-]
+T 1600356144 18<SHC18>	y_morin: yes, but we use it in our old projects
+T 1600356250 18<y_morin18>	SHC: Well, you could *maybe* revive it if you add it back in your br2-external tree, maybe, just maybe...
+T 1600356269 18<SHC18>	y_morin: We have so old projects, which support QWS with 4bpp :) Qt5 does not support this old hardware :)
+T 1600356437 18<SHC18>	Today I successfully compile Qt4 with gcc 9, so have some patches.
+T 1600356544 18<SHC18>	But I am use 2018.11... So I am just keep this branch/
+T 1600356558 18<SHC18>	thx again
+T 1600361556 18<wdouglass18>	hmmm, sorry to harp on more, but i've got i've got firmware-imx  enabled, but uboot still gives me `spl/u-boot-spl-ddr.bin: Can't open: No such file or directory`
+T 1600361567 18<wdouglass18>	I'm wondering what else i'm missing...
+T 1600363321 18<wdouglass18>	i'm also getting a lot of this:
+T 1600363328 18<wdouglass18>	WARNING './lpddr4_pmu_train_1d_imem.bin' not found, resulting binary is not-functional
+T 1600363328 18<wdouglass18>	 
+T 1600368399 18<wdouglass18>	I see. firmware-imx.mk does some post-processing of the firmware files that imx8_image.sh also wants to do in the uboot.imx make. I need to set up some raw file copies to get things into the right place at build time.
+T 1600368720 18<kos_tom18>	y_morin: I just mailed you some questions about qt5webengine
+T 1600370513 18<uclibc-bot18>	buildroot:master joerg.krause * 2020.08-429-g9247a42c4b package/upmpdcli: bump to version 1.4.14
+T 1600370707 18<uclibc-bot18>	buildroot:master peter * 2020.08-430-g3652407756 configs/lafrite_defconfig: bump kernel to 5.8.10
+T 1600371599 18<uclibc-bot18>	buildroot:master tianyuanhao * 2020.08-431-g7ec82c7d57 package/armbian-firmware: bump version to 70a0850
+T 1600371600 18<uclibc-bot18>	buildroot:master thomas.petazzoni * 2020.08-432-gf497ed5eea package/armbian-firmware: fix alphabetic ordering of options
+T 1600371601 18<uclibc-bot18>	buildroot:master tianyuanhao * 2020.08-433-gf319d2f12a package/armbian-firmware: add option to install AP6256 firmware
+T 1600371656 18<uclibc-bot18>	buildroot:master joerg.krause * 2020.08-434-g3942b180df package/fmt: bump to version 7.0.3
+T 1600371657 18<uclibc-bot18>	buildroot:master ps.report * 2020.08-435-g4f6ef93b72 package/weston: change download url to https
+T 1600372608 18<uclibc-bot18>	buildroot:master mvalabdas * 2020.08-436-gdd5a0afca9 package/18xx-ti-utils: build/install wlconf as a host utility
+T 1600373973 18<uclibc-bot18>	buildroot:master fperrad * 2020.08-437-g113f931f34 package/logrotate: bump to version 3.17.0
+T 1600373983 18<uclibc-bot18>	buildroot:master fperrad * 2020.08-438-g5e74d8f0a0 package/libfribidi: bump to version 1.0.10
+T 1600374127 18<uclibc-bot18>	buildroot:master heiko.thiery * 2020.08-439-g3b81307162 package/ipmitool: fix 0011-channel-Fix-buffer-overflow.patch
+T 1600374327 18<uclibc-bot18>	buildroot:master peter * 2020.08-440-g2ec692e863 configs/orangepi_pc_defconfig: bump kernel to 5.8.10, u-boot to 2020.07
+T 1600374800 18<uclibc-bot18>	buildroot:master buildroot * 2020.08-441-g38e660af4b package/doxygen: disable shared libs for host
+T 1600374801 18<uclibc-bot18>	buildroot:master buildroot * 2020.08-442-gd8cf79e187 package/{clang,lld}: disable shared lib build for the host variant
+T 1600374802 18<uclibc-bot18>	buildroot:master buildroot * 2020.08-443-g0be62bf9f0 package/pkg-cmake.mk: build host with shared libs
+T 1600374925 18<hthiery_18>	wdouglass: what u-boot do you try to build?
+T 1600374931 18<uclibc-bot18>	buildroot:master fperrad * 2020.08-444-gdad70123e1 package/dash: bump to version 0.5.11.2
+T 1600374932 18<uclibc-bot18>	buildroot:master jubalh * 2020.08-445-ge438d09f52 package/libstrophe: bump to version 0.10.0
+T 1600375222 18<uclibc-bot18>	buildroot:master aperez * 2020.08-446-g0e8686be9f package/libwpe: bump to version 1.8.0
+T 1600375223 18<uclibc-bot18>	buildroot:master aperez * 2020.08-447-gedb505b78f package/libwpe: switch over to Meson
+T 1600375948 18<y_morin18>	kos_tom: OK, saw them. but really I only tried to refresh that patch series as it was reviewed-by but I still had comments on it.
+T 1600375966 18<kos_tom18>	y_morin: sure sure
+T 1600375968 18<y_morin18>	kos_tom: and the build was OOM-killed here... :-(
+T 1600375980 18<kos_tom18>	y_morin: ah, the build completed on my build server with 64 GB of RAM
+T 1600376000 18<y_morin18>	16GiB does not seem to be enough... :-/
+T 1600376379 18<kos_tom18>	16 GB is not enough RAM to run chromium anyway
+T 1600376385 18<kos_tom18>	so why would you want to build it with just 16 GB of RAM ? :-)
+T 1600376531 18<y_morin18>	kos_tom: Well, you were the one asking me to run chromium for this video meeting stuff, remember? ;-)
+T 1600376688 18<matiko12218>	Hi. I'm electronics enginner trying to build my own board with linux. I've a problem understanding how to build it using linux from the hardware point of view (by which I mean that I have no clue how to port it to new hardware like this). Is there any tips or good reads you can recommend about the topic? Especially with good explenation conserning porting (bootloaders, peripherals). Thanks a lot
+T 1600377308 18<uclibc-bot18>	buildroot:master peter * 2020.08-448-g2ff81c925d package/libseccomp: bump version to 2.4.4
+T 1600393383 18<AlwaysLivid18>	Hello there, is there a way to update a legacy configuration?
+T 1600417105 18<patrickdepingui18>	hi all;   kos_tom: I have a question about your 'recent' change wrt /etc/os-release and setlocalversion
+T 1600417155 18<patrickdepingui18>	when Buildroot is present in a Mercurial repo, the output is not as expected, setlocalversion will return: -hgf3e5ae052148
+T 1600417181 18<patrickdepingui18>	in your change, you assume that it will also include the Buildroot revision, e.g. 2020.02.6-hgf3e5ae052148
+T 1600417215 18<patrickdepingui18>	in 'git describe', the latest tag is present, but for the mercurial case this output is currently not added
+T 1600417245 18<patrickdepingui18>	while looking at this, I noticed that git has a difference between 'normal' tags and 'annotated' tags. For 'git describe', only annotated tags are used.
+T 1600417270 18<patrickdepingui18>	I'm wondering whether a project that uses Buildroot would add their local tags as 'normal' or 'annotated' ?
+T 1600417301 18<patrickdepingui18>	in my mercurial repo, we have mercurial tags corresponding to the Buildroot releases, e.g. 2020.02.6, and no local tags
+T 1600417318 18<patrickdepingui18>	so I could change setlocalversion to also output the latest tag from the current revision, like git does
+T 1600417323 18<Xogium18>	if you release a version you typically use anotated tags, not lightweight tags
+T 1600417333 18<agb18>	I use annotated tags specifically so `git describe` will print the right thing. `git describe --tags` will look for both "normal" (lightweight) and annotated tags.
+T 1600417349 18<patrickdepingui18>	but in case other mercurial projects use tags for their own stuff, then this would add the project tag in setlocalversion, and thus /etc/os-release.
+T 1600417353 18<patrickdepingui18>	I'm not sure if that is expected.
+T 1600417380 18<patrickdepingui18>	if that proposed mercurial behavior is in line with what git would do, then it's fine I think
+T 1600417410 18<patrickdepingui18>	i.e. if you all say that projects that would add their project tags in Buildroot are fine to see that project tag in /etc/os-release
+T 1600419416 18<ysionneau18>	rfs613: merged upstream : https://cgit.uclibc-ng.org/cgi/cgit/uclibc-ng.git/commit/?id=50bd6d06e3f2cca57bd20cf4345993ceff8c97dd o/
+T 1600449502 18<wgytfr7818>	My privats videos skype webcam 400gb links open in Tor Browser gg.gg/m7dgu
+T 1600455381 18<adjexpress[m]18>	Hi
+T 1600455381 18<adjexpress[m]18>	Any body here ?
+T 1600466054 18<matiko12218>	Hi. I'm electronics enginner trying to build my own board with linux. I've a problem understanding how to build it using linux from the hardware point of view (by which I mean that I have no clue how to port it to new hardware like this). Is there any tips or good reads you can recommend about the topic? Especially with good explenation conserning porting (bootloaders, peripherals). Thanks a lot
+T 1600466056 18<matiko12218>	 
+T 1600473929 18<aduskett18>	Neat, OpenJDK 15 is out
+T 1600496308 18<iskander-18>	Hi guys, any chance my makedumpfile fix for powerpc getting merged soon ?
+T 1600499206 18<uclibc-bot18>	buildroot:master egorenar-dev * 2020.08-449-g060275b683 package/makedumpfile: fix build for powerpc target
+T 1600501813 18<iskander18>	y_morin: thank you
+T 1600503480 18<uclibc-bot18>	buildroot:master buildroot * 2020.08-450-g19dfe7f6e7 package/grpc: fix build on ubuntu gcc 4.8
+T 1600511226 18<Xogium18>	wooooow make[1]: *** [Makefile:985: menuconfig] Segmentation fault (core dumped)
+T 1600511245 18<Xogium18>	wtzzz
+T 1600517562 18<kos_tom18>	Xogium: perhaps you have updated to make 4.3 ?
+T 1600517638 18<Xogium18>	kos_tom: yes indeed
+T 1600517646 18<uclibc-bot18>	buildroot:master fontaine.fabrice * 2020.08-451-g50c6600367 package/micropython: fix build with gcc 4.8
+T 1600517652 18<kos_tom18>	Xogium: https://savannah.gnu.org/bugs/?59093
+T 1600517724 18<uclibc-bot18>	buildroot:master fperrad * 2020.08-452-ge9123b9027 package/mcelog: install init systemd
+T 1600517725 18<uclibc-bot18>	buildroot:master fperrad * 2020.08-453-ga81ece2c39 package/mcelog: bump to version 172
+T 1600517948 18<Xogium18>	so, in short only solution right now is to downgrade ?
+T 1600518703 18<uclibc-bot18>	buildroot:master fperrad * 2020.08-454-gbdb2bccfb7 package/nvme: bump to version 1.12
+T 1600518704 18<uclibc-bot18>	buildroot:master fperrad * 2020.08-455-g82442b54b6 package/popt: bump to version 1.18
+T 1600518753 18<kos_tom18>	Xogium: it seems so :/
+T 1600518764 18<Xogium18>	well, fudge
+T 1600518768 18<Xogium18>	alright then
+T 1600518772 18<Xogium18>	thanks :)
+T 1600518788 18<uclibc-bot18>	buildroot:master grzegorz * 2020.08-456-g89c904c27a package/graphicsmagick: enable OpenMP when supported by toolchain
+T 1600518811 18<Xogium18>	I'm a bit stuck since I build in docker, and make was updated :D
+T 1600519352 18<Xogium18>	there we go, that is much better
+T 1600519753 18<uclibc-bot18>	buildroot:master egorenar-dev * 2020.08-457-g660692939c package/makedumpfile: fix passing of MAKEDUMPFILE_MAKE_OPTS
+T 1600519754 18<uclibc-bot18>	buildroot:master thomas.petazzoni * 2020.08-458-g24ed3fef9d package/makedumpfile: remove consecutive empty lines
+T 1600519755 18<uclibc-bot18>	buildroot:master thomas.petazzoni * 2020.08-459-g301f746629 package/makedumpfile: pass all options through MAKEDUMPFILE_MAKE_OPTS
+T 1600519756 18<uclibc-bot18>	buildroot:master egorenar-dev * 2020.08-460-g5b05b0c82b package/makedumpfile: add optional dependency on snappy
+T 1600520145 18<uclibc-bot18>	buildroot:master troglobit * 2020.08-461-ge36f190260 package/netcalc: new package
+T 1600520405 18<uclibc-bot18>	buildroot:master ps.report * 2020.08-462-g7c5804cf75 package/qt5/qt5webkit: fix bison-3.7.1 related compile failure
+T 1600520639 18<iskander-18>	kos_tom: thanks for improving and merging makedumpfile fixes
+T 1600521252 18<uclibc-bot18>	buildroot:master ps.report * 2020.08-463-g0fa4eb375c package/qt5: bump version to 5.15.1
+T 1600521466 18<uclibc-bot18>	buildroot:master buildroot * 2020.08-464-g4027ba29f4 package/nginx: use /run for PIDFile
+T 1600521467 18<uclibc-bot18>	buildroot:master buildroot * 2020.08-465-gcdc183eef0 package/bandwithd: use /run for PIDFile
+T 1600521468 18<uclibc-bot18>	buildroot:master buildroot * 2020.08-466-g9668296056 package/dhcpcd: use /run for PIDFile
+T 1600521469 18<uclibc-bot18>	buildroot:master buildroot * 2020.08-467-g7e85145d97 package/htpdate: use /run for PIDFile
+T 1600521470 18<uclibc-bot18>	buildroot:master buildroot * 2020.08-468-gad46c0ac36 package/minidlna: use /run for PIDFile
+T 1600521471 18<uclibc-bot18>	buildroot:master buildroot * 2020.08-469-gce3d5129a6 package/nss-pam-ldapd: use /run for PIDFile
+T 1600521472 18<uclibc-bot18>	buildroot:master buildroot * 2020.08-470-ge97fe4f28c package/openvmtools: use /run for PIDFile
+T 1600521473 18<uclibc-bot18>	buildroot:master buildroot * 2020.08-471-ga9bc0024b6 package/postgresql: remove PIDFile from .service
+T 1600521763 18<uclibc-bot18>	buildroot:master fontaine.fabrice * 2020.08-472-g1030f295e6 package/ecryptfs-utils: fix build failure without pod2man
+T 1600521764 18<uclibc-bot18>	buildroot:master james.hilliard1 * 2020.08-473-g2f5a26630c package/meson: support additional cpu families
+T 1600521827 18<uclibc-bot18>	buildroot:master aperez * 2020.08-474-gb2df73ef84 package/webkitgtk: bump to version 2.30.0
+T 1600531487 18<y_morin18>	kos_tom: About make-4.3 : we have two workarounds already: 35c5cf56d21 and 9e2128bf507
+T 1600531518 18<y_morin18>	kos_tom: And back then, we did not hit the segfault issue.
+T 1600532091 18<kos_tom18>	y_morin: the previous segfault issue I got reported was on "make show-info"
+T 1600532101 18<kos_tom18>	y_morin: and I was clearly able to reproduce it
+T 1600532143 18<y_morin18>	kos_tom: I was puzzled as to why that segfault is only noticed now
+T 1600532163 18<kos_tom18>	y_morin: but the segfault that Xogium is reporting, I'm not sure
+T 1600532181 18<kos_tom18>	the segfault on make show-info was reported by a colleague of mine, and lead me to make the upstream bug report on Savannah which I pointed earlier
+T 1600532187 18<y_morin18>	kos_tom: But I am able to reproduce the same segfaults even back with the first commit we have to fix the first mnake-4.3 issue
+T 1600532190 18<kos_tom18>	I am not sure the segfault that Xogium is seeing is the same
+T 1600532218 18<y_morin18>	kos_tom: I am testing with your https://savannah.gnu.org/bugs/?59093
+T 1600532496 18<kos_tom18>	well, I haven't proposed any fix
+T 1600532505 18<kos_tom18>	one fix was proposed by another person, I didn't had the time to test it
+T 1600532557 18<Xogium18>	I would check what is going on but as this is in a docker container, it is a bit annoying to recover a core dump, not to mention that I have no debug symbol for make
+T 1600532806 18<Xogium18>	and it appears that right now I can't even reproduce it anymore… It might have been just a very rare bug of some kind
+T 1600532838 18<Xogium18>	some kind of race condition
+T 1600532841 18<Xogium18>	maybe
+T 1600533039 18<Xogium18>	hm, anyone familiar with barebox and buildroot here ? I want to make a good default env for my device based on the actual default env of barebox, and a couple of additional variables
+T 1600533053 18<Xogium18>	I am not at all sure which buildroot option to choose
+T 1600533067 18<Xogium18>	generate environment image or path to embedded env ?
+T 1600542603 18<uclibc-bot18>	buildroot:master fontaine.fabrice * 2020.08-475-gf4d3dc9bc1 package/jbig2dec: bump to version 0.19.0
+T 1600542757 18<uclibc-bot18>	buildroot:master fontaine.fabrice * 2020.08-476-gae8cfbd4e5 package/libpfm4: disable examples
+T 1600542786 18<uclibc-bot18>	buildroot:master fperrad * 2020.08-477-gded8576306 package/hicolor-icon-theme: bump to version 0.17
+T 1600544404 18<uclibc-bot18>	buildroot:master nolange79 * 2020.08-478-gdcee2627f4 DEVELOPERS: add myself as contact for systemd
+T 1600544405 18<uclibc-bot18>	buildroot:master fontaine.fabrice * 2020.08-479-g60c46a256e package/libcap-ng: bump to version 0.8
+T 1600544406 18<uclibc-bot18>	buildroot:master fontaine.fabrice * 2020.08-480-g698dcb61ea package/dhcpdump: fix build without pod2man
+T 1600544407 18<uclibc-bot18>	buildroot:master fontaine.fabrice * 2020.08-481-g80be040817 package/supertux: fix build with RELRO
+T 1600544408 18<uclibc-bot18>	buildroot:master fperrad * 2020.08-482-g5e0a64e58d package/mc: bump to version 4.8.25
+T 1600544510 18<uclibc-bot18>	buildroot:master mf * 2020.08-483-g587925d55e package/gnuplot: add patch to fix 'undefined reference to gp_read_history'
+T 1600544977 18<uclibc-bot18>	buildroot:master christian * 2020.08-484-gff14e08fe5 package/rtl8821au: fix build against 5.8.x kernel
+T 1600545221 18<uclibc-bot18>	buildroot:master jubalh * 2020.08-485-ga108bbf38e package/jasper: bump to version 2.0.20
+T 1600545222 18<uclibc-bot18>	buildroot:master buildroot * 2020.08-486-gd92b9efb6c package/libabseil-cpp: bump to 20200225.2
+T 1600545223 18<uclibc-bot18>	buildroot:master buildroot * 2020.08-487-g5890cd06a5 package/{protobuf, python-protobuf}: bump to version 3.13.0
+T 1600545224 18<uclibc-bot18>	buildroot:master buildroot * 2020.08-488-g31fca9592d package/grpc: bump version to 1.32.0
+T 1600545423 18<uclibc-bot18>	buildroot:master fontaine.fabrice * 2020.08-489-g89d5020cd6 package/libcap: bump to version 2.43
+T 1600545424 18<uclibc-bot18>	buildroot:master fperrad * 2020.08-490-ga925b4ee14 package/prosody: bump to version 0.11.6
+T 1600545425 18<uclibc-bot18>	buildroot:master fontaine.fabrice * 2020.08-491-gcd9d7c55e2 package/wampcc: fix build with gcc 10
+T 1600545426 18<uclibc-bot18>	buildroot:master fperrad * 2020.08-492-gb299e96454 package/spi-tools: bump to version 0.8.5
+T 1600545427 18<uclibc-bot18>	buildroot:master fperrad * 2020.08-493-gaaf909aa26 package/sunxi-tools: bump to version 1.4.2
+T 1600545428 18<uclibc-bot18>	buildroot:master fontaine.fabrice * 2020.08-494-g2cb057314a package/popt: fix build without wchar
+T 1600546256 18<uclibc-bot18>	buildroot:master ps.report * 2020.08-495-g79609dd78f package/wayland-protocols: change download url to https
+T 1600546257 18<uclibc-bot18>	buildroot:master ps.report * 2020.08-496-g7f0c1a010b package/wayland-utils: change download url to https
+T 1600546258 18<uclibc-bot18>	buildroot:master ps.report * 2020.08-497-g8d567cce4f package/orc: bump version to 0.4.32
+T 1600546259 18<uclibc-bot18>	buildroot:master ps.report * 2020.08-498-g1791bc30a5 package/libxkbcommon: bump version to 1.0.1
+T 1600546260 18<uclibc-bot18>	buildroot:master fontaine.fabrice * 2020.08-499-g60cd158f0e package/efl: needs host gcc >= 4.9
+T 1600547103 18<uclibc-bot18>	buildroot:master fontaine.fabrice * 2020.08-500-ga530ca6bd9 package/libxml2: fix CVE-2020-24977
+T 1600547104 18<uclibc-bot18>	buildroot:master Vineet.Gupta1 * 2020.08-501-g8f91556ccb package/glibc: use upstream 2.32 for the ARC architecture
+T 1600547105 18<uclibc-bot18>	buildroot:master thomas.petazzoni * 2020.08-502-g5ebc935bce package/glibc: add license file hashes for RISC-V specific version
+T 1600548233 18<uclibc-bot18>	buildroot:master joseph.kogut * 2020.08-503-g28c28ba303 package/sentry-cli: new package
+T 1600549436 18<uclibc-bot18>	buildroot:master daggs * 2020.08-504-gb70114eecd package/meson-tools: fix build with older gcc versions
+T 1600550058 18<uclibc-bot18>	buildroot:master joseph.kogut * 2020.08-505-gffd603ae7e package/sentry-native: new package
+T 1600550544 18<uclibc-bot18>	buildroot:master joerg.krause * 2020.08-506-g559d41ddfb package/{bluez5_utils, bluez5_utils-headers}: bump to version 5.55
+T 1600550645 18<uclibc-bot18>	buildroot:master fontaine.fabrice * 2020.08-507-g7018cacaf8 package/ympd: renumber patch
+T 1600550646 18<uclibc-bot18>	buildroot:master fontaine.fabrice * 2020.08-508-g9a0b2d3738 package/ympd: fix build with gcc 10
+T 1600550647 18<uclibc-bot18>	buildroot:master andriy.shevchenko * 2020.08-509-g8ba52666dc package/acpica: bump version to 20200717
+T 1600593849 18<Xogium18>	okay, for some reason path to embedded env… Has absolutely no effect and barebox still uses the default env it comes with
+T 1600593873 18<Xogium18>	so I don't understand
+T 1600593889 18<Xogium18>	generating an env doesn't seem like the right solution either
+T 1600593911 18<Xogium18>	are we expected to copy the full stock env for our barebox board in the external tree ? Is that what buildroot wants ?
+T 1600594353 18<Xogium18>	I see in build/barebox/defaultenv, there is a barebox_default_env file
+T 1600594365 18<Xogium18>	which is some kind of binary blob
+T 1600594393 18<Xogium18>	and in there there are only the things I added in my directory for the embedded env, that I pointed to
+T 1600594412 18<Xogium18>	yet when barebox is flashed I get the official default env. That just doesn't make any sense
+T 1600594450 18<Xogium18>	I would have expected my things to overlay on top of the default barebox env and also for that to be embedded
+T 1600594506 18<Xogium18>	so it appears to be an entire override and doesn't get embedded
+T 1600595059 18<Xogium18>	path to custom env under generating an environment image only produced a env binary
+T 1600595070 18<Xogium18>	as expected, not embedding it
+T 1600595075 18<Xogium18>	however
+T 1600595104 18<Xogium18>	this still doesn't explain why I get the default barebox env and not mine when I put the correct path to the embedded env
+T 1600595185 18<Xogium18>	can someone here help ?
+T 1600595505 18<Xogium18>	the config option in barebox is set, so that is correct
+T 1600595519 18<Xogium18>	this doesn't even make sense
+T 1600605365 18<uclibc-bot18>	buildroot:master james.hilliard1 * 2020.08-510-g32c6aad14c package/meson: bump to version 0.55.3
+T 1600605365 18<uclibc-bot18>	buildroot:master james.hilliard1 * 2020.08-511-g4d024ca2d3 package/python-aioconsole: bump to version 0.3.0
+T 1600605366 18<uclibc-bot18>	buildroot:master james.hilliard1 * 2020.08-512-gc42f8e6a11 package/python-brotli: bump to version 1.0.9
+T 1609963182 19*	Now talking on 22#buildroot
+T 1609963182 22*	Topic for 22#buildroot is: Buildroot - Making Embedded Linux easy - http://buildroot.org - Documentation at http://buildroot.org/downloads/manual/manual.html - Latest release (LTS): 2020.02.9, (STABLE): 2020.11.1
+T 1609963182 22*	Topic for 22#buildroot set by 26Jacmet (24Sun Dec 27 12:06:47 2020)
+T 1609966782 18<blmaier18>	You can selectively disable/enable systemd services with systemd.preset
+T 1609966932 18<smvoss18>	ahhh that's right - thanks

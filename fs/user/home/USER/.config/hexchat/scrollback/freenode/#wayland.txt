@@ -1,0 +1,572 @@
+T 1509731819 22*	Topic for 22#wayland is: http://wayland.freedesktop.org | 1.13.0/2.0.0 released: http://wayland.freedesktop.org/releases.html | Please do not argue about server-side vs. client-side decorations. It's settled and won't change.
+T 1509731819 22*	Topic for 22#wayland set by 26pq!~pq@194.136.85.206 (24Thu Mar  9 04:31:41 2017)
+T 1509765492 18<lurchi_18>	this is the right place for libinput questions, I assume?
+T 1509765743 18<LjL18>	i think so lurchi_, but i haven't seen any chat in a while
+T 1509765884 18<lurchi_18>	LjL: thx
+T 1509839170 18<CarlFK18>	how do I tell what res monitors I can hook up to a laptop?  I was expecting xrandr --prop --verbose to do it, but nope: http://paste.ubuntu.com/25890461/
+T 1509842648 18<emersion18>	CarlFK: weston-info?
+T 1509843938 18<CarlFK18>	emersion: do I need wayland running, or can I do that from an ssh shell?
+T 1509843952 18<CarlFK18>	carl@slowbird:~$ DISPLAY=:0.0 weston-info
+T 1509843952 18<CarlFK18>	failed to create display: No such file or directory
+T 1509843976 18<CarlFK18>	on the local machine, I got lots of stuff
+T 1509844358 18<jedb18>	are the Extended Window Manager Hints applicable with Wayland?
+T 1509871445 18<emersion18>	CarlFK: grep for wl_output
+T 1509871453 18<emersion18>	jedb: no.
+T 1509871865 18<SardemFF718>	CarlFK: DISPLAY is the X11 variable, Wayland use WAYLAND_DISPLAY, and it can only work locally, as it uses UNIX sockets
+T 1509871989 18<jedb18>	emersion: is there an equivalent then?
+T 1509872108 18<emersion18>	jedb: depends what you want
+T 1509872144 18<emersion18>	some of this stuff is replaced by xdg-shell
+T 1509872181 18<SardemFF718>	all the stuff of EWMH should be either an internal implementation detail of the compositor or a request/event in xdg-shell
+T 1509872222 18<SardemFF718>	and a very little subset would be protocols in wayland-wall for some external tools to be possible
+T 1509872466 18<jedb18>	the main thing I'm trying to figure out is the preferred way of implementing taskbars/pagers
+T 1509872497 18<SardemFF718>	wayland-wall’s window-switcher protocol
+T 1509872514 18<SardemFF718>	and it’ll only work in non-DEs that want to implement the protocol
+T 1509872561 18<SardemFF718>	libweston-desktop-based compositors have a minimal implementation in weston-wall (to load as a weston plugin for now, will be libweston plugin in the future)
+T 1509873203 18<jedb18>	I suppose this explains why pretty much all current wayland window managers are tiling...
+T 1509873264 18<SardemFF718>	not at all
+T 1509873276 18<SardemFF718>	tiling is actually not fully supported in xdg-shell :-)
+T 1509873315 18<SardemFF718>	the only reason is that non-DEs users are mostly tiling users :-D
+T 1509873974 18<Sho_18>	jedb: I can tell you about how we do it in Plasma I guess, if you have specific questions (I maintain the taskbar and pager)
+T 1509874096 18<emersion18>	Sho_: in plasma, is this baked into the compositor, or do you have a protocol for that?
+T 1509874191 18<Sho_18>	emersion: We have a custom privileged protocol between kwin (the compositor) and plasmashell (the shell UI process). We have a kwayland codebase with our own protocol-to-C++ bindings generator and Wayland client and server libs, and the protocol file lives in there as well.
+T 1509874216 18<Sho_18>	emersion: The taskbar and pager plugins in the shell UI use a lib called libtaskmanager which in turns uses kwayland and the protocol class from it to talk to the compositor
+T 1509874260 18<Sho_18>	It's pretty OK-ishly layered and at least the kwayland and kwin parts have full test coverage and runtime integration tests
+T 1509874269 18<Sho_18>	oops I need to run off to dinner, will respond later
+T 1509874307 18<emersion18>	okay
+T 1509874337 18<emersion18>	i swa you have also two protocols for output configuration (one readonly, the other read-write)
+T 1509874340 18<emersion18>	*saw
+T 1509898978 18<jkhsjdhjs18>	hey, is this the right place to ask libinput related questions?
+T 1509899015 18<gschwind18>	jkhsjdhjs, yes
+T 1509899122 18<jkhsjdhjs18>	ah, nice! so i'm running arch with kde on xorg and i have a mouse that is often double clicking cause of a broken switch. so i'm interested in configuring the button debouncing introduced with libinput 1.9
+T 1509899131 18<jkhsjdhjs18>	where can i do that?
+T 1509899418 18<gpunk18>	get a new mouse :)
+T 1509899542 18<SardemFF718>	it’s automatic
+T 1509899583 18<jkhsjdhjs18>	hm, i had this installed before: https://aur.archlinux.org/packages/xf86-input-evdev-debounce/
+T 1509899602 18<jkhsjdhjs18>	and that seemed to work fine, reduced my double clicks by 90%
+T 1509899616 18<jkhsjdhjs18>	but the button debouncing with libinput 1.9 doesn't seem to work at all
+T 1509899665 18<SardemFF718>	libinput’s deboucing is automatic, but there is a patch on the ML to make it a bit better
+T 1509899694 18<jkhsjdhjs18>	ML?
+T 1509899714 18<SardemFF718>	https://patchwork.freedesktop.org/patch/185466/
+T 1509899790 18<SardemFF718>	Mailing List
+T 1509899863 18<jkhsjdhjs18>	ah, nice, thank you! hopefully they will merge this fix
+T 1509900300 18<SardemFF718>	you could test the patch and say it on the ML to help testing :-)
+T 1509901003 18<jkhsjdhjs18>	yes, i think i'll to that
+T 1509902053 18<jkhsjdhjs18>	hm, yes, the patch improves it a bit
+T 1509902583 18<CarlFK18>	how can I figure out if a thinkpad   can drive its local display plus 2 more 3840 x 2160 displays?
+T 1509902628 18<CarlFK18>	carl@slowbird:~$ lspci |grep VGA
+T 1509902628 18<CarlFK18>	00:02.0 VGA compatible controller: Intel Corporation HD Graphics 620 (rev 02)
+T 1509902637 18<CarlFK18>	and what is this?  00:13.0 Non-VGA unclassified device: Intel Corporation Device 9d35 (rev 21)
+T 1509902778 18<jkhsjdhjs18>	hmm, i'm not that experienced with mailing lists, how exactly can/should i reply to "Fix debouncing algorithm"?
+T 1509902834 18<CarlFK18>	jkhsjdhjs: generally by hitting your email client's "reply" - maybe "replay all" 
+T 1509902913 18<CarlFK18>	a timeless debate is: should list servers munge the ReplyTo header so it is easier to reply to the list even though RFC something says something that I personally don't care about. 
+T 1509902915 18<SardemFF718>	not sure how you do the easy way if you where not subscribed when the email was sent :-D
+T 1509902966 18<CarlFK18>	SardemFF7:  I was pondering that.  how would you have something to reply to if you were not subscribed? 
+T 1509902981 18<SardemFF718>	you can always add the header manually
+T 1509902989 18<SardemFF718>	but does that count as “easy”? :-D
+T 1509903646 18<CarlFK18>	it is easier to do in python than ... um.. logo.
+T 1509903654 18<CarlFK18>	therefore: easy. 
+T 1509916569 18<astronavt18>	Is it possible to run Enlightenment/E17 on Wayland on Debian without building from source?
+T 1509916981 18<Black_Prince18>	e17 probably not, that's too old for wayland support
+T 1509982861 18<OnlyHuman18>	hi is it easy to get wayland to build and work for enlightenment desktop on non systemd distros, ie: using sysvinit?
+T 1509982899 18<OnlyHuman18>	as loads of non systemd distro  
+T 1509983135 18<zubzub18>	does pixman allow me to scale a region?
+T 1509983147 18<zubzub18>	looking at the functions, it doesn't appear so(?)
+T 1509983164 18<zubzub18>	does that mean I have to manually translate to rectangles, scale and reconstruct the region?
+T 1510039086 18<pq18>	zubzub, manually yes. Only translation is in pixman funcs, I presume because that is all Xorg ever needed. Scaling would also imply something about rounding, so it'd be more complicated anyway.
+T 1510049067 18<krashekspress18>	hello, got strange problem (Ubuntu 17.10, Gnome, amdgpu), my Wayland session is "broken" unless I first log in into Xorg, reason is kernel driver for my GPU is broken, and Xorg loads driver that I installed from Ubuntu repo (I don't know how, I just see it in log) Does anyone know how can I load same driver when starting Wayland session or even before GDM?
+T 1510049155 18<jadahl18>	krashekspress: you should probably open a bug on ubuntu about that
+T 1510050035 18<zubzub18>	16:45 < zubzub> does pixman allow me to scale a region?
+T 1510050113 18<krashekspress18>	jadahl: I already did, but in meantime trying to find workaround so I don't have to relogin each morning :)
+T 1510050177 18<jadahl18>	it doesn't really have anything to do with wayland, so I suspect you're out of luck here
+T 1510050228 18<krashekspress18>	already tried other channels, so had to try here also, anyway thank you
+T 1510050232 18<krashekspress18>	:)
+T 1510050322 18<pq18>	09:17:38 < pq> zubzub, manually yes. Only translation is in pixman funcs, I presume because that is all Xorg ever needed. Scaling would  also imply something about rounding, so it'd be more complicated anyway.
+T 1510050333 18<MrCooper18>	krashekspress: FWIW, I don't think "Xorg loads driver" has anything to do with it, Xorg just somehow triggers something which makes the kernel driver fix the problem
+T 1510050360 18<zubzub18>	oh I missed your answer ;x
+T 1510050401 18<zubzub18>	pq: but it seems translation is also not possible for regions?
+T 1510050410 18<krashekspress18>	MrCooper: I'm hunting that "something" for weeks now :)
+T 1510050446 18<zubzub18>	(I'm trying to easily convert surface damage to buffer damage)
+T 1510050494 18<pq18>	zubzub, hm? pixman_region_translate()?
+T 1510050544 18<zubzub18>	>_<
+T 1510050551 18<pq18>	zubzub, no "easy" way for that with pixman regions, you need to transform each rect manually anyway.
+T 1510050598 18<zubzub18>	yeah that's how I'm doing it currently
+T 1510050621 18<zubzub18>	create rects, convert them on commit
+T 1510050634 18<zubzub18>	ok thanks
+T 1510050646 18<zubzub18>	I know what to do :)
+T 1510064660 18<sevaho18>	What is a good clipboard manager for wayland, for Xorg I use xsel for example
+T 1510065369 18<SardemFF718>	xsel is hardly a “manager”
+T 1510065410 18<SardemFF718>	and currently I think there is none
+T 1510065445 18<SardemFF718>	GPaste’s dev (keruspe) wanted to improve the situation but time’s lacking :-)
+T 1510065532 18<sevaho18>	Ok, what is the correct term then for xsel? Is it more correct to say it's a clipboard daemon?
+T 1510066193 18<SardemFF718>	is it? I though it only get/set the clipboard and selection?
+T 1510066245 18<sevaho18>	Well I am asking you what it is ;)
+T 1510066440 18<SardemFF718>	do you run it in the background?
+T 1510066464 18<sevaho18>	Yes
+T 1510066505 18<SardemFF718>	and what does it do in the background?
+T 1510066630 18<sevaho18>	It listens for selections and let you use the 3 clipboards prim sec third more easily no?
+T 1510066668 18<SardemFF718>	so it syncs them?
+T 1510066703 18<sevaho18>	I am not an expert of xsel, the reason I use it the most is to be able to copy and paste from vim to X 
+T 1510066709 18<sevaho18>	and vice versa
+T 1510066759 18<sevaho18>	It does its job good the only thing it does not is let me copy paste as root in wayland, as normal user it works just fine
+T 1510068966 18<SardemFF718>	xsel working is actually a nice side effect with no warranty :-D
+T 1510088645 18<gaganjyot18>	Hi all, I am facing an issue with my dell touchpad and libinput
+T 1510088665 18<gaganjyot18>	half of my trackpad is not working if any event is initated on it
+T 1510088670 18<gaganjyot18>	the other half works fine
+T 1510088701 18<gaganjyot18>	any ideas?
+T 1510088719 18<SardemFF718>	see "libinput debug-events"
+T 1510088727 18<SardemFF718>	and them, evemu-record
+T 1510088744 18<SardemFF718>	report the result here
+T 1510088750 18<SardemFF718>	and wait for whot to show up :-)
+T 1510088849 18<gaganjyot18>	I don't have any executable as libinput
+T 1510088854 18<gaganjyot18>	am I missing on something?
+T 1510088869 18<SardemFF718>	libinput-debug-events in earlier versions
+T 1510088881 18<gaganjyot18>	not there as well.
+T 1510088890 18<gaganjyot18>	ubuntu 17.10 
+T 1510088897 18<SardemFF718>	may be a separate package
+T 1510088908 18<SardemFF718>	and make sure to try the latest libinput too
+T 1510088929 18<gaganjyot18>	I'll try
+T 1510095228 18<tobiasBora18>	Hello,
+T 1510095245 18<tobiasBora18>	I'd like to connect to a remote host using VNC
+T 1510095258 18<tobiasBora18>	however, I cannot use x11vnc, because the host is running wayland
+T 1510095266 18<tobiasBora18>	do you have a way to run wayland on it ?
+T 1510095268 18<tobiasBora18>	hum
+T 1510095271 18<tobiasBora18>	sorry
+T 1510095300 18<tobiasBora18>	do you have an equivalent of x11vnc that can let me get a working instance of vnc on the wayland host?
+T 1510095403 18<gschwind18>	tobiasBora, to remotely access to a wayland session from vnc you need a compositor that run vnc internally
+T 1510095467 18<gschwind18>	thus you can't have a regular client to acces to the screen surface
+T 1510095507 18<tobiasBora18>	gschwind: I have a root ssh access to the machine, can I somehow do something to make vnc usable on this machine?
+T 1510095530 18<tobiasBora18>	The machine is supposed to run Gnome 3 I guess
+T 1510096220 18<gschwind18>	tobiasBora, I do not know if gnome as vnc backend 
+T 1510096225 18<gschwind18>	has *
+T 1510096248 18<gschwind18>	tobiasBora, It's up to compositor to implement this feature
+T 1510096304 18<gschwind18>	maybe to make some experiment you may try the rdp backend of weston
+T 1510097214 18<tobiasBora18>	gschwind: I'm having some troubles to find how to do that, do you have any tips?
+T 1510099630 18<V1s1ble18>	I'm currently on void linux and I don't see a default weston.ini. If I don't have a $HOME/.config/weston.ini, weston-launch starts up with some sane defaults (terminal button at the top; pretty gray background). The moment I drop in a weston.ini, I get an error about not being able to connect to a backend. I've played around trying to setup the weston.ini, but what I want to know is, what are the defaults. It seems like the westion.ini doesn't 
+T 1510099630 18<V1s1ble18>	override defaults, but kills any defaults of the ini is present 
+T 1510099658 18<V1s1ble18>	I did an xbps-query -f weston, but I don't see any default ini files or examples in the package. Where is it getting its defaults from? Are they hard coded in the binary? 
+T 1510110065 18<soreau18>	V1s1ble: You may have found a bug but you should be able to set a backend in the ini file, check the weston.ini man page
+T 1510110108 18<V1s1ble18>	soreau, oh I figured it out. It was cause I was enabling xwayland. In Void linux I needed the packages  weston-xwayland xorg-server-xwayland
+T 1510110129 18<soreau18>	oh, good
+T 1510110180 18<V1s1ble18>	Yep, I got weston running, with its x11 interface and Kodi running all on my media PC .. got the menu all setup for Kodi, my browser games
+T 1510125094 18<pq18>	V1s1ble, dropping in a custom weston.ini will only ever override other weston.ini files, but not the built-in defaults.
+T 1510125125 18<pq18>	tobiasBora, I think you might want to take a look at GNOME's desktop remoting features instead of any generic VNC tools.
+T 1510125209 18<pq18>	V1s1ble, any particular reason why you'd want to run Weston on X11, if I understood you correctly?
+T 1510125303 18<pq18>	V1s1ble, I also do not recall any Weston error message like "unable to connect to a backend", a paste of that would have been nice for diagnosis.
+T 1510125349 18<pq18>	V1s1ble, oh, by "x11 interface" do you mean xwayland?
+T 1510126645 18<pq18>	jadahl, do you want to give a vote on the new paths for Wayland sockets issue?
+T 1510127265 18<jadahl18>	pq: i don't have much opinion, but full path seems like the better option
+T 1510127296 18<pq18>	jadahl, cool, thanks.
+T 1510127310 18<jadahl18>	how exactly that'd work in flatpak i haven't thought about though
+T 1510127320 18<pq18>	jadahl, would it need to?
+T 1510127322 18<jadahl18>	would probably need patching
+T 1510127398 18<jadahl18>	pq: see https://github.com/flatpak/flatpak/blob/master/common/flatpak-run.c#L2009
+T 1510127425 18<jadahl18>	that will break if we poke at WAYLAND_DISPLAY's meaning
+T 1510127463 18<pq18>	jadahl, doesn't the flatpak umm.. container used there install a local wayland socket for the app to connect to? I don't see why you'd want to support absolute socket paths to outside of the container.
+T 1510127520 18<jadahl18>	I mean if one wants to run each flatpak app as its own user, connecting to the same display server or something?
+T 1510127541 18<jadahl18>	as I said, haven't thought about it much, except that that path would not work anymore
+T 1510127547 18<pq18>	jadahl, right, but isn't that something you'd need to specifically add support for anyway?
+T 1510127557 18<jadahl18>	I suppose so
+T 1510127580 18<pq18>	or do you mean it already works today?
+T 1510127760 18<pq18>	I would just assume the container manager whatever does the setup and you wouldn't even need to support an absolute path in WAYLAND_DISPLAY in the usual case. You'd only need it if the host system did not have the normal per-user Wayland socket for the user the compositor is running as.
+T 1510127816 18<jadahl18>	i have no idea whether a one-user-per-flatpak-app system works already
+T 1510127933 18<pq18>	jadahl, looking at the code you pointed to, the system would need to set up the normal $XDG_RUNTIME_DIR/$WAYLAND_DISPLAY socket as seen by the flatpak err... runner(?), so they would already have to change their code to use an absolute path.
+T 1510127989 18<pq18>	so I don't think absolute paths would cause you any regressions, because what's running already will keep on running.
+T 1510128078 18<jadahl18>	if your compositor uses an absolute path as a WAYLAND_DISPLAY, flatpak:ed apps will stop working, right?
+T 1510128088 18<jadahl18>	no matter whether its per user anything I mean
+T 1510128142 18<pq18>	yeah, but the compositor needs an explicit change to do that.
+T 1510128152 18<jadahl18>	if WAYLAND_DISPALY is "/path/to/socket" it'l try to bind $XDG_RUNTIME_DIR/path/to/socket
+T 1510128160 18<pq18>	right
+T 1510128171 18<jadahl18>	right, so using that feature would break the ability to run flatpak apps (without patching flatpak)
+T 1510128210 18<jadahl18>	I mean, the change is not backward compatible in that sense
+T 1510128214 18<pq18>	I'd file it as a compositor bug foremost, and a feature request for flatpak second.
+T 1510128229 18<jadahl18>	so whats the use case for absolute paths?
+T 1510128233 18<jadahl18>	nested compositors only?
+T 1510128241 18<pq18>	appliance systems
+T 1510128248 18<jadahl18>	?
+T 1510128298 18<pq18>	you have a single a compositor as user-foo, and apps each as user1..userN
+T 1510128311 18<pq18>	the android way
+T 1510128325 18<jadahl18>	why would it be a compositor bug to use this feature then?
+T 1510128395 18<pq18>	if a normal desktop compositor (not an applicance system) switches to using absolute paths in WAYLAND_DISPLAY, I'd make that a compositor bug.
+T 1510128523 18<pq18>	If an appliance system was using flatpaks already, they must be using something to get around the no-absolute-path limitation. If they drop that without making sure flatpak can handle it, I'd say it's their fault again.
+T 1510128526 18<jadahl18>	that doesn't make much sense to me. in a tightly integrated (compositor and client are more or less always in the same code base) then sure, because for those systems backward compatibility doesn't matter
+T 1510128582 18<jadahl18>	anyway, I guess the feature will be marked as such? using an absolute path has no guarantee that any client explicitly supporting this new feature will work
+T 1510128596 18<pq18>	I'm interested in regressions. Things that didn't work to begin with are less of a concern.
+T 1510128600 18<jadahl18>	eh, not explicitly supporting it
+T 1510128649 18<jadahl18>	things could have worked if one screwed around with XDG_RUNTIME_DIR and what not
+T 1510128705 18<pq18>	and they continue to work
+T 1510128734 18<jadahl18>	not if they did anything similar to what flatpak did (try to construct the actual path to the socket)
+T 1510128738 18<pq18>	No, all clients will work. But flatpak is not a client, it bypasses the libwayland-client socket logic (e.g. WAYLAND_SOCKET) and does something else. Right?
+T 1510128773 18<jadahl18>	was in not specified that the socket was in $XDG_RUNTIME_DIR/$WAYLAND_SOCKET ?
+T 1510128803 18<pq18>	doesn't matter really, everyone knows by now it was
+T 1510128812 18<jadahl18>	any client that for whatever reason took that literally and for whatever reason used that knowledge for something would break (I don't think there are any, just making a point)
+T 1510128832 18<pq18>	so you are against adding absolute paths support after all?
+T 1510128852 18<jadahl18>	no :) just think the "danger" should be documented
+T 1510128877 18<pq18>	ok, you can comment on that when we receive an actual patch :-)
+T 1510129346 18<SardemFF718>	just a few thoughts: why doesn’t flatpack use WAYLAND_SOCKET or just spoof WAYLAND_DISPLAY?
+T 1510129667 18<jadahl18>	don't know. fwiw, trying to use WAYLAND_SOCKET to start a flatpak app wont work either
+T 1510129675 18<jadahl18>	(I assume)
+T 1510129681 18<SardemFF718>	and can’t systemd-launched clients use a wrapper/helper to open an fd? not optimal but it’d work…
+T 1510130256 18<pq18>	SardemFF7, the problem with WAYLAND_SOCKET is that it is one-shot. Once used, it's gone, no matter which process used it.
+T 1510130306 18<pq18>	and you cannot "split" or "multiplex" a WAYLAND_SOCKET without a proxy daemon either
+T 1510131390 18<SardemFF718>	flatpak doesn’t trac the exec() and stuff 
+T 1510131392 18<SardemFF718>	?
+T 1510132740 18<pq18>	SardemFF7, from the code, it seems flatpak runner really needs the full path to the socket file, so that it can bind-mount or something it into the container. libwayland-client does not expose the path it would pick, so the runner must do the same itself.
+T 1510133095 18<SardemFF718>	I mean, it can get the outside path, and just set WAYLAND_DISPLAY to "wayland-flatpack" and always bind mount to /run/user/$UID/wayland-flatpack
+T 1510133109 18<pq18>	SardemFF7, how would it get the outside path?
+T 1510133160 18<SardemFF718>	like usual, but the abs-path fix would be half the work, as it wouldn’t use the value inside :-D
+T 1510133177 18<pq18>	there is no need to use the value inside
+T 1510133191 18<SardemFF718>	but it currently does
+T 1510133201 18<pq18>	does it?
+T 1510133227 18<SardemFF718>	(it just doesn’t touch the env, and bind mount the inside path using that value)
+T 1510133267 18<pq18>	SardemFF7, the problem is that unmodified flatpak runner unconditionally does the "$XDG_RUNTIME_DIR/$WAYLAND_DISPLAY" concatenation and that will break when the outside WAYLAND_DISPLAY is an absolute path.
+T 1510133405 18<pq18>	the inside WAYLAND_DISPLAY might not even break, it'll just be /run/user/$UID/run/wayland/foo
+T 1510133414 18<SardemFF718>	sure, sure, just wondered why they didn’t harden the inside part from the beginning :-)
+T 1510133465 18<pq18>	SardemFF7, did you search for where the inside WAYLAND_DISPLAY is set?
+T 1510133522 18<SardemFF718>	from https://github.com/flatpak/flatpak/blob/master/common/flatpak-run.c#L2009 I just assumed it was untouched
+T 1510133536 18<SardemFF718>	or it wouldn’t work
+T 1510133550 18<pq18>	I would assume something wipes the current env and sanitizes it, but I dunno :-)
+T 1510133592 18<SardemFF718>	either way, it must be the same value, according to the paths :-)
+T 1510142440 18<zubzub18>	is there anything special in wl_display_next_serial?
+T 1510142456 18<zubzub18>	ie if I run my own counter that would also be ok?
+T 1510142476 18<zubzub18>	or are thare some implicit side effecs(?)
+T 1510142636 18<pq18>	zubzub, I don't recall any side-effects. In fact, I'd probably favour own counters instead.
+T 1510142888 18<pq18>	zubzub, looks like it's used as a return argument in the wl_display.sync callback, but I have hard time imagining it being used in clients. Spec does say "The callback_data passed in the callback is the event serial.", but I wouldn't know what the "event serial" is.
+T 1510142946 18<pq18>	actually that looks like a server information leak to me
+T 1510145695 18<zubzub18>	pq: or how a simple question reveals a potential improvement :p
+T 1510145703 18<zubzub18>	ok I'll use my own counters
+T 1510145991 18<pq18>	now if we just had people who'd have time to care about these things
+T 1510151786 18<rsroka18>	Hi guys,
+T 1510151786 18<rsroka18>	I have a problem. When using sudo on Fedora with xorg, sudo <gtkapp> e.g. nautilus will start without any problems. Sudo by default keeps DISPLAY env variable.
+T 1510151786 18<rsroka18>	But when using wayland I'm not able to run such app under sudo. When I preserve XDG_RUNTIME_DIR app will run but with many dbus errors. 
+T 1510151786 18<rsroka18>	xhost +local:
+T 1510151786 18<rsroka18>	Resolves this problem but Why is that so? I'm trying to "fix" this from sudo POW. Because in this case it is not very compatible with xorg.
+T 1510151786 18<rsroka18>	I just wanted to know whether it is solvable or not. 
+T 1510151889 18<rsroka18>	Is there anybody who can answer my questions?
+T 1510151978 18<ebassi18>	You cannot run apps under sudo with Wayland
+T 1510151991 18<ebassi18>	That's the whole point of sandboxing
+T 1510152014 18<ebassi18>	GUI apps running as root are literally a security risk
+T 1510152027 18<MrCooper18>	rsroka: FWIW, xhost +local:root is better than just +local:
+T 1510152050 18<MrCooper18>	the former only gives access to root, the latter to all local users
+T 1510152056 18<ebassi18>	You're running millions of lines of code that has never properly audited; that dlopens random shared modules; parses random text files; as super user
+T 1510152070 18<ebassi18>	Please, stop this insanity
+T 1510152115 18<rsroka18>	I'm not using sudo and gui apps in this way
+T 1510152156 18<rsroka18>	but people are still crewating bugzillas about that
+T 1510152168 18<ebassi18>	You can simply close them
+T 1510152187 18<ebassi18>	It's not your responsibility for letting people hurt themselves
+T 1510152226 18<rsroka18>	I know now that it was intenion
+T 1510152230 18<rsroka18>	THanks
+T 1510152233 18<rsroka18>	really
+T 1510152269 18<ebassi18>	https://bugzilla.gnome.org/show_bug.cgi?id=772875
+T 1510152279 18<ebassi18>	You can point them at this bug
+T 1510152313 18<ebassi18>	If you want to use Nautilus and access root-owned files, you can use the `admin:` URI
+T 1510152322 18<ebassi18>	It'll do a privilege escalation without running the whole app as root
+T 1510152357 18<ebassi18>	Additionally, any GTK application will be able to open root-owned files when using the `admin:` URI
+T 1510152489 18<zubzub18>	pq: you could always do it in your free time! :p
+T 1510153972 18<pq18>	zubzub, if I did that, I would soon be out of a job. In a burnout way.
+T 1510186642 18<ldiamond_18>	Is this the right place for libinput questions/issues?
+T 1510186745 18<ldiamond_18>	Click+release of 2 mouse buttons simultaneously results in this: https://gist.github.com/lewisdiamond/e8b7a390e52abc32d3c59e54aa4f5bf7
+T 1510186752 18<ldiamond_18>	I.e. one button is never "released"
+T 1510189256 18<whot18>	ldiamond_: yes, it's the right place. one sec
+T 1510189303 18<whot18>	ldiamond_: ok, that's not right. few questions: do you see the same behaviour with libinput debug-events?
+T 1510189320 18<whot18>	ldiamond_: and what device is this, just a normal mouse?
+T 1510193050 18<ldiamond_18>	whot: it's a Logitech G600 (3 buttons on top, many buttons on the side)
+T 1510193088 18<ldiamond_18>	man, libinput debug-events is what I needed!
+T 1510193094 18<ldiamond_18>	I'll try to repro with that thing running
+T 1510193101 18<ldiamond_18>	finally I can pinpoint what the issue is
+T 1510194309 18<ldiamond_18>	Can I filter mouse movement from libinput debug-events
+T 1510195183 18<whot18>	ldiamond_: nah, it just gives you what comes out of libinput. grep is always an option though :)
+T 1510195398 18<ldiamond_18>	whot: I'm testing right now
+T 1510195402 18<ldiamond_18>	reproducing and all
+T 1510195414 18<ldiamond_18>	grep seems to cause issues honestly
+T 1510195475 18<whot18>	use unbuffer
+T 1510195494 18<ldiamond_18>	One thing I see from the output though, the release event is fired.
+T 1510195571 18<whot18>	I find the best way to figure out what's going on is to reproduce it reliably, then record a reproducer with evemu-record. Then keep replaying that recording until the bug is fixed
+T 1510195576 18<whot18>	or just convert it into a test case early on :)
+T 1510195690 18<ldiamond_18>	The problem is this happens only after a while
+T 1510195721 18<ldiamond_18>	Here's my "use-case". I play Dota 2, I have middle mouse set to grab the ground to move the camera and right click to move
+T 1510195727 18<ldiamond_18>	I usually press both at the same time
+T 1510195745 18<ldiamond_18>	when clicking a lot, after 10-15mins, it starts sticking
+T 1510195761 18<ldiamond_18>	but libinput doesn't see it sticking
+T 1510195849 18<whot18>	are you using the xorg libinput driver?
+T 1510195854 18<ldiamond_18>	When I test with `xev`, I see the sticking
+T 1510195896 18<ldiamond_18>	yes, I have an xorg config file with section "InputClass" Driver "libinput"
+T 1510195928 18<whot18>	run xinput list-props device name to be sure, if the properties are prefixed with 'libinput' then you're on libinput
+T 1510196032 18<ldiamond_18>	that says "device enabled" and a bunch of libinput lines
+T 1510196042 18<whot18>	yeah, so you're on libinput
+T 1510196067 18<ldiamond_18>	Ok, so I think we agree that libinput isn't the issue here right?
+T 1510196073 18<whot18>	the weird bit is now: the server doesn't do any button emulation, so I'm not sure where that button event is coming from if it's not coming out of libinput
+T 1510196129 18<ldiamond_18>	Oh, so you think libinput debug-events sees the event but it's not coming out?
+T 1510196163 18<ldiamond_18>	Or could Xorg be the issue? Or maybe my window manager?
+T 1510196164 18<whot18>	no, i'm saying if libnput debug-events does not see the event, I'm not sure where it would be added in the stack
+T 1510196182 18<ldiamond_18>	but libinput debug-events sees it
+T 1510196188 18<whot18>	huh?
+T 1510196203 18<whot18>	you get the erroneous sequence from debug-events?
+T 1510196226 18<ldiamond_18>	21:44:54 ldiamond_ | One thing I see from the output though, the release event is fired.
+T 1510196253 18<whot18>	ok, I misread that then. do you have a reproducer?
+T 1510196256 18<ldiamond_18>	The gist was due to grep lagging a whole lot
+T 1510196269 18<ldiamond_18>	It's hard to get into that state
+T 1510196275 18<ldiamond_18>	but now I'm in that state and I can reproduce at will
+T 1510196401 18<ldiamond_18>	I can also reproduce with other mouse buttons
+T 1510196452 18<whot18>	the key is going to be how to get into that state
+T 1510196546 18<ldiamond_18>	Well, run Arch linux, awesome WM, use a Logitech G600, start dota 2 and spam your mouse buttons for 15mins
+T 1510196577 18<ldiamond_18>	but I doubt those are appropriate repro steps :p
+T 1510196612 18<ldiamond_18>	I'm here to perform any test/debugging needed though
+T 1510196642 18<whot18>	if it takes 15min of spamming your buttons, it's probably a race condition
+T 1510196660 18<ldiamond_18>	its fine if it's more complex, I'm relatively saavy and im a software dev
+T 1510196676 18<whot18>	best approach would likely be evemu-record --autorestart=2, this starts a new recording after 2s of inactivity
+T 1510196676 18<ldiamond_18>	yea at one point it just starts
+T 1510196690 18<whot18>	then try to reproduce and once you have it, it's going to be in the last recording
+T 1510196706 18<ldiamond_18>	ok records to file?
+T 1510196717 18<ldiamond_18>	I should start with a reboot, then try to repro
+T 1510196720 18<whot18>	yeah, it starts a new file after every pause
+T 1510196763 18<ldiamond_18>	but now that I'm in this state, is there a way to maybe test inputs and outputs at different level?
+T 1510196772 18<ldiamond_18>	like, what comes into my window manager
+T 1510196797 18<whot18>	not really, at least not easily
+T 1510196814 18<whot18>	just to confirm again, the libinput debug-events output has the bug, right?
+T 1510196863 18<ldiamond_18>	no it does not
+T 1510196873 18<ldiamond_18>	libinput debug-events shows the release events
+T 1510196923 18<whot18>	ok, now I'm doubly confused. assume that I don't have the full summary of what the bug is, other than the 3 events from xev you posted early :)
+T 1510196931 18<whot18>	so I don't know what you mean by 'the release events'
+T 1510196975 18<ldiamond_18>	like I said before, that gist was due to piping to grep causing long delays between click and output
+T 1510196992 18<ldiamond_18>	so the output must have made it to my terminal seconds after I copy paste it
+T 1510197004 18<soreau18>	whot: he presses two buttons and those work, then upon release, only one button successfully is released. The other doesn't get an event (in dota) and thus gets stuck. In libinput, the release events are present
+T 1510197022 18<soreau18>	for both buttons
+T 1510197025 18<ldiamond_18>	Right now, I fire up `xev` as well as `libinput debug-events`. I see the release event in `libinput`, not in `xev`
+T 1510197029 18<soreau18>	at least that's what I understood
+T 1510197043 18<ldiamond_18>	soreau: correct.
+T 1510197055 18<ldiamond_18>	soreau: but the event doesn't make it to things like `xev` either.
+T 1510197162 18<ldiamond_18>	Also, `xinput test` does not show a release event
+T 1510197226 18<whot18>	90% chance it's a WM bug then
+T 1510197233 18<soreau18>	it sounds like a bug in wherever the libinput driver code is passing events to X (if I even understand what libinput does)
+T 1510197262 18<soreau18>	ldiamond_: can you test with a different window manager? (or have you?)
+T 1510197263 18<whot18>	the libinput xorg driver is fairly simple, it just passes on the events
+T 1510197283 18<whot18>	but with passive grabs etc. there's a good chance the event is lost when replaying a grab or something
+T 1510197329 18<ldiamond_18>	soreau: I have not tested
+T 1510197376 18<soreau18>	ldiamond_: maybe since you're having the issue right now, try replacing the wm with another, or restarting the current one and see if that has any effect
+T 1510197394 18<ldiamond_18>	I think I will first try to record inputs and repro at will
+T 1510197403 18<ldiamond_18>	then launch another window manager and test it there
+T 1510197410 18<soreau18>	a fine plan
+T 1510197421 18<whot18>	if it's a grab-related race condition, recording and reproducing has a very small chance of success
+T 1510197422 18<ldiamond_18>	If I exit my WM, xorg restarts too
+T 1510197455 18<soreau18>	not a very good wm then ;)
+T 1510197511 18<ldiamond_18>	well, it's because I launch the WM with startx
+T 1510197532 18<soreau18>	sure, presumably it's a poor setup..
+T 1510197539 18<ldiamond_18>	once I exit the WM there's nothing keeping xorg alive
+T 1510197540 18<soreau18>	but not uncommon to wayland mantra
+T 1510197561 18<ldiamond_18>	I mean, it's just not a full DE.
+T 1510197585 18<ldiamond_18>	ill restart it see if it still sticks
+T 1510197589 18<soreau18>	Ideally, you should background the wm and be able to restart it without X restarting
+T 1510197664 18<ldiamond_18>	Restarted, doesn't stick anymore
+T 1510197676 18<whot18>	soreau: that doesn't work when you're starting through startx
+T 1510197693 18<ldiamond_18>	I could setup a xorg service I guess
+T 1510197697 18<ldiamond_18>	and start my WM directly
+T 1510197707 18<ldiamond_18>	might be worth doing that to test
+T 1510197710 18<soreau18>	whot: It's just a poor setup
+T 1510197747 18<soreau18>	especially when there are better alternatives
+T 1510197760 18<ldiamond_18>	soreau: what are those alternatives?
+T 1510197800 18<soreau18>	ldiamond_: I think you mentioned something along those lines.. start X and wm separately
+T 1510197820 18<ldiamond_18>	but I don't know how that's done though
+T 1510197820 18<soreau18>	whatever it takes to have the ability to restart/replace the wm without having to restart X
+T 1510197838 18<soreau18>	use a DE? I'm not sure either, plus this is #wayland
+T 1510197848 18<soreau18>	or a DM
+T 1510197855 18<ldiamond_18>	btw, is wayland stable/ready?
+T 1510197859 18<ldiamond_18>	I'd switch
+T 1510197860 18<soreau18>	nope
+T 1510197888 18<ldiamond_18>	whot: evemu-record asks for a device. It's not specified which format though
+T 1510197890 18<whot18>	startx/xinit uses .xinitrc. when that exits, xinit will kill the server. so if you have the wm in there as backgrounded task followed by a while loop you can replace the wm (iirc)
+T 1510197908 18<whot18>	ldiamond_: you just pick the device that reproduces the bug
+T 1510197945 18<ldiamond_18>	but a device id from `xinput list` doesn't work, nor the name.
+T 1510197951 18<ldiamond_18>	asking for /dev/...?
+T 1510197964 18<whot18>	ldiamond_: just start it without arguments and pick the right number
+T 1510198005 18<whot18>	ldiamond_: see also https://who-t.blogspot.com.au/2016/01/is-wayland-ready-yet.html
+T 1510198017 18<ldiamond_18>	lol, "select the device event number [0-0]: 
+T 1510198019 18<ldiamond_18>	"
+T 1510198024 18<whot18>	needs to be root
+T 1510198035 18<whot18>	reading events is hard when all you get is EACCESS :)
+T 1510198096 18<ldiamond_18>	Choosing the right device is hard when you have 2 with the same name :S
+T 1510198110 18<whot18>	usually it's the lower-numbered one that's the mouse device
+T 1510198124 18<whot18>	50/50 chance, what's not to like. you should put a dollar on i
+T 1510198126 18<whot18>	it
+T 1510198131 18<soreau18>	lol
+T 1510198160 18<ldiamond_18>	so I should have it running now
+T 1510198344 18<ldiamond_18>	Alright, already reproduced
+T 1510198370 18<ldiamond_18>	ill restart X and see if I can trigger it with evemu
+T 1510198667 18<ldiamond_18>	no success
+T 1510198735 18<whot18>	congratulations, you have a race condition!
+T 1510198749 18<whot18>	*balloons and confetti rain from the ceiling*
+T 1510198782 18<soreau18>	lmao
+T 1510198814 18<ldiamond_18>	nah I'm not the one who has the race condition... libinput, xorg, my wm, or something else has it :p
+T 1510198826 18<whot18>	ah, positive thinking. I like it
+T 1510198860 18<whot18>	"it's not my brakes that don't work. only the car's" :)
+T 1510198866 18<ldiamond_18>	 alright I seem to repro fast enough now by really smashing the shit out of my mouse
+T 1510198887 18<ldiamond_18>	lets give lxde a try
+T 1510199036 18<ldiamond_18>	yes, I can repro on LXDE
+T 1510199103 18<ldiamond_18>	Now can I repro with `xev` only
+T 1510199154 18<ldiamond_18>	I can
+T 1510199162 18<ldiamond_18>	No need for Dota now
+T 1510199171 18<ldiamond_18>	I just smack my buttons and bam!
+T 1510199268 18<soreau18>	that nearly rules out the wm-as-culprit theory
+T 1510199274 18<ldiamond_18>	pretty much
+T 1510199284 18<ldiamond_18>	I doubt LXDE and awesomeWM has the same issue
+T 1510199305 18<ldiamond_18>	So, either libinput actually shows the debug-event but never send it out. Or Xorg is broken.
+T 1510199317 18<soreau18>	or both!
+T 1510199319 18<ldiamond_18>	given this is #wayland, maybe xorg is broken
+T 1510199339 18<whot18>	most likely the latter
+T 1510199355 18<ldiamond_18>	Next step?
+T 1510199366 18<ldiamond_18>	Install an older Xorg and bisect?
+T 1510199368 18<whot18>	reproducible test case, otherwise it'll be too hard to figure out what's going on
+T 1510199384 18<whot18>	try to reproduce it with the evdev driver, just in case
+T 1510199385 18<ldiamond_18>	I can repro within ~15s
+T 1510199392 18<ldiamond_18>	It's all about smashing those buttons
+T 1510199408 18<whot18>	yeah, but you reproduce it by smashing buttons, so you don't know when you trigger it
+T 1510199422 18<whot18>	could be after 5s or 15s, hard to gdb on that ;)
+T 1510199441 18<ldiamond_18>	I'll try again with another set of evemu
+T 1510199542 18<ldiamond_18>	alright, 5s of clicking I got it, 80k of evemu. Lets see if it repros with evemu-play
+T 1510199626 18<ldiamond_18>	nope
+T 1510199756 18<whot18>	you can replay it multiple times
+T 1510199852 18<ldiamond_18>	even after replaying like 5 times it doesn't repro
+T 1510199875 18<ldiamond_18>	but I do get another odd state where my mouse buttons dont work at all until I ^C evemu-play
+T 1510199877 18<whot18>	CLOSED WORKSFORME ? :)
+T 1510199918 18<whot18>	does the recording release the buttons? If a button is down at the end of evemu-play, it'll prevent those buttons from clicking
+T 1510199938 18<ldiamond_18>	it doesn't do that at every replay of the recording
+T 1510199945 18<whot18>	because a button can only be down once, that is how how the gods intended it
+T 1510199949 18<ldiamond_18>	and at the end of the recording I did release buttons
+T 1510199974 18<whot18>	strange. possible stuck grab
+T 1510200092 18<ldiamond_18>	no actually it always seems to have that issue at the end of the recording
+T 1510200094 18<ldiamond_18>	I lied.
+T 1510200109 18<whot18>	well, that seems quite impolite, doesn't it?
+T 1510200156 18<ldiamond_18>	evemu-play doesn't work, still repro at will in a few seconds by smashing it
+T 1510200164 18<ldiamond_18>	bisect time?
+T 1510200364 18<ldiamond_18>	upgraded libinput (1.8.2-1 -> 1.9.1-1)
+T 1510200379 18<ldiamond_18>	upgraded xorg-server (1.19.3-3 -> 1.19.5-1)
+T 1510200419 18<whot18>	I'm pretty sure it's not a libinput bug because otherwise you'd see it in the debug-events output
+T 1510200459 18<ldiamond_18>	ill see which downgrade fixes it
+T 1510200730 18<ldiamond_18>	Downgrading libinput fixes the issue
+T 1510200785 18<whot18>	huh? really?
+T 1510200791 18<ldiamond_18>	yep
+T 1510200810 18<ldiamond_18>	1.9.1-1 to 1.8.2-1
+T 1510200819 18<ldiamond_18>	I'll see if there are packages for other versions
+T 1510200821 18<whot18>	don't know why you don't see this in debug-events then
+T 1510200833 18<ldiamond_18>	might come after debug-events
+T 1510200859 18<whot18>	no, because then the libinput version shouldn't matter. what debug-events sees is the same as what the xorg driver sees
+T 1510200891 18<whot18>	do you have any configuration options set for the devices?
+T 1510200920 18<ldiamond_18>	yes, which part do you want?
+T 1510200931 18<whot18>	all of it?
+T 1510200978 18<ldiamond_18>	https://gist.github.com/lewisdiamond/5a7f79ddb586d6cc6739ef576741e9c7
+T 1510200988 18<ldiamond_18>	well, idk what else is "configuration"
+T 1510201009 18<ldiamond_18>	my xinitrc still has `xinput set-ptr-feedback 10 4 1 1`
+T 1510201010 18<whot18>	anything the WM config tools configured. but with awesome, that set is zero :)
+T 1510201018 18<whot18>	iirc that does nothing in libinput
+T 1510201037 18<ldiamond_18>	then that gist should be all of it
+T 1510201044 18<ldiamond_18>	it's the xorg.conf.d/... file
+T 1510201058 18<whot18>	anyway, to reproduce the same settings, you'd run debug-events --set-profile=flat, but the profile really shouldn't affect buttons
+T 1510201251 18<whot18>	fwiw, the button debouncing code is a likely contender, but again, you should be seeing the issue with debug-events
+T 1510201299 18<ldiamond_18>	I'm hoping I can bisect to the exact version causing the issue and that it's a version with only a few lines of code changes :p
+T 1510201943 18<ldiamond_18>	Ok, the issue is present in 1.9.0-1
+T 1510201955 18<ldiamond_18>	happened between 1.8.2-1 and 1.9.0-1
+T 1510201962 18<ldiamond_18>	(-1 is probably just the package build)
+T 1510202738 18<whot18>	yeah, it is
+T 1510204150 18<ldiamond_18>	Found the issue
+T 1510204152 18<ldiamond_18>	55d1bb1217388e99b9405654c14881a9ebf8f880
+T 1510204438 18<whot18>	yeah, thought so. do you actually manage to click in less than 12ms?
+T 1510204446 18<ldiamond_18>	yes
+T 1510204447 18<whot18>	or maybe you're hitting some cornercase there
+T 1510204455 18<whot18>	the same button?
+T 1510204459 18<ldiamond_18>	different buttons
+T 1510204472 18<whot18>	then it's just a bug, the debounce code should ignore that
+T 1510204482 18<whot18>	or rather, it should reset when the button code differs
+T 1510204721 18<ldiamond_18>	https://bugs.freedesktop.org/show_bug.cgi?id=103636
+T 1510204723 18<ldiamond_18>	filed a bug
+T 1510204731 18<ldiamond_18>	man the libinput build/install is simple
+T 1510204743 18<ldiamond_18>	ninja -C build/ install -- 2s and done
+T 1510204775 18<ldiamond_18>	git bisect narrowed it down fast.
+T 1510204792 18<whot18>	yeah, I've made a point of making libinput easy to debug :)
+T 1510204793 18<ldiamond_18>	Tomorrow after work I'll see if I can setup a unit test that reproduces it
+T 1510204799 18<whot18>	I learned that lesson with the x drivers
+T 1510204835 18<ldiamond_18>	Back when I did C/C++ it was makefiles still. That was a nightmaer
+T 1510204835 18<whot18>	can you attach an evemu-record from a broken sequence anyway? evemu may not be able to replay it to trigger, but the bug may still be obvious by looking at it
+T 1510204841 18<ldiamond_18>	ninja seems so much nicer
+T 1510204902 18<whot18>	fwiw, you should definitely see that issue with libinput debug-events, it just may not be as obvious because you're getting too many button events
+T 1510204929 18<whot18>	there's also a patch on the devel list to add a new debouncing algorithm, that may help
+T 1510205112 18<soreau18>	ldiamond_: rock on
+T 1510205117 18<soreau18>	git bisect ftw
+T 1510205263 18<ldiamond_18>	Alright im out
+T 1510205269 18<ldiamond_18>	way pass my bedtime
+T 1510205282 18<ldiamond_18>	ill come back here tomorrow to see if I can figure out the issue with the debouncing
+T 1510205282 18<whot18>	way past my nana-nap time :)
+T 1510233917 18<pq18>	ahhah, SEGV -> weston_log -> ... -> malloc -> *HORK*
+T 1510241612 18<ldiamond18>	whot: I don't see `enabling button debouncing` in libinput debug-events: https://gist.github.com/lewisdiamond/cb22aa11a3eee8305fd636b40f889b2f
+T 1510241617 18<ldiamond18>	This triggered it.
+T 1510241639 18<ldiamond18>	Unfortunately I tested with the same mouse model (that's also what I have at work). But it's a different mouse.
+T 1510248825 18<OnlyHuman18>	hi how do I run enlightenment wayland on a sysvinit distro, I try enlightenment_start from tty but it says can't create ecore_evas_drm canvas 
+T 1510249003 18<ManMower18>	OnlyHuman: can't
+T 1510249020 18<ManMower18>	also, that's more of a #e question than a #wayland one :)
+T 1510249040 18<ManMower18>	right now enlightenment requires systemd for its wayland compositor.
+T 1510249095 18<SardemFF718>	isn’t there an elogind somewhere? would that be enough?
+T 1510249114 18<ManMower18>	can't tell if trolling :)
+T 1510249200 18<OnlyHuman18>	Thanks ManMower , I asked on distro for help  one person spoke to cedric about it think he mentioned logind but got impression that is part of systemd
+T 1510249202 18<SardemFF718>	https://wiki.gentoo.org/wiki/Elogind
+T 1510249219 18<SardemFF718>	logind is part of the systemd repo
+T 1510249228 18<SardemFF718>	it’s, in theory, an independent daemon
+T 1510249259 18<OnlyHuman18>	thanks Saardem looking at it but prob wont understand it
+T 1510249268 18<ManMower18>	oh wow
+T 1510249289 18<ManMower18>	SardemFF7: yeah theoretically that would work.  the unfortunate "e" at the start made me think you were inventing some efl variant as a joke. :D
+T 1510249431 18<OnlyHuman18>	I downloaded it from git dunno if can build rpm of it but will try, maybe ManMower might help :)
+T 1510249594 18<SardemFF718>	Gentoo split udev as eudev
+T 1510249601 18<SardemFF718>	and logind as elogind
+T 1510249606 18<SardemFF718>	not sure why "e"
+T 1510249609 18<ManMower18>	extracted?
+T 1510267617 18<whot18>	ldiamond: you need to run with --verbose to see the message
+T 1510273490 18<ldiamond_18>	whot: event3  - Logitech Gaming Mouse G600: Enabling button debouncing, see https://wayland.freedesktop.org/libinput/doc/1.8.0/button_debouncing.html for details
+T 1510273687 18<ldiamond_18>	whot: this triggered it: https://gist.github.com/lewisdiamond/998eb07775c411c89f114bff420d9a43 
+T 1510273701 18<ldiamond_18>	Does it hide the actual extra click filtered?
+T 1510273711 18<ldiamond_18>	I.e. evemu would show more "clicks"?
+T 1510274072 18<whot18>	yeah, evemu shows what's coming out of the kernel, debug-events shows what's coming out of libinput
+T 1510275321 18<ldiamond_18>	whot: how do you log stuff to journalctl for example?
+T 1510275345 18<ldiamond_18>	and can I reload libinput without exiting xorg and restarting it?
+T 1510275355 18<ldiamond_18>	i'll start working on a patch
+T 1510275692 18<whot18>	ldiamond_: you can run sudo ./build/libinput-debug-events without installing it. it's howI do all my development
+T 1510275718 18<whot18>	ldiamond_: basically you get your stuff working in debug-events, write test cases to make sure they work, then you test with x
+T 1510275756 18<whot18>	ldiamond_: the only time debug-events doesn't work well is when you're doing things like pointer acceleration where the feel of the device is more important than seeing the event sequence. but that doesn't apply to you anyway
+T 1510275775 18<ldiamond_18>	Ok
+T 1510275792 18<whot18>	and your case would be really easy to write as test case, the pattern seems to be that after a button X release you get a fake bounce of button Y because the device sends the next event too quickly
+T 1510276012 18<ldiamond_18>	hum, I was hoping I could get an option passed from xorg's config into libinput and disable debouncing
+T 1510276047 18<ldiamond_18>	does that sound possible (I can't immediately see where that would be in libinput)
+T 1510276182 18<whot18>	there's no option to disable debouncing, we're working to autodetect it and enable it on demand
+T 1510276293 18<ldiamond_18>	yea but I wanted to add that option
+T 1510276307 18<ldiamond_18>	idk if passing options from xorg's config is easy with the current code
+T 1510276315 18<ldiamond_18>	I haven't done C in years
+T 1510276331 18<ldiamond_18>	like 7-8 years
+T 1510276379 18<whot18>	don't bother adding the option, I wouldn't merge the result
+T 1510276405 18<whot18>	the xorg conf is read by the server, passed to the xf86-input-libinput driver which then sets the libinput option
+T 1510276413 18<whot18>	so you'd have to add the hooks to the xorg driver too
+T 1510276442 18<ldiamond_18>	oh
+T 1510276512 18<whot18>	a config option is the *last* resort, not the first
+T 1510276869 18<ldiamond_18>	How do you run the tests?
+T 1510276898 18<whot18>	https://wayland.freedesktop.org/libinput/doc/latest/test-suite.html
+T 1510276932 18<ldiamond_18>	thx
+T 1510277774 18<ldiamond_18>	ugh, running the tests on master put my computer in sleep mode..
+T 1510278084 18<whot18>	oops :)
+T 1510278089 18<whot18>	did you install the xorg.conf file as suggested?
+T 1510278264 18<whot18>	ldiamond_: you're only working on the debouncing code right now, so filter the tests to that
+T 1510278292 18<whot18>	no point testing all the tap and dwt code when you only care about button presses. or just filter it for your test until it's fixed, then run the full suite
+T 1510278313 18<whot18>	ldiamond_: did you apply vincente's patch from the list btw? just in case it already fixes your issue
+T 1510278458 18<ldiamond_18>	whot: I did
+T 1510278479 18<ldiamond_18>	maybe it sends a button press to a key I have set to sleep my PC
+T 1510278493 18<ldiamond_18>	No I haven't added any patches
+T 1510278526 18<ldiamond_18>	I'm not even able to make my test fail with `litest_assert(false)`
+T 1510278618 18<whot18>	pastebin?
+T 1510278642 18<whot18>	the fwiw, the xorg.conf won't take effect until you restart X
+T 1510278698 18<whot18>	adding #HandleLidSwitch=suspend
+T 1510278723 18<whot18>	to /etc/systemd/logind.conf will prevent the sleep. without the # of course
+T 1510279113 18*	whot goes to lunch
+T 1510279186 18<ldiamond_18>	whot: I think im just stupid.
+T 1510279446 18<ldiamond_18>	The patch seems to deal with my issue actually
+T 1510279787 18<ldiamond_18>	yep, can't repro with that patch
+T 1510279793 18<ldiamond_18>	at least not as easily
+T 1510279806 18<ldiamond_18>	I do see the "spurious click" message too.
+T 1510279826 18<ldiamond_18>	ill try going through a full game of dota now :
+T 1510279828 18<ldiamond_18>	:p
+T 1510282067 18<whot18>	there's a bug in vincente's patch I think where it enables debouncing even when not needed
+T 1510286397 18<ldiamond_18>	whot: well for me it fixes it.
+T 1510286408 18<ldiamond_18>	for me debouncing was enabled when not needed

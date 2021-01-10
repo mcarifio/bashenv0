@@ -1,0 +1,6 @@
+T 1609966934 19*	Now talking on 22#fedora-dotnet
+T 1609966934 22*	Topic for 22#fedora-dotnet is: Please register to speak - https://da.gd/register | You can find all the info on our wiki: https://fedoraproject.org/wiki/DotNet
+T 1609966934 22*	Topic for 22#fedora-dotnet set by 26nb!~nb@prgmr/staff-emeritus/fedora.nb (24Wed Aug  1 08:43:05 2018)
+T 1609967196 29*	#fedora-dotnet :You're not a channel operator
+T 1609967198 29*	#fedora-dotnet :You're not a channel operator
+T 1609967242 20<carif>30	noobs should be seen and not heard // testing #fedora-dotnet rw privs in hexchat, wish the ui made it clearer

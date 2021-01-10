@@ -1,7 +1,7 @@
 # verbose=1 source load.mod.sh # verbose test
 
 # "custom loader" for bootstrap/mod/*.mod.sh.
-for _s in $(dirname ${BASH_SOURCE[0]})/mod/{mod,f,me,file,u,path,xdg}.mod.sh; do
+for _s in $(dirname ${BASH_SOURCE[0]})/mod/{f,mod,me,file,u,path,xdg}.mod.sh; do
 #                                           ^^^^^^^^^^^^^^^^^^^^ order is fixed
     [[ -n "${verbose}" ]] && >&2 printf 'load %s...' ${_s}
     source ${_s}

@@ -1,0 +1,669 @@
+T 1581287376 18<Yruama__18>	almost too much details :)
+T 1581295587 18<ph8818>	how can i use this package in my project ?  https://github.com/redmannequin/rusty-bolt 
+T 1581296342 18<GreenJello18>	ph88, probably defining the dependency as: neo4j = { git = "https://github.com/redmannequin/rusty-bolt" }
+T 1581296416 18<ph8818>	thank you :)
+T 1581333649 18<rumna18>	hello! is there a pretty way to flatten Option<Result<T,E>> to just Option? i know one can turn Result to Option via ok() but then i have two options
+T 1581333731 18<rumna18>	hm i guess i can map Ok on the result and call flatten
+T 1581335007 22*	26ChanServ gives channel operator status to 18jdm
+T 1581340215 18<ferli18>	hello! is there a good alternative to reqwest? as they seemingly decided to use tokio only with not other support planned... would surf be a good alternative?
+T 1581340240 18<ferli18>	a swappable async runtime is important
+T 1581340448 18<sebk18>	ferli: so you need a client?
+T 1581340465 18<sebk18>	mh
+T 1581340469 18<sebk18>	other runtime than tokio…
+T 1581340500 18<sebk18>	are there other async runtimes?
+T 1581340559 18<sebk18>	~crate mio_http
+T 1581340559 -18rustybot/22#rust-	crate mio_http does not exist
+T 1581340561 18<sebk18>	~crate mio_httpc
+T 1581340561 -18rustybot/22#rust-	mio_httpc (0.8.9) - mio_httpc is a fully async and sync http client running on top of mio only.  -> https://crates.io/crates/mio_httpc <http://docs.rs/mio_httpc>
+T 1581340607 18<ferli18>	sebk: async-std
+T 1581340617 18<ferli18>	i think some use gio somehow too i heard
+T 1581340624 18<ferli18>	not sure if that is the normal async
+T 1581340755 18<sebk18>	well. mio is the classic callback driven thing
+T 1581340842 18<sebk18>	I *think* it might be a bit early to ask about alternative runtimes at this point…
+T 1581340874 18<sebk18>	~crate surf
+T 1581340874 -18rustybot/22#rust-	surf (1.0.3) - HTTP client framework. -> https://crates.io/crates/surf <https://docs.rs/surf>
+T 1581340921 18<sebk18>	so surf is either curl or hyper
+T 1581340934 18<sebk18>	(hyper using tokio)
+T 1581340937 18<sebk18>	so you don't gain anything
+T 1581340979 18<sebk18>	surf seems  like a nice abstraction across different platforms
+T 1581341791 22*	26ChanServ gives channel operator status to 18jdm
+T 1581341981 22*	26ChanServ gives channel operator status to 18jdm
+T 1581343764 18<rabingaire18>	exit
+T 1581343768 18<rabingaire18>	exit
+T 1581347599 19*	Now talking on 22#rust
+T 1581347599 22*	Topic for 22#rust is: Rust General discussion | This server is eventually going to be shut down, please migrate to https://discord.gg/rust-lang or ##rust on irc.freenode.net: https://bit.ly/2VDaAC9 | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1581347599 22*	Topic for 22#rust set by 26Manishearth (24Sat Apr 27 18:45:26 2019)
+T 1581348249 22*	26ChanServ gives channel operator status to 18jdm
+T 1581350448 18<sgflt18>	What's the idiomatic way to erase the type on a Boxed T? e.g. If I have a &Box<T> that implements T: Foo and is Send and Sync, how do I get a &Box<& dyn (Foo + Send + Sync)>?
+T 1581350857 18<jebrosen18>	You can't. At best you can get a `&dyn _` from that
+T 1581350953 18<jebrosen18>	Well, you could put a `Box<&dyn _>` on the stack and pass an `&Box<&dyn _>` that way, but this all sounds a bit off
+T 1581351072 18<GreenJello18>	sgflt, if Foo is implemented for Box<T> where T: Foo, you could create another box around it
+T 1581351269 18<GreenJello18>	sgflt, actually, it seems to work with just a cast for me https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=40a1559752d1aa4855d8906474316888
+T 1581352253 18<sgflt18>	jebrosen: &dyn _ is what I meant, sorry.
+T 1581352377 18<jebrosen18>	sgflt: From what to what, exactly? Too many references in one type to follow :P
+T 1581352839 18<xaimoomu-M18>	sgflt (IRC): https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=1bf0610b83dc02531c0785db209523b7
+T 1581353115 18<sgflt18>	jebrosenm GreenJello xaimoomu-M I think I figured it out. Thanks a lot!
+T 1581355662 18<kreyren18>	How do i make cargo to recognize different directory for benchmarks? Expecting it to use /benches/rustlang instead of /benches
+T 1581355687 18<kreyren18>	seems that `[[bench]]\ndirectory = "/benches/rustlang"` doesnt work
+T 1581369194 18<tanriol-M18>	kreyren: As far as I see, the path used for autoconfigured benches is hardcoded in cargo.
+T 1581379354 18<jybs18>	Hi all. I'm trying to work how how to get map this YAML
+T 1581379429 18<jybs18>	https://dpaste.org/VTw6
+T 1581379457 18<jybs18>	so I suppose an externally tagged enum?
+T 1581379470 18<jybs18>	but not the same def as what serde calls that
+T 1581379497 18<jybs18>	int is an enum variant which holds a struct with miin: max:
+T 1581379587 18<GreenJello18>	jybs, is this valid YAML?
+T 1581379638 18<jybs18>	oh actually it's not is it
+T 1581379639 18<jybs18>	ha
+T 1581379670 18<jybs18>	don't worry (and thanks)
+T 1581382008 18<jybs18>	Is there a way of defining the number of decimal plkaces for a float from another variable?
+T 1581382030 18<jybs18>	I obv can't do {:.variable}
+T 1581382036 18<jybs18>	Or {:.{}}
+T 1581382037 18<Mutabah18>	does `{.*f}` work?
+T 1581382068 18<Mutabah18>	jybs: https://doc.rust-lang.org/stable/std/fmt/#precision
+T 1581382514 18<jybs18>	67 |         write!(f, "{:.*}", rand, self.precision)
+T 1581382530 18<jybs18>	This doesn't work, but putting int :.5 does :(
+T 1581382553 18<jybs18>	The error is with the rand type (f32 not usize) which is really odd
+T 1581382575 18<Mutabah18>	Other way around on the args
+T 1581382581 18<Mutabah18>	the prcision is consumed before the value
+T 1581382633 18<jybs18>	gah
+T 1581382634 18<jybs18>	Thanks!
+T 1581385047 18<jybs18>	I've got a problem I'm not sure is a Tokio thing or a rayon thing
+T 1581385099 18<jybs18>	I have x destinations: I want to send a message to each destination in an infinate loop not blocking on TCP send or recv
+T 1581385121 18<jybs18>	x destinations at once
+T 1581385125 18<jybs18>	sorry y
+T 1581385395 18<carllerche18>	@jybs since TCP is involved, it sounds like tokio
+T 1581394289 19*	Now talking on 22#rust
+T 1581394289 22*	Topic for 22#rust is: Rust General discussion | This server is eventually going to be shut down, please migrate to https://discord.gg/rust-lang or ##rust on irc.freenode.net: https://bit.ly/2VDaAC9 | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1581394289 22*	Topic for 22#rust set by 26Manishearth (24Sat Apr 27 18:45:26 2019)
+T 1581395012 19*	Now talking on 22#rust
+T 1581395012 22*	Topic for 22#rust is: Rust General discussion | This server is eventually going to be shut down, please migrate to https://discord.gg/rust-lang or ##rust on irc.freenode.net: https://bit.ly/2VDaAC9 | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1581395012 22*	Topic for 22#rust set by 26Manishearth (24Sat Apr 27 18:45:26 2019)
+T 1581404468 19*	Now talking on 22#rust
+T 1581404468 22*	Topic for 22#rust is: Rust General discussion | This server is eventually going to be shut down, please migrate to https://discord.gg/rust-lang or ##rust on irc.freenode.net: https://bit.ly/2VDaAC9 | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1581404468 22*	Topic for 22#rust set by 26Manishearth (24Sat Apr 27 18:45:26 2019)
+T 1581426578 22*	26ChanServ gives channel operator status to 18jdm
+T 1581432386 18<elichai218>	Why isn't this a hard error? https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=aff4fd46d73355131ae5e613398709a4
+T 1581432452 18<sfackler18>	"warning: this was previously accepted by the compiler but is being phased out; it will become a hard error in a future release!"
+T 1581432513 18<elichai218>	sfackler: 3 years ago :D
+T 1581437066 22*	26ChanServ gives channel operator status to 18jdm
+T 1581441121 18<Amaranth18>	elichai2: Looks like there is still no accepted solution for "what to do about cases where doing this is okay and programs need to do it?" so it's still just a warning
+T 1581443990 18<renma18>	hello! i have a question about the quote-macro, is there a way to support async in it? i know about things like: #visibility fn #name ...
+T 1581443996 18<renma18>	but would i just do async 
+T 1581443999 18<renma18>	for that?
+T 1581444598 18<sfackler18>	`let asyncness = if is_async { quote!(async) } else { quote!() }; quote!(#visibility #asyncness fn #name....)`
+T 1581445597 18<Arnavion18>	You can also do Some(quote!(async)) vs None because Option<ToTokens>: ToTokens if that's easier (if you already have an Option instead of a bool to start with)
+T 1581445810 18<renma18>	Arnavion and sfackler ah it was more about being able to apply the proc macro to async fn. cus when i use it on them, i get: expected `fn`, marking my "async" before fn
+T 1581445824 18<renma18>	i tired: #visibility async fn #name ...
+T 1581445828 18<renma18>	but that got fully ignored
+T 1581445831 18<renma18>	:/
+T 1581447033 22*	26ChanServ gives channel operator status to 18jdm
+T 1581459711 19*	Now talking on 22#rust
+T 1581459711 22*	Topic for 22#rust is: Rust General discussion | This server is eventually going to be shut down, please migrate to https://discord.gg/rust-lang or ##rust on irc.freenode.net: https://bit.ly/2VDaAC9 | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1581459711 22*	Topic for 22#rust set by 26Manishearth (24Sat Apr 27 18:45:26 2019)
+T 1581463617 18<Yogurt18>	Hey all
+T 1581463636 18<Yogurt18>	if I've implemented Iterator on my struct and I'd like to call .collect() on it
+T 1581463656 18<Yogurt18>	does the mean I should be implementing the FromIterator trait?
+T 1581463939 18<relia18>	is it possible to express a "fn" that returns a future in a type alias on stable? i think i need impl Trait, correct? and that's not supported on stable..
+T 1581464247 18<Mutabah18>	Yogurt: You only need FromIterator implemented if your type is to be created _from_ an iterator
+T 1581464263 18<Yogurt18>	ok
+T 1581464273 18<Mutabah18>	if you just want to collect into a Vec, .collect will Just Work
+T 1581464288 18<Yogurt18>	so... my_iter.collect() ?
+T 1581464297 18<Yogurt18>	because that is not working :(
+T 1581464426 18<Yogurt18>	for what it's worth my struct does have an anonymous lifetime on it
+T 1581464438 18<Yogurt18>	I'm not sure if that changes things
+T 1581464457 18<Lumpio-18>	It would be more helpful to see the exactl error message
+T 1581464459 18<Lumpio-18>	-l
+T 1581464466 18<Lumpio-18>	If you have an example put it in the playground maybe
+T 1581464526 18<Yogurt18>	I don't have an example but I can link the code I'm working on
+T 1581464558 18<Yogurt18>	https://github.com/darakian/gimli/blob/output-iters/src/lib.rs#L96-L183
+T 1581464618 18<Yogurt18>	at the bottom of the file I have
+T 1581464619 18<Yogurt18>	let result = g_iter.cloned().collect();
+T 1581464635 18<Yogurt18>	with the error type mismatch resolving `<GimliAeadEncryptIter<'_> as std::iter::Iterator>::Item == &_`
+T 1581464643 18<Yogurt18>	which errors with *
+T 1581464648 18<Yogurt18>	expected type `u8`
+T 1581464651 18<Yogurt18>	found reference `&_`
+T 1581464686 18<Lumpio-18>	How about let result: Vec<u8> = ...
+T 1581464707 18<Lumpio-18>	Currently the type of collection you want isn't defined
+T 1581464713 18<Lumpio-18>	It might at least give you a better error message
+T 1581464728 18<Yogurt18>	I can do that, but then at the collect line I end up getting a SIGSEV
+T 1581464757 18<Yogurt18>	though I can loop on the iterator and do .next() and I get the results that I expect
+T 1581464797 18<Lumpio-18>	Well then it's time to take a look at any unsafe code you have
+T 1581464806 18<Lumpio-18>	Because safe Rust definitely isn't supposed to segfault
+T 1581464811 18<Lumpio-18>	Something is corrupting something.
+T 1581464811 18<Yogurt18>	indeed
+T 1581464818 18<Yogurt18>	I do have one line of unsafe code
+T 1581464862 18<Yogurt18>	but wouldn't I get a crash in the loop scenario if it were that line?
+T 1581464867 18<Mutabah18>	Found your bug
+T 1581464872 18<Lumpio-18>	You're returning a reference to stack for one
+T 1581464875 18<Mutabah18>	and why it crashes on collect but not loop
+T 1581464877 18<Mutabah18>	&
+T 1581464884 18<Mutabah18>	^^^
+T 1581464891 18<Lumpio-18>	let mut state: [u32; 12] = [0; 12]; <- this only exists on stack
+T 1581464900 18<Yogurt18>	ohhh damn
+T 1581464901 18<Lumpio-18>	And through unsafe pointer conversions you're storing a reference to it in "state_8"
+T 1581464915 18<Yogurt18>	so that won't persist with the struct?
+T 1581464925 18<Mutabah18>	no.
+T 1581464947 18<Yogurt18>	or is it that the pointer is pointing to memory which is no longer valid after the struct creation?
+T 1581464960 18<Lumpio-18>	Yes, at that point state has been moved from and is no longer valid
+T 1581464960 18<Mutabah18>	Both.
+T 1581464965 18<Lumpio-18>	And definitely after you return from the function
+T 1581464970 18<Lumpio-18>	The entire stack frame is gone
+T 1581464974 18<Yogurt18>	damnit all
+T 1581464980 18<Lumpio-18>	I would get rid of the state_8 reference in the tsruct
+T 1581464982 18<Yogurt18>	ok, I can work around that though
+T 1581464987 18<Yogurt18>	ya I was thinking the same thing
+T 1581464992 18<Yogurt18>	thank you guys :)
+T 1581465001 18<Lumpio-18>	Having a self-referential struct like that isn't doable to begin with
+T 1581465012 18<Lumpio-18>	....well, not easily anyways
+T 1581465018 18<Lumpio-18>	Which is probably why you used that unsafe pointer cast in the first place
+T 1581465036 18<Yogurt18>	no, but getting the pointer should be cheap and I can do that on a per next() call
+T 1581465059 18<Yogurt18>	the point of the pointer is actually to mimic the algorithm that I'm porting from C
+T 1581465064 18<Lumpio-18>	A pointer cast is a no-op anyways
+T 1581465068 18<Yogurt18>	I don't want to rewrite the logic
+T 1581465069 18<Lumpio-18>	It doesn't do anything
+T 1581465093 18<Lumpio-18>	Just convinces the compiler to emit code to deal with a different size of data type
+T 1581465095 18<Lumpio-18>	*However*
+T 1581465103 18<Lumpio-18>	Whether this is considered sound in Rust is another story
+T 1581465127 18<Lumpio-18>	Aliasing 32-bit and 8-bit data like that
+T 1581465135 18<Lumpio-18>	For one it breaks depending on endianness if I'm not mistaken
+T 1581465168 18<Yogurt18>	it does yes
+T 1581465211 18<Yogurt18>	so far it has tested out as correct and hopefully sound, but one step at a time :)
+T 1581465221 18<Lumpio-18>	Works doesn't mean it's sound though
+T 1581465228 18<Lumpio-18>	Kind of like your loop worked but collect didn't
+T 1581465293 18<Yogurt18>	yes yes I know
+T 1581465305 18<Yogurt18>	and thank you for helping me find the stack issue
+T 1581465913 18<abeli18>	hi! i used to have a struct with a field of type:  pub fun: fn(...) -> Result<(), SomeError>,          now i want to turn this to an async fn, how would i do that?
+T 1581465945 18<Mutabah18>	You have to have it return a `Pin<Box<dyn Future>>`
+T 1581465967 18<abeli18>	Mutabah: ah, so i am forced to use a boxed future?
+T 1581465976 18<Mutabah18>	as in `pub fun: fn(...) -> Pin<Box<...>>`
+T 1581465984 18<Mutabah18>	Well, you could make your struct generic
+T 1581466003 18<Mutabah18>	and `pub fun: fn(...) -> T` where `T: Future`
+T 1581466034 18<abeli18>	Mutabah: ah, okay... seems a bit silly having to do that when the type is already known
+T 1581466044 18<abeli18>	and there is really only one possible type
+T 1581466055 18<abeli18>	which is Result<(), SomeError>
+T 1581466084 18<Mutabah18>	If it's an `async fn` you want to store, then the return type isn't known
+T 1581466108 18<Mutabah18>	`async fn foo() -> ()` is actually `fn foo() -> impl Future<Output=()>`
+T 1581466383 18<abeli18>	Mutabah: thanks, i think i understand! i will try to walk the generic way
+T 1581466945 18<abeli18>	abeli: ah, then i also need to implement future for that result, correct? 
+T 1581467290 18<abeli18>	cus i cannot impl future for result..
+T 1581467440 18<Lumpio-18>	The result would just be the output type of the future
+T 1581467451 18<Lumpio-18>	Future<Output=Result<(), SomeError>>
+T 1581467459 18<Lumpio-18>	It itself doesn't need to implement Future
+T 1581467797 18<abeli18>	Lumpio-: huh? not sure if i can follow. i want to store async fn, but avoid dynamic dispatch cus i know there is only one possible return type, Result<(), MyError>. but to T: Future, i would need to impl Future for that Result, which is not permitted 
+T 1581467868 18<jebrosen18>	abeli: You should be able to do this with the unstable feature type_alias_impl_trait, but on stable I think you're forced into dynamic dispatch
+T 1581467904 18<Lumpio-18>	As Mutabah explained async fn with a return value of "T" does not really return "T", it returns "Future<Output=T>"
+T 1581467912 18<Lumpio-18>	That does not mean you somehow have to "impl Future" for your result
+T 1581468039 18<Lumpio-18>	https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=9b13b10c258f45708bb7eea8d2ad0eef
+T 1581468041 18<Lumpio-18>	I mean this works
+T 1581468061 18<Lumpio-18>	You will however run into trouble if you ever need to type out the full type of F
+T 1581468082 18<Lumpio-18>	Because you can't name the compiler-generated implementation of Future
+T 1581468197 18<Lumpio-18>	I wouldn't be worried about the dynamic dispatch because people always overestimate the cost of that. Allocating the Box is likely to be way way more expensive.
+T 1581468207 18<Lumpio-18>	And unless you do it all the time, it isn't that expensive.
+T 1581469225 18<abeli18>	Lumpio-: this function is potentially called thousand times per second
+T 1581469265 18<abeli18>	i will have to look into it, i guess! 
+T 1581469290 18<abeli18>	thanks :)
+T 1581507465 22*	26ChanServ gives channel operator status to 18jdm
+T 1581510180 18<mermi18>	hi! i have this trait: pub struct Ferris<Fut: Future<Output = Result<(), MyError>>> { but it complains: the trait `core::future::future::Future` is not implemented for `std::result::Result<(), MyError>`
+T 1581510184 18<mermi18>	how can that be?
+T 1581510197 18<mermi18>	is this not possible?
+T 1581510274 18<mermi18>	the error is send and sync
+T 1581510384 18<tanriol-M18>	This is a struct, not a trait, and it looks like you're trying to use `Ferris<Result<(), MyError>>`, which really will not work because a `Result` is not a `Future`
+T 1581510636 18<mermi18>	tanriol-M: i meant the future trait in my struct as bound, oops
+T 1581510668 18<mermi18>	what do you mean? i mean to define a fn with an output of a future instead of dynamic future box
+T 1581510773 18<mermi18>	so i would need to use generics, right?
+T 1581510819 18<tanriol-M18>	You can have a function that returns `impl Future`, but its return type cannot be named, sorry. If you need to store the function as a function pointer, you'll need to box the future.
+T 1581511151 18<mermi18>	tanriol-M: huh but this works? https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=cf7b7ad72b4a6c051fa45c28e0e78518
+T 1581511617 18<tanriol-M18>	Ok :-) you can do that as long as you don't need to write down the type name and as long as there's only one as this is a generic.
+T 1581511713 18<tanriol-M18>	Example problem you can stumble into: https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=3ea192f9f4208affe63bb342fa1c1c8e
+T 1581511774 18<sebk18>	tanriol-M: yep
+T 1581511780 18<sebk18>	they have different types
+T 1581511810 18<sebk18>	and are not simple fns
+T 1581511816 18<sebk18>	they are async fn
+T 1581511917 18<sebk18>	tanriol-M: 
+T 1581511918 18<sebk18>	struct Ferris<F: Fn() -> R, R: Future<Output=Result<(), MyError>>> {
+T 1581511920 18<sebk18>	    fun: F,
+T 1581511930 18<sebk18>	that will allow you to put them into the struct
+T 1581511957 18<mermi18>	isn't that a trait now?
+T 1581511958 18<sebk18>	but the struct is then generic, so you can't put different Ferris<F1>, Ferris<F2> into the same array
+T 1581511984 18<mermi18>	dyn Fn()?
+T 1581512018 18<sebk18>	you'd need to wrap them…
+T 1581512035 18<sebk18>	fn() -> Box<dyn Future<…>>
+T 1581512200 18<mermi18>	okay, but what about the issue of having impl eg the struct with fn? what would i give the generic, cus i get this error now: https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=eb770e8e2753d47051b16fd9eeb34198
+T 1581512219 18<mermi18>	i probably need dyn future now?
+T 1581512317 18<mermi18>	ah
+T 1581512322 18<mermi18>	i just need to repeat the bound
+T 1581512324 18<mermi18>	on the impl
+T 1581512326 18<mermi18>	okay..
+T 1581533766 19*	Now talking on 22#rust
+T 1581533766 22*	Topic for 22#rust is: Rust General discussion | This server is eventually going to be shut down, please migrate to https://discord.gg/rust-lang or ##rust on irc.freenode.net: https://bit.ly/2VDaAC9 | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1581533766 22*	Topic for 22#rust set by 26Manishearth (24Sat Apr 27 18:45:26 2019)
+T 1581543925 18<frogaincia18>	hey! i was wondering.. is there a way to stop this "up bubbling" of specifying trait bounds on generics? i tried changing my code to support the async fn but it seems i really need to specify everything, every function using the struct or having it as a part of a field, with that generic... is there a way to just shortcut this boilerplate? https://play.rust-l
+T 1581543927 18<frogaincia18>	https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=13de0b6e44239b277eaeac33e78efd8f
+T 1581543932 18<frogaincia18>	this is a minimal example
+T 1581546180 18<frogaincia18>	ah, i think it is not possible?
+T 1581546207 18<frogaincia18>	cus typing out the future is not really possible
+T 1581546387 18<talchas18>	frogaincia: yeah, the only other option is to make a trait object, generally with Box/.boxed()
+T 1581546939 18<frogaincia18>	talchas: is it possible that rust would ever get this possibility? to directly type a future? or is that technically impossible? 
+T 1581547148 18<tanriol-M18>	The usual problem with future types is that any two futures, unless built in exactly the same way and describing exactly the same operations, have different types.
+T 1581547469 18<talchas18>	this is what was previously called "existential types" and now "type alias impl trait", and is being worked on
+T 1581547532 18<talchas18>	so that you'll be able to do something like type ThisParticularFuture = impl Future<...>; fn produce_future(...) -> ThisParticularFuture { async stuff } struct Wrapper { future: ThisParticularFuture, ... } etc
+T 1581547559 18<talchas18>	I'm not sure what the current status is, in the past it mostly worked on nightly
+T 1581548163 18<frogaincia18>	talchas: i tried using the nightly feature but it complains i cannot use impl Future outside methods still
+T 1581548186 18<frogaincia18>	type Fute = fn() -> impl Future<Output = Result<(), u32>>;
+T 1581548266 18<talchas18>	if you want a varying function pointer that returns an impl Future, then I misread and yeah, you can't do that
+T 1581548293 18<frogaincia18>	talchas: varying function pointer?
+T 1581548319 18<talchas18>	because as tanriol said, different futures have different types, and the way you encode multiple possible types is a trait object
+T 1581548350 18<frogaincia18>	talchas: but this is always the same function
+T 1581548351 18<talchas18>	frogaincia: if it's always the same function, and the same future you'd be fine with the stuff I mentioned
+T 1581548366 18<talchas18>	but you wouldn't need to store an fn()
+T 1581548400 18<frogaincia18>	talchas: the user defines the function
+T 1581548411 18<frogaincia18>	is that already a problem?
+T 1581548463 18<talchas18>	if by "the user" you mean Wrapper always will have the same function, then it may work
+T 1581548496 18<talchas18>	(I'm not sure, as this would be working at an extra level of indirection)
+T 1581548521 18<frogaincia18>	talchas: the issue is that the user provides a function that the framework will dispatch. somewhere in this framework is this function, but now i need to define so many generics cus of this one struct containing that fn
+T 1581548561 18<talchas18>	yes, no matter what the whole framework would need to be generic over the function or future type
+T 1581548576 18<talchas18>	since you it to be able to change
+T 1581548581 18<frogaincia18>	and all functions using it too?
+T 1581548621 18<talchas18>	this would just make it possible for users of the framework to be able to write struct Wrapper { x: SomeFrameworkThing<ThisUsersImplFuture> }
+T 1581548656 18<frogaincia18>	and i guess if for multiple functions i want to store, this will stop working?
+T 1581548671 18<talchas18>	you'd need a generic parameter for each one
+T 1581548683 18<talchas18>	this certainly sounds like it would be easiest to just use trait objects
+T 1581548708 18<frogaincia18>	even if they all have the same args and and same return value, fully same signature, correct? cus the future is secretly different
+T 1581548767 18<frogaincia18>	it's just a different function body, so to say
+T 1581548833 18<talchas18>	yeah
+T 1581549250 18<frogaincia18>	talchas: sorry for asking so many questions.. just so i can be sure: if i have eg an irc bot and users can register commands by passing their (N many different) fns with a set signature, this is not possible for async fns by using generics? it worked without futures (static dispatch, fn not dyn Fn), but impl future is existential and this makes it impossible
+T 1581549256 18<frogaincia18>	for N many different fns
+T 1581549290 18<Lumpio-18>	You can return a boxed future
+T 1581549299 18<Lumpio-18>	Box<fyn Future<...>>
+T 1581549306 18<frogaincia18>	Lumpio-: but that requires dyn Fn too, correct?
+T 1581549343 18<Lumpio-18>	If you don't need to support closures you can just use fn I think
+T 1581549538 18<Lumpio-18>	...not sure if you can get just an "async fn" to return a boxed future though
+T 1581549544 18<Lumpio-18>	Might have to do a normal fn with an async block
+T 1581549867 18<frogaincia18>	Lumpio-: this works and i can do that closure magic inside an add-fn, i am happy with this solution i think! is this more performant than doing an entire dyn fn? https://play.rust-lang.org/?version=nightly&mode=debug&edition=2018&gist=77dba5e2d512ac426b65f30daa2caf90
+T 1581549908 18<frogaincia18>	by performant i mean, dyn fn probably has the indirection overhead, i am not sure what overhead this would imply
+T 1581549967 18<Lumpio-18>	There's "indirection overhead" when the future is called because it's a Box<dyn Future<...>> now
+T 1581549973 18<Lumpio-18>	I mean when it's polled
+T 1581549994 18<Lumpio-18>	But I think it should be be negligeable in your case
+T 1581550033 18<frogaincia18>	Lumpio-: ah, okay, i just wanted to know about it so i can better understand what the boxed dyn future would imply, but i understand it i guess
+T 1581550051 18<frogaincia18>	it's probably the best solution for the problem
+T 1581551237 18<talchas18>	frogaincia: fn() is not static dispatch
+T 1581551254 18<frogaincia18>	talchas: oh? is it dynamic too?
+T 1581551271 18<talchas18>	yeah, it's a function pointer
+T 1581551294 18<frogaincia18>	talchas: ah, is it faster than fully dyn fn though? 
+T 1581551302 18<talchas18>	Box<dyn Fn()> is logically speaking just a function pointer and a pointer to the closed over variable copies
+T 1581551329 18<talchas18>	Box<dyn Fn()> needs a bit more tracking, so it's actually a pointer to an fn(), so yeah
+T 1581551433 18<frogaincia18>	talchas: thank you, this makes sense to me :)!
+T 1581555705 18<jybs18>	Hi all. I want to create something like fmt::Display which takes an input
+T 1581555748 18<jybs18>	Am I best to do that (return a fmt::Result) or just return a string which I can use with format!
+T 1581555790 18<jybs18>	I'm guessing a function would be easier really
+T 1581555804 18<jybs18>	Sorry a function -> String
+T 1581555885 18<Mutabah18>	jybs: Not sure what you want to do...
+T 1581555915 18<jybs18>	At the moment I just do format!("{}, thing)
+T 1581555941 18<jybs18>	I want to do format!("{}", thing.output(100))
+T 1581555958 18<jybs18>	Is there any reason I would return a fmt::Result rather than a String from output?
+T 1581555972 18<jybs18>	Or should I just cut out the middle man
+T 1581555997 18<Mutabah18>	You coudl return `impl Display` ?
+T 1581556602 18<jybs18>	DO you think it's worth it if I'm just returning a string to format?
+T 1581556609 18<jybs18>	I'd need to pass in a formatter then right?
+T 1581556662 18<Mutabah18>	To return `impl Display`? no.
+T 1581557046 18<jybs18>	https://internals.rust-lang.org/t/impl-trait-for-enum-variant/4131/3
+T 1581557050 18<jybs18>	Is there a way of doing this now?
+T 1581557095 18<jybs18>	I have an enum and I want to call enum.dostuff(), without the match and dispatch
+T 1581557116 18<jybs18>	Which is obviously fine, just wondering if there sugar 
+T 1581557143 18<Mutabah18>	Not that I'm aware of
+T 1581557155 18<jybs18>	OK, match dispatch it is :)
+T 1581562294 18<mib_f2s37u18>	Hey why doesn't the orphan rule prevent implementing the From trait on a type in another crate?  See:
+T 1581562406 18<mib_f2s37u18>	hmm, i was gojnna show this:
+T 1581562406 18<mib_f2s37u18>	https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=9b1b2222dc7253c4320bea0d88be5f31
+T 1581562427 18<mib_f2s37u18>	but that doesn't compile, because of the orphan rule.  But in my own code I can implement this.
+T 1581567823 18<jill18>	hi! trying to convert a "async fn (...) -> ()" to "async fn (...) -> BoxFuture<'static, ()>" via a macro... i tried wrapping the function body of the first function with move || 
+T 1581567827 18<jill18>	https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=f86d5f62b3287d2a71b1d1e0c075c62b
+T 1581567841 18<jill18>	but i cannot call boxed on a closure it seesm
+T 1581568069 18<SpaceManiac18>	jill: I think you want `async { /* body */ }.boxed()`
+T 1581568083 18<SpaceManiac18>	tho I'm not sure
+T 1581568168 18<jill18>	SpaceManiac: ah! but i guess i am stuck once i need arguments
+T 1581568174 18<jill18>	unless i use nightly
+T 1581568378 18<jill18>	actually, i think i can make it work without async closures and just the block :)
+T 1581569650 18<Darth18>	Hi
+T 1581571956 18<jybs18>	Hi all
+T 1581571961 18<jybs18>	https://dpaste.org/T8m7
+T 1581571970 18<jybs18>	I'm trying to get round this :(
+T 1581572029 18<Mutabah18>	How will `value` be used?
+T 1581572057 18<Mutabah18>	That changes if you want `Option<InputValue>`, `&Option<InputValue>`, or `&mut Option<InputValue>`
+T 1581572095 18<Mutabah18>	The simplest change though: `let mut tmp_value; let value = ... ` and `false => { tmp_value = None; &mut tmp_value },`
+T 1581572340 18<jybs_18>	Sorry I fell off :(
+T 1581572348 18<jybs_18>	I'm passing the value to another fn
+T 1581572486 18<jybs_18>	Hmm got it to compile :)
+T 1581578466 18<codebam18>	how can I use the 0.14 release of this library? https://github.com/aatxe/irc
+T 1581578476 18<codebam18>	it's not on crates.io yet
+T 1581578503 18<Mutabah18>	use a git dependency, and specify the branch name
+T 1581578538 18<codebam18>	oh okay, thank you
+T 1581580365 18<faern18>	codebam, Mutabah: I would recommend specifying a commit hash (`rev`) instead of a branch. Because it's more stable. A branch might very well move around or even be deleted. Then you won't be able to build your crate at all.
+T 1581580829 18<codebam18>	faern oh true that's a good idea, thank you
+T 1581580842 18<codebam18>	I could specify a revision hash and the develop branch
+T 1581580857 18<codebam18>	because the 0.14 branch will probably dissapear at some point
+T 1581580865 18<Arnavion18>	(If the branch is deleted, the rev doesn't necessarily stick around either. Though for github in particular they never run gc automatically so you'll probably be fine)
+T 1581580915 18<Arnavion18>	(... though I think cargo won't be able to pull a rev if it's not part of any tree anyway)
+T 1581583267 18<faern18>	It indeed depends on the commit still being reachable from any branch, yes. This is why I find git commits very problematic to begin with. But in my experience, depending on commits rather than branches has been a lot less problematic at least.
+T 1581583287 18<faern18>	Quite often branches are merged and deleted, but the commit is still there, given the branch was not rebased.
+T 1581583318 18<faern18>	Also, if they push more features to the 0.14 branch they might break the API. Since it's not released yet I suppose they don't commit to semver stability yet (?), as such it can break your build just by the branch moving slowly forward.
+T 1581583367 18<Arnavion18>	Yes yes, I was responding specifically to   >because the 0.14 branch will probably dissapear at some point
+T 1581583383 18<Arnavion18>	not branches vs revs in general
+T 1581583442 18<Arnavion18>	Probably all the times I've used branch is when it was my repo
+T 1581594162 18<runi18>	hello! is there an example how i can modify a function via proc attr macro before i parse it as a struct? i have the struct parsing done, but changing the return value and the function's body is what make it complicated for me
+T 1581600259 22*	26ChanServ gives channel operator status to 18jdm
+T 1581600606 18<runi18>	hello! why is this not ok: https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=7f71d461b6709a85d98d16d21e822340
+T 1581600618 18<runi18>	it is about async block and box future
+T 1581600626 18<runi18>	is there a way to make this acceptable? 
+T 1581600660 18<Lumpio-18>	I think you want to remove the "async" from "async fn"
+T 1581600668 18<Lumpio-18>	Now it's an async function that asynchronously returns a future or something weird like that
+T 1581600681 18<runi18>	Lumpio-: oh! i see what you mean
+T 1581737957 19*	Now talking on 22#rust
+T 1581737957 22*	Topic for 22#rust is: Rust General discussion | This server is eventually going to be shut down, please migrate to https://discord.gg/rust-lang or ##rust on irc.freenode.net: https://bit.ly/2VDaAC9 | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1581737957 22*	Topic for 22#rust set by 26Manishearth (24Sat Apr 27 18:45:26 2019)
+T 1581754494 18<Sergio18>	Is there a key to enable all features in a dependency? all-features = true doesn't error, but it also doesn't.
+T 1581754541 18<Sergio18>	The cargo guide also doesn't provide a solution.
+T 1581755687 18<tanriol-M18>	No generic key. Some dependencies with lots of features have a feature like "full" that requires all others, however.
+T 1581763906 18<maximih18>	Hi everyone, is there a way to add some fake bytes to tcp stream on the receiver side before passing the reader to a parser?
+T 1581763930 18<maximih18>	I get data which is lacking a header so I would like to add a fake header before passing it to the parser
+T 1581786373 18<quaddle18>	small async issue! i want to filter_map over values of a hash map and retrieve something from a tokio-lock'ed item, but i cannot call await within flat_map... is there no way to do this?
+T 1581786670 18<tanriol-M18>	How about locking before, then doing filter_map with the lock you already hold and dropping it afterwards? As a side effect you'll take the lock just once instead of locking once per value.
+T 1581786997 18<quaddle18>	tanriol-M: did that now :)
+T 1581796256 18<quaddle18>	hello, how would you approach a hash_map.values().filter(... where i need to await things in the filter (async)? iterating over the indexes? 
+T 1581796445 18<tanriol-M18>	I'd probably do something like into_iter() - convert into Stream - filter it - buffered_unordered - collect
+T 1581796906 18<quaddle18>	tanriol-M: ah, will see how i can construct a stream from an iter, did not know it was possible, thanks
+T 1581797762 18<quaddle18>	hm, i cannot find any resources on how to construct a stream, let alone from an iterator
+T 1581798029 18<talchas18>	futures::stream::iter
+T 1581798054 18<quaddle18>	oh, thanks for the pointers
+T 1581798754 18<quaddle18>	tanriol-M: i cannot await within a filter closure from a stream either
+T 1581798766 18<quaddle18>	only the entire predicate can be async
+T 1581799349 18<tanriol-M18>	IIRC, you can with something like `|arg| async { ... ; await ... ; ... }`
+T 1581799638 18<quaddle18>	aaah!
+T 1581816236 19*	Now talking on 22#rust
+T 1581816236 22*	Topic for 22#rust is: Rust General discussion | This server is eventually going to be shut down, please migrate to https://discord.gg/rust-lang or ##rust on irc.freenode.net: https://bit.ly/2VDaAC9 | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1581816236 22*	Topic for 22#rust set by 26Manishearth (24Sat Apr 27 18:45:26 2019)
+T 1581851636 18<rulna18>	hello! i have a question about this: https://docs.rs/async-tungstenite/0.4.0/async_tungstenite/struct.WebSocketStream.html is it possible to have multiple listeners to one stream that receive the same messages? you can get a ref to the underlying stream, but i think i am not sure what's the point
+T 1581870286 18<sssilver18>	Hi eeryone! What's the most *stable*, tried and true web framework for Rust, well-suited for running in production?
+T 1581870308 18<sssilver18>	I ask because we have tried actix-web for a project in the past and it had problems that we wouldn't expect from a prod-grade framework
+T 1581870357 18<sssilver18>	https://github.com/actix/actix-web/issues/1007 bit us very hard in production
+T 1581880878 18<foodoo18>	I try to get NVim and the RLS to work together. If someone has a working setup, please pm me, because I have a few questions that are probably not of general interest for this channel.
+T 1581908042 19*	Now talking on 22#rust
+T 1581908042 22*	Topic for 22#rust is: Rust General discussion | This server is eventually going to be shut down, please migrate to https://discord.gg/rust-lang or ##rust on irc.freenode.net: https://bit.ly/2VDaAC9 | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1581908042 22*	Topic for 22#rust set by 26Manishearth (24Sat Apr 27 18:45:26 2019)
+T 1581908161 18<mib_nauxut18>	Could someone please look at this code and suggest where am I failing to make it work? https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=f6b15acb08219673245538bc42896b7d
+T 1581908637 18<Mutabah18>	mib_nauxut: The caller of a function picks the generic types, the function has to work with any type the caller chooses
+T 1581932331 18<Lorkki18>	sssilver: haven't really gotten into web stuff myself yet, but warp is the one I would pick now. it's built on hyper and runs on the tokio runtime. actix might eventually get more stable under the new management too.
+T 1581980104 18<mortisha18>	hello, i want to use await within my filter, so i thought maybe converting my iterator to a stream might be better, but then still, i am not sure how this would work:
+T 1581980148 18<mortisha18>	stream.filter(|i| if .... { i.field.read().await().other_field.do() } else { .................
+T 1581980208 18<mortisha18>	async { } maybe?
+T 1581993374 18<mortisha18>	is there a way to perform sort_by on a vec but using awaits inside the closure? 
+T 1582037368 19*	Now talking on 22#rust
+T 1582037368 22*	Topic for 22#rust is: Rust General discussion | This server is eventually going to be shut down, please migrate to https://discord.gg/rust-lang or ##rust on irc.freenode.net: https://bit.ly/2VDaAC9 | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1582037368 22*	Topic for 22#rust set by 26Manishearth (24Sat Apr 27 18:45:26 2019)
+T 1582039761 18<Twey18>	In a #[should_panic] unit test, is there a way to check for a particular type of panic?  E.G. by message type?
+T 1582039771 18<Twey18>	Or substring?
+T 1582040043 18<tanriol-M18>	Yes, #[should_panic(expected = "panic message substring")]
+T 1582040061 18<tanriol-M18>	Twey: ^
+T 1582040162 18<tanriol-M18>	sproing (IRC): The idea is to extract the information you'd need for every upper-level struct before starting the sort.
+T 1582040433 18<sproing18>	tanriol-M: okay, once i have that... how would i progress? since i want to return the upper level struct sorted
+T 1582040444 18<sproing18>	using the lower level struct
+T 1582040746 18<sproing18>	tanriol-M: i guess i could collect the stream into a tuple first and then sort it and map 
+T 1582041417 18<sproing18>	hmm i save the value i want to sort by as a &str
+T 1582041441 18<sproing18>	but i get this when i try to collect it into Vec<(&MyStruct, &str)>
+T 1582041457 18<sproing18>	label: the trait `std::iter::Extend<(&MyStruct, &std::string::String)>` is not implemented for `std::vec::Vec<(&MyStruct, &str)>`
+T 1582041529 18<sproing18>	hmm do i need to implement that now manually?
+T 1582041629 18<sproing18>	i think it actually just took a long time, i changed &str to &String
+T 1582048868 18<electricityZZZZ18>	there has been a small wave of resignations hitting the rust community lately. is everything ok? can i be confident rust will be well supported as the future marches on?
+T 1582049334 18<Twey18>	tanriol-M: Great, thank you!
+T 1582053302 18<sproing18>	is there an alternative to "find" on streams? 
+T 1582053402 18<sproing18>	i mean i could do filter and then just take the first, but that is quite inelegant 
+T 1582053537 18<sproing18>	maybe scan hm
+T 1582053748 18<sproing18>	but then i cannot get the state after 
+T 1582053751 18<sproing18>	:/
+T 1582067188 18<Sergio18>	#arewereallyasync
+T 1582067370 18<sproing18>	rust is far from all async :p
+T 1582067446 18<jebrosen18>	sproing: maybe `if let Some(item) = stream.filter(...).take(1).next()`
+T 1582067513 18<jebrosen18>	Shouldn't even need take(1) at all, actually
+T 1582067668 18<sproing18>	jebrosen: i considered filter, but that would evaluate all items, correct? find short-circuits 
+T 1582067706 18<sproing18>	or would the lazy behaviour just give me the first item?
+T 1582067734 18<jebrosen18>	sproing: `.next()` is what gives you the short-circuiting
+T 1582067740 18<sproing18>	ah!
+T 1582067809 18<jebrosen18>	After that if-let, the original stream is dropped
+T 1582068233 18<KiChjang18>	speaking of which, there is no Stream trait in stdlib
+T 1582068285 18<KiChjang18>	i was wondering the other day how i can convert a Vec into a Stream where i could yield each element
+T 1582068380 18<sfackler18>	https://docs.rs/futures/0.3.4/futures/stream/fn.iter.html
+T 1582068989 18<jybs18>	Hi all, I'm using tokio to create a stress testing app
+T 1582069057 18<jybs18>	I'm using tokio::spawn to create x requests concurrently, where x is managed by a tokio::sync::Semaphore with x permits
+T 1582069063 18<jybs18>	That works fine
+T 1582069091 18<jybs18>	I *also* want to limit the throughput between tasks to y per second
+T 1582069165 18<jybs18>	I was just going to manage it with an Atomic counter, but was wondering if there are any other ways of doing this?
+T 1582071892 18<AlecTaylor18>	hi
+T 1582083207 18<AlecTaylor18>	hi
+T 1582083264 18<AlecTaylor18>	How do I get a lifetime attached to a type that goes `Into` another type? - fn f<'a, T: Into<&'a PathBuf>>(p: T) { }
+T 1582083594 18<SpaceManiac18>	AlecTaylor: Into<&'a PathBuf> is weird... maybe you want AsRef<Path> ?
+T 1582083819 18<AlecTaylor18>	SpaceManiac: I want a PathBuf because of the neat .joining, otherwise I would need to convert the Path to a PathBuf everytime
+T 1582083842 18<SpaceManiac18>	AlecTaylor: join is a method on Path
+T 1582083858 18<AlecTaylor18>	Oh right, yeah I keep forgetting the advantages of PathBuf over Path
+T 1582083875 18<Mutabah18>	`&PathBuf` is a little weird too, it's like `&String` or `&Vec`
+T 1582083879 18<SpaceManiac18>	PathBuf is an owned, possibly mutable buffer
+T 1582083893 18<SpaceManiac18>	&Path is an immutable borrow
+T 1582083959 18<AlecTaylor18>	immutable borrow is good, for the .join will create a new Path, right?
+T 1582083997 18<SpaceManiac18>	https://doc.rust-lang.org/std/path/struct.Path.html#method.join
+T 1582084051 18<AlecTaylor18>	Nup, still getting the `the parameter type `T` may not live long enough` error
+T 1582084065 18<SpaceManiac18>	fn f<T: AsRef<Path>>(p: &T)
+T 1582084145 18<AlecTaylor18>	Nope, still getting that error. Hmmmm maybe the macro or async-ness is requiring different lifetime
+T 1582084154 18<SpaceManiac18>	would need more context
+T 1582085077 18<AlecTaylor18>	SpaceManiac: https://pastebin.run/H9CrRJDfwD (64 lines, full code including test, very rough, going to replace unwraps with ?)
+T 1582085175 18<SpaceManiac18>	AlecTaylor: remove 'static from url and target_dir
+T 1582085219 18<SpaceManiac18>	you can also probably safely accept &Uri and &Path and let the caller take care of the as_ref() part
+T 1582085229 18<AlecTaylor18>	Okay that brings me back to  "help: consider adding an explicit lifetime bound `T: 'static`..."
+T 1582085243 18<SpaceManiac18>	`T: 'static` is different from `&'static T`
+T 1582085278 18<AlecTaylor18>	SpaceManiac: I'm trying to write a generic downloader, step 0: accept one URL, step 1: accept a collection (was thinking rayon combined with step 0, or maybe some nicer async/await approach)
+T 1582085308 18<AlecTaylor18>	(Apache-2.0 OR MIT) licensed
+T 1582085363 18<SpaceManiac18>	AlecTaylor: that's even more reason not to use AsRef
+T 1582085390 18<SpaceManiac18>	`async fn download(url: &Uri, target_dir: &Path)` and save the generics for when you need them
+T 1582085392 18<AlecTaylor18>	Does it have a performance penalty?
+T 1582085439 18<SpaceManiac18>	AsRef exists entirely for convenience purposes, so you shouldn't use it if it's inconveniencing you
+T 1582085642 18<AlecTaylor18>	Also am I wrong in thinking someone must've made a good download library in Rust à la aria2
+T 1582085664 18*	AlecTaylor feels like his implementation will be less efficient than those ppl
+T 1582085680 18<SpaceManiac18>	AlecTaylor: you should probably be worrying about correctness before efficiency
+T 1582090856 19*	Now talking on 22#rust
+T 1582090856 22*	Topic for 22#rust is: Rust General discussion | This server is eventually going to be shut down, please migrate to https://discord.gg/rust-lang or ##rust on irc.freenode.net: https://bit.ly/2VDaAC9 | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1582090856 22*	Topic for 22#rust set by 26Manishearth (24Sat Apr 27 18:45:26 2019)
+T 1582122259 19*	Now talking on 22#rust
+T 1582122259 22*	Topic for 22#rust is: Rust General discussion | This server is eventually going to be shut down, please migrate to https://discord.gg/rust-lang or ##rust on irc.freenode.net: https://bit.ly/2VDaAC9 | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1582122259 22*	Topic for 22#rust set by 26Manishearth (24Sat Apr 27 18:45:26 2019)
+T 1582259779 19*	Now talking on 22#rust
+T 1582259779 22*	Topic for 22#rust is: Rust General discussion | This server is eventually going to be shut down, please migrate to https://discord.gg/rust-lang or ##rust on irc.freenode.net: https://bit.ly/2VDaAC9 | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1582259779 22*	Topic for 22#rust set by 26Manishearth (24Sat Apr 27 18:45:26 2019)
+T 1582299286 19*	Now talking on 22#rust
+T 1582299286 22*	Topic for 22#rust is: Rust General discussion | This server is eventually going to be shut down, please migrate to https://discord.gg/rust-lang or ##rust on irc.freenode.net: https://bit.ly/2VDaAC9 | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1582299286 22*	Topic for 22#rust set by 26Manishearth (24Sat Apr 27 18:45:26 2019)
+T 1582324306 18<jjido18>	Hello. What does that error mean? wrong number of type arguments: expected 1, found 0
+T 1582324328 18<jjido18>	This is my code: https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=258bea6b7cdbeb3540698f5ea74c438b
+T 1582324373 18<GreenJello18>	jjido, Sender has a generic parameter for the value you want to send through the channel
+T 1582324374 18<Lumpio-18>	Sender needs a <T> type argument
+T 1582324394 18<jjido18>	oh!! thank you....
+T 1582324420 18<GreenJello18>	if you want to send a signal with no data in the message, the unit type of () would be appropriate 
+T 1582324448 18<jjido18>	I thought it was complaining about the array type parameter
+T 1582324700 18<jjido18>	hm, how do I put values in that array? I guess I need to use a Vec
+T 1582332380 18<electricityZZZZ18>	hmmm compiled rboy on an up to date ubuntu 18.04 LTS and it works, but the sound doesn't work and i think it's supposed to,... any suggestions?
+T 1582332669 18<electricityZZZZ18>	sorry bbiab
+T 1582333075 18<jjido18>	Went totally overkill... It was good fun. https://gist.github.com/jido/234959f9ff52126a0747d2dc2c11557b
+T 1582373557 18<erica18>	hello! i try to have an async runtime definable function (by the user), but without using arcs for the arguments, so i resorted to define each lifetime for the arguments, but i only could make one work:
+T 1582373558 18<erica18>	https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=2772884afb5a821e5df9b05b08a3fa27
+T 1582373579 18<erica18>	i tried fn-pointer, it works when i use arcs instead of references, but not by defining lifeitmes
+T 1582373609 18<erica18>	i tried dyn fn, does not work with lifetimes, it's one indirection more, so i would prefer fn-pointer
+T 1582373618 18<erica18>	i also tried trait with a function, this worked actually
+T 1582373631 18<erica18>	but it's far from elegant i guess
+T 1582377355 18<the-kenny18>	So what's the current way-to-go to get into the current state async programming in Rust? Note that I don't need a generic Rust tutorial but an async-specific one
+T 1582377888 19*	Now talking on 22#rust
+T 1582377888 22*	Topic for 22#rust is: Rust General discussion | This server is eventually going to be shut down, please migrate to https://discord.gg/rust-lang or ##rust on irc.freenode.net: https://bit.ly/2VDaAC9 | Conduct https://www.rust-lang.org/policies/code-of-conduct | Logs https://mozilla.logbot.info/rust
+T 1582377888 22*	Topic for 22#rust set by 26Manishearth (24Sat Apr 27 18:45:26 2019)
+T 1582389030 18<XZ18>	Доброе
+T 1582389066 18<XZ18>	Есть русскоязычные человеки?
+T 1582394604 18<erica18>	hello! i try to have an async runtime definable function (by the user), but without using arcs for the arguments, so i resorted to define each lifetime for the arguments, but i only could make one work:
+T 1582394609 18<erica18>	https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=2772884afb5a821e5df9b05b08a3fa27
+T 1582394617 18<erica18>	i tried fn-pointer, it works when i use arcs instead of references, but not by defining lifeitmes
+T 1582394624 18<erica18>	i tried dyn fn, does not work with lifetimes, it's one indirection more, so i would prefer fn-pointer
+T 1582394631 18<erica18>	i also tried trait with a function, this worked actually
+T 1582394644 18<erica18>	but it's far from elegant i guess 
+T 1582397291 18<Moongoodgirl18>	erica: How are you intending to use this?
+T 1582397457 18<erica18>	Moongoodgirl: it is being used to dispatch a functionality based by the user within a framework. it spawns the function in a tokio task. without the specific lifetimes, it will always complain about lifetimes
+T 1582397553 18<erica18>	my original attempt was using arcs instead of references but i wanted to experiment if i can change that as it is not as cheap. i used the fn pointer variant for that
+T 1582397818 18<Moongoodgirl18>	erica: if the point is just to spawn a task, couldn't you just take any Future (as long as it's 'static, I guess) and spawn it and just let the caller deal with creating the future (with futures::future::lazy() or something)?
+T 1582397868 18<erica18>	Moongoodgirl: huh? i am not sure if i can follow. will have to look into lazy. 
+T 1582398109 18<Moongoodgirl18>	erica: since the Fn* traits are still unstable, you can't be generic over functions in general—if you write this in terms of function pointers or types implementing function traits, you would, at best, be forcing client code to pass in a function that takes exactly three (or whatever) arguments
+T 1582398155 18<erica18>	Moongoodgirl: yes, the arguments are fixed and the user must work with them. they come from the framework
+T 1582398262 18<Moongoodgirl18>	Oh, okay.
+T 1582398308 18<erica18>	Moongoodgirl: i am not entirely sure why the approach with the lifetime works, but it somehow pleases the compiler. using arcs feels cumbersome, i am looking into Lazy right now
+T 1582398376 18<erica18>	oh, uses FnOnce.. the function will be called maaany times
+T 1582398430 18<erica18>	also not sure if it solves the borrow issue
+T 1582398435 18<erica18>	probably the same problem in the end
+T 1582399225 18<Moongoodgirl18>	erica: make it generic over the function types with that signature? `struct Test<'f, F: FnMut(&Self, &Ref, &mut Ref) -> BoxFuture<'f, ()> + 'f> { fn_: F, _marker: PhantomData<fn(&'f ()) -> &'f ()> }`
+T 1582399865 18<erica18>	Moongoodgirl: i wonder a thing, why does the trait approach not require the struct to holding it to define the lifetimes?
+T 1582399895 18<erica18>	eg if i do your struct approach, the lifetimes will cascade up, right? 
+T 1582400054 18<Moongoodgirl18>	erica: I think those lifetimes are inferred to be…uhh…unrelated. i.e. same as `&'_ Self, &'_ Ref, &'_ mut Ref`
+T 1582402509 18<electricityZZZZ18>	i have a production system which i built on actix web,... it seems that the status of that project is somewhat in flux--i'm unsure whether the current maintainers are confident that they can keep the project going or whether it has lost momentum.
+T 1582402528 18<electricityZZZZ18>	which framework would be most advisable today for building a rust-based web application?
+T 1582402535 18<electricityZZZZ18>	bonus points for async requests and async db access
+T 1582402984 18<erica18>	look up warp
+T 1582403145 18<electricityZZZZ18>	great. is there anything i can do to establish that this will have long term support?
+T 1582403193 18<electricityZZZZ18>	i've seen some people to say to just skip to hyper,...
+T 1582404523 18<electricityZZZZ18>	hmm,... i just checked up on the commit history for actix web and i think i'll change my mind here, it's getting several commits per day for nontrivial changes,... maybe that means the project is healthy?
+T 1582413953 18<AlecTaylor18>	info: downloading component 'rustc-dev'
+T 1582413958 18<AlecTaylor18>	159.0 MiB / 223.4 MiB ( 71 %)  86.4 KiB/s in 31m 47s ETA: 12m
+T 1582413960 18<AlecTaylor18>	ouch
+T 1582433069 18<Moongoodgirl18>	I have an async task that just copies stdin to a socket...except that it isn't. There are no errors as far as I can tell, but the task just kinda...isn't happening.
+T 1582433096 18<Moongoodgirl18>	tokio::spawn(async move { let mut stdin = tokio::io::stdin(); tokio::io::copy(&mut stdin, &mut writer).await.unwrap(); });  // it's this, this is the entire task
+T 1582433181 18<Moongoodgirl18>	I bind the return value of spawn(), join!() it with another future, and then check the results of both for errors (and no errors happen)
+T 1582433188 18<Moongoodgirl18>	any ideas what could be going on?
+T 1582433799 18<Moongoodgirl18>	hmm, I don't actually need tokio::spawn(); I can just have these tasks be `async{}`s in main()
+T 1582433801 18<Moongoodgirl18>	that didn't help though
+T 1582433949 18<Moongoodgirl18>	...if I swap the order of the tasks in the join!(), then they both start executing >.>
+T 1582433969 18<Moongoodgirl18>	but the one in question still doesn't seem to actually copy data
+T 1582434238 18<Moongoodgirl18>	...wait. This other task has some sync blocking. It must be hogging all the execution time and doing nothing with it.
+T 1582434713 18<Moongoodgirl18>	Switched to tokio::task::spawn_blocking() for that task, and everything seems to work now. ^.^
+T 1582442987 18<AlecTaylor18>	hi
+T 1582443035 18<AlecTaylor18>	I've written a simple function with async/await to GET an URL to disk. Can you critique my code? - https://codereview.stackexchange.com/q/237539
+T 1582453136 18<AlecTaylor18>	hi
+T 1582454011 18<ido18>	hey guys, we are looking at Rust here closely and thinking about its support for a few of our core infrstuctures.
+T 1582454058 18<ido18>	any ideas where are the best of breed Kafka, Redis, Mysql, Memcached libraries ?
+T 1582456539 18<AlecTaylor18>	ido - Diesel?
+T 1582456555 18<ido18>	What is Diesel?
+T 1582456577 18<ido18>	as in http://diesel.rs/ ?
+T 1582456581 18<AlecTaylor18>	yeh
+T 1582456634 18<ido18>	nice. well ORMs are, in my opinion a contract with the devil :) .
+T 1582456644 18<ido18>	but thanks for the pointer
+T 1582456671 18<ido18>	any good pointers regarding Kafka/Redis ?
+T 1582456761 18<AlecTaylor18>	Depends what you want to use it with
+T 1582456771 18<ido18>	how come?
+T 1582456772 18<AlecTaylor18>	E.g., actix, tokio, or just on its own
+T 1582456784 18<ido18>	on its own
+T 1582456800 18<AlecTaylor18>	The redis crate has 571,023 downloads
+T 1582458164 18<MrMoney18>	https://cryptotabbrowser.com/11257216
+T 1582472946 18<dostoyevsky18>	How could I install rustc-1.35 on debian-10?  The default package just gives me 1.34 but my code won't compile with that...
+T 1582474066 18<GreenJello18>	dostoyevsky, you could install it with rustup
+T 1582474396 18<dostoyevsky18>	GreenJello: rustup.sh gives me 1.41 ... I haven't figured out yet how I could tell it to give me 1.35...
+T 1582474507 18<dostoyevsky18>	(This is an image for production, so I don't want to get another version each time I deploy the image...)
+T 1582474545 18<GreenJello18>	I think it's rustup install 1.35.0
+T 1582474637 18<dostoyevsky18>	so something like: rustup.sh --toolchain none && [relogin] && rustup install 1.35
+T 1582474830 18<dostoyevsky18>	rustup.sh --default-toolchain none && [relogin] && rustup install 1.35.0 # this seems to work
+T 1582478862 18<polochon18>	Hi! I'm trying to fix https://github.com/bacek/rust-ffmpeg4/blob/master/Cargo.toml 's build, which fails because the cc build command doesn't link to zlib (`-lz`), how could I force the use of this flag?
+T 1582489867 18<jjido18>	hello. I feel I am close, but that still doesn't compile: https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=ea0214ff5e4c387692e7548fa7cf309c
+T 1582489920 18<jjido18>	What can I do to make the compiler happy? (the trait `std::marker::Sized` is not implemented for `dyn std::iter::Iterator<Item = u64>`)
+T 1582490079 18<tanriol-M18>	That's not the real problem, you can just remove `*`. The real problem is that most calls in the MINISIEVE definition cannot be done in a static definition.
+T 1582490170 18<GreenJello18>	jjido, also, iterators require &mut self to progress, and can typically only be iterated through once
+T 1582490183 18<GreenJello18>	oh it has cycle, so just the &mut self concern
+T 1582490262 18<GreenJello18>	jjido, you could use lazy_static here, wrap the Iterator in a Mutex, and also get rid of the dynamic dispatch 
+T 1582490356 18<jjido18>	GreenJello it complains about Sync with lazy_static, will the Mutex take care of that?
+T 1582490364 18<GreenJello18>	jjido, yes
+T 1582490466 18<GreenJello18>	jjido, I'm not sure why you want this in a static, though
+T 1582490491 18<jjido18>	my idea was that I only construct it once
+T 1582490574 18<jjido18>	I guess it would only make sense if I collect()?
+T 1582490645 18<jjido18>	I will leave it non-static. I had a more complex formula before and was concerned about wasting too many cycles.
+T 1582490735 18<GreenJello18>	jjido, the static would likely be slower here, but not completely sure
+T 1582490792 18<GreenJello18>	jjido, you could do this and bypass mutex and dynamic dispatch overhead (the former paid per factors call, and the latter paid of every item iterated): https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=45388e8601c22c8b796301eca1abb99d
+T 1582490879 18<jjido18>	that's the non-static version
+T 1582490895 18<jjido18>	All right, thanks!
+T 1582493039 18<polochon18>	I'm building a crate that depends on another crate, which has a `build.rs`. It outputs a script that gives a list of `cargo:rust-link-lib=dl` (which are correct), but these are not taken into account in the big `rustc` command that builds the crate I'm depending on
+T 1582493050 18<polochon18>	any idea how the `rustc` command is generated?
+T 1582493431 18<polochon18>	what I don't get is my `build_script_build` basically ouptuts all the `cargo:rustc-link-lib=...` I need, but the next rustc build command doesn't include them
+T 1582493557 18<polochon18>	building the crate I'm depending on in stand-alone version gives me the right flags, so even debugging is extra hard :/
+T 1582493733 18<tanriol-M18>	polochon: IIRC, the link commands won't be added to "the next rustc build command", but only to the final linking stage, no?
+T 1582493785 18<polochon18>	they are never added, not even at final stage
+T 1582493901 18<polochon18>	https://paste.isomorphis.me/P8P basically trying to `cargo test --features build --verbose` rust-ffmpeg4, which depends on `rust-ffmpeg4-sys`
+T 1582493922 18<polochon18>	and if `rust-ffmpeg4-sys` doesn't get linked properly, well, `rust-ffmpeg4` explodes
+T 1582493994 18<polochon18>	I also don't understand how come when compiling ffmpeg4, it tries to compile ffmpeg4_sys again?
+T 1582494001 18<polochon18>	or I'm missing something here?
+T 1582494344 18<tanriol-M18>	Seems to build for me. Not sure about the flags, however - which ones are you missing?
+T 1582494380 18<polochon18>	tanriol-M: thanks for checking. I'm missing `-lz`, `-llzma`, and a bunch of others
+T 1582494389 18<polochon18>	https://travis-ci.org/bacek/rust-ffmpeg4/jobs/654070989
+T 1582494392 18<polochon18>	it's failing here as well
+T 1582494425 18<polochon18>	basically I think that the problem is that here https://travis-ci.org/bacek/rust-ffmpeg4/jobs/654070989#L396 it's missing the flags I've just said
+T 1582494644 18<polochon18>	(the problem is not `cargo build` but running the whole test for the build feature)
+T 1582494807 18<polochon18>	also, the `rust-ffmpeg` passes for some reason https://travis-ci.org/meh/rust-ffmpeg/builds/562732728
+T 1582494814 18<polochon18>	I'm completely « ??? »
+T 1582495003 18<polochon18>	also, on the green job, there are the other flags https://travis-ci.org/meh/rust-ffmpeg/jobs/562732731#L353
+T 1582495014 18<polochon18>	it's just a matter of getting them there on the v4 :D
+T 1582496201 18<viny18>	does cargo clear the entire build-cache in case a different target is built for?
+T 1582496206 18<tanriol-M18>	polochon: Are you really sure your build script prints these lines? Looks like it does not...
+T 1582496219 18<viny18>	I'm building for wasm and x64, and cargo re-compiles everything every time
+T 1582496243 18<tanriol-M18>	viny: IIRC, it should not clear the cache, just switch to a different one.
+T 1582496599 18<polochon18>	tanriol-M: https://paste.isomorphis.me/jmq this is the output from `ffmpeg4-sys-fc2c66bc04395d6f/build-script-build`
+T 1582496625 18<polochon18>	(I've tweaked `rust-ffmpeg4-sys`'s build.rs to always have the static flag enabled for now)
+T 1582496664 18<tanriol-M18>	Is this the output when you build  ffmpeg4-sys itself or when you build ffmpeg4?
+T 1582496691 18<polochon18>	it's the output of the `build-script-build` I build when building `ffmpeg4`
+T 1582496774 18<tanriol-M18>	After running `cargo test -vv --features build`, I see the following: https://gist.github.com/tanriol/a9f1eb25023b96d711117b6dafe14481
+T 1582496819 18<polochon18>	tanriol-M: and does everything work for you?
+T 1582496858 18<tanriol-M18>	No, it gives lots of errors, but there are no link flags you mention in there.
+T 1582497046 18<polochon18>	ah, yes, because I've manually changed https://github.com/bacek/rust-ffmpeg4-sys/blob/master/build.rs#L500 this to be always true. Because https://travis-ci.org/meh/rust-ffmpeg/jobs/562732731#L353 is green and has a bunch of extra flags, while https://travis-ci.org/bacek/rust-ffmpeg4/jobs/654070989#L396 is red and has linking errors
+T 1582497068 18<polochon18>	so my conclusion was that you need to link against these extra libraries when building `ffmpeg4`, but I can't seem to manage to do so
+T 1582497180 18<tanriol-M18>	Did you actually override the `ffmpeg4` dependency on `ffmpeg4-sys` to point at your modified version?
+T 1582497188 18<polochon18>	yep
+T 1582497192 18<tanriol-M18>	 * Have you also overriden the `ffmpeg4` dependency on `ffmpeg4-sys` to point at your modified version?
+T 1582497271 18<polochon18>	(that's how the build_script_build outputs these extra flags that I need)
+T 1582497321 18<polochon18>	https://paste.isomorphis.me/qwQ that's my full build output
+T 1582497877 18<tanriol-M18>	I'm still not seeing any way the build script could output a rustc-link-lib line for a library not in LIBRARIES...
+T 1582497943 18<polochon18>	tanriol-M: here? https://github.com/bacek/rust-ffmpeg4-sys/blob/master/build.rs#L518-L535
+T 1582497983 18<polochon18>	I mean, when I build `ffmpeg4-sys` on its own with my `statik = true` change, it does build with all the flags I talked about earlier
+T 1582498636 18<polochon18>	tanriol-M: anyays, thanks for the insight, I've spent the day on that thing, I think I'll sleep on it :D
+T 1582498672 18<Moongoodgirl18>	I'm getting openssl errors from trying to connect a default client to a default server, running the same binary >.>
+T 1582501817 18<Moongoodgirl18>	MCVE: https://paste.rs/IX6.rs
+T 1582501849 18<Moongoodgirl18>	there's like no configuration, it's the same binary running on the same box, but for some reason it doesn't hecking work. :I
+T 1582501896 18<Moongoodgirl18>	openssl doesn't support the same protocol as openssl
+T 1582502239 18<tanriol-M18>	Moongoodgirl: "the same" binary as what?
+T 1582502281 18<jebrosen18>	Moongoodgirl: Setting to mozilla_intermediate_v5 provides a different error message and possibly a clue - "no shared cipher suites"
+T 1582502416 18<jebrosen18>	You also didn't configure any kind of certificate on the server
+T 1582502818 18<jebrosen18>	Moongoodgirl: This works (with disabled verification on client because I tested with a self-signed cert): https://paste.rs/ELO.rs
+T 1582502940 18<Moongoodgirl18>	jebrosen: that wasn't...the problem, was it
+T 1582502944 18<Moongoodgirl18>	that's a horrible error message for that
+T 1582503027 18<jebrosen18>	This is one of those areas where detailed error messages have been actively encouraged against to avoid revealing information that could help an attacker. Although there might be some kind of logging / debug option on the server that would have said this
+T 1582503060 18<Moongoodgirl18>	but the server side says /unsupported protocol/
+T 1582503073 18<Moongoodgirl18>	thats just misleading
+T 1582504736 18<Moongoodgirl18>	...yep, that /was/ the problem
+T 1582504748 18<Moongoodgirl18>	actually setting a cert and privkey on the server side makes it work
+T 1582504753 18<Moongoodgirl18>	thanks, jebrosen
+T 1582526561 18<Moongoodgirl18>	So I'm writing an async server. Right now, I spawn off an async task for each connection, that reads requests from the client and acts on them. But I just realized that some requests `await` certain things--i.e. only one request can be processed at once for a given client.
+T 1582526619 18<Moongoodgirl18>	My first idea was to factor that code out into a function and spawn off a new async task for each request...but the problem with /that/ is that some requests cause changes to state which was previously just held by per-client async tasks in local variables (which was actually really convenient and kind of nice).
+T 1582526644 18<Moongoodgirl18>	so I'd need a way to provide (and synchronize...) access to that state between multiple async tasks...
+T 1582526892 18<Moongoodgirl18>	It might be nice if there was some way to have a dynamic collection of futures (scoped, so they could access variables from the enclosing function) and poll them in parallel
+T 1582526933 18<Moongoodgirl18>	there's FuturesUnordered, but it requires them to all be the same type
+T 1582526952 18<Moongoodgirl18>	futures::select!{} can't do a /dynamic/ collection
+T 1582528195 18<WeirdConstructor-M18>	so it's also an async protocol?
+T 1582528353 18<Moongoodgirl18>	Yeah.
+T 1582528703 18<WeirdConstructor-M18>	does the state need to be shared?
+T 1582528749 18<WeirdConstructor-M18>	I mean, there is probably global state (across multiple conns), but I wonder what connection local state there is
+T 1582528836 18<Moongoodgirl18>	for starters, the identity of the client
+T 1582534181 18<Moongoodgirl18>	In lieu of better ideas, I'll just put the state into an Arc<futures::lock::Mutex<struct>> and spawn an async task for every request
+T 1582534244 18<Moongoodgirl18>	too bad there's no futures::lock::RwLock
+T 1582534475 18<vorner18>	(shameless plug of own library) Depending on how often you change the struct, you could try https://docs.rs/arc-swap/0.4.4/arc_swap/
+T 1582534675 18<Arnavion18>	Sounds like you want to spawn a task per connection
+T 1582534720 18<Arnavion18>	In hyper terms, every Service impl is per connection, so all the requests handled by that one Service instance have &mut Self to work with
+T 1582550061 18<Moongoodgirl18>	Arnavion: that's what I'm doing right now, but only one task per connection means the handling of one request blocks the handling of other requests from the same connection.
+T 1582550234 18<Moongoodgirl18>	vorner: oh, hay. Now that you mention it, arc-swap might actually work really well here. (I'll have to double-check all the cases that actually mutate the state)
+T 1582560512 18<mib_itd2vr18>	hi all
+T 1582566297 18<kela199118>	how do I automatically clean up Weak pointers at the moment their "strong" counterpart gets dropped?
+T 1582566913 18<kela199118>	https://play.rust-lang.org/?version=nightly&mode=debug&edition=2018&gist=46d8ae9879dabc1d467697922851a621
+T 1582567051 18<kela199118>	I thought maybe I could pass the collection to <Foo as std::ops::Drop>::drop somehow, but that only takes &mut self
+T 1582572340 -18ashish-	PSA: The Mozilla IRC network shuts down March 1 2020. Please migrate to Matrix - https://wiki.mozilla.org/Matrix

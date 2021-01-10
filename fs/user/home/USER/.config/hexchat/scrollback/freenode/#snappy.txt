@@ -1,0 +1,504 @@
+T 1600357659 18<ijohnson18>	hmm does anybody remember the version of snapd we supported parallel installs of classic snaps?
+T 1600357904 18<ijohnson18>	degville: when you have time could you review my update to https://forum.snapcraft.io/t/parallel-installs/7679 mentioning classic parallel snap support in 2.43+ ?
+T 1600357920 18<ijohnson18>	hopefully I didn't botch it too badly :-)
+T 1600358011 18<degville18>	ijohnson: yes, of course! Looks great - thanks for updating it.
+T 1600358016 18<ijohnson18>	thanks
+T 1600358444 18<zyga18>	woot, new test passes
+T 1600359664 18<zyga18>	a few more variants to cover everything
+T 1600359682 18<zyga18>	I'll go make tea
+T 1600359691 18<zyga18>	I like days like this
+T 1600359694 18<zyga18>	quiet focus
+T 1600361037 18<cachio18>	mvo, 2.47 is comming today, right?
+T 1600361683 18<zyga18>	-debug time
+T 1600363375 18<ijohnson18>	cachio: could you look at my 9364 again, it seems my change to the debug: section for each suite didn't take when the nested tests failed, so I force pushed a different change which should work now I think
+T 1600363392 18<cachio18>	ijohnson|lunch, sure
+T 1600363410 18<ijohnson|lunch18>	thanks
+T 1600363462 18<cachio18>	ijohnson|lunch, it is already merged
+T 1600363481 18<ijohnson|lunch18>	cachio: sorry I meant 9367
+T 1600363491 18<cachio18>	ijohnson|lunch, hehe, ok
+T 1600364972 18<mvo18>	cachio: it's already in beta - at least the snapd snap
+T 1600365008 18<mvo18>	cachio: systemd is yet again hold in the review queue
+T 1600365054 18<cachio18>	mvo, ok, I'll start with snapd, thnanks
+T 1600365064 18<mvo18>	cachio: great, thank you
+T 1600365071 18*	zyga starts to prepare commits
+T 1600369039 18<zyga18>	ok, one more case fixed
+T 1600369047 18<zyga18>	this test acts as extra documentation
+T 1600369915 18<zyga18>	still some failures on some systems
+T 1600370279 18<zyga18>	centos/fedora/amazon
+T 1600370282 18<zyga18>	and core
+T 1600370289 18<zyga18>	let's dig at the classic set first
+T 1600370337 18<mup18>	PR snapcraft#3289 opened: build providers: fix issues running on Windows <Created by sergiusens> <https://github.com/snapcore/snapcraft/pull/3289>
+T 1600370383 18<zyga18>	but hey 29 / 40 passed :)
+T 1600370826 18<cmatsuoka18>	ijohnson: did you try to build and install an edge system recently?
+T 1600370839 18<ijohnson18>	cmatsuoka: yes, many
+T 1600370846 18<ijohnson18>	cmatsuoka: let me read your mind
+T 1600370850 18<ijohnson18>	cmatsuoka: it's broken isn't it?
+T 1600370851 18<ijohnson18>	:-)
+T 1600370866 18<cmatsuoka18>	ijohnson: hum, I just tried it and it failed to install
+T 1600370875 18<cmatsuoka18>	ah ok
+T 1600370884 18<ijohnson18>	the issue is that we need a kernel snap respin
+T 1600370894 18<ijohnson18>	ubuntu-core-initramfs was updated with new snap-bootstrap
+T 1600370902 18<ijohnson18>	but the kernel snap has not been rebuilt yet
+T 1600370905 18<cmatsuoka18>	ah I see
+T 1600370907 18<ijohnson18>	so edge is currently broken
+T 1600370929 18<cmatsuoka18>	ah I thought it was published already
+T 1600370931 18<cmatsuoka18>	ok
+T 1600370947 18<ijohnson18>	not yet
+T 1600371003 18*	zyga takes the dog out
+T 1600371085 18<cmatsuoka18>	my idea was to build a edge image with maciek's gadget update snapd branch and try it with the edition3 gadget
+T 1600371091 18<cmatsuoka18>	and see if it reseals correctly
+T 1600371129 18<ijohnson18>	yeah you'll need to repack the initramfs with the new version of ubuntu-core-initramfs
+T 1600371185 18<cmatsuoka18>	do we have any estimate on when the kernel snap will be ready?
+T 1600371194 18<ijohnson18>	no idea
+T 1600371832 18<zyga18>	okay
+T 1600371841 18<zyga18>	back and looking at the debug prompt
+T 1600372120 18<zyga18>	huh
+T 1600372123 18<zyga18>	looks like real byg
+T 1600372251 18<zyga18>	printf debug time
+T 1600373193 18<zyga18>	mmm
+T 1600374137 18<cachio18>	ijohnson, cmatsuoka I found something really insteresting about the issue on kvm
+T 1600374174 18<cachio18>	if I use the host system = debian 9
+T 1600374186 18<cachio18>	no reboots
+T 1600374192 18<cmatsuoka18>	oh
+T 1600374198 18<cmatsuoka18>	that's interesting
+T 1600374218 18<cachio18>	the only diff is that on debian 9 I coundt make tpm work
+T 1600374221 18<zyga18>	ok, interesting
+T 1600374223 18<zyga18>	debugging
+T 1600374232 18<cachio18>	I need to take a look to that
+T 1600374232 18<zyga18>	but looks like forced host tools
+T 1600374240 18<zyga18>	but why, maybe some silly bug
+T 1600374243 18<cachio18>	but tmp does not affect on the reboots
+T 1600374248 18<zyga18>	anyway, thank for integration tests
+T 1600374255 18<zyga18>	I'll know on the next cycle
+T 1600374257 18<cachio18>	I tested ubuntu without tmp and ti reboots
+T 1600374304 18<cachio18>	so perhaps a solution for us is to replace ubuntu focal by debian 9
+T 1600374305 18<zyga18>	cachio: debian 9 has really old qemu
+T 1600374314 18<zyga18>	perhaps it doesn't do something fancy enough
+T 1600374332 18<cachio18>	zyga, I am gonna try usign the same qemu on focal
+T 1600374343 18<zyga18>	or doesn't interact with recent security mitigations
+T 1600374415 18<cachio18>	zyga, both things could be the problem
+T 1600374427 18<ijohnson18>	cachio: but if you can't make tpm work with debian then it seems not useful since we need tpm
+T 1600374430 18<cachio18>	zyga, I'll try with debian sid
+T 1600374458 18<cachio18>	ijohnson, that qemu does not support tpm emulation
+T 1600374475 18<ijohnson18>	cachio: right but my point is that we need nested vm's with tpm to test uc20
+T 1600374486 18<cachio18>	ijohnson, yes yes agre
+T 1600374487 18<ijohnson18>	and afaik the reboots only happen with tpm
+T 1600374494 18<cachio18>	ijohnson, no
+T 1600374497 18<ijohnson18>	but yes anyways very interesting point about using debian 9
+T 1600374521 18<cachio18>	ijohnson, reboots happen when we use ovmf
+T 1600374532 18<cachio18>	independently if we use tpm
+T 1600374547 18<cachio18>	I tried removing tpm and the reboots still happen
+T 1600374554 18<ijohnson18>	cachio: ah I see
+T 1600374587 18<cachio18>	ijohnson, I'll try now with debian sid
+T 1600374624 18<cachio18>	it should support tpm by software
+T 1600374654 18<cachio18>	if sid fails the problem is in qemu/kvm version used
+T 1600374728 18<ijohnson18>	Yeah good find nonetheless
+T 1600374764 18<cmatsuoka18>	sid has qemu 5.1 I believe
+T 1600374848 18<mup18>	PR snapcraft#3290 opened: build providers: unified provider refactoring for provider setup <Created by cjp256> <https://github.com/snapcore/snapcraft/pull/3290>
+T 1600374887 18<cachio18>	I am creating a new image to support virtualization on sid
+T 1600374892 18<cachio18>	let see
+T 1600375179 18<zyga18>	ah
+T 1600375183 18<zyga18>	what is /etc/sysconfig/snapd:SNAP_REEXEC=0
+T 1600375187 18*	zyga looks
+T 1600375281 18<zyga18>	ah
+T 1600375283 18<zyga18>	packaging/fedora/snapd.spec:echo
+T 1600375288 18<zyga18>	why?
+T 1600375378 18<zyga18>	at least that explains it
+T 1600375384 18<zyga18>	the test needs adjusting
+T 1600376319 18<zyga18>	if this passes the next error is on core
+T 1600376341 18<zyga18>	I'll keep pushing, open the PR and go to sleep
+T 1600376351 18<zyga18>	but I may be a bit tired tomorrow
+T 1600376652 18<mup18>	PR snapcraft#3289 closed: build providers: fix issues running on Windows <Created by sergiusens> <Merged by sergiusens> <https://github.com/snapcore/snapcraft/pull/3289>
+T 1600376670 18<zyga18>	fedora passed
+T 1600376675 18<zyga18>	ok, core
+T 1600376903 18<zyga18>	need to stretch back
+T 1600376904 18<zyga18>	brb
+T 1600377386 18<zyga18>	back with water,
+T 1600377391 18<zyga18>	core is rebooting
+T 1600377395 18<zyga18>	I'll know soon
+T 1600377630 18<zyga18>	ah
+T 1600377633 18<zyga18>	hh
+T 1600377639 18<zyga18>	ok, weird
+T 1600377643 18<zyga18>	let's check
+T 1600377658 18<zyga18>	I think the test has a mistake
+T 1600377939 18<cachio18>	ijohnson, cmatsuoka, zyga fails on debian sid
+T 1600377943 18<cachio18>	it reboots
+T 1600377947 18<zyga18>	mmm
+T 1600377948 18<cachio18>	so the qemu version
+T 1600377970 18<cachio18>	I need to find a version with supports tpm and no reboots
+T 1600377998 18<cmatsuoka18>	is it using kvm or just software qemu?
+T 1600378016 18<cachio18>	kvm
+T 1600378024 18<cmatsuoka18>	if using kvm it should depend on the kernel too
+T 1600378049 18<cachio18>	cmatsuoka, in tha tpast I tried with a very old kernel
+T 1600378057 18<cachio18>	and it rebooted
+T 1600378080 18<cachio18>	an old kernel which supported kvm
+T 1600378107 18<cachio18>	I think I should find a version of qemu which works
+T 1600378245 18<zyga18>	I think we should ask some qemu people
+T 1600378400 18<cmatsuoka18>	our case is very specific even for qemu people (nested with ovmf)
+T 1600378446 18<cmatsuoka18>	the last time I asked some kvm engineers they said they never worked with that specific scenario :|
+T 1600379627 18<cachio18>	cmatsuoka,just ran in xenial and no reboots
+T 1600379633 18<cachio18>	qemu 2.5
+T 1600379664 18<cmatsuoka18>	hum
+T 1600379680 18<cmatsuoka18>	and does it work with tpm?
+T 1600379685 18<cachio18>	no
+T 1600379703 18<cachio18>	now I'' try to find which version works with tpm
+T 1600379740 18<cachio18>	I nee dto go now
+T 1600379749 18<cachio18>	I'll continue after I am back
+T 1600379755 18<cachio18>	need to buy some stuff
+T 1600379860 18<zyga18>	figured it out
+T 1600379864 18<zyga18>	and documented
+T 1600379871 18<zyga18>	man so many sharp edges
+T 1600379909 18<zyga18>	restarting another run
+T 1600379911 18<zyga18>	all systems now
+T 1600380685 18<zyga18>	ok
+T 1600380688 18<zyga18>	I bail
+T 1600380691 18<zyga18>	tomorrow
+T 1600380695 18<zyga18>	see you all
+T 1600390904 18<ijohnson18>	cachio: around?
+T 1600390913 18<cachio18>	yes
+T 1600390926 18<ijohnson18>	hey, so I figured out why the refresh fundamentals test has been broken all day
+T 1600390934 18<ijohnson18>	it got broken by the 2.47 snapd in beta channel today
+T 1600390942 18<ijohnson18>	and to fix it we need a new kernel snap
+T 1600390947 18<ijohnson18>	so until that lands, I would like to disable the test
+T 1600390958 18<ijohnson18>	cachio: so could you quick approve https://github.com/snapcore/snapd/pull/9368?
+T 1600390958 18<mup18>	PR #9368: tests/nested/manual/refresh-revert-fundamentals: disable temporarily <Skip spread> <UC20> <⚠ Critical> <Created by anonymouse64> <https://github.com/snapcore/snapd/pull/9368>
+T 1600390959 18<cachio18>	ijohnson, sure
+T 1600390969 18<ijohnson18>	thanks
+T 1600391013 18<cachio18>	+1
+T 1600391021 18<cachio18>	thanks for that
+T 1600391043 18<ijohnson18>	thanks, I'll merge it in a few minutes and open a PR undoing the change we can use to monitor until the test is passing again with a new kernel
+T 1600391051 18<ijohnson18>	have a good night!
+T 1600391055 18<cachio18>	ijohnson, nice, thanks
+T 1600391081 18<mup18>	PR snapd#9368 opened: tests/nested/manual/refresh-revert-fundamentals: disable temporarily <Skip spread> <UC20> <⚠ Critical> <Created by anonymouse64> <https://github.com/snapcore/snapd/pull/9368>
+T 1600391383 18<mup18>	PR snapd#9369 opened: tests/nested/manual/refresh-revert-fundamentals: re-enable test <Run nested> <UC20> <⛔ Blocked> <Created by anonymouse64> <https://github.com/snapcore/snapd/pull/9369>
+T 1600391986 18<mup18>	PR snapd#9368 closed: tests/nested/manual/refresh-revert-fundamentals: disable temporarily <Skip spread> <UC20> <⚠ Critical> <Created by anonymouse64> <Merged by anonymouse64> <https://github.com/snapcore/snapd/pull/9368>
+T 1600392107 18*	cachio EOD
+T 1600406441 18<mup18>	PR snapd#9370 opened: usersession/userd: separate bus name ownership from defining interfaces <Created by jhenstridge> <https://github.com/snapcore/snapd/pull/9370>
+T 1600408141 18<zyga-x24018>	good morning
+T 1600408728 18<zyga-x24018>	hop hop...
+T 1600409656 18<mup18>	Bug #1896182 opened: Snapd is waking up my screen from sleep regularly <Snappy:New> <https://launchpad.net/bugs/1896182>
+T 1600409838 18<mborzecki18>	morning
+T 1600409891 18<zyga-x24018>	mborzecki: hi
+T 1600409893 18<zyga-x24018>	mborzecki: curious bug
+T 1600409898 18<mborzecki18>	zyga-x240: hey
+T 1600409901 18<mborzecki18>	hm, what bug?
+T 1600409920 18<zyga-x24018>	https://bugs.launchpad.net/snappy/+bug/1896182
+T 1600409921 18<mup18>	Bug #1896182: Snapd is waking up my screen from sleep regularly <Snappy:New> <https://launchpad.net/bugs/1896182>
+T 1600409934 18<mborzecki18>	zyga-x240: heh, i was reading https://bugzilla.redhat.com/show_bug.cgi?id=1880261
+T 1600409937 18<mborzecki18>	same thing?
+T 1600409943 18<zyga-x24018>	haha
+T 1600409944 18<zyga-x24018>	ye
+T 1600409976 18<zyga-x24018>	any ideas?
+T 1600409988 18<zyga-x24018>	could that be snapd hotplug logic?
+T 1600410815 18<mborzecki18>	zyga-x240: https://bugzilla.redhat.com/show_bug.cgi?id=1880261#c3
+T 1600410826 18<mborzecki18>	hm long shot but maybe there's something else at play here
+T 1600410839 18<zyga-x24018>	I also replied to the launchpad bug
+T 1600410850 18<mborzecki18>	hahah
+T 1600410864 18<mborzecki18>	zyga-x240: noone can say we're not responding to bug reports now
+T 1600410880 18<zyga-x24018>	heh :)
+T 1600410891 18<zyga-x24018>	I pushed https://github.com/snapcore/snapd/pull/9345#pullrequestreview-491167950
+T 1600410891 18<mup18>	PR #9345: overlord: introduce the export manager, export snapd tools <Created by zyga> <https://github.com/snapcore/snapd/pull/9345>
+T 1600410896 18<mborzecki18>	let my grab my wife's laptop and i'll try it there
+T 1600410903 18<zyga-x24018>	I'll squash history and remove some typos and stuff from this later today
+T 1600410931 18<mborzecki18>	zyga-x240: what's this functionality? sorry, i was uc20 only for the last few weeks
+T 1600411231 18<zyga-x24018>	mborzecki: it's a solution to a very old bug
+T 1600411238 18<zyga-x24018>	mborzecki: introduced pretty much since day one
+T 1600411245 18<zyga-x24018>	mborzecki: when snapd or core refreshes and we don't reboot
+T 1600411266 18<zyga-x24018>	mborzecki: certain tools, like snap-exec and others, as seen by snaps from their mount namespace, become stale
+T 1600411277 18<zyga-x24018>	mborzecki: this fixes that problem by changing how those tools are exposed to snaps
+T 1600411290 18<mborzecki18>	ah
+T 1600411298 18<zyga-x24018>	mborzecki: snapd allows snaps to export content in a specific way
+T 1600411319 18<zyga-x24018>	mborzecki: the content shows up in /var/lib/snapd/export/<snap>/<revision>/<set-name>
+T 1600411351 18<zyga-x24018>	mborzecki: there's also a new current symlink at /var/lib/snapd/export/<snap>/current -> <revision>
+T 1600411364 18<zyga-x24018>	there's a special case for core and host
+T 1600411398 18<zyga-x24018>	but in general snapd tools are all available from /usr/lib/snapd/<tool> as symlinks to the export three, through the new current symlink there
+T 1600411403 18<zyga-x24018>	and snapd can update the current symlink atomically
+T 1600411410 18<zyga-x24018>	this also supports using host tools
+T 1600411425 18<zyga-x24018>	so for the first time ever, SNAP_REEXEC=0 uses host's snap-exec and other tools now
+T 1600411446 18<zyga-x24018>	and since this is not related to mount changes, it does not require mount namespace re-configuration when core or snapd change
+T 1600411457 18<zyga-x24018>	there's a new export manager that manages putting content on disk
+T 1600411484 18<zyga-x24018>	and a callback to the snap manager to update the new current symlink when we also update the primary current symlink
+T 1600411500 18<zyga-x24018>	that's pretty much it
+T 1600411516 18<zyga-x24018>	it is relevant to core20 as snapd refreshes separately from boot base
+T 1600411520 18<zyga-x24018>	so we reboot less often
+T 1600411525 18<zyga-x24018>	and we see this bug more and more over time
+T 1600411556 18<mborzecki18>	mhm, maybe i should take a look at the pull requests then
+T 1600411562 18<zyga-x24018>	heh
+T 1600411571 18<zyga-x24018>	it's not ready for proper review but if you want to look at this, please do
+T 1600411573 18<zyga-x24018>	alternatively
+T 1600411575 18<zyga-x24018>	in udev theme
+T 1600411576 18<zyga-x24018>	please look at
+T 1600411592 18<zyga-x24018>	https://github.com/snapcore/snapd/pull/7614
+T 1600411593 18<mup18>	PR #7614: cmd/snap-confine: implement snap-device-helper internally <Needs security review> <Created by zyga> <https://github.com/snapcore/snapd/pull/7614>
+T 1600411596 18<zyga-x24018>	you reviewed it
+T 1600411600 18<zyga-x24018>	but maybe we can land it somehow
+T 1600411609 18<zyga-x24018>	and there were changes after your review
+T 1600411777 18<zyga-x24018>	lucy is sleeping but I will go AFK when she wakes up
+T 1600411782 18<zyga-x24018>	I'm so tired today
+T 1600411785 18<zyga-x24018>	1M -> 6AM
+T 1600411789 18<zyga-x24018>	ENOSLEEP
+T 1600412300 18<pstolowski18>	morning
+T 1600412355 18<zyga-x24018>	hello
+T 1600412934 18<mborzecki18>	pstolowski: mvo: morning
+T 1600412941 18<zyga-x24018>	mvo: hello
+T 1600412953 18<mvo18>	hey mborzecki, pstolowski and zyga-x240 ! good morning
+T 1600412955 18<zyga-x24018>	mvo: I will be semi absent in the morning, lucy is still sleeping next to me but she will wake up soon
+T 1600412969 18<zyga-x24018>	mvo: and I was up till midnight and need some rest / break from screens
+T 1600412971 18<mvo18>	zyga-x240: ok
+T 1600412989 18<zyga-x24018>	I pushed https://github.com/snapcore/snapd/pull/9345 but I need to squash, clean up some typos and amend the commit message with a better description
+T 1600412990 18<mup18>	PR #9345: overlord: introduce the export manager, export snapd tools <Created by zyga> <https://github.com/snapcore/snapd/pull/9345>
+T 1600413005 18<zyga-x24018>	also doing a small self-review showed a few extra changes to make
+T 1600413019 18<zyga-x24018>	I wrote a very useful test that shows many things about how snap execution environment works
+T 1600413026 18<zyga-x24018>	and found a few surprises myself
+T 1600413074 18<zyga-x24018>	the test is here: https://github.com/snapcore/snapd/pull/9345/files#diff-e96db38f8622850cdf91281e5344f762
+T 1600413075 18<mup18>	PR #9345: overlord: introduce the export manager, export snapd tools <Created by zyga> <https://github.com/snapcore/snapd/pull/9345>
+T 1600413196 18<mvo18>	zyga-x240: oh, nice
+T 1600413214 18<mvo18>	zyga-x240: anything I can help you with? I mean that does not requires samuele reviews and could still land :)
+T 1600413290 18<zyga-x24018>	mvo: not yet, I will open it properly later today, then it needs reviews
+T 1600413298 18<zyga-x24018>	mvo: I mainly wanted to share what I have now and see what fails
+T 1600413308 18<zyga-x24018>	did anyone look at centos / opensuse failures?
+T 1600413333 18<mborzecki18>	someone pushed wip/export-manager-patch-set branch to snapd upstream?
+T 1600413355 18<zyga-x24018>	ah
+T 1600413358 18<zyga-x24018>	sorry
+T 1600413358 18<mborzecki18>	zyga-x240: ?
+T 1600413360 18<zyga-x24018>	yeah
+T 1600413393 18<zyga-x24018>	done
+T 1600413393 18<zyga-x24018>	sorry
+T 1600413413 18<mvo18>	zyga-x240: sure thing
+T 1600413605 18*	zyga-x240 goes to take a shower
+T 1600413658 18<zyga-x24018>	mborzecki: more selinux denials
+T 1600413660 18<zyga-x24018>	from export manager
+T 1600413660 18<zyga-x24018>	2020-09-18T06:52:34.1787196Z type=AVC msg=audit(1600411883.733:7774): avc:  denied  { mount } for  pid=69477 comm="snap-confine" name="/" dev="tmpfs" ino=227354 scontext=system_u:system_r:snappy_confine_t:s0 tcontext=system_u:object_r:tmpfs_t:s0 tclass=filesystem permissive=1
+T 1600413664 18<zyga-x24018>	2020-09-18T06:52:34.1789352Z type=AVC msg=audit(1600411883.733:7775): avc:  denied  { write } for  pid=69477 comm="snap-confine" name="/" dev="tmpfs" ino=227354 scontext=system_u:system_r:snappy_confine_t:s0 tcontext=system_u:object_r:tmpfs_t:s0 tclass=dir permissive=1
+T 1600413667 18<zyga-x24018>	2020-09-18T06:52:34.1793007Z type=AVC msg=audit(1600411883.734:7776): avc:  denied  { add_name } for  pid=69477 comm="snap-confine" name="etelpmoc.sh" scontext=system_u:system_r:snappy_confine_t:s0 tcontext=system_u:object_r:tmpfs_t:s0 tclass=dir permissive=1
+T 1600413672 18<zyga-x24018>	2020-09-18T06:52:34.1796343Z type=AVC msg=audit(1600411883.734:7777): avc:  denied  { create } for  pid=69477 comm="snap-confine" name="etelpmoc.sh" scontext=system_u:system_r:snappy_confine_t:s0 tcontext=system_u:object_r:tmpfs_t:s0 tclass=lnk_file permissive=1
+T 1600413673 18<zyga-x24018>	and more
+T 1600413677 18<zyga-x24018>	ehh
+T 1600413683 18<mborzecki18>	tmpfs_t ?
+T 1600413710 18<mborzecki18>	/var/lib/snapd/export is tmpfs?
+T 1600413714 18<zyga-x24018>	yes
+T 1600413716 18<zyga-x24018>	we
+T 1600413718 18<zyga-x24018>	no
+T 1600413719 18<zyga-x24018>	sorry
+T 1600413726 18<zyga-x24018>	 /usr/lib/snapd is a tmpfs
+T 1600413735 18<zyga-x24018>	 /var/lib/snapd/export is not
+T 1600413770 18<zyga-x24018>	also some real failures on 14.04
+T 1600413773 18<zyga-x24018>	but first shower
+T 1600414171 18<mborzecki18>	zyga-x240: when mounting /usr/libexec/snapd, it'd be nice to set some label for that, preferrably the same as the default one for that location
+T 1600417584 18<mup18>	PR snapd#9371 opened: o/snapstate: improve snapshot iteration <Created by stolowski> <https://github.com/snapcore/snapd/pull/9371>
+T 1600418789 18<mup18>	PR snapd#9372 opened: tests: make nested signing helpers less confusing <Run nested> <Simple 😃> <UC20> <Created by bboozzoo> <https://github.com/snapcore/snapd/pull/9372>
+T 1600418790 18<mup18>	PR snapd#9373 opened: snap: add new `snap debug show-recovery-key` command <Needs Samuele review> <Created by mvo5> <https://github.com/snapcore/snapd/pull/9373>
+T 1600419393 18<mup18>	PR snapd#9367 closed: tests: misc nested changes <Run nested> <Simple 😃> <Test Robustness> <Created by anonymouse64> <Merged by bboozzoo> <https://github.com/snapcore/snapd/pull/9367>
+T 1600419774 18<mvo18>	pstolowski: I reviewed your PR about snapshots, nice job
+T 1600419791 18<mvo18>	pstolowski: each step to untangle this a bit is good :)
+T 1600419859 18<pstolowski18>	mvo: thanks, yeah ;)
+T 1600422975 18<ijohnson18>	morning folks
+T 1600423200 18<pstolowski18>	hey ijohnson !
+T 1600423207 18<ijohnson18>	o/ pstolowski
+T 1600423667 18<mborzecki18>	pstolowski: added some comments to #9371
+T 1600423668 18<mup18>	PR #9371: o/snapstate: improve snapshot iteration <Created by stolowski> <https://github.com/snapcore/snapd/pull/9371>
+T 1600423683 18<pstolowski18>	ty
+T 1600423701 18<mborzecki18>	anyoen looked at #9370?
+T 1600423702 18<mup18>	PR #9370: usersession/userd: separate bus name ownership from defining interfaces <Created by jhenstridge> <https://github.com/snapcore/snapd/pull/9370>
+T 1600424100 18<zyga18>	re
+T 1600424106 18<zyga18>	man I was sleepy
+T 1600425432 18<zyga18>	so why does livepatch test faik
+T 1600425434 18<zyga18>	*fail
+T 1600425492 18<zyga18>	hmm
+T 1600425493 18<zyga18>	it passed
+T 1600425501 18*	zyga looks at logs
+T 1600426094 18<zyga18>	ha, reproduced
+T 1600426096 18<zyga18>	now to lok
+T 1600426098 18<zyga18>	look
+T 1600426112 18<mborzecki18>	so bug or no bug?
+T 1600426155 18<zyga18>	yeah
+T 1600426167 18<zyga18>	figuring out why
+T 1600426170 18<zyga18>	content was not exported
+T 1600426200 18<zyga18>	ok
+T 1600426202 18<zyga18>	I understand
+T 1600426207 18<zyga18>	hmmm
+T 1600426233 18<zyga18>	so
+T 1600426236 18<zyga18>	re exec from old snapd
+T 1600426242 18<zyga18>	the init process of the manager is correct
+T 1600426252 18<zyga18>	but needs to handle exporting core/snapd, not just host
+T 1600426256 18<zyga18>	good thing we have those tests!
+T 1600427425 18<zyga18>	ok testing a fix now
+T 1600427713 18<zyga18>	aa
+T 1600427720 18<zyga18>	I switched to dvorak by accident
+T 1600427724 18<zyga18>	felt uber weird in vim
+T 1600427736 18<zyga18>	spread running, now to write an unit test
+T 1600427741 18<ijohnson18>	zyga: mind quickly reviewing https://github.com/snapcore/snapd/pull/9374 ?
+T 1600427742 18<mup18>	PR #9374: tests/main/lxd: disable cgroup combination for 16.04 that is failing a lot <Simple 😃> <Test Robustness> <Created by anonymouse64> <https://github.com/snapcore/snapd/pull/9374>
+T 1600427825 18<mup18>	PR snapd#9374 opened: tests/main/lxd: disable cgroup combination for 16.04 that is failing a lot <Simple 😃> <Test Robustness> <Created by anonymouse64> <https://github.com/snapcore/snapd/pull/9374>
+T 1600428418 18*	pstolowski lunch
+T 1600428429 18<zyga18>	and now spread passes
+T 1600428435 18<zyga18>	ijohnson: looking
+T 1600428439 18<ijohnson18>	thanks
+T 1600428446 18<zyga18>	ijohnson: thanks for that!
+T 1600428813 18<zyga18>	ijohnson: https://github.com/snapcore/snapd/pull/9374#pullrequestreview-491384533
+T 1600428814 18<mup18>	PR #9374: tests/main/lxd: disable cgroup combination for 16.04 that is failing a lot <Simple 😃> <Test Robustness> <Created by anonymouse64> <https://github.com/snapcore/snapd/pull/9374>
+T 1600428835 18<ijohnson18>	ah fair enough that makes sense
+T 1600429004 18<ijohnson18>	zyga: fixed
+T 1600429008 18<zyga18>	looking
+T 1600429062 18<zyga18>	done
+T 1600429246 18<ijohnson18>	cool, yeah this was the combo I've seen fail just today 2 times, but perhaps another combo with xenial also doesn't work
+T 1600429271 18<zyga18>	we'll see
+T 1600429597 18<zyga18>	pawel has network issues
+T 1600429610 18<zyga18>	mborzecki: this keyboard is so cool, no mouse required
+T 1600429617 18<zyga18>	mborzecki: no arrow keys required
+T 1600429630 18<zyga18>	mborzecki: I think I properly got used to it now
+T 1600429785 18<ogra18>	hmm, all of a sudden the whole documentation links from MOTD are gone on a few of my core18 installs
+T 1600429808 18<ijohnson18>	there were motd changes to the core* snaps recently
+T 1600429822 18<ogra18>	yeah, feels a bit regressed
+T 1600429823 18<zyga18>	woot
+T 1600429826 18<zyga18>	more tests
+T 1600429835 18<ogra18>	ogra@acheron:~$ ssh 192.168.2.85
+T 1600429835 18<ogra18>	Welcome to Ubuntu Core 18 (GNU/Linux 5.3.0-1033-raspi2 armv7l)
+T 1600429835 18<ogra18>	Last login: Fri Sep 18 11:12:05 2020 from 192.168.2.48
+T 1600429835 18<ogra18>	ogra@localhost:~$
+T 1600429846 18<ogra18>	thats really sparse now
+T 1600429882 18<ogra18>	compared to how it should look like:
+T 1600429884 18<ogra18>	https://paste.ubuntu.com/p/r9dcmvqnfG/
+T 1600429915 18<ijohnson18>	ogra: probably worth a bug to github.com/snapcore/core18
+T 1600429916 18*	zyga found snap.R
+T 1600429937 18<ogra18>	bah ... and bluez doesnt work at all on core16 (and i really dont want to move that specific pi to core1😎
+T 1600429951 18<ogra18>	grr ... emoji invasion !
+T 1600429974 18<ogra18>	s/core1😎/core18 /
+T 1600430148 18<zyga18>	ok one more unit test and everything is covered
+T 1600430161 18<zyga18>	I like this new manager
+T 1600430164 18<zyga18>	it has potential
+T 1600430485 18<zyga18>	perfect
+T 1600430485 18<zyga18>	ok
+T 1600430544 18<zyga18>	now to go through the todos left
+T 1600431464 18<zyga18>	meh
+T 1600431474 18<zyga18>	I broke my git config and this makes git push go to origin
+T 1600432551 18<ijohnson18>	it's a whole 1 degree celsius outside
+T 1600432564 18<ijohnson18>	SU this morning will be a chilly one
+T 1600432645 18<mup18>	PR snapd#9372 closed: tests: make nested signing helpers less confusing <Run nested> <Simple 😃> <UC20> <Created by bboozzoo> <Merged by cmatsuoka> <https://github.com/snapcore/snapd/pull/9372>
+T 1600432955 18<mvo18>	ijohnson: impressive! it's +24°C here
+T 1600433028 18<ijohnson18>	haha yeah it's supposed to be ~20°C tomorrow
+T 1600433067 18<ogra18>	did you move to antarcica ?
+T 1600433078 18<ijohnson18>	haha nope, still MN
+T 1600433085 18<ogra18>	crazy
+T 1600433086 18<ijohnson18>	just very cold September this year
+T 1600433091 18<mvo18>	ogra: I think they have +34°C or something
+T 1600433099 18<ogra18>	brrr
+T 1600433139 18*	ogra sits on the terrace (enjoying my vac) ... at +20°C ... 
+T 1600433146 18<ijohnson18>	weather at the south pole today is -48 C
+T 1600433188 18<mvo18>	ijohnson: heh
+T 1600433279 18<mvo18>	ijohnson: I was refering to https://earthobservatory.nasa.gov/images/146322/antarctica-melts-under-its-hottest-days-on-record but I'm apparently a couple of months late
+T 1600433318 18<ijohnson18>	yeah I think it's still winter in antartica, so a little bit colder than the summer but yes indeed that is crazy news
+T 1600433326 18<ogra18>	yeah, i read that one on german news sites a few months ago
+T 1600433352 18<mvo18>	current -48°C sounds more like I imagine antartica :)
+T 1600433454 18<ijohnson18>	as I googled that I was very confused why it was like midnight at the south pole right now, but actually you could use whatever TZ you want, but I guess they customarily use New Zealand time
+T 1600433462 18<ijohnson18>	TIL
+T 1600433549 18<mup18>	PR snapd#9375 opened: tests/nested/cloud-init-*: simplify tests and unify helpers/seed inputs <Run nested> <Test Robustness> <Created by anonymouse64> <https://github.com/snapcore/snapd/pull/9375>
+T 1600433577 18<mvo18>	ijohnson: haha, good point
+T 1600433654 18<ogra18>	xnox, motd being broken in core18 ... do i file that to GH or under lp:snappy ?
+T 1600433803 18<ogra18>	(well ... s/core18/UC18/)
+T 1600433818 18<ijohnson18>	ogra: github pretty sure
+T 1600433823 18<ogra18>	kay
+T 1600434147 18*	ogra files https😕/github.com/snapcore/core18/issues/170
+T 1600434151 18<ogra18>	GRRR !!!
+T 1600434158 18*	ogra files github.com/snapcore/core18/issues/170
+T 1600434339 18<mup18>	Issue core18#170 opened: [Regression] all documentation links and explanatory text vanished from MOTD <Created by ogra1> <https://github.com/snapcore/core18/issues/170>
+T 1600436450 18*	zyga breaks for errand
+T 1600436472 18<zyga18>	1-2h
+T 1600441381 18<mup18>	PR snapd#9374 closed: tests/main/lxd: disable cgroup combination for 16.04 that is failing a lot <Simple 😃> <Test Robustness> <Created by anonymouse64> <Merged by anonymouse64> <https://github.com/snapcore/snapd/pull/9374>
+T 1600441382 18<mup18>	PR snapd#9376 opened: check-pr-title.py * : allow "*" in the first part of the title <Simple 😃> <Skip spread> <Created by anonymouse64> <https://github.com/snapcore/snapd/pull/9376>
+T 1600441447 18<ijohnson18>	#9376 is really simple and would be nice to have :-)
+T 1600441447 18<mup18>	PR #9376: check-pr-title.py * : allow "*" in the first part of the title <Simple 😃> <Skip spread> <Created by anonymouse64> <https://github.com/snapcore/snapd/pull/9376>
+T 1600441920 18<cachio18>	mvo, hey
+T 1600441932 18<cachio18>	the delay that I mentioned was caused by this
+T 1600441934 18<cachio18>	[   14.613707] systemd[1]: Condition check resulted in Create System Users being skipped.
+T 1600441934 18<cachio18>	error: cannot obtain system details: cannot communicate with server: Get http://localhost/v2/system-info: dial unix /run/snapd.socket: connect: connection refused
+T 1600441934 18<cachio18>	Press enter to configure.
+T 1600441979 18<cachio18>	this is the full log
+T 1600441980 18<cachio18>	https://paste.ubuntu.com/p/tn2sK4cDSC/
+T 1600441986 18<cachio18>	I created the image from edge
+T 1600441998 18<ijohnson18>	cachio: edge is broken
+T 1600442008 18<ijohnson18>	cachio: this is the issue I was talking about in SU, we need a new kernel snap
+T 1600442009 18<cachio18>	ijohnson, I should try with beta?
+T 1600442015 18<ijohnson18>	cachio: no beta is broken too
+T 1600442019 18<cachio18>	hehehe
+T 1600442032 18<ijohnson18>	cachio: the only thing to do is to rebuild the kernel snap
+T 1600442038 18<ijohnson18>	(or wait for that to be done and published)
+T 1600442058 18<cachio18>	ijohnson, so, I could make the focal image work with this old kernel
+T 1600442068 18<ijohnson18>	cachio: yeah that was great news
+T 1600442071 18<cachio18>	works with kvm
+T 1600442073 18<cachio18>	yes
+T 1600442073 18<ijohnson18>	cachio: I mean really weird
+T 1600442078 18<ijohnson18>	but still great that you got it working
+T 1600442086 18<ijohnson18>	how difficult is it to create and update that image in gce ?
+T 1600442096 18<cachio18>	I tried with another kernel, an older one and didn't work
+T 1600442112 18<cachio18>	ijohnson, I have an image ready
+T 1600442116 18<ijohnson18>	cachio: great
+T 1600442132 18<cachio18>	ijohnson, test-virt-1
+T 1600442134 18<ijohnson18>	cachio: might also be worth asking the server team if they expect any issues with a xenial kernel on focal
+T 1600442135 18<cachio18>	this is the name
+T 1600442138 18<ijohnson18>	cachio: nice
+T 1600442168 18<cachio18>	it uses the last qemu and ovmf for focal
+T 1600442181 18<ijohnson18>	right
+T 1600442191 18<mup18>	PR snapcraft#3291 opened: build providers: make mount_project() interface private <Created by cjp256> <https://github.com/snapcore/snapcraft/pull/3291>
+T 1600442199 18<cachio18>	I¿ll create a new pr to enable kvm and test nested
+T 1600442214 18<ijohnson18>	nice, let me know when it's up and I'll review it
+T 1600442261 18<cachio18>	ijohnson, sure, I'll make it after lunch
+T 1600442265 18<ijohnson18>	+1
+T 1600442839 18*	cachio lunch
+T 1600443154 18<mvo18>	cachio: thanks, in meetings. but thanks for letting me know
+T 1600443960 18<zyga18>	re
+T 1600443962 18<zyga18>	back from store
+T 1600444076 18*	zyga reviews failures on 9345
+T 1600444287 18<zyga18>	aha
+T 1600444299 18<zyga18>	I guess SNAP_REEXEC=0 is not supported on core :D
+T 1600444312 18*	zyga adjusts 
+T 1600444556 18<zyga18>	ok now to dive into selinux permissions
+T 1600444695 18<mup18>	PR snapd#9377 opened: [RFC] snap-repair: minimal uc20 support <Created by mvo5> <https://github.com/snapcore/snapd/pull/9377>
+T 1600445560 18<zyga18>	mmm
+T 1600445569 18<zyga18>	my wife just brought me some coffee
+T 1600446502 18<mup18>	PR snapd#9378 opened: tests/nested/manual: add uc20 grade signed cloud-init test <Run nested> <Test Robustness> <UC20> <Created by anonymouse64> <https://github.com/snapcore/snapd/pull/9378>
+T 1600451925 18<mup18>	PR snapd#9379 opened: [RFC] cmd/s-b/initramfs-mounts: use ConfigureTargetSystem for install, recover modes <Bug> <Needs Samuele review> <Run nested> <UC20> <Created by anonymouse64> <https://github.com/snapcore/snapd/pull/9379>
+T 1600452765 18*	ijohnson EODs a bit early today, still around for random fires if needed
+T 1600454084 18<cachio18>	ijohnson, sorry for the delay
+T 1600454086 18<cachio18>	#9380
+T 1600454087 18<mup18>	PR #9380: tests: update to support nested kvm without reboots on UC20 <Run nested> <Simple 😃> <Created by sergiocazzolato> <https://github.com/snapcore/snapd/pull/9380>
+T 1600454096 18<cachio18>	you can check that on Monday
+T 1600454100 18<cachio18>	no hurry
+T 1600454116 18<cachio18>	cmatsuoka, you too #9380
+T 1600454120 18<zyga-mbp18>	re
+T 1600454133 18*	cmatsuoka verifies...
+T 1600454140 18<zyga-mbp18>	can I review anything specific to help?
+T 1600454150 18<cachio18>	zyga-mbp, also for you if you have time #9380
+T 1600454151 18<mup18>	PR #9380: tests: update to support nested kvm without reboots on UC20 <Run nested> <Simple 😃> <Created by sergiocazzolato> <https://github.com/snapcore/snapd/pull/9380>
+T 1600454158 18<zyga-mbp18>	on it
+T 1600454255 18<cmatsuoka18>	cachio: is the focal-with-old-kernel image already in gce?
+T 1600454256 18<zyga-mbp18>	cachio done
+T 1600454335 18<mup18>	PR snapd#9380 opened: tests: update to support nested kvm without reboots on UC20 <Run nested> <Simple 😃> <Created by sergiocazzolato> <https://github.com/snapcore/snapd/pull/9380>
+T 1600454545 18<cachio18>	cmatsuoka, yes
+T 1600454555 18<zyga-mbp18>	anything else I can review?
+T 1600454580 18<cachio18>	zyga-mbp, thanks!!
+T 1600454595 18<cachio18>	cmatsuoka, I also updated spread images project and tested the new images
+T 1600454630 18<cmatsuoka18>	cachio: ah nice thanks!
+T 1600454653 18<cachio18>	cmatsuoka, the problem now is that edge build is broken
+T 1600454658 18<cachio18>	because of the kernel
+T 1600454674 18<cmatsuoka18>	ah yes, that's true
+T 1600454679 18<zyga-mbp18>	ohhh
+T 1600454681 18<cachio18>	cmatsuoka, so I tested the image works with -smp 2
+T 1600454685 18<zyga-mbp18>	vmware fusion supports virtual TPM
+T 1600454702 18<zyga-mbp18>	cmatsuoka how can I build up-to-date core20 image for amd64?
+T 1600454702 18<cachio18>	you will see that the image boot fails
+T 1600454706 18<cachio18>	bet you can login
+T 1600454710 18<zyga-mbp18>	one that would be testable with vTPM
+T 1600454712 18<cachio18>	to the nested vm
+T 1600454721 18<cachio18>	but snap command fails
+T 1600454737 18<cachio18>	zyga-mbp, it is working with vtpm
+T 1600454748 18<zyga-mbp18>	yeah, I just never played with that befor
+T 1600454750 18<zyga-mbp18>	*before
+T 1600454756 18<zyga-mbp18>	and since it's Friday I might as well try
+T 1600454763 18<cachio18>	nice
+T 1600454807 18*	cachio quick break
+T 1609963182 19*	Now talking on 22#snappy
+T 1609963182 22*	Topic for 22#snappy is: Join the forum: https://forum.snapcraft.io/t/when-to-use-forum-vs-irc/38 | If you can't send messages here, authenticate to nickserv first
+T 1609963182 22*	Topic for 22#snappy set by 26cjwatson!cjwatson@chiark.greenend.org.uk (24Thu Jul 26 05:06:02 2018)
+T 1609963182 22*	Channel 22#snappy url: 24http://snapcraft.io
+T 1609967772 Python interface unloaded

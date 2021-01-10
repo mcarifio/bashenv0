@@ -1,0 +1,502 @@
+T 1600253053 18<lis18>	but i didn't really follow the conversation either
+T 1600253079 18<lis18>	i just suggest something more specific like "Replace automatic password reuse with SSH keys"
+T 1600253110 18<kkoukiou18>	lis: I feel like the 'remote hosts' part needs to be in the title
+T 1600253120 18<kkoukiou18>	lis: Otherwise ' which logins '?
+T 1600253129 18<lis18>	it's tough
+T 1600253559 18<mvollmer18>	lis: I hope those datacenters can also set up SSH key auth.  wouldn't that be better all around?
+T 1600253644 18<lis18>	mvollmer: not sure.  putting the ssh key on every machine might not be in the security model...
+T 1600253663 18<lis18>	if we had some way to put an ssh key in the browser and use agent forwarding, sure...
+T 1600253673 18<lis18>	but there is definitely a usecase there that this isn't a 100% replacement for
+T 1600253679 18<mvollmer18>	hmm
+T 1600253713 18<lis18>	in any case, i completely 100% agree with not randomly sending the password to some strange host by default.  that was obviously not cool.
+T 1600253738 18<lis18>	will probably be a classic case of someone opening a bug "can you please add a preference to bring back the old behaviour?" :)
+T 1600253951 18<mvollmer18>	yeah, let's see.
+T 1600254551 18*	garrett dutifully downloads the iOS 14 upgrade to attempt to test Cockpit, but is ready to be disappointed yet again
+T 1600254566 18<garrett18>	(the pre-releases didn't work with Cockpit still, so this probably won't either)
+T 1600254747 18<kkoukiou18>	lis: garrett If you agree with the headings I would like to push the tag
+T 1600254759 18<lis18>	kkoukiou: i think it's fine how it is :)
+T 1600254939 18<kkoukiou18>	lis: danke
+T 1600254953 18<lis18>	kkoukiou: how's your german these days, btw?
+T 1600255004 18<kkoukiou18>	lis: Es geht :D
+T 1600255013 18<lis18>	jot :)
+T 1600255015 18<kkoukiou18>	lis: Ich fange wieder mit einem Kurs an
+T 1600255022 18<kkoukiou18>	:D
+T 1600255145 18<lis18>	kkoukiou: probably i should go back to that at some point.... i live a good deal of my "real life"/family life in german at this point.. but my reading and writing is hopeless 🤣
+T 1600255262 18<kkoukiou18>	lis: I think when the kids start talking in german as well
+T 1600255271 18<kkoukiou18>	It going to be fixed :)
+T 1600255311 18<lis18>	they already do!
+T 1600255329 18<lis18>	david is insane... this kid knows some serious words at this point....
+T 1600255332 18<kkoukiou18>	lis: wait?! How old are they?
+T 1600255342 18<lis18>	2 and a month
+T 1600255368 18<kkoukiou18>	lis: ha Yes - then it makes sense.
+T 1600255376 18<kkoukiou18>	pitti: pushed the tag
+T 1600255426 18<lis18>	kkoukiou: i feel like they might be learning the same "german" as me, though, and it worries me a bit... when i travel outside of this city people start to have a hard time to understand me lol
+T 1600255450 18<lis18>	kkoukiou: what level is your course?
+T 1600255467 18<kkoukiou18>	lis: no idea - i have to do a placement test this week
+T 1600255509 18<lis18>	i guess you stopped during corona...
+T 1600255604 18<kkoukiou18>	lis: ja aber ich spreche sehr oft auf deutsch, fast jeder tag
+T 1600255609 18<lis18>	kkoukiou: i hope you do well :)  but main thing is that you're doing it at all!
+T 1600255634 18<kkoukiou18>	yeap!
+T 1600255649 18<lis18>	kkoukiou: ich find es komisch deutsch mit dir zu reden :D
+T 1600255679 18<kkoukiou18>	:)
+T 1600255699 18<lis18>	auch schriftlich, überhaupt
+T 1600255739 18<lis18>	good that we don't change the default cockpit language yet :D
+T 1600255970 18<garrett18>	kkoukiou: I was at lunch; I saw lis had some good suggestions about the release headings before I went to eat
+T 1600256011 18<kkoukiou18>	garrett: I already used lis suggestions and pushed the tag
+T 1600256012 18<kkoukiou18>	thanks
+T 1600256021 18<garrett18>	great!
+T 1600256595 18<pitti18>	kkoukiou: https://logs-https-cockpit.apps.ci.centos.org/logs/release-cockpit-228/log FYI
+T 1600256632 18<kkoukiou18>	Danke
+T 1600257988 18<kkoukiou18>	garrett: I just pushed to the PR fixing all the issus
+T 1600257996 18<garrett18>	kkoukiou: oh!
+T 1600258024 18<garrett18>	kkoukiou: I just rebased my button order swap thing to fix that issue too
+T 1600258064 18<kkoukiou18>	garrett: that fix is alerady included in the push I did 30 seconds ago
+T 1600258070 18<garrett18>	kkoukiou: I had a fix for some of those too, but I just used yours instead
+T 1600258071 18<kkoukiou18>	garrett: Plus the issues with the tables
+T 1600258073 18<kkoukiou18>	Snapsoht
+T 1600258082 18<garrett18>	yeah
+T 1600258084 18<garrett18>	I had fixes for those too
+T 1600258098 18<garrett18>	whoops
+T 1600258117 18<garrett18>	well, I'll try again then across browsers with your fixes instead of mine
+T 1600258525 18<garrett18>	kkoukiou: looks the same as before; that's good — your fixes and mine were super-similar, except that you removed the additional wrapper div and made it a <> </> too, which is great
+T 1600258542 18<garrett18>	ugh, still a problem with the terminal not sizing properly in WebKit for some reason
+T 1600258554 18<garrett18>	looks good in Chrome and Firefox though
+T 1600258554 18<kkoukiou18>	garrett: webkit is epiphany?
+T 1600258572 18<garrett18>	kkoukiou: yep, GNOME Web is Epiphany and is powered by WebKit
+T 1600258580 18<garrett18>	it's basically Safari for Linux
+T 1600258625 18<garrett18>	kkoukiou: this is a problem at moderate sizes — larger widths are fine, smaller widths make it one column and fine also
+T 1600258664 18<kkoukiou18>	garrett: actually on epiphany locally it works well
+T 1600258673 18<garrett18>	kkoukiou: yes, but what size?
+T 1600258675 18<kkoukiou18>	garrett: what screen size breaks it?
+T 1600258690 18<garrett18>	not sure; it's obvious when it breaks though
+T 1600258713 18<garrett18>	going to find out
+T 1600258732 18<garrett18>	oh even half-width of the screen breaks it
+T 1600258779 18<garrett18>	1280 window width?
+T 1600258818 18<kkoukiou18>	garrett: Hmm it still works here actually
+T 1600258831 18<garrett18>	1332px exactly
+T 1600258837 18<garrett18>	kkoukiou: really? on a running VM?
+T 1600258847 18<kkoukiou18>	garrett: no locally on epiphany
+T 1600258856 18<garrett18>	huh?
+T 1600258858 18<garrett18>	yes, epiphany
+T 1600258866 18<garrett18>	but is your VM running when you view the page?
+T 1600258878 18<kkoukiou18>	garrett: ah no
+T 1600258890 18<garrett18>	right, layout is fine unless the VM is running
+T 1600258897 18<garrett18>	it's the terminal not sizing properly
+T 1600258911 18<garrett18>	at least here; that's why I was suprised
+T 1600258924 18<kkoukiou18>	garrett: right - I see it - only the serial console
+T 1600258931 18<kkoukiou18>	garrett: vnc is fine
+T 1600258933 18<garrett18>	ah, ok
+T 1600258943 18<garrett18>	yeah, I only see a serial console for these VMs
+T 1600259023 18<garrett18>	OH WEIRD
+T 1600259038 18<garrett18>	I changed the gallery columns in WebKit and see the odd bug that pitti saw in the tests
+T 1600259152 18<kkoukiou18>	garrett: actually the issue is not only in webkit
+T 1600259159 18<kkoukiou18>	garrett: I see it in firefox as well
+T 1600259164 18<garrett18>	kkoukiou: really? I didn't see it in Firefox
+T 1600259167 18<garrett18>	or Chrome
+T 1600259234 18<garrett18>	ok, changing grid-column to be explicit for start as well as end
+T 1600259246 18<garrett18>	let's see if this really works after rebuilding and reloading
+T 1600259384 18<pitti18>	garrett: oh, so this was real after all? (not sure if I'm happy or not now)
+T 1600259399 18<garrett18>	pitti: I'm not sure, I was playing about in Safari and somehow triggered it
+T 1600259408 18<garrett18>	pitti: by messing with the CSS in the DOM live
+T 1600259433 18<garrett18>	haven't been able to re-trigger it
+T 1600259480 18<garrett18>	kkoukiou: oh, disks is breaking out of the list in WebKit too... perhaps I'm seeing the WebKit issue for the consoles as a result, as my VM has a LOT of information for disks and it doesn't wrap
+T 1600259495 18<garrett18>	so then it thinks there's more space for the console too
+T 1600259538 18<kkoukiou18>	garrett: It's because that terminal is broken and disks tab thinks there is more space and expands.
+T 1600259541 18<garrett18>	oh, it's a problem in Chrome too, but not as much
+T 1600259561 18<garrett18>	kkoukiou: right, but the other way around, I think
+T 1600259595 18<kkoukiou18>	garrett: Well you can easily check it by removing the whole node for consoles card
+T 1600259599 18<garrett18>	kkoukiou: either way, regardless of what's going too wide, something is going too wide and the other is following along, breaking the layout in Chrome and especially WebKit
+T 1600259603 18<kkoukiou18>	And see if the other one is fixed
+T 1600259635 18<garrett18>	good point; I hadn't tried it for disks; I did for snapshots earlier
+T 1600259647 18<garrett18>	but snapshots had other issues too
+T 1600259690 18<garrett18>	kkoukiou: I removed the console and there's still a problem with disks
+T 1600259700 18<garrett18>	at least in Safari
+T 1600259731 18<garrett18>	...and I removed disks and there's still a problem with console too
+T 1600259736 18<garrett18>	so I guess we're both right
+T 1600259790 18<pitti18>	kkoukiou: itz done! \o/ https://bodhi.fedoraproject.org/updates/?packages=cockpit
+T 1600259819 18<kkoukiou18>	pitti: wii - I will fix your comments then in the PR and repush with the bodhi URLs added
+T 1600259835 18<pitti18>	let's see how many gating tests will fail this time :)
+T 1600259835 18<kkoukiou18>	I was already trying to find my PF wanna solve issue s
+T 1600259849 18<pitti18>	kkoukiou: I can take over if you want to -- but thanks for holding the fort!
+T 1600259859 18<pitti18>	kkoukiou: I suppose you'll not be in today's meeting any more?
+T 1600259861 18<kkoukiou18>	pitti: no worries
+T 1600259875 18<kkoukiou18>	I will step by for a hey and bye
+T 1600259877 18<kkoukiou18>	heh
+T 1600260062 18<garrett18>	kkoukiou: thanks for the fixes on the PR today!
+T 1600260077 18<garrett18>	kkoukiou: and helping to debug this
+T 1600260088 18<kkoukiou18>	no worries
+T 1600260119 18<garrett18>	 perhaps I should just sidestep this and change the breakpoint
+T 1600260606 18<garrett18>	kkoukiou: ugh, this console is quite annoying; so many nested divs
+T 1600260613 18<garrett18>	kkoukiou: glad it works though
+T 1600260641 18<garrett18>	kkoukiou: resizing the page does so many odd things with it... I guess we just have to consider it broken when it's wrong on page load, not when resizing the page a bunch
+T 1600260657 18<garrett18>	pitti: ^^^ also to you
+T 1600260674 18<garrett18>	pitti: I think we need to consider it broken when it's wrong on page load, not as a result of resizing the page
+T 1600260802 18<kkoukiou18>	garrett: I am not sure if that's ok actually
+T 1600260809 18<kkoukiou18>	garrett: I often resize the page
+T 1600260817 18<garrett18>	really?
+T 1600260839 18<kkoukiou18>	garrett: Well I don't because I use i3 but I often open another application in the same window
+T 1600260841 18<garrett18>	kkoukiou: this console is way too buggy in text mode otherwise
+T 1600260846 18<kkoukiou18>	garrett: which resizes the page
+T 1600260848 18<garrett18>	ah, i3, right
+T 1600260871 18<garrett18>	using a tiling window manager is just broken though
+T 1600260878 18<garrett18>	(:
+T 1600260903 18<garrett18>	(it would break all sorts of apps, really; including Inkscape, GIMP, etc.)
+T 1600260959 18<garrett18>	but yeah, that's a bit problematic for this page
+T 1600260970 18<garrett18>	kkoukiou: however, it's not a regression over the old layout, right?
+T 1600260978 18<garrett18>	that would've still had this problem
+T 1600261053 18<kkoukiou18>	garrett: not sure tbh
+T 1600261120 18<pitti18>	garrett: FTR, it's not "tiled, period"; floating windows like dialogs are working perfectly well
+T 1600261149 18<garrett18>	pitti: ah, ok
+T 1600261162 18<garrett18>	pitti: still it would break apps like Inkscape and GIMP, so it's not for me
+T 1600261172 18<garrett18>	pitti: and darktable (on my personal laptop)
+T 1600261179 18<pitti18>	sure, I'm not trying to sell it to you :) (I'm using either quite fine, though)
+T 1600261190 18<garrett18>	ok
+T 1600261207 18<pitti18>	in my i3 config I had just one override for a window that should be floating, but wasn't marked properly
+T 1600261213 18<pitti18>	I think for the QEMU graphical console
+T 1600261221 18<garrett18>	I've fiddled with some tiling desktop extensions for GNOME and they seem kinda useful, but mainly in the "clean up my screen" manual mode
+T 1600261223 18<pitti18>	in sway I have none
+T 1600261262 18<garrett18>	ah, meeting time
+T 1600261264 18<garrett18>	brt
+T 1600261737 18<garrett18>	whoops; firefox crashed
+T 1600262452 18<croissanne18>	mvollmer: always worht a try joining the #libssh channel and ask for an update
+T 1600263486 18<pitti18>	andreasn: want to update the team meeting gdoc, to get into the habit?
+T 1600263491 18<pitti18>	andreasn: (next → last)
+T 1600263499 18<andreasn18>	yes!
+T 1600263507 18<andreasn18>	did that before this call, but will do again now
+T 1600263539 18<pitti18>	I usually do it right after, so that it's current when people add stuff, but your call of cours
+T 1600263550 18<andreasn18>	done
+T 1600263563 22*	26ChanServ gives channel operator status to 18pitti
+T 1600263594 22*	26pitti has changed the topic to: Development of Cockpit - https://cockpit-project.org/ - This sprint's Pilot: mvollmer <https://github.com/cockpit-project/cockpit/wiki/SprintPilot>
+T 1600263599 22*	26ChanServ removes channel operator status from 18pitti
+T 1600263616 18<pitti18>	mvollmer: ^ time to hand out a drink and little bags of pretzels
+T 1600263687 18<garrett18>	pitti: we should probably assign someone to fixing the terminal
+T 1600263700 18<garrett18>	pitti: the modifier issue is one problem, resizing is another
+T 1600263727 18<garrett18>	pitti: here's the modifier problem, and I wrote up how to work around it, complete with a design on how it would work implementation-wise
+T 1600263731 18<garrett18>	https://github.com/cockpit-project/cockpit/issues/14545
+T 1600266115 18<pitti18>	mmarusak, garrett, lis, skobyda: btw, I won't be in tomorrow's stand-up, I'll be in a train again; and I have PTO Fri/Mon
+T 1600266134 18<lis18>	pitti: enjoy your weekend :)  doing something nice?
+T 1600266143 18<garrett18>	pitti: have a great weekend!
+T 1600266162 18<pitti18>	lis: yes! spending a long weekend in the Spreewald with my parents in law
+T 1600266179 18<lis18>	pitti: have fun :)
+T 1600266183 18<pitti18>	danke!
+T 1600268115 18<garrett18>	pitti: oh, I can't create a VM on the VM page... it tries to create one in /var/lib/libvirt/images/centos.qcow2 — but isn't that readonly on Silverblue?
+T 1600268141 18<pitti18>	no, why would /var be read-only? it's whole purpose is to hold data
+T 1600268142 18<garrett18>	oh, it isn't readonly; just tested it...
+T 1600268151 18<pitti18>	if it is on your system, that'd..  okay :)
+T 1600268153 18<garrett18>	right, var
+T 1600268158 18<garrett18>	it's not working though,  still
+T 1600268163 18<pitti18>	SELinux?
+T 1600268166 18<garrett18>	Cannot access storage file '/var/lib/libvirt/images/centos.qcow2' (as uid:107, gid:107): No such file or directory
+T 1600268239 18<garrett18>	pitti: aha, I was in enforcing again
+T 1600268283 18<pitti18>	on rpm-based Fedora it should work (we test that in CI), maybe you can check the particular violation
+T 1600268291 18<pitti18>	it may need a restorecon /var/lib/libvirt or so
+T 1600268340 18<garrett18>	OH
+T 1600268341 18<garrett18>	wow
+T 1600268355 18<garrett18>	trying to auto-install centos stream 8 fails
+T 1600268363 18<garrett18>	I used spaces in my password and it didn't like that
+T 1600268380 18<pitti18>	kkoukiou: still going to send the release email, or shall I?
+T 1600268387 18<garrett18>	at least the layout works 100% with VNC
+T 1600268392 18<garrett18>	test mode is still buggy
+T 1600268409 18<garrett18>	but I think these changes I have locally are overall better
+T 1600268414 18<kkoukiou18>	pitti: Ah sorry - I fogot - I can do that of course
+T 1600268466 18<kkoukiou18>	pitti: I am heading quickly for training - mind if I do it tonigh?
+T 1600268481 18<pitti18>	kkoukiou: not at all, it's fine
+T 1600268485 18<pitti18>	enjoy!
+T 1600268725 18<garrett18>	oh, aspect ratio is hilarious sometimes
+T 1600268731 18<garrett18>	in the VNC console
+T 1600269535 18<garrett18>	oh, perhaps only in WebKit
+T 1600269841 18<garrett18>	OH
+T 1600269856 18<garrett18>	does WebKit not honor the inline-blocking CSP?
+T 1600319301 18<larsu18>	good morning! 🌤
+T 1600319516 18<mmarusak18>	Good morning :)
+T 1600321758 18<pitti18>	Good morning!
+T 1600322908 18<lis18>	moin moin
+T 1600322971 18<lis18>	Unpacking libglib2.0-dev:amd64 (2.66.0-1) over (2.64.4-1) ...
+T 1600322980 18<lis18>	that looks nice
+T 1600322996 18<lis18>	pitti: i guess we're getting our patch landing upstream soonish :)
+T 1600325648 18<pitti18>	lis: moin!
+T 1600326490 18<mmarusak18>	Hey pitti, you around or in a train?
+T 1600326511 18<pitti18>	mmarusak: I'm in a first-class seat in a train -- quite nice :)
+T 1600326532 18<mmarusak18>	fancy :)
+T 1600326565 18<pitti18>	and it cost me a whopping 0 EUR! :)
+T 1600326579 18<mmarusak18>	pitti, how come?
+T 1600326581 18*	pitti sighs at centos 8
+T 1600326598 18<pitti18>	mmarusak: we occasionally get sent some vouchers, and we used one of them
+T 1600326606 18<mmarusak18>	pitti, wanted to ask if you have some idea what should be in the time dropdown for perf. graphs. The mockup does not specify that and Garrett is not around
+T 1600326610 18<pitti18>	Annett and I are both very good customers :)
+T 1600326631 18<mmarusak18>	pitti, yeah, centos-8 went rather bad...
+T 1600326650 18<pitti18>	mmarusak: we don't have an API for enumerating for which times we have data available (that's another outstanding jira ticket)
+T 1600326672 18<pitti18>	mmarusak: so for now, my gut feeling is to start with the last 14 days?
+T 1600326700 18<pitti18>	we load 12 hour blocks (I think) by default, but nothing stops us from loading an entire day
+T 1600326714 18<pitti18>	and if you go back several days, then this is probably useful
+T 1600326763 18<mmarusak18>	pitti, so you mean to have there items ["now", "yesterday", 15/9/2020, 14/9/2020...]?
+T 1600326765 18<pitti18>	sssd.service: Main process exited, code=exited, status=3/NOTIMPLEMENTED
+T 1600326776 18<pitti18>	I still can't believe how utterly broken this all is
+T 1600326783 18<mmarusak18>	pitti, and then also having there some way how to specify exact day?
+T 1600326809 18<pitti18>	mmarusak: the former, yes; maybe a date picker too, but that can also be a follow-up
+T 1600326817 18<mmarusak18>	pitti, sshd.service - you got that on cOS8?
+T 1600326821 18<pitti18>	yes
+T 1600326824 18<pitti18>	sssd, not ssh
+T 1600326837 18<pitti18>	so the entire IdM stuff is broken, too
+T 1600328765 18<pitti18>	mvollmer: hmm, services image refresh is broken -- I'll leave that to you as pilot, and just hammer on the centos-8 refresh :)
+T 1600330025 18<mvollmer18>	pitti: roger!
+T 1600330072 18<mvollmer18>	pitti: where do you see the "services" failure?
+T 1600330652 18<pitti18>	mvollmer: https://github.com/cockpit-project/bots/issues?q=is%3Aissue+is%3Aopen+label%3Abot
+T 1600330681 18<pitti18>	mvollmer: they stay an issue until the image build succeeds, hten they are converted to PRs (where the tests often fail)
+T 1600330685 18<mvollmer18>	ah, in "issues"...
+T 1600330695 18<pitti18>	it's the "new sh*t* pipeline :)
+T 1600330702 18<mvollmer18>	make sense
+T 1600330705 18<mvollmer18>	*makes
+T 1600330745 18<pitti18>	I retried the rhel-8-3 image refresh too, but I'll leave landing to you as well
+T 1600331590 18<mvollmer18>	so when I want FreeIPA in a container, I have to decide which base os it should use?  And there is no obvious default?  What is that about?
+T 1600331746 18<pitti18>	mvollmer: ugh, there's no :latest any more?
+T 1600331756 18<mvollmer18>	doesn't look like it
+T 1600331787 18<pitti18>	mvollmer: so maybe "centos-8" isn't the worst default -- fedora:32 we'd have to bump rather often
+T 1600331813 18<mvollmer18>	but I mean, why do I even have the option of using a FreeIPA container made out of fedora-30?  Maybe I misunderstand things totally...
+T 1600331969 18<pitti18>	mvollmer: yeah, that's a bit stupid -- the whole idea of containers is that you don't care much how they are built..
+T 1600331997 18<pitti18>	:fedora and :centos I could still understand, but by fedora release is over the top
+T 1600332002 18<pitti18>	that may be worth a bug report
+T 1600332023 18<kkoukiou18>	ah sending the release email now
+T 1600332029 18<pitti18>	kkoukiou: wait
+T 1600332034 18<pitti18>	kkoukiou: PR isn't merged yet
+T 1600332042 18<kkoukiou18>	pitti: was about to check that first :)
+T 1600332048 18<mvollmer18>	oh, I need to review that
+T 1600332049 18<pitti18>	I did some updates this morning, but it should still get another review
+T 1600332074 18<kkoukiou18>	ok :) Then I will be around
+T 1600332077 18<kkoukiou18>	Good morning all
+T 1600332082 18<pitti18>	kalimera!
+T 1600332119 18<pitti18>	kkoukiou: flewn any patterns yet? how about a simple looping for starters?
+T 1600332185 18<kkoukiou18>	i actually did ;) their issues are simple - I only now trying to understand their testing
+T 1600332204 18<kkoukiou18>	pitti: They use jest - take a snapshot of the generated html and compare it with a static file
+T 1600332219 18<kkoukiou18>	Different approach than what we do
+T 1600332241 18<pitti18>	I suppose they need to be much more concerned about pixel perfection than we do
+T 1600332287 18<kkoukiou18>	pitti:true but that does not compare images but html so the problem of pixel perfection is still there :)
+T 1600332293 18<pitti18>	yeah, right
+T 1600332299 18<kkoukiou18>	Anyway :) Interesting it is
+T 1600332458 18<pitti18>	mvollmer, mmarusak: after we land the new graphs pages, the only remaining consumers of jquery-flot are the storage page and the dashboard
+T 1600332493 18<pitti18>	we may still kick out the dashboard entirely (maybe into a separate project, and then let it slowly wither and die), but I feel we should udpate the storage page
+T 1600332525 18<pitti18>	we could use https://www.patternfly.org/v4/documentation/react/charts/sparkline (with some hacks), or a simple progress bar like we have on the Overview page for CPU/memory, and then link to the graphs page for the history; WDYT?
+T 1600332530 18<pitti18>	I'm actually leaning towards the latter
+T 1600332531 18<andreasn18>	garrett: intructions for how to test the Smart patching PR https://github.com/cockpit-project/cockpit/pull/14581#issuecomment-692852552
+T 1600332553 18<garrett18>	andreasn: thanks
+T 1600332591 18<mmarusak18>	pitti, \o/ to dropping the jquery-plot. And agree that we should migrate storage page in the meantime and then "deal with" dashboard in one way or another
+T 1600332638 18<andreasn18>	garrett: I think for testing reboot, the fedora test image might have  a kernel update or something already, so if you "dnf install tracer" first, and then open Cockpit, I think you'll get that behavior
+T 1600332665 18<andreasn18>	but Simon pushed a lot of fixes for the branch the other day, so make sure to pull down his changes first
+T 1600332716 18<pitti18>	mvollmer: (same question for the networkmanager page)
+T 1600332877 18<mvollmer18>	what question?
+T 1600332994 18<mvollmer18>	pitti: hmm, maybe the freeipa baseos determines which version of FreeIPA you are getting...
+T 1600333006 18<pitti18>	mvollmer: sparkline vs. progress, and linking to the graphs page
+T 1600333020 18<pitti18>	mvollmer: not urgent, and not blocking right now, it just came to my mind
+T 1600333052 18<pitti18>	mvollmer: yeah, but we surely don't want something like fedora-29 there any more, it's not going to be updated
+T 1600333100 18<pitti18>	kkoukiou, garrett, mvollmer: release notes LGTM now -- time to land?
+T 1600333108 18<kkoukiou18>	pitti: Okay :)
+T 1600333112 18<mvollmer18>	pitti: yeah, I thought the container has latest FreeIPA release, installed into different OSes.
+T 1600333135 18<pitti18>	mvollmer: supposedly it's just dnf install freeipa-server, and then some config bits around it?
+T 1600333136 18<garrett18>	pitti: looking over them right now... but I have a 1:1 in 2 minutes
+T 1600333157 18<mvollmer18>	pitti: I guess you are right, what a weird thing to do.
+T 1600333162 18<pitti18>	garrett: ah thanks, then let's wait a bit
+T 1600333191 18<pitti18>	mvollmer: yeah, I don't understand it either -- like why do I care how they built it..
+T 1600333193 18*	mvollmer understands the world less and less...
+T 1600333221 18*	pitti is > 40 now as well, so more "being grumpy" rights
+T 1600333290 18<mvollmer18>	maybe they use the containers to easily test against the various supported versions of FreeIPA, then it makes sense
+T 1600333342 18<mvollmer18>	ab is right here, we could just ask him. :-)
+T 1600333388 18<pitti18>	if they use that for their own CI, that's fine -- but that's not the same as "what would real users pick"
+T 1600333534 18<kkoukiou18>	ls
+T 1600333541 18<kkoukiou18>	Ups sorry :)
+T 1600333586 18<mvollmer18>	anaconda-ks.cfg
+T 1600333595 18<mvollmer18>	what's my cwd? :-)
+T 1600333626 18<mvollmer18>	pitti: ah, there was an issue about it: https://github.com/freeipa/freeipa-container/issues/343
+T 1600333651 18<pitti18>	for you it's README.focus.md
+T 1600333654 18<mvollmer18>	looks like someone got burned using "latest" naively
+T 1600333660 18<mvollmer18>	*shrug*
+T 1600333666 18<mvollmer18>	kids these days
+T 1600333672 18<ab18>	mvollmer: if you want improvement, please submit a pull request that updates readme ;)
+T 1600333689 18<ab18>	but :latest is not going back
+T 1600333705 18<mvollmer18>	ab: I have no idea what's going on, so I don't think I should document what's going on.
+T 1600333751 18<mvollmer18>	ab: so which tag do you recommend for someone that was happy with "latest"?
+T 1600333759 18<ab18>	mvollmer: well, you can add a tag <:tag> and mention https://hub.docker.com/r/freeipa/freeipa-server/tags for tags
+T 1600333771 18<ab18>	mvollmer: I already answered that question on the ticket you opened ;)
+T 1600333780 18<ab18>	are you reading it? :)
+T 1600333833 18<mvollmer18>	yes, had to reload
+T 1600333858 18<mvollmer18>	so fedora-rawhide?
+T 1600333905 18<ab18>	I guess so, it would correspond to your intent, right?
+T 1600333915 18<mvollmer18>	let me ask in a different way, what was "latest" pointing to earlier?
+T 1600334012 18<pitti18>	rawhide should be okay -- we don't need to change the tag, and we won't be affected by random installability failures, as the container build process shields us from that
+T 1600334048 18<ab18>	current process is that we build containers, test them and if the tests succeeded, the containers get uploaded
+T 1600334054 18<ab18>	with corresponding tags
+T 1600334062 18<pitti18>	that sounds great
+T 1600334064 18<ab18>	before it was different
+T 1600334101 18<ab18>	https://github.com/freeipa/freeipa-container/commit/7e803c4fdf193bf6be458c45de13f0d565332333
+T 1600334108 18<ab18>	these are the images pushed
+T 1600334181 18<pitti18>	ab: so e.g. the centos-7 host would still only have centos-7's freeipa, not the latest upstream version, right?
+T 1600334188 18<ab18>	correct
+T 1600334191 18<pitti18>	i.e. the tag reflects what's inside, not what host OS to run it on
+T 1600334199 18<ab18>	they are using cotent from the os
+T 1600334203 18<ab18>	*content
+T 1600334211 18<ab18>	and always were
+T 1600334216 18<pitti18>	ack, thanks for confirming
+T 1600334222 18<pitti18>	so I think :fedora-rawhide is fine
+T 1600334272 18<pitti18>	they are gated, and it's the only stable tag name, and it has the most recent version so that we can spot regressions as early as possible
+T 1600334273 18<pitti18>	mvollmer: ^
+T 1600334859 18<mvollmer18>	roger, I agree
+T 1600336436 18<mvollmer18>	mmarusak: re https://github.com/cockpit-project/cockpit-podman/pull/537
+T 1600336448 18<mvollmer18>	mmarusak: do you need to reload the page when admin access level changes?
+T 1600336528 18<mvollmer18>	mmarusak: I guess the test proves that you do not, just checking whether you have considered that.
+T 1600336831 18<pitti18>	it properly listens to changes from superuser
+T 1600336873 18<mvollmer18>	right, very cool
+T 1600336890 18<mvollmer18>	but it did a page reload earlier, right?
+T 1600336976 18*	mvollmer -> brief errand
+T 1600340049 18*	mvollmer <- brief errand
+T 1600340252 18<pitti18>	mvollmer: now the errand is coming to you?
+T 1600340271 18<mvollmer18>	I am coming out of the errand...
+T 1600340271 18<mmarusak18>	mvollmer, now it does not reload the page, just thing disappear or reappear. Before I guess it didi page reload, it flickered
+T 1600340292 18<mvollmer18>	mmarusak: yeah, very nice!
+T 1600345403 18<kkoukiou18>	Can someone pls merge https://github.com/patternfly/patternfly-react/issues/3090
+T 1600345416 18<kkoukiou18>	I don't have permissions in that reposiotry
+T 1600345690 18<andreasn18>	kkoukiou: wrong URL?
+T 1600345711 18<andreasn18>	that issue was closed Oct 14, 2019
+T 1600345713 18<kkoukiou18>	andreasn: ups sorry :F
+T 1600345714 18<kkoukiou18>	https://bodhi.fedoraproject.org/updates/FEDORA-2020-d185b2afc0
+T 1600345715 18<kkoukiou18>	https://github.com/cockpit-project/cockpit-project.github.io/pull/346
+T 1600345717 18<kkoukiou18>	Damn sorry
+T 1600345719 18<kkoukiou18>	the last one
+T 1600345740 18<kkoukiou18>	andreasn: It's just our blog post repo
+T 1600345745 18<andreasn18>	ah, right
+T 1600345751 18<andreasn18>	I think I have commit rights
+T 1600345801 18<andreasn18>	I'm too bad at git to figure out how to do it though :(
+T 1600345811 18<andreasn18>	do you want commit rights instead?
+T 1600345821 18<kkoukiou18>	andreasn: I just want to merge the PR
+T 1600345827 18<kkoukiou18>	andreasn: From the UI
+T 1600346069 18<andreasn18>	I don't see a button to merge either
+T 1600346120 18<andreasn18>	ah, now I see it
+T 1600346128 18<andreasn18>	"You’re not authorized to merge this pull request."
+T 1600346135 18<andreasn18>	maybe garrett is authorized?
+T 1600346188 18<garrett18>	nope
+T 1600346218 18<andreasn18>	also says Merging is blocked
+T 1600346233 18<garrett18>	andreasn: I think there's been an oversight somewhere, when pitti changed the settings on the website ages ago
+T 1600346238 18<andreasn18>	"The base branch restricts merging to authorized users."
+T 1600346246 18<andreasn18>	ah, ok
+T 1600346250 18<garrett18>	andreasn: I used to be, and so did others, but it seems only pitti can merge?
+T 1600346262 18<andreasn18>	hope he hasn
+T 1600346271 18<andreasn18>	hope he hasn't been hit by a bus over lunch
+T 1600346286 18<andreasn18>	because that would be a Bus Factor
+T 1600346298 18<garrett18>	yeah, that would not be good for several different reasons
+T 1600346338 18<andreasn18>	oh yes, of course! :)
+T 1600346420 18<garrett18>	andreasn: I still cannot get the tracer branch working
+T 1600346431 18<garrett18>	andreasn: it does an immediate install still
+T 1600346436 18<andreasn18>	garrett: what issues are you hitting?
+T 1600346445 18<garrett18>	I click the button, it immediately installs
+T 1600346454 18<garrett18>	isn't the branch supposed to do something?!
+T 1600346471 18<garrett18>	I ran the dnf command
+T 1600346477 18<andreasn18>	I think that is expected behavior. It gives a message about needing reboot or needing to restart services post install
+T 1600346491 18<garrett18>	oh, after a minute of it sitting there after saying "system is up to date", I get a badly placed warning
+T 1600346498 18<garrett18>	about rebooting
+T 1600346498 18<andreasn18>	that is the UI!
+T 1600346504 18<garrett18>	andreasn: this behavior is 100% wrong
+T 1600346513 18<garrett18>	as I said a few times already
+T 1600346522 18<garrett18>	it needs to be up-front about possible reboots
+T 1600346548 18<garrett18>	and immediately reboot after being done
+T 1600346579 18<garrett18>	it cannot run a mix-up of various packages updated on disk but not in memory; that can cause a false sense of security, data loss, and other issues
+T 1600346582 18<andreasn18>	oh, reboot right away after update? I think I disagree. You need time to find the update window, warn those that depend on any services on your system etc
+T 1600346585 18<garrett18>	(like crashing apps)
+T 1600346596 18<garrett18>	andreasn: huh?
+T 1600346604 18<garrett18>	andreasn: no, it needs to be known BEFORE updating
+T 1600346613 18<andreasn18>	right, that I agree with
+T 1600346618 18<garrett18>	if you update, it's already too late, as you have to reboot then
+T 1600346621 18<andreasn18>	but the reboot action must be in the hands of the sysadmin
+T 1600346653 18<garrett18>	again, if you update and it requires restarting things and/or rebooting, you need to know BEFORE, so you can take that into account
+T 1600346656 18<garrett18>	this is completely broken
+T 1600346671 18<garrett18>	there's also no way to reboot or anything either
+T 1600346686 18<garrett18>	this is supposed to be a flow, and now it isn't at all
+T 1600346711 18<andreasn18>	I think Simon did a good attempt, I am not mad at him for not getting this right. I hope you feel the same
+T 1600346724 18<garrett18>	I'm not mad
+T 1600346726 18<garrett18>	but this isn't right
+T 1600346759 18<garrett18>	it's nowhere near ready for merging and is a regression over what we already have (which isn't ideal, to be sure, but it at least has a flow and some guidance)
+T 1600346935 18<garrett18>	andreasn: what happened to https://raw.githubusercontent.com/cockpit-project/cockpit-design/master/software-updates/service-updates-no-reboot.png ?
+T 1600346974 18<andreasn18>	I think Simon was aware of those mockups, but ended up implementing it as a dialog instead
+T 1600347020 18<andreasn18>	you will get this behavior if you run the command I posted in the PR, where you first upgrade everything, install httpd and then downgrade it
+T 1600347027 18<garrett18>	right, so where's the dialog?
+T 1600347037 18<garrett18>	yes, but that's not working here
+T 1600347065 18<garrett18>	it's totally broken here on my machine, like I said, if I'm supposed to see a dialog or some way to restart the machine
+T 1600347085 18<garrett18>	I'm expecting to see something that looks something like the PR
+T 1600347093 18<garrett18>	I don't know why my VM isn't working
+T 1600347161 18<garrett18>	my point is that there's something wrong, as the command isn't working as expected
+T 1600347174 18<andreasn18>	do you get some messages in the console?
+T 1600347187 18<andreasn18>	I had a lot of issues before getting this to work
+T 1600347218 18<garrett18>	Nothing, Spawn, Object {...}, Required Reboot, Nothing 2, Required Reboot, Nothing 2
+T 1600347224 18<garrett18>	those are the lines I see
+T 1600347234 18<andreasn18>	Required Reboot is the correct line there
+T 1600347241 18<andreasn18>	so tracer is doing it's thing
+T 1600347276 18<andreasn18>	let me screenshot what I get her
+T 1600347279 18<andreasn18>	e
+T 1600347286 18<garrett18>	ok, then there's some kind of issue between tracer and the UI?
+T 1600347351 18<andreasn18>	yeah, could be. I had a lot of issues in the past
+T 1600347428 18<andreasn18>	what are the updates you get in the list of updates?
+T 1600347640 18<lis18>	all: no standup today, sorry.  conflicting meeting.
+T 1600347703 18<andreasn18>	garrett, mvollmer: standup?
+T 1600347745 18<garrett18>	I can't get bluejeans working
+T 1600348565 18<pitti18>	garrett, andreasn, kkoukiou: hmm, weird -- I thought everyone in cockpit-project had access
+T 1600348577 18<garrett18>	nope; it's weird
+T 1600348590 18<garrett18>	pitti: mmarusak is looking over it and fixing it
+T 1600348590 18<pitti18>	but it seems mmarusak  already merged, goog
+T 1600348592 18<pitti18>	god
+T 1600348837 18<pitti18>	mmarusak: hmm, this doesn't make sense to me;  https://github.com/cockpit-project/cockpit-project.github.io/settings/access?query=filter%3Ateams says "Comitters" has "maintain" access, which is more than enough
+T 1600348857 18<pitti18>	and https://github.com/orgs/cockpit-project/teams/committers/members has all of us, and more
+T 1600348859 18<mmarusak18>	pitti, I just bumbed it to maintain, it was write
+T 1600348885 18<mmarusak18>	pitti, I kind of feel like write should be enough, but lets see
+T 1600348990 18<pitti18>	mmarusak: hmm, but even write should be enough -- "push to this repo and manage PRs"
+T 1600348990 18<pitti18>	*shrug*
+T 1600348990 18<pitti18>	but github's ACLs have been a mess for a long time
+T 1600349456 18<pitti18>	kkoukiou: heh, your release mail links say 228 but link to 227 :)
+T 1600349456 18<pitti18>	kkoukiou: thanks for finishing it up!
+T 1600350063 18<mmarusak18>	andreasn, seems you got kicked out?
+T 1600350702 18<garrett18>	mmarusak: I was talking about something like "rpm -qf /usr/lib/systemd/system/* | sort -u" for a list of currently installed packages that have service files, for example
+T 1600350829 18<garrett18>	mmarusak: my point is that we're not installing or removing packages; we're upgrading them, so we can take a shortcut to determine if something needs to happen or not on the system _before_ the update
+T 1600350837 18<jiri18>	Hi, I have created some POC: https://github.com/candlepin/subscription-manager/pull/2324 ... I would like to have some feedback/suggestion from some UX designer ;-)
+T 1600350852 18<garrett18>	mmarusak: and then check afterword for 100% reliability
+T 1600350861 18<jiri18>	... you can find screenshot in the PR ^ :-)
+T 1600350869 18<jiri18>	*screenshots
+T 1600352247 18<garrett18>	andreasn: jiri had a new registration POC @ https://github.com/candlepin/subscription-manager/pull/2324
+T 1600352251 18<garrett18>	andreasn: <jiri> Hi, I have created some POC: https://github.com/candlepin/subscription-manager/pull/2324 ... I would like to have some feedback/suggestion from some UX designer ;-)
+T 1600352266 18<andreasn18>	cool, I'll check it out!
+T 1600352287 18<andreasn18>	wow, this is wonderful!
+T 1600357112 18<andreasn18>	kkoukiou: how does the release e-mail get created? Is it generated? It pointed to 227 stuff, even if it says 228
+T 1600357166 18<kkoukiou18>	andreasn: No I created
+T 1600357179 18<kkoukiou18>	 andreasn but its point to the correct
+T 1600357181 18<kkoukiou18>	Just checked
+T 1600357188 18<kkoukiou18>	Why you think it's 227?
+T 1600357230 18<andreasn18>	https://lists.fedoraproject.org/archives/list/server@lists.fedoraproject.org/thread/4NOYFA27AXSOM3TI2KPLDMSTQMIFRPKJ/
+T 1600357248 18<andreasn18>	ah, seems it has two URLs, and my e-mail client went with the one below
+T 1600357296 18<kkoukiou18>	andreasn: Oh gmail probably did something weird when I edited the likn
+T 1600357324 18<kkoukiou18>	and I did not notice because it's showing 228 only in my client
+T 1600357329 18<kkoukiou18>	sorry
+T 1600357330 18<andreasn18>	oh yeah, no problem. Mostly wanted to check we didn't have any machinery that broke
+T 1600357341 18<kkoukiou18>	andreasn: Nope
+T 1600357350 18<andreasn18>	but if it's written by hand, it's all good
+T 1600358693 18<andreasn18>	uh, having issues with the test images, I get ⬢[andreasn@toolbox test]$ ./image-prepare rhel-8-2
+T 1600358695 18<andreasn18>	image-download: image link does not exist: rhel-8-2
+T 1600358697 18<andreasn18>	image-prepare: unable to download all necessary images
+T 1600358772 18<mmarusak18>	andreasn, we dont support 8.2 anymore, just 8.3
+T 1600358777 18<andreasn18>	ah, I see
+T 1600358793 18<andreasn18>	thanks!
+T 1600359180 18<garrett18>	andreasn: wireframes & flow, with text around it @ https://github.com/cockpit-project/cockpit/pull/14616#issuecomment-694338647 (needs reboot/restart after software update)
+T 1600359322 18<andreasn18>	thanks!
+T 1600359356 18<andreasn18>	hm, in the wrong PR?
+T 1600359381 18<andreasn18>	this PR is titled "software: Improve visuals of updates-history and flow list"
+T 1600359632 18<garrett18>	...OH CRUD
+T 1600359636 18<garrett18>	I was trying to hurry
+T 1600359637 18<garrett18>	I'll fix
+T 1600359688 18<garrett18>	andreasn: thanks; fixed! https://github.com/cockpit-project/cockpit/pull/14581#issuecomment-694343571
+T 1600359712 18<andreasn18>	awesome, thank you!
+T 1600359745 18<andreasn18>	very nice with step 3
+T 1600359751 18<garrett18>	thanks!
+T 1600406015 18<lis18>	all: today is gonna end up being a sick day for me, at least for the morning...
+T 1600414508 18<mvollmer18>	pitti: do we have a centos-8 image?  Or only centos-8-stream?
+T 1600414530 18<mvollmer18>	I see the symlink in bots/images/centos-8, but the stores don't have it
+T 1600430400 18<mvollmer18>	pitti: what do we review for translation updates? just that they don't break the tests?
+T 1600430421 18<mvollmer18>	can't do more than that, I guess
+T 1600431846 18<andreasn18>	👋️
+T 1600434270 18<mvollmer18>	upps, missed it
+T 1609963182 19*	Now talking on 22#cockpit
+T 1609963182 22*	Topic for 22#cockpit is: Development of Cockpit - https://cockpit-project.org/ - PR #15000! 🎉 - This sprint's Pilot: mvollmer <https://github.com/cockpit-project/cockpit/wiki/SprintPilot>
+T 1609963182 22*	Topic for 22#cockpit set by 26pitti!~pitti@ubuntu/member/pitti (24Wed Dec  2 06:37:40 2020)

@@ -1,0 +1,502 @@
+T 1558696652 19*	Now talking on 22#oculus
+T 1558696652 22*	Topic for 22#oculus is: For help see #oculus-support | Rift setup: https://www.oculus.com/en-us/setup/
+T 1558696652 22*	Topic for 22#oculus set by 26__doc__!~pyalot@212-51-132-141.fiber7.init7.net (24Fri Apr 15 12:39:09 2016)
+T 1558697915 20*	Disconnected (20Connection timed out)
+T 1558697940 19*	Now talking on 22#oculus
+T 1558697940 22*	Topic for 22#oculus is: For help see #oculus-support | Rift setup: https://www.oculus.com/en-us/setup/
+T 1558697940 22*	Topic for 22#oculus set by 26__doc__!~pyalot@212-51-132-141.fiber7.init7.net (24Fri Apr 15 12:39:09 2016)
+T 1558699804 20*	Disconnected (20Connection timed out)
+T 1558699832 19*	Now talking on 22#oculus
+T 1558699832 22*	Topic for 22#oculus is: For help see #oculus-support | Rift setup: https://www.oculus.com/en-us/setup/
+T 1558699832 22*	Topic for 22#oculus set by 26__doc__!~pyalot@212-51-132-141.fiber7.init7.net (24Fri Apr 15 12:39:09 2016)
+T 1558700354 20*	Disconnected (20Connection reset by peer)
+T 1558700377 19*	Now talking on 22#oculus
+T 1558700377 22*	Topic for 22#oculus is: For help see #oculus-support | Rift setup: https://www.oculus.com/en-us/setup/
+T 1558700377 22*	Topic for 22#oculus set by 26__doc__!~pyalot@212-51-132-141.fiber7.init7.net (24Fri Apr 15 12:39:09 2016)
+T 1558702558 20*	Disconnected (20Connection timed out)
+T 1558702586 19*	Now talking on 22#oculus
+T 1558702586 22*	Topic for 22#oculus is: For help see #oculus-support | Rift setup: https://www.oculus.com/en-us/setup/
+T 1558702586 22*	Topic for 22#oculus set by 26__doc__!~pyalot@212-51-132-141.fiber7.init7.net (24Fri Apr 15 12:39:09 2016)
+T 1558703384 20*	Disconnected (20Connection reset by peer)
+T 1558703407 19*	Now talking on 22#oculus
+T 1558703407 22*	Topic for 22#oculus is: For help see #oculus-support | Rift setup: https://www.oculus.com/en-us/setup/
+T 1558703407 22*	Topic for 22#oculus set by 26__doc__!~pyalot@212-51-132-141.fiber7.init7.net (24Fri Apr 15 12:39:09 2016)
+T 1558707326 20*	Disconnected (20Connection timed out)
+T 1558707352 19*	Now talking on 22#oculus
+T 1558707352 22*	Topic for 22#oculus is: For help see #oculus-support | Rift setup: https://www.oculus.com/en-us/setup/
+T 1558707352 22*	Topic for 22#oculus set by 26__doc__!~pyalot@212-51-132-141.fiber7.init7.net (24Fri Apr 15 12:39:09 2016)
+T 1558710756 20*	Disconnected (20Connection timed out)
+T 1558710783 19*	Now talking on 22#oculus
+T 1558710783 22*	Topic for 22#oculus is: For help see #oculus-support | Rift setup: https://www.oculus.com/en-us/setup/
+T 1558710783 22*	Topic for 22#oculus set by 26__doc__!~pyalot@212-51-132-141.fiber7.init7.net (24Fri Apr 15 12:39:09 2016)
+T 1558711983 20*	Disconnected (20Connection timed out)
+T 1558712007 19*	Now talking on 22#oculus
+T 1558712007 22*	Topic for 22#oculus is: For help see #oculus-support | Rift setup: https://www.oculus.com/en-us/setup/
+T 1558712007 22*	Topic for 22#oculus set by 26__doc__!~pyalot@212-51-132-141.fiber7.init7.net (24Fri Apr 15 12:39:09 2016)
+T 1558712804 20*	Disconnected (20Connection reset by peer)
+T 1558712830 19*	Now talking on 22#oculus
+T 1558712830 22*	Topic for 22#oculus is: For help see #oculus-support | Rift setup: https://www.oculus.com/en-us/setup/
+T 1558712830 22*	Topic for 22#oculus set by 26__doc__!~pyalot@212-51-132-141.fiber7.init7.net (24Fri Apr 15 12:39:09 2016)
+T 1566829316 19*	Now talking on 22#oculus
+T 1566829316 22*	Topic for 22#oculus is: For help see #oculus-support | Rift setup: https://www.oculus.com/en-us/setup/
+T 1566829316 22*	Topic for 22#oculus set by 26__doc__!~pyalot@212-51-132-141.fiber7.init7.net (24Fri Apr 15 12:39:09 2016)
+T 1566943100 18<Sgeo_18>	Does Doc-Ok ever come here?
+T 1566943124 18<TheFatherMind18>	I am his secretary, would you like to leave a message?
+T 1566944106 18<bai18>	don't think doc-ok ever did, no.  __doc__ used to but he's a different person
+T 1566945444 18<Sgeo_18>	I think nVidia's 3D Vision Automatic documentation got the sign screwed up
+T 1566945456 18<Sgeo_18>	PsInput.x += Separation*(〖PsInput〗_w-Convergence)
+T 1566945466 18<Sgeo_18>	"while the current eye being rendered (left or right) will modify the sign of separation—positive for the left eye and negative for the right eye."
+T 1566945519 18<Sgeo_18>	https://www.nvidia.com/content/PDF/GDC2011/Stereoscopy.pdf on page 56 has a similar equation... exxcept the left eye is -1*sep
+T 1566945557 18<Sgeo_18>	Hmm now I think this presentation is different from one I was looking at earlier. Maybe I'll try to absorb this into my skull
+T 1568389386 19*	Now talking on 22#oculus
+T 1568389386 22*	Topic for 22#oculus is: For help see #oculus-support | Rift setup: https://www.oculus.com/en-us/setup/
+T 1568389386 22*	Topic for 22#oculus set by 26__doc__!~pyalot@212-51-132-141.fiber7.init7.net (24Fri Apr 15 12:39:09 2016)
+T 1568410462 18<TheFatherMind18>	toffe, we all are in our own way.  But I am sure you are awesome in other ways.
+T 1568418526 18<Sgeo_18>	Microsoft OpenXR does not currently support OpenGL >:(
+T 1578965947 19*	Now talking on 22#oculus
+T 1578965947 22*	Topic for 22#oculus is: For help see #oculus-support | Rift setup: https://www.oculus.com/en-us/setup/
+T 1578965947 22*	Topic for 22#oculus set by 26__doc__!~pyalot@212-51-132-141.fiber7.init7.net (24Fri Apr 15 12:39:09 2016)
+T 1579024349 20*	Disconnected (20Connection timed out)
+T 1579024376 19*	Now talking on 22#oculus
+T 1579024376 22*	Topic for 22#oculus is: For help see #oculus-support | Rift setup: https://www.oculus.com/en-us/setup/
+T 1579024376 22*	Topic for 22#oculus set by 26__doc__!~pyalot@212-51-132-141.fiber7.init7.net (24Fri Apr 15 12:39:09 2016)
+T 1579111190 20*	Disconnected (20Connection timed out)
+T 1579111215 19*	Now talking on 22#oculus
+T 1579111215 22*	Topic for 22#oculus is: For help see #oculus-support | Rift setup: https://www.oculus.com/en-us/setup/
+T 1579111215 22*	Topic for 22#oculus set by 26__doc__!~pyalot@212-51-132-141.fiber7.init7.net (24Fri Apr 15 12:39:09 2016)
+T 1579116384 18<Moike18>	bai, downloaded both my imgur accounts, about 4 gigs worth of data, looking to stand up SPGM again under my personal webspace and start hosting my own images once more.  I'll let know how that shakes out.
+T 1579116456 18<bai18>	nice.  yeah I grabbed a full export of mine a little while back...also 4gb and that number makes me slightly nervous :D
+T 1579116478 18<Moike18>	for me it means I need to organize my shit better
+T 1579116503 18<bai18>	I just wonder if it's actually all the data or if it's hitting a zip limit
+T 1579116530 18<bai18>	google takeout I think maxes at 4gb per file if you choose zip, 50gb per file if you choose tgz
+T 1579116547 18<bai18>	I don't recall imgur showing an option, they just gave me one big zip and claim it's everything
+T 1579116589 18<bai18>	reminds me, I started a google takeout download yesterday, I think I'm 2 of 3 50gb files in, better download the rest before they expire
+T 1579117352 18<Moike18>	mine seems to be intact
+T 1579117357 18<Moike18>	2,113 items in the zip
+T 1579117376 18<Moike18>	I did a spot check and stuff from my early days and as recent as yesterday are there
+T 1579117445 18<Moike18>	which just reminded me to move both these over to the shop storage vault
+T 1579219611 20*	Disconnected (20Connection timed out)
+T 1579219640 19*	Now talking on 22#oculus
+T 1579219640 22*	Topic for 22#oculus is: For help see #oculus-support | Rift setup: https://www.oculus.com/en-us/setup/
+T 1579219640 22*	Topic for 22#oculus set by 26__doc__!~pyalot@212-51-132-141.fiber7.init7.net (24Fri Apr 15 12:39:09 2016)
+T 1579222616 20*	Disconnected (20Connection timed out)
+T 1579222645 19*	Now talking on 22#oculus
+T 1579222645 22*	Topic for 22#oculus is: For help see #oculus-support | Rift setup: https://www.oculus.com/en-us/setup/
+T 1579222645 22*	Topic for 22#oculus set by 26__doc__!~pyalot@212-51-132-141.fiber7.init7.net (24Fri Apr 15 12:39:09 2016)
+T 1579249772 20*	Disconnected (20Connection timed out)
+T 1579266938 19*	Now talking on 22#oculus
+T 1579266938 22*	Topic for 22#oculus is: For help see #oculus-support | Rift setup: https://www.oculus.com/en-us/setup/
+T 1579266938 22*	Topic for 22#oculus set by 26__doc__!~pyalot@212-51-132-141.fiber7.init7.net (24Fri Apr 15 12:39:09 2016)
+T 1579535657 18<jiffe18>	I just opened up oculus, I haven't opened it in a while and I have a persistent message on the screen that dk2 isn't supported.  I have a dk2 but it isn't plugged in, I'm using my standard rift and I can't get rid of this message
+T 1579536027 18<jiffe18>	ok I found it under devices and removing the dk2 from there cleared it up
+T 1579929714 19*	Now talking on 22#oculus
+T 1579929714 22*	Topic for 22#oculus is: For help see #oculus-support | Rift setup: https://www.oculus.com/en-us/setup/
+T 1579929714 22*	Topic for 22#oculus set by 26__doc__!~pyalot@212-51-132-141.fiber7.init7.net (24Fri Apr 15 12:39:09 2016)
+T 1580271572 18<bai18>	Moike: any chance you're interested in doing anything at DNA Lounge for Cyberdelia next month?
+T 1580271580 18<Moike18>	Hmm
+T 1580271674 18<Moike18>	Oh it's actually on a Friday, nice.
+T 1580271706 18<Moike18>	What's Jamie thinking?
+T 1580271824 18<Moike18>	Shame Wipeout Omega is PSVR only
+T 1580271894 18<bai18>	well he was wonderingbif we could do the same sort of thing as last time, unfortunately as much as I'd love to I just can't really justify it right now, but I told him I'd ask around
+T 1580271925 18<Moike18>	I honestly don't know what I'd demo that can't just be demo'ed on a Oculus Quest
+T 1580271994 18<bai18>	yeah my line of thinking was "I couod make a custom wipeout vr experience!  ehhh....or maybe just some quests with beat saber..."
+T 1580272011 18<bai18>	your dance floor with beat saber is always a crowd pleaser
+T 1580272018 18<Moike18>	can you imagine
+T 1580272022 18<Moike18>	hauling one of those floors
+T 1580272025 18<Moike18>	up those stairs?
+T 1580272070 18<bai18>	haha I was trying to decide if that woupd be easier or harder than the chairs :D
+T 1580272122 18<bai18>	I wish I still had a job that could fund stuff like this
+T 1580272124 18<bai18>	...or at all
+T 1580630309 18<S|h|a|w|n18>	howdy
+T 1580630322 18<S|h|a|w|n18>	anyone here familiar with steamvr?
+T 1580630373 18<TheFatherMind18>	Just ask
+T 1580630688 18<S|h|a|w|n18>	will tomorrow, need to sleep
+T 1580630689 18<S|h|a|w|n18>	sorry
+T 1580631598 18<bai18>	I've heard of it before, but I'm glad he's giving us time to prepare our reports
+T 1580631631 18<TheFatherMind18>	LOL!
+T 1580658366 19*	Now talking on 22#oculus
+T 1580658366 22*	Topic for 22#oculus is: For help see #oculus-support | Rift setup: https://www.oculus.com/en-us/setup/
+T 1580658366 22*	Topic for 22#oculus set by 26__doc__!~pyalot@212-51-132-141.fiber7.init7.net (24Fri Apr 15 12:39:09 2016)
+T 1580740835 19*	Now talking on 22#oculus
+T 1580740835 22*	Topic for 22#oculus is: For help see #oculus-support | Rift setup: https://www.oculus.com/en-us/setup/
+T 1580740835 22*	Topic for 22#oculus set by 26__doc__!~pyalot@212-51-132-141.fiber7.init7.net (24Fri Apr 15 12:39:09 2016)
+T 1580831669 19*	Now talking on 22#oculus
+T 1580831669 22*	Topic for 22#oculus is: For help see #oculus-support | Rift setup: https://www.oculus.com/en-us/setup/
+T 1580831669 22*	Topic for 22#oculus set by 26__doc__!~pyalot@212-51-132-141.fiber7.init7.net (24Fri Apr 15 12:39:09 2016)
+T 1580914595 19*	Now talking on 22#oculus
+T 1580914595 22*	Topic for 22#oculus is: For help see #oculus-support | Rift setup: https://www.oculus.com/en-us/setup/
+T 1580914595 22*	Topic for 22#oculus set by 26__doc__!~pyalot@212-51-132-141.fiber7.init7.net (24Fri Apr 15 12:39:09 2016)
+T 1580948686 20*	Disconnected (20Connection reset by peer)
+T 1580948714 19*	Now talking on 22#oculus
+T 1580948714 22*	Topic for 22#oculus is: For help see #oculus-support | Rift setup: https://www.oculus.com/en-us/setup/
+T 1580948714 22*	Topic for 22#oculus set by 26__doc__!~pyalot@212-51-132-141.fiber7.init7.net (24Fri Apr 15 12:39:09 2016)
+T 1580999372 19*	Now talking on 22#oculus
+T 1580999372 22*	Topic for 22#oculus is: For help see #oculus-support | Rift setup: https://www.oculus.com/en-us/setup/
+T 1580999372 22*	Topic for 22#oculus set by 26__doc__!~pyalot@212-51-132-141.fiber7.init7.net (24Fri Apr 15 12:39:09 2016)
+T 1581087418 19*	Now talking on 22#oculus
+T 1581087418 22*	Topic for 22#oculus is: For help see #oculus-support | Rift setup: https://www.oculus.com/en-us/setup/
+T 1581087418 22*	Topic for 22#oculus set by 26__doc__!~pyalot@212-51-132-141.fiber7.init7.net (24Fri Apr 15 12:39:09 2016)
+T 1581107952 20*	Disconnected (20Invalid argument)
+T 1581123603 19*	Now talking on 22#oculus
+T 1581123603 22*	Topic for 22#oculus is: For help see #oculus-support | Rift setup: https://www.oculus.com/en-us/setup/
+T 1581123603 22*	Topic for 22#oculus set by 26__doc__!~pyalot@212-51-132-141.fiber7.init7.net (24Fri Apr 15 12:39:09 2016)
+T 1581137248 19*	Now talking on 22#oculus
+T 1581137248 22*	Topic for 22#oculus is: For help see #oculus-support | Rift setup: https://www.oculus.com/en-us/setup/
+T 1581137248 22*	Topic for 22#oculus set by 26__doc__!~pyalot@212-51-132-141.fiber7.init7.net (24Fri Apr 15 12:39:09 2016)
+T 1581139019 19*	Now talking on 22#oculus
+T 1581139019 22*	Topic for 22#oculus is: For help see #oculus-support | Rift setup: https://www.oculus.com/en-us/setup/
+T 1581139019 22*	Topic for 22#oculus set by 26__doc__!~pyalot@212-51-132-141.fiber7.init7.net (24Fri Apr 15 12:39:09 2016)
+T 1581139709 19*	Now talking on 22#oculus
+T 1581139709 22*	Topic for 22#oculus is: For help see #oculus-support | Rift setup: https://www.oculus.com/en-us/setup/
+T 1581139709 22*	Topic for 22#oculus set by 26__doc__!~pyalot@212-51-132-141.fiber7.init7.net (24Fri Apr 15 12:39:09 2016)
+T 1581177805 19*	Now talking on 22#oculus
+T 1581177805 22*	Topic for 22#oculus is: For help see #oculus-support | Rift setup: https://www.oculus.com/en-us/setup/
+T 1581177805 22*	Topic for 22#oculus set by 26__doc__!~pyalot@212-51-132-141.fiber7.init7.net (24Fri Apr 15 12:39:09 2016)
+T 1581284303 22*	26weber.freenode.net gives channel operator status to 18ChanServ
+T 1581347611 19*	Now talking on 22#oculus
+T 1581347611 22*	Topic for 22#oculus is: For help see #oculus-support | Rift setup: https://www.oculus.com/en-us/setup/
+T 1581347611 22*	Topic for 22#oculus set by 26__doc__!~pyalot@212-51-132-141.fiber7.init7.net (24Fri Apr 15 12:39:09 2016)
+T 1581394300 19*	Now talking on 22#oculus
+T 1581394300 22*	Topic for 22#oculus is: For help see #oculus-support | Rift setup: https://www.oculus.com/en-us/setup/
+T 1581394300 22*	Topic for 22#oculus set by 26__doc__!~pyalot@212-51-132-141.fiber7.init7.net (24Fri Apr 15 12:39:09 2016)
+T 1581395024 19*	Now talking on 22#oculus
+T 1581395024 22*	Topic for 22#oculus is: For help see #oculus-support | Rift setup: https://www.oculus.com/en-us/setup/
+T 1581395024 22*	Topic for 22#oculus set by 26__doc__!~pyalot@212-51-132-141.fiber7.init7.net (24Fri Apr 15 12:39:09 2016)
+T 1581404482 19*	Now talking on 22#oculus
+T 1581404482 22*	Topic for 22#oculus is: For help see #oculus-support | Rift setup: https://www.oculus.com/en-us/setup/
+T 1581404482 22*	Topic for 22#oculus set by 26__doc__!~pyalot@212-51-132-141.fiber7.init7.net (24Fri Apr 15 12:39:09 2016)
+T 1581459723 19*	Now talking on 22#oculus
+T 1581459723 22*	Topic for 22#oculus is: For help see #oculus-support | Rift setup: https://www.oculus.com/en-us/setup/
+T 1581459723 22*	Topic for 22#oculus set by 26__doc__!~pyalot@212-51-132-141.fiber7.init7.net (24Fri Apr 15 12:39:09 2016)
+T 1581533781 19*	Now talking on 22#oculus
+T 1581533781 22*	Topic for 22#oculus is: For help see #oculus-support | Rift setup: https://www.oculus.com/en-us/setup/
+T 1581533781 22*	Topic for 22#oculus set by 26__doc__!~pyalot@212-51-132-141.fiber7.init7.net (24Fri Apr 15 12:39:09 2016)
+T 1581542039 22*	26tolkien.freenode.net gives channel operator status to 18ChanServ
+T 1581737971 19*	Now talking on 22#oculus
+T 1581737971 22*	Topic for 22#oculus is: For help see #oculus-support | Rift setup: https://www.oculus.com/en-us/setup/
+T 1581737971 22*	Topic for 22#oculus set by 26__doc__!~pyalot@212-51-132-141.fiber7.init7.net (24Fri Apr 15 12:39:09 2016)
+T 1581772667 18<porky1118>	hi, I'm trying to get one of the native samples running for oculus quest
+T 1581773286 18<porky1118>	any idea, how to get this done?
+T 1581773302 18<porky1118>	when I select the sdk directory, and try to build, it says this:
+T 1581773316 18<porky1118>	Task 'assemble' not found in root project 'OculusRoot'.
+T 1581773347 18<porky1118>	and when selecting a subdirectory, I don't get the option to build
+T 1581773380 18<porky1118>	hi |3b|, you here? :)
+T 1581816249 19*	Now talking on 22#oculus
+T 1581816249 22*	Topic for 22#oculus is: For help see #oculus-support | Rift setup: https://www.oculus.com/en-us/setup/
+T 1581816249 22*	Topic for 22#oculus set by 26__doc__!~pyalot@212-51-132-141.fiber7.init7.net (24Fri Apr 15 12:39:09 2016)
+T 1581908055 19*	Now talking on 22#oculus
+T 1581908055 22*	Topic for 22#oculus is: For help see #oculus-support | Rift setup: https://www.oculus.com/en-us/setup/
+T 1581908055 22*	Topic for 22#oculus set by 26__doc__!~pyalot@212-51-132-141.fiber7.init7.net (24Fri Apr 15 12:39:09 2016)
+T 1582037380 19*	Now talking on 22#oculus
+T 1582037380 22*	Topic for 22#oculus is: For help see #oculus-support | Rift setup: https://www.oculus.com/en-us/setup/
+T 1582037380 22*	Topic for 22#oculus set by 26__doc__!~pyalot@212-51-132-141.fiber7.init7.net (24Fri Apr 15 12:39:09 2016)
+T 1582090871 19*	Now talking on 22#oculus
+T 1582090871 22*	Topic for 22#oculus is: For help see #oculus-support | Rift setup: https://www.oculus.com/en-us/setup/
+T 1582090871 22*	Topic for 22#oculus set by 26__doc__!~pyalot@212-51-132-141.fiber7.init7.net (24Fri Apr 15 12:39:09 2016)
+T 1582122272 19*	Now talking on 22#oculus
+T 1582122272 22*	Topic for 22#oculus is: For help see #oculus-support | Rift setup: https://www.oculus.com/en-us/setup/
+T 1582122272 22*	Topic for 22#oculus set by 26__doc__!~pyalot@212-51-132-141.fiber7.init7.net (24Fri Apr 15 12:39:09 2016)
+T 1582259791 19*	Now talking on 22#oculus
+T 1582259791 22*	Topic for 22#oculus is: For help see #oculus-support | Rift setup: https://www.oculus.com/en-us/setup/
+T 1582259791 22*	Topic for 22#oculus set by 26__doc__!~pyalot@212-51-132-141.fiber7.init7.net (24Fri Apr 15 12:39:09 2016)
+T 1582299300 19*	Now talking on 22#oculus
+T 1582299300 22*	Topic for 22#oculus is: For help see #oculus-support | Rift setup: https://www.oculus.com/en-us/setup/
+T 1582299300 22*	Topic for 22#oculus set by 26__doc__!~pyalot@212-51-132-141.fiber7.init7.net (24Fri Apr 15 12:39:09 2016)
+T 1582346384 18<jin18>	so Moike
+T 1582346392 18<jin18>	whatcha think so far of the decentraland metaverse? :P
+T 1582346446 18<jin18>	did you know that farm won first place at a hackathon? ~50k USD was the top prize
+T 1582347455 18<Moike18>	EH?
+T 1582347459 18<Moike18>	...eh
+T 1582347466 18<Moike18>	I was actually just exploring it
+T 1582347469 18<Moike18>	pretty empty so far
+T 1582348108 18<bai18>	heh
+T 1582348116 18<bai18>	n o   c o m m e n t
+T 1582357932 18<jin18>	Moike yep
+T 1582357995 18<jin18>	12M, 40+ employees, few years
+T 1582358015 18<jin18>	gee whiz
+T 1582358578 18<jin18>	https://medium.com/decentraland/introducing-the-decentraland-team-3071f7c947a
+T 1582358650 18<jin18>	I'm organizing a field trip event through all these blockchain virtual worlds btw
+T 1582358689 18<jin18>	https://github.com/M3-org/proposals/issues/9 if interested leave a comment, will prob be sometime in next couple weeks
+T 1582377903 19*	Now talking on 22#oculus
+T 1582377903 22*	Topic for 22#oculus is: For help see #oculus-support | Rift setup: https://www.oculus.com/en-us/setup/
+T 1582377903 22*	Topic for 22#oculus set by 26__doc__!~pyalot@212-51-132-141.fiber7.init7.net (24Fri Apr 15 12:39:09 2016)
+T 1582417363 18<Moike18>	I did find it a pretty good jab that Sonium decided to release on the exact same day as DCL
+T 1582417413 18<Moike18>	I'm fine regardless, the MANA and LAND I hold are worth considerably more than I paid ages ago.
+T 1582470570 18<rita7818>	Hi, does Oculus Quest bought on the oculus website come with hand-tracking?
+T 1582490449 18<rita7818>	hi
+T 1582490546 18<TheFatherMind-18>	I am pretty sure that all Oculus Quests come with the hand controllers.
+T 1582490572 22*	26hitchcock.freenode.net gives channel operator status to 18ChanServ
+T 1582492651 22*	26hitchcock.freenode.net gives channel operator status to 18ChanServ
+T 1582595587 19*	Now talking on 22#oculus
+T 1582595587 22*	Topic for 22#oculus is: For help see #oculus-support | Rift setup: https://www.oculus.com/en-us/setup/
+T 1582595587 22*	Topic for 22#oculus set by 26__doc__!~pyalot@212-51-132-141.fiber7.init7.net (24Fri Apr 15 12:39:09 2016)
+T 1582724105 19*	Now talking on 22#oculus
+T 1582724105 22*	Topic for 22#oculus is: For help see #oculus-support | Rift setup: https://www.oculus.com/en-us/setup/
+T 1582724105 22*	Topic for 22#oculus set by 26__doc__!~pyalot@212-51-132-141.fiber7.init7.net (24Fri Apr 15 12:39:09 2016)
+T 1582781939 18<Moike18>	bai, jin, awake?
+T 1582781975 18<bai18>	sup Moike
+T 1582781989 18<Moike18>	so, remember back on the 5th how I got a couple molars yanked?
+T 1582782003 18<bai18>	oh, I think I missed that actually
+T 1582782015 18<Moike18>	two teeth pulled, lower right jaw
+T 1582782025 18<Moike18>	well, that went as well as it could have, felt fine when I left
+T 1582782026 18<bai18>	ouch
+T 1582782043 18<Moike18>	about 4 hours later at the shop, stood up at my desk, vision went dark, felt dizzy, ears started ringing
+T 1582782055 18<Moike18>	like when you stand up too fast and feel like you're going to faint
+T 1582782056 18<bai18>	uh oh
+T 1582782070 18<Moike18>	when my vision came back everything from 6 to 9 on the clock in my left eye was just a grey sparkly mess
+T 1582782078 18<bai18>	woah
+T 1582782079 18<Moike18>	like a broken monitor
+T 1582782097 18<bai18>	o_O
+T 1582782105 18<Moike18>	didn't go away after like 30 minutes, so I took an Uber to Kaiser, described my symptoms to them, and they thought I was having a stroke
+T 1582782115 18<bai18>	that was my first thought...
+T 1582782118 18<Moike18>	so I got to meet like 20 people in the span of 5 minutes, one via a robot
+T 1582782140 18<Moike18>	no big stroke as far as they could tell, I felt fine, I could think and move, just my vision was fucked in my left eye
+T 1582782183 18<Moike18>	so they CT me, ultrasound, and the on call ER optomologist comes down and spends an hour dilating and staring at my retinas
+T 1582782188 18<Moike18>	but she can't find anything wrong
+T 1582782210 18<Moike18>	so the last couple weeks have been MRIs, EKGs, ultrasounds, CTs, bloodwork, etc...
+T 1582782215 18<Moike18>	as they try to figure out what the fuck happened
+T 1582782218 18<bai18>	oh man
+T 1582782229 18<Moike18>	vision is like 99% back in my left eye at this point
+T 1582782250 18<bai18>	that's scary, but good to hear it's going back to normal
+T 1582782337 18<Moike18>	their best guess is either something got knocked loose and stuck somewhere it shouldn't have when my teeth were being pulled, or something burst from all the novocaine and stress
+T 1582782358 18<Moike18>	but they don't know if it was in the brain, eye, or somewhere in between
+T 1582782379 18<bai18>	I was worried you were gonna say blood or nerve infection from the tooth extraction
+T 1582782466 18<bai18>	I guess it makes sense for it to be your left eye given that your brain hemispheres are swapped when it comes to vision processing
+T 1582782581 18<Moike18>	So while they're figuring all this out I'm taking a much needed break from VR work.
+T 1582782627 18<bai18>	yeah that seems wise :D
+T 1582783163 18<bai18>	now the important question, did you get to keep any of the 3d scans od your head?
+T 1582783169 18<bai18>	of*
+T 1582783179 18<Moike18>	CD should be ready for pick up soon.
+T 1582783190 18<Moike18>	So I can drop that into poly and do a show in WaveXR inside my own head.
+T 1582783201 18<bai18>	haha nice
+T 1582783732 18<Moike18>	would pair well with Zombie by the Cranberries
+T 1582784172 18<jin18>	wow, glad ur okay
+T 1582784689 18<Moike18>	That remains to be seen
+T 1582784696 18<Moike18>	know more once Kaiser gets around to figuring shit out
+T 1582784744 18<Moike18>	The good news is if it's a stroke, clot, or aneurysm ready to hit me, I'll feel just fine till I don't.
+T 1582784996 18<bai18>	strokes are scary stuff.  my grandma's had a few, but she's still sharp as a tack...my mother in law hasn't been so lucky
+T 1582785021 18<bai18>	it's just complete luck of the draw where the blood clot ends up
+T 1582785540 18<bai18>	glad to hear everything's looking clear so far and that things are returning to normal though
+T 1582809798 20*	Disconnected (20Connection timed out)
+T 1582809825 19*	Now talking on 22#oculus
+T 1582809825 22*	Topic for 22#oculus is: For help see #oculus-support | Rift setup: https://www.oculus.com/en-us/setup/
+T 1582809825 22*	Topic for 22#oculus set by 26__doc__!~pyalot@212-51-132-141.fiber7.init7.net (24Fri Apr 15 12:39:09 2016)
+T 1582862099 19*	Now talking on 22#oculus
+T 1582862099 22*	Topic for 22#oculus is: For help see #oculus-support | Rift setup: https://www.oculus.com/en-us/setup/
+T 1582862099 22*	Topic for 22#oculus set by 26__doc__!~pyalot@212-51-132-141.fiber7.init7.net (24Fri Apr 15 12:39:09 2016)
+T 1583090311 22*	26cherryh.freenode.net gives channel operator status to 18ChanServ
+T 1583552949 19*	Now talking on 22#oculus
+T 1583552949 22*	Topic for 22#oculus is: For help see #oculus-support | Rift setup: https://www.oculus.com/en-us/setup/
+T 1583552949 22*	Topic for 22#oculus set by 26__doc__!~pyalot@212-51-132-141.fiber7.init7.net (24Fri Apr 15 12:39:09 2016)
+T 1584235073 18<awffafawf18>	Is this a good moment to buy a VR headset? What's the best headset? I have a GTX 1070, will that be enough?
+T 1584625662 19*	Now talking on 22#oculus
+T 1584625662 22*	Topic for 22#oculus is: For help see #oculus-support | Rift setup: https://www.oculus.com/en-us/setup/
+T 1584625662 22*	Topic for 22#oculus set by 26__doc__!~pyalot@212-51-132-141.fiber7.init7.net (24Fri Apr 15 12:39:09 2016)
+T 1584985069 20*	Disconnected (20Connection reset by peer)
+T 1584985093 19*	Now talking on 22#oculus
+T 1584985093 22*	Topic for 22#oculus is: For help see #oculus-support | Rift setup: https://www.oculus.com/en-us/setup/
+T 1584985093 22*	Topic for 22#oculus set by 26__doc__!~pyalot@212-51-132-141.fiber7.init7.net (24Fri Apr 15 12:39:09 2016)
+T 1585016145 18<Moike18>	Jumping back in to HLA - https://www.facebook.com/MoikeTheSquid/videos/10217921131472291/
+T 1585057754 19*	Now talking on 22#oculus
+T 1585057754 22*	Topic for 22#oculus is: For help see #oculus-support | Rift setup: https://www.oculus.com/en-us/setup/
+T 1585057754 22*	Topic for 22#oculus set by 26__doc__!~pyalot@212-51-132-141.fiber7.init7.net (24Fri Apr 15 12:39:09 2016)
+T 1585403303 19*	Now talking on 22#oculus
+T 1585403303 22*	Topic for 22#oculus is: For help see #oculus-support | Rift setup: https://www.oculus.com/en-us/setup/
+T 1585403303 22*	Topic for 22#oculus set by 26__doc__!~pyalot@212-51-132-141.fiber7.init7.net (24Fri Apr 15 12:39:09 2016)
+T 1585902186 18<Moike18>	quest version of Button using PhysX is up - http://quest.brainfizz.net
+T 1585902525 18<bai18>	nice, I'll check it out
+T 1585903098 18<bai18>	pretty solid, up until the point where I punched a glass of water off my desk :D
+T 1585903330 18<Moike18>	Well, obviously I need to add a ToS
+T 1585903337 18<bai18>	haha
+T 1585903353 18<bai18>	yeah I'd certainly have read it :P
+T 1585903448 18<Moike18>	I need to wrap them both in Amplify and add a splash screen with a bit of glue that detects what browser your coming from so I can send Quest users to the quest build, and PCVR users to the standard build.
+T 1585903533 18<bai18>	I'm not entirely sure that I solved the 4x3 button puzzle, I think I may have confused the state machine by pushing a bunch of buttons at once :D
+T 1585903562 18<bai18>	it told me WRONG. and reset the puzzle, but also unlocked the next one
+T 1585903642 18<bai18>	one question, does sumerian support 3d audio, and are you using it?
+T 1585903768 18<Moike18>	Yeah, it's easy to tie the state machine in a knot if you brute force it
+T 1585903785 18<Moike18>	Oddly enough Something Has Changed in the audio engine, I spent a couple hours on that tonight
+T 1585903804 18<Moike18>	I had to take all my 3D audio out, and set all my audio clips to 0.5 volume
+T 1585903811 18<bai18>	ah, damn
+T 1585903812 18<Moike18>	So my sound is off, I filed a bug with AWS
+T 1585903842 18<Moike18>	4x3 has a pretty obvious clue if you look at the textures on the columns
+T 1585904155 18<bai18>	I did notice that they each had different textures but I didn't immediately see a pattern so I got 3 in then I think ended up kind of brushing my hand across the whole column for the last one
+T 1586010819 19*	Now talking on 22#oculus
+T 1586010819 22*	Topic for 22#oculus is: For help see #oculus-support | Rift setup: https://www.oculus.com/en-us/setup/
+T 1586010819 22*	Topic for 22#oculus set by 26__doc__!~pyalot@212-51-132-141.fiber7.init7.net (24Fri Apr 15 12:39:09 2016)
+T 1586044025 18<S|h|a|w|n18>	howdy
+T 1586044035 18<S|h|a|w|n18>	what happened to the vireio perception downloads on mtbs3d.com?
+T 1586044323 18<S|h|a|w|n18>	ah working download http://web.archive.org/web/20170909111422/http://www.mtbs3d.com/downloads-section/summary/22-vireio-perception-4-x/77-vireio-perception-4-0-alpha-3
+T 1586095474 19*	Now talking on 22#oculus
+T 1586095474 22*	Topic for 22#oculus is: For help see #oculus-support | Rift setup: https://www.oculus.com/en-us/setup/
+T 1586095474 22*	Topic for 22#oculus set by 26__doc__!~pyalot@212-51-132-141.fiber7.init7.net (24Fri Apr 15 12:39:09 2016)
+T 1586266276 19*	Now talking on 22#oculus
+T 1586266276 22*	Topic for 22#oculus is: For help see #oculus-support | Rift setup: https://www.oculus.com/en-us/setup/
+T 1586266276 22*	Topic for 22#oculus set by 26__doc__!~pyalot@212-51-132-141.fiber7.init7.net (24Fri Apr 15 12:39:09 2016)
+T 1586580692 19*	Now talking on 22#oculus
+T 1586580692 22*	Topic for 22#oculus is: For help see #oculus-support | Rift setup: https://www.oculus.com/en-us/setup/
+T 1586580692 22*	Topic for 22#oculus set by 26__doc__!~pyalot@212-51-132-141.fiber7.init7.net (24Fri Apr 15 12:39:09 2016)
+T 1586610202 22*	26cherryh.freenode.net gives channel operator status to 18ChanServ
+T 1586610633 22*	26cherryh.freenode.net gives channel operator status to 18ChanServ
+T 1586900901 19*	Now talking on 22#oculus
+T 1586900901 22*	Topic for 22#oculus is: For help see #oculus-support | Rift setup: https://www.oculus.com/en-us/setup/
+T 1586900901 22*	Topic for 22#oculus set by 26__doc__!~pyalot@212-51-132-141.fiber7.init7.net (24Fri Apr 15 12:39:09 2016)
+T 1586925349 18<jin18>	Moike: how u doin man
+T 1586925365 18<Moike_18>	had to cancel my show tonight in WaveXR due to technical issues
+T 1586925371 18<jin18>	bummer, I heard
+T 1586925379 18<Moike_18>	spent over four hours yesterday modeling and building my scenes and setlist
+T 1586925382 18<jin18>	what sorta issues?
+T 1586925385 18<Moike_18>	so, that's got my ass chapped
+T 1586925392 18<Moike_18>	unknown network / account issues
+T 1586925403 18<Moike_18>	I was able to log in yesterday fine, today, I log in, and my scenes will not load
+T 1586925418 18<jin18>	I assume wavexr couldnt help?
+T 1586925434 18<Moike_18>	I sent them logs, but no, I'm just a Resident DJ, I'm not paid talent
+T 1586925471 18<Moike_18>	regardless, the last three shows I've had it seems like I've done nothing but fight techncial issues in the scene builder, the DJ decks, the streaming, and connecting to their CDN
+T 1586925485 18<Moike_18>	So I told the DJ wrangler I'm stepping down and pull me off the schedule
+T 1586925503 18<jin18>	damn I see
+T 1586925519 18<Moike_18>	it's not a paying gig, and it's really starting to feel like work
+T 1586925524 18<Moike_18>	so, time to bail
+T 1586925547 18<jin18>	check out these clips I took from vrchat https://imgur.com/a/gprOcBG
+T 1586925559 18<jin18>	top = awesome coronavirus party, streamed via twitch to inworld
+T 1586925578 18<Moike_18>	I went to one of G-Dubs VRChat show
+T 1586925594 18<jin18>	wahtd u think
+T 1586925612 18<Moike_18>	VRChat is very cliqueish
+T 1586925624 18<jin18>	yeah but if you find the right one.
+T 1586925631 18<jin18>	the producers / makers
+T 1586925644 18<Moike_18>	It's not my bag
+T 1586925653 18<jin18>	well if ur down to see virtual production stuff
+T 1586925656 18<jin18>	ill show ya
+T 1586925670 18<jin18>	its always a fun time
+T 1586925673 18<Moike_18>	not tonight, I'm pretty annoyed and just need to shut down all the VR rigs for a day or so and step away.
+T 1586925695 18<jin18>	understandable :P
+T 1586925794 18<Moike_18>	thanks for the offer, I'll follow up with you once I've had a break.
+T 1586925809 18<Moike_18>	you see I got a Quest version of Button stood up?
+T 1586925821 18<Moike_18>	using PhysX makes a decent performance difference.
+T 1586927993 18<jin18>	Oo
+T 1586928012 18<jin18>	does sumerian have webxr support?
+T 1586928841 18<Moike_18>	yes
+T 1586928846 18<Moike_18>	.nick Moike
+T 1586928870 18<Moike_18>	they recently threw the switch on allowing users to choose between cannon.js and physx
+T 1586928915 18<Moike_18>	here - http://quest.brainfizz.net
+T 1586928980 18<jin18>	ooo
+T 1586929001 18<Moike_18>	I had to pull out my dynamic lighting / moving spotlights to get the fraerate up
+T 1586929091 18<jin18>	trying now :)
+T 1586929273 18<jin18>	nice
+T 1586929275 18<jin18>	performance is smooth
+T 1586929278 18<jin18>	gameplay worked
+T 1586929289 18<jin18>	i got stuck at 2nd puzzle
+T 1586929290 18<Moike_18>	first try, still need to clean up the performance and bake the lights
+T 1586929294 18<Moike_18>	the 3x4?
+T 1586929298 18<jin18>	yes
+T 1586929303 18<Moike_18>	pylon textures are a clue
+T 1587147426 19*	Now talking on 22#oculus
+T 1587147426 22*	Topic for 22#oculus is: For help see #oculus-support | Rift setup: https://www.oculus.com/en-us/setup/
+T 1587147426 22*	Topic for 22#oculus set by 26__doc__!~pyalot@212-51-132-141.fiber7.init7.net (24Fri Apr 15 12:39:09 2016)
+T 1587230411 19*	Now talking on 22#oculus
+T 1587230411 22*	Topic for 22#oculus is: For help see #oculus-support | Rift setup: https://www.oculus.com/en-us/setup/
+T 1587230411 22*	Topic for 22#oculus set by 26__doc__!~pyalot@212-51-132-141.fiber7.init7.net (24Fri Apr 15 12:39:09 2016)
+T 1587306742 19*	Now talking on 22#oculus
+T 1587306742 22*	Topic for 22#oculus is: For help see #oculus-support | Rift setup: https://www.oculus.com/en-us/setup/
+T 1587306742 22*	Topic for 22#oculus set by 26__doc__!~pyalot@212-51-132-141.fiber7.init7.net (24Fri Apr 15 12:39:09 2016)
+T 1587620831 19*	Now talking on 22#oculus
+T 1587620831 22*	Topic for 22#oculus is: For help see #oculus-support | Rift setup: https://www.oculus.com/en-us/setup/
+T 1587620831 22*	Topic for 22#oculus set by 26__doc__!~pyalot@212-51-132-141.fiber7.init7.net (24Fri Apr 15 12:39:09 2016)
+T 1587699339 19*	Now talking on 22#oculus
+T 1587699339 22*	Topic for 22#oculus is: For help see #oculus-support | Rift setup: https://www.oculus.com/en-us/setup/
+T 1587699339 22*	Topic for 22#oculus set by 26__doc__!~pyalot@212-51-132-141.fiber7.init7.net (24Fri Apr 15 12:39:09 2016)
+T 1587700051 19*	Now talking on 22#oculus
+T 1587700051 22*	Topic for 22#oculus is: For help see #oculus-support | Rift setup: https://www.oculus.com/en-us/setup/
+T 1587700051 22*	Topic for 22#oculus set by 26__doc__!~pyalot@212-51-132-141.fiber7.init7.net (24Fri Apr 15 12:39:09 2016)
+T 1587762139 18<Sleeping118>	sup
+T 1587763225 18<Fusxfaranto18>	 hi
+T 1587763255 18<TheFatherMind18>	..
+T 1587778363 19*	Now talking on 22#oculus
+T 1587778363 22*	Topic for 22#oculus is: For help see #oculus-support | Rift setup: https://www.oculus.com/en-us/setup/
+T 1587778363 22*	Topic for 22#oculus set by 26__doc__!~pyalot@212-51-132-141.fiber7.init7.net (24Fri Apr 15 12:39:09 2016)
+T 1587846964 18<Sleeping118>	sup
+T 1587869877 19*	Now talking on 22#oculus
+T 1587869877 22*	Topic for 22#oculus is: For help see #oculus-support | Rift setup: https://www.oculus.com/en-us/setup/
+T 1587869877 22*	Topic for 22#oculus set by 26__doc__!~pyalot@212-51-132-141.fiber7.init7.net (24Fri Apr 15 12:39:09 2016)
+T 1587877682 18<TheFatherMind18>	..
+T 1587942191 19*	Now talking on 22#oculus
+T 1587942191 22*	Topic for 22#oculus is: For help see #oculus-support | Rift setup: https://www.oculus.com/en-us/setup/
+T 1587942191 22*	Topic for 22#oculus set by 26__doc__!~pyalot@212-51-132-141.fiber7.init7.net (24Fri Apr 15 12:39:09 2016)
+T 1588003277 19*	Now talking on 22#oculus
+T 1588003277 22*	Topic for 22#oculus is: For help see #oculus-support | Rift setup: https://www.oculus.com/en-us/setup/
+T 1588003277 22*	Topic for 22#oculus set by 26__doc__!~pyalot@212-51-132-141.fiber7.init7.net (24Fri Apr 15 12:39:09 2016)
+T 1588005936 22*	26tolkien.freenode.net gives channel operator status to 18ChanServ
+T 1588009326 22*	26tolkien.freenode.net gives channel operator status to 18ChanServ
+T 1588190611 18<Sleeping118>	hi
+T 1588211511 19*	Now talking on 22#oculus
+T 1588211511 22*	Topic for 22#oculus is: For help see #oculus-support | Rift setup: https://www.oculus.com/en-us/setup/
+T 1588211511 22*	Topic for 22#oculus set by 26__doc__!~pyalot@212-51-132-141.fiber7.init7.net (24Fri Apr 15 12:39:09 2016)
+T 1588214349 19*	Now talking on 22#oculus
+T 1588214349 22*	Topic for 22#oculus is: For help see #oculus-support | Rift setup: https://www.oculus.com/en-us/setup/
+T 1588214349 22*	Topic for 22#oculus set by 26__doc__!~pyalot@212-51-132-141.fiber7.init7.net (24Fri Apr 15 12:39:09 2016)
+T 1588271009 18<Sleeping118>	hi
+T 1588557461 19*	Now talking on 22#oculus
+T 1588557461 22*	Topic for 22#oculus is: For help see #oculus-support | Rift setup: https://www.oculus.com/en-us/setup/
+T 1588557461 22*	Topic for 22#oculus set by 26__doc__!~pyalot@212-51-132-141.fiber7.init7.net (24Fri Apr 15 12:39:09 2016)
+T 1588738810 20*	Disconnected (20Connection timed out)
+T 1588738837 19*	Now talking on 22#oculus
+T 1588738837 22*	Topic for 22#oculus is: For help see #oculus-support | Rift setup: https://www.oculus.com/en-us/setup/
+T 1588738837 22*	Topic for 22#oculus set by 26__doc__!~pyalot@212-51-132-141.fiber7.init7.net (24Fri Apr 15 12:39:09 2016)
+T 1589052531 20*	Disconnected (20Connection timed out)
+T 1589052559 19*	Now talking on 22#oculus
+T 1589052559 22*	Topic for 22#oculus is: For help see #oculus-support | Rift setup: https://www.oculus.com/en-us/setup/
+T 1589052559 22*	Topic for 22#oculus set by 26__doc__!~pyalot@212-51-132-141.fiber7.init7.net (24Fri Apr 15 12:39:09 2016)
+T 1589135610 18<awffafawf18>	So how is VR doing? I'd love for VR to become mainstream, but it still seems to be a very small niche... I'm not sure it's yet worth it to get a headset... What do you guys think?
+T 1589142074 18<Deknos18>	i have one, so i can do sports with beatsaber during corona indoors.
+T 1589142100 18<Deknos18>	you have to get a little creative, but so far i am doing more workout than ever
+T 1589145448 18<awffafawf18>	I do workout without using games
+T 1589145452 18<awffafawf18>	so that's not an issue for me
+T 1589153991 18<bai18>	if you are interested in VR then you should get VR, if you are only interested in it if the mainstream is interested, then don't bother
+T 1589154083 18<TheFatherMind18>	^^^^ this
+T 1589154193 18<TheFatherMind18>	If you can afford the gaming computer and headset, it is worth it.  If you cannot it is not.  VR is like nothing you have ever exeperienced and words cannot describe it.  There are a select set of games that are VERY AWESOME in VR.
+T 1589164671 18<awffafawf18>	bai: I'd love to play the games I like in VR. If VR is a niche, then it's less likely that the games I like will appear on VR
+T 1589164704 18<awffafawf18>	TheFatherMind: What makes VR: "nothing you have ever exeperienced"?
+T 1589164809 18<TheFatherMind18>	I think that statement speaks for its self.  It is not nitch.. the government uses it, big companies use it, there are even VR Cafe's in malls like Net Cafe's.  I personally have been using VR for years.  It is here to stay.
+T 1589165648 18<awffafawf18>	I don't doubt that, but that doesn't mean I'll find enough games tu justify a $400 to $1000 investment
+T 1589169941 18<TheFatherMind18>	Well then I think someone has some research to do.
+T 1589169951 18<TheFatherMind18>	Remember the Oculus plays steam games too.
+T 1589169980 18<TheFatherMind18>	I think I already have a good 200+ hours into just EliteDangerous alone.  ROM Data was loads of fun in co-op.
+T 1589172682 18<awffafawf18>	Are you saying that I can play any Steam game on VR/3D? The game doesn't have to do anything to support it?
+T 1589321055 18<Sleeping118>	hi
+T 1589460968 19*	Now talking on 22#oculus
+T 1589460968 22*	Topic for 22#oculus is: For help see #oculus-support | Rift setup: https://www.oculus.com/en-us/setup/
+T 1589460968 22*	Topic for 22#oculus set by 26__doc__!~pyalot@212-51-132-141.fiber7.init7.net (24Fri Apr 15 12:39:09 2016)
+T 1589801113 19*	Now talking on 22#oculus
+T 1589801113 22*	Topic for 22#oculus is: For help see #oculus-support | Rift setup: https://www.oculus.com/en-us/setup/
+T 1589801113 22*	Topic for 22#oculus set by 26__doc__!~pyalot@212-51-132-141.fiber7.init7.net (24Fri Apr 15 12:39:09 2016)
+T 1600044734 19*	Now talking on 22#oculus
+T 1600044734 22*	Topic for 22#oculus is: For help see #oculus-support | Rift setup: https://www.oculus.com/en-us/setup/
+T 1600044734 22*	Topic for 22#oculus set by 26__doc__!~pyalot@212-51-132-141.fiber7.init7.net (24Fri Apr 15 12:39:09 2016)
+T 1600293825 18<Sleeping118>	hello
+T 1600294000 18<Sleeping118>	do you think it's worth getting an oculus quest 2 if I already have the original oculus quest?
+T 1600297469 18<haptiK18>	yes
+T 1600300295 18<Sgeo18>	How does Quest 2 with deluxe strap compare to Rift S in terms of comfort?
+T 1600300303 18<Sgeo18>	I already know it will support my IPD better
+T 1600300556 18<Sleeping118>	I wonder how long till quest 3 or 4, if they will release it as almost often as new phones
+T 1600301664 18<Sleeping118>	should I pre-order from amazon or oculus website?
+T 1600302846 18<Sleeping118>	haptiK: if i pre-order from the oculus website will they send me a uk plug, I live in england
+T 1600303002 18<TheFatherMind18>	I do NOT understand why they did not fix the headphones in this.  I consider that a design flaw.  Playing online games with someone using those headphones is AWFUL hearing myself talk through their mic.
+T 1600303268 18<Sleeping118>	TheFatherMind: any clue about my question, if i buy from oculus do you think it will come with UK plugs
+T 1600303296 18<TheFatherMind18>	LOL no clue
+T 1600303476 18<Sleeping118>	it wont let me order the elite strap with the battery for some reason
+T 1600304348 18<Sleeping118>	gonna go bed
+T 1600356044 18<bai18>	Sleeping1: there are no plugs involved with the Quest, only a usb cable
+T 1600356074 18<bai18>	I can't remember if it even came with a wall charger
+T 1600356087 18<bai18>	but any usb-c one will work
+T 1600356256 18<Sleeping118>	bai: thx, yeah...the new one appears to come with a wall charger
+T 1600356471 18<bai18>	yeah I think they localize those
+T 1600398647 18<jin18>	facebook requirement bad
+T 1600436412 18<Cheery18>	jin: yeah.. I shelved my oculus when I heard of it. Hadn't used it for a while, but now I think I let it be for now.
+T 1600436430 18<Cheery18>	Not that I wouldn't need it. I think there are projects where it'd be useful, but those are HTC stuff if they realize.
+T 1600436492 18<Cheery18>	So yeah, years of product RD into the drain in single announcement.
+T 1600436495 18<Cheery18>	ZUCKED!
+T 1600436499 18<Cheery18>	lol
+T 1600468990 18<Sleeping118>	hi
+T 1600469670 18<Sleeping118>	should video players like netflix look good on oculus quest 2?
+T 1600470986 18<bai18>	well, they're supposed to
+T 1609963181 19*	Now talking on 22#oculus
+T 1609963181 22*	Topic for 22#oculus is: For help see #oculus-support | Rift setup: https://www.oculus.com/en-us/setup/
+T 1609963181 22*	Topic for 22#oculus set by 26__doc__!~pyalot@212-51-132-141.fiber7.init7.net (24Fri Apr 15 12:39:09 2016)

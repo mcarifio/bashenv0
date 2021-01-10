@@ -1,0 +1,543 @@
+T 1600443951 18<meganv199918>	the package from the added apt source was brightness-controller from ppa:apandada1
+T 1600443960 18<meganv199918>	but it has been removed.
+T 1600443986 18<meganv199918>	So if restricted-extras is ok, and brightness-controller was removed, that leaves the updates I guess. Le sigh.
+T 1600443998 18<meganv199918>	I was hoping to avoid rolling those back, seems painful.
+T 1600444065 18<oerheks18>	checking that ppa, it gives an 2019 version for bionic/18.04 .. the github gives newer version. https://github.com/lordamit/Brightness
+T 1600444088 18<oerheks18>	not sure how removal of that package slows down your machine.
+T 1600444119 18<meganv199918>	I installed it yesterday, discovered it wasn't helping, and removed it.
+T 1600444153 18<meganv199918>	Probably no effect, but it's the things you don't mention that cause the most confusion with troubleshooting. :P  or can be.
+T 1600444170 18<meganv199918>	Loading a page on github right now... I'm at 120 seconds and counting.
+T 1600444309 18<catbehemoth18>	not using ubuntu but now so do not know, is Ubuntu using NetworkManager by default or is it systemd-networkd or something else?
+T 1600444327 18<meganv199918>	Interesting thing: google chrome works quickly. So Firefox and Slack are affected but not Chrome?
+T 1600444516 18<oerheks18>	meganv1999, remove the ~/.mozilla folder in your /home/ and restart firefox?
+T 1600444554 18<oerheks18>	catbehemoth, desktop uses networkmanager, server systemd / netplan
+T 1600444720 18<catbehemoth18>	oerheks: thanks for the info off to read up on netplan
+T 1600444978 18<expiredMilk18>	hi!
+T 1600445566 18<leftyfb18>	oerheks: desktop also uses systemd/netplan, it just uses NM as the renderer
+T 1600445687 18<oerheks18>	leftyfb, correct, but it would make the answer more difficult to understand
+T 1600445723 18<oerheks18>	no idea about your wifi drop Q ..
+T 1600445733 18<leftyfb18>	yeah, that's blowing my mind
+T 1600445775 18<orchardstreet2218>	Installing "libnginx-mod-http-lua" on ubuntu 18.04 gives me "PANIC: unprotected error in call to Lua API (attempt to index a nil value)"
+T 1600445796 18<orchardstreet2218>	and fails
+T 1600445849 18<orchardstreet2218>	it fails on nginx reload, my nginx version is from the normal repo
+T 1600447646 18<giaco18>	hello! I'm trying to build a 4 screen setup using 2 vgas. VGAs are identical. I've first installed one and detected the first two displays correctly, then I've added the second vga. It is listed correctly in lspci, but ubuntu options sees only the two displays from the first vga
+T 1600447655 18<giaco18>	am I missing something?
+T 1600447797 18<kenperkins18>	so, I have to identical laptops, both running 20.04.1, and with otherwise identical configurations; one of them the built in mic is inaudible, even at 100% input, the other is completely normal
+T 1600447975 18<kenperkins18>	I've temporarily worked around by using pavucontrol to boost the quiet one up to like +10db
+T 1600447980 18<kenperkins18>	but that feels like a hack
+T 1600448096 18<giaco18>	actually it is the display manager in ubuntu settings that doesn't get the screen. The nvidia-settings program detects both vgas and all monitors
+T 1600448119 18<giaco18>	but the ones attached to the second card stays just off with "no-signal"
+T 1600448507 18<strixdio18>	Hi everyone, trying to have a script automatically set the screen resolution if it's not correctly set. The script works fine if I run it as the user or root, but when I put it in cron it doesn't work (screen flashes, but resolution doesn't actually change). I've googled a bit about this and the things they mention I already seem to be doing. Would
+T 1600448507 18<strixdio18>	anyone be willing to take a look at the script, please?
+T 1600448681 18<bindi18>	strixdio: what command are you using? xrandr? add --display :0
+T 1600448710 18<strixdio18>	xrandr --output DisplayPort-0 --mode 1920x1080 --pos 0x0
+T 1600448806 18<strixdio18>	I have tried using --display :0 before, will try again though.
+T 1600448817 18<merpnderp18>	Does Ubuntu support power and video out over thunderbolt/usb-c ?
+T 1600448840 18<bindi18>	strixdio: you might have to put them into /etc/X11/Xsession.d/, although i'm not sure if that's the case on newer releases
+T 1600448843 18<bindi18>	instead of crontab
+T 1600448851 18<strixdio18>	hmm
+T 1600448859 18<strixdio18>	I'm not familiar with that.
+T 1600449016 18<pavlos18>	strixdio: you may have to write a small script and add it in Startup applications
+T 1600449049 18<strixdio18>	like a systemd script?
+T 1600449124 18<pavlos18>	strixdio: no, just myres.sh add the xrandr line in there. save exit make it exec. Go to startup apps, add, point to the location of script
+T 1600449257 18<strixdio18>	I don't think this has a "startup apps"
+T 1600449285 18<strixdio18>	and I need it to continually run anyway, not just on startup.
+T 1600449286 18<pavlos18>	strixdio: you're not on ubuntu?
+T 1600449289 18<strixdio18>	it is ubuntu
+T 1600449312 18<strixdio18>	It's just a custom version for a HP thin client. dumbed down if you will.
+T 1600449833 18<acu18>	!paste
+T 1600449833 18<ubottu18>	For posting multi-line texts into the channel, please use https://paste.ubuntu.com | To post !screenshots use https://imgur.com/ !pastebinit to paste directly from command line | Make sure you give us the URL for your paste - see also the channel topic.
+T 1600449931 18<ioria18>	strixdio, not sure makes sense  a script that set resolution continually , but ok
+T 1600450123 18<strixdio18>	ioria it checks if the resolution has changed and only changes it back if needed. This is done because people change sources on the 2ndary display and it messes up the resolution when they switch back
+T 1600450222 18<ioria18>	strixdio, i see ; so you should have a daemon that check continually the resolution value, and if altered, restore it to default
+T 1600450254 18<strixdio18>	Well, this daemon, how does it differ from running a cron job?
+T 1600450299 18<strixdio18>	meaning how does that differ from the script I already have?
+T 1600450340 18<ioria18>	strixdio, what's the script ? the xrandr command  above?
+T 1600450370 18<strixdio18>	It's actually a lot longer, but yeah that's the "meat" of it that's not working.
+T 1600450385 18<strixdio18>	the screen flashes but doesn't change resolution.
+T 1600450415 18<strixdio18>	When I run it manually, it works fine.
+T 1600450657 18<ioria18>	strixdio, try to set the display in crontab  https://help.ubuntu.com/community/CronHowto#GUI_Applications
+T 1600451041 18<giaco18>	I'd say that ubuntu desktop is not ready for a multi-monitor environment
+T 1600451104 18<Southern_Gentlem18>	so how would one install like Virtual Machine manager in ubuntu for running VMs
+T 1600451207 18<leftyfb18>	Southern_Gentlem: look at libvirt-bin or virtualbox or lxd(no GUI)
+T 1600451215 18<Habbie18>	i like Gnome Boxes
+T 1600451238 18<Southern_Gentlem18>	leftyfb,  why when the virtualization is easy in linux
+T 1600451256 18<pavlos18>	Southern_Gentlem: https://virt-manager.org/
+T 1600451267 18<Southern_Gentlem18>	Habbie, myself i have Gnome Boxes
+T 1600451309 18<leftyfb18>	Southern_Gentlem: why what? You asked how to install a VM manager. I gave you 3 options. Without trying any of them you're saying none of them are easy?
+T 1600451324 18<giaco18>	the rant is growing in me, xorg log displays no errors, but gdm is not even starting up now. Multi-monitor setup with ubuntu desktop is really broken
+T 1600451356 18<giaco18>	same setup with windows ... 35 seconds, 25 to customize refresh rate
+T 1600451358 18<Maik18>	giaco: it's not a ubuntu desktop... It's Gnome 3
+T 1600451380 18<Southern_Gentlem18>	leftyfb, actually i asked about a certain one
+T 1600451382 18<Southern_Gentlem18>	https://linuxize.com/post/how-to-install-kvm-on-ubuntu-20-04/
+T 1600451408 18<Southern_Gentlem18>	giaco what video card
+T 1600451465 18<giaco18>	Southern_Gentlem: dual VGA compatible controller: NVIDIA Corporation GF108 [GeForce GT 630] (rev a1)
+T 1600451484 18<leftyfb18>	Southern_Gentlem: so you asked how to install a package on ubuntu where you already had the package name and instructions on how to do it?
+T 1600451509 18<Southern_Gentlem18>	i asked then googled
+T 1600451536 18<Southern_Gentlem18>	giaco, and have you installed the nvidia drivers
+T 1600451538 18<pavlos18>	there is also channel #virt
+T 1600451545 18<giaco18>	Southern_Gentlem: yes
+T 1600451558 18<Southern_Gentlem18>	pavlos,  thanks
+T 1600451578 18<giaco18>	problem is multi-monitor setup. Nvidia drivers (nvidia-settings) detects both cards and all 4 monitors, and it let's me configure what I want and generate a xorg.conf file
+T 1600451599 18<Southern_Gentlem18>	giaco, thats the issue gnome uses wayland
+T 1600451617 18<Southern_Gentlem18>	so boot into X instead of wayland that would work
+T 1600451617 18<Maik18>	Southern_Gentlem: not on ubuntu
+T 1600451670 18<giaco18>	if I generate a non-xinerama xorg.conf, desktop starts only of first two screen. If I generate a xinerama xorg.conf, all I see is a mouse pointer on 4 black screens on boot
+T 1600451680 18<Maik18>	Southern_Gentlem: Ubuntu uses X by default
+T 1600451685 18<giaco18>	Southern_Gentlem: ubuntu 20.04 uses X
+T 1600451705 18<giaco18>	my pid 2245 is Xorg
+T 1600451735 18<giaco18>	and gnome-x-session is 2242
+T 1600451762 18<oerheks18>	giaco, 2 videocards, maybe your bios gives an option to use both
+T 1600451787 18<Maik18>	Southern_Gentlem: Ubuntu isn't like Fedora ;)
+T 1600451795 18<Southern_Gentlem18>	i know
+T 1600451826 18<Maik18>	i'm surprised to see you here by the way :)
+T 1600451843 18<Southern_Gentlem18>	i usually hang out in here as well
+T 1600451858 18<Southern_Gentlem18>	very seldom do i post
+T 1600451893 18<oerheks18>	yes, we love fedora questions here , about vms
+T 1600451903 18<Southern_Gentlem18>	giaco, do you have nvidia-config
+T 1600451932 18<oerheks18>	i hope the 2nd card is powered properly ..
+T 1600452004 18<giaco18>	oerheks: is not a bios problem, is not a video driver problem, is a gnome problem. I now have the xorg-conf generated by nvidia-settings with xinerama mode activated (that would generate a unique DISPLAY=:0 large 1920x4) and it actually works, because once reboot X starts and I have a mouse cursor on black screen that goes correctly on all 4 screens crossing borders. Point is that gdm is not
+T 1600452005 18<giaco18>	showing anything and it stops at that cursors on black screens
+T 1600452069 18<giaco18>	but systemctl status gdm shows is running correctly
+T 1600452138 18<giaco18>	I just need to run 4 fullscreen web-pages, I actually don't care about gnome, I would replace it completely if that would solve the problem. Any hint?
+T 1600452201 18<giaco18>	point is that if I export DISPLAY=:0 at terminal and run anything like xcalc, it says it launches correctly but it doesn't show anything on screen
+T 1600452272 18<oerheks18>	DISPLAY=:0.1 = adapter 1, display 0 ...
+T 1600452288 18<oerheks18>	or around, whatever..
+T 1600452320 18<oerheks18>	weird black screens with cursor could be fixed with nomodeset?
+T 1600452323 18<oerheks18>	!nomodeset
+T 1600452323 18<ubottu18>	Systems with certain graphics chipsets may not boot properly out of the box. "Temporarily Add a Kernel Boot Parameter for Testing" as discussed at https://wiki.ubuntu.com/Kernel/KernelBootParameters to add the "nomodeset" parameter there.
+T 1600452371 18<giaco18>	ubottu: kernel is booting correctly, xorg is running correcty (mouse moves over all screens)
+T 1600452516 18<giaco18>	if I shut down gdm (systemctl stop gdm), start $ sudo Xorg manually, DISPLAY=:0 xcalc it works
+T 1600452654 18<giaco18>	I've been talking to a bot. My day might be over
+T 1600452882 18<giaco18>	sudo dpkg-reconfigure gdm3 return $! = 0 but outputs nothing
+T 1600452940 18<oerheks18>	You created an xorg.conf, disable that first?
+T 1600452968 18<giaco18>	oerheks: for what?
+T 1600453010 18<oerheks18>	for that 'sudo dpkg-reconfigure gdm3"
+T 1600453023 18<giaco18>	xorg.conf works perfectly. Screens coordinates are correct, input devices are mapped correctly, mouse crosses borders, resolution and refresh rates matches. That xorg.conf generated by nvidia-settings is just perfect
+T 1600453039 18<oerheks18>	oh, it is perfect, so you have no issue?
+T 1600453077 18<giaco18>	I'm having issues with gdm/gnome, not xorg
+T 1600453119 18<giaco18>	guess what, just installed lightdm and it worked out of the box
+T 1600453206 18<giaco18>	a bug on gdm for non-trivial multi-head setup should be opened
+T 1600453644 18<giaco18>	no, it is not the gdm, it is gnome. I though it was gdm as I was using autologin
+T 1600453680 18<giaco18>	but lightdm does the same. It asks for passwords correctly spanning all 4 screens, then mouse on 4 black screens
+T 1600459540 18<andypoenas18>	hola, free secure encrypted connection: https://pastebin.com/rGcZXpie
+T 1600459636 22*	26ChanServ gives channel operator status to 18Jordan_U
+T 1600459636 22*	26Jordan_U sets ban on 18*!*@180.241.45.244
+T 1600459636 22*	26Jordan_U removes channel operator status from 18Jordan_U
+T 1600461976 18<noalternative18>	I installed Ubuntu onto an Intel compute stick,,and attached compute stick to a lapdock computer called nexdock 1st gen.
+T 1600462042 18<noalternative18>	It connect to keyboard and touchpad through bluetooth.  I was able to pair it, but I can't get it to type anything ot the pointer to work.?
+T 1600462124 18<noalternative18>	I updated it thinking it might be a driver issue,but that yealded nothing as well.  I am currently just using the dispay with a wired keyboard and mouse but it seems prtetty ugly and stupid.
+T 1600462160 18<noalternative18>	Does anyone have any idea what might be wrong?  Is there a ppa with some drivers for nexdock?
+T 1600462276 18<noalternative18>	Edit: Compute Stick connects to nexdock keyboard and touchpad bia bluetooth.  The display connects through hdmi, and that is working perfectly.
+T 1600462520 18<noalternative18>	Well I guess, I'll pin this tab, and see if anyone comes along..    Of coarse you can pm me.
+T 1600463095 18<noalternative18>	BTW, I installed Budgie 18.04 64bit on a Cherry Trail Compute stick with 2gb of Ram, and a 32bit bios, os it is picky about the oses it allows..I consider this a more or less god install.  Just need my bluetooth keyboard and touchpad working.
+T 1600463153 18<noalternative18>	a good install.  This old clicky keyboard is hit and miss.
+T 1600464270 18<k0nichiWa18>	was rsync -a copying a dir structure, copy incomplete, i deleted some of the source, and tried to resume rsync quit without error code after processing only a small amount
+T 1600464292 18<k0nichiWa18>	maakes no sense, rsync shouldnt care if there are unexpected diretories present in the destination should it ?
+T 1600465297 18<john_rambo18>	 I have purchased this bluetooth headset >> https://www.samsung.com/in/support/model/EO-BG920BWEBUS/ .....Problem is I am hearing only MONO ...I want STEREO. How to do that ?
+T 1600466041 18<mustmodify_18>	What channel would be appropriate to help me diagnose networking issues after a system update?
+T 1600466086 18<jeremy3118>	mustmodify_: This one if it involves Ubuntu
+T 1600466168 18<mustmodify_18>	great. I'm experiencing intermittent delays in network traffic. Other machines on the same network are not seeing this issue.
+T 1600466195 18<jeremy3118>	mustmodify_: ethernet or wifi?
+T 1600466325 18<s_18>	im trying to dd from a floppy. where is this going to show up?
+T 1600466330 18<s_18>	ubuntu 20
+T 1600466337 18<s_18>	using a usb floppy disk
+T 1600466402 18<oerheks18>	under /media/ , i guess
+T 1600466422 18<mustmodify_18>	Sorry for the delay. Stupid internet. Ubuntu 18. My first stab at measuring this: https://gist.github.com/mustmodify/41d8cfa3594dcbce5b450c046262ce90/edit
+T 1600466447 18<mustmodify_18>	this is wifi. Issue was not present yesterday before the updates.
+T 1600466697 18<jeremy3118>	mustmodify_: see https://ubuntuforums.org/showthread.php?t=2354328&p=13614520&#post13614520
+T 1600466734 18<mustmodify_18>	In summary, `curl www.google.com` took 6s, 5s, 1.9s, and 21.5s. And as I said, google loads "snapily" (if that's a technical word, and I suspect it isn't) on other machines on the same network.
+T 1600466749 18<mustmodify_18>	jeremy31: checking your link now
+T 1600466788 18<mustmodify_18>	(page then takes FOREVER to load... ) :)
+T 1600466807 18<mustmodify_18>	when downloading multiple assets it's a killer!!
+T 1600466999 18<k0nichiWa18>	mustmodify_, maybe its just the nameserver you're using
+T 1600467020 18<k0nichiWa18>	i think ive seen that when i had a slow nameserver selected
+T 1600467054 18<k0nichiWa18>	fits because single assets download fast once the nameserver returns IP, but each lookup is slow
+T 1600467876 18<mustmodify_18>	I have to restart... confused about whether I'm configuring DNS properly.
+T 1600468419 18<k0nichiWa18>	on my macbook if i delete the DNS entries it auotmatically loads them from the wifi router
+T 1600468444 18<k0nichiWa18>	another possibility to consider ... maybe you should delete manually provided DNS and let it discover them from the router
+T 1600468721 18<analogical18>	how do I find what cluster size a file system is using?
+T 1600468903 18<mustmodify_18>	ok. It's not the DNS servers. Can you send the other link someone suggested? I hadn't tried the second step yet.
+T 1600468950 18<mustmodify_18>	https://gist.github.com/mustmodify/e81e596e59a8a44f4e4d2c16dca02920  Here's where I am now.
+T 1600469111 18<jeremy3118>	mustmodify_: what computer and wifi card?
+T 1600469146 18<mustmodify_18>	Dell. I'll get the specifics.
+T 1600469159 18<mustmodify_18>	dell inspiron
+T 1600469189 18<jeremy3118>	mustmodify_: Post URL from terminal for>  lspci -nnk | grep -iA3 net | nc termbin.com 9999
+T 1600469356 18<mustmodify_18>	EVERYTHING TAKES FOREVER!!!
+T 1600469380 18<mustmodify_18>	working on that now
+T 1600469525 18<mustmodify_18>	still waiting for the "new gist" page to come up.
+T 1600469555 18<jeremy3118>	mustmodify_: just post the URL from terminal
+T 1600469750 18<mustmodify_18>	https://termbin.com/xy8u
+T 1600469803 18<mustmodify_18>	jeremy31: ^ that was quick!
+T 1600469896 18<jeremy3118>	mustmodify_: in terminal>  echo "options iwlwifi 11n_disable=8" | sudo tee /etc/modprobe.d/iwl-opt.conf
+T 1600469901 18<jeremy3118>	then reboot
+T 1600470047 18<mustmodify_18>	what does that do?
+T 1600470087 18<jeremy3118>	mustmodify_: enables aggressive TX, it has helped with Intel wifi in the past
+T 1600470117 18<mustmodify_18>	ok thanks. Note again that this started with an update yesterday, used to work. Restarting now.
+T 1600471067 18<mustmodify_18>	still slow. :(
+T 1600471221 18<mustmodify_18>	When I click on "New Terminal", I get a box and then 5 seconds later a terminal. What's happening during that time?
+T 1600471241 18<jeremy3118>	mustmodify_: you might want to use the grub menu and choose an older kernel from advanced options menu
+T 1600471251 18<mustmodify_18>	I don't remember whether that's new or not, but it feels like the terminal used to appear in the window immediately.
+T 1600471268 18<mustmodify_18>	ok I'll give it a shot.
+T 1600472010 18<noalternative18>	Anyone around that can help with a bluetooth keyboard that pairs but won't type?
+T 1600472298 18<transhumanist18>	Hi! I have ubuntu 20.04 the latest dlib does not support the compiler that is included with Ubuntu 20.04 and also in order to compile with nvidia support dlib has to be compiled from  the latest. Is this package available anywhere or is there directions for doing this with the compiler included in 20.04
+T 1600472468 18<transhumanist18>	ah wait pip install dlib workswith compiler and version but the thing I am looking for is still missing. ah well cant get help here with that problem
+T 1600472471 18<transhumanist18>	thanks anyway
+T 1600476315 18<rneese18>	hey guys
+T 1600476339 18<rneese18>	we are building a new arm64 install based on ubuntu/debian
+T 1600476380 18<rneese18>	I need to output a dpkg -l but with only the file installed with out the version mbr and such
+T 1600476402 18<rneese18>	I just want the list of files so we can merge with our install
+T 1600476432 18<rneese18>	this is armbian os we are using wich is ubuntu and or debian
+T 1600476750 18<leftyfb18>	rneese: your question is not an ubuntu support question. Try #debian or #armbian.
+T 1600476866 18<rneese18>	no the question is how to make dpkg output the list from the iso for ubuntu dde
+T 1600476880 18<rneese18>	just pkg names only
+T 1600476969 18<leftyfb18>	rneese: apt list --installed|awk -F/ '{print $1}'  # this will give you a list of all the packages installed on your ubuntu install
+T 1600477126 18<rneese18>	ok tanks
+T 1600477145 18<leftyfb18>	rneese: someone trying to create their own distro should know some basic shell scripting
+T 1600479355 18<arooni_team_b18>	hey team; trying to mount a samba network file drive; but running into trouble with "sudo mount -t cifs -o sec=none "
+T 1600479403 18<arooni_team_b18>	 sudo mount -t cifs -o guest //192.168.1.1 /media/HardDriveArooni;; rather ; getting "mount error(22): Invalid argument"
+T 1600479414 18<Chuckfu18>	ok trying to add this to the ~/.bashrc  export PATH $MINDSROOT=/home/kdmiller45/minds and get the error -bash: export: `=/home/kdmiller45/minds/': not a valid identifier
+T 1600479858 18<Chuckfu18>	can anyone help with that question
+T 1600480588 18<pavlos18>	Chuckfu: export MINDSROOT=/home/kdmiller45/minds       then echo $MINDSROOT should give you that path
+T 1600480803 18<pavlos18>	arooni_team_b: I do not see an exported share after //192.168.1.1
+T 1600480822 18<arooni_team_b18>	do i need one?
+T 1600480829 18<arooni_team_b18>	router doesnt seem to indicate what the name of the shar eis
+T 1600480868 18<pavlos18>	your samba server 192.168.1.1 should have a section at the end [myshare] path = ... guest ok = yes
+T 1600480900 18<pavlos18>	then it should be in the doc of the router what is the default share
+T 1600481049 18<arooni_team_b18>	ah ha;  didnt know that;  i need to create a network share first
+T 1600481059 18<arooni_team_b18>	not sure how to format the drive for use with linksys
+T 1600481095 18<pavlos18>	format the external drive as ntfs so that linux,win clients can access
+T 1600481112 18<pavlos18>	if you have only linux, ext4 is ok
+T 1600481223 18<arooni_team_b18>	apparently linksys only supports fat32 or ntfs
+T 1600481227 18<arooni_team_b18>	so i need to do ntfs i suppose
+T 1600481995 18<pavlos18>	arooni_team_b: example: sudo mount -t cifs -o username=John,password=********,vers=1.0 //192.168.1.1/Seagate /media/drive/
+T 1600484197 18<UbuntuLostUser18>	I tried joining #ubuntu-helpteam. I have a question about an issue I have with fresh install of ubuntu on a new laptop that had windows 10. Its only showing half my hard drive. Is this the appropriate channel?
+T 1600484212 18<Chuckfu18>	   @pavlos thank you had to leave for a while
+T 1600484581 18<Bashing-om18>	UbuntuLostUser: Sure, this is a good place to ask. Pastebin ' sudo parted -l ' so we see what there is to work with.
+T 1600484623 18<UbuntuLostUser18>	Model: ATA Hitachi HTS72321 (scsi)Disk /dev/sda: 160GBSector size (logical/physical): 512B/512BPartition Table: msdosDisk Flags: Number  Start  End  Size  Type  File system  FlagsModel: Linux device-mapper (linear) (dm)Disk /dev/mapper/vgubuntu-root: 158GBSector size (logical/physical): 512B/512BPartition Table: loopDisk Flags: Number  Start  End
+T 1600484624 18<UbuntuLostUser18>	Size   File system  Flags 1      0,00B  158GB  158GB  ext4Error: /dev/mapper/vgubuntu-swap_1: unrecognised disk labelModel: Linux device-mapper (linear) (dm)                                  Disk /dev/mapper/vgubuntu-swap_1: 1023MBSector size (logical/physical): 512B/512BPartition Table: unknownDisk Flags: Error: /dev/mapper/sda6_crypt:
+T 1600484624 18<UbuntuLostUser18>	unrecognised disk labelModel: Linux device-mapper (crypt) (dm)                                   Disk /dev/mapper/sda6_crypt: 159GBSector size (logical/physical): 512B/512BPartition Table: unknownDisk Flags:
+T 1600484640 18<Bashing-om18>	!paste | UbuntuLostUser
+T 1600484640 18<ubottu18>	UbuntuLostUser: For posting multi-line texts into the channel, please use https://paste.ubuntu.com | To post !screenshots use https://imgur.com/ !pastebinit to paste directly from command line | Make sure you give us the URL for your paste - see also the channel topic.
+T 1600484642 18<UbuntuLostUser18>	oh pastebin. wow. im sorry. im such an idiot
+T 1600484678 18<Bashing-om18>	UbuntuLostUser: All in the process of learning - even IRC :P
+T 1600484685 18<UbuntuLostUser18>	https://paste.ubuntu.com/p/VtxKHDxv4s/
+T 1600484768 18<UbuntuLostUser18>	Ive been going crazy. This laptop started off with Windows 10. I tried to put Kali linux on here and noticed its not as friendly as Ubuntu and I decided to get rid of it. Well i noticed that it wiped over my Windows 10 so I just installed Ubuntu over everything. It shows only half my hard drive =/. Thank you in advance everyone I have been trying
+T 1600484768 18<UbuntuLostUser18>	to fix this for over 8 hours
+T 1600484827 18<Bashing-om18>	UbuntuLostUser: Sorry - I do not know encryption. others here will have to aid.
+T 1600484898 18<UbuntuLostUser18>	I appreciate the attempt at least. Im open minded to anything really. Was wondering if there was a way to install some program on my flash drive that would wipe everything completely clean on my entire hard drive.
+T 1600484966 18<Bashing-om18>	UbuntuLostUser: In the installer of ubuntu is "wipe disk and install ububntu". Will do exactly that.
+T 1600484991 18<UbuntuLostUser18>	When I do that it only shows half my hard drive 160 gb when I have 320gb.
+T 1600485063 18<UbuntuLostUser18>	Did a reinstall 2 different times with Ubuntu and the second time i tried encryption and to wipe over empty space
+T 1600485090 18<Bashing-om18>	UbuntuLostUser: "sudo wipefs /dev/sda". Note that you should not just trust me that that command is safe (even though it is), you should run "man wipefs" and confirm for yourself that the command will just list all visible filesystems (and in this case, RAID metadata) and their offsets.
+T 1600485239 18<UbuntuLostUser18>	You seem like a trusting person :)  . So by typing this it will fix my issue you believe? I have a lot to learn but I am eager to learn I just need to get this running from my morning python lessons :/
+T 1600485375 18<Bashing-om18>	UbuntuLostUser: Will not fix - info as to the why the drive shows as 160 GB. Maybe the system is not lyeing ?
+T 1600485438 18<UbuntuLostUser18>	Well initially i had 320 gb and i partitioned my drive into 2 sections. Half of it was supposed to be Windows 10 for work but it disappeared. Dont see it on boot or anything. Also my paperwork shows 320gb
+T 1600485474 18<UbuntuLostUser18>	I bought a new laptop for work and decided this is going to be my linux only machine
+T 1600485518 18<SCHAPiE18>	Why doesn't work pay for the machine?
+T 1600485529 18<SCHAPiE18>	*the company
+T 1600485598 18<UbuntuLostUser18>	Thats a good question. They probably would have but i panicked and got a new one. This has all happened today. Now im just trying to salvage this machine in hopes that its not forever a half drive laptop lol
+T 1600485615 18<UbuntuLostUser18>	yesterday*
+T 1600485621 18<Bashing-om18>	UbuntuLostUser: Reasonabe then that the partition table is hosed - Nothing on the table to reflect the missing 160 GB. But again, I do not know encryption :(
+T 1600485682 18<UbuntuLostUser18>	Ugh.. *smashes head on keyboard*. Give it to me to lose half a hard drive in some crazy fashion haha. I hope someone can guide me on this. You would be doing me a huge favor.
+T 1600485764 18<UbuntuLostUser18>	I tried going to safe mode in shell and still cant find it. Tried every command i could duckduckgo
+T 1600485767 18<Bashing-om18>	UbuntuLostUser: We are here to help. Pastebin that "wipefs" output for a place to start the looking.
+T 1600485829 18<UbuntuLostUser18>	https://paste.ubuntu.com/p/gBMk7qh9Pp/
+T 1600485871 18<Bashing-om18>	UbuntuLostUser: ^^ "sudo wipefs /dev/sda"
+T 1600485959 18<CarlFK18>	UbuntuLostUser: do you want to also boot into Win?
+T 1600485970 18<UbuntuLostUser18>	https://paste.ubuntu.com/p/snCgBnF4VP/
+T 1600486003 18<UbuntuLostUser18>	Definitely not. I want windows off of here. I only want this beautiful distro called Ubuntu on here. Nothing more nothing less
+T 1600486094 18<pavlos18>	can you pastebin this ... sudo fdisk -l /dev/sda
+T 1600486148 18<UbuntuLostUser18>	https://paste.ubuntu.com/p/M8DNhg27W2/
+T 1600486178 18<CarlFK18>	Hitachi HTS72321 seems to be a 160gig drive
+T 1600486262 18<pavlos18>	are you see the disk was 320 GB ... the model as CarlFK wrote is 160 GB
+T 1600486310 18<pavlos18>	 change see to sure
+T 1600486375 18<UbuntuLostUser18>	....wow.. I bought this refurbished pc from Rakuten. It shows 360gb on the paperwork. I could have sworn initially it said 320gb when i partitioned it
+T 1600486409 18<UbuntuLostUser18>	ohhh... they ripped me off. wow
+T 1600486439 18<UbuntuLostUser18>	I have a HP Elitebook 8460p corei5 vpro
+T 1600486444 18<CarlFK18>	that implies intent.  good chance someone said "paperwork says 320, charge that much" ;)
+T 1600486511 18<CarlFK18>	UbuntuLostUser: good news (really) you have a SSD
+T 1600486533 18<CarlFK18>	https://support.hp.com/us-en/document/c02753879  " Solid state drive:    128/160GB   "
+T 1600486556 18<CarlFK18>	Ill take a 160 ssd over a 320 spinny disk any day
+T 1600486575 18<CarlFK18>	go give Rakuten a thank you card ;)
+T 1600486592 18<UbuntuLostUser18>	lol i have so much to learn ><
+T 1600486668 18<UbuntuLostUser18>	I appreciate you all for helping me. So basically 160ssd beats a 320 any day eh? Originally they were supposed to send a Lenovot420 LT Core i52-5.Ghz, 4gb ram, 320gb HDD. So your telling me that this 160 ssd is better ?
+T 1600486718 18<pavlos18>	yes, ssd's are much faster than spinning disks (hdd)
+T 1600486731 18<CarlFK18>	ssd is electronics, no moving parts.  think memory or SD card.  so it is fast and no motor, so doesn't need as much battery
+T 1600486817 18<UbuntuLostUser18>	Less space though unfortunately. I guess i dont need much space plus i do got a 128gb 3.1 flash drive so i guess im good
+T 1600486858 18<UbuntuLostUser18>	Im glad there isnt half my hard drive taken up at least. Had me worried for security purposes.
+T 1600486920 18<pavlos18>	a 120GB SSD on eBay goes for about $20-25
+T 1600487167 18<CarlFK18>	https://www.hitachivantara.com/en-us/products.html  if someone can find model number Hitachi HTS72321
+T 1600488049 18<CarlFK18>	the laptop came with a 160 gig ssd, but I think someone swapped it for a 160g spinny
+T 1600494785 18<luiserebii18>	Hello, I'm on Ubuntu 20.04, with GNOME. My Caps Lock and left Shift key spontaneously stopped working. Is there some way to diagnose this issue?
+T 1600494961 18<tuxakadjseb18>	Is it the same in several softwares ? And a terminal ?
+T 1600495260 18<luiserebii18>	Yup, appears to be consistent everywhere
+T 1600495315 18<luiserebii18>	I tested this in Firefox, the terminal, and a GUI text editor
+T 1600495379 18<luiserebii18>	Ahhh, the key that corresponds to the Windows icon also does not register. Forgot to mention.
+T 1600495393 18<luiserebii18>	So that makes three keys: Caps Lock, left Shift, and the Windows key.
+T 1600496217 18<Maik18>	keyboard dying?
+T 1600496244 18<tuxakadjseb18>	You can clean those three keys.
+T 1600496616 18<luiserebii18>	I would hope not... they seem to work fine for a brief moment when I'm turning on the computer...?
+T 1600496701 18<Maik18>	could still be possible, maybe the contacts ar dirty
+T 1600496705 18<Maik18>	ar/are
+T 1600496764 18<luiserebii18>	I suppose so. I have to admit that I've never cleaned a keyboard before, I'll check out some guides online
+T 1600496859 18<Maik18>	is it a usb keyboard or is it one on a laptop?
+T 1600496903 18<luiserebii18>	Laptop keyboard
+T 1600497030 18<Maik18>	if you have a usb keyboard or maybe even a bluetooth keyboard you could test and see if it works. If so then there's a issue with the keyboard on the laptop.
+T 1600497046 18<luiserebii18>	I do; I'll try that now
+T 1600497141 18<luiserebii18>	The keys work perfectly on the usb keyboard... things might be grim for my laptop keyboard maybe
+T 1600497169 18<Maik18>	I have a lenovo on which my son spilled some milk on years ago by accident, i cleaned it as good as possible but there are still some issues with a few keys. I gues in need to try some contact spray to clean out the leftovers.
+T 1600497406 18<luiserebii18>	The thing that had changed with this laptop, was mainly that the adapter had stopped working seemingly
+T 1600497424 18<luiserebii18>	so I stopped using it for around a week or two until the new adapter arrived in the mail.
+T 1600497436 18<luiserebii18>	Now that I've booted back into it, it's having this issue
+T 1600497455 18<luiserebii18>	It seems to be the only thing that changed that I'm aware of
+T 1600497674 18<Maik18>	adapter as in power supply?
+T 1600497714 18<Maik18>	if so let's hope it's the right one
+T 1600498799 18<luiserebii18>	yup, power supply, sorry for the delay
+T 1600498842 18<luiserebii18>	it does seem to work, anyways
+T 1600499473 18<Maik18>	luiserebii: if i'm not mistaken a wrong power supply can damage a computer due excessive voltage, insufficient voltage and wrong polarity.
+T 1600499507 18<Maik18>	that's what i've been told once
+T 1600499607 18<Maik18>	anyway, i'm off to bed. See you all later. :)
+T 1600502040 18<diverdude18>	Will this command not look into DOT files (like .env.dev) ? find . -iname "*" -type f -exec grep -Hni "DJANGO_CORS_ORIGIN_WHITELIST" {} \;
+T 1600502837 18<bodsda18>	diverdude: yeah, seems to work fine with dotfiles - https://paste.ubuntu.com/p/MWBtgg7xqy/
+T 1600502852 18<diverdude18>	thx
+T 1600513830 18<topoi18>	Hello folks. Is there some ubuntu touch channel?
+T 1600515100 18<jeremy3118>	topoi: #ubuntu-touch
+T 1600516025 18<osse18>	7
+T 1600522962 18<BluesKaj18>	Hi all
+T 1600534740 18<Artabasdos18>	Hi, Does anyone know how to fix the bug with the "Removable Media" section in the Settings not remembering your settings?
+T 1600534769 18<Artabasdos18>	It keeps automatically switching to the first thing in the application list...
+T 1600534834 18<Maik18>	Artabasdos: which Ubuntu?
+T 1600534852 18<Artabasdos18>	20.04.1
+T 1600534856 18<Artabasdos18>	fully updated
+T 1600534935 18<Artabasdos18>	I;m guessing it's a gconf setting or something, but Google has been no help.
+T 1600534951 18<Artabasdos18>	It has happened after a reinstall too.
+T 1600535025 18<Maik18>	I couldn't find anything yet on the web about the matter. Maybe it's best to file a bug report on launchpad.
+T 1600535070 18<Artabasdos18>	Given I don't know what is exactly glitching, I', not sure the report would be much use
+T 1600535081 18<Artabasdos18>	i'm*
+T 1600535203 18<Maik18>	every report with sufficient info is usefull otherwise, IF it's a bug, the devs can fix it
+T 1600535269 18<Artabasdos18>	It's the sufficent info I'm worried about.
+T 1600535277 18<Artabasdos18>	I don't know what logs would be required.
+T 1600535350 18<Maik18>	please don't PM, everything related to ubuntu and bug reporting can be asked here. That's what these channels are for. :)
+T 1600535377 18<Artabasdos18>	ok, sorry.
+T 1600535388 18<Maik18>	when it comes to logs they'll let you know
+T 1600535423 18<Artabasdos18>	ok, i'll try my best. thanks
+T 1600535541 18<Artabasdos18>	er, how do i start a new bug reort?
+T 1600535547 18<Artabasdos18>	i'm not seeing an option
+T 1600535555 18<Artabasdos18>	report*
+T 1600535606 18<Maik18>	https://help.ubuntu.com/community/ReportingBugs
+T 1600535680 18<Artabasdos18>	yeah, this is what i was afraid of
+T 1600535694 18<Artabasdos18>	i don't know the name of the application that's malfunctioning
+T 1600535704 18<Artabasdos18>	therefore i can't run the bug command
+T 1600535753 18<Maik18>	ok, np. Then wait until someone comes around to help you with the issue or come back later and ask again.
+T 1600535771 18<Artabasdos18>	nevermind, apparently i can run it with an open window
+T 1600535773 18<Artabasdos18>	thanks
+T 1600535904 18<Maik18>	so it's working... nice
+T 1600536439 18<Artabasdos18>	reported
+T 1600536443 18<Artabasdos18>	https://bugs.launchpad.net/ubuntu/+source/gnome-control-center/+bug/1896337
+T 1600536444 18<ubottu18>	Launchpad bug 1896337 in gnome-control-center (Ubuntu) "Removable Media settings don't remember your choices" [Undecided,New]
+T 1600537326 18<grubfailure18>	if i have an unresponsive kernel that doesn't allow me to ssh in, what other than mounting the drive to a working instance can I do to secure the instance? After mounting I tried purging the most recent image via chroot but it's still unresponsive
+T 1600537469 18<tomreyn18>	some more context may help here
+T 1600537599 18<tomreyn18>	you're running some (which?) ubuntu release which some (which?) kernel on a guest system on some (which kind of) virtualization and this system runs the default openssh server provided by this release (right?) but logging in remotely through ssh fails with an error message (which?).
+T 1600538160 18<grubfailure18>	20.04
+T 1600538180 18<grubfailure18>	this is an aws ec2 instance
+T 1600538711 18<tomreyn18>	grubfailure: you could inspect the logs while you have the storage connected to the other, working, system. you could also install SSM on it, but that's a bit advanced, and more of a topic for ##aws
+T 1600540076 18<grubfailure18>	my concern is not really with stabilizing the kernel so much as getting a mysqldump and just terminating the troubled instance but I can't seem to login while chrooted
+T 1600540872 18<tomreyn18>	grubfailure: so you get an error message while you try to chroot into the 'broken' system which is mounted to the other system, with all needed virtual fiel systems mounted in advance?
+T 1600540928 18<grubfailure18>	no i can chroot into the mounted drive just fine, i just can't connect to mysql while chrooted
+T 1600541575 18<tomreyn18>	grubfailure: did you start the service, though? and did it start up fine?
+T 1600541642 18<tomreyn18>	any error messages there? are the distro and kernel you're running the same or similar?
+T 1600543032 18<laza18>	I just updated some packages on my ubuntu 20.04 machine. Before that the compose-key was displayed as a kind of infinity symbol and the sequence was displayed as well. Finally the entered characters were replaced by the composed character. Now nothing will be displayed, although using the compose key + sequence still works. But now nothing is shown. Why the change?
+T 1600543197 18<tomreyn18>	displayed where, by what?
+T 1600543213 18<tomreyn18>	which packages got updated?
+T 1600543432 18<grubfailure18>	i was able to get into mysql in chroot, but it's not to the mounted mysql, only the primary system
+T 1600543752 18<tomreyn18>	well, if you also run a mysql server on the main OS, you'll want to stop that before trying to start the on in the chroot
+T 1600543806 18<tomreyn18>	(or at least ensure they won't interfere with one another)
+T 1600543873 18<laza18>	tomreyn: where? anywhere I could enter text. what? so pressing the compose key inserted a small inifinity like symbol in the text area where I was just typing. Then eg pressing u would insert the character u after that little infinity symbol. Then eg pressing " would complete the sequence removing the little infinity symbol and the u and replacing both with the now composed char ü . This is now all not happening an
+T 1600543873 18<laza18>	ymore. I can enter the sequence of compose key, u, " and get a ü, but without the visual feedback that was there before.
+T 1600543927 18<grubfailure18>	the restrictions on chroot is the challenging part of this. i can't utilize systemctl to start mariadb on the chroot. it says ignored request
+T 1600544090 18<tomreyn18>	laza: hmm, i haven't seen this with the infinity symbol before, maybe that's a feature specific to your graphical desktop. i haven't run 20.04 much, though.
+T 1600544138 18<laza18>	tomreyn: This describes my situation pretty well: https://www.reddit.com/r/gnome/comments/eu3wim/how_to_configure_compose_key_visual_feedback/
+T 1600544148 18<tomreyn18>	grubfailure: this may be apparmor getting in the way. maybe you can just copy everything to a system configured the same way.
+T 1600544219 18<tomreyn18>	laza: do you have this on a tty as well?
+T 1600544248 18<tomreyn18>	on a proper, non virtual, terminal?
+T 1600544288 18<tomreyn18>	oh wait, you *used* to have the compose character, no longer have it, so you wont be able to tell now.
+T 1600544393 18<laza18>	tomreyn: To compose chars is a X11 feature (as far as I can tell)
+T 1600544437 18<laza18>	tomreyn: composing of chars still works. Only the visial feedback is missing now.
+T 1600544451 18<grubfailure18>	the web directory i copied the files just fine. it's the database that's the problem. i created a copy of /var/lib/mysql/database and moved it to a new instance but it's not recognizing it (yes, i changed the owner back to the mysql user). if i connect to the database itself i can physically see it but i get "table doesn't exist in engine" errors.
+T 1600544452 18<grubfailure18>	so I don't think a hard copy is really working which is why i was hoping to just get a dump
+T 1600544507 18<tomreyn18>	laza: hmm, yes, i think you'Re right it's X based. i don't think i'm able to help, really, other than by re-suggesting to review which packages got updated between when it worked and stopped working.
+T 1600544590 18<tomreyn18>	grubfailure: you'd need to copy all of /var/lib/mysql as well as /etc/mysql (or wherever the configuration for yours is stored) to the replacement system. and run the exact same mysql server version and variant (fork) there.
+T 1600544656 18<tomreyn18>	(a different patch level may be ok)
+T 1600544673 18<laza18>	tomreyn: thanks anyway. Is there a log or history which packages got updated lately on an ubuntu system. I did something like apt update && apt dist-upgrade and can't tell which packages got updated (around 30)
+T 1600544696 18<tomreyn18>	laza: /var/log/apt/
+T 1600544708 18<laza18>	tomreyn: thanks
+T 1600544718 18<tomreyn18>	also /var/log/unattended-upgrades/ if you have that
+T 1600545244 18<IntelCore18>	software updater failed to download repository information.. hung.. ubuntu 20.04.1 ??
+T 1600545274 18<tomreyn18>	yes
+T 1600545283 18<IntelCore18>	sit n spins
+T 1600545294 18<tomreyn18>	no
+T 1600545324 18<IntelCore18>	What?
+T 1600545335 18<tomreyn18>	exactly. please provide more information.
+T 1600545359 18<IntelCore18>	the updater.. says that
+T 1600545410 18<tomreyn18>	run "sudo apt update" on a temrinal and share the output
+T 1600545428 18<tomreyn18>	on a pastebin
+T 1600545567 18<IntelCore18>	https://pastebin.com/VqEUaxce
+T 1600545697 18<tomreyn18>	disable the 'screenlets' PPA (http://ppa.launchpad.net/screenlets/ppa/ubuntu) and uninstall any packages you have instaleld from it.
+T 1600545713 18<IntelCore18>	buhhh i like'em
+T 1600545743 18<IntelCore18>	an the settings is still in spinning
+T 1600545747 18<IntelCore18>	guru
+T 1600545748 18<tomreyn18>	this repository doesn't provide any packages compatible with your ubuntu release
+T 1600545757 18<IntelCore18>	huh?
+T 1600545763 18<IntelCore18>	oh noes
+T 1600545782 18<tomreyn18>	maybe you can find a different apt source which does provide the same software for your release.
+T 1600545790 18<IntelCore18>	rite'o
+T 1600545854 18<IntelCore18>	so, how stop software updater
+T 1600545909 18<tomreyn18>	i guess you can just kill the process, or reboot.
+T 1600545916 18<IntelCore18>	rite
+T 1600545929 18<tomreyn18>	since you were able to run apt update, apt itself seems to be fine
+T 1600545946 18<tomreyn18>	i'm not sure why the software updater would have frozen, though
+T 1600546000 18<tomreyn18>	i also don't know what "screenlets" are or were, but you can maybe find other unsupported repositories offering this software for focal (20.04) here: https://launchpad.net/ubuntu/+ppas?name_filter=screenlets
+T 1600546120 18<tomreyn18>	hmm this software seems to have been unmainteind for a long time. i wouldn't recommend using it.
+T 1600546496 18<IntelCore18>	ye before Vivid
+T 1600546551 18<IntelCore18>	tmreyn - why does vivid appear as an update - and Xenial on 20.04.1?
+T 1600546560 18<tomreyn18>	before you configure PPAs, and whenever you do a release upgrade, check every single PPA ou have to ensure it is still both maintained and provides packages for your ubuntu release.
+T 1600546577 18<IntelCore18>	news ty
+T 1600546585 18<tomreyn18>	i don't know what you mean by "why does vivid appear as an update - and Xenial on 20.04.1"
+T 1600546600 18<tomreyn18>	!vivid
+T 1600546600 18<ubottu18>	Ubuntu 15.04 (Vivid Vervet) was the 22nd release of Ubuntu. Support ended on February 4, 2016. See !eol and https://ubottu.com/y/vivid
+T 1600546600 18<IntelCore18>	I'll find.
+T 1600546606 18<tomreyn18>	!xenial
+T 1600546606 18<ubottu18>	Ubuntu 16.04 LTS (Xenial Xerus) was the 24th release of Ubuntu. Download at http://releases.ubuntu.com/16.04/ - Release Info: https://wiki.ubuntu.com/XenialXerus/ReleaseNotes
+T 1600546629 18<IntelCore18>	yes can still get updates for them
+T 1600546637 18<tomreyn18>	not for vivid, no.
+T 1600546648 18<IntelCore18>	i did in-place upgrades since vivid
+T 1600546678 18<tomreyn18>	that doesn't make vivid supported
+T 1600546719 18<IntelCore18>	hmm.started with on vivid install..kernel updates, I think that what I saw.
+T 1600546770 18<IntelCore18>	let me knock out ppa.. and come back
+T 1600546776 18<tomreyn18>	you shouldn't have those 'xenial' apt sources on your 20.04 system
+T 1600546794 18<tomreyn18>	and you should certainly remove any software installed form there, too.
+T 1600546843 18<tomreyn18>	it's most likely not compatible with 20.04. but i think you were told that mixing software across ubuntu releases is not supported (and a bad idea most of the time) many times before.
+T 1600549023 18<grubfailure18>	i tried copying over the entirety of /etc/mysql and /var/lib/mysql and get the same result "table doesn't exist in engine"
+T 1600553014 18<mustmodify_slow18>	Howdy. I'm trying to troubleshoot some mysterious slowness on my dell laptop running 18.04. Seemed to coincide with installing a large number of updates a few days ago.
+T 1600553045 18<mustmodify_slow18>	Probably not related, but this isn't what I was expecting from `df -h` -- can anyone tell me if this output shows anything troublesome?
+T 1600553047 18<mustmodify_slow18>	https://termbin.com/w7t6
+T 1600553159 18<mustmodify_slow18>	Also, as a sanity check, can someone do `time curl www.google.com > /dev/null`
+T 1600553171 18<mustmodify_slow18>	two or three times and tell me what kind of times you get?
+T 1600553205 18<mustmodify_slow18>	I have tried several networks and I'm getting times from 1.5 to 25s.
+T 1600553320 18<retran18>	it wouldnt matter what values someone else got
+T 1600553351 18<retran18>	it would just be testing googles peerage
+T 1600553365 18<retran18>	which is probably great
+T 1600553439 18<mustmodify_slow18>	Well either way, I'm experiencing some kind of insanity here. I am not sure whether it's in the network, or it's something that is just affecting the network.
+T 1600553446 18<retran18>	you should be getting like 50ms for that on decent wired broadband
+T 1600553458 18<retran18>	maybe 100ms if your wifi is poop
+T 1600553469 18<mustmodify_slow18>	I'm on wifi. Still, often above 5s is nutso.
+T 1600553496 18<retran18>	you should test speeds between nodes o  your own network then
+T 1600553505 18<mustmodify_slow18>	I'm experiencing some kind of insanity here. I am not sure whether it's in the network, or it's something that is just affecting the network.
+T 1600553515 18<mustmodify_slow18>	like. curling the router?
+T 1600553525 18<retran18>	stop saying that and test your own nodes
+T 1600553540 18<retran18>	sure. or ping
+T 1600553547 18<retran18>	why not start with ping!
+T 1600553581 18<mattfly18>	netcat: invalid option -- 'U ??? in ubuntu 20.04
+T 1600553609 18<mustmodify_slow18>	times seem great.
+T 1600553646 18<mustmodify_slow18>	rtt min/avg/max/mdev = 0.806/9.689/51.827/18.850 m
+T 1600553682 18<mustmodify_slow18>	but ping times for google are also good-ish.
+T 1600553719 18<mustmodify_slow18>	20 packets transmitted, 20 received, 0% packet loss, time 19030msrtt min/avg/max/mdev = 35.588/38.603/59.686/5.132 ms
+T 1600553810 18<mustmodify_slow18>	but for the router, using `time curl 192.168.1.1 > /dev/null`, I get times like 0.014s 0.019s, 0.024s... very different from Google.
+T 1600553842 18<mustmodify_slow18>	(Just a note, it isn't only google ... every website is increadibly slow. Many pages take 45 seconds to 5 minutes to load.)
+T 1600553939 18<retran18>	what about using a diff device on your same network
+T 1600553963 18<mustmodify_slow18>	For all three networks, other devices (phone, my wife's laptop) the network is fast.
+T 1600553971 18<retran18>	is there a vpn youre using?
+T 1600553979 18<mustmodify_slow18>	no
+T 1600553988 18<mustmodify_slow18>	good thought though
+T 1600554188 18<mustmodify_slow18>	Can anyone tell me if this result for `df -h` is "healthy"? https://termbin.com/w7t6
+T 1600554200 18<mustmodify_slow18>	I wasn't expecting to see all those `/snap` entries.
+T 1600554270 18<jpds18>	mustmodify_slow: That's fine, ubuntu uses snapd out of the box
+T 1600554323 18<mustmodify_slow18>	ok. Well, I'm open to any ideas. I'm on a road trip and really need a laptop of some kind -- if I can't figure this out will have to reinstall from factory default, which would be windows. :(
+T 1600554390 18<oerheks18>	mustmodify_slow, all you need to know is: /dev/nvme0n1p2  468G   35G  410G   8% /
+T 1600554421 18<mustmodify_slow18>	?
+T 1600554457 18<oerheks18>	That would be your actual status; 8% used, 410g free
+T 1600554498 18<mustmodify_slow18>	right.
+T 1600554517 18<mustmodify_slow18>	I just thought there was something else I wasn't seeing.
+T 1600554521 18<mustmodify_slow18>	or understanding.
+T 1600554574 18<mustmodify_slow18>	If I did this correctly, here's a list of the packages I updated a few days ago. (It's so long that I'm not sure it's helpful.) https://termbin.com/sy10
+T 1600554632 18<mustmodify_slow18>	retran: any other thoughts?
+T 1600554922 18<mustmodify_slow18>	Is there some other channel where I could get some help diagnosing this issue?
+T 1600555495 18<mustmodify_slow18>	Final call for help with this networking issue before I restore from factory default.
+T 1600555539 18<Guest_614518>	is wubi dead? trying to install ubuntu on this old windows 7 computer someone gave my mom
+T 1600555557 18<Guest_614518>	I don't have a USB thumb drive or blank CD and trying to install it just from the main harddrive somehow
+T 1600555575 18<Guest_614518>	I already created a 350GB partition for it but I have no bootable media
+T 1600555582 18<oerheks18>	Yes, wubi is dead.
+T 1600555614 18<oerheks18>	and without grub already installed, there is no way to install from iso on the harddrive.
+T 1600555620 18<Guest_614518>	damn
+T 1600555640 18<Guest_614518>	she's stuck with windows 7 for now i guess
+T 1600555663 18<Guest_614518>	this thing came with the ask toolbar and firefox 5.0.1
+T 1600555716 18<oerheks18>	oh, i am working on a "Vista" machine
+T 1600555733 18<oerheks18>	find a 4 gb usb drive
+T 1600555747 18<Guest_614518>	yeah if i get lucky maybe she has one
+T 1600555850 18<Guest_614518>	my mom does not know how to use a computer
+T 1600555852 18<Guest_614518>	even windows
+T 1600555883 18<Guest_614518>	I get to set her up with linux for her to learn how to use a computer for the first time, she'll be a linux user for life
+T 1600559109 18<basenode18>	im having trouble getting gitmux working, putting => set -g status-right '#(gitmux "#{pane_current_path}") <= in .tmux.conf shows nothing in status right
+T 1600559119 18<basenode18>	any ideas?
+T 1600559900 18<oerheks18>	seems a mac issue? https://github.com/arl/gitmux/issues/17
+T 1600559915 18<oerheks18>	or wsl2?
+T 1600559951 18<oerheks18>	some ditch VSCode for neovim over such thingy
+T 1600564793 18<basenode18>	oerheks: found the issue, for some reason the gitmux binary wasn't being picked up by tmux
+T 1600564847 18<basenode18>	creating a symbolic link from my gopath to /usr/bin/local worked
+T 1600564909 18<oerheks18>	there is ; set -g status-right '#(cd #{pane_current_path}'
+T 1600569450 22*	26ChanServ gives channel operator status to 18ubottu
+T 1600569451 22*	26ubottu removes ban on 18$a:ardshiel
+T 1600569451 22*	26ubottu removes channel operator status from 18ubottu
+T 1600593471 18<pabed18>	format lvm partition is needed ubuntu 20.04?
+T 1600593520 18<pabed18>	I meant this " fdisk  /dev/sdb"  ?
+T 1600595847 18<digup18>	hey guys
+T 1600598870 18<chull18>	My husband has Libre Office 6.0.7.3 on Ubuntu 18.04.  He was trying to copy text out of Writer, and it detached some big wide tool bar. I'm not sure what I did but it seems to have reaattached to the side of the page. How do we get it back on top?
+T 1600598942 18<Hejkki18>	chull: there are dots at the top of the right-sided toolbar, move it using the mouse
+T 1600599262 18<chull18>	Hejkki, Thanks for your help.  I expanded his page to the right, but don't see dots.  The left side bar doesn't seem to have dots either.  There are >>> but doesn't seem to apply?
+T 1600600734 18<BluesKaj18>	Hi all
+T 1600603181 18<tomreyn18>	chull: if that's still an issue, a screenshot should help clarify what the problem is, and what the toolbar looks like for him.
+T 1609963181 19*	Now talking on 22#ubuntu
+T 1609963181 22*	Topic for 22#ubuntu is: Official Ubuntu Support Channel | IRC Guidelines: https://ubottu.com/y/gl | #ubuntu supports Ubuntu and official flavors; versions 16.04, 18.04, 20.04, 20.10 | Unofficial derivatives: use your distro's support channel, not here. | IRC info: https://ubottu.com/y/irc | Pastes to https://paste.ubuntu.com/ | Download: https://ubottu.com/y/dl
+T 1609963181 22*	Topic for 22#ubuntu set by 26krytarik!krytarik@xebian/developer/krytarik (24Thu Oct 22 14:58:13 2020)
+T 1609963182 -18ChanServ-	[#ubuntu] Welcome to #ubuntu! Please read the channel topic. This channel is logged at irclogs.ubuntu.com. Use of this channel implies acceptance of terms at https://wiki.ubuntu.com/IRC/TermsOfService
+T 1609963182 22*	Channel 22#ubuntu url: 24https://www.ubuntu.com
+T 1609963208 18<luglio18>	lordcirth__, 20.04 LTS.
+T 1609963211 18<pyeverything18>	hey there how can I force protoc to use the second path?  $ which -a protoc  1) /home/mona/anaconda3/bin/protoc  2) /usr/local/bin/protoc
+T 1609963249 18<luglio18>	lordcirth__, Gnome 3.36.8
+T 1609963493 18<coconut18>	I heard that filezilla contains malware. Does the linux version has that too?
+T 1609963639 18<frib18>	Ubuntu 20.0 has suddenly started to hang for about 1 minute at startup with the spinning circle. Please help me fix it. Thank you.
+T 1609963844 18<lordcirth__18>	frib, if you hit ESC or TAB during this, does it change to the boot text?
+T 1609963912 18<frib18>	lordcirth__, I Would have to reboot and try, but I don't think so
+T 1609963937 18<EriC^^18>	frib: anything interesting in /var/log/boot.log ?
+T 1609963964 18<lordcirth__18>	frib, ok. Pastebin the output of "systemd-analyze critical-chain"
+T 1609963986 18<frib18>	EriC^^, https://paste.ubuntu.com/p/5y3T3NnGRw/
+T 1609964026 18<frib18>	lordcirth__, https://paste.ubuntu.com/p/b6wXhQTSYQ/
+T 1609964162 18<luglio18>	lordcirth__, have you found out anything?
+T 1609964234 18<lordcirth__18>	luglio, no; but you could try 5.10: https://kernel.ubuntu.com/~kernel-ppa/mainline/v5.10/
+T 1609964241 18<lordcirth__18>	(at your own risk)
+T 1609964249 18<jpds18>	luglio: Doesn't necessarily mean that the 5.8 kernel has the necessary integration
+T 1609964454 18<frib18>	lordcirth__, EriC^^ any suggestions?
+T 1609964506 18<lordcirth__18>	frib, there's an unexplained gap between backlight and sysinit of over a minute
+T 1609964702 18<luglio18>	lordcirth__, has this kernel not been testet with 20.04 LTS yet?
+T 1609964769 18<lordcirth__18>	luglio, it has probably passed some automated tests
+T 1609964967 18<luglio18>	lordcirth, when will it be released to the public?
+T 1609965000 18<lordcirth18>	luglio, 20.09, I think.
+T 1609965004 18<ogra18>	mainline builds do not get any testing (afaik, not even automated) ... they are just builds of linus' tree
+T 1609965020 18<oerheks18>	LTS will not get 5.10
+T 1609965024 18<ogra18>	without any of the ubuntu specific patches or adjustments
+T 1609965041 18<luglio18>	what about kernel 5.9?
+T 1609965050 18<ogra18>	these packages should not be used in production, they are solely to verify bugs
+T 1609965072 18<luglio18>	So 20.04 never will support my board?
+T 1609965099 18<ogra18>	https://wiki.ubuntu.com/Kernel/MainlineBuilds
+T 1609965115 18<lordcirth18>	22.04's kernel will be backported to 20.04 as HWE
+T 1609965207 18<oerheks18>	this is the problem with too new hardware :-)
+T 1609965213 18<oerheks18>	just wait for it.
+T 1609965235 18<luglio18>	I can't wait till we have another LTS version. :(
+T 1609965258 18<luglio18>	It's not new, it's a year old.
+T 1609965289 18<sarnold18>	luglio: you may be able to run an hwe kernel, https://wiki.ubuntu.com/Kernel/RollingLTSEnablementStack https://wiki.ubuntu.com/Kernel/LTSEnablementStack
+T 1609965375 18<ioria18>	!info xserver-xorg-hwe-20.04  focal
+T 1609965375 18<ubottu18>	Package xserver-xorg-hwe-20.04 does not exist in focal
+T 1609965472 18<ioria18>	speaking of which, the LTSEnablementStack  link is wrong
+T 1609966104 18<luglio18>	so this isn't a solution?
+T 1609966222 18<alexandrdvorkin18>	cd Dowanloads

@@ -1,0 +1,526 @@
+T 1579116173 18<Lumpio-18>	Mibbit ┐(￣ー￣)┌
+T 1579116174 18<sarnold18>	heh
+T 1579130898 18<Margaret198918>	I'm here
+T 1579190211 18<edcragg18>	hi, is there some way to make --test-threads=1 default for `cargo test` using Cargo.toml?
+T 1579190892 18<tleydxdy-M18>	https://doc.rust-lang.org/cargo/reference/config.html
+T 1579190893 18<tleydxdy-M18>	build.jobs?
+T 1579191244 18<edcragg18>	hmm, interesting
+T 1579191272 18<edcragg18>	and i could add this to my crate repo i guess
+T 1579191683 18<edcragg18>	could set a bash script as the "runner", ouch
+T 1579191722 18<edcragg18>	i'm not sure about build jobs since i wouldn't want to disable parallel builds too
+T 1579192079 18<tleydxdy-M18>	yeah, I'm not sure if it even work like I imagined
+T 1579219632 20*	Disconnected (20Connection timed out)
+T 1579219644 19*	Now talking on 22#rust-beginners
+T 1579219644 22*	Topic for 22#rust-beginners is: Beginners Rust Discussion | This server is eventually going to be shut down, please migrate to https://discord.gg/rust-lang or ##rust on irc.freenode.net: https://blog.rust-lang.org/2019/04/26/Mozilla-IRC-Sunset-and-the-Rust-Channel.html | Conduct https://www.rust-lang.org/policies/code-of-conduct
+T 1579219644 22*	Topic for 22#rust-beginners set by 26Manishearth (24Tue Jan  7 14:20:10 2020)
+T 1579222616 20*	Disconnected (20Connection timed out)
+T 1579222628 19*	Now talking on 22#rust-beginners
+T 1579222628 22*	Topic for 22#rust-beginners is: Beginners Rust Discussion | This server is eventually going to be shut down, please migrate to https://discord.gg/rust-lang or ##rust on irc.freenode.net: https://blog.rust-lang.org/2019/04/26/Mozilla-IRC-Sunset-and-the-Rust-Channel.html | Conduct https://www.rust-lang.org/policies/code-of-conduct
+T 1579222628 22*	Topic for 22#rust-beginners set by 26Manishearth (24Tue Jan  7 14:20:10 2020)
+T 1579249772 20*	Disconnected (20Connection timed out)
+T 1579252825 19*	Now talking on 22#rust-beginners
+T 1579252825 22*	Topic for 22#rust-beginners is: Beginners Rust Discussion | This server is eventually going to be shut down, please migrate to https://discord.gg/rust-lang or ##rust on irc.freenode.net: https://blog.rust-lang.org/2019/04/26/Mozilla-IRC-Sunset-and-the-Rust-Channel.html | Conduct https://www.rust-lang.org/policies/code-of-conduct
+T 1579252825 22*	Topic for 22#rust-beginners set by 26Manishearth (24Tue Jan  7 14:20:10 2020)
+T 1579267774 18<jonny_codewalker-M18>	this might be a weird question, but are there any alternatives to the rand crate? it uses quite a bit of unsafe and I would prefer for my depencency tree to be mostly unsafe free
+T 1579268563 18<Lumpio-18>	The standard library is full of unsafe too!
+T 1579268628 18<tinaun18>	randomize is a simple unsafe-free randomization lib
+T 1579268758 18<jonny_codewalker-M18>	lumpio, thats waht no_std is for :P but yeah obviously i wont be able to get rid of all unsafe in my depencenies, but thats not reason to not remove it where it is unneeded for me ^^
+T 1579268780 18<jonny_codewalker-M18>	but i found oorandom, which might be somethign. gonna check out randomize too though
+T 1579272433 18<tleydxdy-M18>	iirc making foreign function call needs unsafe?
+T 1579273409 18<LisavN8818>	Hi
+T 1579274429 18<tleydxdy-M18>	H¡
+T 1579277392 18<edcragg18>	tleydxdy-M: likely
+T 1579277506 18<edcragg18>	i thought even things as basic as Vector require unsafe code at a low level
+T 1579277822 18<edcragg18>	well, s/likely/certainly/
+T 1579277846 18<edcragg18>	https://users.rust-lang.org/t/why-is-vec-implemented-un-safely/1580/5
+T 1579278335 18<tleydxdy-M18>	ayy!
+T 1579311948 18<KarenY7199618>	hello
+T 1579323812 18<Dorothynl18>	hola
+T 1579327347 18<Lisa199518>	hello
+T 1579342034 18<kreyren18>	How do i work with arguments on clap? https://github.com/RXT0112/RXT0112/blob/master/src/main.rs#L26
+T 1579342045 18*	kreyren spent 4 hours with it and still didn't figured it out
+T 1579347743 18<Michelle9218>	Hello
+T 1579349066 18<kreyren18>	What is the proper way to implement this https://github.com/kreypi/kreyte/blob/init/src/main.rs#L8 as a crate that can be used in my rustlang code? Expecting the ability to use `efixme("message");` through importing crate that outputs `FIXME: message`
+T 1579349074 18*	kreyren resolved previous clap issue
+T 1579349167 18<Lumpio-18>	Libraries have a lib.rs (in the same directory as you have a main.rs) for exporting things
+T 1579349184 18<Lumpio-18>	However having "libs::output::" in the path is not very idiomatic
+T 1579349195 18<Lumpio-18>	The first part should be the crate name
+T 1579349217 18<Lumpio-18>	You can keep that structure inside your crate if you want and re-export with a shorter name, but not sure if it makes sense to have a those empty intermediate modules in the first place
+T 1579349236 18<kreyren18>	checking
+T 1579349285 18<kreyren18>	to clarify mensioned repository is expected to be exported as crate that i can use in https://github.com/RXT0112/RXT0112/blob/master/src/bin/main.rs
+T 1579349354 18<kreyren18>	or should i just place lib.rs with said mod for crate to work?
+T 1579349363 18*	kreyren is not confident in rustlang yet
+T 1579349412 18<kreyren18>	Lumpio-, 
+T 1579349458 18<Lumpio-18>	You need to add a lib.rs for your crate to work as a library
+T 1579349468 18<kreyren18>	ah i see
+T 1579349469 18<kreyren18>	adding
+T 1579349470 18<Lumpio-18>	You could put that "pub mod" stuff in there however
+T 1579349479 18<Lumpio-18>	But I would really get rid of the intermediate modules
+T 1579349487 18<Lumpio-18>	In fact the code is so short I would put all of it in lib.rs and get rid of the extra files
+T 1579349565 18<kreyren18>	it's expected to be a foundation for more functions that i often use in the code for easier maintainance through sourcing -> thus reasoning for this file hierarchy
+T 1579349576 18<kreyren18>	or is your way better for this usecase?
+T 1579349665 18<Lumpio-18>	If it's a "random unrelated functions" crate I don't know how to structure that, usually you avoid making those in the first place
+T 1579349746 18<kreyren18>	Lumpio-, what would you recommend for handling output assuming that it's expected to output messages with {FIXME,INFO,WARN,ERROR,DEBUG}: where prefix of said messages is customizable through env variable alike `EINFO_PREFIX` and FIXME with DEBUG are mutable through env variable
+T 1579349776 18<kreyren18>	basically rewrote of https://github.com/kreypi/kreypi/tree/init/output in rustlang
+T 1579349779 18<Lumpio-18>	I would probably use https://docs.rs/log/0.4.10/log/
+T 1579349787 18<kreyren18>	checking
+T 1579349880 18<Lumpio-18>	I mean it doesn't do *exactly* what you want but it's the de factor standard for logging in Rust
+T 1579349981 18<kreyren18>	Seems sufficient for everything except fixme -> will use thanks
+T 1579349999 18<kreyren18>	any suggestion for fixme handling? I use these for abstract and features that needs to be implemented
+T 1579350097 18<Lumpio-18>	If it's something that literally has to be fixed before using the program there's unimplemented!() which will panic
+T 1579350114 18<Lumpio-18>	If you just want a warning I'd use a debug or warn level message depending on how severe it is
+T 1579350144 18<Lumpio-18>	In reality I don't remember when I've written an actually visible "FIXME" log message, I just write comments
+T 1579350144 18<kreyren18>	something that is either fatal or non-fatal depending on the feature.. `unimplemented!()` seems to work for the fatal usecase
+T 1579350206 18<kreyren18>	i generally use comments just to explain the code and for non-fatal features i use annoying fixme messages to be resolved. (winehq-inspired approach)
+T 1579352526 18<MariaIN198218>	hello
+T 1579352996 18<Lumpio-18>	kreyren: Having FIXMEs be annoying is probably not a bad idea if they're important!
+T 1579353061 18<kreyren18>	Lumpio-, there are to me since i'm doing my best to produce high quality code so they are used for various sanity-checks and implementation where end-user can disable these if needed but they are enabled by default
+T 1579353100 18<kreyren18>	Currently writing down abstract for a logger to see if there is any existing crate that i could use or fork (not sure what i want from a logger atm)
+T 1579353238 18<Lumpio-18>	If I wanted to put annoying fixme's I'd probably make a fixme! macro that calls warn! inside or something
+T 1579353301 18<kreyren18>	That's my current approach, but assuming this being a package manager for OS i think that making custom logger would be appropriate, making sanity checks atm
+T 1579355707 18<kreyren18>	Lumpio-, So i crafted this https://github.com/RXT0112/RXT0112/issues/21 using log and env_logger crates seems to be sufficient for info,warn,error in terms of logging, but they don't handle output in cli.. fixme seems to be new and tracing doesn't seems to allow sufficient customization of cli and logs.. What is your opinion on it?
+T 1579395754 18<Donnam018>	hola
+T 1579405172 18<DonnawR18>	Hi
+T 1579430629 18<kreyren18>	What crate should i use for a GUI in rustlang?
+T 1579430640 18*	kreyren knows how to make red rectangle in piston
+T 1579431168 18*	kreyren moved in #rust
+T 1579443490 18<Miss18>	1,5 13Mp15�p0la15ye13r4 15[08Kelly Key - Adoleta15] 11413CeBoLiNhA 132000000137 
+T 1579443637 18<Lumpio-18>	How adorable. I haven't seen now playing messages like that in a decade.
+T 1579443812 18<Miss18>	1,5 13Mp15�p0la15ye13r4 15[08Kelly Key - Aumenta O Som15] 11413CeBoLiNhA 132000000137 
+T 1579491093 18<mustaqim-M18>	Hi, I was going through the rust book and came across: `io::stdin().read_line(&mut guess).expect("Failed to read line.");`, how does this work if `read_line` returns Err as the Result. Does the string passed in `read_line` still change because it comes before the `.expect`? 
+T 1579491442 18<Arnavion18>	mustaqim-M:   https://doc.rust-lang.org/std/io/trait.BufRead.html#method.read_line   >This function has the same error semantics as read_until [...]
+T 1579491452 18<Arnavion18>	mustaqim-M:   https://doc.rust-lang.org/std/io/trait.BufRead.html#method.read_until   >If an I/O error is encountered then all bytes read so far will be present in buf and its length will have been adjusted appropriately.
+T 1579491499 18<Arnavion18>	mustaqim-M: And I suppose I should've started with   https://doc.rust-lang.org/std/io/struct.Stdin.html#method.read_line   >For detailed semantics of this method, see the documentation on BufRead::read_line.
+T 1579491987 18<mustaqim-M18>	Arnavion: I see, thanks so much for replying and clearing that up
+T 1579518877 18<Mariaxe9718>	hola
+T 1579543303 18<Kimberly8u9518>	Hi
+T 1579548086 18<MrETH118>	Hello ppl!! OMG there is free money and Bitcoin here!! : https://freebitco.in/?r=599908
+T 1579549878 18<grin-M18>	MrETH1: yeah and I'm a 19 yo ukraininan superbabe horny virgin, oh my oh my
+T 1579593898 18<CarolXG198618>	hola
+T 1579620017 18<rusty18>	Hello
+T 1579620064 18<rusty18>	I'm struggling with a double mutable borrow in a loop 
+T 1579620200 18<Lumpio-18>	Is your code visible somewhere
+T 1579620360 18<rusty18>	sure
+T 1579620474 18<rusty18>	https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=c58ede110317c03d451b3851d9e8d78e
+T 1579620547 18<rusty18>	need to add or remove keys while I'm iterating it
+T 1579620675 18<vfs18>	rusty: collect keys to add/remove in the aux vector and apply after iteration is over. 
+T 1579620721 18<rusty18>	is the only way?
+T 1579620753 18<rusty18>	it a common issue that i have and i was wondering what is the best approach for this kind of scenarios
+T 1579620754 18<vfs18>	yes, with the std hashmap pretty much
+T 1579620886 18<rusty18>	but in that case do i have two iterations, one for collecting keys and another for removing them?
+T 1579620949 18<rusty18>	have to do*
+T 1579621590 18<vfs18>	rusty: yes
+T 1579661845 18<Lauracl18>	hola
+T 1579664746 18<MariaHJ18>	hola
+T 1579669475 18<Sarah8118>	Hi
+T 1579699380 18<antares18>	does lazy static work in no_std programs?
+T 1579712548 18<Jennifer8518>	hello
+T 1579728727 18<Ruth9718>	Hey
+T 1579929699 19*	Now talking on 22#rust-beginners
+T 1579929699 22*	Topic for 22#rust-beginners is: Beginners Rust Discussion | This server is eventually going to be shut down, please migrate to https://discord.gg/rust-lang or ##rust on irc.freenode.net: https://blog.rust-lang.org/2019/04/26/Mozilla-IRC-Sunset-and-the-Rust-Channel.html | Conduct https://www.rust-lang.org/policies/code-of-conduct
+T 1579929699 22*	Topic for 22#rust-beginners set by 26Manishearth (24Tue Jan  7 14:20:10 2020)
+T 1580044681 18<HelennI18>	Hello
+T 1580047835 18<pato18>	Hi! Quick newbie question here. Is it super common to pass arguments to functions using `&arg` or am I missing something?
+T 1580047891 18<pato18>	I guess most of the times I just want a const borrow of my args, so that implies using & when calling the function?
+T 1580049434 18<Alexendoo18>	pato: yeah, it's common
+T 1580049469 18<pato18>	thanks for your answer @Alexendoo
+T 1580053159 18<leotaku18>	Is it possible to somehow escape/remove the newlines in multi-line doc comments so the text ends up on a single line?
+T 1580053181 18<leotaku18>	Kind of like "foo \
+T 1580053199 18<leotaku18>	bar" becomes "foo bar" with string literals.
+T 1580063864 18<pato18>	Is there a way to allow dead code in my entire program?
+T 1580063873 18<pato18>	I thought #![allow(dead_code)]  in main.rs should do it
+T 1580063878 18<pato18>	but it doesn't
+T 1580067501 18<pato18>	In case someone finds it useful, I'm documenting my experience learning rust in here: https://twitter.com/alcuadrado/status/1221517317236019202
+T 1580087695 18<amphibulus18>	Hello, i cant figure out how to get a message out of an Unbounded mpsc (https://docs.rs/futures/0.3.1/futures/channel/mpsc/struct.UnboundedReceiver.html)
+T 1580087720 18<amphibulus18>	simply calling `recv` on it like tokio's mpsc doesnt work
+T 1580087976 18<carllerche18>	@amphibulus why not use the tokio unbounded receiver then?
+T 1580088002 18<carllerche18>	odds are, for the futures version, you have to include `StreamExt` and then use the `next()` fn
+T 1580088024 18<amphibulus18>	im trying to create an async lib that is not attached to a runtime
+T 1580088028 18<amphibulus18>	ohhh i see
+T 1580088040 18<carllerche18>	@amphibulus tokio channels are not tied to a runtime
+T 1580088053 18<carllerche18>	and you can pull them in by only including the `sync` feature flag
+T 1580088086 18<amphibulus18>	hmm yeah good point
+T 1580088103 18<amphibulus18>	i'll do that instead :) thanks !
+T 1580153552 18<Elizabeth18>	hola
+T 1580160343 18<Helen0n9518>	Hi
+T 1580178995 18<BarbaraGS18>	I'm here
+T 1580211759 18<AstraM18>	Hello
+T 1580211811 18<AstraM18>	i'm struggling with some Generic's errors
+T 1580211859 18<AstraM18>	could someone give me a hand? 
+T 1580212034 18<AstraM18>	https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=8f999f09821613c1b43dcd861a56b24b
+T 1580212900 18<AstraM18>	:)
+T 1580213734 18<AstraM18>	Nobody? :(
+T 1580227099 18<xorcon18>	Hello
+T 1580234669 18<Barbara18>	I'm here
+T 1580251683 18<figaro18>	say I have a bunch of hex strings made of 2 characters, I want to read them as bytes, like "ff" should be 0xFF, "aa" should be 0xAA ... what's a good way to do this ?
+T 1580251838 18<GreenJello18>	figaro, u8::from_str__radix("ff", 16)
+T 1580251863 18<GreenJello18>	er minus the double underscore
+T 1580252050 18<figaro18>	perfect, thanks!
+T 1580268692 18<bob_the_builder18>	hi
+T 1580268743 18<sarnold18>	wow this network is still here
+T 1580273776 18<KarenYa8118>	I'm here
+T 1580275499 18<Mary18>	I'm here
+T 1580287541 18<Dorothy9y18>	I'm here
+T 1580312848 18<steveeJ18>	are futures 0.3 combinators like try_buffer_unordered already possible to implement using .await and for loops?
+T 1580315777 18<Sandra9418>	hello
+T 1580319118 18<Arnavion18>	steveeJ: Any combinator that requires polling more than one future non-sequentially (eg poll two futures and do something with whichever resolves first) can't be done with .await alone. TryStreamExt::try_buffer_unordered is one of those
+T 1580319168 18<Arnavion18>	steveeJ: Also, specifically for the futures crate, rewriting combinators using async-await would just be a net loss because the explicit impls are more efficient
+T 1580347961 18<Sarah9618>	hello
+T 1580381167 18<HelenSS199418>	I'm here
+T 1580399303 18<jekrb18>	Would anyone be willing to do a code review on a really small rust lib? I come from the land of JavaScript, so I'm trying to learn Rust by porting JavaScript libs.
+T 1580399355 18<Lumpio-18>	I could take a look
+T 1580399362 18<Lumpio-18>	There's also the code review stack exchange
+T 1580399411 18<jekrb18>	Lumpio-: Thank you! I recently made a port of a small npm module called junk (https://npm.im/junk), the port is here: https://gitlab.com/jakeburden/junk
+T 1580399436 18<jekrb18>	it's very tiny, but I just was looking to see if this would be how a more experienced Rust programmer would make it?
+T 1580399573 18<GreenJello18>	jekrb, the only concern I have here is that you compile the regex on each call
+T 1580399589 18<Lumpio-18>	You could lazy_static! it but that's an extra dependency
+T 1580399647 18<Lumpio-18>	Another thing is that filename handling is a bit... convoluted in Rust. They went all-in on operating system compatibility and a lot of the time you might not have an "&str"
+T 1580399665 18<GreenJello18>	or you could have a struct like struct JunkTester(Regex); with fn is(&self, filename: &str) -> bool, and the consumer can use it multiple times
+T 1580399685 18<Lumpio-18>	You could get rid of extra backslashes by using raw strings
+T 1580399686 18<GreenJello18>	putting it in a lazy_static, or just a variable for use in a loop
+T 1580399710 18<Lumpio-18>	"^\\..*\\.swp$|" -> r"^\..*\.swp$|"
+T 1580399731 18<Lumpio-18>	It's mostly one backslash per line so doesn't realy save on typing but I think it's more readable
+T 1580399850 18<GreenJello18>	yep, I'd also prefer raw strings here
+T 1580399917 18<jekrb18>	Lumpio: GreenJello: Wow! Thank you both so much. I'm checking out lazy_static now.
+T 1580399970 18<jekrb18>	Would switching to raw strings solve the issue of filenames on different OS? Or this that a more nuanced issue?
+T 1580400004 18<jekrb18>	Referring to "They went all-in on operating system compatibility and a lot of the time you might not have an "&str""
+T 1580400075 18<Lumpio-18>	No the raw strings just make it nicer to type (doesn't process escape codes), the end result is the same
+T 1580400109 18<Lumpio-18>	Honestly I don't even know that much about filenames in Rust, I work in no filesystem land most of the time
+T 1580400251 18<GreenJello18>	jekrb, there's an issue when a file path isn't valid in utf-8
+T 1580400653 18<jekrb18>	Gotchya.  Thanks for the heads up there!  I really appreciate your help.
+T 1580400765 18<GreenJello18>	jekrb, in this case, you might accept an impl AsRef<OsStr> (which allows OsStr, Path, etc.) and do let s = that.as_ref().to_str_lossy().borrow(); 
+T 1580400912 18<GreenJello18>	if it's invalid utf-8, I doubt the lossy conversion would ever cause the result of your test to change
+T 1580404614 18<jekrb18>	GreenJello: oh wow! I didn't even know about OsStr. I'll check that out, thanks!
+T 1580409592 18<LindaHW18>	Hey
+T 1580440211 18<mirconium18>	I have a philosophical question
+T 1580440217 18<mirconium18>	When is rand going 1.0
+T 1580460108 20*	Disconnected (20Connection timed out)
+T 1580476717 19*	Now talking on 22#rust-beginners
+T 1580476717 22*	Topic for 22#rust-beginners is: Beginners Rust Discussion | This server is eventually going to be shut down, please migrate to https://discord.gg/rust-lang or ##rust on irc.freenode.net: https://blog.rust-lang.org/2019/04/26/Mozilla-IRC-Sunset-and-the-Rust-Channel.html | Conduct https://www.rust-lang.org/policies/code-of-conduct
+T 1580476717 22*	Topic for 22#rust-beginners set by 26Manishearth (24Tue Jan  7 14:20:10 2020)
+T 1580498589 18<MaryNm8218>	I'm here
+T 1580509011 22*	26ChanServ sets mode 24+a on 22#rust-beginners ChanServ
+T 1580509011 22*	26ChanServ gives channel operator status to 18ChanServ
+T 1580518462 18<CarolyE198818>	hola
+T 1580533168 18<Laura8318>	Hi
+T 1580533565 18<Dorothyaq18>	Hey
+T 1580536848 18<Patricia199518>	Hello
+T 1580538409 18<Mary199618>	Hello
+T 1580546763 18<Sandra9718>	Hello
+T 1580557427 18<troglodude18>	Say I have a wrapper struct around a USB device both to abstract the raw communication and to ensure that the concrete device is actually supported. The wrapper implements TryFrom<rusb::Device>, where try_from() communicates with the device and check if it's supported, failing the conversion if it isn't. All of this is in https://github.com/fruchti/punt-rs/ and works as it
+T 1580557428 18<troglodude18>	should.
+T 1580557498 18<troglodude18>	However, I'm now a the point where I'm using the crate linked above and another wrapper in a similar manner. I want to find out "is this raw USB device one thing or the other or neither?".
+T 1580557556 18<troglodude18>	(The wrapper I'm talking about here is punt::Target, btw.)
+T 1580557690 18<troglodude18>	This check won't work as planned because try_from() moves the inner type, regardless of whether the conversion succeeds or not. In general this makes sense, but in my case the underlying device could be safely used for another check if I had a mechanism to "move it back"
+T 1580557754 18<troglodude18>	Here's a narrowed-down snippet: https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=452e30e71814279c4399daf5ce51ddca
+T 1580557920 18<troglodude18>	Now, I could include the device in TryFrom's Error type to move it back when, but that doesn't look too ideomatic for me
+T 1580557958 18<troglodude18>	OTOH, I'm not sure if using TryFrom here is ideomatic at all, because it's causing side effects (USB communication)
+T 1580558279 18<troglodude18>	At this point, I have a feeling I'm overlooking a simple and clean way to approach this problem (architecturally). I'd appreciate it if someone could have a look at this!
+T 1580567345 18<MariaRp9218>	Hey
+T 1580573381 18<def18>	let mut locked = io::stdout().lock();
+T 1580573382 18<def18>	locked.write_all(b"Hello world\n")?;
+T 1580573384 18<def18>	error[E0716]: temporary value dropped while borrowed
+T 1580573445 18<def18>	i understand why i get this error (the temporary returned by stdout() gets dropped after the lock(), which also borrows stdout and therefore violating borrow checker rules)
+T 1580573478 18<Lumpio-18>	brotip: everybody's gone to ##rust @ freenode
+T 1580573488 18<def18>	but i'm designing a similar API and just wondering is there some way to get around that? i already figured out that if .lock() moves the stdout(), then that code works
+T 1580573491 18<def18>	fugg
+T 1580573719 18<def18>	well, explains why i was getting "18:09 -!- #rust Cannot send to channel (no external messages)" on #rust @ irc.mozilla.org
+T 1580573862 18<Lumpio-18>	...that channel still exists but just like every other channel doesn't allow messages unless you're joined
+T 1580583097 18<Helen8W198318>	Hello
+T 1580601812 18<Sarah198318>	hello
+T 1580620837 18<Helen9518>	hola
+T 1580640378 18<LindayE18>	Hey
+T 1580646347 18<kyku18>	hello
+T 1580646376 18<kyku18>	can someone help me make this thing compile: struct Foo<'a> {     lines: Vec<String>,     bar: &'a str, }  impl<'a> Iterator for Foo<'a> {     type Item = &'a Vec<String>;      fn next(&mut self) -> Option<Self::Item> {         Some(&self.lines)     } }
+T 1580646441 18<kyku18>	compiler complains that it "cannot infer an appropriate lifetime for borrow expression due to conflicting requirements"
+T 1580655368 18<Helen199118>	Hello
+T 1580658354 19*	Now talking on 22#rust-beginners
+T 1580658354 22*	Topic for 22#rust-beginners is: Beginners Rust Discussion | This server is eventually going to be shut down, please migrate to https://discord.gg/rust-lang or ##rust on irc.freenode.net: https://blog.rust-lang.org/2019/04/26/Mozilla-IRC-Sunset-and-the-Rust-Channel.html | Conduct https://www.rust-lang.org/policies/code-of-conduct
+T 1580658354 22*	Topic for 22#rust-beginners set by 26Manishearth (24Fri Jan 31 17:16:51 2020)
+T 1580664506 18<Dorothy198118>	Hello
+T 1580674540 18<KarenIB18>	Hi
+T 1580674759 18<abx218>	anyone here still?
+T 1580702035 18<rbjorklin18>	Hi! I'm trying to hook up Rocket to Postgres and read a jsonb value back from a table but I'm getting hit with: "the trait `rocket_contrib::databases::postgres::types::FromSql` is not implemented for `rocket_contrib::json::JsonValue`"
+T 1580702055 18<rbjorklin18>	This is the code in question: https://pastebin.com/Puik6e8h
+T 1580702840 18<Maria18>	Hey
+T 1580738969 18<kristianpaul18>	o/
+T 1580740822 19*	Now talking on 22#rust-beginners
+T 1580740822 22*	Topic for 22#rust-beginners is: Beginners Rust Discussion | This server is eventually going to be shut down, please migrate to https://discord.gg/rust-lang or ##rust on irc.freenode.net: https://blog.rust-lang.org/2019/04/26/Mozilla-IRC-Sunset-and-the-Rust-Channel.html | Conduct https://www.rust-lang.org/policies/code-of-conduct
+T 1580740822 22*	Topic for 22#rust-beginners set by 26Manishearth (24Fri Jan 31 17:16:51 2020)
+T 1580749581 18<SarahDs18>	hola
+T 1580759805 18<mib_eg972018>	yo
+T 1580764790 18<Lisa199118>	I'm here
+T 1580767664 18<jekrb18>	How does Surf make it so that you don't need  a `use` declaration to use the library? https://github.com/http-rs/surf 
+T 1580767698 18<jekrb18>	https://www.irccloud.com/pastebin/ubhBWW4x/
+T 1580767762 18<jekrb18>	this works, but I never declare `use surf` or anything, and I'm not exactly sure how that works? Does the library do something to automatically be in scope?
+T 1580767811 18<Lumpio-18>	The crate name is surf so anything that starts with surf:: will look into that crate
+T 1580767844 18<Lumpio-18>	Of course you have to depend on the crate the crate via Cargo.toml
+T 1580767856 18<Lumpio-18>	(Or via rustc directly I suppose)
+T 1580768114 18<jekrb18>	Ah, okay. That makes sense! I didn't realize that could omit the `use` declaration and call the crate directly 
+T 1580768124 18<jekrb18>	Lumpio-: Thanks!
+T 1580795490 18<Ruth8518>	hello
+T 1580804153 18<Patricia198218>	hello
+T 1580817207 18<Sarah18>	Hello
+T 1580819061 18<Barbara198618>	I'm here
+T 1580831652 19*	Now talking on 22#rust-beginners
+T 1580831652 22*	Topic for 22#rust-beginners is: Beginners Rust Discussion | This server is eventually going to be shut down, please migrate to https://discord.gg/rust-lang or ##rust on irc.freenode.net: https://blog.rust-lang.org/2019/04/26/Mozilla-IRC-Sunset-and-the-Rust-Channel.html | Conduct https://www.rust-lang.org/policies/code-of-conduct
+T 1580831652 22*	Topic for 22#rust-beginners set by 26Manishearth (24Fri Jan 31 17:16:51 2020)
+T 1580848237 18<Maria6r18>	I'm here
+T 1580867029 18<thenori18>	Hi! I'm having trouble passing the result of `parse` to a variable. I'm getting type mismatch errors - 'expected f64, found ()' and 'expected f64, found enum input_f_str.parse::<f64>();
+T 1580867105 18<sarnold18>	found () often means a ; in the wrong place
+T 1580867206 18<thenori18>	pub fn c2f(c: f64) -> f64 {
+T 1580867206 18<thenori18>	    if c >= -273.15 {
+T 1580867206 18<thenori18>	    ¦   let f: f64 = c * 1.8;
+T 1580867206 18<thenori18>	    ¦   let f = f + 32.0; }}
+T 1580867229 18<thenori18>	This is one of the functions that I'm getting that from.
+T 1580867261 18<sarnold18>	try removing that ; after 32.0
+T 1580867273 18<sarnold18>	or adding an 'f' somewhere near the end
+T 1580867295 18<sarnold18>	(it's been ages since I've done rust, I'm not 100% sure if those let lines return values or not)
+T 1580867309 18<thenori18>	oh, they don't! they're statements
+T 1580867319 18<thenori18>	you gave me the right words 
+T 1580867333 18<sarnold18>	and likewise you gave me the right words :)
+T 1580867405 18<sarnold18>	btw is this a project to learn how to use types? having a type for c and a type for f might help you catch bugs
+T 1580867427 18<sarnold18>	I have no idea if it'd be an ergnomic program to write, of course, but being unable to mix up units might be nice :)
+T 1580867462 18<thenori18>	I already have a type for them, don't I? 'let f: f64 = c * 1.8;' and '(c: f64)'
+T 1580867550 18<thenori18>	I'm working through the books 'The Rust Programming Language' as well as 'Structure and Interpretation of Computer Programs' translating that to Rust too
+T 1580867774 18<sarnold18>	thenori: both f and c are 'f64', right?
+T 1580867779 18<thenori18>	yup
+T 1580867862 18<sarnold18>	so if you add one to the other, the compiler will happily let you do that, but it won't give you the right result..
+T 1580867882 18<thenori18>	Yeah, I was returning the unit value instead of the variable value though 
+T 1580867910 18<thenori18>	I haven't compiled it yet cause I'm working on another error, but I think that's the right idea
+T 1580867938 18<sarnold18>	this blog post is a bit old now but hopefully still useful https://blog.mgattozzi.dev/avoiding-logic-errors/
+T 1580868583 18<thenori18>	Could you explain the basics of using `Result` for error handling?
+T 1580868646 18<sarnold18>	thenori: hmm, poorly :) hehe
+T 1580868669 18<thenori18>	good, bc the "well-written" documentation is greek to me 
+T 1580868675 18<sarnold18>	thenori: *nice* rust programs you can see the nice flow of handling errors at every step of the way, unobtrusivelyl..
+T 1580868684 18<sarnold18>	my programs never felt the same as the good ones
+T 1580868691 18<sarnold18>	lol
+T 1580868710 18<thenori18>	like, what I'm concerned with is this 
+T 1580868712 18<sarnold18>	Result() won't give you "the answer" until you do *something* to peek inside
+T 1580868753 18<sarnold18>	and the "peek inside" part forces you to decide how you';re going to handle the error in case it's an error
+T 1580868762 18<thenori18>	On that little function I pasted earlier, it's upset that the implicit 'else' arm doesn't return an f64
+T 1580868770 18<thenori18>	I don't want it to return an f64, I want it to throw an error 
+T 1580868783 18<thenori18>	Does that mean that I need to do something like:
+T 1580868829 18<thenori18>	pub fn f2c(f:f64) -> Result<f64, &str> {
+T 1580868951 18<thenori18>	Then on the line with the return value, I put `Ok(c);` instead of `c`
+T 1580868956 18<sarnold18>	yes, that'd work; then you'd know if it worked (in range) or failed (out of range)
+T 1580869117 18<thenori18>	omg i went from FOUR errors to ONE error!!!
+T 1580869161 18<thenori18>	nvm i just left a semicolon off at the beginning and it didn't even process my other errors rip 
+T 1580869270 18<sarnold18>	haha
+T 1580869303 18<sarnold18>	you know how it goes, "99 little bugs in the code, 99 little bugs in the code. Take one down, patch it around 117 little bugs in the code"
+T 1580869317 18<thenori18>	so now when I call the function it's upset that it's a Result and not an f64 i think i can handle that one 
+T 1580869530 18<sarnold18>	that means you need to find the callers and adapt them to either return Result or Option or panic or use a default value or something else :)
+T 1580869559 18<sarnold18>	this is where results are both good and bad -- being forced to think about how you want to handle errors here can only lead to better software, but it is a bit exhausting that you can't just wing it :)
+T 1580869595 18<thenori18>	what I'm gonna do is take my if input_f_str().parse::<f64>().is::<f64>
+T 1580869605 18<thenori18>	but that seems inefficient, I'd be running that function chain twice
+T 1580869632 18<thenori18>	hmmmm no I won't, just the one true/false
+T 1580869655 18<thenori18>	well YEAH actually if it is f64 then i need to run the function chain again 
+T 1580869669 18<thenori18>	i'd prefer to dump it to memory 
+T 1580869703 18<thenori18>	I can, I just need to use a variable with no type declared
+T 1580869707 18<thenori18>	right? right.
+T 1580869711 18<sarnold18>	don't worry too much about efficiency here -- you're writing in rust, not python or ruby, so you're probably on the faster side of the possible implementations already :)
+T 1580869768 18<thenori18>	i still don't want to run the whole function chain twice
+T 1580869770 18<thenori18>	like
+T 1580869774 18<thenori18>	and I don't have to 
+T 1580869852 18<sarnold18>	indeed, whatever it is you're doing you can probably just parse your strings once ;)
+T 1580881408 18<Donna18>	I'm here
+T 1580887513 18<Nancy18>	hola
+T 1580893374 18<BettyFm8618>	hola
+T 1580914582 19*	Now talking on 22#rust-beginners
+T 1580914582 22*	Topic for 22#rust-beginners is: Beginners Rust Discussion | This server is eventually going to be shut down, please migrate to https://discord.gg/rust-lang or ##rust on irc.freenode.net: https://blog.rust-lang.org/2019/04/26/Mozilla-IRC-Sunset-and-the-Rust-Channel.html | Conduct https://www.rust-lang.org/policies/code-of-conduct
+T 1580914582 22*	Topic for 22#rust-beginners set by 26Manishearth (24Fri Jan 31 17:16:51 2020)
+T 1580919913 18<Sandra18>	Hi
+T 1580959211 18<DorothyGV18>	Hello
+T 1580999359 19*	Now talking on 22#rust-beginners
+T 1580999359 22*	Topic for 22#rust-beginners is: Beginners Rust Discussion | This server is eventually going to be shut down, please migrate to https://discord.gg/rust-lang or ##rust on irc.freenode.net: https://blog.rust-lang.org/2019/04/26/Mozilla-IRC-Sunset-and-the-Rust-Channel.html | Conduct https://www.rust-lang.org/policies/code-of-conduct
+T 1580999359 22*	Topic for 22#rust-beginners set by 26Manishearth (24Fri Jan 31 17:16:51 2020)
+T 1581026709 18<froglegstew18>	Anyone has an idea on how to fix this code snippet ? https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=de1db63fad62f905bb345654a331ded5
+T 1581026736 18<froglegstew18>	I would like to avoid heap allocations but dont seem to really grasp what the solution is by using `impl`
+T 1581026926 18<froglegstew18>	(Just saw the banner about this server shutting, gonna move to discord)
+T 1581085813 18<GoraX18>	Hey there.
+T 1581087398 19*	Now talking on 22#rust-beginners
+T 1581087398 22*	Topic for 22#rust-beginners is: Beginners Rust Discussion | This server is eventually going to be shut down, please migrate to https://discord.gg/rust-lang or ##rust on irc.freenode.net: https://blog.rust-lang.org/2019/04/26/Mozilla-IRC-Sunset-and-the-Rust-Channel.html | Conduct https://www.rust-lang.org/policies/code-of-conduct
+T 1581087398 22*	Topic for 22#rust-beginners set by 26Manishearth (24Fri Jan 31 17:16:51 2020)
+T 1581097928 18<Maria18>	Hello
+T 1581107923 20*	Disconnected (20Invalid argument)
+T 1581123584 19*	Now talking on 22#rust-beginners
+T 1581123584 22*	Topic for 22#rust-beginners is: Beginners Rust Discussion | This server is eventually going to be shut down, please migrate to https://discord.gg/rust-lang or ##rust on irc.freenode.net: https://blog.rust-lang.org/2019/04/26/Mozilla-IRC-Sunset-and-the-Rust-Channel.html | Conduct https://www.rust-lang.org/policies/code-of-conduct
+T 1581123584 22*	Topic for 22#rust-beginners set by 26Manishearth (24Fri Jan 31 17:16:51 2020)
+T 1581137234 19*	Now talking on 22#rust-beginners
+T 1581137234 22*	Topic for 22#rust-beginners is: Beginners Rust Discussion | This server is eventually going to be shut down, please migrate to https://discord.gg/rust-lang or ##rust on irc.freenode.net: https://blog.rust-lang.org/2019/04/26/Mozilla-IRC-Sunset-and-the-Rust-Channel.html | Conduct https://www.rust-lang.org/policies/code-of-conduct
+T 1581137234 22*	Topic for 22#rust-beginners set by 26Manishearth (24Fri Jan 31 17:16:51 2020)
+T 1581139004 19*	Now talking on 22#rust-beginners
+T 1581139004 22*	Topic for 22#rust-beginners is: Beginners Rust Discussion | This server is eventually going to be shut down, please migrate to https://discord.gg/rust-lang or ##rust on irc.freenode.net: https://blog.rust-lang.org/2019/04/26/Mozilla-IRC-Sunset-and-the-Rust-Channel.html | Conduct https://www.rust-lang.org/policies/code-of-conduct
+T 1581139004 22*	Topic for 22#rust-beginners set by 26Manishearth (24Fri Jan 31 17:16:51 2020)
+T 1581139696 19*	Now talking on 22#rust-beginners
+T 1581139696 22*	Topic for 22#rust-beginners is: Beginners Rust Discussion | This server is eventually going to be shut down, please migrate to https://discord.gg/rust-lang or ##rust on irc.freenode.net: https://blog.rust-lang.org/2019/04/26/Mozilla-IRC-Sunset-and-the-Rust-Channel.html | Conduct https://www.rust-lang.org/policies/code-of-conduct
+T 1581139696 22*	Topic for 22#rust-beginners set by 26Manishearth (24Fri Jan 31 17:16:51 2020)
+T 1581150890 18<Susan18>	hola
+T 1581177792 19*	Now talking on 22#rust-beginners
+T 1581177792 22*	Topic for 22#rust-beginners is: Beginners Rust Discussion | This server is eventually going to be shut down, please migrate to https://discord.gg/rust-lang or ##rust on irc.freenode.net: https://blog.rust-lang.org/2019/04/26/Mozilla-IRC-Sunset-and-the-Rust-Channel.html | Conduct https://www.rust-lang.org/policies/code-of-conduct
+T 1581177792 22*	Topic for 22#rust-beginners set by 26Manishearth (24Fri Jan 31 17:16:51 2020)
+T 1581186222 18<Jennifer199018>	Hey
+T 1581265639 18<Carol1p18>	hello
+T 1581282072 18<DeborahYZ8818>	hello
+T 1581347599 19*	Now talking on 22#rust-beginners
+T 1581347599 22*	Topic for 22#rust-beginners is: Beginners Rust Discussion | This server is eventually going to be shut down, please migrate to https://discord.gg/rust-lang or ##rust on irc.freenode.net: https://blog.rust-lang.org/2019/04/26/Mozilla-IRC-Sunset-and-the-Rust-Channel.html | Conduct https://www.rust-lang.org/policies/code-of-conduct
+T 1581347599 22*	Topic for 22#rust-beginners set by 26Manishearth (24Fri Jan 31 17:16:51 2020)
+T 1581365950 18<Nancy8318>	I'm here
+T 1581394289 19*	Now talking on 22#rust-beginners
+T 1581394289 22*	Topic for 22#rust-beginners is: Beginners Rust Discussion | This server is eventually going to be shut down, please migrate to https://discord.gg/rust-lang or ##rust on irc.freenode.net: https://blog.rust-lang.org/2019/04/26/Mozilla-IRC-Sunset-and-the-Rust-Channel.html | Conduct https://www.rust-lang.org/policies/code-of-conduct
+T 1581394289 22*	Topic for 22#rust-beginners set by 26Manishearth (24Fri Jan 31 17:16:51 2020)
+T 1581395012 19*	Now talking on 22#rust-beginners
+T 1581395012 22*	Topic for 22#rust-beginners is: Beginners Rust Discussion | This server is eventually going to be shut down, please migrate to https://discord.gg/rust-lang or ##rust on irc.freenode.net: https://blog.rust-lang.org/2019/04/26/Mozilla-IRC-Sunset-and-the-Rust-Channel.html | Conduct https://www.rust-lang.org/policies/code-of-conduct
+T 1581395012 22*	Topic for 22#rust-beginners set by 26Manishearth (24Fri Jan 31 17:16:51 2020)
+T 1581404468 19*	Now talking on 22#rust-beginners
+T 1581404468 22*	Topic for 22#rust-beginners is: Beginners Rust Discussion | This server is eventually going to be shut down, please migrate to https://discord.gg/rust-lang or ##rust on irc.freenode.net: https://blog.rust-lang.org/2019/04/26/Mozilla-IRC-Sunset-and-the-Rust-Channel.html | Conduct https://www.rust-lang.org/policies/code-of-conduct
+T 1581404468 22*	Topic for 22#rust-beginners set by 26Manishearth (24Fri Jan 31 17:16:51 2020)
+T 1581436320 18<antares18>	Hi, is `core::sync::atomic::AtomicBool::load`  known to have issues due to interference with interrupts in an embedded code?
+T 1581437292 18<mahesh2091-M18>	Hi Everyone, newbie here. I am learning Substrate & so started learning Rust. I am having difficulty understanding this line of code: 
+T 1581437294 18<mahesh2091-M18>	type Event: From<Event<Self>> + Into<<Self as system::Trait>::Event>;
+T 1581437311 18<mahesh2091-M18>	<mahesh2091-M "Hi Everyone, newbie here. I am l"> type Event: From<Event<Self>> + Into<<Self as system::Trait>::Event>;
+T 1581437350 18<mahesh2091-M18>	<mahesh2091-M "type Event: From<Event<Self>> + "> Appreciate any help on it
+T 1581447631 18<Margaretbj18>	I'm here
+T 1581454027 18<pylbrecht18>	How would I turn a mutable ref to an immutable ref?
+T 1581454122 18<GreenJello18>	pylbrecht, &*r
+T 1581454136 18<pylbrecht18>	oh ok
+T 1581454137 18<pylbrecht18>	thanks :)
+T 1581459711 19*	Now talking on 22#rust-beginners
+T 1581459711 22*	Topic for 22#rust-beginners is: Beginners Rust Discussion | This server is eventually going to be shut down, please migrate to https://discord.gg/rust-lang or ##rust on irc.freenode.net: https://blog.rust-lang.org/2019/04/26/Mozilla-IRC-Sunset-and-the-Rust-Channel.html | Conduct https://www.rust-lang.org/policies/code-of-conduct
+T 1581459711 22*	Topic for 22#rust-beginners set by 26Manishearth (24Fri Jan 31 17:16:51 2020)
+T 1581460692 18<Yogurt18>	Hello
+T 1581460704 18<Yogurt18>	can anyone give me a hand with an iterator I'm writing?
+T 1581460776 18<GreenJello18>	Yogurt, hey, best to just ask your question
+T 1581460793 18<Yogurt18>	I'm getting an error when collecting the iterator with a type mismatch. My Item type is u8, but when I collect on the iter I get a SIGSEV crash. When I try to clone the iter I see 
+T 1581460794 18<Yogurt18>	expected type `u8
+T 1581460798 18<Yogurt18>	found reference `&_`
+T 1581460866 18<Yogurt18>	my code is available here
+T 1581460867 18<Yogurt18>	https://github.com/darakian/gimli/blob/output-iters/src/lib.rs#L96-L183
+T 1581460881 18<Yogurt18>	sorry, but I don't have a minimal example
+T 1581461319 18<Yogurt18>	oh, I think I've misunderstood the iterator trait
+T 1581461495 18<Yogurt18>	yep, I need to impl IntoIterator as well
+T 1581461504 18<Yogurt18>	thanks for letting me think out loud :)
+T 1581462777 18<Yogurt18>	hmmmm
+T 1581462796 18<Yogurt18>	this actually proving to be harder than I thought
+T 1581462809 18<Yogurt18>	Does anyone have a good guide on implementing intoiterator?
+T 1581462900 18<Yogurt18>	everything I can find covers trivial examples. I have interior iterators. I do have impl Iterator, but it's unclear how to wrap that and get the .iter() functionality
+T 1581462907 18<Sarahkv9718>	Hi
+T 1581473582 18<Elizabeth18>	Hey
+T 1581499474 18<Sharon9418>	I'm here
+T 1581533766 19*	Now talking on 22#rust-beginners
+T 1581533766 22*	Topic for 22#rust-beginners is: Beginners Rust Discussion | This server is eventually going to be shut down, please migrate to https://discord.gg/rust-lang or ##rust on irc.freenode.net: https://blog.rust-lang.org/2019/04/26/Mozilla-IRC-Sunset-and-the-Rust-Channel.html | Conduct https://www.rust-lang.org/policies/code-of-conduct
+T 1581533766 22*	Topic for 22#rust-beginners set by 26Manishearth (24Fri Jan 31 17:16:51 2020)
+T 1581536083 18<Susanzq18>	hola
+T 1581536217 18<Yogurt_18>	Sup
+T 1581536226 18<sarnold18>	Yogurt_: it's just a mibbitbot
+T 1581536234 18<Yogurt_18>	oh
+T 1581536241 18<Yogurt_18>	well then
+T 1581536251 18<Yogurt_18>	anti-sup
+T 1581536255 18<sarnold18>	:D
+T 1581544903 18<mr_boo18>	Man
+T 1581554386 22*	26ChanServ sets mode 24+a on 22#rust-beginners ChanServ
+T 1581554386 22*	26ChanServ gives channel operator status to 18ChanServ
+T 1581557761 18<jzelinskie18>	when do you prefer `let myvar: Vec<...> = ....collect();` vs `let myvar = ....collect::<Vec<...>>();`?
+T 1581557863 18<sarnold18>	I prefer the former largely because i can't ever type the latter correctly on the first try
+T 1581557984 18<jzelinskie18>	haha
+T 1581558026 18<jzelinskie18>	are they exactly the same or is there some difference between the two?
+T 1581558055 18<jzelinskie18>	like is there some trick with type inference i can do if i only keep the type on the rhs
+T 1581562231 18<MichellekD18>	Hello
+T 1581562315 18<sarnold18>	jzelinskie: I'm too stale to be able to answer that myself, but it feels a bit like this may help https://deterministic.space/elegant-apis-in-rust.html#use-conversion-traits
+T 1581567496 18<jzelinskie18>	sarnold: thanks that link is a great reference for a bunch of stuff
+T 1581580783 18<andyhoang18>	join ##ibmthinkpad
+T 1581586058 18<steveeJ18>	what's the <... as Trait> syntax called? I'm trying to specify  the target for a `try_into()` call. so I'm thinking of something like `<object as TryInto<TypeB>>.try_into()`
+T 1581586547 18<steveeJ18>	oh, it turns out that I don't need a cast in this case at all. calling it as an associated method as in  `TryInto::<TargetType>::try_into(struct_instance)` works well
+T 1581603862 18<Deborahbr18>	hola
+T 1581737957 19*	Now talking on 22#rust-beginners
+T 1581737957 22*	Topic for 22#rust-beginners is: Beginners Rust Discussion | This server is eventually going to be shut down, please migrate to https://discord.gg/rust-lang or ##rust on irc.freenode.net: https://blog.rust-lang.org/2019/04/26/Mozilla-IRC-Sunset-and-the-Rust-Channel.html | Conduct https://www.rust-lang.org/policies/code-of-conduct
+T 1581737957 22*	Topic for 22#rust-beginners set by 26Manishearth (24Wed Feb 12 19:39:45 2020)
+T 1581776702 18<Mary18>	hola
+T 1581816236 19*	Now talking on 22#rust-beginners
+T 1581816236 22*	Topic for 22#rust-beginners is: Beginners Rust Discussion | This server is eventually going to be shut down, please migrate to https://discord.gg/rust-lang or ##rust on irc.freenode.net: https://blog.rust-lang.org/2019/04/26/Mozilla-IRC-Sunset-and-the-Rust-Channel.html | Conduct https://www.rust-lang.org/policies/code-of-conduct
+T 1581816236 22*	Topic for 22#rust-beginners set by 26Manishearth (24Wed Feb 12 19:39:45 2020)
+T 1581828222 18<MargaretQ218>	Hi
+T 1581901722 18<Dorothy18>	I'm here
+T 1581902644 18<SandraUO18>	Hi
+T 1581908042 19*	Now talking on 22#rust-beginners
+T 1581908042 22*	Topic for 22#rust-beginners is: Beginners Rust Discussion | This server is eventually going to be shut down, please migrate to https://discord.gg/rust-lang or ##rust on irc.freenode.net: https://blog.rust-lang.org/2019/04/26/Mozilla-IRC-Sunset-and-the-Rust-Channel.html | Conduct https://www.rust-lang.org/policies/code-of-conduct
+T 1581908042 22*	Topic for 22#rust-beginners set by 26Manishearth (24Wed Feb 12 19:39:45 2020)
+T 1581974990 18<MichelleL7199718>	I'm here
+T 1581976234 18<MichelleaQ18>	hello
+T 1581992525 18<deeshoo18>	hi 
+T 1582037368 19*	Now talking on 22#rust-beginners
+T 1582037368 22*	Topic for 22#rust-beginners is: Beginners Rust Discussion | This server is eventually going to be shut down, please migrate to https://discord.gg/rust-lang or ##rust on irc.freenode.net: https://blog.rust-lang.org/2019/04/26/Mozilla-IRC-Sunset-and-the-Rust-Channel.html | Conduct https://www.rust-lang.org/policies/code-of-conduct
+T 1582037368 22*	Topic for 22#rust-beginners set by 26Manishearth (24Wed Feb 12 19:39:45 2020)
+T 1582049898 18<MichelleLP18>	Hello
+T 1582065023 18<Linda198418>	hola
+T 1582090856 19*	Now talking on 22#rust-beginners
+T 1582090856 22*	Topic for 22#rust-beginners is: Beginners Rust Discussion | This server is eventually going to be shut down, please migrate to https://discord.gg/rust-lang or ##rust on irc.freenode.net: https://blog.rust-lang.org/2019/04/26/Mozilla-IRC-Sunset-and-the-Rust-Channel.html | Conduct https://www.rust-lang.org/policies/code-of-conduct
+T 1582090856 22*	Topic for 22#rust-beginners set by 26Manishearth (24Wed Feb 12 19:39:45 2020)
+T 1582122259 19*	Now talking on 22#rust-beginners
+T 1582122259 22*	Topic for 22#rust-beginners is: Beginners Rust Discussion | This server is eventually going to be shut down, please migrate to https://discord.gg/rust-lang or ##rust on irc.freenode.net: https://blog.rust-lang.org/2019/04/26/Mozilla-IRC-Sunset-and-the-Rust-Channel.html | Conduct https://www.rust-lang.org/policies/code-of-conduct
+T 1582122259 22*	Topic for 22#rust-beginners set by 26Manishearth (24Wed Feb 12 19:39:45 2020)
+T 1582259779 19*	Now talking on 22#rust-beginners
+T 1582259779 22*	Topic for 22#rust-beginners is: Beginners Rust Discussion | This server is eventually going to be shut down, please migrate to https://discord.gg/rust-lang or ##rust on irc.freenode.net: https://blog.rust-lang.org/2019/04/26/Mozilla-IRC-Sunset-and-the-Rust-Channel.html | Conduct https://www.rust-lang.org/policies/code-of-conduct
+T 1582259779 22*	Topic for 22#rust-beginners set by 26Manishearth (24Wed Feb 12 19:39:45 2020)
+T 1582299286 19*	Now talking on 22#rust-beginners
+T 1582299286 22*	Topic for 22#rust-beginners is: Beginners Rust Discussion | This server is eventually going to be shut down, please migrate to https://discord.gg/rust-lang or ##rust on irc.freenode.net: https://blog.rust-lang.org/2019/04/26/Mozilla-IRC-Sunset-and-the-Rust-Channel.html | Conduct https://www.rust-lang.org/policies/code-of-conduct
+T 1582299286 22*	Topic for 22#rust-beginners set by 26Manishearth (24Wed Feb 12 19:39:45 2020)
+T 1582300595 18<Sandra8618>	Hey
+T 1582317440 18<MaryFz9718>	I'm here
+T 1582349097 18<alhof_18>	hai
+T 1582349120 18<alhof_18>	I am exploring use of warp+sqlx. _probably_ in over my head as a beginner
+T 1582349162 18<alhof_18>	basically I'm trying to recreate https://github.com/steadylearner/Rust-Full-Stack/blob/master/warp/database/2.%20with_db_pool/src/db/postgresql.rs but for sqlx. the rest of my example app is using warp + Tokio and leveraging the new async/await syntax.
+T 1582349315 18<alhof_18>	this is what I have now, but (I expected this) it is throwing an error on `await` due to there is no `async` function at any point, and AFAIK this is not even a function. is there a way to make a type async? https://www.irccloud.com/pastebin/NnWkWzxH/
+T 1582349426 18<alhof_18>	or maybe I should take a step back. I'm trying to define a PgPool in a file, and then call that single pool instance from across my codebase. is this possible; should I reorient my thinking?
+T 1582349534 18<alhof_18>	I know, at the end of the day, I should probably just swallow my eagerness and give Rust By Example a solid read-through
+T 1582349981 18<Dorothy198918>	Hi
+T 1582350211 18<GreenJello18>	alhof_, there's probably a less convoluted way to do this, but... https://gist.github.com/brigand/5f2365b7c04eb3145dc1b7a1fcd39b79
+T 1582350338 18<alhof_18>	GreenJello thanks. it looks like from the more basic examples I've come across, the pool is initialized in the main() function. Would that be considered better practice / more conventional?
+T 1582350359 18<GreenJello18>	alhof_, fixed some issues with the code (updated the gist)
+T 1582350389 18<GreenJello18>	alhof_, yes, if you don't need it to be represented as a global then that would be much simpler
+T 1582350400 18<alhof_18>	GreenJello thanks. I have glanced at it and concluded I am definitely in over my head hahaha
+T 1582350402 18<GreenJello18>	alhof_, it's just a matter of passing it around to everywhere that needs it
+T 1582350471 18<GreenJello18>	also, the code there assumes you only need read access to the pool, which I'm not sure if that's the case with PgPool
+T 1582350569 18<alhof_18>	GreenJello that's another thing I'm having a hard time finding - there are plenty of examples of Warp returning a direct string for a path, but I'm having a hard time finding examples where a route references a handler/controller. again, this confusion on my end may just be simpler if I gave the book a thorough go-through but.. for some reason this is what I'm doing.
+T 1582350603 18<alhof_18>	in terms of syntax, how could I turn `warp::path("login").map(|| "Hello from login");` into "execute this function, also pass in this sqlx pool"
+T 1582350755 18<GreenJello18>	alhof_, it looks like sqlx only requires an immutable reference to acquire a connection, so as long as rust can prove your pool outlives the closure, you should be able to just reference it inside the closure
+T 1582350763 18<alhof_18>	sorry I swear this is actually a learning exercise lol, not looking for copy-paste candy necessarilyt
+T 1582350787 18<alhof_18>	GreenJello ok thanks I will try this
+T 1582350834 18<GreenJello18>	alhof_, so if you have like acquire pool, then define routes, then call a function or run a loop that never returns, all in one function it should be fine
+T 1582350884 18<alhof_18>	thank you much
+T 1582350888 18<GreenJello18>	otherwise you'll need to wrap the pool in an Arc and clone it for each closure, and then define the closures like .map(move || {
+T 1582351546 18<alhof_18>	@GreenJello so, apologies that this becomes library-specific; when I try this snippet, I get an error "Expected function that takes 0 arguments". This function I have written of course expects `pool: sqlx::PgPool`. Is this library specific stuff, or is there some general language thing I am missing  https://www.irccloud.com/pastebin/SrIDNs0w/
+T 1582351629 18<alhof_18>	obviously I'm not actually passing in a pool parameter yet, but I'm finding it interesting the compiler is saying it expects _0_ arguments
+T 1582351985 18<GreenJello18>	alhof_, warp::path("user").map(|| handlers::user_handler::list(&pool));
+T 1582352076 18<GreenJello18>	if you get an error saying something doesn't live long enough, then with pool: Arc<Pool>, let copy = pool.clone(); warp::path("user").map(move || handlers::user_handler::list(copy.clone()));
+T 1582352125 18<GreenJello18>	and the function would take Arc<Pool> which has the methods of Pool that take &self
+T 1582352582 18<alhof_18>	GreenJello thanks. this really helped. there are more errors (unrelated to our discussion so I will debug on my own) but your help gave me the confidence to move forward with the overall setup, thanks
+T 1582352638 18<alhof_18>	(the current error seem to be focused on my implementation of the handler, separate from our discussion here)
+T 1582376471 18<jkhsjdhjs18>	rip your connection Raychen
+T 1582377888 19*	Now talking on 22#rust-beginners
+T 1582377888 22*	Topic for 22#rust-beginners is: Beginners Rust Discussion | This server is eventually going to be shut down, please migrate to https://discord.gg/rust-lang or ##rust on irc.freenode.net: https://blog.rust-lang.org/2019/04/26/Mozilla-IRC-Sunset-and-the-Rust-Channel.html | Conduct https://www.rust-lang.org/policies/code-of-conduct
+T 1582377888 22*	Topic for 22#rust-beginners set by 26Manishearth (24Wed Feb 12 19:39:45 2020)
+T 1582384238 18<ElizabethkH18>	Hello
+T 1582400258 18<alhof_18>	hey! another quick question. how would I go about doing this, but for multiple rows? trying to feel around by example. https://www.irccloud.com/pastebin/5nE5Bqfv/
+T 1582400395 18<Moongoodgirl18>	alhof_: guess: make a Vec<User> and serialize it into a JSON array?
+T 1582400404 18<Moongoodgirl18>	Raychen: hey can you not
+T 1582402696 18<montezuma18>	howdy
+T 1582402715 18<montezuma18>	howdy
+T 1582402724 18<montezuma18>	anyone there?
+T 1582417778 18<alhof_18>	this is what I ended up with, and it works, but I'm not sure if it is "the right way" to get a JSON array from these rows? The transition from struct to JSON array feels correct, but getting from sqlx `Row`s to Vec<User> is what's throwing me off. https://www.irccloud.com/pastebin/T4e98Fvf/
+T 1582443972 18<Moongoodgirl18>	Raychen:
+T 1582453775 18<Laura8218>	Hey
+T 1582458162 18<MrMoney18>	https://cryptotabbrowser.com/11257216
+T 1582500051 18<Linda18>	Hi
+T 1582516856 18<Helen9118>	Hi
+T 1582522975 18<Carol18>	hello
+T 1582532867 18<Elizabeth198618>	hello
+T 1582546897 18<Karen199318>	Hello
+T 1582552078 18<kristianpaul18>	hi
+T 1582553299 18<Moongoodgirl18>	~ask @ kristianpaul
+T 1582553299 18<rustybot18>	kristianpaul: Got a question about Rust? Go ahead and ask it! If you need to paste code, please use https://play.rust-lang.org/ and click "Share" for a link
+T 1582553966 18<kristianpaul18>	How would you implement a clock in rust (no dates), i'm looking at chrono crate for implementation references, not sure if there are other simpler crates to look.. 
+T 1582565710 18<Sarah199118>	hello
+T 1582572238 18<Maria18>	hola
+T 1582574060 18<Carolis18>	hello
+T 1582594872 18<Mary18>	hello

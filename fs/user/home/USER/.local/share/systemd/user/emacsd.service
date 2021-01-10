@@ -19,7 +19,7 @@ Environment=FROM=%n
 # PATH is not set correctly
 # TODO mike@carif.io: template files in units https://www.freedesktop.org/software/systemd/man/systemd.unit.html
 # ExecStart=env FROM=%n emacs -daemon
-ExecStart=env FROM=%n /opt/emacs/current/bin/emacs --no-desktop --debug-init --no-splash --daemon
+ExecStart=env FROM=%n /opt/emacs/current/bin/emacs --debug-init --no-splash --daemon
 # ExecStop=env FROM=%n /opt/emacs/current/bin/emacsclient --eval "(progn (setq kill-emacs-hook nil) (kill-emacs))"
 ExecStop=env FROM=%n emacsclient --eval "(progn (setq kill-emacs-hook nil) (kill-emacs))"
 

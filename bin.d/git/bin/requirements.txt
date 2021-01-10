@@ -1,0 +1,7 @@
+git+https://github.com/google/python-fire#egg=fire
+git-url-parse
+gitpython
+rich
+pytest
+requests
+dotmap

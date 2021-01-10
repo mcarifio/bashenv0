@@ -1,0 +1,504 @@
+T 1589706241 18<bnjf18>	eggbean: tmux doesn't interpolate environment variables like that
+T 1589706306 18<bnjf18>	and @-prefixed variables are simply user defined
+T 1589706339 18<bnjf18>	you can pull environment variables, if they exist in the global or session scope, with #{ENV}
+T 1589706353 18<eggbean18>	bnjf: But I've been using them like this for years?  I've never had a problem with them until recently
+T 1589706372 18<eggbean18>	..if this problem has anything to do with them, that is
+T 1589706455 18<bnjf18>	well, seems like a good opportunity to find out how it works by understanding why it was working
+T 1589708523 18<avih18>	eggbean: i don't think there's anything wrong with that line, but it's possible that the variables are not yet set when it's parsed
+T 1589708552 18<avih18>	where are they defined, and when is this line executed/parsed?
+T 1589708599 18<eggbean18>	avih: They are set above in .tmux.conf and even the sane lines are used elswhere, but I only get the error on this and two othr similar lines.  Very weird
+T 1589708620 18<avih18>	eggbean: can you paste the part where they're defined?
+T 1589708623 18<eggbean18>	But if variables can be set like @variable, I might as well do that?
+T 1589708643 18<avih18>	(or just your conf file on some pastebin)
+T 1589708656 18<eggbean18>	ne sec
+T 1589708675 18<avih18>	you can do e.g. simply TMUX_COLOUR_WHITE=red
+T 1589708684 18<avih18>	or TMUX_COLOUR_WHITE=#ffffff
+T 1589708753 18<avih18>	also, does it work if you replace the variables with actual values? (to identify if the issue is the variables or not)
+T 1589708797 18<eggbean18>	avih: http://sprunge.us/xgQR7E  The 256 colours are just temporary.  Adjusting them is what I was trying to do when I noticed that I was getting these errors
+T 1589708908 18<avih18>	the whole config please. it's important to understand when they're set compared to where they're used
+T 1589708963 18<avih18>	right now, if you add the set -g line below this, then it won't work, because the set -g line is parsed before the if command is executed
+T 1589708991 18<avih18>	(and i don't think it ever worked)
+T 1589709006 18<avih18>	if you remove the if, then it will work
+T 1589709033 18<eggbean18>	avih: http://sprunge.us/TvKlGt
+T 1589709094 18<avih18>	eggbean: yeah, this will not work. try removing the if and see that it does work
+T 1589709109 18<avih18>	(and i don't think it ever worked)
+T 1589709118 18<eggbean18>	Yeah, that's new, which would explain why I am getting this only now
+T 1589709148 18<avih18>	you mean the if are new in your config?
+T 1589709178 18<eggbean18>	yes, only started using 24-bit terminal and if statemenets a couple of months ago
+T 1589709186 18<avih18>	right.
+T 1589709217 18<avih18>	tmux config is quite simpler than a normal "program", and it has gotchas when it comes to parse/execution time
+T 1589709255 18<avih18>	if you put the whole set -g lines inside if -F 1 { ... } then it will work
+T 1589709265 18<eggbean18>	So how to make conditional statements?
+T 1589709273 18<avih18>	(you can keep them in separate lines, braces can span multiple lines)
+T 1589709329 18<eggbean18>	that's for > v3.0 though?
+T 1589709355 18<eggbean18>	I am stuck on 2.8 at the moment.  When I upgrade to Debian 10 I'll get v3, I think
+T 1589709374 18<avih18>	like this https://0x0.st/iL59.txt
+T 1589709458 18<avih18>	you can still do it without braces, like this: https://0x0.st/iL5p.txt
+T 1589709481 18<avih18>	forgot to add \ at the end of the first line
+T 1589709531 18<avih18>	fixed https://0x0.st/iL5f.txt
+T 1589709586 18<eggbean18>	avih: ?? Did you pastebin the right file?
+T 1589709595 18<eggbean18>	oh, sorry
+T 1589709607 18<avih18>	just the section where you use these variables
+T 1589709661 18<avih18>	braces can take any chunk of config literally with newlines, comments, etc, but without braces i had to remove the comments
+T 1589709730 18<eggbean18>	avih: I don't know what's going on here, but your pastebins have no changes?
+T 1589709755 18<avih18>	can you see anything here https://0x0.st/iL5f.txt ?
+T 1589709759 18<eggbean18>	erm.  sorry. something going on with my browser
+T 1589709805 18<avih18>	try here https://pastebin.com/raw/qMpLufVY
+T 1589709825 18<eggbean18>	it's fine.  I just had this chrome extension on which I forgot about.
+T 1589709944 18<eggbean18>	avih: Thanks, I'll go through that this afternoon. Should I change the $VARIABLES to @VARIABLES, seeing as that seems to be possible
+T 1589709954 18<eggbean18>	??
+T 1589709987 18<avih18>	i don't think you have to, but you can try. personally i haven't used the @ syntax, so not sure how it works
+T 1589709998 18<eggbean18>	ok, thanks
+T 1589710068 18<avih18>	hmm.. actually, the whole command of if should be one string, so you can single quote all of it (braces make it much easier...)
+T 1589710323 18<avih18>	eggbean: sorry, this is how it would work https://0x0.st/iL5J.txt
+T 1589710377 18<eggbean18>	great, thanks
+T 1589710402 18<avih18>	sorry, posted the wrong thing. this https://0x0.st/iL5w.txt
+T 1589710482 18<eggbean18>	cheers
+T 1589710549 18<eggbean18>	I think I'll also try @vars, as it would keep my regular environmental variables a bit neater
+T 1589714247 18<eggbean18>	avih: I tried it, but that, now single, like still gives an error
+T 1589714268 18<avih18>	show your config
+T 1589714368 18<eggbean18>	avih: http://sprunge.us/kn6vfY
+T 1589714396 18<eggbean18>	what is if -F, anyway?
+T 1589714456 18<avih18>	format, and 1 is true, i.e. "run unconditionally"
+T 1589714478 18<avih18>	i think all your assignment lines need semicolon before the \  like so: TMUX_COLOUR_ZOOMED=#5b7ce5; \
+T 1589714496 18<avih18>	what error do you get?
+T 1589714503 18<avih18>	and on which line?
+T 1589714542 18<eggbean18>	one sec
+T 1589714574 18<eggbean18>	/home/jason/.tmux.conf:185: usage: set-option [-aFgosquw] [-t target-window] option [value]
+T 1589714644 18<avih18>	eggbean: that's not my last paste, i said i posted incorrectly the one before
+T 1589714658 18<eggbean18>	oh duh
+T 1589714886 18<eggbean18>	hmnn.  new error now.
+T 1589714891 18<eggbean18>	(null):0: bad style: fg=,bg=
+T 1589714938 18<avih18>	right, now i think it doesn't set the variables because it's missing the semicolons which i noted earlier
+T 1589714987 18<eggbean18>	Mayeb I'll just try the alternative variable form
+T 1589715020 18<avih18>	your main problem is that you did too many changes together, and almost all of them are incorrect, so it's hard to pinpoint. you can put the assignments normally without if to see if that works.
+T 1589715057 18<avih18>	just add semicolons at the end of all the assignments inside the if's
+T 1589715121 18<eggbean18>	I don't know what you mean about the incorrect chnages, as the changes were what you gave me?
+T 1589715136 18<avih18>	before i started fixing it
+T 1589715178 18<eggbean18>	The errors are only within those lines that we are dealing with
+T 1589715202 18<avih18>	like this https://0x0.st/iLRb.txt
+T 1589715223 18<avih18>	yes, do you read the error? the string is empty, i.e. the variables are not set
+T 1589715228 18<eggbean18>	right
+T 1589715325 18<eggbean18>	I'l try this new variable format after lunch
+T 1589715362 18<eggbean18>	thanks
+T 1589715579 18<avih18>	sure
+T 1589715628 18<avih18>	also, i don't think you need -b at the if command. why do you want to run it in the background?
+T 1589715782 18<eggbean18>	I think just copied that from the earlier conditional arguments.  It makes sense them to run in the backgorund?
+T 1589715815 18<eggbean18>	conditional statements I meant
+T 1589715856 18<eggbean18>	(been up all night)
+T 1589716051 18<avih18>	i'm not sure how it should behave with the command in the background, but it could mean that it becomes a-synchronous, which means that the variables will be set even later
+T 1589716069 18<avih18>	IMO remove the -b as well
+T 1589716271 18<avih18>	and also, this might (not sure) be running inside the tmux env, which means that $TERM is no longer xterm-whatever but rather e.g. tmux or screen or tmux-256color etc
+T 1589716304 18<avih18>	so you might want to test it with a format rather than a shell command
+T 1589716332 18<avih18>	(also not sure if this would work, haven't tried)
+T 1589716404 18<eggbean18>	avih: I just need to put 'quotes' around the variables
+T 1589716409 18<eggbean18>	needed
+T 1589716413 18<avih18>	like so: if -F "#{==:$TERM,xterm-256color}" ...
+T 1589716471 18<eggbean18>	cheer
+T 1589717212 18<mattfly18>	is there any way to use the same path of the current pane when spliting or creating new panes?
+T 1589721518 18<sentriz18>	hi all. I'm getting 7 "server version is too old for client" when running "tmux show-env" from inside a session
+T 1589721572 18<sentriz18>	running v3.1b
+T 1589721748 18<sentriz18>	ah it only happens inside a junest
+T 1589721821 18<tureba18>	sentriz: means you updated tmux and didn't restart the server yet. the server is in the older version and the client is on 3.1b
+T 1589721902 18<sentriz18>	this is a brand new session
+T 1589721933 18<tureba18>	new session into an already running server, probably
+T 1589721996 18<sentriz18>	hmm do you know how i can find the running server?
+T 1589722000 18<sentriz18>	ps aux | grep tmux has nothing
+T 1589722029 18<sentriz18>	(also i didnt upgrade tmux)
+T 1589722116 18<sentriz18>	oh i'm looking at an strace. it seems to be looking at `/tmp/tmux-1100/default` which gets cleared everytime by junest. maybe this needs to be persisted
+T 1589722350 18<tureba18>	istm that junest launches stuff in a chroot. if it's launching a different version of tmux inside, you might see this
+T 1589722438 18<sentriz18>	ah ok. the host machine runs tmux 2.1, and the junest runs 3.1b
+T 1589722480 18<sentriz18>	is it possible for the junest tmux to completely seperate itsself?
+T 1589722519 18<tureba18>	of course, it's what tmux does. I've no idea what junest does, btw..
+T 1589722636 18<sentriz18>	it's kinda like a vm i suppose
+T 1589723599 18<thePiGrepper18>	hi, quick q. [how] can I update an envvar in tmux? for example,  tmux has outlived my WM, which uses a socket passed as an envvar, so now, if I want to get info from that socket the envvar points to the socket's old path instead of the new one.
+T 1589723701 18<sentriz18>	thePiGrepper: does `tmux show-env` show anything useful?
+T 1589724782 18<thePiGrepper18>	sentriz: nope. just $DISPLAY, and a few SSH related variables..
+T 1589725267 18<sentriz18>	hmm there is a tmux set-env command it seems
+T 1589726249 18<Khaytsus18>	Every time I hear of people moving env vars around from place to place it's always some crazy thing
+T 1589727524 18<moritzdietz18>	nicm: re tmux menus and arrow key navigation; using latest master hasn't fixed it for me yet. I'll try a couple things to verify though.
+T 1589727822 18<moritzdietz18>	nicm: err sorry about that. I tested on the wrong machine. It's fixed.
+T 1589734439 18<xerox_18>	there's no such thing as a pane zoom in only one direction right? e.g. take over its vertical siblings only
+T 1589801113 19*	Now talking on 22#tmux
+T 1589801113 22*	Topic for 22#tmux is: tmux is a terminal multiplexer | http://tmux.github.io/ | http://man.openbsd.org/OpenBSD-current/man1/tmux.1
+T 1589801113 22*	Topic for 22#tmux set by 26nicm!~nicholas@host81-154-196-102.range81-154.btcentralplus.com (24Fri Apr 24 05:18:04 2020)
+T 1589801223 18<swimmer18>	Nei: I can confirm it's working! Thank you so much _o_
+T 1589801243 18<swimmer18>	that's the patch I've used btw -> http://dpaste.com/1NV60KP
+T 1589810270 18<ManDay18>	I'm having glitches in tmux (in gnome-terminal) where portions of the screen don't update correctly.
+T 1589810297 18<ManDay18>	2.9a - is there anything that I can do? Is there a known bug?
+T 1589815008 18<codedmart18>	Can I swap the scroll behavior in tmux. I use natural scroll I guess it is called. Or do it based on touchpad or mouse?
+T 1589823944 18<ManDay18>	codedmart: inverse the mappings, see Prefix+?
+T 1589833695 18<byyz18>	hey guys, why do certain themes (like nord) load these boxes in the status bar: https://i.imgur.com/hk3yn1C.png
+T 1589833910 18<Elodin18>	hi, i want to change the default zoom keybind from z to o. i briefly browsed to man tmux and couldnt find a zoom command like select-pane and others to bind a key to that. Any indicatinos
+T 1589834329 18<Elodin18>	nevermind
+T 1589834331 18<Elodin18>	i got it
+T 1589834401 18<R2robot18>	byyz: looks like missing powerline fonts
+T 1589834404 18<R2robot18>	maybe
+T 1589836133 18<byyz18>	R2robot yup thats what it is,thanks. now to figure out powerline for wsltty lol
+T 1589836243 18<R2robot18>	:)
+T 1589836274 18<byyz18>	oh hey i got it working with iconsolita for powerline, but now i get these giant pane borders: https://i.imgur.com/IH54DOm.png
+T 1589836461 18<R2robot18>	try a different font see if it changes
+T 1589836490 18<R2robot18>	or a different size
+T 1589836500 18<byyz18>	nope that doesnt do it
+T 1589836507 18<byyz18>	i think its a terminal problem, alacritty doesnt get this
+T 1589836509 18<byyz18>	only wsltty
+T 1589836515 18<R2robot18>	there ya go
+T 1589836517 18<R2robot18>	hehe
+T 1589836519 18<byyz18>	hmm
+T 1589836522 18<byyz18>	but its only for nord
+T 1589836523 18<byyz18>	dracula works fine
+T 1589836526 18<byyz18>	weird
+T 1589836563 18<kchibisov18>	Are you on windows byyz ?
+T 1589836645 18<byyz18>	yes kchibisov
+T 1589836700 18<byyz18>	no wait i lied
+T 1589836704 18<byyz18>	alacritty has it also
+T 1589836709 18<byyz18>	so its not a terminal problem
+T 1589836718 18<kchibisov18>	alacritty requires master branch to have font fallback.
+T 1589836724 18<kchibisov18>	on Windows.
+T 1589836735 18<byyz18>	the font is fine, the problem is giant pane borders
+T 1589836739 18<byyz18>	and only with nord
+T 1589836757 18<kchibisov18>	maybe it sets giant borders?
+T 1589836768 18<kchibisov18>	like you can control them in tmux.
+T 1589836784 18<byyz18>	how do i make them smaller
+T 1589836815 18<kchibisov18>	Do you have sources for your theme?
+T 1589836831 18<byyz18>	https://github.com/arcticicestudio/nord-tmux
+T 1589836893 18<kchibisov18>	Hm, the thing is that border has normal size.
+T 1589836904 18<kchibisov18>	it just sets the background color for it.
+T 1589836951 18<kchibisov18>	try `set -g pane-border-fg default`
+T 1589836965 18<byyz18>	that just made it white lol
+T 1589836976 18<byyz18>	goes away if i reload the environment
+T 1589836982 18<byyz18>	back to normal giant grey
+T 1589836985 18<kchibisov18>	oh, nvm, `set -g pane-border-bg default`
+T 1589836995 18<byyz18>	that did nothing
+T 1589837014 18<byyz18>	oh actually i think it made it a little better
+T 1589837020 18<byyz18>	the non-active border is normal now
+T 1589837023 18<byyz18>	active one still large
+T 1589837029 18<kchibisov18>	And I guess `set -g pane-active-border-bg default`
+T 1589837041 18<byyz18>	ayyy i love you
+T 1589837043 18<byyz18>	thanks man!
+T 1589837048 18<kchibisov18>	but anyway https://github.com/arcticicestudio/nord-tmux/blob/6101cf85ad4c58cd5fd01121a0d279b7da956814/src/nord.conf#L35
+T 1589837055 18<byyz18>	wait
+T 1589837059 18<byyz18>	how do i save it now lol
+T 1589837070 18<kchibisov18>	just set them after you source your theme?
+T 1589837070 18<byyz18>	cause if i reload the environemnt its gonna go back
+T 1589837080 18<kchibisov18>	I guess it should work.
+T 1589837082 18<byyz18>	in tmux.conf?
+T 1589837095 18<kchibisov18>	If you source your theme there, I guess yes.
+T 1589837102 18<byyz18>	im using tpm
+T 1589837108 18<byyz18>	so im not sure how it sources
+T 1589837119 18<kchibisov18>	Just put in the end of the config file, maybe it'll work.
+T 1589837148 18<kchibisov18>	`default` means use default color for background, if you use it for `*-bg` options
+T 1589837157 18<kchibisov18>	however your theme is using `black`.
+T 1589837188 18<kchibisov18>	And your black color is different to the background color, so it looks 'broken' for you.
+T 1589837197 18<byyz18>	nope, once it loads the theme it goes back
+T 1589837206 18<byyz18>	even if i put as the last lines
+T 1589837233 18<kchibisov18>	maybe first line, I don't know how such thing works in tmux.
+T 1589837263 18<byyz18>	nope first line doesnt work either
+T 1589837285 18<byyz18>	its fine i dont reload the tmux conf that often i can just manually set it when i do
+T 1589837287 18<kchibisov18>	Hm, change black color in terminal to much your background color or patch the theme.
+T 1589837306 18<kchibisov18>	shouldn't be that much work.
+T 1589837378 18<byyz18>	i can change the bacground color
+T 1589837382 18<byyz18>	but i cant change black afaik
+T 1589837398 18<kchibisov18>	You can change black at least in alacritty.
+T 1589837423 18<kchibisov18>	it's just `colors.normal.black` in alacritty.yml.
+T 1589878981 18<irrr3levant18>	Hey, is there such a thing as must have plugins? Or meta plugins, that everybody uses?
+T 1589878996 18<irrr3levant18>	exceptionally popular plugins
+T 1589879007 18<irrr3levant18>	like fzf in vim
+T 1589879826 18<avih18>	no
+T 1589880158 18<irrr3levant18>	that's good
+T 1589881456 18<ManDay18>	Does anyone else have artefacts (screen not updating in regions other than the cursor) with tmux 2.9a and ncurses 6.2?
+T 1589881518 18<Nei18>	in any case update tmux
+T 1589881526 18<Nei18>	but also double check all the TERM variables are correct
+T 1589881573 18<ManDay18>	I have TERM=screen-256color, that should be ok, no?
+T 1589881590 18<Nei18>	and before you attach to tmux?
+T 1589881616 18<ManDay18>	outside of tmux I don't have any artefacts
+T 1589881621 18<ManDay18>	Oh, you mean...
+T 1589881649 18<ManDay18>	xterm-256color
+T 1589881658 18<ManDay18>	(gnome-terminal)
+T 1589881670 18<Nei18>	you can try if there;s any change if you change it to vte-256color
+T 1589881677 18<Nei18>	as gnome-terminal is no real xterm
+T 1589881831 18<ManDay18>	vte-256color didn't help it, I'll upgrade to 3.1b
+T 1589882334 18<ManDay18>	No more problems with 3.1b Nei thanks!
+T 1589887949 18<eggbean18>	What's wrong with this line?
+T 1589887953 18<eggbean18>	set -g status-style "#[fg=#{@black},bg=#{@active}]"
+T 1589888063 18<nicm18>	what do you have in @black and @active?
+T 1589888498 18<avih18>	eggbean: after all the solving we did yesterday, you still show us your problem through the piphole?
+T 1589888528 18<avih18>	this line is fine. what comes before it probably isnb't
+T 1589888537 18<eggbean18>	nicm: just testing at the moment, but it's currently @black "colour16" and @active "colour26"
+T 1589888572 18<avih18>	i wouldn't take his word on it ^ based on experience
+T 1589888592 18<eggbean18>	avih: There is no if stuff going on at the moment. I have removed that temporarily until I get this working
+T 1589888600 18<eggbean18>	lol ^
+T 1589888644 18<eggbean18>	Okay, so the variables are set like this:
+T 1589888678 18<eggbean18>	setw -q @active 'colour26'
+T 1589888718 18<eggbean18>	And they show up with `tmux show-window-options -g`
+T 1589888734 18<eggbean18>	Anything wrong here?
+T 1589888919 18<eggbean18>	If the style format is correct, maybe I am setting the variables in the wrong way?
+T 1589888967 18<eggbean18>	should it be `setw -q @name 'value'
+T 1589889102 18<eggbean18>	How can I get it to echo soemthing like "#[fg=#{@message}]", so I can see what it has?
+T 1589889134 18<eggbean18>	I can see them with `tmux show-windows-options -g`
+T 1589889144 18<nicm18>	are you running master?
+T 1589889193 18<eggbean18>	Not sure what you mean.  I start a new server with `tmux -Ltest new`
+T 1589889199 18<nicm18>	no i mean did you build tmux from master
+T 1589889210 18<nicm18>	formats are not expanded inside -style options before master
+T 1589889216 18<nicm18>	ie before 3.2
+T 1589889216 18<eggbean18>	No, 2.8 from debian repo
+T 1589889227 18<nicm18>	right so you can't do it like this
+T 1589889231 18<eggbean18>	Oh
+T 1589889269 18<eggbean18>	That would explain it.  What is the old format then?
+T 1589889331 18<eggbean18>	I can't use @variables?
+T 1589889471 18<eggbean18>	Okay, maybe I should compile the latest version then. I've always stuck with the offical repository versions for major things like tmux though
+T 1589889506 18<nicm18>	you can use @ with set -F but they will be expanded when you set the variable not when it is evaluated
+T 1589889521 18<nicm18>	set the option i mean
+T 1589889559 18<eggbean18>	So, I can't do that?  What would the consequence of that be?
+T 1589889611 18<eggbean18>	This has frazzled my brain this afternoon
+T 1589890039 18<eggbean18>	I tried settings the variable like `set -Fq @active 'colour99393'  but they don't show
+T 1589892413 18<nicm18>	no
+T 1589892417 18<nicm18>	set the style option with -F
+T 1589892427 18<nicm18>	not the @ option
+T 1600044734 19*	Now talking on 22#tmux
+T 1600044734 22*	Topic for 22#tmux is: tmux is a terminal multiplexer | http://tmux.github.io/ | http://man.openbsd.org/OpenBSD-current/man1/tmux.1
+T 1600044734 22*	Topic for 22#tmux set by 26nicm!~nicholas@host81-154-196-102.range81-154.btcentralplus.com (24Fri Apr 24 05:18:04 2020)
+T 1600047246 18<sangriacobalt18>	does tmux have a normal mode like vim does? So you press "ctrl-b" and are able to enter shortcuts as you need (which are run one after another), and then press "ctrl-b" again to exit.
+T 1600047317 18<sangriacobalt18>	for example, if you want to switch windows and copy some text in vim, you can press escape and then just "Ctrl-W Shift-V y". But in tmux you have to press "ctrl-b" before each command
+T 1600060293 18<bravekarma18>	sangriacobalt: here is a snippet I saw posted before: https://new.reddit.com/r/tmux/comments/einuqy/make_tmux_modal/
+T 1600060656 18<jec18>	is it possible to make a newline between selection-copy and append-copy in cooy mode ?
+T 1600064324 18<jec18>	unknown command copy-pipe ?
+T 1600064368 18<jec18>	bind-key -T copy-mode-vi y copy-pipe "xclip -sel clip -i"
+T 1600065007 18<jec18>	ok that was fixed with bind-key -T copy-mode-vi y send -X copy-pipe "xclip -sel clip -i"
+T 1600065107 18<jec18>	however it's still not copying to clipboard
+T 1600069715 18<jec18>	still need help with the above
+T 1600069989 18<jec18>	THANKS I GOT THIS!
+T 1600073245 18<ForeverNoob[m]18>	if [ -n $TMUX ] ; then echo '$TMUX is nonzero.'; fi  ;  if [ -z $TMUX ] ; then echo '$TMUX is zero.'; fi
+T 1600073249 18<ForeverNoob[m]18>	results in:
+T 1600073257 18<ForeverNoob[m]18>	$TMUX is nonzero.
+T 1600073262 18<ForeverNoob[m]18>	$TMUX is zero.
+T 1600073286 18<ForeverNoob[m]18>	is this a Schrödinger's variable?
+T 1600075283 18<jec18>	this is avogardo's number
+T 1600075320 18<nicm18>	"$TMUX"
+T 1600075344 18<nicm18>	you are doing [ -n ] which is true
+T 1600088403 18<Plasmoduck18>	Can I use shell script in my .tmux.conf? I want to do something like if the title is ncmpcpp print a music glyph next to the name, if its vim print a vim glyph if its irssi print a chat glyph
+T 1600088415 18<Plasmoduck18>	These glyphs are all from fonts I would copy the unicode in
+T 1600088432 18<Plasmoduck18>	At the moment I have this https://ibb.co/cLmfy7b
+T 1600089024 18<annihilannic18>	Is there a tmux somewhere in that screenshot??
+T 1600089976 18<Plasmoduck18>	Yes, the terminal window titlebars
+T 1600090012 18<Plasmoduck18>	The blue strip
+T 1600090122 18<annihilannic18>	So you're running screen inside tmux in the top left window?
+T 1600090160 18<Plasmoduck18>	https://ibb.co/8gQm9bd
+T 1600090167 18<Plasmoduck18>	Yes
+T 1600090176 18<annihilannic18>	You can include shell scripting in .tmux.conf in certain places, but I think you want to include it in a format string, which I suspect isn't possible.
+T 1600090208 18<annihilannic18>	You have may have to implement a hook to trap the title change and invoke a script to reset the title with your glyph added... or something.
+T 1600090276 18<Plasmoduck18>	Sounds tricky
+T 1600090327 18<Plasmoduck18>	I only want to use tmux for terminal window titlebars
+T 1600090336 18<Plasmoduck18>	Since dwm doesn't drawm them, only borders.
+T 1600108473 18<Celmor[m]18>	can I detect prolonged inactivity so I can run my save.sh script from tmux-resurrect then rather than when I'm trying to interact with tmux and it making the shell barely responsive?
+T 1600115554 18<jolamb18>	Can I control the initial selection for `choose-buffer`? When I run it right now, it has the least-recent buffer highlighted, but I would like for it to default to the most-recent buffer
+T 1600154205 18<nicm18>	jolamb: choose-buffer always starts with the most recent buffer selected, but you can change the sort type or make it reversed by changing the key binding
+T 1600161429 18<tijara18>	I cannot get a hook to work is the syntax set-hook -t session client-resized "sometmuxcommand" right?
+T 1600164728 18<tijara18>	ah! I didn't specify the array, nvm
+T 1600165021 18<tijara18>	nevermind, it doesn't work
+T 1600165085 18<tijara18>	if I input the command "resize-pane -t session:window.pane -y foo -x bar" it works, so it's not the command
+T 1600165157 18<tijara18>	and the hook shows up in show-hooks... set-hook -t session client-attached[n], is this because it ends up in a nested tmux window?
+T 1600166740 18<nicm18>	what exactly is the hook set to
+T 1600166902 18<tijara18>	wait a min, maybe it's a version issue
+T 1600166959 18<tijara18>	ahh I'm running 2.8 on the pi, could this be an issue?
+T 1600167012 18<tijara18>	alright, I'ĺl update
+T 1600167292 18<tijara18>	I would've imagined the raspbian repos had a later version
+T 1600167353 18<burak18>	hi, is there any way to binding printscreen key to specific event, printscreen is not defined as keyalias like PgUp/PageDown ...
+T 1600168728 18<nicm18>	burak: you will need to configure your terminal or WM to make it send some sequence then configure it as a user key in tmux
+T 1600169039 18<tijara18>	I have upgraded to 3.1b and now I'm getting an error that says "server version is too old for cilent"
+T 1600169046 18<tijara18>	I rebooted the pi, same error
+T 1600169136 18<tijara18>	if I tmux -V I get 3.1b, why is tmux doing this?
+T 1600169266 18<burak18>	nicm: thanks, it seems alacrity catches printscreen press event as a keycode 210
+T 1600169269 18<tijara18>	got it, nvm
+T 1600169667 18<nicm18>	burak: if you run cat outside tmux and press the key, what do you see
+T 1600170012 18<burak18>	nicm: nothing, but xev or scankeys detects printscreen press/release event
+T 1600170049 18<Nei18>	burak: yes, but tmux sits at the same place in chain as cat
+T 1600170050 18<burak18>	doesnt matter inside tmux session or not
+T 1600170075 18<Nei18>	so you have to somehow convince "outer shells" to make this visible to cat/tmux
+T 1600170113 18<Nei18>	some terminal emulators have a configuration section for key -> control code
+T 1600170129 18<burak18>	s/scankey/showkey
+T 1600170159 18<Nei18>	but sometimes even if they do, prtscr might be captured by your window manager and don't get passed to the terminal emulator
+T 1600170777 18<burak18>	actually i want to bind shift+print to copy selection to X clipboard in vi-select mode, shift+home works with "bind-key -T copy-mode-vi S-Home send-keys -X copy-pipe-and-cancel "xclip -se c -i"
+T 1600171207 18<Nei18>	the situation remains the same
+T 1600172095 18<nicm18>	until you can see something for the key with cat in the terminal outside tmux, you will not be able to use it with tmux
+T 1600200404 18<sangriacobalt18>	bravekarma: some time earlier you sent me a reddit post for a tmux problem. you are a god
+T 1600200499 18<bravekarma18>	haha I am just the messenger, alexherbo2 is the awesome one
+T 1600201002 18<sangriacobalt18>	bravekarma: got it.
+T 1600201009 18<sangriacobalt18>	alexherbo2: you're a god too
+T 1600209128 18<tijara18>	I have set up environment variables with set-environment -g in .tmux.conf but they're not registered unless I manually source the file within the tmux session. How can have that happen automatically?
+T 1600248526 18<alexherbo218>	hello
+T 1600248543 18<alexherbo218>	is there a hook on key-table change?
+T 1600248568 18<alexherbo218>	I want to change the background of the status bar on certain table (root and prefix)
+T 1600256434 18<nicm18>	if you use master you can use formats in status-style
+T 1600256517 18<nicm18>	so you could then do eg 'bg=#{?#{==:#{client_key_table},root},red,blue}'
+T 1600256542 18<nicm18>	or use client_prefix if you only want prefix/!prefix
+T 1600258811 18<jrm18>	I have an alias: tmux send -t ":$i" "$1" KPEnter (some context is missing, but hopefully that's clear).  I also have an alias 'up'.  I was really confused when sending 'up' to all panes, then I realized the *up arrow* is being sent.  Is there a way to escape 'up' to send the string and not the arrow key?
+T 1600259082 18<jrm18>	Oh, I think I want '-l'.
+T 1600275108 18<init18>	is it possible to create a new tmux session while in tmux?
+T 1600275134 18<depesz18>	init: tmux new-session -d -s whatever
+T 1600275331 18<jpp__18>	init: So, to create a new session, we have to press CTRL+B and then C - CTRL+B, C.
+T 1600275532 18<jpp__18>	https://www.hostinger.fr/tutoriels/comment-utiliser-tmux-plus-cheatsheet/
+T 1600275620 18<init18>	hm, isn't that called a window?
+T 1600275833 18<depesz18>	or you can ctrl-b : new-session -d -s xxx
+T 1600275916 18<init18>	hm,  I need to come up with a way to map the above to keybinding
+T 1600276025 18<depesz18>	init: do you want to make new session and immediately switch to it?
+T 1600276031 18<depesz18>	or just make and let it be in background?
+T 1600276145 18<depesz18>	init: if immediately switch: bind-key -n F1 new-session
+T 1600276178 18<depesz18>	if to background, add -d at the end
+T 1600276284 18<init18>	more than likely switch to it it immediately
+T 1600276304 18<depesz18>	then you have the ready command above. as long as you're happy with binding it to f1, without prefix.
+T 1600282135 18<init18>	nice!
+T 1600282144 18<init18>	It's good to have
+T 1600326292 18<siberianascii18>	what's wrong with this
+T 1600326299 18<siberianascii18>	https://bpa.st/ZAXA
+T 1600326473 18<osse18>	I don't see anything wrong. What goes wrong?
+T 1600326505 18<siberianascii18>	i try to move window 3 to window 2 but i get this error:
+T 1600326512 18<siberianascii18>	can't link window: index in use: 1
+T 1600326522 18<siberianascii18>	2*
+T 1600326535 18<siberianascii18>	i expected the script to handle this
+T 1600326565 18<osse18>	what are the arguments you call the script with?
+T 1600326619 18<siberianascii18>	3 2
+T 1600326863 18<osse18>	put set -x at the top of the script and make sure all commands are actually run
+T 1600326889 18<osse18>	when I run it by hand I get "can't link window: index in use: 2" which makes more sense
+T 1600326990 18<siberianascii18>	yes that's what im getting
+T 1600327001 18<siberianascii18>	the error is ok but the script is never actually moving the window
+T 1600327010 18<siberianascii18>	the error suppoused to be handled in the if statement
+T 1600327014 18<siberianascii18>	https://bpa.st/5QFQ
+T 1600327169 18<depesz18>	siberianascii: can you show us tmux lsw before and after the operation?
+T 1600327359 18<siberianascii18>	ttps://bpa.st/KMXA
+T 1600327451 18<siberianascii18>	https://bpa.st/KMXA
+T 1600327456 18<depesz18>	siberianascii: and after?
+T 1600327672 18<siberianascii18>	depesz: it's the same
+T 1600327754 18<depesz18>	siberianascii: ok, then please try with this script, and show me whole output: https://bpa.st/Q6GA
+T 1600327784 18<osse18>	if I run the commands by hand one by one it seems to do the trick
+T 1600327785 18<osse18>	strange
+T 1600328005 18<siberianascii18>	lol
+T 1600328011 18<siberianascii18>	problem solved
+T 1600328025 18<siberianascii18>	this is the solution:
+T 1600328052 18<siberianascii18>	https://bpa.st/PZRQ
+T 1600328084 18<siberianascii18>	-s $2 -a will increase the windows index from $2 by 1
+T 1600328141 18<siberianascii18>	good morning to us :)
+T 1600328180 18<siberianascii18>	the problem is when you try to move a window to a lower position
+T 1600328214 18<depesz18>	that's what you get by using windows indexes
+T 1600328282 18<depesz18>	siberianascii: the way i see it, the script will fail to work ok, if you'll have holes in window indexes
+T 1600328344 18<siberianascii18>	depesz: how so ? the worst case scenario is when an index is in use and even if there were gaps it is fixed with movew -r
+T 1600328373 18<siberianascii18>	depesz: how you suggest to handle a quick access to bunch of windows ?
+T 1600328387 18<depesz18>	siberianascii: start tmux, make it have windows 0, 1, 2, 3. then remove window 2, and run your script to move 3 to 0
+T 1600328412 18<depesz18>	siberianascii: I don't fully understand what you want to achieve. move window to 0, and if there already is something move the one there to some *random* location?
+T 1600328456 18<siberianascii18>	depesz: why random ? the one above
+T 1600328553 18<depesz18>	moment.
+T 1600328593 18<siberianascii18>	depesz: right moving 3 to 0 after removing window 2 is failing
+T 1600328676 18<depesz18>	working on a fix to script.
+T 1600328843 18<siberianascii18>	there is something i dont get ...
+T 1600329032 18<siberianascii18>	why movew -s "index" -a is MOVING the window instead of just increasing the index
+T 1600329049 18<siberianascii18>	seriously i need to find better solution for window management
+T 1600329161 18<depesz18>	siberianascii: https://bpa.st/BVEA
+T 1600329191 18<depesz18>	siberianascii: does it work/help?
+T 1600329246 18<siberianascii18>	i try..
+T 1600329269 18<siberianascii18>	in a glance it's already seems like a better solution because it's not relying on the index of the window but instead of the window
+T 1600329285 18<depesz18>	it solves couple of problems that your code had.
+T 1600329332 18<depesz18>	i think it works ok-ish
+T 1600329383 18<depesz18>	is your usual usecase to put something in the beginning of list?
+T 1600329588 18<siberianascii18>	no. the solution is independent of beginning or end..
+T 1600329606 18<siberianascii18>	im trying to get project related windows close to each other for easier access
+T 1600329679 18<depesz18>	siberianascii: why not make them immediately next to each other?
+T 1600329734 18<siberianascii18>	depesz: because as time goes by i somehow messing up my windows :)
+T 1600329761 18<siberianascii18>	closing files and windows... and you can see how ugly it can gets
+T 1600329818 18<depesz18>	siberianascii: in my tmux.conf i have this: bind-key '"' split-window -c "#{pane_current_path}" ; bind-key %   split-window -h -c "#{pane_current_path}" ; bind-key c   new-window -c "#{pane_current_path}"
+T 1600329828 18<depesz18>	sorry, not this
+T 1600329853 18<depesz18>	with -a to new-window
+T 1600329877 18<depesz18>	so every ctrl-b c gives me new window, in current working directory, in next window in list.
+T 1600330020 18<siberianascii18>	depesz: interesting...
+T 1600330052 18<depesz18>	of course I still have to move windows every now and then, but rather rarely
+T 1600330204 18<depesz18>	siberianascii: i thing that I also do, a lot, is have preconfigured environment for working on "stuff"
+T 1600330231 18<depesz18>	something like this https://gitlab.com/depesz/explain.depesz.com/-/blob/master/run.dev.sh
+T 1600337106 18<siberianascii18>	depesz: this is work fairly well..
+T 1600337109 18<siberianascii18>	https://bpa.st/OGHQ
+T 1600337148 18<siberianascii18>	oops2~
+T 1600337150 18<siberianascii18>	https://bpa.st/KYEA
+T 1600342214 18<tasse18>	Hi, whenever I mark something with my mouse and release it my terminal jumps to the end. Is there anyway to avoid this?
+T 1600342429 18<tasse18>	ah found unbind -T copy-mode MouseDragEnd1Pane - that does the trick
+T 1600353617 18<jwr18>	is there a way to start a tmux session with a new global environment, using only the environment variables that exist in my current shell? example here https://pastebin.com/raw/XpQe10A0
+T 1600353862 18<Nei18>	tmux -S othersession ?
+T 1600353937 18<jwr18>	Nei: thanks, that works.
+T 1600356677 18<alexherbo218>	nicm: I updated to master and it works, thanks for your help.
+T 1600356740 18<alexherbo218>	(was about the new status-style features)
+T 1600362258 18<natechan18>	When you boot your machine back on, it would be really nice to be able to restore distinct per-shell command history and the text that was printed to stdout/stderr.  tmux-resurrect used to have some kind of support for this, but it was removed.  It seems like the appropriate place for this kind of functionality would be in the shell itself, perhaps on the basis of a unique per-shell identifier.  That
+T 1600362260 18<natechan18>	way, when tmux-resurrect restores the various shells, they would each be launched with the relevant identifier from tmux (at which point tmux's role here ends) and the shell would be responsible for loading and displaying the old stdout/stderr and so on.  Well, that's all just a guess.  Has anyone found a robust solution for this problem?
+T 1600424447 18<minhaj-sixbyte18>	hi
+T 1600426051 18<minhaj-sixbyte18>	why is the environment variable TERM different inside my tmux session. what does this variable indicate
+T 1600426281 18<Nei18>	minhaj-sixbyte: it tells the applications that you run, what sort of control sequences they should send to the terminal emulator(=tmux)
+T 1600426479 18<sszark18>	it's for compatibility reasons, cause different terminals support different things. if you change it yourself. chances are stuff will break.
+T 1600435071 18<oxek18>	sszark: we have to change $TERM ourselves though, in order to get proper color support, no? Tmux does not do tmux-256color by default.
+T 1600435198 18<Khaytsus18>	You shouldn't have to play with the TERM value manually.
+T 1600435224 18<Khaytsus18>	That said, I have to run tmux -2 in at least one terminal I use, dunno why.
+T 1600435317 18<Nei18>	yes I think you do have to do it manually
+T 1600435335 18<Nei18>	however the way it should be done is
+T 1600435336 18<Nei18>	set -g default-terminal "tmux-256color"
+T 1600435338 18<oxek18>	$TERM should be set by the terminal emulator, yes, but you have to set it manually in tmux.conf to get proper color
+T 1600435347 18<Khaytsus18>	I was thinking the general notion is if you're setting TERM manually something is wrong somewhere?
+T 1600435450 18<oxek18>	there's a lot of bad info about this. It is *always* wrong to set TERM in your .bashrc (or equivalent), your terminal emulator should set TERM properly. That is true. However, if you then run screen/tmux or other things, those tools should set the TERM value themselves, and a lot of the time you have to fix this value in those tool's config files.
+T 1600435572 18<oxek18>	forunately, there's not much difference between tmux & tmux-256color in terms of behavior, just color. Run 'infocmp -L tmux tmux-256color' to see the differences.
+T 1600435619 18<Khaytsus18>	I just run a script that generates 256 colors to test..  I can't recall why, but there's some situation I get into where it stops working, so I wound up just doing tmux -2
+T 1600435668 18<oxek18>	there are some issues with those scripts where some stuff relies on $COLORTERM existing, but for example xterm does not set that variable
+T 1600435696 18<oxek18>	whereas vte-based terminals set it to 'truecolor'
+T 1600435732 18<oxek18>	in any case, please make sure your TERM is set to tmux-256color when inside tmux, and not screen or xterm
+T 1600435771 18<oxek18>	(echo $TERM should read 'tmux-256color', not 'screen' or 'xterm' or any variation of those)
+T 1600435872 18<Khaytsus18>	Mine still is screen :/  heh  I'm adding that set command above.  force it 4 ways!
+T 1600436003 18<oxek18>	only need to set it in one place, your tmux.conf
+T 1600436013 18<oxek18>	no need for tmux -2 afterwards
+T 1600436036 18<oxek18>	hmm, acutally probably need this as well
+T 1600436038 18<oxek18>	set -gsa terminal-overrides ',xterm-256color:RGB'
+T 1600436046 18<oxek18>	depending on which terminal emulator you use
+T 1600436076 18<oxek18>	(this changes in tmux 3.2 to set -gsa terminal-features ',xterm-256color:RGB')
+T 1600436116 18<Khaytsus18>	Aha okay now I remember...  I have a central server I ssh into.  And I ssh from it out to other machines.  That second ssh is always 16 color.  if I ssh directly to the machine, 256.
+T 1600436142 18<Khaytsus18>	That's why I put in -2 iirc..  I dunno.
+T 1600436159 18<Khaytsus18>	Not like I use powerline or vi with a million colors anyway
+T 1600436177 18<oxek18>	you don't watch videos inside your terminal?
+T 1600436188 18<oxek18>	4k 144fps?
+T 1600436197 18<Khaytsus18>	I do, but I prefer them in B&W
+T 1600436203 18<Khaytsus18>	:P
+T 1600436229 18<oxek18>	sixels are best anyway
+T 1600496231 18<guardian18>	hello
+T 1600496243 18<guardian18>	I noticed the following behavior and I don't remember seeing it before
+T 1600496256 18<guardian18>	I'm running tmux 3.1b on macOS Catalina
+T 1600496285 18<guardian18>	first I do tmux -L test, to open a test server and client
+T 1600496297 18<guardian18>	then I type 'exit' in the shell
+T 1600496320 18<guardian18>	then I do tmux -L test again
+T 1600496335 18<guardian18>	and now my session is 1 instead of 0, but there's no more a session 0
+T 1600496357 18<guardian18>	then I do tmux -L test kill-server
+T 1600496362 18<guardian18>	and finally I do again tmux -L test
+T 1600496384 18<guardian18>	and tmux tells me server exited unexpectedly
+T 1600496403 18<guardian18>	can it be because the server process is waiting for jobs to finish?
+T 1600496647 18<guardian18>	typically I have an infinite while loop spawned from tmux.conf, which purpose is to periodically set variables
+T 1600497571 18<Wulf18>	Hello. I entered the help screen with C-b ?. How do I exit it?
+T 1600497716 18<Wulf18>	Never mind. Escape does it. But I'm sure that's the first thing I tried.
+T 1600499751 18<jpp__18>	Help tmux Ctrl + b ?
+T 1600500121 18<jpp__18>	http://man.openbsd.org/OpenBSD-current/man1/tmux.1
+T 1600500489 18<jpp__18>	Ctrl + b ? List all key bindings.
+T 1600501360 18<jpp__18>	key q to exit
+T 1600530626 18<m43cap18>	Hello, Suppose I'm on host A and there's a tmux session running on host B. I know I can ssh to B from A and attach the session, but is it possible to attach the session to host A directly?
+T 1600530683 18<tureba18>	no, tmux doesn't communicate over network - only by unix socket
+T 1600530719 18<m43cap18>	Ok, I thought that but I had better check first. Thanks.
+T 1600558768 18<natechan18>	Is it possible to use command substitution in the default-command?  If not, what is a workaround?  I'd like to set the default-command to something like <<${HOME}/scripts/launch-shell $(uuidgen) /path/to/shell>> so that (a) launch-shell is called with the output of uuidgen and also (b) the command that is seen by tmux-resurrect is actually <<${HOME}/scripts/launch-shell THISIS-A-GENERATED-ID
+T 1600558770 18<natechan18>	/path/to/shell>>.
+T 1600558985 18<sszark18>	Is there any way to list the windows in a session from outside your session?
+T 1600559018 18<sszark18>	There is `list-sessions` for the sessions themselves
+T 1600559120 18<sszark18>	Oh. you can use the target flag. my bad.
+T 1600559275 18<basenode18>	im having trouble getting gitmux working, putting => set -g status-right '#(gitmux "#{pane_current_path}") <= in .tmux.conf shows nothing in status right
+T 1600559279 18<basenode18>	any ideas?
+T 1600559547 18<sszark18>	what happens if you run gitmux in the terminal? maybe there is some error.
+T 1600559714 18<sszark18>	changes are it just fails. it only prints to the status bar if it outputs something.
+T 1600559917 18<basenode18>	sszark: so apparently creating a link from ~/go/bin/gitmux to /usr/local/bin fixed the issue
+T 1600559949 18<sszark18>	makes sense, you can't run programs that aren't installed properly
+T 1600559973 18<sszark18>	or rather, when you run a program from the terminal. it looks in /bin/
+T 1600560734 18<basenode18>	sszark: i mean i have my GOPATH in ~/.zshrc, so i thought the binary would be accessible
+T 1600560946 18<sszark18>	i don't believe it reads anything from your shell rc at all. but maybe i'm mistaken. basenode
+T 1600561173 18<sszark18>	I found it `New tmux sessions do not source bashrc file` if you want to source your `zshrc` you'll have to add it manually. basenode
+T 1600561370 18<sszark18>	Try this `set-option -g default-shell "/bin/zsh"` it should source your users configuration. basenode
+T 1600564744 18<basenode18>	thanks sszark
+T 1609963181 19*	Now talking on 22#tmux
+T 1609963181 22*	Topic for 22#tmux is: tmux is a terminal multiplexer | http://tmux.github.io/ | http://man.openbsd.org/OpenBSD-current/man1/tmux.1
+T 1609963181 22*	Topic for 22#tmux set by 26nicm!~nicholas@host81-154-196-102.range81-154.btcentralplus.com (24Fri Apr 24 05:18:04 2020)
+T 1609963950 18<crankharder18>	no crash reports that say 'tmux' in that folder, handeul of 'proactive_event_tracker' - but no idea what that is
+T 1609964017 18<crankharder18>	i do see the logs from -vv - guess i'll watch and wait on those.  thanks!

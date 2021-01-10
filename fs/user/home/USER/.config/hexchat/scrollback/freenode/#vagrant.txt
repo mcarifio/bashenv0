@@ -1,0 +1,502 @@
+T 1586900901 19*	Now talking on 22#vagrant
+T 1586900901 22*	Topic for 22#vagrant is: Welcome to the Vagrant IRC channel! Don't be afraid to ask questions! http://vagrantup.com
+T 1586900901 22*	Topic for 22#vagrant set by 26mitchellh (24Sun Mar  7 19:33:54 2010)
+T 1586951747 18<StyXman18>	how can I find the ports that vagrant is supposed to be forwarding from my host machine (my NB) to the virtualbox machine I just (indirectly) told it to build?
+T 1587001012 18<supremekai18>	Hey guys, I'm trying to install vagrant but I'm getting a windows defender alert.. is this normal?
+T 1587049541 18<Jackneill18>	hey
+T 1587049547 18<Jackneill18>	im getting started
+T 1587049559 18<Jackneill18>	for a lightweight provider i am looking at lxc
+T 1587049570 18<Jackneill18>	but the top box is 205th times downloaded
+T 1587049590 18<Jackneill18>	do people generally prefer libvirt over virtualbox?
+T 1587049634 18<Jackneill18>	vbox provider reqquires vagrant up to run as root, but later checks for UID, so its annoying that i have to run vagrant as sudo from then on
+T 1587050665 18<rapidwave18>	Is afterScriptPath not a real variable?
+T 1587050766 18<rapidwave18>	Is has been working until now https://gist.github.com/ojabi/953bd7add202d9f4dcb98e739d783e5d
+T 1587052273 18<`brian18>	Jackneill: virtualbox is for sure the most popular provide, you shouldn't need root access to run vagrant
+T 1587052307 18<Jackneill18>	right
+T 1587052311 18<`brian18>	it's possible you ran `sudo vagrant status` or any vagrant command with sudo. what happens is vagrant makes a small `.vagrant` folder that stores some metadata as the user that ran the command, so that is possible why it seems that you need sudo
+T 1587052324 18<`brian18>	because it can't read the initial metadata folder due to it being created by the root user
+T 1587052354 18<`brian18>	if all your machines are destroyed it should be safe to remove that .vagrant folder and run vagrant as your local user
+T 1587055005 18<rapidwave18>	Will somoene please take a look at my config, the error is on hte paste https://gist.github.com/ojabi/953bd7add202d9f4dcb98e739d783e5d
+T 1587055654 18<`brian18>	rapidwave: a variable is missing, you need to define that variable
+T 1587055737 18<`brian18>	rapidwave: https://github.com/laravel/homestead/blob/master/Vagrantfile
+T 1587055753 18<`brian18>	afterScriptPath = confDir + "/after.sh"
+T 1587055860 18<rapidwave18>	That should be the definition?
+T 1587055875 18<`brian18>	according to homestead
+T 1587055887 18<`brian18>	this is a vagrant channel though, not homestead
+T 1587055896 18<`brian18>	homestead is its own project
+T 1587055899 18<`brian18>	that uses vagrant
+T 1587056642 18<rapidwave18>	It is Vagrant script for controlling Vagrant, therefore it actually is Vagrant related
+T 1587056673 18<rapidwave18>	Homestead configuration has it's own file
+T 1587057079 18<`brian18>	it's not vagrant related :/
+T 1587125554 18<roadster196618>	Hey all, i'm getting errors when starting up my VMs, which is totally stopping me getting any work done.. could really use some help if anyone has any ideas....
+T 1587125564 18<roadster196618>	"ERROR vagrant: An error occurred in the underlying SSH library that Vagrant uses."
+T 1587125573 18<roadster196618>	"timeout during server version negotiating"
+T 1587125731 18<roadster196618>	apparently there are issues with OSX 10.15.4 but i don't think this is whats causing the problems tbh
+T 1587126039 18<roadster196618>	my config has been the same for ages. only thing that changed recently is OSX updating itself, and i've started using a wired ethernet connection instead of wireless. (switching back does not helo)
+T 1587127368 18<jomitsch18>	hey all! I am uploading a box to vagrant cloud and it is failing with exit code: 52 Empty reply from server - any ideas what could be happening? https://paste.centos.org/view/c6d1dcc6
+T 1587127400 18<jomitsch18>	the odd thing is I upload https://app.vagrantup.com/katello/boxes/katello-nightly in the same way without issue, but when I do it with https://app.vagrantup.com/katello/boxes/katello-devel, it fails
+T 1587127410 18<jomitsch18>	my hunch is the large box size
+T 1587128946 18<roadster196618>	i'm now seeing "Guest-specific operations were attempted on a machine that is not ready for guest communication. This should not happen and a bug should be reported"
+T 1587130220 18<roadster196618>	ssh is definitely running on the VM, I can connect using a private network IP address, so it seems there is wrong with Vagrant, not my local OS or the VM. HALP PLEASE ! Anyone ..?
+T 1587133831 18<rapidwave18>	I'm getting connection reset by peer, but I know port is correct
+T 1587133851 18<rapidwave18>	The configuration works on Ubuntu Linux, but is giving me this on Windows 10
+T 1587139213 18<`brian18>	roadster1966: have you tried rebuilding the guest?
+T 1587139278 18<`brian18>	jomitsch: hm, it could be the large file size. if it keeps happening I would open a ticket with hashicorp support
+T 1587139443 18<roadster196618>	brian: yes have destroyed and tried to re-build but while box boots vagrant cannot connect to provision anything
+T 1587139463 18<jomitsch18>	`brian: sounds good, I'll try on another machine to rule anything out too - If that doesn't work I'll open up a ticket, thanks!
+T 1587139740 18<roadster196618>	some press recently about ssh failing in some circumstances on osx 10.15.4 but seems unlikely
+T 1587139747 18<roadster196618>	https://www.theregister.co.uk/2020/04/01/apples_macos_catalina_ssh/
+T 1587139764 18<`brian18>	what version of vagrant are you using?
+T 1587139770 18<`brian18>	and what provider
+T 1587139807 18<`brian18>	and can you bring up other boxes and ssh into them or is it just the one
+T 1587140065 18<roadster196618>	using latest version of vagrant 2.2.7 on OSX using VMWare. Guest OS is ubuntu 18.04.3
+T 1587140112 18<roadster196618>	i cannot fully run up any VMs, vagrant cannot provision anything because it cannot connect, but I can ssh into the VMs using a private network address
+T 1587140185 18<`brian18>	is this true for different vagrant boxes or just the one you're using
+T 1587140731 18<roadster196618>	true for both of the two i have setup
+T 1587140788 18<`brian18>	how about the box `hashicorp/bionic64`?
+T 1587140896 18<roadster196618>	i can try it, but my boxes were working fine and have been for 8 months
+T 1587140942 18<`brian18>	sure.... virtual machines are not immutable though
+T 1587140947 18<`brian18>	they change
+T 1587140996 18<`brian18>	it sounds like though it might be an issue with your systems SSH based on the error you shared, so that's why I'm asking you to try different boxes, if they all have the same error then that confirms it
+T 1587141025 18<`brian18>	if different boxes don't have the same issue, then it's probably just an issue with the box you are using
+T 1587141049 18<roadster196618>	ok i will try tomorrow, very late here now. thanks
+T 1587141062 18<`brian18>	alright, no worries
+T 1587141079 18<`brian18>	I think I saw you opened a GH issue, maybe update us on there once you try out the different box
+T 1587141094 18<roadster196618>	will do
+T 1587141123 18<roadster196618>	odd that i can ssh into these boxes tho, but vagrant can't...
+T 1587141196 18<`brian18>	you said it doesn't work on the provision step? vagrant uses net-ssh to do that
+T 1587141206 18<`brian18>	not your system ssh binary directly, like the `vagrant ssh` command does
+T 1587141256 18<roadster196618>	yes the error mentions net-ssh. but seems to prove that the box is fine, because i can ssh into it
+T 1587141276 18<`brian18>	can you ssh into it using vagrant ssh?
+T 1587141297 18<roadster196618>	no, using ssh from command line
+T 1587141324 18<`brian18>	what is the error you get if you use `vagrant ssh`?
+T 1587141325 18<roadster196618>	i setup a private network address for each vm, i can connect to those
+T 1587141492 18<roadster196618>	nothing, vagrant ssh does not connect or give any error
+T 1587141501 18<`brian18>	`vagrant ssh --debug`
+T 1587141531 18<roadster196618>	ok just a sec
+T 1587141572 18<roadster196618>	no error with --debug either
+T 1587141578 18<roadster196618>	just quits
+T 1587141639 18<`brian18>	can you do `vagrant ssh --debug &> vagrant.log` and paste that into a gist.github.com
+T 1587141731 18<roadster196618>	last line is: INFO ssh: Invoking SSH: /usr/bin/ssh ["vagrant@127.0.0.1", "-p", "2222", "-o", "LogLevel=FATAL", "-o", "Compression=yes", "-o", "DSAAuthentication=yes", "-o", "IdentitiesOnly=yes", "-o", "StrictHostKeyChecking=no", "-o", "UserKnownHostsFile=/dev/null", "-i", ""/Users/redacted/Vagrant/.vagrant/machines/web-vm/vmware_desktop/private_key"]
+T 1587141765 18<`brian18>	it should at least time out
+T 1587141778 18<`brian18>	what happens if you combine all of that into an ssh command and run it
+T 1587141780 18<roadster196618>	no errors mentioned at all
+T 1587141819 18<`brian18>	it might also be worth it to look at the log on your guest to see if there are any errors in like `/var/log/syslog`
+T 1587141827 18<`brian18>	when you ssh with that command or with vagrant
+T 1587141841 18<roadster196618>	just trying to ssh to 127.0.0.1 on port 2222 fails to connect
+T 1587141865 18<`brian18>	connection refused?
+T 1587141866 18<roadster196618>	kex_exchange_identification: read: Connection reset by peer
+T 1587141878 18<`brian18>	and you passed the key along with the ssh command?
+T 1587141896 18<roadster196618>	no i just tried that first
+T 1587141918 18<roadster196618>	i usually don't pass a key i send username and password
+T 1587142006 18<`brian18>	what about
+T 1587142008 18<`brian18>	ssh vagrant@127.0.0.1 -p 2222 -o LogLevel=FATAL -o Compression=yes -o DSAAuthentication=yes -o IdentitiesOnly=yes -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i /Users/redacted/Vagrant/.vagrant/machines/web-vm/vmware_desktop/private_key
+T 1587142028 18<`brian18>	and you'll probably have to unredact your username :D
+T 1587142036 18<`brian18>	unless that is your username lol
+T 1587142093 18<roadster196618>	nothing. just returns to prompt with no error
+T 1587142148 18<`brian18>	what about inside the vm? do you see anything in the logs?
+T 1587142168 18<`brian18>	starting to sound like a system issue if you can't ssh with the ssh binary
+T 1587142204 18<`brian18>	if you don't see any errors, you might also want to try making a guest without a private network and see if that makes any difference
+T 1587142308 18<roadster196618>	auth.log shows activity and looks healthy
+T 1587142355 18<`brian18>	`/var/log/syslog`
+T 1587142455 18<roadster196618>	auth.log shows my ssh connection activity over private IP, and several open/closed entries before hand, looks like a connection is trying but failing
+T 1587142504 18<roadster196618>	nothing bad looking in syslog
+T 1587142626 18<roadster196618>	this is what seems to be added to auth log when i try vagrant ssh:
+T 1587142636 18<roadster196618>	Apr 17 16:36:52 vagrant sudo:  vagrant : TTY=unknown ; PWD=/home/vagrant ; USER=root ; COMMAND=/bin/bash -l
+T 1587142645 18<roadster196618>	Apr 17 16:36:52 vagrant sudo: pam_unix(sudo:session): session opened for user root by (uid=0)
+T 1587142652 18<roadster196618>	Apr 17 16:36:52 vagrant sudo: pam_unix(sudo:session): session closed for user root
+T 1587142848 18<roadster196618>	vs the activity when i login via priv network: Apr 17 16:51:16 vagrant sshd[1198]: Accepted password for vagrant from 192.168.123.1 port 53773 ssh2
+T 1587143286 18<roadster196618>	got to get some zzzs but i will leave this open. thanks.
+T 1587143446 18<`brian18>	yeah, I recommend updating the GH issue with what you've tried, it will be a lot easier for us to track the work and get back to you
+T 1587147426 19*	Now talking on 22#vagrant
+T 1587147426 22*	Topic for 22#vagrant is: Welcome to the Vagrant IRC channel! Don't be afraid to ask questions! http://vagrantup.com
+T 1587147426 22*	Topic for 22#vagrant set by 26mitchellh (24Sun Mar  7 19:33:54 2010)
+T 1587149818 18<muhaha18>	anyone here?
+T 1587149841 18<muhaha18>	How can I copy private_key to machine ?  iam trying config.vm.provision "file", source: "#{VAGRANT_HOME}/insecure_private_key", destination: "~/.ssh/id_rsa"
+T 1587221013 18<rapidwave18>	I keep getting timeouts while vagrant is trying to insert ssh into VM
+T 1587221025 18<rapidwave18>	If not that, then SSH connection refused
+T 1587230411 19*	Now talking on 22#vagrant
+T 1587230411 22*	Topic for 22#vagrant is: Welcome to the Vagrant IRC channel! Don't be afraid to ask questions! http://vagrantup.com
+T 1587230411 22*	Topic for 22#vagrant set by 26mitchellh (24Sun Mar  7 19:33:54 2010)
+T 1587306742 19*	Now talking on 22#vagrant
+T 1587306742 22*	Topic for 22#vagrant is: Welcome to the Vagrant IRC channel! Don't be afraid to ask questions! http://vagrantup.com
+T 1587306742 22*	Topic for 22#vagrant set by 26mitchellh (24Sun Mar  7 19:33:54 2010)
+T 1587331197 18<IonutVan_18>	hi
+T 1587331233 18<IonutVan_18>	I have just heard about landrush plugin, and I am wondering if it does any osx changes
+T 1587395310 18<chasecrum18>	I am trying to use vagrant with KVM. I am getting an error about mini_portile2 being a higher value than required.
+T 1587415460 18<rapidwave18>	What makes a VM a vagrant VM? I cannot seem to find a box I really like, so I'm thinking of creating one
+T 1587453066 18<gouf18>	hello, i couldn't find any resource on making additional disks in my vagrant instances
+T 1587454778 18<gouf18>	hello, i couldn't find any resource on making additional disks in my vagrant instances
+T 1587476467 18<rapidwave18>	Weird problem. I'm getting any HTML page no matter project. I'm using Homestead wrapper, but I don't think that matters
+T 1587552351 18<ldl18>	hi
+T 1587552374 18<ldl18>	I have a softlink directory in Vagrant public/
+T 1587552393 18<ldl18>	but after vagrant up, I can not access the softlink via browser
+T 1587552411 18<ldl18>	says: You don't have permission to access /24.com/ on this server.
+T 1587553406 18<ldl18>	https://stackoverflow.com/questions/61363497/vagrant-apache-can-not-access-symlink-directory
+T 1587556302 18<DouweB8218>	Hi, I'm using Vagrant 2.2.7 with ubuntu/focal64 (virtualbox, 20200421.0.0)
+T 1587556329 18<DouweB8218>	however when I type 'vagrant up' I get stuck at 'default: SSH auth method: private key'
+T 1587556346 18<DouweB8218>	I can use bionic and trusty images without problems.
+T 1587556366 18<DouweB8218>	I can also log in to the VM using Virtualbox console and the 'vagrant' password
+T 1587556371 18<DouweB8218>	what should I do to fix this?
+T 1587559371 18<DouweB8218>	it seems **sometimes** it does boot
+T 1587561395 18<DouweB8218>	I'll just wait until focal64 matures a little I guess
+T 1587620831 19*	Now talking on 22#vagrant
+T 1587620831 22*	Topic for 22#vagrant is: Welcome to the Vagrant IRC channel! Don't be afraid to ask questions! http://vagrantup.com
+T 1587620831 22*	Topic for 22#vagrant set by 26mitchellh (24Sun Mar  7 19:33:54 2010)
+T 1587657616 18<aphexlog18>	hello :)
+T 1587676509 18<TomyLobo18>	hi
+T 1587676521 18<TomyLobo18>	is anyone aware of a replacement for https://github.com/sciurus/vagrant-mutate
+T 1587676538 18<TomyLobo18>	cause that doesnt seem to be available anymore
+T 1587676876 18<TomyLobo18>	also i want to migrate away from virtualbox to anything else as a provider. just three criteria: 1. free, 2. not docker, 3. local
+T 1587676896 18<TomyLobo18>	can anyone recommend another provider that has been well-tested?
+T 1587676927 18<TomyLobo18>	only has to work on linux
+T 1587677363 18<`brian18>	TomyLobo: libvirt?
+T 1587677387 18<TomyLobo18>	is that any good?
+T 1587677482 18<`brian18>	seems well liked and used. plenty of boxes available on vagrant cloud
+T 1587677522 18<`brian18>	compared to other providers that fit that criteria,which isn't really much to be honest
+T 1587677567 18<TomyLobo18>	is that any good?
+T 1587677597 18<`brian18>	I'd personally rather use virtualbox, but I know there's plenty of people who prefer libvirt over virtualbox :)
+T 1587677735 18<`brian18>	in terms of replacing vagrant-mutate...I have no idea. didn't even know that existed :)
+T 1587677763 18<`brian18>	not sure tho what you mean by available? it's right there on github
+T 1587677781 18<`brian18>	maybe it's not available through the `vagrant plugin install` method?
+T 1587678204 18<TomyLobo18>	yeah that's what i meant
+T 1587678219 18<TomyLobo18>	and it was last changed 4 years ago and probably broke along the way
+T 1587678326 18<TomyWork18>	https://github.com/sciurus/vagrant-mutate/commit/e495bb036db100677ff615e9a81ccaad951e5232 according to this it's no longer maintained, and that was 2017
+T 1587678811 18<`brian18>	what about using packer? it can't do *that* specifically, but that's probably a better way to build boxes anyhow
+T 1587678986 18<TomyWork18>	well we're using packer to make base images
+T 1587678991 18<TomyWork18>	and then vagrant to modify them
+T 1587679016 18<TomyWork18>	i don't have access to the infrastructure used to do that, though
+T 1587679028 18<TomyWork18>	i'll just try and convert it manually
+T 1587679033 18<TomyWork18>	can't be that hard :)
+T 1587679054 18<TomyWork18>	plus, i'll need to convert a windows VM to libvirt, too, if this works out
+T 1587679059 18<TomyWork18>	outside of vagrant
+T 1587679144 18<TomyWork18>	Mem:          477Mi        80Mi       359Mi       1.0Mi        37Mi       379Mi
+T 1587679161 18<TomyWork18>	uh yeah nice defaults, libvirt. that's not even enough to run yum :)
+T 1587679385 18<TomyWork18>	but yeah, the provider works nicely, thanks
+T 1587679397 18<TomyWork18>	now i'm gonna convert those imagesw
+T 1587679606 18<TomyWork18>	hmm, qemu-img convert -f vmdk -O qcow2 blah.vmdk blub.img tripled the size
+T 1587679867 18<`brian18>	do you have access to the packer templates?
+T 1587679895 18<`brian18>	shouldn't be too bad to run packer yourself if so
+T 1587679901 18<`brian18>	it'd probably be more stable than whatever that plugin does :D
+T 1587680033 18<TomyWork18>	i'll just convert them, safe is safe :)
+T 1587680038 18<TomyWork18>	and it's easy too
+T 1587680115 18<`brian18>	sure!
+T 1587680349 18<TomyWork18>	just that command and then package it into a .box file with create_box.sh from the plugin's tools directory
+T 1587680429 18<TomyWork18>	just curious how this gets so big
+T 1587680578 18<TomyWork18>	ok so turns out vmdk is cheating. it's internally compressed for some reason
+T 1587680624 18<TomyWork18>	at least gzip only brings down the vmdk from 430549504 to 420467031 while it brings down the qcow2 image from 1464467456 to 415614880
+T 1587680838 18<TomyWork18>	stretch              (libvirt, 2019.10.24.07.59.1800.00)
+T 1587680840 18<TomyWork18>	perfect
+T 1587680848 18<TomyWork18>	(it's a special stretch box)
+T 1587681101 18<TomyWork18>	provisioning box, fingers crossed
+T 1587681274 18<TomyWork18>	https://www.packer.io/docs/builders/qemu.html#disk_compression ok so qcow2 also supports compression
+T 1587681278 18<TomyWork18>	gotta figure that out
+T 1587682253 18<TomyWork18>	`brian, for some reason, the VM only gets a loopback interface, any idea how to fix that? :)
+T 1587682850 18<`brian18>	not sure....libvirt is a different provider from virtualbox that I'm not familiar with
+T 1587682867 18<`brian18>	TomyWork: ^
+T 1587682919 18<`brian18>	maybe worth pulling in a already packaged libvirt box from vagrant cloud and looking at the debug output to see if something is missing when you bring up the box
+T 1587682922 18<`brian18>	that's quite a task tho
+T 1587683005 18<TomyWork18>	hmmm
+T 1587683026 18<TomyWork18>	there was something about a udev rule...
+T 1587683534 18<TomyWork18>	`brian, deebug output of what? there's probably nothing on vagrant's side since i can confirm on the VM that the interface is indeed down
+T 1587683547 18<TomyWork18>	i dunno, maybe the cable is unplugged?
+T 1587685169 18<`brian18>	TomyWork: basically running `vagrant up --debug` and seeing what it's doing during the networking step
+T 1587685174 18<`brian18>	and comparing it between a functional libvirt box
+T 1587685179 18<`brian18>	and see if something is missing
+T 1587685944 18<`brian18>	but basically I'd say "here be dragons" just based on how you made your box :D not entirely sure how well that works, but if it does, that's pretty cool
+T 1587685973 18<TomyWork18>	well i got the network interface working with "dhclient ens5"
+T 1587685985 18<TomyWork18>	which is fine for now, i guess
+T 1587686001 18<`brian18>	often times packer templates have specific scripts that setup boxes for networking and other features based on the specific provider...so converting it could possibly leave out that configuration
+T 1587686020 18<TomyWork18>	yeah i'll figure that out in time :)
+T 1587686024 18<`brian18>	yep!
+T 1587686040 18<`brian18>	well, one thing that might make things go faster for you is finding packer templates for libvirt and seeing what the networking scripts do
+T 1587686046 18<TomyWork18>	a more pressing problem is that vagrant can't reach ssh while i'm in my vpn
+T 1587686076 18<TomyWork18>	and i cant provision the VM without the vpn :)
+T 1587686086 18<`brian18>	vagrant usually uses your system ssh to go into the guest, with the ip 127.0.0.1, so it's possible that's why it's messing up
+T 1587686101 18<`brian18>	not sure tho
+T 1587686109 18<TomyWork18>	yeah with virtualbox, it makes a port forward
+T 1587686138 18<`brian18>	yeah...it should with libvirt too
+T 1587686139 18<`brian18>	I think
+T 1587686159 18<`brian18>	anyway I'm heading out, so good luck! o/
+T 1587686252 18<TomyWork18>	yep, as suspected, it connects directly
+T 1587689748 18<TomyWork18>	if you read this, thanks for your help earlier
+T 1587699339 19*	Now talking on 22#vagrant
+T 1587699339 22*	Topic for 22#vagrant is: Welcome to the Vagrant IRC channel! Don't be afraid to ask questions! http://vagrantup.com
+T 1587699339 22*	Topic for 22#vagrant set by 26mitchellh (24Sun Mar  7 19:33:54 2010)
+T 1587700051 19*	Now talking on 22#vagrant
+T 1587700051 22*	Topic for 22#vagrant is: Welcome to the Vagrant IRC channel! Don't be afraid to ask questions! http://vagrantup.com
+T 1587700051 22*	Topic for 22#vagrant set by 26mitchellh (24Sun Mar  7 19:33:54 2010)
+T 1587778363 19*	Now talking on 22#vagrant
+T 1587778363 22*	Topic for 22#vagrant is: Welcome to the Vagrant IRC channel! Don't be afraid to ask questions! http://vagrantup.com
+T 1587778363 22*	Topic for 22#vagrant set by 26mitchellh (24Sun Mar  7 19:33:54 2010)
+T 1587784330 18<yeoj18>	window 11
+T 1587784334 18<yeoj18>	doh
+T 1587869877 19*	Now talking on 22#vagrant
+T 1587869877 22*	Topic for 22#vagrant is: Welcome to the Vagrant IRC channel! Don't be afraid to ask questions! http://vagrantup.com
+T 1587869877 22*	Topic for 22#vagrant set by 26mitchellh (24Sun Mar  7 19:33:54 2010)
+T 1587882180 18<Deknos18>	is a vagrant snapshot like a virtualbox snapshot? saves a state of a running machine and stops it? or are there differences?
+T 1587882603 18<Deknos18>	and when i say vagrant add debian/buster64 where does vagrant the the info where debian/ is?
+T 1587882992 18<Deknos18>	ah, i got the second one. debian is the username in the box store
+T 1587883519 18<Deknos18>	for the first question, because there is vagrant suspend for saving (like virtualbox save). and i am quite unsure how the two (suspend and snapshot) interact with each other.
+T 1587884393 18<Deknos18>	and another thing: are there any known issues installing vagrant plugins on debian?
+T 1587885462 18<Deknos18>	and my last question.. are there any plans for accessing wayland in the VM? like x11 forwarding? or shall that be done via rdp or stuff like that?
+T 1587903411 18<benyoo18>	Hello, why is 'vagrant global-info' so slow?
+T 1587942191 19*	Now talking on 22#vagrant
+T 1587942191 22*	Topic for 22#vagrant is: Welcome to the Vagrant IRC channel! Don't be afraid to ask questions! http://vagrantup.com
+T 1587942191 22*	Topic for 22#vagrant set by 26mitchellh (24Sun Mar  7 19:33:54 2010)
+T 1587947103 18<TomyWork18>	I put "libvirt.disk_device = 'sda'" inside a "config.vm.provider :libvirt do |libvirt|", but still get /dev/vda. any advice?
+T 1587947124 18<TomyWork18>	i want that to be /dev/sda because my existing image expects that for some reason
+T 1587947299 18<TomyWork18>	great, found a bug in vagrant-libvirt, too: Volume for domain is already created. Please run 'vagrant destroy' first.
+T 1587947318 18<TomyWork18>	you get that if you enter a wrong value for the disk_bus parameter
+T 1587947689 18<TomyWork18>	i had to add libvirt.disk_bus = 'sata'
+T 1587947765 18<TomyWork18>	and another bug, this time with the rsync shared folder provider
+T 1587947781 18<TomyWork18>	it's assuming my group is vagrant
+T 1587947958 18<TomyWork18>	okay that's maybe not a bug, but this vagrant image is annoying in that case
+T 1588003277 19*	Now talking on 22#vagrant
+T 1588003277 22*	Topic for 22#vagrant is: Welcome to the Vagrant IRC channel! Don't be afraid to ask questions! http://vagrantup.com
+T 1588003277 22*	Topic for 22#vagrant set by 26mitchellh (24Sun Mar  7 19:33:54 2010)
+T 1588003539 18<manjeets18>	Hi guys, I'm using vagrant with libvirt provider, is there a way to give boot parameters to vm?
+T 1588015871 18<GaGr18>	Hi All, I was on earlier and asked a question, however had a power issue most the day :(
+T 1588015965 18<GaGr18>	I currently run Windows host with Linux in a VM on Virtualbox, and was wondering if I could use vagrant on the linux vm to connect to the Virtualbox running on the host ?
+T 1588017068 18<GaGr18>	anyone?
+T 1588070407 18<pemensik18>	hello
+T 1588070426 18<pemensik18>	is vagrant-libvirt supported also here?
+T 1588071052 18<pemensik18>	I do not understand what https://paste.centos.org/view/c3b5ca91 reports. could you help me?
+T 1588071076 18<pemensik18>	what does ffi (~> 0.6.3) mean
+T 1588071086 18<pemensik18>	?
+T 1588073773 18<pemensik18>	ok, fixed. installed broken vagrant package from non-distribution repository
+T 1588086396 18<`brian18>	it's not supported here
+T 1588086409 18<`brian18>	but there are probably people here who can help, but it's not officially supported
+T 1588104696 18<rick32118>	Hi, I'm struggling with a Vagrant issue and was wondering if any of you here know what's the cause and how could it be fixed:
+T 1588104705 18<rick32118>	==> mysite: Mounting NFS shared folders...The following SSH command responded with a non-zero exit status.Vagrant assumes that this means the command failed!mount -o vers=3,udp 192.168.33.1:/System/Volumes/Data/Users/myname/Git/mysite.com/src /var/www/mysiteStdout from the commandStderr from the command:mount.nfs: Connection timed out
+T 1588104785 18<rick32118>	My VM is using a shared folder (host: OSX Catalina 10.15.4, guest:ubuntu/xenial64)
+T 1588104790 18<rick32118>	It worked
+T 1588104885 18<rick32118>	It worked well so far, but couldn't spin up the VM today. I Googled and tried a few suggested solutions and I ran out of ideas..
+T 1588183784 18<MonkeyOS18>	Hello everyone, I was wondering if Vagrant has any API available. I'm looking for a way to do commands like "vagrant up" in C# without having to create a new bash process. Thanks in advance!
+T 1588192491 18<`brian18>	MonkeyOS: For whenever you come back... no, no api available. You'd have to call out to your shell
+T 1588192525 18<`brian18>	probably won't see that tho
+T 1588211511 19*	Now talking on 22#vagrant
+T 1588211511 22*	Topic for 22#vagrant is: Welcome to the Vagrant IRC channel! Don't be afraid to ask questions! http://vagrantup.com
+T 1588211511 22*	Topic for 22#vagrant set by 26mitchellh (24Sun Mar  7 19:33:54 2010)
+T 1588214349 19*	Now talking on 22#vagrant
+T 1588214349 22*	Topic for 22#vagrant is: Welcome to the Vagrant IRC channel! Don't be afraid to ask questions! http://vagrantup.com
+T 1588214349 22*	Topic for 22#vagrant set by 26mitchellh (24Sun Mar  7 19:33:54 2010)
+T 1588263380 18<Jackneill18>	hey
+T 1588263385 18<Jackneill18>	fatal: [machine0]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: ssh: Could not resolve hostname machine0: Name or service not known", "unreachable": true}
+T 1588263389 18<Jackneill18>	can you help me with this?
+T 1588263421 18<Jackneill18>	machine0.vm.hostname = "machine0" in vagrantfile, [consul_instances] machine0 in inventory that ansible uses
+T 1588263797 18<Jackneill18>	is machine0 have to be resolveable in my local machine?
+T 1588263812 18<Jackneill18>	can i side-step this somehow?
+T 1588264266 18<Jackneill18>	nvm
+T 1588513901 18<Jackneill18>	hey
+T 1588513927 18<Jackneill18>	how can i create my private_network with a specified name? eg. not getting an ethX, but specifying vpn0 or something.
+T 1588535799 18<sangy18>	any pointers on what this bug may mean? https://paste.xinu.at/hZLxTV/#n998
+T 1588535807 18<sangy18>	I see it a lot around on this provision call
+T 1588556144 18<jmcgnh18>	sangy:-->  That looks a lot like this issue: - https://github.com/hashicorp/vagrant/issues/11176
+T 1588556402 18<jmcgnh18>	sangy:-->  In my experience, shared folders are one of the less stable aspects of vagrant (perhaps because they depend on less stable or less standardized features of the guest, host and hypervisor environments). You can't assume they'll 'just work', you need to try to find a combination that does what you need or find a way to work around it. As
+T 1588556402 18<jmcgnh18>	the issue response says, this could just be a matter of calling for sshfs without having the corresponding plugin installed. But if you've already tried that, then it may be faster to try some alternatives.
+T 1588557461 19*	Now talking on 22#vagrant
+T 1588557461 22*	Topic for 22#vagrant is: Welcome to the Vagrant IRC channel! Don't be afraid to ask questions! http://vagrantup.com
+T 1588557461 22*	Topic for 22#vagrant set by 26mitchellh (24Sun Mar  7 19:33:54 2010)
+T 1588557520 18<sangy18>	jmcgnh: thanks! will check it out!
+T 1588621609 18<ktross18>	I've been using Vagrant with VirtualBox for quite some time, but I'm trying to switch to the vmware_desktop provider and running into some issues. VirtualBox is uninstalled, I reinstalled vagrant+vagrant-vmware-desktop, rebooted a few times in between. /.vagrant.d/gems/2.4.9/gems/vagrant-vmware-desktop-2.0.3/lib/vagrant-vmware-desktop-current.rb:43:in `RGLoader_load': RubyEncoder Loader -
+T 1588621610 18<ktross18>	Incompatible loader version. This protected script has been encoded with a newer version of RubyEncoder. Please download and install the latest loaders http://www.rubyencoder.com/loaders/ Error code [19] (RGLoaderError)
+T 1588621648 18<ktross18>	here's the debug output: https://pastebin.com/7BtrvBe4
+T 1588683993 18<BPL18>	Hi, anyone familiar with the fact that running any vagrant command will end up giving "C:/HashiCorp/Vagrant/embedded/gems/2.2.7/gems/vagrant-2.2.7/lib/vagrant/bundler.rb:54:in `[]=': Invalid argument - ruby_setenv(GEMRC) (Errno::EINVAL)" ... If i restart the machine i can run vagrant commands again but for some reason vagrant starts behaving buggy like this sometimes :/
+T 1588684054 18<BPL18>	how can i restart vagrant to a clean state without having to reboot?
+T 1588684168 18<BPL18>	anyway, i've got 2.2.7... gonna uninstall & install 2.2.8 to see if it makes any difference :/
+T 1588738810 20*	Disconnected (20Connection timed out)
+T 1588738837 19*	Now talking on 22#vagrant
+T 1588738837 22*	Topic for 22#vagrant is: Welcome to the Vagrant IRC channel! Don't be afraid to ask questions! http://vagrantup.com
+T 1588738837 22*	Topic for 22#vagrant set by 26mitchellh (24Sun Mar  7 19:33:54 2010)
+T 1588775704 18<BlueShark_18>	Hello. I am running an ubunttu VM with vagrant. However, when I try to attach gdb to a running process, it fails. Any idea what could be wrong?
+T 1588775724 18<BlueShark_18>	`/proc/sys/kernel/yama/ptrace_scope` is set to 0
+T 1588861879 18<zarrspry18>	 Hey all, I've just built a centos box using packer and libvirt. The build went fine and it produced a box file I can import using the vagrant box add command. When I go to use it I get the following error.
+T 1588861885 18<zarrspry18>	Wrong image format specified for box.
+T 1588861912 18<zarrspry18>	Could someone help elaborate on what that means? Just trying to figure out what I did wrong.
+T 1588862336 18<zarrspry18>	format:"raw" I'm assuming it needs to be qcow2?
+T 1588862843 18<zarrspry18>	Yup has to be qcow2
+T 1588862853 18<zarrspry18>	Thanks anyway
+T 1588880489 18<NoOova18>	Hello folks
+T 1588880524 18<NoOova18>	I just downloaded vagrant version for "generic linux" and it consist of one binary file
+T 1588880544 18<NoOova18>	But i know that vagrant written in ruby and consist of many files
+T 1588880574 18<NoOova18>	Is this packed files to one image?
+T 1588880725 18<NoOova18>	Possibly found, its https://appimage.org/
+T 1588880779 18<NoOova18>	With strings in image file...
+T 1588881133 18<`brian18>	yes it's supposed to be a single binary with that package
+T 1588881156 18<`brian18>	it includes all of the ruby code plus the other packages in a single binary file
+T 1588881316 18<NoOova18>	Excellent solution
+T 1589052531 20*	Disconnected (20Connection timed out)
+T 1589052559 19*	Now talking on 22#vagrant
+T 1589052559 22*	Topic for 22#vagrant is: Welcome to the Vagrant IRC channel! Don't be afraid to ask questions! http://vagrantup.com
+T 1589052559 22*	Topic for 22#vagrant set by 26mitchellh (24Sun Mar  7 19:33:54 2010)
+T 1589061809 18<franklinyu18>	hello folks. Is this the right channel to ask question about Vagrant Cloud?
+T 1589061856 18<franklinyu18>	It's not using Vagrant in general, but I have question about the web UI for https://app.vagrantup.com
+T 1589065211 18<matti18>	franklinyu: Hi. The UI is closed and you would need to get in touch with HashiCorp directly. I suppose. :)
+T 1589067164 18<franklinyu18>	matti: Thank you. Do they have some kind of issue tracker for the UI? Like how JetBrains has a public issue tracker for IntellJ IDEA Ultimate, which is closed source as well.
+T 1589067177 18<matti18>	No idea.
+T 1589068356 18<franklinyu18>	matti: Thank you! I found the right place. It seems to be simply the Vagrant GitHub repository. In the issue list I can find some issues tagged with "vagrant cloud".
+T 1589069453 18<matti18>	franklinyu: Oh nice. Good to know. :)
+T 1589070608 18<franklinyu18>	For the record, the issue I wanted to talk about is https://github.com/hashicorp/vagrant/issues/9618
+T 1589098594 18<Deknos18>	hey, sometimes on debian stable my vagrant box does not come up and times out. any idea why that's happening?
+T 1589100967 18<Deknos18>	and ubuntu 20.04 always times out, even with 400 seconds boot timeout.. i'll try again with 900 seconds
+T 1589100976 18<Deknos18>	that's 15 minutes, that should be enough
+T 1589101355 18<Deknos18>	can it be that ubuntu images do not have ssh installed? or the private key from vagrant?
+T 1589103432 18<Deknos18>	either EVERYONE knows about that ubuntu-vagrant problem or nobody tried the ubuntu/focal64 image from ubuntu or everybody just makes their own or i am dumb or nobody can or wants to answer here. o_O
+T 1589103438 18<Deknos18>	perhaps also a combination
+T 1589131599 18<clime18>	how do I increase memory allocated for virtual machine with vagrant?
+T 1589131612 18<clime18>	By default I've got 512MB, I need around !G
+T 1589131672 18<clime18>	* 1G
+T 1589131842 18<clime18>	i mean i have found something specific for libvirt that I am using but that makes the Vagrantfile provider-specific which is a little bit unpleasant
+T 1589145414 18<jmcgnh18>	clime:-->  I'm not absolutely positive, but I think specifying the VM memory size is always provider-specific, but some providers may share conventions.
+T 1589145453 18<clime18>	jmcgnh: yes, i made it specific for libvirt
+T 1589145476 18<clime18>	  config.vm.provider :libvirt do |v|
+T 1589145478 18<clime18>	    v.memory = 1024
+T 1589145480 18<clime18>	  end
+T 1589145490 18<clime18>	didn't find a better solution
+T 1589145602 18<GGMethos18>	Vagrant is awesome.
+T 1589145978 18<GGMethos18>	just trying to make sure of something. if i want to pass a provision argument to a single machine instead of all of them what kind of command would i use ie config.vm.provision "shell" inline <<-SHELL blah blah etc
+T 1589146011 18<GGMethos18>	Say I only want to pass a provision command to one machine in a multi-machine setup (or a variable which defines a group of machines; doesnt matter)
+T 1589146078 18<GGMethos18>	Am I supposed to use a subconfig for this or something?
+T 1589146111 18<GGMethos18>	sorry if this is in the documentation already; my first day using this and I don't see an example of it in the docs here
+T 1589147344 18<jmcgnh18>	GGMethos:-->  See https://www.vagrantup.com/docs/provisioning/basic_usage.html and look for words "multi-machine" definition.
+T 1589147786 18<GGMethos18>	I see now. Thank you.
+T 1589149297 18<jmcgnh18>	GGMethos:-->  But, yes, vagrant _is_ pretty awesome.
+T 1589187615 18<Ky0sh1r018>	Hello, anyone created a NAT-network connector with vbox via Vagrantfile? I have seen only public_network configuration by bridged connection so far.
+T 1589187992 18<Ky0sh1r018>	Usecase: I want to let boxes communicate between each other but hide them from local network
+T 1589188558 18<matti18>	Have you seen this? https://www.vagrantup.com/docs/networking/private_network.html
+T 1589188704 18<matti18>	https://github.com/hashicorp/vagrant/issues/2779
+T 1589188790 18<Ky0sh1r018>	matti: thx, yes, exactly what i want. ;) should've looked to the issues...
+T 1589188808 18<matti18>	I am not sure if any of this works, though.
+T 1589188844 18<matti18>	The gist seem to be having private network with a NAT instance / capability so that you get routing through it to get Internet connectivity working.
+T 1589188848 18<matti18>	If you need that.
+T 1589188962 18<Ky0sh1r018>	Yeas, i will try it out. But looks quiet promising.
+T 1589188990 18<matti18>	Ace!
+T 1589191645 18<Ky0sh1r018>	matti: okay, mapping the NAT network works as described, fiddling with NAT-network dhcp atm
+T 1589191807 18<matti18>	:)
+T 1589192345 18<Ky0sh1r018>	ah. the nat network name did not match, misspelled parameter value... works ;)
+T 1589194373 18<matti18>	Ky0sh1r0: Very nice! So it's sorted?
+T 1589194437 18<tibyke18>	guys how is that I have the default 2222 port forward to ssh active even though I have the config set up for 2223 in the Vagrantfile? vagrant port actually show both active. what's the trick? I tried setting 2222 with disabled: true and vagrant reload with no luck.
+T 1589194704 18<matti18>	tibyke: And it shows up like that in vagrant ssh-config?
+T 1589194829 18<tibyke18>	matti, vagrant ssh-config only shows 2222
+T 1589194876 18<tibyke18>	but dunno where it takes 2222 from as it always had 2223 in the Vagrantfile
+T 1589194900 18<tibyke18>	just because there is another box that rely on this one and that one would use 2222
+T 1589194992 18<matti18>	tibyke: It might be a bug: https://github.com/hashicorp/vagrant/issues/3232
+T 1589195049 18<tibyke18>	yeah, I found that issue, but that's back from 2014, while I'm on 2.2.9 (latest version), but already tried that disabled: true with no luck. so it's pretty weir.d
+T 1589195162 18<matti18>	It might have never been fixed, or a regression.
+T 1589195417 18<tibyke18>	maybe I have some issues understanding what a forwarded port and what an ssh port is.... let me google a bit :D
+T 1589195476 18<matti18>	:)
+T 1589321158 18<antihero908218>	hello! im running into a strange nfs issue after upgrading ubuntu to 18.04. ive verified that the nfs server and client are both running, as well as checking my hosts and exports files. has anyone else had a similar issue? (vagrant 2.2.9 // virtualbox 6.1.6)
+T 1589460968 19*	Now talking on 22#vagrant
+T 1589460968 22*	Topic for 22#vagrant is: Welcome to the Vagrant IRC channel! Don't be afraid to ask questions! http://vagrantup.com
+T 1589460968 22*	Topic for 22#vagrant set by 26mitchellh (24Sun Mar  7 19:33:54 2010)
+T 1589533166 18<TomyWork18>	you know what would be neat? vagrant port --add 1234
+T 1589533747 18<matti18>	TomyWork: Instead of doing the same in Vagrantfile?
+T 1589533878 18<matti18>	When using VirtualBox, you can technically use VBoxManage to achieve somewhat the same thing.
+T 1589533886 18<matti18>	But it wouldn't be persisted in the Vagrantfile.
+T 1589534636 18<TomyWork18>	matti, there's no way to reload the port forwards without rebooting the VM
+T 1589534651 18<matti18>	Really?
+T 1589534662 18<matti18>	I though you can add whatever you want in VirtualBox.
+T 1589534678 18<matti18>	Of course, via Vagrantfile it's a different story.
+T 1589534683 18<matti18>	Unless re-provisioning would do.
+T 1589534693 18<TomyWork18>	i was responding to your first statement
+T 1589534699 18<matti18>	I would need to check the VirtualBox thing, though.
+T 1589534706 18<matti18>	Ah, OK. Sorry :)
+T 1589534716 18<TomyWork18>	and re-provisioning does not update port forwards
+T 1589534736 18<TomyWork18>	(and it takes a heck of a lot of time for this box anyway, so that wouldn't be a solution either
+T 1589534738 18<TomyWork18>	)
+T 1589534783 18<TomyWork18>	I'm not even talking about persisting the port forward to the vagrantfile, btw
+T 1589534807 18<TomyWork18>	just applying it through vagrant's existing mechanisms
+T 1589536638 18<matti18>	Go tit.
+T 1589536642 18<matti18>	Got it :)
+T 1589536643 18<matti18>	LOL
+T 1589537328 18<TomyWork18>	let's assume you meant the bird :)
+T 1589539388 18<matti18>	Yes, yes. The little cheerful fella :P
+T 1589539389 18<matti18>	Haha
+T 1589548989 18<shiin18>	I've been running into a bug randomly when destroying and creating a multiple-VM setup with multiple instances on the same host, one of the nodes from the existing groups/clusters will be accidentally destroyed too
+T 1589549010 18<shiin18>	I looked into google and the github issues and couldn't find anything related
+T 1589549041 18<shiin18>	has anyone heard of this problem though or could give me a hint on what to look for?
+T 1589647927 18<Deknos18>	is there a module with vagrant without libvirt, with kvm only?
+T 1589801113 19*	Now talking on 22#vagrant
+T 1589801113 22*	Topic for 22#vagrant is: Welcome to the Vagrant IRC channel! Don't be afraid to ask questions! http://vagrantup.com
+T 1589801113 22*	Topic for 22#vagrant set by 26mitchellh (24Sun Mar  7 19:33:54 2010)
+T 1589830028 18<setuid18>	Something odd with bringing up boxes in parallel, still seems to do the work serially
+T 1589830073 18<setuid18>	Following this guide: https://www.vagrantup.com/docs/vagrantfile/tips.html#loop-over-vm-definitions
+T 1589830588 18<setuid18>	It seems if you pass 'path' to your parallel provisioning, it does it serially anyway
+T 1589830704 18<setuid18>	Is there an easy way to definitively tell that it is actually doing these in parallel, and not falling back to serial?
+T 1589833603 18<`brian18>	it's only for providers that support bringing up guests in parallel
+T 1589833610 18<`brian18>	which as I recall, is only supported by docker
+T 1589833616 18<`brian18>	the other providers can't do it reliably
+T 1600044734 19*	Now talking on 22#vagrant
+T 1600044734 22*	Topic for 22#vagrant is: Welcome to the Vagrant IRC channel! Don't be afraid to ask questions! http://vagrantup.com
+T 1600044734 22*	Topic for 22#vagrant set by 26mitchellh (24Sun Mar  7 19:33:54 2010)
+T 1600141292 18<qubit18>	Is there a way to monkey patch the ansible provisioner from within a Vagrantfile to disable the check_path() function? I've inherited a badly designed ansible architecture and need to temporarily disable this check so I can set up a vagrant environment and start work on cleaning the mess up.
+T 1600174477 18<qubit18>	Nevermind, finally figured out how.
+T 1600177729 18<Eduard_Munteanu18>	Hi. Is this issue still present? https://phoenhex.re/2018-03-25/not-a-vagrant-bug
+T 1600240617 18<serard18>	Hello
+T 1600240667 18<serard18>	Running win10pro, hyperv, using box gusztavvargadr/windows-server, it gets no network
+T 1600240675 18<serard18>	"no internet access"
+T 1600297942 18<Eduard_Munteanu18>	Hi. Is this issue still present? https://phoenhex.re/2018-03-25/not-a-vagrant-bug
+T 1600299992 18<`brian18>	if you use virtualbox yes
+T 1600300193 18<`brian18>	it is a virtualbox bug
+T 1600300205 18<`brian18>	"bug"/"feature" whatever you want to call it :p lol
+T 1600300338 18<`brian18>	as a general rule, don't download boxes from people who you don't trust
+T 1600303789 18<Eduard_Munteanu18>	`brian, hm... why doesn't Vagrant disable that symlink feature then?
+T 1600303843 18<Eduard_Munteanu18>	The original article seems to imply it's more of a Vagrant bug / bad default.
+T 1600304624 18<Eduard_Munteanu18>	No mention of it here... https://www.vagrantup.com/docs/synced-folders/virtualbox
+T 1600305994 18<Eduard_Munteanu18>	I opened an issue on Github: https://github.com/hashicorp/vagrant/issues/11913
+T 1600361391 18<Seven_Six_Two18>	Hi! I'm trying to open a browser when my vagrant box has loaded, but for some reason it opens as soon as I issue vagrant up, vagrant halt, vagrant destroy.
+T 1600361409 18<Seven_Six_Two18>	https://pastebin.com/Gtf9kYwz
+T 1600361435 18<Seven_Six_Two18>	that's the relevant bit, and it sits right at the end of the Vagrantfile, just before the final 'end'
+T 1600361900 18<Seven_Six_Two18>	Here's the full thing, to make it easier.  https://pastebin.com/Ee7WzCjT
+T 1600361936 18<Seven_Six_Two18>	I tried putting the trigger inside the conditional block too, but had the same effect.
+T 1600373340 18<kwilczynski18>	Seven_Six_Two: The reason why it opens immediately, it's because the block that you use to define and configure your virtual machine.
+T 1600373364 18<kwilczynski18>	Seven_Six_Two: Is not actually read from the top to bottom - as you seem to expect - when you issue a `vagrant up` command.
+T 1600373457 18<kwilczynski18>	Seven_Six_Two: The code is read, then block is also read and executed - but then it's stored to be lazily when Vagrant is enumerating configuration from it. Like a DSL, or resources in Chef (if you ever used Chef).
+T 1600373480 18<kwilczynski18>	Which is why your `open` runs immediately, but everything else is living its own life, so to speak.
+T 1600373499 18<kwilczynski18>	(and that was probably not a very good explanation of why this does not work :P)
+T 1600373538 18<kwilczynski18>	Seven_Six_Two: Check this: https://www.vagrantup.com/docs/triggers/configuration
+T 1600373542 18<kwilczynski18>	Maybe it will help
+T 1600373629 18<kwilczynski18>	s/lazily/lazily-executed/
+T 1600375200 18<Seven_Six_Two18>	I actually expected the whole block to be evaluated immediately, but I expected the conf.trigger.after block to be like a js callback where contained code doesn't run until, in this case, after :up.
+T 1600375421 18<Seven_Six_Two18>	kwilczynski, I'm not familiar with Ruby. Is my error in where my code sits? Or is it that I am mistaken in expecting an "after :up" trigger to only fire once, after the machine is finished coming up.
+T 1600375540 18<Seven_Six_Two18>	I've read the docs, but I'm having trouble understanding the difference between "config.trigger.before :up" and "config.trigger.after :up" when I use after and it shows before...
+T 1600375733 18<Seven_Six_Two18>	oh I think I just got it...so 'after up' is just after up is called, not after up is done?
+T 1600375799 18<Seven_Six_Two18>	if so, why does 'vagrant halt' trigger it again? and even 'vagrant global-status'?
+T 1600376398 18<Seven_Six_Two18>	even when I've halted and destroyed the box, doing global-status opens the browser. I know there's something I'm not getting...
+T 1600376507 18<kwilczynski18>	Do you have a minute?
+T 1600376522 18<Seven_Six_Two18>	yes
+T 1600376537 18<Seven_Six_Two18>	and I'm happy to read docs, but I don't know what I'm looking for
+T 1600376670 18<kwilczynski18>	Seven_Six_Two: Jump on https://whereby.com/kwilczynski
+T 1600376678 18<kwilczynski18>	I will show you what is going on, it's quicker that way.
+T 1600376679 18<kwilczynski18>	:)
+T 1600376709 18<Seven_Six_Two18>	ok! I don't have a camera though. I gave it to my mom so she could talk to my nieces
+T 1600376734 18<kwilczynski18>	No worries.
+T 1600376747 18<Seven_Six_Two18>	yes
+T 1600376750 18<Seven_Six_Two18>	loud and clear
+T 1600376792 18<Seven_Six_Two18>	wheee
+T 1600376794 18<Seven_Six_Two18>	yes
+T 1600377059 18<Seven_Six_Two18>	yes, that's what was happening to me!
+T 1600377173 18<Seven_Six_Two18>	right
+T 1600377214 18<Seven_Six_Two18>	so only trigger.something will run only for trigger?
+T 1600377262 18<Seven_Six_Two18>	yes I saw that but didn't realize the use case
+T 1600377382 18<Seven_Six_Two18>	:thumbsup:!! hm I think I will be able to use run
+T 1600377396 18<Seven_Six_Two18>	thanks very much for your time! yes, it totally does
+T 1600377402 18<Seven_Six_Two18>	byE!!
+T 1600377411 18<kwilczynski18>	Sure thing! :)
+T 1600377431 18<kwilczynski18>	I hope it makes more sense now.
+T 1600377519 18<Seven_Six_Two18>	it totally does! thanks again.
+T 1600377527 18<kwilczynski18>	No worries :)
+T 1600382772 18<kwilczynski18>	"cure is worse than the disease" hehe. Nice :)
+T 1600452337 18<duckfez18>	"You're using a version of Vagrant that is too new for this version of the VMware plugin. Please uninstall and then reinstall the VMware plugin. For this error, doing a plugin update command will not work. You must uninstall and then reinstall the plugin." -- how old must one go back?
+T 1600452636 18<duckfez18>	nm I haz the dumbs
+T 1600562850 18<Seven_Six_Two18>	are there known issues with composer and vagrant? I'm trying to install drupal commerce from within a vagrant box, in a folder mounted to have www-data user and group for apache
+T 1600562885 18<Seven_Six_Two18>	but it fails every time on including cweagans/composer-patches
+T 1600563090 18<Seven_Six_Two18>	I've tried user www-data group vagrant as well, but same issue
+T 1600563706 18<jmcgnh18>	Seven_Six_Two:-->  This doesn't sound very much like a vagrant problem. All vagrant does is create the VM and leave some metadata available allowing you to talk to it. Once the VM is up, you can mount additional filesystems and install additional software, but problems you experience at that point have to be tracked down to how you've set up the VM
+T 1600563706 18<jmcgnh18>	and perhaps expectations of the software you are installing. It's certainly possible that something you're wanting to do is finicky about permissions. For some pieces of software, it is faster to locate a box with that software is already installed and configured.
+T 1600564066 18<Seven_Six_Two18>	jmcgnh, oh that's a very nice suggestion...I'll bet there's a box with it already. thanks
+T 1600564139 18<Seven_Six_Two18>	I didn't expect it to be a vagrant problem, perse, only that someone here may have come across it before.
+T 1609963181 19*	Now talking on 22#vagrant
+T 1609963181 22*	Topic for 22#vagrant is: Welcome to the Vagrant IRC channel! Don't be afraid to ask questions! http://vagrantup.com
+T 1609963181 22*	Topic for 22#vagrant set by 26mitchellh (24Sun Mar  7 19:33:54 2010)

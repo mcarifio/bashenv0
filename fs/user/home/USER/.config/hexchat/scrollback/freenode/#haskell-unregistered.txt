@@ -1,0 +1,680 @@
+T 1543648424 -18NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+T 1543648425 -18freenode-connect-	Due to the persistent ongoing spam, all new connections are being set +R (block messages from unidentified users) and will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+T 1543648425 24*	Received a CTCP 24VERSION from 18freenode-connect
+T 1543648430 19*	Now talking on 22#haskell-unregistered
+T 1543648430 22*	Topic for 22#haskell-unregistered is: Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543648430 22*	Topic for 22#haskell-unregistered set by 26glguy!~glguy@haskell/developer/glguy (24Mon Aug  6 12:33:55 2018)
+T 1543648431 -18NickServ-	You are now identified for carif.
+T 1543648431 -18ChanServ-	[#haskell-unregistered] Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543649881 20*	Disconnected (20Connection timed out)
+T 1543649901 22*	26carif sets mode 24+Z on 22carif
+T 1543649901 22*	26carif sets mode 24+i on 22carif
+T 1543649902 -18NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+T 1543649902 -18freenode-connect-	Due to the persistent ongoing spam, all new connections are being set +R (block messages from unidentified users) and will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+T 1543649903 24*	Received a CTCP 24VERSION from 18freenode-connect
+T 1543649907 19*	Now talking on 22#haskell-unregistered
+T 1543649907 22*	Topic for 22#haskell-unregistered is: Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543649907 22*	Topic for 22#haskell-unregistered set by 26glguy!~glguy@haskell/developer/glguy (24Mon Aug  6 12:33:55 2018)
+T 1543649907 -18NickServ-	You are now identified for carif.
+T 1543649907 -18ChanServ-	[#haskell-unregistered] Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543651256 20*	Disconnected (20Connection timed out)
+T 1543651272 22*	26carif sets mode 24+Z on 22carif
+T 1543651272 22*	26carif sets mode 24+i on 22carif
+T 1543651272 -18NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+T 1543651273 -18freenode-connect-	Due to the persistent ongoing spam, all new connections are being set +R (block messages from unidentified users) and will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+T 1543651273 24*	Received a CTCP 24VERSION from 18freenode-connect
+T 1543651278 19*	Now talking on 22#haskell-unregistered
+T 1543651278 22*	Topic for 22#haskell-unregistered is: Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543651278 22*	Topic for 22#haskell-unregistered set by 26glguy!~glguy@haskell/developer/glguy (24Mon Aug  6 12:33:55 2018)
+T 1543651278 -18NickServ-	You are now identified for carif.
+T 1543651278 -18ChanServ-	[#haskell-unregistered] Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543652759 20*	Disconnected (20Connection timed out)
+T 1543652776 22*	26carif sets mode 24+Z on 22carif
+T 1543652776 22*	26carif sets mode 24+i on 22carif
+T 1543652777 -18NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+T 1543652777 -18freenode-connect-	Due to the persistent ongoing spam, all new connections are being set +R (block messages from unidentified users) and will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+T 1543652778 24*	Received a CTCP 24VERSION from 18freenode-connect
+T 1543652782 19*	Now talking on 22#haskell-unregistered
+T 1543652782 22*	Topic for 22#haskell-unregistered is: Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543652782 22*	Topic for 22#haskell-unregistered set by 26glguy!~glguy@haskell/developer/glguy (24Mon Aug  6 12:33:55 2018)
+T 1543652782 -18NickServ-	You are now identified for carif.
+T 1543652782 -18ChanServ-	[#haskell-unregistered] Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543654137 20*	Disconnected (20Connection timed out)
+T 1543654156 22*	26carif sets mode 24+Z on 22carif
+T 1543654156 22*	26carif sets mode 24+i on 22carif
+T 1543654156 -18NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+T 1543654157 -18freenode-connect-	Due to the persistent ongoing spam, all new connections are being set +R (block messages from unidentified users) and will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+T 1543654157 24*	Received a CTCP 24VERSION from 18freenode-connect
+T 1543654162 19*	Now talking on 22#haskell-unregistered
+T 1543654162 22*	Topic for 22#haskell-unregistered is: Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543654162 22*	Topic for 22#haskell-unregistered set by 26glguy!~glguy@haskell/developer/glguy (24Mon Aug  6 12:33:55 2018)
+T 1543654162 -18NickServ-	You are now identified for carif.
+T 1543654162 -18ChanServ-	[#haskell-unregistered] Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543655968 20*	Disconnected (20Connection timed out)
+T 1543655988 22*	26carif sets mode 24+Z on 22carif
+T 1543655988 22*	26carif sets mode 24+i on 22carif
+T 1543655989 -18NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+T 1543655989 -18freenode-connect-	Due to the persistent ongoing spam, all new connections are being set +R (block messages from unidentified users) and will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+T 1543655989 24*	Received a CTCP 24VERSION from 18freenode-connect
+T 1543655994 19*	Now talking on 22#haskell-unregistered
+T 1543655994 22*	Topic for 22#haskell-unregistered is: Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543655994 22*	Topic for 22#haskell-unregistered set by 26glguy!~glguy@haskell/developer/glguy (24Mon Aug  6 12:33:55 2018)
+T 1543655994 -18NickServ-	You are now identified for carif.
+T 1543655994 -18ChanServ-	[#haskell-unregistered] Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543659093 20*	Disconnected (20Connection timed out)
+T 1543659112 22*	26carif sets mode 24+Z on 22carif
+T 1543659112 22*	26carif sets mode 24+i on 22carif
+T 1543659112 -18NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+T 1543659113 -18freenode-connect-	Due to the persistent ongoing spam, all new connections are being set +R (block messages from unidentified users) and will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+T 1543659113 24*	Received a CTCP 24VERSION from 18freenode-connect
+T 1543659118 19*	Now talking on 22#haskell-unregistered
+T 1543659118 22*	Topic for 22#haskell-unregistered is: Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543659118 22*	Topic for 22#haskell-unregistered set by 26glguy!~glguy@haskell/developer/glguy (24Mon Aug  6 12:33:55 2018)
+T 1543659118 -18NickServ-	You are now identified for carif.
+T 1543659118 -18ChanServ-	[#haskell-unregistered] Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543660676 20*	Disconnected (20Connection timed out)
+T 1543660694 22*	26carif sets mode 24+Z on 22carif
+T 1543660694 22*	26carif sets mode 24+i on 22carif
+T 1543660694 -18NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+T 1543660694 -18freenode-connect-	Due to the persistent ongoing spam, all new connections are being set +R (block messages from unidentified users) and will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+T 1543660694 24*	Received a CTCP 24VERSION from 18freenode-connect
+T 1543660700 19*	Now talking on 22#haskell-unregistered
+T 1543660700 22*	Topic for 22#haskell-unregistered is: Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543660700 22*	Topic for 22#haskell-unregistered set by 26glguy!~glguy@haskell/developer/glguy (24Mon Aug  6 12:33:55 2018)
+T 1543660701 -18NickServ-	You are now identified for carif.
+T 1543660701 -18ChanServ-	[#haskell-unregistered] Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543664850 20*	Disconnected (20Connection timed out)
+T 1543664868 22*	26carif sets mode 24+Z on 22carif
+T 1543664868 22*	26carif sets mode 24+i on 22carif
+T 1543664868 -18NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+T 1543664868 -18freenode-connect-	Due to the persistent ongoing spam, all new connections are being set +R (block messages from unidentified users) and will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+T 1543664868 24*	Received a CTCP 24VERSION from 18freenode-connect
+T 1543664874 19*	Now talking on 22#haskell-unregistered
+T 1543664874 22*	Topic for 22#haskell-unregistered is: Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543664874 22*	Topic for 22#haskell-unregistered set by 26glguy!~glguy@haskell/developer/glguy (24Mon Aug  6 12:33:55 2018)
+T 1543664874 -18NickServ-	You are now identified for carif.
+T 1543664874 -18ChanServ-	[#haskell-unregistered] Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543667070 20*	Disconnected (20Connection timed out)
+T 1543667086 22*	26carif sets mode 24+Z on 22carif
+T 1543667086 22*	26carif sets mode 24+i on 22carif
+T 1543667086 -18NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+T 1543667087 -18freenode-connect-	Due to the persistent ongoing spam, all new connections are being set +R (block messages from unidentified users) and will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+T 1543667087 24*	Received a CTCP 24VERSION from 18freenode-connect
+T 1543667092 19*	Now talking on 22#haskell-unregistered
+T 1543667092 22*	Topic for 22#haskell-unregistered is: Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543667092 22*	Topic for 22#haskell-unregistered set by 26glguy!~glguy@haskell/developer/glguy (24Mon Aug  6 12:33:55 2018)
+T 1543667092 -18NickServ-	You are now identified for carif.
+T 1543667092 -18ChanServ-	[#haskell-unregistered] Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543670187 20*	Disconnected (20Connection timed out)
+T 1543670207 22*	26carif sets mode 24+Z on 22carif
+T 1543670207 22*	26carif sets mode 24+i on 22carif
+T 1543670207 -18NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+T 1543670208 -18freenode-connect-	Due to the persistent ongoing spam, all new connections are being set +R (block messages from unidentified users) and will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+T 1543670209 24*	Received a CTCP 24VERSION from 18freenode-connect
+T 1543670213 19*	Now talking on 22#haskell-unregistered
+T 1543670213 22*	Topic for 22#haskell-unregistered is: Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543670213 22*	Topic for 22#haskell-unregistered set by 26glguy!~glguy@haskell/developer/glguy (24Mon Aug  6 12:33:55 2018)
+T 1543670213 -18NickServ-	You are now identified for carif.
+T 1543670213 -18ChanServ-	[#haskell-unregistered] Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543672586 20*	Disconnected (20Connection timed out)
+T 1543672605 22*	26carif sets mode 24+Z on 22carif
+T 1543672605 22*	26carif sets mode 24+i on 22carif
+T 1543672605 -18NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+T 1543672605 -18freenode-connect-	Due to the persistent ongoing spam, all new connections are being set +R (block messages from unidentified users) and will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+T 1543672605 24*	Received a CTCP 24VERSION from 18freenode-connect
+T 1543672611 19*	Now talking on 22#haskell-unregistered
+T 1543672611 22*	Topic for 22#haskell-unregistered is: Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543672611 22*	Topic for 22#haskell-unregistered set by 26glguy!~glguy@haskell/developer/glguy (24Mon Aug  6 12:33:55 2018)
+T 1543672611 -18NickServ-	You are now identified for carif.
+T 1543672611 -18ChanServ-	[#haskell-unregistered] Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543675101 20*	Disconnected (20Connection timed out)
+T 1543675117 22*	26carif sets mode 24+Z on 22carif
+T 1543675117 22*	26carif sets mode 24+i on 22carif
+T 1543675117 -18NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+T 1543675118 -18freenode-connect-	Due to the persistent ongoing spam, all new connections are being set +R (block messages from unidentified users) and will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+T 1543675118 24*	Received a CTCP 24VERSION from 18freenode-connect
+T 1543675123 19*	Now talking on 22#haskell-unregistered
+T 1543675123 22*	Topic for 22#haskell-unregistered is: Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543675123 22*	Topic for 22#haskell-unregistered set by 26glguy!~glguy@haskell/developer/glguy (24Mon Aug  6 12:33:55 2018)
+T 1543675123 -18NickServ-	You are now identified for carif.
+T 1543675123 -18ChanServ-	[#haskell-unregistered] Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543677204 20*	Disconnected (20Connection timed out)
+T 1543677221 22*	26carif sets mode 24+Z on 22carif
+T 1543677221 22*	26carif sets mode 24+i on 22carif
+T 1543677221 -18NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+T 1543677222 -18freenode-connect-	Due to the persistent ongoing spam, all new connections are being set +R (block messages from unidentified users) and will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+T 1543677222 24*	Received a CTCP 24VERSION from 18freenode-connect
+T 1543677227 19*	Now talking on 22#haskell-unregistered
+T 1543677227 22*	Topic for 22#haskell-unregistered is: Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543677227 22*	Topic for 22#haskell-unregistered set by 26glguy!~glguy@haskell/developer/glguy (24Mon Aug  6 12:33:55 2018)
+T 1543677227 -18NickServ-	You are now identified for carif.
+T 1543677227 -18ChanServ-	[#haskell-unregistered] Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543678738 20*	Disconnected (20Connection timed out)
+T 1543678758 22*	26carif sets mode 24+Z on 22carif
+T 1543678758 22*	26carif sets mode 24+i on 22carif
+T 1543678759 -18NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+T 1543678759 -18freenode-connect-	Due to the persistent ongoing spam, all new connections are being set +R (block messages from unidentified users) and will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+T 1543678759 24*	Received a CTCP 24VERSION from 18freenode-connect
+T 1543678764 19*	Now talking on 22#haskell-unregistered
+T 1543678764 22*	Topic for 22#haskell-unregistered is: Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543678764 22*	Topic for 22#haskell-unregistered set by 26glguy!~glguy@haskell/developer/glguy (24Mon Aug  6 12:33:55 2018)
+T 1543678764 -18NickServ-	You are now identified for carif.
+T 1543678764 -18ChanServ-	[#haskell-unregistered] Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543680059 20*	Disconnected (20Connection timed out)
+T 1543680080 22*	26carif sets mode 24+Z on 22carif
+T 1543680080 22*	26carif sets mode 24+i on 22carif
+T 1543680080 -18NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+T 1543680080 -18freenode-connect-	Due to the persistent ongoing spam, all new connections are being set +R (block messages from unidentified users) and will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+T 1543680080 24*	Received a CTCP 24VERSION from 18freenode-connect
+T 1543680086 19*	Now talking on 22#haskell-unregistered
+T 1543680086 22*	Topic for 22#haskell-unregistered is: Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543680086 22*	Topic for 22#haskell-unregistered set by 26glguy!~glguy@haskell/developer/glguy (24Mon Aug  6 12:33:55 2018)
+T 1543680087 -18NickServ-	You are now identified for carif.
+T 1543680087 -18ChanServ-	[#haskell-unregistered] Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543682137 20*	Disconnected (20Connection timed out)
+T 1543682158 22*	26carif sets mode 24+Z on 22carif
+T 1543682158 22*	26carif sets mode 24+i on 22carif
+T 1543682158 -18NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+T 1543682159 -18freenode-connect-	Due to the persistent ongoing spam, all new connections are being set +R (block messages from unidentified users) and will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+T 1543682159 24*	Received a CTCP 24VERSION from 18freenode-connect
+T 1543682164 19*	Now talking on 22#haskell-unregistered
+T 1543682164 22*	Topic for 22#haskell-unregistered is: Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543682164 22*	Topic for 22#haskell-unregistered set by 26glguy!~glguy@haskell/developer/glguy (24Mon Aug  6 12:33:55 2018)
+T 1543682164 -18NickServ-	You are now identified for carif.
+T 1543682164 -18ChanServ-	[#haskell-unregistered] Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543683606 20*	Disconnected (20Connection timed out)
+T 1543683626 22*	26carif sets mode 24+Z on 22carif
+T 1543683626 22*	26carif sets mode 24+i on 22carif
+T 1543683628 -18freenode-connect-	Due to the persistent ongoing spam, all new connections are being set +R (block messages from unidentified users) and will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+T 1543683628 24*	Received a CTCP 24VERSION from 18freenode-connect
+T 1543683629 -18NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+T 1543683632 19*	Now talking on 22#haskell-unregistered
+T 1543683632 22*	Topic for 22#haskell-unregistered is: Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543683632 22*	Topic for 22#haskell-unregistered set by 26glguy!~glguy@haskell/developer/glguy (24Mon Aug  6 12:33:55 2018)
+T 1543683632 -18NickServ-	You are now identified for carif.
+T 1543683632 -18ChanServ-	[#haskell-unregistered] Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543686297 20*	Disconnected (20Connection timed out)
+T 1543686316 22*	26carif sets mode 24+Z on 22carif
+T 1543686316 22*	26carif sets mode 24+i on 22carif
+T 1543686316 -18NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+T 1543686317 -18freenode-connect-	Due to the persistent ongoing spam, all new connections are being set +R (block messages from unidentified users) and will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+T 1543686317 24*	Received a CTCP 24VERSION from 18freenode-connect
+T 1543686322 19*	Now talking on 22#haskell-unregistered
+T 1543686322 22*	Topic for 22#haskell-unregistered is: Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543686322 22*	Topic for 22#haskell-unregistered set by 26glguy!~glguy@haskell/developer/glguy (24Mon Aug  6 12:33:55 2018)
+T 1543686335 -18NickServ-	You are now identified for carif.
+T 1543686335 -18ChanServ-	[#haskell-unregistered] Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543688471 20*	Disconnected (20Connection reset by peer)
+T 1543688488 22*	26carif sets mode 24+Z on 22carif
+T 1543688488 22*	26carif sets mode 24+i on 22carif
+T 1543688489 -18NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+T 1543688489 -18freenode-connect-	Due to the persistent ongoing spam, all new connections are being set +R (block messages from unidentified users) and will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+T 1543688489 24*	Received a CTCP 24VERSION from 18freenode-connect
+T 1543688494 19*	Now talking on 22#haskell-unregistered
+T 1543688494 22*	Topic for 22#haskell-unregistered is: Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543688494 22*	Topic for 22#haskell-unregistered set by 26glguy!~glguy@haskell/developer/glguy (24Mon Aug  6 12:33:55 2018)
+T 1543688494 -18NickServ-	You are now identified for carif.
+T 1543688494 -18ChanServ-	[#haskell-unregistered] Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543691095 20*	Disconnected (20Connection timed out)
+T 1543691113 22*	26carif sets mode 24+Z on 22carif
+T 1543691113 22*	26carif sets mode 24+i on 22carif
+T 1543691113 -18NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+T 1543691114 -18freenode-connect-	Due to the persistent ongoing spam, all new connections are being set +R (block messages from unidentified users) and will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+T 1543691114 24*	Received a CTCP 24VERSION from 18freenode-connect
+T 1543691119 19*	Now talking on 22#haskell-unregistered
+T 1543691119 22*	Topic for 22#haskell-unregistered is: Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543691119 22*	Topic for 22#haskell-unregistered set by 26glguy!~glguy@haskell/developer/glguy (24Mon Aug  6 12:33:55 2018)
+T 1543691119 -18NickServ-	You are now identified for carif.
+T 1543691119 -18ChanServ-	[#haskell-unregistered] Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543694210 20*	Disconnected (20Connection timed out)
+T 1543694227 22*	26carif sets mode 24+Z on 22carif
+T 1543694227 22*	26carif sets mode 24+i on 22carif
+T 1543694228 -18NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+T 1543694228 -18freenode-connect-	Due to the persistent ongoing spam, all new connections are being set +R (block messages from unidentified users) and will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+T 1543694228 24*	Received a CTCP 24VERSION from 18freenode-connect
+T 1543694233 19*	Now talking on 22#haskell-unregistered
+T 1543694233 22*	Topic for 22#haskell-unregistered is: Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543694233 22*	Topic for 22#haskell-unregistered set by 26glguy!~glguy@haskell/developer/glguy (24Mon Aug  6 12:33:55 2018)
+T 1543694233 -18NickServ-	You are now identified for carif.
+T 1543694233 -18ChanServ-	[#haskell-unregistered] Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543696707 20*	Disconnected (20Connection timed out)
+T 1543696727 22*	26carif sets mode 24+Z on 22carif
+T 1543696727 22*	26carif sets mode 24+i on 22carif
+T 1543696727 -18NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+T 1543696728 -18freenode-connect-	Due to the persistent ongoing spam, all new connections are being set +R (block messages from unidentified users) and will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+T 1543696728 24*	Received a CTCP 24VERSION from 18freenode-connect
+T 1543696733 19*	Now talking on 22#haskell-unregistered
+T 1543696733 22*	Topic for 22#haskell-unregistered is: Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543696733 22*	Topic for 22#haskell-unregistered set by 26glguy!~glguy@haskell/developer/glguy (24Mon Aug  6 12:33:55 2018)
+T 1543696733 -18NickServ-	You are now identified for carif.
+T 1543696733 -18ChanServ-	[#haskell-unregistered] Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543698509 20*	Disconnected (20Connection timed out)
+T 1543698527 22*	26carif sets mode 24+Z on 22carif
+T 1543698527 22*	26carif sets mode 24+i on 22carif
+T 1543698527 -18NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+T 1543698528 -18freenode-connect-	Due to the persistent ongoing spam, all new connections are being set +R (block messages from unidentified users) and will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+T 1543698528 24*	Received a CTCP 24VERSION from 18freenode-connect
+T 1543698533 19*	Now talking on 22#haskell-unregistered
+T 1543698533 22*	Topic for 22#haskell-unregistered is: Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543698533 22*	Topic for 22#haskell-unregistered set by 26glguy!~glguy@haskell/developer/glguy (24Mon Aug  6 12:33:55 2018)
+T 1543698533 -18NickServ-	You are now identified for carif.
+T 1543698533 -18ChanServ-	[#haskell-unregistered] Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543699241 20*	Disconnected (20Connection reset by peer)
+T 1543699257 22*	26carif sets mode 24+Z on 22carif
+T 1543699257 22*	26carif sets mode 24+i on 22carif
+T 1543699257 -18NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+T 1543699258 -18freenode-connect-	Due to the persistent ongoing spam, all new connections are being set +R (block messages from unidentified users) and will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+T 1543699258 24*	Received a CTCP 24VERSION from 18freenode-connect
+T 1543699263 19*	Now talking on 22#haskell-unregistered
+T 1543699263 22*	Topic for 22#haskell-unregistered is: Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543699263 22*	Topic for 22#haskell-unregistered set by 26glguy!~glguy@haskell/developer/glguy (24Mon Aug  6 12:33:55 2018)
+T 1543699263 -18NickServ-	You are now identified for carif.
+T 1543699263 -18ChanServ-	[#haskell-unregistered] Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543701747 20*	Disconnected (20Connection timed out)
+T 1543701766 22*	26carif sets mode 24+Z on 22carif
+T 1543701766 22*	26carif sets mode 24+i on 22carif
+T 1543701766 -18NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+T 1543701767 -18freenode-connect-	Due to the persistent ongoing spam, all new connections are being set +R (block messages from unidentified users) and will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+T 1543701767 24*	Received a CTCP 24VERSION from 18freenode-connect
+T 1543701772 19*	Now talking on 22#haskell-unregistered
+T 1543701772 22*	Topic for 22#haskell-unregistered is: Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543701772 22*	Topic for 22#haskell-unregistered set by 26glguy!~glguy@haskell/developer/glguy (24Mon Aug  6 12:33:55 2018)
+T 1543701772 -18NickServ-	You are now identified for carif.
+T 1543701772 -18ChanServ-	[#haskell-unregistered] Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543704778 20*	Disconnected (20Connection timed out)
+T 1543704799 22*	26carif sets mode 24+Z on 22carif
+T 1543704799 22*	26carif sets mode 24+i on 22carif
+T 1543704799 -18NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+T 1543704799 -18freenode-connect-	Due to the persistent ongoing spam, all new connections are being set +R (block messages from unidentified users) and will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+T 1543704799 24*	Received a CTCP 24VERSION from 18freenode-connect
+T 1543704805 19*	Now talking on 22#haskell-unregistered
+T 1543704805 22*	Topic for 22#haskell-unregistered is: Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543704805 22*	Topic for 22#haskell-unregistered set by 26glguy!~glguy@haskell/developer/glguy (24Mon Aug  6 12:33:55 2018)
+T 1543704805 -18NickServ-	You are now identified for carif.
+T 1543704805 -18ChanServ-	[#haskell-unregistered] Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543706453 20*	Disconnected (20Connection timed out)
+T 1543706475 22*	26carif sets mode 24+Z on 22carif
+T 1543706475 22*	26carif sets mode 24+i on 22carif
+T 1543706475 -18NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+T 1543706476 -18freenode-connect-	Due to the persistent ongoing spam, all new connections are being set +R (block messages from unidentified users) and will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+T 1543706476 24*	Received a CTCP 24VERSION from 18freenode-connect
+T 1543706481 19*	Now talking on 22#haskell-unregistered
+T 1543706481 22*	Topic for 22#haskell-unregistered is: Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543706481 22*	Topic for 22#haskell-unregistered set by 26glguy!~glguy@haskell/developer/glguy (24Mon Aug  6 12:33:55 2018)
+T 1543706482 -18NickServ-	You are now identified for carif.
+T 1543706482 -18ChanServ-	[#haskell-unregistered] Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543709843 20*	Disconnected (20Connection timed out)
+T 1543709861 22*	26carif sets mode 24+Z on 22carif
+T 1543709861 22*	26carif sets mode 24+i on 22carif
+T 1543709861 -18NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+T 1543709861 -18freenode-connect-	Due to the persistent ongoing spam, all new connections are being set +R (block messages from unidentified users) and will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+T 1543709861 24*	Received a CTCP 24VERSION from 18freenode-connect
+T 1543709867 19*	Now talking on 22#haskell-unregistered
+T 1543709867 22*	Topic for 22#haskell-unregistered is: Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543709867 22*	Topic for 22#haskell-unregistered set by 26glguy!~glguy@haskell/developer/glguy (24Mon Aug  6 12:33:55 2018)
+T 1543709867 -18NickServ-	You are now identified for carif.
+T 1543709868 -18ChanServ-	[#haskell-unregistered] Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543711092 20*	Disconnected (20Connection timed out)
+T 1543711112 22*	26carif sets mode 24+Z on 22carif
+T 1543711112 22*	26carif sets mode 24+i on 22carif
+T 1543711112 -18NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+T 1543711113 -18freenode-connect-	Due to the persistent ongoing spam, all new connections are being set +R (block messages from unidentified users) and will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+T 1543711113 24*	Received a CTCP 24VERSION from 18freenode-connect
+T 1543711118 19*	Now talking on 22#haskell-unregistered
+T 1543711118 22*	Topic for 22#haskell-unregistered is: Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543711118 22*	Topic for 22#haskell-unregistered set by 26glguy!~glguy@haskell/developer/glguy (24Mon Aug  6 12:33:55 2018)
+T 1543711118 -18NickServ-	You are now identified for carif.
+T 1543711118 -18ChanServ-	[#haskell-unregistered] Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543713066 20*	Disconnected (20Connection timed out)
+T 1543713087 22*	26carif sets mode 24+Z on 22carif
+T 1543713087 22*	26carif sets mode 24+i on 22carif
+T 1543713087 -18NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+T 1543713088 -18freenode-connect-	Due to the persistent ongoing spam, all new connections are being set +R (block messages from unidentified users) and will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+T 1543713088 24*	Received a CTCP 24VERSION from 18freenode-connect
+T 1543713093 19*	Now talking on 22#haskell-unregistered
+T 1543713093 22*	Topic for 22#haskell-unregistered is: Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543713093 22*	Topic for 22#haskell-unregistered set by 26glguy!~glguy@haskell/developer/glguy (24Mon Aug  6 12:33:55 2018)
+T 1543713093 -18NickServ-	You are now identified for carif.
+T 1543713093 -18ChanServ-	[#haskell-unregistered] Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543715522 20*	Disconnected (20Connection timed out)
+T 1543715542 22*	26carif sets mode 24+Z on 22carif
+T 1543715542 22*	26carif sets mode 24+i on 22carif
+T 1543715542 -18NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+T 1543715543 -18freenode-connect-	Due to the persistent ongoing spam, all new connections are being set +R (block messages from unidentified users) and will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+T 1543715543 24*	Received a CTCP 24VERSION from 18freenode-connect
+T 1543715548 19*	Now talking on 22#haskell-unregistered
+T 1543715548 22*	Topic for 22#haskell-unregistered is: Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543715548 22*	Topic for 22#haskell-unregistered set by 26glguy!~glguy@haskell/developer/glguy (24Mon Aug  6 12:33:55 2018)
+T 1543715548 -18NickServ-	You are now identified for carif.
+T 1543715548 -18ChanServ-	[#haskell-unregistered] Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543718008 20*	Disconnected (20Connection timed out)
+T 1543718026 22*	26carif sets mode 24+Z on 22carif
+T 1543718026 22*	26carif sets mode 24+i on 22carif
+T 1543718026 -18NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+T 1543718027 -18freenode-connect-	Due to the persistent ongoing spam, all new connections are being set +R (block messages from unidentified users) and will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+T 1543718027 24*	Received a CTCP 24VERSION from 18freenode-connect
+T 1543718032 19*	Now talking on 22#haskell-unregistered
+T 1543718032 22*	Topic for 22#haskell-unregistered is: Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543718032 22*	Topic for 22#haskell-unregistered set by 26glguy!~glguy@haskell/developer/glguy (24Mon Aug  6 12:33:55 2018)
+T 1543718032 -18NickServ-	You are now identified for carif.
+T 1543718032 -18ChanServ-	[#haskell-unregistered] Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543719995 20*	Disconnected (20Connection timed out)
+T 1543720011 22*	26carif sets mode 24+Z on 22carif
+T 1543720011 22*	26carif sets mode 24+i on 22carif
+T 1543720012 -18NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+T 1543720012 -18freenode-connect-	Due to the persistent ongoing spam, all new connections are being set +R (block messages from unidentified users) and will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+T 1543720012 24*	Received a CTCP 24VERSION from 18freenode-connect
+T 1543720017 19*	Now talking on 22#haskell-unregistered
+T 1543720017 22*	Topic for 22#haskell-unregistered is: Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543720017 22*	Topic for 22#haskell-unregistered set by 26glguy!~glguy@haskell/developer/glguy (24Mon Aug  6 12:33:55 2018)
+T 1543720017 -18NickServ-	You are now identified for carif.
+T 1543720017 -18ChanServ-	[#haskell-unregistered] Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543721637 20*	Disconnected (20Connection timed out)
+T 1543721657 22*	26carif sets mode 24+Z on 22carif
+T 1543721657 22*	26carif sets mode 24+i on 22carif
+T 1543721657 -18NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+T 1543721657 -18freenode-connect-	Due to the persistent ongoing spam, all new connections are being set +R (block messages from unidentified users) and will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+T 1543721657 24*	Received a CTCP 24VERSION from 18freenode-connect
+T 1543721663 19*	Now talking on 22#haskell-unregistered
+T 1543721663 22*	Topic for 22#haskell-unregistered is: Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543721663 22*	Topic for 22#haskell-unregistered set by 26glguy!~glguy@haskell/developer/glguy (24Mon Aug  6 12:33:55 2018)
+T 1543721663 -18NickServ-	You are now identified for carif.
+T 1543721663 -18ChanServ-	[#haskell-unregistered] Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543723382 20*	Disconnected (20Connection timed out)
+T 1543723400 22*	26carif sets mode 24+Z on 22carif
+T 1543723400 22*	26carif sets mode 24+i on 22carif
+T 1543723400 -18NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+T 1543723400 -18freenode-connect-	Due to the persistent ongoing spam, all new connections are being set +R (block messages from unidentified users) and will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+T 1543723400 24*	Received a CTCP 24VERSION from 18freenode-connect
+T 1543723405 19*	Now talking on 22#haskell-unregistered
+T 1543723405 22*	Topic for 22#haskell-unregistered is: Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543723405 22*	Topic for 22#haskell-unregistered set by 26glguy!~glguy@haskell/developer/glguy (24Mon Aug  6 12:33:55 2018)
+T 1543723405 -18NickServ-	You are now identified for carif.
+T 1543723405 -18ChanServ-	[#haskell-unregistered] Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543724955 20*	Disconnected (20Connection timed out)
+T 1543724975 22*	26carif sets mode 24+Z on 22carif
+T 1543724975 22*	26carif sets mode 24+i on 22carif
+T 1543724975 -18NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+T 1543724976 -18freenode-connect-	Due to the persistent ongoing spam, all new connections are being set +R (block messages from unidentified users) and will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+T 1543724976 24*	Received a CTCP 24VERSION from 18freenode-connect
+T 1543724981 19*	Now talking on 22#haskell-unregistered
+T 1543724981 22*	Topic for 22#haskell-unregistered is: Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543724981 22*	Topic for 22#haskell-unregistered set by 26glguy!~glguy@haskell/developer/glguy (24Mon Aug  6 12:33:55 2018)
+T 1543724981 -18NickServ-	You are now identified for carif.
+T 1543724981 -18ChanServ-	[#haskell-unregistered] Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543726366 20*	Disconnected (20Connection timed out)
+T 1543726386 22*	26carif sets mode 24+Z on 22carif
+T 1543726386 22*	26carif sets mode 24+i on 22carif
+T 1543726387 -18NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+T 1543726387 -18freenode-connect-	Due to the persistent ongoing spam, all new connections are being set +R (block messages from unidentified users) and will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+T 1543726387 24*	Received a CTCP 24VERSION from 18freenode-connect
+T 1543726392 19*	Now talking on 22#haskell-unregistered
+T 1543726392 22*	Topic for 22#haskell-unregistered is: Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543726392 22*	Topic for 22#haskell-unregistered set by 26glguy!~glguy@haskell/developer/glguy (24Mon Aug  6 12:33:55 2018)
+T 1543726392 -18NickServ-	You are now identified for carif.
+T 1543726392 -18ChanServ-	[#haskell-unregistered] Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543728058 20*	Disconnected (20Connection timed out)
+T 1543728076 22*	26carif sets mode 24+Z on 22carif
+T 1543728076 22*	26carif sets mode 24+i on 22carif
+T 1543728076 -18NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+T 1543728077 -18freenode-connect-	Due to the persistent ongoing spam, all new connections are being set +R (block messages from unidentified users) and will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+T 1543728077 24*	Received a CTCP 24VERSION from 18freenode-connect
+T 1543728082 19*	Now talking on 22#haskell-unregistered
+T 1543728082 22*	Topic for 22#haskell-unregistered is: Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543728082 22*	Topic for 22#haskell-unregistered set by 26glguy!~glguy@haskell/developer/glguy (24Mon Aug  6 12:33:55 2018)
+T 1543728082 -18NickServ-	You are now identified for carif.
+T 1543728082 -18ChanServ-	[#haskell-unregistered] Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543729407 20*	Disconnected (20Connection timed out)
+T 1543729425 22*	26carif sets mode 24+Z on 22carif
+T 1543729425 22*	26carif sets mode 24+i on 22carif
+T 1543729425 -18NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+T 1543729426 -18freenode-connect-	Due to the persistent ongoing spam, all new connections are being set +R (block messages from unidentified users) and will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+T 1543729426 24*	Received a CTCP 24VERSION from 18freenode-connect
+T 1543729431 19*	Now talking on 22#haskell-unregistered
+T 1543729431 22*	Topic for 22#haskell-unregistered is: Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543729431 22*	Topic for 22#haskell-unregistered set by 26glguy!~glguy@haskell/developer/glguy (24Mon Aug  6 12:33:55 2018)
+T 1543729431 -18NickServ-	You are now identified for carif.
+T 1543729431 -18ChanServ-	[#haskell-unregistered] Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543730968 20*	Disconnected (20Connection timed out)
+T 1543730986 22*	26carif sets mode 24+Z on 22carif
+T 1543730986 22*	26carif sets mode 24+i on 22carif
+T 1543730987 -18NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+T 1543730988 -18freenode-connect-	Due to the persistent ongoing spam, all new connections are being set +R (block messages from unidentified users) and will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+T 1543730988 24*	Received a CTCP 24VERSION from 18freenode-connect
+T 1543730992 19*	Now talking on 22#haskell-unregistered
+T 1543730992 22*	Topic for 22#haskell-unregistered is: Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543730992 22*	Topic for 22#haskell-unregistered set by 26glguy!~glguy@haskell/developer/glguy (24Mon Aug  6 12:33:55 2018)
+T 1543730992 -18NickServ-	You are now identified for carif.
+T 1543730992 -18ChanServ-	[#haskell-unregistered] Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543732258 20*	Disconnected (20Connection timed out)
+T 1543732277 22*	26carif sets mode 24+Z on 22carif
+T 1543732277 22*	26carif sets mode 24+i on 22carif
+T 1543732278 -18NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+T 1543732278 -18freenode-connect-	Due to the persistent ongoing spam, all new connections are being set +R (block messages from unidentified users) and will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+T 1543732278 24*	Received a CTCP 24VERSION from 18freenode-connect
+T 1543732283 19*	Now talking on 22#haskell-unregistered
+T 1543732283 22*	Topic for 22#haskell-unregistered is: Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543732283 22*	Topic for 22#haskell-unregistered set by 26glguy!~glguy@haskell/developer/glguy (24Mon Aug  6 12:33:55 2018)
+T 1543732283 -18NickServ-	You are now identified for carif.
+T 1543732283 -18ChanServ-	[#haskell-unregistered] Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543734024 20*	Disconnected (20Connection timed out)
+T 1543734042 22*	26carif sets mode 24+Z on 22carif
+T 1543734042 22*	26carif sets mode 24+i on 22carif
+T 1543734042 -18NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+T 1543734043 -18freenode-connect-	Due to the persistent ongoing spam, all new connections are being set +R (block messages from unidentified users) and will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+T 1543734043 24*	Received a CTCP 24VERSION from 18freenode-connect
+T 1543734048 19*	Now talking on 22#haskell-unregistered
+T 1543734048 22*	Topic for 22#haskell-unregistered is: Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543734048 22*	Topic for 22#haskell-unregistered set by 26glguy!~glguy@haskell/developer/glguy (24Mon Aug  6 12:33:55 2018)
+T 1543734048 -18NickServ-	You are now identified for carif.
+T 1543734048 -18ChanServ-	[#haskell-unregistered] Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543736487 20*	Disconnected (20Connection timed out)
+T 1543736507 22*	26carif sets mode 24+Z on 22carif
+T 1543736507 22*	26carif sets mode 24+i on 22carif
+T 1543736508 -18NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+T 1543736508 -18freenode-connect-	Due to the persistent ongoing spam, all new connections are being set +R (block messages from unidentified users) and will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+T 1543736508 24*	Received a CTCP 24VERSION from 18freenode-connect
+T 1543736513 19*	Now talking on 22#haskell-unregistered
+T 1543736513 22*	Topic for 22#haskell-unregistered is: Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543736513 22*	Topic for 22#haskell-unregistered set by 26glguy!~glguy@haskell/developer/glguy (24Mon Aug  6 12:33:55 2018)
+T 1543736513 -18NickServ-	You are now identified for carif.
+T 1543736513 -18ChanServ-	[#haskell-unregistered] Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543738945 20*	Disconnected (20Connection timed out)
+T 1543738965 22*	26carif sets mode 24+Z on 22carif
+T 1543738965 22*	26carif sets mode 24+i on 22carif
+T 1543738965 -18NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+T 1543738965 -18freenode-connect-	Due to the persistent ongoing spam, all new connections are being set +R (block messages from unidentified users) and will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+T 1543738965 24*	Received a CTCP 24VERSION from 18freenode-connect
+T 1543738971 19*	Now talking on 22#haskell-unregistered
+T 1543738971 22*	Topic for 22#haskell-unregistered is: Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543738971 22*	Topic for 22#haskell-unregistered set by 26glguy!~glguy@haskell/developer/glguy (24Mon Aug  6 12:33:55 2018)
+T 1543738971 -18NickServ-	You are now identified for carif.
+T 1543738971 -18ChanServ-	[#haskell-unregistered] Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543741400 20*	Disconnected (20Connection timed out)
+T 1543741417 22*	26carif sets mode 24+Z on 22carif
+T 1543741417 22*	26carif sets mode 24+i on 22carif
+T 1543741417 -18NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+T 1543741418 -18freenode-connect-	Due to the persistent ongoing spam, all new connections are being set +R (block messages from unidentified users) and will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+T 1543741418 24*	Received a CTCP 24VERSION from 18freenode-connect
+T 1543741423 19*	Now talking on 22#haskell-unregistered
+T 1543741423 22*	Topic for 22#haskell-unregistered is: Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543741423 22*	Topic for 22#haskell-unregistered set by 26glguy!~glguy@haskell/developer/glguy (24Mon Aug  6 12:33:55 2018)
+T 1543741423 -18NickServ-	You are now identified for carif.
+T 1543741423 -18ChanServ-	[#haskell-unregistered] Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543743719 20*	Disconnected (20Connection timed out)
+T 1543743737 22*	26carif sets mode 24+Z on 22carif
+T 1543743737 22*	26carif sets mode 24+i on 22carif
+T 1543743738 -18NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+T 1543743738 -18freenode-connect-	Due to the persistent ongoing spam, all new connections are being set +R (block messages from unidentified users) and will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+T 1543743738 24*	Received a CTCP 24VERSION from 18freenode-connect
+T 1543743743 19*	Now talking on 22#haskell-unregistered
+T 1543743743 22*	Topic for 22#haskell-unregistered is: Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543743743 22*	Topic for 22#haskell-unregistered set by 26glguy!~glguy@haskell/developer/glguy (24Mon Aug  6 12:33:55 2018)
+T 1543743743 -18NickServ-	You are now identified for carif.
+T 1543743743 -18ChanServ-	[#haskell-unregistered] Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543745967 20*	Disconnected (20Connection timed out)
+T 1543745987 22*	26carif sets mode 24+Z on 22carif
+T 1543745987 22*	26carif sets mode 24+i on 22carif
+T 1543745988 -18NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+T 1543745988 -18freenode-connect-	Due to the persistent ongoing spam, all new connections are being set +R (block messages from unidentified users) and will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+T 1543745988 24*	Received a CTCP 24VERSION from 18freenode-connect
+T 1543745993 19*	Now talking on 22#haskell-unregistered
+T 1543745993 22*	Topic for 22#haskell-unregistered is: Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543745993 22*	Topic for 22#haskell-unregistered set by 26glguy!~glguy@haskell/developer/glguy (24Mon Aug  6 12:33:55 2018)
+T 1543745993 -18NickServ-	You are now identified for carif.
+T 1543745993 -18ChanServ-	[#haskell-unregistered] Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543747737 20*	Disconnected (20Connection timed out)
+T 1543747757 22*	26carif sets mode 24+Z on 22carif
+T 1543747757 22*	26carif sets mode 24+i on 22carif
+T 1543747757 -18NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+T 1543747757 -18freenode-connect-	Due to the persistent ongoing spam, all new connections are being set +R (block messages from unidentified users) and will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+T 1543747757 24*	Received a CTCP 24VERSION from 18freenode-connect
+T 1543747763 19*	Now talking on 22#haskell-unregistered
+T 1543747763 22*	Topic for 22#haskell-unregistered is: Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543747763 22*	Topic for 22#haskell-unregistered set by 26glguy!~glguy@haskell/developer/glguy (24Mon Aug  6 12:33:55 2018)
+T 1543747763 -18NickServ-	You are now identified for carif.
+T 1543747763 -18ChanServ-	[#haskell-unregistered] Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543748994 20*	Disconnected (20Connection timed out)
+T 1543749011 22*	26carif sets mode 24+Z on 22carif
+T 1543749011 22*	26carif sets mode 24+i on 22carif
+T 1543749011 -18NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+T 1543749011 -18freenode-connect-	Due to the persistent ongoing spam, all new connections are being set +R (block messages from unidentified users) and will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+T 1543749011 24*	Received a CTCP 24VERSION from 18freenode-connect
+T 1543749017 19*	Now talking on 22#haskell-unregistered
+T 1543749017 22*	Topic for 22#haskell-unregistered is: Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543749017 22*	Topic for 22#haskell-unregistered set by 26glguy!~glguy@haskell/developer/glguy (24Mon Aug  6 12:33:55 2018)
+T 1543749017 -18NickServ-	You are now identified for carif.
+T 1543749017 -18ChanServ-	[#haskell-unregistered] Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543752470 20*	Disconnected (20Connection timed out)
+T 1543752488 22*	26carif sets mode 24+Z on 22carif
+T 1543752488 22*	26carif sets mode 24+i on 22carif
+T 1543752488 -18NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+T 1543752488 -18freenode-connect-	Due to the persistent ongoing spam, all new connections are being set +R (block messages from unidentified users) and will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+T 1543752488 24*	Received a CTCP 24VERSION from 18freenode-connect
+T 1543752493 19*	Now talking on 22#haskell-unregistered
+T 1543752493 22*	Topic for 22#haskell-unregistered is: Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543752493 22*	Topic for 22#haskell-unregistered set by 26glguy!~glguy@haskell/developer/glguy (24Mon Aug  6 12:33:55 2018)
+T 1543752493 -18NickServ-	You are now identified for carif.
+T 1543752493 -18ChanServ-	[#haskell-unregistered] Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543753733 20*	Disconnected (20Connection timed out)
+T 1543753750 22*	26carif sets mode 24+Z on 22carif
+T 1543753750 22*	26carif sets mode 24+i on 22carif
+T 1543753750 -18NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+T 1543753751 -18freenode-connect-	Due to the persistent ongoing spam, all new connections are being set +R (block messages from unidentified users) and will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+T 1543753751 24*	Received a CTCP 24VERSION from 18freenode-connect
+T 1543753756 19*	Now talking on 22#haskell-unregistered
+T 1543753756 22*	Topic for 22#haskell-unregistered is: Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543753756 22*	Topic for 22#haskell-unregistered set by 26glguy!~glguy@haskell/developer/glguy (24Mon Aug  6 12:33:55 2018)
+T 1543753756 -18NickServ-	You are now identified for carif.
+T 1543753756 -18ChanServ-	[#haskell-unregistered] Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543757317 20*	Disconnected (20Connection timed out)
+T 1543757337 22*	26carif sets mode 24+Z on 22carif
+T 1543757337 22*	26carif sets mode 24+i on 22carif
+T 1543757337 -18NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+T 1543757338 -18freenode-connect-	Due to the persistent ongoing spam, all new connections are being set +R (block messages from unidentified users) and will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+T 1543757338 24*	Received a CTCP 24VERSION from 18freenode-connect
+T 1543757343 19*	Now talking on 22#haskell-unregistered
+T 1543757343 22*	Topic for 22#haskell-unregistered is: Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543757343 22*	Topic for 22#haskell-unregistered set by 26glguy!~glguy@haskell/developer/glguy (24Mon Aug  6 12:33:55 2018)
+T 1543757343 -18NickServ-	You are now identified for carif.
+T 1543757343 -18ChanServ-	[#haskell-unregistered] Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543758565 20*	Disconnected (20Connection timed out)
+T 1543758582 22*	26carif sets mode 24+Z on 22carif
+T 1543758582 22*	26carif sets mode 24+i on 22carif
+T 1543758583 -18NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+T 1543758583 -18freenode-connect-	Due to the persistent ongoing spam, all new connections are being set +R (block messages from unidentified users) and will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+T 1543758583 24*	Received a CTCP 24VERSION from 18freenode-connect
+T 1543758588 19*	Now talking on 22#haskell-unregistered
+T 1543758588 22*	Topic for 22#haskell-unregistered is: Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543758588 22*	Topic for 22#haskell-unregistered set by 26glguy!~glguy@haskell/developer/glguy (24Mon Aug  6 12:33:55 2018)
+T 1543758588 -18NickServ-	You are now identified for carif.
+T 1543758588 -18ChanServ-	[#haskell-unregistered] Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543759181 20*	Disconnected (20Connection reset by peer)
+T 1543759199 22*	26carif sets mode 24+Z on 22carif
+T 1543759199 22*	26carif sets mode 24+i on 22carif
+T 1543759199 -18NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+T 1543759200 -18freenode-connect-	Due to the persistent ongoing spam, all new connections are being set +R (block messages from unidentified users) and will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+T 1543759200 24*	Received a CTCP 24VERSION from 18freenode-connect
+T 1543759205 19*	Now talking on 22#haskell-unregistered
+T 1543759205 22*	Topic for 22#haskell-unregistered is: Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543759205 22*	Topic for 22#haskell-unregistered set by 26glguy!~glguy@haskell/developer/glguy (24Mon Aug  6 12:33:55 2018)
+T 1543759205 -18NickServ-	You are now identified for carif.
+T 1543759205 -18ChanServ-	[#haskell-unregistered] Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543763459 20*	Disconnected (20Connection timed out)
+T 1543763476 22*	26carif sets mode 24+Z on 22carif
+T 1543763476 22*	26carif sets mode 24+i on 22carif
+T 1543763477 -18NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+T 1543763477 -18freenode-connect-	Due to the persistent ongoing spam, all new connections are being set +R (block messages from unidentified users) and will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+T 1543763477 24*	Received a CTCP 24VERSION from 18freenode-connect
+T 1543763482 19*	Now talking on 22#haskell-unregistered
+T 1543763482 22*	Topic for 22#haskell-unregistered is: Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543763482 22*	Topic for 22#haskell-unregistered set by 26glguy!~glguy@haskell/developer/glguy (24Mon Aug  6 12:33:55 2018)
+T 1543763482 -18NickServ-	You are now identified for carif.
+T 1543763482 -18ChanServ-	[#haskell-unregistered] Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543763982 20*	Disconnected (20Connection reset by peer)
+T 1543763998 22*	26carif sets mode 24+Z on 22carif
+T 1543763998 22*	26carif sets mode 24+i on 22carif
+T 1543763998 -18NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+T 1543763999 -18freenode-connect-	Due to the persistent ongoing spam, all new connections are being set +R (block messages from unidentified users) and will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+T 1543763999 24*	Received a CTCP 24VERSION from 18freenode-connect
+T 1543764004 19*	Now talking on 22#haskell-unregistered
+T 1543764004 22*	Topic for 22#haskell-unregistered is: Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543764004 22*	Topic for 22#haskell-unregistered set by 26glguy!~glguy@haskell/developer/glguy (24Mon Aug  6 12:33:55 2018)
+T 1543764004 -18NickServ-	You are now identified for carif.
+T 1543764004 -18ChanServ-	[#haskell-unregistered] Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543767854 20*	Disconnected (20Connection timed out)
+T 1543767872 22*	26carif sets mode 24+Z on 22carif
+T 1543767872 22*	26carif sets mode 24+i on 22carif
+T 1543767872 -18NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+T 1543767873 -18freenode-connect-	Due to the persistent ongoing spam, all new connections are being set +R (block messages from unidentified users) and will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+T 1543767873 24*	Received a CTCP 24VERSION from 18freenode-connect
+T 1543767878 19*	Now talking on 22#haskell-unregistered
+T 1543767878 22*	Topic for 22#haskell-unregistered is: Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543767878 22*	Topic for 22#haskell-unregistered set by 26glguy!~glguy@haskell/developer/glguy (24Mon Aug  6 12:33:55 2018)
+T 1543767878 -18NickServ-	You are now identified for carif.
+T 1543767878 -18ChanServ-	[#haskell-unregistered] Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543769605 20*	Disconnected (20Connection timed out)
+T 1543769623 22*	26carif sets mode 24+Z on 22carif
+T 1543769623 22*	26carif sets mode 24+i on 22carif
+T 1543769624 -18NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+T 1543769624 -18freenode-connect-	Due to the persistent ongoing spam, all new connections are being set +R (block messages from unidentified users) and will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+T 1543769624 24*	Received a CTCP 24VERSION from 18freenode-connect
+T 1543769629 19*	Now talking on 22#haskell-unregistered
+T 1543769629 22*	Topic for 22#haskell-unregistered is: Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543769629 22*	Topic for 22#haskell-unregistered set by 26glguy!~glguy@haskell/developer/glguy (24Mon Aug  6 12:33:55 2018)
+T 1543769629 -18NickServ-	You are now identified for carif.
+T 1543769629 -18ChanServ-	[#haskell-unregistered] Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543771350 20*	Disconnected (20Connection timed out)
+T 1543771367 22*	26carif sets mode 24+Z on 22carif
+T 1543771367 22*	26carif sets mode 24+i on 22carif
+T 1543771368 -18NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+T 1543771368 -18freenode-connect-	Due to the persistent ongoing spam, all new connections are being set +R (block messages from unidentified users) and will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+T 1543771368 24*	Received a CTCP 24VERSION from 18freenode-connect
+T 1543771373 19*	Now talking on 22#haskell-unregistered
+T 1543771373 22*	Topic for 22#haskell-unregistered is: Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543771373 22*	Topic for 22#haskell-unregistered set by 26glguy!~glguy@haskell/developer/glguy (24Mon Aug  6 12:33:55 2018)
+T 1543771373 -18NickServ-	You are now identified for carif.
+T 1543771373 -18ChanServ-	[#haskell-unregistered] Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543772720 20*	Disconnected (20Connection timed out)
+T 1543772737 22*	26carif sets mode 24+Z on 22carif
+T 1543772737 22*	26carif sets mode 24+i on 22carif
+T 1543772737 -18NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+T 1543772738 -18freenode-connect-	Due to the persistent ongoing spam, all new connections are being set +R (block messages from unidentified users) and will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+T 1543772738 24*	Received a CTCP 24VERSION from 18freenode-connect
+T 1543772743 19*	Now talking on 22#haskell-unregistered
+T 1543772743 22*	Topic for 22#haskell-unregistered is: Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543772743 22*	Topic for 22#haskell-unregistered set by 26glguy!~glguy@haskell/developer/glguy (24Mon Aug  6 12:33:55 2018)
+T 1543772743 -18NickServ-	You are now identified for carif.
+T 1543772743 -18ChanServ-	[#haskell-unregistered] Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543774285 20*	Disconnected (20Connection timed out)
+T 1543774302 22*	26carif sets mode 24+Z on 22carif
+T 1543774302 22*	26carif sets mode 24+i on 22carif
+T 1543774302 -18NickServ-	This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+T 1543774303 -18freenode-connect-	Due to the persistent ongoing spam, all new connections are being set +R (block messages from unidentified users) and will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+T 1543774303 24*	Received a CTCP 24VERSION from 18freenode-connect
+T 1543774308 19*	Now talking on 22#haskell-unregistered
+T 1543774308 22*	Topic for 22#haskell-unregistered is: Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543774308 22*	Topic for 22#haskell-unregistered set by 26glguy!~glguy@haskell/developer/glguy (24Mon Aug  6 12:33:55 2018)
+T 1543774308 -18NickServ-	You are now identified for carif.
+T 1543774308 -18ChanServ-	[#haskell-unregistered] Due to a spam attack, joining many #haskell channels require registration with NickServ. Please register and rejoin the channel you're interested in!
+T 1543774843 Python interface unloaded

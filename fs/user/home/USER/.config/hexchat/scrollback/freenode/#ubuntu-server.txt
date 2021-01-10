@@ -1,0 +1,503 @@
+T 1589814015 18<icey18>	jamespage: any chance you could point me at some ceph+sbuild docs? I think I have things setup right but then I get errors during schroot setup installing the openjdk dependencies :-/ I'm broadly trying to follow https://wiki.ubuntu.com/SimpleSbuild
+T 1589814759 18<jamespage18>	icey: I can't say I've ever done anything more than 'mk-sbuild focal' or suchlike
+T 1589814788 18<jamespage18>	that generally puts the current user in the right groups and dtrt with regards to creation of the chroot
+T 1589814803 18<icey18>	jamespage: so, not setting up things like .mk-sbuild.rc and .sbuildrc ?
+T 1589814835 18<jamespage18>	https://paste.ubuntu.com/p/w9DPc9GvvK/
+T 1589814838 18<jamespage18>	that's my .sbuildrc
+T 1589814883 18<icey18>	jamespage: anything in /etc/schroot/sbuild/fstab ?
+T 1589814886 18<jamespage18>	don't have the other one
+T 1589814917 18<jamespage18>	icey: https://paste.ubuntu.com/p/SBxB5VPvdR/
+T 1589814938 18<icey18>	jamespage: I bet that fixes up the issue I'm having, thanks :)
+T 1589815154 18<MJCD18>	holy.....
+T 1589815179 18<MJCD18>	I cannot believe how badly a simple `apt install mariadb-server-10` would bork my server
+T 1589815183 18<MJCD18>	like honestly what the hell
+T 1589815204 18<MJCD18>	it's reset all my mysql logins
+T 1589815211 18<MJCD18>	it's reset my apache2 config
+T 1589815222 18<MJCD18>	all as postinstall steps
+T 1589815234 18<MJCD18>	it doesn't check if any of these are already setup
+T 1589815264 18<rbasak18>	You used the external apt repository from MariaDB?
+T 1589815300 18<rbasak18>	"mariadb-server-10" doesn't exist in Ubuntu repositories
+T 1589815536 18<MJCD18>	errr sorry uhh
+T 1589815599 18<ylluminate18>	anyone familiar with using netplan with NAT'ing around?
+T 1589815649 18<MJCD18>	`apt install mariadb-server-10.1`
+T 1589815651 18<MJCD18>	:P
+T 1589815662 18<MJCD18>	no custom repo's
+T 1589816316 18<MJCD18>	I'm gonna have to report this
+T 1589816323 18<MJCD18>	What's the best way to do so?
+T 1589816343 18<MJCD18>	like honestly, it's destroyed information
+T 1589816349 18<MJCD18>	that's super bad.
+T 1589816425 18<jamespage18>	MJCD: ubuntu-bug mariadb-server-10.1 will report to the correct location
+T 1589816507 18<MJCD18>	thanks, i'll take a look
+T 1589816525 18<MJCD18>	need to get freaking mysql back up and running asap lol...
+T 1589816549 18<MJCD18>	I wouldn't imagine it's messed with any of the actual databases
+T 1589816555 18<MJCD18>	unless it's totally insane
+T 1589816565 18<MJCD18>	atm I can't even root login to mysql
+T 1589816575 18<jamespage18>	remember that is a software bug report rather than a support request
+T 1589816617 18<MJCD18>	yeah understood
+T 1589816628 18<MJCD18>	what's the most cautious way to approach getting it back working?
+T 1589816636 18<MJCD18>	I wish there was apt revert
+T 1589816641 18<MJCD18>	-_-
+T 1589816708 18<jamespage18>	I'm not sure the maintainer of mariadb hangs out here
+T 1589816821 18<MJCD18>	oh no idc about mariadb literally at all
+T 1589816832 18<MJCD18>	it was just an install step of some other thing
+T 1589816840 18<MJCD18>	I didn't think too much about it
+T 1589816847 18<MJCD18>	we have everything in our mysql
+T 1589816861 18<MJCD18>	thus why I don't want to do anything to mess with its contents
+T 1589816869 18<MJCD18>	which I assume are unaffected
+T 1589816881 18<MJCD18>	I assume it's just re-configured mysql back to default
+T 1589816886 18<MJCD18>	but don't want to corrupt anything
+T 1589816983 18<jamespage18>	MJCD: shutting down any daemons and creating a snapshot of the current state on disk would be a good first step - fallback position if anything does not work in restoring your dbs'
+T 1589817008 18<MJCD18>	welllll I do have a few days old backup
+T 1589817021 18<MJCD18>	but I mean I spent time setting up mysql users even
+T 1589817029 18<MJCD18>	so don't even want to 're-init' mysql
+T 1589817039 18<MJCD18>	which id assume would rewrite the mysql.users table
+T 1589817040 18<MJCD18>	etc
+T 1589817060 18<MJCD18>	not sure why I can't access as `sudo mysql -uroot
+T 1589817092 18<MJCD18>	"Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock'"
+T 1589818091 18<rbasak18>	MJCD: the current packaging of MariaDB converts your MySQL database to MariaDB format by design. I appreciate this isn't what you wanted, so do feel free to file a bug, but I don't think it'll get addressed any time soon
+T 1589818110 18<rbasak18>	It comes from MariaDB's stance of being a "drop in replacement" for MySQL
+T 1589818119 18<rbasak18>	The packaging assumes that's what you wanted when you installed it
+T 1589818121 18<MJCD18>	my main concern right now is how to revert this
+T 1589818128 18<rbasak18>	Restore from backup.
+T 1589818149 18<rbasak18>	Your databases are now in MariaDB "format" now.
+T 1589818154 18<MJCD18>	there must be a better way, as I say I doubt it DROP'd the tables
+T 1589818154 18<MJCD18>	heh
+T 1589818160 18<rbasak18>	There's no tool to migrate in the other direction safetly
+T 1589818171 18<MJCD18>	I shouldn't need to as described
+T 1589818177 18<rbasak18>	If you continue then it'sa hack and something may fail later.
+T 1589818179 18<MJCD18>	it shouldn't ever be a lossy operation
+T 1589818183 18<MJCD18>	there's no reason for it to be
+T 1589818187 18<MJCD18>	migrate, sure
+T 1589818194 18<MJCD18>	but keep the original
+T 1589818195 18<MJCD18>	;p
+T 1589818202 18<rbasak18>	It isn't that easy
+T 1589818211 18<MJCD18>	pretty sure it's just for some reason reset the mysql users
+T 1589818218 18<rbasak18>	Some users have massive databases with not enough space for an entire duplicate
+T 1589818226 18<MJCD18>	it's just wordpress
+T 1589818232 18<MJCD18>	all self contained in db's
+T 1589818238 18<rbasak18>	We did come up with a plan on making this better, but it needs effort to be implemented
+T 1589818255 18<MJCD18>	as I say that sounds well and dandy
+T 1589818264 18<MJCD18>	but there's no reason it'd have drop'd existing databases
+T 1589818270 18<MJCD18>	for a migration
+T 1589818273 18<rbasak18>	https://wiki.debian.org/MySql/SharedDataDirectory
+T 1589818274 18<MJCD18>	it'd be a copy operation
+T 1589818310 18<MJCD18>	what's the thingy you do to reset the mysql root user password
+T 1589818313 18<MJCD18>	or set it at all
+T 1589818320 18<MJCD18>	I forget
+T 1589818448 18<MJCD18>	this is still totally, totally nasty either way
+T 1589818449 18<MJCD18>	like
+T 1589818458 18<MJCD18>	`sudo service mysqld stop`
+T 1589818475 18<MJCD18>	.. <start mariadb>
+T 1589818487 18<MJCD18>	no need to touch literally anything to do with mysql beyond that
+T 1589818497 18<MJCD18>	and even if it's designed as a drop in replacement....
+T 1589818508 18<MJCD18>	it's often required to have both for different dependencies
+T 1589818515 18<MJCD18>	I could use containerization
+T 1589818532 18<MJCD18>	but that's heavy for little tangible benefit vs running 2x db engines
+T 1589818549 18<MJCD18>	for 2x services on the same host
+T 1589818550 18<rbasak18>	You cannot run both, sorry
+T 1589818559 18<MJCD18>	ofc you can, that's crazytalk...
+T 1589818564 18<rbasak18>	MariaDB was never designed for that
+T 1589818572 18<MJCD18>	what...
+T 1589818575 18<rbasak18>	We've not fought against that in packaging
+T 1589818576 18<MJCD18>	that's meaningless
+T 1589818579 18<rbasak18>	We could, but we haven't.
+T 1589818590 18<rbasak18>	It'd be a lot of work
+T 1589818603 18<MJCD18>	only the > drop in replacement part requires anything other than actually making it it's own thing...
+T 1589818615 18<rbasak18>	If you want to join the packaging teams and make it all work, you'd be welcome.
+T 1589818621 18<MJCD18>	which is literally overwriting proprietary things
+T 1589818623 18<MJCD18>	well
+T 1589818634 18<MJCD18>	well known constants
+T 1589818642 18<rbasak18>	Until then, the best option is to use containers.
+T 1589818646 18<MJCD18>	ie using mysqld.sock instead of mariadb.sock
+T 1589818658 18<MJCD18>	lolz you just said a bunch of intangible things
+T 1589818664 18<MJCD18>	which don't mean anything
+T 1589818686 18<MJCD18>	> it'd be more work to make our engine not hard replace mysql
+T 1589818691 18<MJCD18>	like whut
+T 1589818698 18<MJCD18>	it's the total opposite
+T 1589818751 18<MJCD18>	and yeah as I already said ofc I COULD HAVE containerized it
+T 1589818759 18<MJCD18>	.... if I had any indication I needed to
+T 1589818767 18<MJCD18>	because it does all this as postinstall
+T 1589818778 18<MJCD18>	ie not at all regulated by apt/etc
+T 1589818783 18<rbasak18>	Oh, that reminds me
+T 1589818792 18<rbasak18>	There is a mysql-server-core-8.0 package
+T 1589818797 18<rbasak18>	As well as a MariaDB equivalent
+T 1589818799 18<MJCD18>	I can make a postinstall that does sudo rm -rF /
+T 1589818804 18<MJCD18>	and publish it
+T 1589818808 18<rbasak18>	So if you're prepared to do all the other bits yourself, then you can run both
+T 1589818824 18<MJCD18>	Sorry it'd be more work for me to NOT format your entire system automatically
+T 1589818834 18<MJCD18>	as I said
+T 1589818843 18<MJCD18>	the issue rn is that mysql is inaccessible afaik
+T 1589818850 18<MJCD18>	not that any data has been affected
+T 1589818862 18<MJCD18>	I don't want to do say
+T 1589818876 18<MJCD18>	`apt remove --purge mariadb-server-10.1`
+T 1589818882 18<MJCD18>	and then that screws things up more
+T 1589818898 18<MJCD18>	I just need to re-establish mysql connectivity afaik
+T 1589818919 18<MJCD18>	if you tell me it's safe to remove mariadb to do so... i'll take your word for it
+T 1589818943 18<MJCD18>	and then still need to re-establish mysql accounts I assume via the default after install method
+T 1589818950 18<MJCD18>	.... I assume
+T 1589818963 18<MJCD18>	but after this experience, any crazy thing can happen
+T 1589818993 18<MJCD18>	with little to no warning
+T 1589819027 18<MJCD18>	`sudo service mysqld start` just hangs
+T 1589819036 18<MJCD18>	I assume because mariadb is still running
+T 1589819044 18<MJCD18>	on mysqld.sock -_-
+T 1589819049 18<MJCD18>	which makes 0 sense
+T 1589819061 18<MJCD18>	and makes the job 100% harder for mariadb folks lol
+T 1589819098 18<MJCD18>	stopped mariadb, starting mysqld still hangs
+T 1589819248 18<MJCD18>	I wonder if it's easier to just reconfigure wordpress to use mariadb
+T 1589819250 18<MJCD18>	lol...
+T 1589819257 18<MJCD18>	I mean we picked mysql on purpose
+T 1589819263 18<MJCD18>	just 1 app wanted to use it
+T 1589820106 18<MJCD18>	aight so I made an executive decision lol
+T 1589820113 18<MJCD18>	I removed mariadb-server
+T 1589820122 18<MJCD18>	but kept it's db's :P
+T 1589820152 18<MJCD18>	which imo should be empty.. but still
+T 1589820235 18<MJCD18>	it's still ALSO reset my apache config
+T 1589820261 18<MJCD18>	totally unworkable behaviour in more than the majority of cases one might run one simple install command...
+T 1589820277 18<MJCD18>	but I see there's many many issues for this already
+T 1589820288 18<MJCD18>	with little explanation as to why it has to stay this way lol
+T 1589820305 18<MJCD18>	it also may have been that the connection crashed somewhere during the mariadb install process
+T 1589820320 18<MJCD18>	apparently there should have been some CLI gui options which I never saw
+T 1589820350 18<MJCD18>	still a right pain in the buttox, not just for mysql-server
+T 1589820354 18<MJCD18>	but apache2 as well
+T 1589820375 18<MJCD18>	neither party i'd want to get in a war with lol
+T 1589820398 18<MJCD18>	we're moving to having all our main configs be git repo's
+T 1589820421 18<MJCD18>	but it's not been widely implemented yet, nor is really the solution I would prefer
+T 1589820436 18<MJCD18>	well not a solution at all
+T 1589820443 18<MJCD18>	a way to "un-screw" such things
+T 1589820712 18<MJCD18>	Anyway, already documenting, will file as detailed a report as I can. Still doesn't help me
+T 1589820794 18<MJCD18>	and one ubuntu repo appears to be down rn lol
+T 1589820802 18<MJCD18>	not having a good night!
+T 1589820824 18<MJCD18>	Will pick it up again tomorrow, ttyl, thanks for the tips rbasak
+T 1589822150 18<PaulePanter18>	I am seeing
+T 1589822151 18<PaulePanter18>	Can't find PMC that caused IRQ
+T 1589822159 18<PaulePanter18>	with Linux 5.7-rc5 on a POWER S822LC.
+T 1589823649 18<jge18>	if I were to install anaconda, would it wipe my python environment and potentially break stuff ?
+T 1589834982 18<drdaffy18>	hello all. does anyone know how to configure a snap install of rocketchat to work aloneside iredmail in other words can someone help me write the conf file?
+T 1589880709 18<sil210018>	Hello server team! I have a quick question regarding an old package that I want to remove from Ubuntu (because one of its binaries will be uninstallable soon)
+T 1589880718 18<sil210018>	Is there still any need for
+T 1589880721 18<sil210018>	uec-provisioning ?
+T 1589880739 18<sil210018>	I see the source did not have any meaningful updates since 2010
+T 1589880771 18<sil210018>	It has some python2 code that will now become uninstallable since pyyaml dropped python-yaml
+T 1589880804 18<sil210018>	I see Ubuntu Server listed as the maintainer on LP - would you be fine with me removing it?
+T 1589881402 18<sil210018>	rick_h: ^ if you could give some input once around
+T 1589881733 18<MJCD18>	soooo
+T 1589881735 18<MJCD18>	day 2
+T 1589881756 18<MJCD18>	un-screwing what `apt install mariadb-server-10.1` did
+T 1589881922 18<MJCD18>	this is so messed up
+T 1589881949 18<MJCD18>	I am going to have to file a thing but it's going to have to wait
+T 1589882492 18<RoyK18>	MJCD: a wee tip for the next install - setup separate services in VMs or containers so they can't mess up the rest of the system ;)
+T 1589882800 18<MJCD18>	lol it IS a container!
+T 1589882811 18<MJCD18>	it's not backed up sadly
+T 1589882823 18<MJCD18>	but it's insanity that the standard installer can even do this
+T 1589882831 18<MJCD18>	mysql stuff is all owned by mysql user
+T 1589882849 18<MJCD18>	idk
+T 1589882865 18<MJCD18>	my db's should still be there I imagine
+T 1589882872 18<MJCD18>	and I kept the mariadb ones too just in case
+T 1589882882 18<MJCD18>	which it 'imports' or whatever...
+T 1589882889 18<MJCD18>	all so bad
+T 1589882931 18<MJCD18>	makes me want to make a package that describes itself as having to be run as sudo, and just include as postinstall command `rm -rf /`
+T 1589882938 18<MJCD18>	sudo*
+T 1589882954 18<MJCD18>	I mean why not apparently there's no kind of regulation
+T 1589883411 18<RoyK18>	Personally, I never use mysql^Wmariadb unless I really have to, like serving wordpress or other stuff not portable enough to use postgresql. But again, that's wee digression
+T 1589884200 18<MJCD18>	it IS just wordpress lol
+T 1589884223 18<MJCD18>	postgres otherwise
+T 1589886713 18<RoyK18>	MJCD: I'm very glad we agree :)
+T 1589887412 18<icey18>	hey jamespage: I'm looking through bugs and saw https://bugs.launchpad.net/cloud-archive/+bug/1858296 - looking at the release history of ceph-deploy, it looks like we should have the newer versions (2.x) in the train UCA but I don't see it
+T 1589887413 18<ubottu18>	Launchpad bug 1858296 in Ubuntu Cloud Archive "ceph-deploy is not included in the Ubuntu Cloud Archives" [Medium,Fix committed]
+T 1589887455 18<jamespage18>	icey: http://reqorts.qa.ubuntu.com/reports/ubuntu-server/cloud-archive/train_versions.html
+T 1589887458 18<jamespage18>	its in proposed
+T 1589887506 18<icey18>	jamespage: looks like it's everywhere but -updates?
+T 1589887523 18<jamespage18>	yep
+T 1589887558 18<jamespage18>	icey: I can flush that through now
+T 1589887561 18<linuxr18>	hi, is someone using the "postfixadmin" package? I'm having troubles with the configuration file
+T 1589887593 18<icey18>	jamespage: another (almost entirely unrelated) question - when do we mark a bug that's targeting the UCA as fix-released?
+T 1589887603 18<icey18>	every target within that is already fix-released on the one I'm looking at
+T 1589887608 18<jamespage18>	icey: when the fix is in -updates
+T 1589887658 18<jamespage18>	icey: which bug are you lookking at?
+T 1589887664 18<icey18>	jamespage: https://bugs.launchpad.net/cloud-archive/+bug/1847243
+T 1589887665 18<ubottu18>	Launchpad bug 1847243 in Ubuntu Cloud Archive "Update Octavia-* packages as per OSSA-2019-005 / CVE-2019-17134" [High,Fix committed]
+T 1589887723 18<jamespage18>	icey: ah right - the default bug task target is the current focus of development
+T 1589887738 18<icey18>	jamespage: another like that: https://bugs.launchpad.net/cloud-archive/+bug/1848139
+T 1589887740 18<ubottu18>	Launchpad bug 1848139 in Ubuntu Cloud Archive "trove post-install fails" [High,Fix committed]
+T 1589887752 18<jamespage18>	so I suspect that bug was implicitly fixed in the development release (i.e. no bug reference in the changelog)
+T 1589887761 18<jamespage18>	so the UCA dev focus task has not auto-updated
+T 1589887768 18<jamespage18>	that can be marked as fix-released
+T 1589889520 18<icey18>	jamespage: is there some magic that should be auto-marking bugs fix-released when the update is in the updates pocket for the desired release?
+T 1589890736 18<jamespage18>	icey: so yes kinda but there are a few bugs
+T 1589890787 18<jamespage18>	icey: when you upload a source package, the process that generates the source package will list any bugs from the changelog as additional meta-data
+T 1589890807 18<jamespage18>	the tools that we use for moving packages around use that metadata to comment and close out bug tasks
+T 1589890828 18<jamespage18>	however if a subsequent upload superceeds something else that list of bugs can get lost
+T 1589891680 18<MJCD18>	what's the default group for people who can run systemctl
+T 1589891682 18<MJCD18>	without sudo
+T 1589899366 18<jamespage18>	icey, coreycb : https://people.canonical.com/~ubuntu-archive/component-mismatches-proposed.svg we have a few to deal with - masakari has re-grown its depends on sqla-utils
+T 1589899535 18<coreycb18>	jamespage: ok that's groovy I think right?
+T 1589899560 18<MICROburst18>	Could not find an installable distribution at '...' - what does virt-install expect? https://paste.centos.org/view/a5715f2c
+T 1589899617 18<coreycb18>	jamespage: icey: ugh focal too, python3-sqlalchemy-utils is in universe and python3-masakari in main
+T 1589899626 18<icey18>	:-/
+T 1589899662 18<coreycb18>	icey: I'll work on those
+T 1589899688 18<coreycb18>	icey: you can focus on that designate one you're working on
+T 1589899859 18<jamespage18>	coreycb: it is groovy yes
+T 1589899876 18<jamespage18>	sqla-utils got dropped from upstream I think - it was an obsolete depends still in requirements.txt
+T 1600044734 19*	Now talking on 22#ubuntu-server
+T 1600044734 22*	Topic for 22#ubuntu-server is: Ubuntu Server discussion and support | For general (not server specific) support, try #ubuntu | IRC Guidelines: https://wiki.ubuntu.com/IrcGuidelines | https://wiki.ubuntu.com/ServerTeam/GettingInvolved | Docs and resources: https://help.ubuntu.com/16.04/serverguide/
+T 1600044734 22*	Topic for 22#ubuntu-server set by 26Pici (24Thu Sep 22 12:33:56 2016)
+T 1600044735 -18ChanServ-	[#ubuntu-server] Ubuntu Server Discussions (development and support). This channel is logged. Use of this channel implies acceptance of terms at https://wiki.ubuntu.com/IRC/TermsOfService
+T 1600044767 18<fretegi18>	RoyK, well... added just fine.. back to rebuilding... no more warnings looking at fdisk
+T 1600044774 18<RoyK18>	good
+T 1600044791 18<fretegi18>	guess we wait 2.5 hours for the thing to build and cross our fingers
+T 1600044873 18<fretegi18>	ok gonna go cook some supper.  appreciate you sticking around to help buddy
+T 1600044892 18<RoyK18>	well, talk to you tomorrow - it's late here
+T 1600044905 18<fretegi18>	sounds good!  thanks again pal, have a great evening
+T 1600046044 18<fridtjof[m]18>	sarnold: filed a bug report! https://bugs.launchpad.net/ubuntu/+source/qemu/+bug/1895487
+T 1600046045 18<ubottu18>	Launchpad bug 1895487 in qemu (Ubuntu) "'qemu-img convert' performance regression when target is a LVM volume" [Undecided,New]
+T 1600089646 18<otisolsen7018>	When I start up a VM with ubuntu server 12.04 LTS for some reason it does not automatically ask DHCP server for an IP Address. Instead it keeps booting up with some old IP. When I run dhclient -r enp0s3 ; dhclient enp0s3; and now it gets the right IP address from DHCP and it keeps it .... until next reboot. At which it starts up with the old again. How to fix?
+T 1600089699 18<tomreyn18>	!12.04
+T 1600089700 18<ubottu18>	Ubuntu 12.04 LTS (Precise Pangolin) was the sixteenth release of Ubuntu. !End-of-life was April 28th 2017. See https://lists.ubuntu.com/archives/ubuntu-security-announce/2017-April/003833.html for more information
+T 1600089719 18<otisolsen7018>	20.04, sorry! :)
+T 1600089737 18<otisolsen7018>	tomreyn, typo
+T 1600089738 18<tomreyn18>	oh, much better :)
+T 1600089790 18<tomreyn18>	what is it using for network management? netplan? with which renderer?
+T 1600089825 18<otisolsen7018>	tomreyn, I have no idea. Whatever is default. Grepping for NIC name in /etc seems to indicate netplan
+T 1600089891 18<tomreyn18>	so you don't know how the network is configured, but expect dhcp to work, hmmm
+T 1600089920 18<otisolsen7018>	tomreyn, yes, I would expect dhcp to work if nothing else is configured.
+T 1600089929 18<otisolsen7018>	On a default install
+T 1600089941 18<tomreyn18>	so it was a fresh 20.04 installation?
+T 1600089945 18<otisolsen7018>	Correct
+T 1600089961 18<tomreyn18>	all updates installed?
+T 1600089965 18<otisolsen7018>	Yes
+T 1600090036 18<tomreyn18>	it must be persisting this ip address over reboots somehow, or be receiving it from the dhcp server on boot. your logs should tell which of these applies
+T 1600090047 18<otisolsen7018>	Which logs to check?
+T 1600090068 18<Ussat18>	so, Ubuntu 18.04. MySql version 5.7.30. It seems to be hung on "/bin/bash /var/lib/dpkg/info/mysql-server-5.7.postinst configure 5.7.30-0ubuntu0.18.04.1" It LOOKS like its recreating the index. This is a 64GB database and reindexing will take a long time, I assume killing this will have very bad consiquesnces ?
+T 1600090071 18<tomreyn18>	journalctl, i'm not sure what to filter for.
+T 1600090082 18<Ussat18>	These are the mysql process running: https://pastebin.com/Q4JvUt4w
+T 1600090165 18<tomreyn18>	!info mysql-server bionic
+T 1600090167 18<sdeziel18>	Ussat: I suggest you take a look at the postinst before you decide to kill that process. I don't know myself how bad (or if at all) it would be
+T 1600090171 18<ubottu18>	mysql-server (source: mysql-5.7): MySQL database server (metapackage depending on the latest version). In component main, is optional. Version 5.7.31-0ubuntu0.18.04.1 (bionic), package size 9 kB, installed size 108 kB
+T 1600090635 18<otisolsen7018>	I have a VM that I use for testing/dev purposes locally only. I would like it to log me in automatically in the console upon bootup. How do I do this?
+T 1600091892 18<RoyK18>	just use mariadb instead
+T 1600091900 18<RoyK18>	mysql is dead
+T 1600091961 18<sdeziel18>	otisolsen70: probably easier to setup SSH keys
+T 1600091988 18<otisolsen7018>	sdeziel, yes, but I am asking about physical console access to the TTY
+T 1600092036 18<sdeziel18>	otisolsen70: IMHO, using the console is not a nice way to dev/test but if you really want to, that's probably doable but I don't know how, sorry
+T 1600092183 18<tomreyn18>	https://askubuntu.com/questions/819117/how-can-i-get-autologin-at-startup-working-on-ubuntu-server-16-04-1
+T 1600094543 18<frickler18>	RoyK: if mysql is dead, why is it in main and mariadb in universe? also, would you use the latter or vendor pkgs?
+T 1600094648 18<frickler18>	jamespage: coreycb: I was wondering the same for your openstack deployments. would you support switching devstack on focal to mariadb, too?
+T 1600094725 18<jamespage18>	frickler: we're switched from percona-xtradb-cluster to mysql-8 innodb cluster as the default MySQL platform for OpenStack @ Focal
+T 1600094737 18<jamespage18>	using mysql-router for resilence
+T 1600094833 18<frickler18>	jamespage: oh, o.k., I seemed to remember something about mariadb, but then I got that misplaced somehow. so I guess we'll keep the default job on mysql
+T 1600094872 18<jamespage18>	yp
+T 1600094942 18<frickler18>	jamespage: but while I have you here, did you see my ping last week about the glibc vs. ovs bug?
+T 1600095027 18<frickler18>	https://bugs.launchpad.net/ubuntu/+source/glibc/+bug/1839592
+T 1600095028 18<ubottu18>	Launchpad bug 1839592 in glibc (Ubuntu) "Open vSwitch (Version 2.9.2) goes into deadlocked state" [High,Confirmed]
+T 1600095083 18<jamespage18>	frickler: ah yes - I need to talk to xnox about that one on how best to proceed with a fix - backporting a whole new version is not likely to happen
+T 1600095253 18<frickler18>	jamespage: if I can help in identifying/verifying a fix, feel free to ping me. it really doesn't feel good to still run with a version from disco in prod
+T 1600095264 18<jamespage18>	I agree
+T 1600108179 18<sarnold18>	fridtjof[m]: excellent work :D
+T 1600113930 18<coreycb18>	icey: I've uploaded dnspython 2.0.0+really1.16.0-2ubuntu1
+T 1600149306 18<icey18>	coreycb: cool
+T 1600153519 18<rantanran18>	Is it possible to use the ubuntu server installer to install on a btrfs raid 1 with luks on each disk?
+T 1600156026 18<rantanran18>	Is it possible to use the ubuntu installer with a btrfs raid1 on luks layout? The installer does not give me that option, but I would be fine providing the layout with parted.
+T 1600165770 18<kklimonda18>	where can I get debugging symbols for ubuntu cloud archive packages? in particular librbd1-dbg 15.2.1-0ubuntu2~cloud0 or equivalent
+T 1600174789 18<rafaeldtinoco18>	kklimonda: iirc there is no dbg packages for the cloud archives. when I was at SEG, and had to debug cloud archive, I would build the same package in a PPA with debug symbols enabled. That would give me "close enough" debug symbols so I could open core dumps and check (for example)
+T 1600174936 18<kklimonda18>	rafaeldtinoco: I actually managed to find (some of?) them here: https://launchpad.net/~ubuntu-cloud-archive
+T 1600174955 18<kklimonda18>	I found a random email somewhere I think that mentioned it
+T 1600174965 18<rafaeldtinoco18>	Oh they created it
+T 1600174970 18<rafaeldtinoco18>	they have now -ddeb PPA
+T 1600174973 18<rafaeldtinoco18>	awesome.. thats new =)
+T 1600174975 18<rafaeldtinoco18>	even to me
+T 1600174978 18<rafaeldtinoco18>	kklimonda: nice
+T 1600174996 18<kklimonda18>	oh, it was a bug - https://bugs.launchpad.net/cloud-archive/+bug/1649979
+T 1600175002 18<ubottu18>	Launchpad bug 1649979 in Ubuntu Cloud Archive victoria "ddebs are not provided for cloud-archive packages" [High,Fix released]
+T 1600175006 18<rafaeldtinoco18>	oh.. but they dont have all dbgsyms there yet
+T 1600175013 18<rafaeldtinoco18>	ok.. i was aware of this bug
+T 1600175017 18<rafaeldtinoco18>	so.. they're slowly creating them
+T 1600175022 18<rafaeldtinoco18>	as new releases are done (I think)
+T 1600175028 18<rafaeldtinoco18>	mitaka, for example, has only 4 packages
+T 1600175052 18<kklimonda18>	yeah, that seems to be a recent development
+T 1600175053 18<rafaeldtinoco18>	yep, they have just a few :\
+T 1600175067 18<rafaeldtinoco18>	kklimonda: the PPA trick helped a lot
+T 1600175069 18<rafaeldtinoco18>	in the past
+T 1600175082 18<rafaeldtinoco18>	the build machines are similar if not the same
+T 1600175130 18<rafaeldtinoco18>	orelse I just recompiled the source packages with nostrip as DEB_BUILD_OPTION
+T 1600175137 18<rafaeldtinoco18>	and would reproduce locally to check the dumps
+T 1600175230 18<kklimonda18>	yeah, pushing packages with stripping disabled to PPA is a decent workaround
+T 1600175250 18<kklimonda18>	although I already have a local build machine and apt repository, so I'd probably go this round myself
+T 1600175259 18<kklimonda18>	still, not having to do that is great :D
+T 1600176979 18<Ussat18>	So Ubuntu 18.04.4 LTS, How can I exclude the following from updates:  https://pastebin.com/3sNkYM7t
+T 1600177096 18<Ussat18>	I know I can use sudo apt-mark hold <name> but would *mysql* work in this case ?
+T 1600177722 18<rbasak18>	Ussat: within a single distribution release and using official distribution apt sources only, in general holding packages should never break your system if you don't otherwise override apt or dpkg. apt should be aware if an update elsewhere will break a package and refuse to do it. However this does rely on packagers correctly declaring breaking relationships so you're more likely to find packaging
+T 1600177728 18<rbasak18>	bugs than if not holding. However it should be safe to do what you're suggesting - except that of course by holding you're skipping security updates and other bugfixes so you'll be vulnerable in that sense.
+T 1600177783 18<rbasak18>	apt may also hold back other packages, so the security vulnerabilities and bugfixes apply to other packages, not just MySQL
+T 1600177785 18<sdeziel18>	"apt-mark hold '*mysql*'" holds more than the installed packages, it reports holding any package matching the regex
+T 1600177802 18<Ussat18>	rbask, the mysql would be updated seperately. The reason behind this is that it has a 126GB database with 2BILLION records and the update takes....quite a while to put it mildly
+T 1600177846 18<Ussat18>	sdeziel, correct, which is why I checked what was installed that matched that regex first
+T 1600177913 18<Ussat18>	The problem was, that I use an asnible play to update, which, workls flawlessly, except this run there was a mysql update that held everything up because it took, a LOONG time
+T 1600177973 18<Ussat18>	so long that I avctually stopped the update on that box, which failed the ansible gracefully. removed that system from ansible and re-ran the play. That system of course was hosed, to put it mildly , and I restored a backup
+T 1600178002 18<Ussat18>	Now, all is well, I am just trying to avoid the multi hour update on this one system because of a mysql update
+T 1600178040 18<Ussat18>	Honestly, if anyone has a better suggestion,. please feel free
+T 1600178106 18<Ussat18>	of course I would test this on my test system, the issue was not caught on the test system, because, well, I dont have the prod database size on the test box
+T 1600178355 18<sdeziel18>	Ussat: with MySQL 8.0, the Ubuntu package no longer runs the mysql_upgrade script in postinst
+T 1600178390 18<Ussat18>	really....
+T 1600178401 18<Ussat18>	thats what actually was hanging
+T 1600178430 18<Ussat18>	is 8.0 in 18.04.4 ?
+T 1600178436 18<sdeziel18>	Ussat: with 5.7, you might want to use /etc/mysql/FROZEN to bypass most of the postinst
+T 1600178442 18<sdeziel18>	Ussat: no :(
+T 1600178457 18<Ussat18>	sdeziel, I will look into FROZEN, thanks
+T 1600178490 18<Ussat18>	is FROZEN a file there, I dont see it
+T 1600178709 18<sdeziel18>	Ussat: I never used the FROZEN mode myself but was pointed to in comment #7 of LP: #1889472, hth
+T 1600178718 18<ubottu18>	Launchpad bug 1889472 in mysql-5.7 (Ubuntu Bionic) "mysql-server-5.7 postinst fails when in read-only mode" [Low,Triaged] https://launchpad.net/bugs/1889472
+T 1600178762 18<Ussat18>	Thanks, looking at that now
+T 1600178949 18<Ussat18>	sdeziel, that looks promising, will need to test
+T 1600178968 18<Ussat18>	It also, looks like the only good option :(
+T 1600245501 18<icey18>	jamespage: I'm trying to work out how to ensure that one package's autopkgtests run another package's unit tests / tries to build another package with the new dependency
+T 1600252934 18<jamespage18>	icey: the autopkgtest infra takes care of identifying the reverse-depends for a package in proposed, scheduling tests and then blocking any migrations on failures
+T 1600252965 18<jamespage18>	so basically all you have todo is add unit testing to each package, then and unit test failures in the reverse dependency chain for an update will block its migration
+T 1600252975 18<jamespage18>	thus avoiding the dnspython breakage we had
+T 1600252978 18<jamespage18>	does that make sesne?
+T 1600253704 18<icey18>	jamespage: yeah - except apparently it didn't work for dnspython - as designate is one of it's rdepends, and designate runs unit tests during package build
+T 1600253929 18<jamespage18>	well that is odd
+T 1600253962 18<jamespage18>	and its that that need fixing if that is the case...
+T 1600254467 18<icey18>	ah jamespage - it's in `reverse-depends --build`, but not `reverse-depends` for python3-dnspython
+T 1600254536 18<icey18>	confusing since ` python3-dnspython (>= 1.16.0),` is in designate's `Depends` for python3-designate
+T 1600254945 18<icey18>	I failed to read, python3-designate is in there: https://pastebin.ubuntu.com/p/CDkjSPTqWK/
+T 1600257055 18<jo-erlend18>	Anyone around? I'm trying to setup an apt-mirror and it's not working and I don't understand what I'm doing wrong.
+T 1600269777 18<bnason18>	Is there any way to get the ubuntu server installer to use the cloud config file automatically from a floppy/cd? I'm trying to use Packer to automate creating my vm templates in vsphere and the only way I've gotten it to work (and every example online shows) it using boot_commands and hosting a http server for the cloud-init. The http server is problematic since my vcenter server isn't able to communicate with my local machine.
+T 1600269786 18<bnason18>	So I've had to create a script to automate creating a ssh reverse proxy to a server it can communicate with.
+T 1600272993 18<bnason18>	Ok I was able to get it to use the files when I put them on a floppy with label CIDATA with ds=nocloud-net (without the seedfrom http part). I just wish i didn't have to pass a boot_command as that seems to be a bit finicky and sometimes fails.
+T 1600273114 18<smoser18>	bnason: im' not sure why it would be finick. cloud-init is probably running your boot command.
+T 1600273125 18<smoser18>	boot commands are not guaranteed to have network access.
+T 1600273136 18<smoser18>	i suspect that is the root of 'finicky'
+T 1600273196 18<bnason18>	this is the boot_commands directive in Packer. It injects keystrokes into the vm in vsphere and randomly (not very often, but still) it fails seemingly because of timing
+T 1600273270 18<bnason18>	I wonder how hard it would be to modify the ubuntu server iso to use "autoinstall net.ifnames=0 biosdevname=0 ip=dhcp ipv6.disable=1 ds=nocloud-net" by default
+T 1600273434 18<smoser18>	oh. don't know.
+T 1600274192 18<bnason18>	Ok, so at least I've gotten around using an http server to host the cloud init files.
+T 1600274242 18<bnason18>	My next problem is sometimes subqiuity crashes when trying to install packages. Specifically right now, if I use "kubelet=1.19.0-00" it crashes but if I use "kubelet=1.19.1-00" then it works. Both are valid versions
+T 1600278752 18<bnason18>	Arg, ok so apparently my user isnt getting created now that its loading the user-data file from the floppy.
+T 1600279350 18<RoyK18>	did you say floppy?
+T 1600279855 18<bnason18>	RoyK: yup
+T 1600279874 18<bnason18>	i mean its a virtual floppy on a vm in vsphere
+T 1600279928 18<bnason18>	Is there documentation somewhere on all the options that subiquity uses in the user-data file?
+T 1600280016 18<bnason18>	n/m of course i found it right after asking: https://ubuntu.com/server/docs/install/autoinstall-reference
+T 1600325136 18<frickler18>	disable ipv6 by default? are we back in 1998?
+T 1600333140 18<shurdeek18>	hello
+T 1600333229 18<shurdeek18>	I am trying do a PXE+nfs boot of the cloud images. The problem is, the official cloud images don't have the network driver for all the hardware I need. I'm trying to find a way to solve this.
+T 1600333380 18<shurdeek18>	I've spent hours now trying to find out how to build a custom cloud image. Unfortunately I am having problems finding the introductory level documentation. I found out that it probably is done by using live-build. However, I can't find out how to tell live-build to use the cloud-image seed. It always uses the livecd-rootfs seed.
+T 1600333418 18<shurdeek18>	I'd be grateful for documentation on how to do this
+T 1600333656 18<shurdeek18>	or what alternative way of getting the rtl8169 driver into the cloud image
+T 1600338510 18<mwhudson18>	shurdeek: um cloud images are built for vms really
+T 1600338516 18<mwhudson18>	what are you trying to achieve?
+T 1600340142 18<RoyK18>	mwhudson: using cloud images on physical machines, perhaps? ;)
+T 1600340168 18<mwhudson18>	well yes but why
+T 1600340177 18<RoyK18>	no idea whatsoever
+T 1600340727 18<shurdeek18>	mwhudson: I don't necessarily need to use the cloud images on bare metal. I mainly want to use a combination of booting through PXE, mounting rootfs over NFS (or as squashfs image in ram), and cloud-init to customise the system.
+T 1600340762 18<shurdeek18>	I could use something like maas, but that looks like a total overkill for me, and I would have to redesign the network
+T 1600340833 18<mwhudson18>	shurdeek: hmm
+T 1600340834 18<shurdeek18>	if a different image is more suitable then that's ok too
+T 1600340846 18<shurdeek18>	or if there is a scrip to build my own image
+T 1600340880 18<mwhudson18>	hmm, download a squashfs, unpack it, chroot in, install packages, repack it
+T 1600340881 18<mwhudson18>	?
+T 1600340910 18<mwhudson18>	livecd-rootfs (the thing that makes the images) is a bit difficult to operate, sadly
+T 1600340950 18<RoyK18>	shurdeek: just use a normal image - should work
+T 1600340993 18<shurdeek18>	which image do you recommend for a light server, that supports NFS root and could-init
+T 1600341043 18<RoyK18>	just use the normal server image
+T 1600341049 18<RoyK18>	it's light enough
+T 1600341065 18<shurdeek18>	ok I'll see if it supports what I need
+T 1600341066 18<shurdeek18>	thanks
+T 1600341077 18<RoyK18>	it quite probably will
+T 1600341113 18<shurdeek18>	and how do I build my own one if I want the latest packages?
+T 1600341146 18<RoyK18>	just upgrade later with unattended-upgrades etc
+T 1600341155 18<RoyK18>	or just use ansible to do a full upgrade
+T 1600341189 18<RoyK18>	or whatever floats your ship
+T 1600341214 18<shurdeek18>	ok i'll try
+T 1600341217 18<shurdeek18>	thanks
+T 1600344083 18<shurdeek18>	well, I managed to boot the server image (18.04.5) with nfs root. Unfortunately, it runs the installer rather than a normal startup, and it doesn't seem to execute cloud-init
+T 1600344089 18<shurdeek18>	maybe I'm missing some boot parameters?
+T 1600344320 18<RoyK18>	sorry - never tried this. I've nfs booted things earlier, but not with the installer, just a normal installation and then added some hooks to change things like ssh keys and ip address (if that's set statically). Perhaps this will help? https://ubuntu.com/server/docs/install/autoinstall-quickstart
+T 1600344451 18<shurdeek18>	RoyK: it looks like that could help, there are some argumens there that I haven't tried
+T 1600345202 18<RoyK18>	good luck :)
+T 1600345232 18<shurdeek18>	well, it doesn't seem to work on 18.04 but better on 20.04. The cloud-init executes on 20.04, but it still boots into the installer
+T 1600347555 18<bnason18>	Yea, they apparently released a 1.19.2-00 last night, and trying to force install 1.19.1-00 causes a crash
+T 1600348592 18<bnason18>	And I still can't get it to create the default user for me any more since moving from http to floppy. Here is my current user-data file: https://gist.github.com/bnason/3e268a73adb1d330cb575e7084b19080
+T 1600348640 18<bnason18>	I might just have to switch back to 18.04
+T 1600348781 18<ahasenack18>	bnason: you may get more specific help in the cloud-init channel
+T 1600348799 18<ahasenack18>	oh, sorry, it's about unattended install
+T 1600348810 18<ahasenack18>	there is a forum thread I think about it, have you tried posting there?
+T 1600348823 18<ahasenack18>	the main developer of this is on the other side of the globe
+T 1600348829 18<ahasenack18>	i.e, asleep now
+T 1600348991 18<bnason18>	This one? https://discourse.ubuntu.com/t/please-test-autoinstalls-for-20-04/15250
+T 1600349027 18<ahasenack18>	yeah
+T 1600355411 18<bnason18>	Unfortunately, looks like that topic is kinda dead.
+T 1600355564 18<ahasenack18>	if you post, it will go back to the top
+T 1600356895 18<rapidwave18>	Mysql cannot connect to /var/run/mysqld/mysqld.sock
+T 1600356903 18<rapidwave18>	Says it doesn't exist
+T 1600357049 18<compdoc18>	rapidwave, might want to look thru the many config files in /etc/mysql and see if the location is set somewhere else, or use locate to search for mysqld.sock
+T 1600357094 18<rapidwave18>	locate didn't return any results
+T 1600357099 18<compdoc18>	or read the log files to find why mysql isnt starting
+T 1600357247 18<rapidwave18>	Well...hmm. I try using mysql and it says access denied
+T 1600357272 18<rapidwave18>	I cannot seem to use mysqld_safe because socket doesn't exist
+T 1600357287 18<compdoc18>	does this show anything:  service mysqld status
+T 1600357300 18<rapidwave18>	Could not be found
+T 1600357360 18<fridtjof[m]18>	Isn't it just mysql?
+T 1600357386 18<compdoc18>	how about the command:  dpkg --get-selections | grep mysql
+T 1600357430 18<compdoc18>	shows the same on mine: service mysql status
+T 1600357644 18<rapidwave18>	https://gist.github.com/ojabi/553303c728be56bb460efed2f3a7ce19
+T 1600357843 18<compdoc18>	I think 5.7 is corrent for 18.04
+T 1600357849 18<compdoc18>	correct
+T 1600357977 18<rapidwave18>	I'll remove 8.0 and install 5.7
+T 1600358002 18<rapidwave18>	Wait..I'm using 20.04...
+T 1600358245 18<compdoc18>	how did you install it?
+T 1600358297 18<compdoc18>	my systems are still on 18.04. waiting for them to release the new one for upgrades
+T 1600358304 18<teward18>	20.04 sounds about right if using 8.0 I think?
+T 1600358346 18<rapidwave18>	I think I'll purge mysql and reinstall
+T 1600358410 18<compdoc18>	let apt install for you
+T 1600358672 18<rapidwave18>	I am
+T 1600361461 18<bnason18>	I'm wondering if the CIDATA floppy still being attached when the VM restarts after the installation is causing this issue. The exact same file works if I use HTTP but not from the floppy. Does anyone know how to disable cloud-init during the autoinstall? `touch /target/etc/cloud/cloud-init.disabled` is what I'm trying right now but no idea if thats enough
+T 1600362568 18<bnason18>	Well I also added "cloud-init=disabled" to the kernel so it's not looking like that is the problems
+T 1600433131 18<jamespage18>	cpaelzer: hello - putting https://bugs.launchpad.net/qemu/+bug/1894804 on your radar
+T 1600433132 18<ubottu18>	Launchpad bug 1894804 in qemu (Ubuntu) "Second DEVICE_DELETED event missing during virtio-blk disk device detach" [Undecided,New]
+T 1600433144 18<jamespage18>	openstack are migrating to focal as a base for the victoria release
+T 1600433151 18<jamespage18>	and are hitting a few edge bumps
+T 1600433789 18<cpaelzer18>	thanks jamespage, I'll take a look through these massive logs on monday
+T 1600435208 18<zetheroo18>	something strange I am noticing with Ubuntu Server 2004 - when I am presented with the login prompt the bootup log keeps printing on the screen
+T 1600435328 18<rbasak18>	zetheroo: just once after install or on every subsequent boot?
+T 1600435370 18<zetheroo18>	rbasak: I installed all the updates and rebooted ... so far seems to not be happening again
+T 1600435374 18<rbasak18>	If just once after install and you selected snaps to install during the installation, then they are installed on first boot and a bug is that the console is spammed: 1778226
+T 1600435380 18<rbasak18>	If just once after install and you selected snaps to install during the installation, then they are installed on first boot and a bug is that the console is spammed: bug 1778226
+T 1600435381 18<ubottu18>	bug 1778226 in subiquity "snaps are installed in the background during first boot" [Medium,Triaged] https://launchpad.net/bugs/1778226
+T 1600435392 18<zetheroo18>	ah ok
+T 1600435426 18<rbasak18>	I'm not aware of other console spamming bugs apart from that specific case, but if so bug reports are appreciated
+T 1600435455 18<zetheroo18>	rbasak: ok, no that seems to be the problem. Thanks ;)
+T 1600437083 18<ahasenack18>	zetheroo: that console noise on first boot is a known issue
+T 1600437098 18<ahasenack18>	oh, rbasak linked it already, n/m
+T 1600437101 18<zetheroo18>	;)
+T 1600437128 18<ahasenack18>	I just quickly read "I'm not aware of other console spamming bugs", ignored the "other" word, and assumed he didn't know of this one
+T 1600477331 18<keithzg[m]18>	Is there a filter or wiki page or anything out there listing what's holding up the 20.04 LTS prompts? Not that I don't trust that it's being held up for good reason, I'm just curious :)
+T 1600477714 18<keithzg[m]18>	(I had previously had the impression that systems set to "Prompt=lts" would get the prompt when the .1 of the release was minted, but either that was always purely correlative rather than causative or something's different this release?)
+T 1600477741 18<sarnold18>	indeed I think it was always coincidental
+T 1600477781 18<sarnold18>	I did see a suggestion once of which specific bug was holding things up, but I've forgotten no wwhich one it is
+T 1600478377 18<keithzg[m]18>	Hmm so it's just someone at Canonical decides when to flip the switch? Or at very least the criteria is not public? Not a wholly unreasonable way to do things, I guess I just always assumed there was some more formal process for thresholds, ex. no confirmed critical bugs tagged against the release (and I do see one such bug at https://bugs.launchpad.net/ubuntu/+bugs?field.tag=focal&orderby=-importance so is that
+T 1600478377 18<keithzg[m]18>	it?).
+T 1600478430 18<keithzg[m]18>	So far have had no problems upgrading any of my systems from 18.04 to 20.04 other than the one that was using Icinga2's own repos, and they broke configs in a point release, so that was definitely not a problem on the Ubuntu side of things, hah!
+T 1600478485 18<keithzg[m]18>	But, not knowing exactly why the rollout is currently delayed I've mostly been cautious, certainly with the systems I admin for work; at home I'm a bit more cavalier ;)
+T 1600478824 18<rfm18>	The release status page that tracks the upgrade-stopper bugs is https://discourse.ubuntu.com/t/focal-fossa-20-04-1-lts-point-release-status-tracking/17604
+T 1600478857 18<sarnold18>	oh nice, that's better than what I was about to suggest
+T 1600478880 18<sarnold18>	(I was going to suggest scraping all the ubuntu-release channel logs from https://irclogs.ubuntu.com/2020/ and looking for mentions of 20.04.1 :)
+T 1600478962 18<rfm18>	The fix for the last stopper bug has been released to focal-updates (it came down yesterday for me) so it shouldn't be too much longer
+T 1600479738 18<cliluw18>	Is there a site that lets me view info documents online? I know so many sites to read man pages online, but none to read info docs.
+T 1600480037 18<sarnold18>	cliluw: the pinfo tool can make reading info files locally a little less horrible
+T 1600480063 18<sarnold18>	I thought debian  systems had a 'winfo' or similar that would reexport them to a web interface of some sort but I'm not spotting it now..
+T 1600480127 18<sarnold18>	cliluw: if it is debian-packaged you can read the info files via their sources.debian.org service, eg https://sources.debian.org/data/main/g/grub2/2.04-9/docs/grub.info#L36
+T 1600480144 18<sarnold18>	but that means you have to find the thing in the source. it's a bit of a pain in the butt but I use this for reading manpages all the time.
+T 1600480247 18<cliluw18>	sarnold: That sounds even harder than using the "info" command. :-P
+T 1600480256 18<cliluw18>	Thanks for the suggestions though.
+T 1600480331 18<sarnold18>	I read manpages for *loads* of things that I don't want to install just to read the page :)
+T 1600578793 18<kinghat18>	did wireguard get ported back to 18.04.5 LTS (GNU/Linux 4.15.0-117-generic x86_64)?
+T 1600596635 18<tomreyn18>	there's wireguard-dkms
+T 1600596668 18<tomreyn18>	which i thnk should work with the vanilla kernel.
+T 1600598822 18<Blueking18>	anyone into sas controller hba/raid and sas expanders ?
+T 1600598911 18<Blueking18>	tried google for sas expanders, if it's possibly to connect multiple pc's to one sas expander... if have a big cabinet with two systems  two mobo with their own hba card   can both connect to same expander card ?
+T 1600602742 18<tomreyn18>	this sounds like a ##hardware question to me.
+T 1609963182 19*	Now talking on 22#ubuntu-server
+T 1609963182 22*	Topic for 22#ubuntu-server is: Ubuntu Server discussion and support | For general (not server specific) support, try #ubuntu | IRC Guidelines: https://wiki.ubuntu.com/IrcGuidelines | https://wiki.ubuntu.com/ServerTeam/GettingInvolved | Docs and resources: https://help.ubuntu.com/16.04/serverguide/
+T 1609963182 22*	Topic for 22#ubuntu-server set by 26Pici (24Thu Sep 22 12:33:56 2016)
+T 1609963182 -18ChanServ-	[#ubuntu-server] Ubuntu Server Discussions (development and support). This channel is logged. Use of this channel implies acceptance of terms at https://wiki.ubuntu.com/IRC/TermsOfService

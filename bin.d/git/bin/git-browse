@@ -1,24 +1,140 @@
-#!/usr/bin/env bash
+#!/usr/bin/env python
+# -*- mode: python; -*-
 
-set -euo pipefail; IFS=$'\n\t'
+"""
+__self__:
+  author: Mike Carifio
+  email: mike@carif.io
+  version:
+    kind: semver
+    id: 0.1.1
+  usage:
+    bash:
+      cmd: git browse {url}
+      example: git browse # in local working tree
+      debug: git browse --debug
+      notes:
+        - uses git convention that git-${cmd} is executed for `git ${cmd}` iff `git-${cmd}` is executable and on PATH
+---
+description:
+---
+history:
+"""
 
-# https://gist.github.com/igrigorik/6666860, I couldn't get an alias to work
-declare _url=$(git config remote.origin.url | sed 's/.git//')
+# noqa: E701 E305 E231
+import semver
+__self__ = dict(author='Mike Carifio', email='mike@carif.io',version=semver.VersionInfo.parse('0.1.1'))
 
-if [[ ${_url} =~ ^https?:// ]] ; then
-    _target=${_url}
-elif [[ ${_url} =~ ^((gh|gl|bb)-([^:]+)):(.*)$ ]] ; then
-    _hostname=$(ssh -G ${BASH_REMATCH[1]} | grep ^hostname | cut -d' ' -f2)
-    _prefix=${BASH_REMATCH[4]}
-    _branch=$(git symbolic-ref --quiet --short HEAD )
-    _folder=$(git rev-parse --show-prefix)
-    _target=https://${_hostname}/${_prefix}/tree/${_branch}/${_folder}
-    _profile=${BASH_REMATCH[3]}
-else
-    >&2 echo "website for url ${_url} unknown"
-    exit 1
-fi
+# python -m pdb $(type -p git-sclone) ${url}
+# run under pycharm debugger
+# python -m pip install -r requirements.txt
+
+import sys
+if sys.version_info.major < 3 or sys.version_info.minor < 9:
+    print(f"'{sys.executable}' version '{sys.version_info}' isn't 3.9 or later. Stopping.", file=sys.stderr)
+    sys.exit(1)
+    
+
+from logutil import rl # root logger rl created in logutil
+import os
+import fire
+import git
+import rich
+import webbrowser
+import giturlparse as gup
+from gitutil import gitroot
+import requests as rq
 
 
-$(xdg-settings get default-web-browser | sed 's/.desktop//') --profile=${_profile} ${_target} &
+
+# TODO mike@carif.io: generate parts of browse docstring automatically?
+def browse(remote:str='origin', dir:str=os.getcwd(), debug:bool=False, loglevel:str= 'WARN', verbose:bool=False)->None:
+    '''
+    git browse [remote] [dir] [--debug] [--loglevel='DEBUG'] [--verbose]
+    '''
+
+    # --loglevel='DEBUG'
+    if loglevel.upper() != rl.getEffectiveLevel():
+        rl.setLevel(loglevel)
+
+    # --debug # breaking into the python debugger
+    if debug:
+        rl.setLevel('DEBUG')
+        rl.debug(f"flag --debug raises loglevel from '{loglevel}' to 'DEBUG'")
+        breakpoint()
+
+    # Find git root starting at dir, if there is one. None if not
+    # Find gitroot if there is one.
+    if not (_root := gitroot(dir)):
+        rl.error(f"no git repository starting at {dir}.")
+        exit(3)
+
+
+    # _rest is the relative path to dir from _root. Need it for _back below.
+    _rest = os.path.relpath(dir, _root)
+
+    # Open the repo at it's working_directory
+    _repo = git.Repo(_root)
+
+    # map remote names to remotes themselves. The two most important are 'origin' and 'upstream' (if defined). The default is 'origin'.
+    _remotes = dict((_r.name, _r) for _r in _repo.remotes)
+    if _remote := _remotes.get(remote):
+        _url = _remote.url
+    else:
+        rl.error(f"no remote found for `{remote}`")
+        exit(2)
+    # _remote exists
+
+    # Parse origin's url.
+    _p = gup.parse(_url)
+
+    # The specific place to browse.
+    _branch = str(_repo.active_branch)
+    _back = '/' + _rest
+    _front = 'https://www.github.com/' + _p.pathname.removesuffix('.git') + '/tree/'
+
+    # Fix up an ssh url.
+
+    if _p.protocol == 'ssh' and _p.user == 'git' and _p.resource.endswith('github.com'):
+        # map names -> known branches
+        _known_branches=dict((_r.name, _r) for _r in _repo.branches)
+        # try known and hypothetical branches in a certain order
+        for _n in [_repo.active_branch.name, 'main', 'master', _known_branches.keys()]:
+            # if branch _n actually exists...
+            if _known_branches.get(_n):
+                # generate a url for it
+                _url = _front + _n + _back
+                # requires git authenication for private repos
+                # if rq.head(_url).status_code == 200: break  # found the "best" url to browse
+                break
+            rl.error(f"No responding url for branches '{_branches}'")
+            exit(6)
+    else:
+        # Use the url directly.
+        _url = _p.resource
+
+    rl.info(f"Selected {_url}")
+    # if rq.head(_url).status_code == 200:
+        # Open the url in a browser.
+    rl.info(f"Opening {_url}")
+    _b = webbrowser.get(using='chromium-browser')
+    _b.open(_url, new=2, autoraise=True)
+    # else:
+    #     rl.error(f"Can't open {_url}")
+
+
+def version():
+    print("git-browse 0.1.1 # rest tbs")
+    sys.exit(0)
+
+if '__main__' == __name__:
+    try:
+        result = fire.Fire(browse)
+        # advise = dotmap.DotMap(_dynamic=False)
+        # advise.bash._next.cmds = (f"cd {result.working_tree_dir}", "pwd", "git status")
+        # advise.pprint(pformat='json')
+        sys.exit(0)
+    except git.exc.GitCommandError as ce:
+        print(ce)
+        sys.exit(ce.status)
 

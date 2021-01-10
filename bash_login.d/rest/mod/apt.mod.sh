@@ -8,14 +8,14 @@ function apt.install {
     local _mod_name=${_self%%.*};
     local _mod=${_self%.*};
 
-    local -A _flags=([--name]=${_self} [--url]='' [--suffix]='' [--sign]='' [--key]='' [--ppa]='')
+    local -A _flags=([--name]=${_self} [--repo]='' [--suffix]='' [--sign]='' [--key]='' [--ppa]='')
     local -a _rest=()
     while (( $# )); do
         local _it=${1}
         case "${_it}" in
             # --template-flag=*) _flags[--template_flag]=${_it#--template-flag=};;
             --name=*) _flags[--name]=${it#--name=} ;;
-            --url=*) _flags[--url]=${_it#--url=} ;;
+            --repo=*) _flags[--repo]=${_it#--repo=} ;;
             --ppa=*) _flags[--ppa]=${_it#--ppa=} ;;
             --suffix=*) _flags[--suffix]=${_it#--suffix=} ;;
             --sign=*) _flags[--sign]=${_it#--sign=} ;;
@@ -28,15 +28,17 @@ function apt.install {
     done
 
     _name=${_flags[--name]:-${_rest[0]}}
-    [[ -n "${_flags[--sign]}" ]] && (cd /etc/apt/trusted.gpg.d; sudo curl ${_flags[--sign]} -fsSlO)
+    [[ -n "${_flags[--sign]}" ]] && apt.sign ${_flags[--sign]} ${_name}
     [[ -n "${_flags[--key]}" ]] && apt.key ${_flags[--key]} ${_name}
-    [[ -n "${_flags[--url]}" ]] && echo "deb [arch=amd64] ${_flags[--url]} ${_flags[--suffix]}" | sudo install /dev/stdin /etc/apt/sources.list.d/${_name}.list
-    [[ -n "${_flags[--ppa]}" ]] && sudo add-apt-repository -y ppa:${_flags[--ppa]}
+    [[ -n "${_flags[--repo]}" ]] && apt.repo ${_name} ${_flags[--repo]} ${_flags[--suffix]}
+    [[ -n "${_flags[--ppa]}" ]] && apt.ppa ppa:${_flags[--ppa]}
     
     sudo apt update || return 1
     sudo apt upgrade -y || return 1
     sudo apt install -y ${_rest[*]} || return 1
     sudo apt-mark auto ${_rest[*]} || return 1
+    : 'remember installed pkgs'
+    printf '%s ' ${_rest[*]} >> $(dirname $(${_mod}.mod.pathname))/${_self}.${HOSTNAME}.list
 }
 
 
@@ -48,14 +50,58 @@ function apt.install.all {
 
     local _forward=${_self%.all}
 
-    apt.install openssl openssh-server ssh-import-id whois xdg-utils cloud-init ttyrec python3 emacs inotify-tools incron wmctrl gnupg2
-    apt.install --key=1484120AC4E9F8A1A577AEEE97A80C63C9D8B80B --url='https://pkg.osquery.io/deb' --suffix='deb main' osquery
-    apt.install --ppa=jgmath2000/et et
+
+    # install osqueryi etc
+    apt.install --key=1484120AC4E9F8A1A577AEEE97A80C63C9D8B80B --repo='https://pkg.osquery.io/deb' --suffix='deb main' osquery
+    apt.install --sign='https://download.opensuse.org/repositories/hardware:razer/xUbuntu_20.10/Release.key' --repo='http://download.opensuse.org/repositories/hardware:/razer/xUbuntu_20.10/' --suffix='/' razergenie
+
+    # install eternal terminal
+    # apt.install --ppa=jgmath2000/et et
+    : 'install list of packages from other machines if they are listed locally'
+    apt.install $(cat $(dirname $(${_mod}.mod.pathname))/${_self}*.list 2>/dev/null)
+
+
+    # should be a better place to put these
+    sudo systemctl enable --now cockpit.socket
+    
+}
+
+function apt.installed.all {
+    : 'public, usage: apt.installed.all # report a list of pkgs apt.install.all will install'
+    local _self=${FUNCNAME[0]}
+    local _mod_name=${_self%%.*};
+    local _mod=${_self%.*};
+
+    printf '%s\n' osquery $(cat $(dirname $(${_mod}.mod.pathname))/${_self}*.list 2>/dev/null | uniq | sort)
+}
+
+function apt.sign {
+    ( cd /etc/apt/trusted.gpg.d; sudo curl -fsSl -o $2 $1 )
+}
+
+
+function apt.repo {
+    local _name=$1
+    local _repo=$2
+    local _suffix=$3
+    echo "deb $(apt.arch) ${_repo} ${_suffix}" | sudo install /dev/stdin /etc/apt/sources.list.d/${_name}.list
+}
+
+function apt.arch {
+   local -A _arch=([x86_64]='amd64')
+   printf '[arch=%s]' ${_arch[${HOSTTYPE}]}
 }
 
 function apt.key {
-     sudo gpg2 --export --no-default-keyring --keyring gnupg-ring:/etc/apt/trusted.gpg.d/${2:-$1}.gpg --keyserver keyserver.ubuntu.com --receive-key ${1:-$(return $(f.err "expecting key"))}    
+    # broken
+    sudo gpg2 --export --no-default-keyring --keyring gnupg-ring:/etc/apt/trusted.gpg.d/${2:-$1}.gpg --keyserver hkp://keyserver.ubuntu.com --receive-keys ${1:-$(return $(f.err "expecting key"))}    
 }
+
+function apt.ppa {
+    local _ppa=$1
+    sudo add-apt-repository -y ppa:${_ppa}    
+}
+
 
 # Make this file a "module".
 # Extract mod from pathname.

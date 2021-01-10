@@ -23,8 +23,14 @@ export HISTSIZE=-1
 
 
 function history.background {
+    : 'internal, usage: history.background ${sleep} ${command} # run ${command} in the background every ${sleep} seconds.'
+    local _self=${FUNCNAME[0]}
+    local _mod_name=${_self%%.*};
+    local _mod=${_self%.*};
+
     local _interval=${1:-60s}
     local _command=${2:-'history.historic'}
+
     # while true ; do sleep ${interval} ; (set -x ; ${command} ) ; done    # verbose version
     while true ; do sleep ${_interval} ; ${_command} ; done  
 }
@@ -37,17 +43,32 @@ function history.background {
 #fi
 
 function history.historic {
+    : 'internal, usage: history.historic # write all new commands in this session to history file'
+    local _self=${FUNCNAME[0]}
+    local _mod_name=${_self%%.*};
+    local _mod=${_self%.*};
+
+    # append all new history entries to file and reload. history becomes the set union of all shells.
     history -a
     history -n
-    # echo "historic ran for $$" >> /tmp/historic.log
 }
 
-# jobs will report a clearer function name.
-function history.dump_history_every_minute {
-    history.background &
+
+
+function history.run {
+    : 'public, usage: history.run # run history.background at most once in this bash session.'
+    local _self=${FUNCNAME[0]}
+    local _mod_name=${_self%%.*};
+    local _mod=${_self%.*};
+
+    if ! jobs -r | grep --silent history.background ; then
+        history.background &
+    fi
 }
 
-export PROMPT_COMMAND='history.dump_history_every_minute;'${PROMPT_COMMAND}
+history.run
+
+# export PROMPT_COMMAND='history.dump_history_every_minute;'${PROMPT_COMMAND}
 
 # Make this file a "module".
 # Extract mod from pathname.

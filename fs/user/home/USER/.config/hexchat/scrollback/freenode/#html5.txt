@@ -1,0 +1,502 @@
+T 1558636936 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1558640133 20*	Disconnected (20Connection timed out)
+T 1558640159 19*	Now talking on 22#html5
+T 1558640159 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1558640159 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1558641180 20*	Disconnected (20Connection timed out)
+T 1558641207 19*	Now talking on 22#html5
+T 1558641207 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1558641207 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1558644729 20*	Disconnected (20Connection timed out)
+T 1558644756 19*	Now talking on 22#html5
+T 1558644756 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1558644756 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1558646154 20*	Disconnected (20Connection timed out)
+T 1558646181 19*	Now talking on 22#html5
+T 1558646181 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1558646181 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1558648219 20*	Disconnected (20Connection timed out)
+T 1558648246 19*	Now talking on 22#html5
+T 1558648246 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1558648246 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1558649366 20*	Disconnected (20Connection timed out)
+T 1558649390 19*	Now talking on 22#html5
+T 1558649390 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1558649390 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1558651114 20*	Disconnected (20Connection timed out)
+T 1558651139 19*	Now talking on 22#html5
+T 1558651139 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1558651139 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1558653156 20*	Disconnected (20Connection timed out)
+T 1558654160 20*	Disconnected (20Connection timed out)
+T 1558654185 19*	Now talking on 22#html5
+T 1558654185 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1558654185 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1558655673 20*	Disconnected (20Connection timed out)
+T 1558655701 19*	Now talking on 22#html5
+T 1558655701 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1558655701 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1558656906 20*	Disconnected (20Connection reset by peer)
+T 1558656934 19*	Now talking on 22#html5
+T 1558656934 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1558656934 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1558658264 20*	Disconnected (20Connection reset by peer)
+T 1558658290 19*	Now talking on 22#html5
+T 1558658290 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1558658290 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1558659964 20*	Disconnected (20Connection timed out)
+T 1558659990 19*	Now talking on 22#html5
+T 1558659990 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1558659990 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1558662465 20*	Disconnected (20Connection timed out)
+T 1558662493 19*	Now talking on 22#html5
+T 1558662493 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1558662493 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1558664816 20*	Disconnected (20Connection timed out)
+T 1558664842 19*	Now talking on 22#html5
+T 1558664842 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1558664842 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1558666192 20*	Disconnected (20Connection timed out)
+T 1558666216 19*	Now talking on 22#html5
+T 1558666216 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1558666216 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1558667793 20*	Disconnected (20Connection timed out)
+T 1558667821 19*	Now talking on 22#html5
+T 1558667821 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1558667821 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1558669233 20*	Disconnected (20Connection timed out)
+T 1558669261 19*	Now talking on 22#html5
+T 1558669261 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1558669261 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1558670804 20*	Disconnected (20Connection reset by peer)
+T 1558670832 19*	Now talking on 22#html5
+T 1558670832 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1558670832 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1558672193 20*	Disconnected (20Connection timed out)
+T 1558672221 19*	Now talking on 22#html5
+T 1558672221 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1558672221 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1558673968 20*	Disconnected (20Connection timed out)
+T 1558673991 19*	Now talking on 22#html5
+T 1558673991 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1558673991 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1558675304 20*	Disconnected (20Connection reset by peer)
+T 1558675330 19*	Now talking on 22#html5
+T 1558675330 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1558675330 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1558676954 20*	Disconnected (20Connection reset by peer)
+T 1558676979 19*	Now talking on 22#html5
+T 1558676979 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1558676979 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1558678646 20*	Disconnected (20Connection timed out)
+T 1558678671 19*	Now talking on 22#html5
+T 1558678671 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1558678671 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1558679924 20*	Disconnected (20Connection reset by peer)
+T 1558679950 19*	Now talking on 22#html5
+T 1558679950 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1558679950 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1558682705 20*	Disconnected (20Connection timed out)
+T 1558682731 19*	Now talking on 22#html5
+T 1558682731 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1558682731 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1558684896 20*	Disconnected (20Connection timed out)
+T 1558684925 19*	Now talking on 22#html5
+T 1558684925 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1558684925 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1558687385 20*	Disconnected (20Connection timed out)
+T 1558687412 19*	Now talking on 22#html5
+T 1558687412 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1558687412 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1558690678 20*	Disconnected (20Connection timed out)
+T 1558690705 19*	Now talking on 22#html5
+T 1558690705 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1558690705 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1558692969 20*	Disconnected (20Connection timed out)
+T 1558692997 19*	Now talking on 22#html5
+T 1558692997 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1558692997 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1558694234 20*	Disconnected (20Connection reset by peer)
+T 1558694261 19*	Now talking on 22#html5
+T 1558694261 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1558694261 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1558696625 20*	Disconnected (20Connection timed out)
+T 1558696652 19*	Now talking on 22#html5
+T 1558696652 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1558696652 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1558697915 20*	Disconnected (20Connection timed out)
+T 1558697940 19*	Now talking on 22#html5
+T 1558697940 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1558697940 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1558699804 20*	Disconnected (20Connection timed out)
+T 1558699831 19*	Now talking on 22#html5
+T 1558699831 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1558699831 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1558700354 20*	Disconnected (20Connection reset by peer)
+T 1558700377 19*	Now talking on 22#html5
+T 1558700377 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1558700377 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1558702558 20*	Disconnected (20Connection timed out)
+T 1558702586 19*	Now talking on 22#html5
+T 1558702586 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1558702586 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1558703384 20*	Disconnected (20Connection reset by peer)
+T 1558703407 19*	Now talking on 22#html5
+T 1558703407 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1558703407 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1558707326 20*	Disconnected (20Connection timed out)
+T 1558707351 19*	Now talking on 22#html5
+T 1558707351 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1558707351 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1558710756 20*	Disconnected (20Connection timed out)
+T 1558710783 19*	Now talking on 22#html5
+T 1558710783 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1558710783 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1558711983 20*	Disconnected (20Connection timed out)
+T 1558712007 19*	Now talking on 22#html5
+T 1558712007 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1558712007 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1558712804 20*	Disconnected (20Connection reset by peer)
+T 1558712830 19*	Now talking on 22#html5
+T 1558712830 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1558712830 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1566829316 19*	Now talking on 22#html5
+T 1566829316 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1566829316 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1566932921 18<thepirate18>	Hello
+T 1566933280 18<jiffe18>	anyone have a recommendation for a good framework to use for creating a rotatable 3d space that I would be able to draw objects in moveable in x,y,z ?
+T 1566933403 18<thepirate18>	Searching developers to build an application
+T 1566933496 18<a-ja18>	jiffe: out of scope for this channel, perhaps try #css (or a more specialized channel)
+T 1567001847 18<rocketmagnet18>	hi everyone
+T 1567001889 18<rocketmagnet18>	can i use canvas with a backbuffer ? like creating an empty canvas - draw parts of two images to it and then display the result so the user don't see the drawing action ?
+T 1567021314 18<Codex_18>	so, what should I improve in this page: https://www.meshpage.org/mesh_all ?
+T 1568389386 19*	Now talking on 22#html5
+T 1568389386 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1568389386 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1568418684 18<duckgoose18>	hi
+T 1568418704 18<duckgoose18>	can I ask if I can ask a question
+T 1568418781 18<duckgoose18>	I want to change the fill color of an external svg resource being used as a background image
+T 1568418785 18<duckgoose18>	is there a way to do this
+T 1568418809 18<Naglfar18>	hi duckgoose
+T 1568418830 18<duckgoose18>	hello Naglfar
+T 1568419092 18<Naglfar18>	recently I was reading something about svg in https://www.w3.org/TR/SVG11/
+T 1568419241 18<Naglfar18>	https://www.w3.org/TR/SVG11/filters.html#EnableBackgroundProperty
+T 1568419626 18<duckgoose18>	hmm
+T 1568419649 18<duckgoose18>	so I can use filter to change the color. now the issue it it changes the color of the text too
+T 1568420162 18<duckgoose18>	well
+T 1568420183 18<duckgoose18>	I'm just gonna edit svgs before serving them. taking the easy way out
+T 1568420191 18<duckgoose18>	thanks for your time though
+T 1568543835 18<TarraX18>	Hello
+T 1568543899 18<TarraX18>	i was wondering if somone could help me with a bit of code ?
+T 1568560870 18<Naglfar18>	hello TarraX, what code do you need help with?
+T 1578965947 19*	Now talking on 22#html5
+T 1578965947 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1578965947 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1579024349 20*	Disconnected (20Connection timed out)
+T 1579024376 19*	Now talking on 22#html5
+T 1579024376 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1579024376 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1579111190 20*	Disconnected (20Connection timed out)
+T 1579111215 19*	Now talking on 22#html5
+T 1579111215 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1579111215 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1579208307 18*	The_Tablet woot
+T 1579219611 20*	Disconnected (20Connection timed out)
+T 1579219640 19*	Now talking on 22#html5
+T 1579219640 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1579219640 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1579222616 20*	Disconnected (20Connection timed out)
+T 1579222645 19*	Now talking on 22#html5
+T 1579222645 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1579222645 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1579249772 20*	Disconnected (20Connection timed out)
+T 1579266938 19*	Now talking on 22#html5
+T 1579266938 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1579266938 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1579379123 18<mattypants18>	hi
+T 1579379145 18<mattypants18>	Looking for advice on sectioning elements such as <header> - Would it make most sense for the section outlined in red in the following screenshot to be wrapped in header? https://imgur.com/NhZoDmt
+T 1579553103 18<kas8418>	Hi, is there a way to remove seconds from this codepen on Android? https://codepen.io/kas84-the-decoder/pen/PowxyKg
+T 1579572304 18<mattypants18>	hi
+T 1579572386 18<mattypants18>	Thinking about semantic HTML choices for a Q&A page
+T 1579572406 18<mattypants18>	Would blockquote makes sense for both the Q and the A?
+T 1579621272 18<jamie_118>	hey, im currently working with tables, right now i have a table inside of a div and its causing columns to wrap to a new line like https://cdn.discordapp.com/attachments/573122052089839627/669199822393180170/unknown.png instead of making it continue on and scroll bar like i have in css with overflow-x: scoll; any ideas?
+T 1579622149 18<jamie_118>	 https://jsfiddle.net/d1qbkyve/
+T 1579929715 19*	Now talking on 22#html5
+T 1579929715 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1579929715 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1580184505 18<fighter_fish18>	do i need to know xml to follow the xhtml syntax?
+T 1580217646 18<ahri18>	I'm using IndexedDB (via DexieJS), I have a websocket connected feeding me events from a bus, when I get 2 events in sequence of something like "add person foo" then "change name of person foo to bar" the write associated with the second event fails because it can't find person "foo" - is there a good way to ensure I don't act on the second event u
+T 1580217646 18<ahri18>	ntil the data from the first one has been written?
+T 1580345662 18<Codex_18>	is this yellow background too strong? https://meshpage.org/mesh_all
+T 1580453475 18<plutes18>	no it looks salmon but thanks for sticking around
+T 1580585056 18<[diablo]18>	good evening #html5 ... guys I have generated an email signuature with an online website... I took their code and intend on self hosting the images etc as I'm sure they're using it for tracking etc
+T 1580585086 18<[diablo]18>	I notice lines like <table cellpadding="0" cellspacing="0" class="sc-gPEVay eQYmiW" style="vertical-align: -webkit-baseline-middle; font-size: medium; font-family: Arial;">
+T 1580585122 18<[diablo]18>	but am I wrong in thinking that the the class="sc-gPEVay eQYmiW" is referencing a CSS... as theres no reference to the CSS in their code...
+T 1580585194 18<[diablo]18>	no file inclusion etc
+T 1580658366 19*	Now talking on 22#html5
+T 1580658366 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1580658366 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1580740835 19*	Now talking on 22#html5
+T 1580740835 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1580740835 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1580831669 19*	Now talking on 22#html5
+T 1580831669 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1580831669 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1580914595 19*	Now talking on 22#html5
+T 1580914595 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1580914595 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1580948686 20*	Disconnected (20Connection reset by peer)
+T 1580948714 19*	Now talking on 22#html5
+T 1580948714 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1580948714 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1580999372 19*	Now talking on 22#html5
+T 1580999372 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1580999372 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1581087418 19*	Now talking on 22#html5
+T 1581087418 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1581087418 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1581107952 20*	Disconnected (20Invalid argument)
+T 1581123603 19*	Now talking on 22#html5
+T 1581123603 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1581123603 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1581135793 18<brimestone18>	Hey guys, suppose I need to hire someone to building something like Netflix, Plex, type UI.. what programming language skills should I be looking for?
+T 1581137248 19*	Now talking on 22#html5
+T 1581137248 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1581137248 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1581139019 19*	Now talking on 22#html5
+T 1581139019 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1581139019 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1581139709 19*	Now talking on 22#html5
+T 1581139709 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1581139709 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1581177805 19*	Now talking on 22#html5
+T 1581177805 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1581177805 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1581283358 18<Scran18>	Hi
+T 1581347611 19*	Now talking on 22#html5
+T 1581347611 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1581347611 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1581394300 19*	Now talking on 22#html5
+T 1581394300 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1581394300 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1581395024 19*	Now talking on 22#html5
+T 1581395024 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1581395024 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1581404483 19*	Now talking on 22#html5
+T 1581404483 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1581404483 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1581459723 19*	Now talking on 22#html5
+T 1581459723 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1581459723 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1581533781 19*	Now talking on 22#html5
+T 1581533781 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1581533781 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1581737971 19*	Now talking on 22#html5
+T 1581737971 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1581737971 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1581816249 19*	Now talking on 22#html5
+T 1581816249 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1581816249 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1581908055 19*	Now talking on 22#html5
+T 1581908055 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1581908055 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1582037380 19*	Now talking on 22#html5
+T 1582037380 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1582037380 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1582090871 19*	Now talking on 22#html5
+T 1582090871 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1582090871 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1582122272 19*	Now talking on 22#html5
+T 1582122272 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1582122272 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1582259792 19*	Now talking on 22#html5
+T 1582259792 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1582259792 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1582299300 19*	Now talking on 22#html5
+T 1582299300 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1582299300 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1582377903 19*	Now talking on 22#html5
+T 1582377903 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1582377903 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1582595587 19*	Now talking on 22#html5
+T 1582595587 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1582595587 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1582724105 19*	Now talking on 22#html5
+T 1582724105 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1582724105 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1582756660 18<gendarme18>	I am looking for what attributes are necessary for creating a "title page" in html
+T 1582756744 18<gendarme18>	I assume this is possible since html was orignally for web documents right?
+T 1582794237 18<ronox18>	hi, is anyone here fluent in websockets?
+T 1582809798 20*	Disconnected (20Connection timed out)
+T 1582809825 19*	Now talking on 22#html5
+T 1582809825 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1582809825 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1582862099 19*	Now talking on 22#html5
+T 1582862099 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1582862099 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1583155319 18<Guest7157618>	Hello. Is there an example of making fullscreen nested menus (i want the submenus to be fullscreen and essentially the same as the first menu)?
+T 1583155378 18<Guest7157618>	Or alternatively a html5 list hierarchy where only the current level is visible and you navigate by clicking the items
+T 1583324305 18<snackoverflow18>	i need help making my landing page more responsive: http://zealchain.com - can anyone help?
+T 1583552949 19*	Now talking on 22#html5
+T 1583552949 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1583552949 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1583949369 18<lupulo18>	hi
+T 1583949494 18<lupulo18>	could i create two input one with type=range and another with type=number synchronized?
+T 1584362633 18<Translat-Embedde18>	hii i would like to know how can i make do that css is using on http://www.example.com and using in http://www.example.com/admin/
+T 1584362657 18<Translat-Embedde18>	i want using same css style in primary link http://www.example.com
+T 1584362681 18<Translat-Embedde18>	i dont idea how can i make this
+T 1584399604 18<ahmet18>	hey
+T 1584625663 19*	Now talking on 22#html5
+T 1584625663 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1584625663 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1584985069 20*	Disconnected (20Connection reset by peer)
+T 1584985093 19*	Now talking on 22#html5
+T 1584985093 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1584985093 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1585057755 19*	Now talking on 22#html5
+T 1585057755 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1585057755 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1585225437 18<hogren18>	Hi !! My first time on this channel :)
+T 1585225580 18<hogren18>	I need an advice. Currently I have a input with a datalist. When I click into the input, the datalist is proposed but not only it. It shows the precedent inputs. I want to see only the datalist, even if I entered several other things previously.
+T 1585403304 19*	Now talking on 22#html5
+T 1585403304 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1585403304 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1585726630 18<xharx18>	hi I am writing an evolution simulator and use browser as interface. Now I want to display graphics in the browser, best would be at 60 frames per sec. How do I do that? I tried xmlhttprequest, websocket: too slow. now I want to test mp4, but what would be the best way to produce an mp4- stream to be displayed in html5?
+T 1586010819 19*	Now talking on 22#html5
+T 1586010819 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1586010819 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1586092421 18<LaDy^^18>	hi
+T 1586092432 18<LaDy^^18>	Making Periodic Table Assignment and i am having an issue ..Its Pure in HTML
+T 1586095474 19*	Now talking on 22#html5
+T 1586095474 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1586095474 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1586095962 18<Sonicbit18>	LaDy^^, state your problem; if anyone knows how to help you they'll answer
+T 1586095981 18<LaDy^^18>	https://pastebin.com/YSmHEER9
+T 1586095987 18<LaDy^^18>	i have border line issue
+T 1586096013 18<LaDy^^18>	the main border ..not the table boxes border
+T 1586096022 18<LaDy^^18>	need it to be fixed in html
+T 1586096029 18<LaDy^^18>	i am not sure what i am doing wrong
+T 1586096305 18<LaDy^^18>	https://www.chemicool.com/images/periodic-table.png    need to be done like this
+T 1586096688 18<Sonicbit18>	LaDy^^, you're using obsolete HTML attributes like bgcolor and bordercolor, why not use CSS instead?
+T 1586096711 18<LaDy^^18>	because its an html assignment :D
+T 1586096716 18<LaDy^^18>	cant touch anything else
+T 1586096717 18<LaDy^^18>	::D
+T 1586096729 18<LaDy^^18>	or else i would  have used...
+T 1586096748 18<LaDy^^18>	so what html5 attributes i must use ?
+T 1586096754 18<LaDy^^18>	can you tell me ?
+T 1586096776 18<Sonicbit18>	Your code is already using the style attribute, that's CSS!
+T 1586096822 18<LaDy^^18>	which are not obsolete ?
+T 1586096915 18<Sonicbit18>	Here you can see what's obsolete: html.spec.whatwg.org/multipage/obsolete.html#non-conforming-features
+T 1586173201 18<tanami18>	anyone know where I can find some experts on rAF?
+T 1586266276 19*	Now talking on 22#html5
+T 1586266276 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1586266276 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1586462194 18<millican18>	^
+T 1586462199 18<millican18>	sorry. wrong window
+T 1586537945 18<teut18>	hi
+T 1586537956 18<teut18>	Plz help me with this http://dpaste.com/2P969E9
+T 1586538030 18<teut18>	Its giving black clored rectangles
+T 1586538035 18<teut18>	colored
+T 1586538046 18<teut18>	not the rgb value
+T 1586558554 18<relipse218>	Good evening
+T 1586558923 18<relipse218>	Does anyone know how I can get 2 column view like in this pdf https://cworklog.com/gospel/GospelbyJamesKinsman.pdf
+T 1586580692 19*	Now talking on 22#html5
+T 1586580692 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1586580692 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1586752738 18<qpt18>	Hi
+T 1586752742 18<qpt18>	I have a delivery for Chad Farthouse?
+T 1586900901 19*	Now talking on 22#html5
+T 1586900901 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1586900901 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1587070571 18<LaDy^^18>	hello
+T 1587070594 18<LaDy^^18>	any one who could guide me how to put txt validation with help of HTML
+T 1587070643 18<LaDy^^18>	<td><input type="text" name="First_Name" maxlength="30"  placeholder=" Enter First Name"/>   ( want it to work like Text only . no numeric ..and limit to 30 chrachters ? only in html no js )
+T 1587078009 18<LaDy^^18>	?
+T 1587147264 18<TheWild18>	hello
+T 1587147426 19*	Now talking on 22#html5
+T 1587147426 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1587147426 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1587230412 19*	Now talking on 22#html5
+T 1587230412 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1587230412 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1587237113 18<alessioaltomonte18>	@search <movie>
+T 1587237834 18<JimmyAlex8618>	@chanserv
+T 1587306742 19*	Now talking on 22#html5
+T 1587306742 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1587306742 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1587620831 19*	Now talking on 22#html5
+T 1587620831 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1587620831 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1587647529 18<merpnderp18>	Anyone know how to disable mobile safari double click to zoom? I have a web app with buttons that need to be clicked quickly
+T 1587666490 18<Hejkki18>	hello, what is it called in html, if i want like a scrollbar that changes a value of a variable? Dunno what is it called.
+T 1587666504 18<Hejkki18>	a line that has a pin in the centre to move it
+T 1587666594 18<dpogue18>	slider? <input type="range">
+T 1587666599 18<Hejkki18>	ok thanks
+T 1587666602 18<Hejkki18>	:)
+T 1587699339 19*	Now talking on 22#html5
+T 1587699339 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1587699339 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1587700052 19*	Now talking on 22#html5
+T 1587700052 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1587700052 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1587778364 19*	Now talking on 22#html5
+T 1587778364 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1587778364 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1587869878 19*	Now talking on 22#html5
+T 1587869878 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1587869878 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1587905669 18<equation_state18>	sup
+T 1587905740 18<equation_state18>	ne1 work with JSON-B passing binary chunks? asking for a friend... ;)
+T 1587906005 18<equation_state18>	l8r
+T 1587942191 19*	Now talking on 22#html5
+T 1587942191 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1587942191 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1588003278 19*	Now talking on 22#html5
+T 1588003278 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1588003278 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1588211512 19*	Now talking on 22#html5
+T 1588211512 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1588211512 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1588214349 19*	Now talking on 22#html5
+T 1588214349 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1588214349 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1588308045 18<relipse18>	Can someone help me with this? my input is breaking out of the container. I'm not allowed to change the html, only the css: https://i.imgur.com/7a8CeA1.png
+T 1588316879 18<Naglfar18>	hi relipse, what's the css?
+T 1588507109 18<abcjoe18>	anyone know a function that can show the html5 invalid form validation style on an set input only by its id? and not do for the entire form as normally happens with html5 form submissions?
+T 1588507200 18<abcjoe18>	something like this document.getElementById('element_id').reportValidity();   but it does not show the css style that gets applied to required fields that are not valid... i wish to show this style on only invalid inputs that i choose.. by there element id or such.
+T 1588507223 18<abcjoe18>	their*
+T 1588557462 19*	Now talking on 22#html5
+T 1588557462 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1588557462 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1588610545 18<mbouksim18>	Hello every body sorry for the noob question (and sorry for my bad english too) but I need to import a css file to be aplied to only one dive (and all it childe element) I can't find any solution to do it??
+T 1588614526 18<tuxian18>	Hello Guys, I'm trying to create a blog page on my local laptop (offline for now and planning to upload to my website). It is just plain html page (along with JS and CSS).
+T 1588614570 18<tuxian18>	Where I'm trying to include one html from another. But I'm getting 'Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource'
+T 1588614578 18<tuxian18>	Can someone please help me with this
+T 1588738810 20*	Disconnected (20Connection timed out)
+T 1588738836 19*	Now talking on 22#html5
+T 1588738836 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1588738836 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1588924717 18<akkathi18>	hey
+T 1589052531 20*	Disconnected (20Connection timed out)
+T 1589052558 19*	Now talking on 22#html5
+T 1589052558 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1589052558 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1589332108 18<akira_18>	Hello
+T 1589332201 18<akira_18>	what is the exact function of the <blockquote> tag?
+T 1589460970 19*	Now talking on 22#html5
+T 1589460970 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1589460970 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1589801114 19*	Now talking on 22#html5
+T 1589801114 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1589801114 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1600044734 19*	Now talking on 22#html5
+T 1600044734 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1600044734 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)
+T 1600215941 18<snackoverflow18>	how can i allow a user to use their mouse pointer to select an area of a canvas, with it returning x1,y1,x2,y2?
+T 1600217349 18<snackoverflow18>	https://stackoverflow.com/questions/63911629/html5-canvas-selection-box-javascript
+T 1600277723 18<snackoverflow18>	anyone have any idea why my rectangle loads in canvas but my text doesn't? L59-65 https://bpa.st/Z64A
+T 1600552208 18<suezypern18>	does anyone know developemnt channels for ppl who dont want to code?
+T 1600552216 18<suezypern18>	i want to make a classifieds site but cannot code
+T 1609963182 19*	Now talking on 22#html5
+T 1609963182 22*	Topic for 22#html5 is: Ask any question about HTML5 & Friends || HTML5 Spec for Developers: http://developers.whatwg.org || Also: http://html5rocks.com http://diveintohtml5.info http://mzl.la/9giLwR || Channel logs: http://j.mp/cG7UDa
+T 1609963182 22*	Topic for 22#html5 set by 26marienz!marienz@freenode/staff/marienz (24Fri Oct 21 15:53:09 2011)

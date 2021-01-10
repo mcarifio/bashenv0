@@ -1,0 +1,591 @@
+T 1510280828 18<ohm86018>	the eh
+T 1510280830 18<ohm86018>	the
+T 1510280838 18<viv18>	eh?
+T 1510280864 18<dax18>	ohm860: please slow putting random comments into #freenode, thanks
+T 1510280887 18<ohm86018>	arnold schwarzenegger movie, is called robocop. i like the desert scene
+T 1510280921 22*	26dax sets quiet on 18*!*@ip5658867f.direct-adsl.nl
+T 1510281254 18<viv18>	I'm hoping to take over a really old abandoned nick but need to find the docs that describe how to do so.
+T 1510281332 18<dax18>	viv: if it's over 10 weeks expired (should say in /msg nickserv info nickhere), it's usually droppable on request. /nick to it and I'll take a look.
+T 1510281358 18<mold18>	hasn't been logged into since 2013
+T 1510281387 18<dax18>	May 2017, actually. 2013 is the reg date. Regardless, it is indeed expired :)
+T 1510281397 18<mold18>	oops, read the wrong date :)
+T 1510281406 18<dax18>	and is now dropped, so you can group it with /msg nickserv group
+T 1510281419 18<mold18>	thanks
+T 1510281424 18<dax18>	welcome
+T 1510281499 18<tetra18>	I don't feel terrible comfortable with the fact that my host name is displayed whenever I connect. Anyone know if there's a way around this?
+T 1510281594 18<maroon18>	tetra, have you gotten a cloak so your host looks like @unaffiliated/tetra ?
+T 1510281648 18<tetra18>	I haven't
+T 1510281659 18<maroon18>	or a different nick, since it looks like this one is registered by someone else: /nickserv info tetra
+T 1510281676 18<dax18>	( https://freenode.net/kb/answer/cloaks#cloaks-do-not-effectively-hide-your-ip )
+T 1510281702 18<tetra18>	It is registered by me
+T 1510281783 22*	26ChanServ gives channel operator status to 18eir
+T 1510281784 22*	26eir removes quiet on 18$a:tunasalad
+T 1510281784 22*	26eir removes channel operator status from 18eir
+T 1510281829 18<maroon18>	you registered the nick 8 years ago, and you're just now feeling uncomfortable about that?
+T 1510281913 18<maroon18>	tetra, you're not identified to it
+T 1510281964 18<tetra18>	Maybe it is registered by someone before me then 🤔
+T 1510281994 18<tetra18>	I registered it recently and it seemed to do so
+T 1510282001 18<r3kz18>	you can't register an account thats already registered
+T 1510282018 18<r3kz18>	the current user signed in 2 days ago
+T 1510282022 18<tetra18>	I got the email confirmation and everything
+T 1510282052 18<maroon18>	not for this nick you didn't
+T 1510282059 18<dax18>	tetra: can you pull up the email confirmation, check it's a freenode.net one, and check the nick on the first line of it, please?
+T 1510282158 18<LooCfur18>	tetra, if I cared about hiding my IP, I might consider a bouncer, like #elitebnc
+T 1510282257 18<jk18>	Ughhh I just had one of those horrible drives where it’s like awkwardly raining more than your highest interval setting but not enough to have the wipers on full blast
+T 1510282261 18<jk18>	It was horrible
+T 1510282294 18<maroon18>	defrag that drive
+T 1510282314 18*	LooCfur throws rotten tomatoes at maroon 
+T 1510282316 18<jk18>	o.O
+T 1510282324 18<fffff18>	KINDONE HAS STARTING RUNNING HIS BOT THAT SCANS FREENODE AGAIN: Blindspots argle_bargle nedbat jhutchins Tabmow ozymandias_ iovoid Cork justache SWAT zifnab Olipro shakermaker BeansnRice sa`tan dza kline bruce549 Nightmare betawaffle trobotham arschmitz DLange clonak Skizzerz JoeK lebster SmearedBeard weq zaberdampfer sl3dge__ eggy MC2525 Jguy XenonNSMB Silversword shoogz yuken wook_ ReedK2 nolsen Warped anzuof Time-Warp rant koan heistheDude OtakuSenpa
+T 1510282325 18<shahbaz-s18>	FUCHS HAS ANNOUCED HIS IS A FLAMING QUEEN (SOMETHING STAFF HAS ALWAYS KNOWN): Dominian RumpledElf svm_invictvs serafincpd al2o3-cr ManyRaptors sam Miklo l4m3z NeddySeagoon u1dzer0 poutine Humvee Keanu73 HankMoody petan |418 HarryS dimestop WikiPuppies fractal_ Bkid johnny56 maskedlua leachim6 Cisien barlas arschmitz K0HAX c[_] buja chachasmooth Whooa21 maxxe Adran Guest98994 icywiz gareth_ Skizzerz linuxdaemon tonton81 Tycale Dan-Bennett nurup
+T 1510282325 18<l4m3z18>	DAX FILED A DIVORCED FROM EMERSON STATING EMERSON HAS A MICROPENIS ON COURT DOCS: TingPing integral Zic because percY- dStruct grumble Spitfire moondoggy Ellenor realz asafniv1[m] capuk linuxmodder smichel17[m] realies SlashLife scorche` zgrepc SuchWow SailorHaumea sombra papna uwe_mobile__ bigdong[m] edward-elric Adie gamma AfroThundr steph3 th1sth1ng Solprefixer gowpen jor Nuggernogger HackMaster smidlers b_jonas fxrh_ mobijubo jbroom
+T 1510282325 18<a019c18>	DAX FILED A DIVORCED FROM EMERSON STATING EMERSON HAS A MICROPENIS ON COURT DOCS: Elizabeth Guest32325 mariogrip justif TheMesquito m712 Vercas percY- niko Thorne badpixel berndj mcspud ic Zvmdyv InfoSecFace Caraway wgwz_ atlas StephenS mdoep Melody\Concerto buja Zanzibar moderator Smeef mofo-x Guest3871 eir israfel kaotikus jim heistheDude Pyrotechno PrettyKittie andries ||Dew|| AvianFlu `levi jwheare casdr birdwithamustach Iciloo christel wraeth kuc
+T 1510282325 18<a019c18>	DAX FILED A DIVORCED FROM EMERSON STATING EMERSON HAS A MICROPENIS ON COURT DOCS: mr_sm1th berndj Bateau subo elios ohnx issyl0 [itchyjunk] Arokh DMBOWSKY Slumlord_ Lanth Mr_Sheesh adamo SleePy funnel Nightmare Zewwy JebelKrong[m] Remco DavidRoden[m] oliv_____ Dan_au Mirau Elyx0 rolig swapgs Tabmow birkoff shakermaker Victorsueca Typhlosion Myrtti Fletcher pOe] Vercas Dreaman henning simpleauthority WhitePhosphorus emilsp GodSkinS e36freak [n0mad] Oli
+T 1510282325 18<a019c18>	DAX LIKES TO GET PEGGED FROM EL: AdriDJ hi-centerfuze jlf as nhandler ic d10n bswartz hexa- CitraBenzoet MillerBoss m712 bigdong[m] hdm[m] SWAT ThiefMaster adamo trqx tktech Very_slow jonasbits GodSkinS luk3yx alamar_ Lildirt arza amd_0x51 AimHere Slade elitedev piklu arooni andirc8000 TmvC smidlers sarnold danmackay_ nutron mdk nolsen casdr Pici robink `88mph mariogrip Amun_Ra _wuseman Copper1 Gogh noah
+T 1510282325 18<a019c18>	DAX FILED A DIVORCED FROM EMERSON STATING EMERSON HAS A MICROPENIS ON COURT DOCS: JebelKrong[m] theholyduck meffe sl3dge__ iovoid Kronuz VorteX mcspud shaun413 Mez pokk infinite gildarts ekl yoink Callin mundus Tools Usurp_ ninsei Majadon imnotakity puzzola ABIX_Adamj exezin sscout Fuchs WhitePhosphorus TingPing smidlers mr_sm1th Mirau pseubodot uwishuno MalReynolds mst boubou isha Typhlosion desgen tonymec|away Tux[Qyou] Odd_ verm1n TBloemink Tycale 
+T 1510282325 18<a019c18>	DAX LIKES TO GET PEGGED FROM EL: uwishuno xunplini T4cC0re moonlight noeatnosleep yano kun[m] zopsi heistheDude BenLand100 jack3 Astronaut xerox123 opung u1dzer0 Trashlord r00tobo trekkie1701c Henry_Jia HellKern GuntherDW papna Aleks4 Fusl bigdong[m] subo matze curve25519 azend|vps anzuof az mindjuju Pakistan Callin jwheare sscout ben_zen Khaytsus Guest3871 c thargoid1 daynaskully phreak Majadon kevy0 Rune_K Michail1 louni fractal_ Halved_
+T 1510282325 22*	26Sigyn sets quiet on 18$~a
+T 1510282325 22*	26Sigyn sets mode 24+z on 22#freenode
+T 1510282325 18<a019c18>	KLINE AND MNIIP HAVE ENJOYED A LITTLE ANAL PLAY LATELY: CoinCrazy66 heurist f israfel k nunchuck feodaron_ Bama_411 Spitfire bliv Iacobus NightMonkey clonak Exagone313 `levi Bahhumbug Thorne nate Tochigi Solprefixer isha tallguy red-001 trobotham Xavkno Colti coolpup ATDT911 Guest49018 weaksauce gildarts Alchemical Captain_Beezay dakar |418 MrElendig betawaffle smidlers rwm-ninja ExeciN d4a mcint imnotakity WikiPuppies gggs Luffy realz kepler_m- Vorpa
+T 1510282325 18<a019c18>	KINDONE HAS STARTING RUNNING HIS BOT THAT SCANS FREENODE AGAIN: luke-jr qassim Pilfers jasperberries Warped Fusl tabris PKBot pppingme sl3dge__ ozy Matrixiumn J-E-L-L-O fractex garywhite LiftLeft Sousapro Ryuzaki Gros^_ Nightmare HliosdeCreisquer kgz CurryWurst bs d4a TBSliver siniStar interd0me Kronuz Kazuto realz SebastianFlyte peaches eldritch Random dan2wik jeblair caf vectr0n|cloud majestic jlf destiny_ enterprisey r3m ohm860 Azerthoth ReimuHakur
+T 1510282357 18<SuchWow18>	hey now, mniip is alright lol
+T 1510282365 18<sscout18>	boo
+T 1510282369 22*	26dax removes quiet on 18$~a
+T 1510282369 22*	26dax sets mode 24-z on 22#freenode
+T 1510282369 18<SuchWow18>	i don't really know the others too well
+T 1510282371 22*	26dax sets mode 24+z on 22#freenode
+T 1510282371 22*	26dax sets quiet on 18$~a
+T 1510282386 18<WhitePhosphorus18>	the spammer forgot to use multiple accounts
+T 1510282398 18<WhitePhosphorus18>	oh i'm wrong
+T 1510282412 18<jk18>	😐
+T 1510282414 18<Sveta18>	WhitePhosphorus: did it ping you?
+T 1510282418 18<Sveta18>	jk: did it ping you?
+T 1510282418 18<WhitePhosphorus18>	ahh yes
+T 1510282419 18<sscout18>	there were 2 of them
+T 1510282423 18<Sveta18>	WhitePhosphorus: what irc client are you using?
+T 1510282424 18<jk18>	Sveta: nope
+T 1510282427 18<Sveta18>	sscout: ^^
+T 1510282431 18<noeatnosleep18>	Lol
+T 1510282432 18<WhitePhosphorus18>	Sveta: LimeChat
+T 1510282441 18<nolsen18>	TIL emerson was a guy.
+T 1510282452 18<dax18>	TIL emerson is past-tense
+T 1510282459 18<el18>	plz no
+T 1510282461 18<nolsen18>	s/was/is
+T 1510282463 18<D[_]18>	RIP emerson
+T 1510282464 18<Sveta18>	WhitePhosphorus: aw, what a shame, i'm not highly familiar with that one. i'd suggest changing clients if you want to feel more comfortable here, a few other clients have mass highlight spam ignore options.
+T 1510282473 18<jk18>	o.O
+T 1510282491 18<nolsen18>	And I thought the ship train was going so well :c
+T 1510282501 18<WhitePhosphorus18>	thanks
+T 1510282520 18<el18>	also if you lot are going to chat about the spam i'm going to +m
+T 1510282547 18<jk18>	Isn’t it the only source of entertainment here?
+T 1510282563 18<el18>	jk: we'd rather it wasn't.
+T 1510282563 18<dax18>	ohm860: we know dear
+T 1510282572 18<maroon18>	you don't feed the mice if you're trying to get rid of them
+T 1510282590 18<jk18>	el fair enough
+T 1510282595 18<D[_]18>	maroon: But they look so hungry :<
+T 1510282598 18*	[n0mad] feeds the mice right before the trap snaps
+T 1510282616 18<[itchyjunk]18>	you do feed them. poison.
+T 1510282634 18<maroon18>	and that's not the french word for fish
+T 1510282638 18<jk18>	Nutter butters work great for mice
+T 1510282642 18<jk18>	They love em
+T 1510282665 18<jk18>	Fun fact of the day
+T 1510282716 18<[itchyjunk]18>	i bet you like them too
+T 1510282721 18<[itchyjunk]18>	therfore you a mouse
+T 1510282752 18<jk18>	If you don’t like them you’re not a living anything
+T 1510282784 18<jk18>	Nom nom nom
+T 1510283032 18<[itchyjunk]18>	i purchase them just so i can toll em away
+T 1510285530 18<jordyn18>	hi
+T 1510285545 18<dax18>	ih
+T 1510285545 18<Sveta18>	hi, jordyn
+T 1510285641 18<jordyn18>	would someone mind setting a connecion ban on my znc
+T 1510285655 18<jordyn18>	it keeps flodding channels and I can't get into it to stop it
+T 1510285659 18<jordyn18>	flooding *
+T 1510285670 18<Sveta18>	what error message does it get
+T 1510285684 18<jordyn18>	no errors
+T 1510285684 18<Sveta18>	and, what if you shut it down?
+T 1510285708 18<jordyn18>	my internet is broke so it stays on for like 1 minute then ping timeouts (in a loop)
+T 1510285709 18<Sveta18>	if you join one of the channels it is in, what is its quit message?
+T 1510285713 18<Sveta18>	ah, okay
+T 1510285732 18<jordyn18>	and I have around 5 users so that makes a lot of spam quickly.
+T 1510285789 18<dax18>	jordyn: PM me the IP address/range, please.
+T 1510285796 18<jordyn18>	sure
+T 1510285805 18<c18>	if there is any staff here, i suggest shutting down the #freenode channel as it's filled with nothing but trolls and neredowells
+T 1510285831 18<rob018>	c++  :)
+T 1510285841 18<dax18>	/kick c troll detected
+T 1510285843 18<yuken18>	c, pls the only spammer here has to be dax.
+T 1510285847 18<yuken18>	/ban dax
+T 1510285866 18<dax18>	also
+T 1510285869 18<dax18>	>nerdowells
+T 1510285872 18<dax18>	what are you 80
+T 1510285903 18<c18>	dax a whippersnapper like you would never understand
+T 1510285907 18<Azerthoth18>	the difference of one letter is the truth
+T 1510287166 18<Sveta18>	c: hey i learned a new word now... "neredowell"
+T 1510287172 18<Sveta18>	c: appreciated
+T 1510287183 18<Sveta18>	c: (i already looked it up, i know how it expands)
+T 1510287262 18<r3kz18>	!voteban c
+T 1510287265 18<r3kz18>	:)
+T 1510288520 18<okaycool18>	Why I am having large numbers of messages in freenode channel
+T 1510288574 18<okaycool18>	Compared to previous so many clients are connecting and disconnecting
+T 1510288603 18<c18>	that's normal
+T 1510289307 18<pppingme18>	okaycool there's like 1500 people in here, higher than the average channel, so will naturally have a lot of turnover as well
+T 1510289348 18<okaycool18>	I know but I saw so much people connecting and disconnecting in last 2-3 days
+T 1510289388 18<Halcy0n18>	I had stuffs do to
+T 1510289616 18<dax18>	had a few netsplits last night, probably explains some of that
+T 1510289651 18<Unit19318>	Matrix falling over would too.
+T 1510289685 18<MetaNova18>	lol
+T 1510289743 18<dax18>	if you think about it that's practically a netsplit, considering the numbers
+T 1510289758 18<MetaNova18>	yes but for people we generally don't care about
+T 1510289797 18<OhBeOne18>	that you* don't care abou
+T 1510289826 18<luk3yx18>	Hello
+T 1510289859 18<[itchyjunk]18>	from the other side
+T 1510290974 18<wodencafe18>	>_>
+T 1510295676 18<r3kz18>	its oh soo quiet
+T 1510296013 18<okaycool18>	Hey is there any channel for google cloud platform ?
+T 1510296091 18<OhBeOne18>	#google
+T 1510296389 18<newlinux^18>	hi
+T 1510296398 18<newlinux^18>	why cant my another nick talk?
+T 1510296453 18<elios18>	because you suck
+T 1510296639 18<Unit19318>	elios: That's really not helpful.  What would be helpful is telling him that users which are not logged in are muted.
+T 1510296705 18<elios18>	ok listen up folks, get me unbanned from chet or every 10 minutes a person will get trolled.
+T 1510296727 18*	Bahhumbug popcorns
+T 1510296745 18<newlinux^18>	chet!
+T 1510296747 18<OhBeOne18>	i think people get trolled more than once every 10 minutes
+T 1510296763 18<newlinux^18>	there is nobody in ##chet
+T 1510296764 18*	elios takes Unit193 hostage.
+T 1510296810 18<Unit19318>	elios: Take it to ##chat-ops, this isn't ##chat-ops.
+T 1510296889 18*	elios ball gags Unit193 for the safety of all
+T 1510296924 18<elios18>	i swear, i'm ready to use this bad jokes i got with me.
+T 1510296948 18<sdfgsdfg18>	hey, why arent the freenode staff moderating some of the biggest channels here used for chatting
+T 1510296964 18<sdfgsdfg18>	some ops are borderline abusive stupid or at times racist
+T 1510296980 18<preaction18>	because that's not what the ircops are for
+T 1510297010 18<sdfgsdfg18>	what are they for then
+T 1510297026 18<preaction18>	ensuring the network itself is operational and stable so channels can be hosted on it
+T 1510297048 18<sdfgsdfg18>	hmm ok
+T 1510297064 18<OhBeOne18>	Channel guidelines are somehow a recommendation and not a requirement, that's why
+T 1510297081 18<sdfgsdfg18>	does that mean you tolerate child porn ?
+T 1510297082 18<OhBeOne18>	you'd think they would be requirements so that bad chan ops don't give a bad name to the network
+T 1510297091 18<OhBeOne18>	http://freenode.net/changuide
+T 1510297103 18<OhBeOne18>	can read the channel guidelines in that link
+T 1510297111 18<sdfgsdfg18>	yeah should have been requirements
+T 1510297112 18<OhBeOne18>	they seem reasonable, but are not applied
+T 1510297133 18<sdfgsdfg18>	so the recommendations imply child porn is tolerated
+T 1510297136 18<sdfgsdfg18>	but not recommended
+T 1510297140 18<sdfgsdfg18>	ok
+T 1510297144 18<sdfgsdfg18>	thats fair enough right ?
+T 1510297148 18<sdfgsdfg18>	merry christmas dude
+T 1510297150 18<r3kz18>	... your taking that a little far dont you think
+T 1510297153 18<sdfgsdfg18>	no im not
+T 1510297157 18<sdfgsdfg18>	you have to intervene
+T 1510297160 18<OhBeOne18>	that would be included under the policies, which are enforced guidelines
+T 1510297160 18<sdfgsdfg18>	thats my point
+T 1510297166 18<OhBeOne18>	sdfgsdfg
+T 1510297183 18<OhBeOne18>	policies are enforced guidelines, channel guidelines are not enforced policies, you see
+T 1510297297 18<`88mph18>	he who smelled it delled it
+T 1510299407 18<r3kz18>	you guys/gals have to try out the new belgium "citradelic" its a tangerine IPA ! really good
+T 1510299465 18<squigz18>	Can someone please have Sigyn join #i3? We've been getting a lot of spammers lately
+T 1510299561 18<ilbelkyr18>	squigz, hi, see /msg :)
+T 1510304088 18<alfie18>	morn main
+T 1510304468 18<tinyhippo18>	GOOOOOOOOOOOD MORNIIIIIIIIIING VIETNAAAAAAAAAAAAAAAAAAM
+T 1510304570 18<erry18>	Good morning freeeeenooooode
+T 1510304811 18<elphe18>	hello...how do i get a list of a server's channels? (using irssi)
+T 1510304917 18<ilbelkyr18>	elphe, a full list? are you *sure* you want that? on here, we have tens of thousands of channels. It's possible to list all the public ones but you might be better of using something that searches them for you
+T 1510304983 18<ilbelkyr18>	elphe, /msg alis help list; that said, you can technically do "/list". But I believe irssi even warns you that there is going to be a *lot* of output in most cases.
+T 1510305101 18<dg_subrata18>	How can I generate EWOULDBLOCK or EAGAIN error for a write system call on non blocking socket ??
+T 1510305270 18<ilbelkyr18>	dg_subrata, hmm, maybe try asking ##linux?
+T 1510305294 18<ilbelkyr18>	they might have someone more familiar with the details of that
+T 1510305305 18<dg_subrata18>	asked but no reply yet
+T 1510305389 18<ilbelkyr18>	ah, hm, looks like no one was around at that time. Might need to ask again later when more people are active, unfortunately
+T 1510305391 18<elphe18>	ilbelkyr: thanks very much
+T 1510305411 18<ilbelkyr18>	elphe, no worries :)
+T 1510306597 18<MrElendig18>	elphe: http://irc.netsplit.de/channels/?net=freenode
+T 1510306600 18<MrElendig18>	also handy
+T 1510306785 18<Sveta18>	dg_subrata: is it about linux kernel or what
+T 1510307037 18<Sveta18>	dg_subrata: (there is ##kernel, if so, as an alternative... wasn't really hoping for silence in response here)
+T 1510307097 18<Roza18>	Hi
+T 1510307098 18<newlinux^18>	Hello, Roza!
+T 1510307119 18<Sveta18>	Roza: greetings
+T 1510307160 18<suret18>	Hi there. Could you please set up an unaffiliated cloak for me?
+T 1510307504 18<elphe18>	MrElendig: Thanks, Mr.
+T 1510307525 18<elphe18>	MrElendig: Helpful indeed
+T 1510307677 18<dg_subrata18>	Its not a kernel space , it is a c++ networking application on linux
+T 1510307695 18<dg_subrata18>	Sveta: Its not a kernel space , it is a c++ networking application on linux
+T 1510307714 18<Sveta18>	oh! ok.
+T 1510307735 18<Sveta18>	there is ##networking, but I'm not sure whether they do any c++ programming.
+T 1510308030 18<dg_subrata18>	Sveta: Ok thanks
+T 1510308565 18<Roza18>	-_-
+T 1510310092 18<Burgundy18>	Hello! Trying to join a channel (#bitcoin) and gettin an "address is banned".I'm pretty sure it wasn't something I did, most probably banned address in the past and I got to use it as I get dynamic IPs.What can I do about it?
+T 1510310126 18<Burgundy18>	I mean I could reconnect to my ISP and try to get a new address from a different range, but I mean besides that, as I have other software running and I'd rather not interrupt my connections.
+T 1510310130 18<Fuchs18>	Burgundy: best poke the channel ops, see  /msg chanserv access #bitcoin list
+T 1510310146 18<Burgundy18>	Fuchs: thanks, I'll try.
+T 1510310568 18<BikiniPictures18>	sex is awesome
+T 1510310674 18<elios18>	BikiniPictures got the cooties
+T 1510310996 18<BikiniPictures18>	https://imgur.com/vFqqhuI
+T 1510311014 18<c[_]18>	BikiniPictures: that's not really on topic for freenode
+T 1510311041 18<rant18>	c[_]: you don't consider it a peer-directed project? heh
+T 1510311050 18<BikiniPictures18>	lol
+T 1510311060 18<BikiniPictures18>	rant: that's actually funny
+T 1510312005 18<rant18>	smells like teen spirit..
+T 1510312180 18<suret18>	Hi Fuchs: could you please set up an unaffiliated cloak for me?
+T 1510312197 18<Fuchs18>	let's have a look
+T 1510312213 18<Fuchs18>	yes, there you go, keep in mind that they don't really hide your IP
+T 1510312256 18<suret18>	Fuchs: thanks
+T 1510312264 18<Fuchs18>	welcome
+T 1510314702 18<norkle18>	yeee!
+T 1510316056 18<kinlo18>	I'm trying to figure out why someone is banned, but the chanserv why command says access denied, how can I figure this out?
+T 1510316140 18<newlinux^18>	i dont know about it the admins might know about it
+T 1510316859 18<SonicTheHedgehog18>	kinlo: If you know who set the ban, you could contact them and ask. However, note that if the ban doesn't affect you, most ops won't involve third parties into the reasons why someone is banned.
+T 1510316887 18<kinlo18>	SonicTheHedgehog: I'm the channel operator trying to figure out which ban to remove...
+T 1510316980 18<SonicTheHedgehog18>	kinlo: I see. Well, there's scripts that can go through the ban list and try to identify which ban matches a certain user, assuming they aren't cloaked and it isn't an IP ban behind that cloak.
+T 1510317001 18<SonicTheHedgehog18>	kinlo: Without a script, the only way is to manually eyeball the ban list.
+T 1510317018 18<kinlo18>	SonicTheHedgehog: what's the case with the chanserv why command?
+T 1510317023 18<kinlo18>	it's supposed to help us with that
+T 1510317059 18<niko18>	kinlo: it's more for access list i think
+T 1510317095 18<SonicTheHedgehog18>	kinlo: That's for /msg chanserv help access
+T 1510317098 18<SonicTheHedgehog18>	kinlo: Not for ban lists.
+T 1510317831 18<tyrel_818>	h3llo fr13nd
+T 1510317859 18<SonicTheHedgehog18>	tyrel_8: Hi, how may we help you?
+T 1510317905 18<tyrel_818>	please give me some famous channel
+T 1510317928 18<SonicTheHedgehog18>	tyrel_8: See /msg alis help list   to search for a channel
+T 1510317998 18<tyrel_818>	thanks a lot Sonic , good to see you !
+T 1510318007 18<SonicTheHedgehog18>	You're welcome!
+T 1510318145 18<jrabe18>	tyrel_8, mind a quick PM?
+T 1510318269 18*	DrJ awakens
+T 1510318309 18<tyrel_818>	jrabe, yeah
+T 1510319126 18<universalpackage18>	is there a way i can append certain info to the end of the results of a / command
+T 1510319153 18<universalpackage18>	to identify it from other / commands of the same type
+T 1510319220 18<jack318>	universalpackage:  can you give an example?
+T 1510319241 18<universalpackage18>	like if i do three '/who freenode/staff/*' commands but i wanted to mark the 2nd as special
+T 1510319280 18<genec18>	universalpackage: waiting would probably be your best bet.
+T 1510319330 18<universalpackage18>	true but they could come in any order due to network latency
+T 1510319331 18<genec18>	universalpackage: though check out for message type 315
+T 1510319353 18<jack318>	universalpackage:  what difference does it make?  if you send that command three times, you'll get the same result every time.
+T 1510319354 18<genec18>	universalpackage: no, it's TCP.  they won't come out of order
+T 1510319429 18<genec18>	universalpackage: why do you want to execute the same command 3 times?
+T 1510319453 18<universalpackage18>	say i wanted to differentiate an automated /who from a user inputted /who in an irc client, how would i know the difference between the automated one and the user inputted one
+T 1510319483 18<universalpackage18>	assuming both are for the same user
+T 1510319496 18<universalpackage18>	and are on the same server
+T 1510319549 18<c[_]18>	universalpackage: with the /who command you could do /who freenode/staff/* %ntlh,41 and it will put "41" at the end
+T 1510319557 18<niko18>	universalpackage: you could add some 'id' on who, see /quote help WHO
+T 1510319567 18<universalpackage18>	ok o.o
+T 1510319579 18<genec18>	universalpackage: not having written an IRC client I may be wrong but I'd think queues.  client auto-sends one query.  user initiates the second.  first response is for the client; second response is for the user.
+T 1510319607 18<niko18>	genec: you can't relay on response order
+T 1510319631 18<niko18>	user12e32: see /msg nickserv help register
+T 1510319702 18<Janet-O18>	Hi, I've just registered an account and would like to acquire a cloak - how do I do this?
+T 1510319704 18<genec18>	niko: so the only way for universalpackage is "it depends on the precise command".
+T 1510319719 18<genec18>	Janet-O: it won't show through the web client
+T 1510319727 18<SonicTheHedgehog18>	Janet-O: Staff here can cloak you, but note that it won't work on a web gateway client.
+T 1510319744 18<Janet-O18>	Will it work through HexChat, because I've got that?
+T 1510319749 18<jrabe18>	Janet-O, yes.
+T 1510319777 18<Janet-O18>	Excellent, are there any staff members around now?
+T 1510319795 18<niko18>	Janet-O: you will be cloaked if you connect with a real irc client and identify to services
+T 1510319820 18<Janet-O18>	Okay, I'll be back in a moment!
+T 1510319845 18<universalpackage18>	what is the default format of the who command
+T 1510319882 18<SonicTheHedgehog18>	universalpackage: See /quote help who
+T 1510319885 18<genec18>	universalpackage: check out "/quote help who"
+T 1510319912 18<universalpackage18>	as i get 'H is ~universal@2405:7f00:8a1b:700:4f56:3492:a67d:ba7e (H)' when executing  '/who universalpackage %tuhnf' instead of 'universalpackage is ~universal@2405:7f00:8a1b:700:4f56:3492:a67d:ba7e (universalpackagemanager)'
+T 1510319937 18<Archelaus18>	Could I request a cloak?
+T 1510319961 18<Janet-O18>	niko: that's great, it's working now; thanks :)
+T 1510319972 18<universalpackage18>	however the a single %* returns no output
+T 1510319976 18<universalpackage18>	like %n
+T 1510320013 18<genec18>	universalpackage: default format returns a 352 instead of the custom format's 354
+T 1510320053 18<genec18>	but both terminate with a 315
+T 1510320114 18<universalpackage18>	for example '/who universalpackage %tcu' returns nothing except for 'End of /WHO list for universalpackage', why?
+T 1510320127 18<niko18>	you must add a number with %t
+T 1510320149 18<universalpackage18>	and without the t?
+T 1510320196 18<niko18>	if you are trying to identify which request give you results, %t help
+T 1510320205 18<universalpackage18>	as it still outputs nothing with %cu wich i would expect it to output the username and the nickname
+T 1510320225 18<universalpackage18>	channel and the username *
+T 1510320229 18<genec18>	universalpackage: I see data with %cu
+T 1510320396 18<incog18>	https://pbs.twimg.com/media/DOOvqvZVQAAPGsR.jpg - why do the cucks think im a russian hacker that stole the election
+T 1510320406 18<user12e3218>	ive register but i want to change my nickname.how i can do that?
+T 1510320427 18<universalpackage18>	 /nick
+T 1510320488 18<genec18>	Obi0ne: change nick or NickServ account name?
+T 1510320504 18<Obi0ne18>	NickServ
+T 1510320513 18<jrabe18>	Obi0ne, you can now use /msg NickServ GROUP to add the name to your account, and /msg NickServ SET ACCOUNTNAME to change your main name.
+T 1510320559 18<newlinux^18>	is there any channel for internet securiy? im running win 10 and frequently the location usuases indicator sign is showing up!!
+T 1510320562 18<Obi0ne18>	i write the name after ACCOuNTNAME
+T 1510320562 18<universalpackage18>	oh it apeaars that konversation just looks for a specific string in /who and only displays it if it matches
+T 1510320566 18<newlinux^18>	please someone
+T 1510320566 18<Obi0ne18>	?
+T 1510320577 18<jrabe18>	newlinux^, try ##windows
+T 1510320616 18<SonicTheHedgehog18>	newlinux^: An OS-specific channel like ##windows (as suggested) can help, or ##security as well
+T 1510320901 18<universalpackage18>	is the %t limited to only 1-3 characters?
+T 1510320920 18<universalpackage18>	like 0 to 999
+T 1510320924 18<niko18>	yes
+T 1510320931 18<universalpackage18>	ok
+T 1510322231 18<ignSrv-GP18>	Hi, I would like an unaffiliated cloak, already registered this nickname. thanks!
+T 1510322306 18<niko18>	i assume you will use this account for a bot, what is your main account ?
+T 1510322388 18<ignSrv-GP18>	is there a way for me to delete an account I already have, as in, my main account says "too many accounts already" or something like that
+T 1510322408 18<ignSrv-GP18>	not to delete the main account, but one of the "child" accounts inside it
+T 1510322424 18<niko18>	ignSrv-GP: see /msg nickserv listownmail
+T 1510322540 18<[itchyjunk]18>	 /msg nickserv help drop or something?
+T 1510322631 18<ignSrv-GP18>	niko, can I msg you?
+T 1510322645 18<niko18>	feel free
+T 1510322724 18<Roza18>	Hi
+T 1510322789 18<JonathanD18>	Hi.
+T 1510322817 18<[itchyjunk]18>	.iH
+T 1510322849 18<Roza18>	Do you have game rooms here
+T 1510322899 18<gildarts18>	Roza: /msg alis list game
+T 1510322976 18<Roza18>	Too many
+T 1510322984 18<ignSrv-GP18>	Hi Fuchs, I have a question regarding groups. could I msg you?
+T 1510323043 18<[itchyjunk]18>	ignSrv-GP: a staff, niko, already said you can pm them
+T 1510323130 18<ignSrv-GP18>	[itchyjunk], I know.
+T 1510323161 18<Roza18>	None of those rooms are nice. Some have been inactive.
+T 1510323388 18<gcbirzan18>	Roza: Freenode isn't exactly a general purpose network.
+T 1510323404 18<Roza18>	k
+T 1510323605 18<gcbirzan18>	That is not to say offtopic channels are not allowed, but just that they're mostly just the same people that use the primary on topic channels. (And, I know I used on topic as what freenode means by it, and offtopic as what people generally understand by off topic :P)
+T 1510323840 18<SonicTheHedgehog18>	Hi, any staffer available for PM?
+T 1510323897 18<kline18>	SonicTheHedgehog, whats up?
+T 1510323911 18<SonicTheHedgehog18>	kline: let me PM a sec
+T 1510324022 18<jk18>	I don’t even wanna know how many query windows staff have open
+T 1510324029 18<jk18>	I’d just quit irc
+T 1510324064 18<jk18>	Storyteller: tell me a story
+T 1510324128 18<erry18>	/4/34
+T 1510324145 18<Storyteller18>	...just start refering troublemakers to sorcery.net; no really, people that complain, stir up drama, etc; psychophants, convince them that sorcery.net will be more amicable
+T 1510324184 18<EricJonrosh18>	Im going to go play dungeons and dragons now :)
+T 1510324792 18<c[_]18>	would it be possible to get the cloak on falco updated for it's current accountname?
+T 1510325576 18<ilbelkyr18>	c[_], hi, still around?
+T 1510325650 18<c[_]18>	ilbelkyr: yup
+T 1510325787 18<PlasmaStar18>	c[_] :]
+T 1510325817 18<hog18>	c[_:]
+T 1510325832 18<kline18>	feedmari, there are some security people around on freenode yes: /msg alis help list * -topic security
+T 1510325875 18<kline18>	you may want to try ##networking and ##security , and there are also other channels that are more specific or are about individual projects or groups like defcon groups or teams
+T 1510325881 18<ilbelkyr18>	c[_], given that it's a project cloak you'd want to ask the relevant GC about that
+T 1510325892 18<c[_]18>	ilbelkyr: can do :)
+T 1510325902 18<ilbelkyr18>	okay :)
+T 1510326934 18<sn0wmonster18>	I have no intention to do this nor do I think it would even work really, but would it be against Freenode's policy to have a channel (like ##debian or some project discussion/support channel) where users could pay in bitcoin/some other cryptocurrency to get help?
+T 1510326965 18<ozymandias_18>	ew
+T 1510326973 18<elios18>	lol
+T 1510326977 18<elios18>	sn0wmonster: ofc not
+T 1510326991 18<ozymandias_18>	FREEnode...
+T 1510326993 18<ozymandias_18>	;-)
+T 1510327005 18<sn0wmonster18>	I'm not for it, was just a showerthought
+T 1510327013 18<elios18>	what's that sn0wmonster ?
+T 1510327026 18<sn0wmonster18>	elios, what's a shower thought?
+T 1510327029 18<ilbelkyr18>	that sounds like a bad idea. I don't think it's strictly against any of our policies, but we've had our share of problems with people doing payments via IRC before
+T 1510327037 18<jk18>	Lol pay for help?!
+T 1510327041 18<elios18>	sn0wmonster: make your own irc server
+T 1510327042 18<jk18>	This is irc
+T 1510327053 18<sn0wmonster18>	elios, why are you telling me to make my own IRC server
+T 1510327054 18<zautomata18>	hi, how to get a cloak?
+T 1510327055 18<jk18>	It’s all about nerds helping nerds
+T 1510327063 18<ozymandias_18>	zautomata, ask for one
+T 1510327067 18<zautomata18>	from who?
+T 1510327074 18<ozymandias_18>	the channel, or staff
+T 1510327083 18<zautomata18>	I like to have a cloak please :)
+T 1510327087 18<elios18>	sn0wmonster: this network is not for profit
+T 1510327093 18<sn0wmonster18>	elios, and?
+T 1510327109 18<elios18>	sn0wmonster: which part of no didn't you understand?
+T 1510327114 18<jrabe18>	elios, <sn0wmonster> I have no intention to do this
+T 1510327115 18<zautomata18>	tomaw hi, can i get a cloak?
+T 1510327135 18<sn0wmonster18>	jrabe, shh, they were on a roll
+T 1510327139 18<sn0wmonster18>	let them dig deeper
+T 1510327146 18<ilbelkyr18>	elios, well, I don't think it's *prohibited*. But it'd be a bad idea, most likely.
+T 1510327149 18<sn0wmonster18>	it is onlythrough pain that we learn and grow
+T 1510327167 18<zautomata18>	ilbelkyr hi, can i have a cloak please :)
+T 1510327178 18<sn0wmonster18>	if they sufficiently embarrass themselves enough, maybe next time they'll read before they respond.
+T 1510327181 18<ilbelkyr18>	zautomata, probably. give me a second :)
+T 1510327195 18<zautomata18>	hehehe, i am getting a cloak
+T 1510327208 18<sn0wmonster18>	Yea, frankly I don't see how users would eb smart enough to use cryptocurrency and dumb enough to not know how to set up a DD-WRT router, install something, etc, but I guess it's possible
+T 1510327226 18<sn0wmonster18>	but it did lead me to question if Freenode has policies on this already outlined
+T 1510327266 18<ilbelkyr18>	zautomata, cloak set. enjoy :)
+T 1510327291 18<zautomata18>	ilbelkyr thank you, you are awesome ;)
+T 1510327313 18<sn0wmonster18>	the only thing I can see is https://freenode.net/policies #freenode and financial transactions
+T 1510327317 18<ilbelkyr18>	you're welcome
+T 1510327317 18<zautomata18>	is freenode a foundation?
+T 1510327345 18<zautomata18>	or just a group donating irc servers?
+T 1510327358 18<sn0wmonster18>	I guess it would be kind of ridiculous to force a rule against it, because ti might accidentally make other activities like donations suddenly impossible
+T 1510327384 18<sn0wmonster18>	probably not something freenode would want to police anyway
+T 1510327384 18<ozymandias_18>	eh, you can word it pretty easily
+T 1510327409 18<sn0wmonster18>	give me an example so i can prove you why its not so easy. :)
+T 1510327414 18<ilbelkyr18>	zautomata, I believe there is a Ltd registered mostly to deal with matters like our #live conference. It doesn't really affect our day-to-day operations much
+T 1510327416 18<ozymandias_18>	"free will donations are allowed, but requiring any form of payment for support is prohibited"
+T 1510327449 18<sn0wmonster18>	so what about a project that sells its software and support but is still FOSS?
+T 1510327466 18<ozymandias_18>	then they dont provide the paid support via freenode.
+T 1510327479 18<zautomata18>	ilbelkyr so say for example i have a box to spare I can set it up to freenode?
+T 1510327516 18<sn0wmonster18>	I'm just bothering you ozymandias_, my point was it isn't easy to word(as you had to correct it right after even)
+T 1510327532 18<sn0wmonster18>	with proper wording, sure, probably possible
+T 1510327536 18<jrabe18>	zautomata, see https://freenode.net/support
+T 1510327537 18<ozymandias_18>	I didnt correct anything.
+T 1510327539 18<sn0wmonster18>	at least in spirit!
+T 1510327548 18<ozymandias_18>	I stand behind my original statement
+T 1510327550 18<zautomata18>	jrabe thnx
+T 1510327551 18<ilbelkyr18>	zautomata, we have some requirements for that. See ... yup, what jrabe just said
+T 1510327567 18<ozymandias_18>	freenode doesnt police non-freenode activities
+T 1510327599 18<sn0wmonster18>	your original statement made it impossible fro a FOSS project to sell support
+T 1510327603 18<sn0wmonster18>	until you modified it
+T 1510327620 18<ozymandias_18>	I guess the 'on freenode' was implied, since we were literally talking potential freenode rules
+T 1510327634 18<ozymandias_18>	freenode has zero power to police non-freenode activity
+T 1510327663 18<sn0wmonster18>	at least you understand my point now, that its not easy writing rules because of clarity and edge cases, which was my point
+T 1510327674 18<newlinux^18>	https://i.redd.it/dvb1z35m74xz.png
+T 1510327678 18<sn0wmonster18>	which is probably why they didn't write that rule
+T 1510327680 18<ozymandias_18>	that wasn't difficult ;-)
+T 1510327700 18<sn0wmonster18>	but it wasn't so easy that you knew of a possible edge case or you surely would have included it in your first statement
+T 1510327701 18<ozymandias_18>	newlinux^, really not appropriate
+T 1510327712 18<ozymandias_18>	it wsa included.
+T 1510327727 22*	26Fuchs sets quiet on 18$a:^newlinux
+T 1510327735 18<ozymandias_18>	I proposed a potential wording for a freenode rule, not some sort of FOSS global rule
+T 1510327770 18<Fuchs18>	newlinux^: yes.
+T 1510327773 18<ozymandias_18>	my local swimming pool has rules posted -- and one of them is 'no running' -- I have never met ANYONE that thought that rule applied outside the pool.
+T 1510327787 18<ozymandias_18>	in fact, there is a track located next door.
+T 1510327830 18<sn0wmonster18>	that's a bit of a false equivalency
+T 1510327833 18<ozymandias_18>	i understand what you are trying to say, I disagree that the lack of scope in my rule was a flaw -- the scope is inherent int he nature of the rule
+T 1510327837 18<ozymandias_18>	not really
+T 1510327846 18<sn0wmonster18>	FOSS has projects that have respective channels here but their main operations are elsewhere
+T 1510327850 18<ozymandias_18>	much like the pool, freenode's rules only apply to freenode
+T 1510327864 18<sn0wmonster18>	and their main operations dictate whether or not they qualify for registered groups status here for example
+T 1510327902 18<sn0wmonster18>	So you're saying as long as FOSS activity happenson Freenode, any group can use Freenode?
+T 1510327906 18*	sn0wmonster rolls eyes
+T 1510327926 18<ozymandias_18>	I don't even understand what you are objecting to now
+T 1510327944 18<sn0wmonster18>	I know.
+T 1510327948 18<sn0wmonster18>	But I give up!
+T 1510327954 18<ozymandias_18>	you seem to be saying that freenode has (or should have) the ability to policy behavior beyond IRC
+T 1510327961 18<ozymandias_18>	they do not.
+T 1510327978 18<zautomata18>	what kind of operating system a freenode server should use?
+T 1510327988 18<jrabe18>	Debian stable
+T 1510328015 18<zautomata18>	jrabe thnx
+T 1510328045 18<Fuchs18>	the requirements are on the page listed earlier, please keep in mind that we tend to not take server donations from singular private persons and tend to prefer those donated by organizations of some sort
+T 1510328059 18<Fuchs18>	https://freenode.net/support  << this page.
+T 1510328167 18<zautomata18>	Fuchs dully notec
+T 1510328169 18<zautomata18>	noted*
+T 1510328275 18<Fuchs18>	but feel free to check that page to see if you meet requirements, then contact the people mentioned there :)
+T 1510328334 18<zautomata18>	Fuchs yes hosting@freenode.net; any idea where can i get a list of current locations of the servers?
+T 1510328414 18<Fuchs18>	zautomata: I don't think we have such a list, you can check the servers that are in the rotation. Why would that be important? (Since geolocation tends to not be that important for IRC)
+T 1510328537 18<zautomata18>	Fuchs not really important,but would be nice to see what kind of organizations donate servers per geolocation
+T 1510328563 18<[itchyjunk]18>	freenode doesn't take donations anymore i've heard
+T 1510328614 18<PlasmaStar18>	What you got to do is stick the donations in their back pocket while they're not looking.
+T 1510328656 18*	hog slides a fat envelope under Fuchs's freenode office door
+T 1510328665 18<anon18>	what's up Fuchs
+T 1510328669 18<incog18>	today has been a strange day, batty louise mensch calling my banned twitter acct a russian hacker
+T 1510328674 18<anon18>	saw a funny screenshot of you last night lol
+T 1510328682 18<incog18>	url
+T 1510328711 18<Fuchs18>	hog: bit early for valentine cards, isn't it
+T 1510328718 18<Fuchs18>	you can just ask me out in a regular way, mind
+T 1510328722 18<Fuchs18>	cinema would be an option
+T 1510328787 18<hog18>	I have reserved tickets to see trek wars, you may come along
+T 1510328835 18<PlasmaStar18>	Fuchs hi
+T 1510328850 18<PlasmaStar18>	What's your favorite thing to posses in Odyssey, and why isn't it a zipper.
+T 1510328868 18<spot18>	Any staff available to help with a GC request?
+T 1510328870 18<Fuchs18>	the para dry bones, because it is a para dry bone
+T 1510328873 18<Fuchs18>	spot: hi, yes
+T 1510329047 18<di0x18>	hmmm
+T 1510329205 18<niko18>	hotbot: hi, it's yours, feel free to register or group it
+T 1510330719 18<rant18>	its been rather quiet in here for the last few hours
+T 1510330731 18<Time-Warp18>	christel: requesting MetaNova be glined from freenode for violateing rule 241.21 which states channel operators must not have downs syndrome. Thanks :D
+T 1510330750 18<rant18>	Time-Warp: haha
+T 1510330760 18<`88mph18>	:)
+T 1510330806 18<di0x18>	hola Time-Warp
+T 1510330838 18<rant18>	speaking of jokes.. if any of you are lovers of comedy and would like to share thoughts/jokes feel free to join ##standup it was formed about 8 months ago by a mod in ##philosophy and we're finally populating the channel/
+T 1510330878 18<di0x18>	can me has a cloak? thx in advance :)))
+T 1510331285 18<Enricoo18>	##minetest-ctf
+T 1510331470 18*	di0x pets christel
+T 1510333209 18<WillPittenger18>	I have to complain about the user Metaleer.  He or she showed up in ##baseball to be a troll.
+T 1510333238 18<rant18>	WillPittenger: your complaint is noted, but its a matter for the channel ops
+T 1510333252 18<WillPittenger18>	I am the channel op.  I kicked him.
+T 1510333278 18<rant18>	sounds like everything is well in hand then
+T 1510333295 18<WillPittenger18>	The user has a NickServ account marked as frozen by the FreeNode adminstration.
+T 1510333367 18<ecks18>	so what exactly is the problem?
+T 1510333816 18<ozymandias_18>	lol
+T 1510333826 18<ozymandias_18>	the problem is that everything is working as expected?
+T 1510333846 18<ozymandias_18>	what are frozen nickerv accounts?
+T 1510333863 18<SonicTheHedgehog18>	Chances are they were confused why that person could even use that nickname, if the account is frozen. They don't realize that a frozen account doesn't translate to a RESV, the nickname can be used, just not signed into.
+T 1510333884 18<SonicTheHedgehog18>	I guess they wanted to point it out to staff in case something wasn't working right.
+T 1510333887 18<ozymandias_18>	oooh
+T 1510333985 18<dg_subrata18>	I have a network application written in C++ and runs on Linux. To generate a certain error use case I have to generate EWOULDBLOCK or EAGAIN error on a non-blocking TCP socket at the time of write system call. How can I achieve this easily ??
+T 1510333988 18<SonicTheHedgehog18>	ozymandias_: But, to answer your question, see /msg nickserv help freeze
+T 1510334004 18<SonicTheHedgehog18>	(You can't use this command as you aren't staff, but you can read its help file)
+T 1510334022 18<ozymandias_18>	nice, thanks
+T 1510334041 18<SonicTheHedgehog18>	yw
+T 1510334045 18<ozymandias_18>	dg_subrata, might want to join an appropriate channel and ask there.
+T 1510334099 18<dg_subrata18>	ozymandias_: Can you please suggest which channel?
+T 1510334134 18<ozymandias_18>	something C++ related, and not the help channel for the irc network ;-)
+T 1510334153 18<dg_subrata18>	ok thanks for the suggestion.
+T 1510334162 18<ozymandias_18>	#c++ seems like a likely candidate
+T 1510334176 18<SonicTheHedgehog18>	ozymandias_: It's ##c++ , with two hashes.
+T 1510334188 18<SonicTheHedgehog18>	dg_subrata: Also, ##networking , since this is a networking app
+T 1510334206 18<SonicTheHedgehog18>	dg_subrata: Perhaps try both places (but please, not in parallel... :) )
+T 1510334213 18<ozymandias_18>	SonicTheHedgehog, fair enough, I took a guess
+T 1510334216 18<dg_subrata18>	also asked there , lets see
+T 1510334237 18<dg_subrata18>	ok
+T 1510334259 18<SonicTheHedgehog18>	ozymandias_: Yes, heh, the #/## distinction on freenode does trip people up, it can get confusing.
+T 1510334280 18<raynold18>	Ahh it's a wonderful day
+T 1510334305 18<ozymandias_18>	SonicTheHedgehog, I assumed that they would push to the correct location at least -- most big channels do
+T 1510334318 18<SonicTheHedgehog18>	Yeah, there's forwards.
+T 1510334496 22*	26ChanServ gives channel operator status to 18mniip
+T 1510335775 18<Fuchs18>	ignSrv-GP: yes, but you will get delayed responses, as I am handling other cases currenlty
+T 1510336739 18<ChunkzZ18>	Fuchs: why is jk saying you're going to k-line me?
+T 1510336755 18<ChunkzZ18>	Fuchs: I've done nothing wrong, he was the one starting shit.
+T 1510336758 18<emerson18>	ChunkzZ: because he's trying to be annoying
+T 1510336762 18<emerson18>	just ignore him
+T 1510336782 18<jk18>	Rofl see, see, I always get accused as the instigator
+T 1510336792 18<emerson18>	knock it off
+T 1510336798 18<jk18>	I’m just minding my own business
+T 1510336820 18<ChunkzZ18>	emerson: oh, he's being an ass like always then. cheers.
+T 1510336844 18<ChunkzZ18>	thanks emerson :)
+T 1510336849 18<incog18>	chatters lives matter, no more unjust klines
+T 1510336852 18<incog18>	https://www.youtube.com/watch?v=trLdU3VhiTU
+T 1510336865 18<jk18>	emerson:  https://arxius.io/i/0c566be5 the start of today. Look who it was.
+T 1510336873 18<jk18>	Don’t jump to conclusions bud
+T 1510336899 18<ChunkzZ18>	jk: I was stating a fact.
+T 1510336908 18<emerson18>	if you both ignore each other, the problem will go away
+T 1510336912 18<jk18>	ChunkzZ: you could just /ignore me like you said
+T 1510336915 18<maxzor18>	Hello, what kind of app is hexchat irc (broken proxy config) : (dns http https ftp pop3 pop3s imap imaps smtp smtp-auth) ssmtp ntp nntp snmp telnet ssh tftp traceroute pptp gre l2tp/ipsec l2tp openvpn h323hostcall sip ica ms-remote-desktop vnc video-to-protect ?
+T 1510336920 18<ChunkzZ18>	you could too jk xD
+T 1510336928 18<jk18>	Yeah, he said he did, but clearly he wants to keep starting shit
+T 1510336930 18<Fuchs18>	both of you will
+T 1510336939 18<Fuchs18>	and if you can't, I think you know the process by now
+T 1510336944 18<Fuchs18>	so I suggest you just do
+T 1510336970 18<jk18>	ChunkzZ: klines aren’t fun. So stfu for the both of us :)
+T 1510336975 18<ChunkzZ18>	done Fuchs thanks dude
+T 1510337014 18<jk18>	I can’t just sit anywhere without someone starting shit jeeze
+T 1510337079 18<jk18>	maxzor: ?
+T 1510337531 18<genec18>	maxzor: IRC is IRC.  HexChat is merely one popular client.
+T 1510337555 18<hog18>	I thought you were going to say HexChat is HexChat
+T 1510337575 18<incog18>	its the one the wiccans use
+T 1510337592 18<maxzor18>	jk,genec, i messed with my proxy trying to port forward ssh. I have not irc in my protocol list, and this stuff does not let me configure tcp port 6667
+T 1510337686 18<genec18>	maxzor: I've reconfigured different server connections to 6697, 7000, 7070 and a few others as necessary
+T 1510337712 18<jk18>	I’m not understanding
+T 1510337758 18<genec18>	maxzor: some proxies allow arbitrary destination ports.
+T 1510337849 18<genec18>	maxzor: are you trying to use a hide-my-self proxy or are you in an environment where you don't have Internet access except through the proxy?  I'm confused by why the proxy matters or is there
+T 1510337979 18<maxzor18>	genec : yes my house local internet is behind a nat (in my mind nats and proxies are interchangeable), I need it to access wan. Im writing atm on irc web client, pure irc clients cannot reach any irc server. And the only thing my nat configuration lets me do is to choose between the above long list.
+T 1510338009 18<genec18>	maxzor: NATs and proxies are NOT the same
+T 1510338126 18<genec18>	maxzor: did you try any of the other ports that freenode uses as listed on https://freenode.net/kb/answer/chat ?
+T 1510338135 18<maxzor18>	well, I believe my issue can be summed as "I need to port forward tcp 6667 on an unfriendly nat configurator"
+T 1510338301 18<genec18>	maxzor: IME, you don't need to port-forward UNLESS outside people are connecting in.  otoh, your ISP might have an outbound firewall in place
+T 1510338415 18<Sagan18>	if you are not authed, and you are here, will you get then something like this?
+T 1510338415 18<Sagan18>	19:25 -!- |404 #freenode Cannot change nickname while banned on channel
+T 1510338447 18<MetaNova18>	Sagan: yes
+T 1510338467 18<Sagan18>	meh
+T 1510338478 18<genec18>	Sagan: for the moment, yes.
+T 1510338506 18<Sagan18>	a bit annoying: your client reconnected, joined this chan, and you want to identify before the 30 secs, and are on a nick which does not belong to you, but you can't change it
+T 1510338520 18<genec18>	Sagan: look at the quiet list.  "$~a" is the entry that bans unidentified users from changing since they are not allowed to speak
+T 1510338524 18<MetaNova18>	Sagan: /msg nickserv identify account password
+T 1510338526 18<genec18>	Sagan: SASL
+T 1510338540 18<MetaNova18>	you don't need to be using the nick of your account to identify to it
+T 1510338541 18<genec18>	MetaNova: less reliable than SASL
+T 1510338545 18<MetaNova18>	also, configure SASL
+T 1510338552 18<MetaNova18>	as genec suggested
+T 1510338555 18<Sagan18>	yeah, I know. anyway, for a client I started to setup a bit... meh
+T 1510338598 18<genec18>	Sagan: the $~a entry isn't always on this channel but it is present when the climate becomes a little harsh
+T 1510338640 18<Sagan18>	genec: heh, I'm not that new here ;). just wasn't sure, if this was the reason, since I never got banned here (and don't want to)
+T 1510338686 18<genec18>	Sagan: yes, a +q that matches will prevent a user from changing nicks
+T 1510338801 18<genec18>	Sagan: but using SASL will prevent you from joining channels before being identified
+T 1510338894 18<Sagan18>	genec: hm, yeah. (normally the client should not join the chans automatically anyway). thx for checking anway :)
+T 1510338903 18<maxzor18>	ty for inputs genec
+T 1510338907 18<Sagan18>	going to configure it anyway
+T 1510339255 18<genec18>	maxzor: so your web app must be capable of reaching out to say chat.freenode.net/6697 but for your web app to be reachable from another connection, 80 (HTTP) or 443 (HTTPS) will need a port forward.
+T 1510339547 18<eht_18>	I keep getting the error 'Nick eht is temporarily unavailable'.  What can I do to fix that?
+T 1510339578 18<eht_18>	Notably I was able to authenticate, just unable to /nick eht
+T 1510339599 18<SonicTheHedgehog18>	eht_: It is because you have enabled nick protection, someone tried to use the nickname and it got squatted by a services enforcer. See /msg nickserv help release
+T 1510339622 18<eht_18>	thanks SonicTheHedgehog
+T 1510339624 18<SonicTheHedgehog18>	yw
+T 1510340005 18<LordThumper18>	Hey
+T 1510340016 18<LordThumper18>	On windows, the .ssh folder contains the pub/private key pair
+T 1510340016 18<SonicTheHedgehog18>	Howdy.
+T 1510340030 18<LordThumper18>	What should I call my key pair to use in ssh
+T 1510341383 18<ozymandias_18>	id_ALG, where ALG is the algorythm
+T 1510341388 18<ozymandias_18>	dsa or rsa
+T 1510341392 18<ozymandias_18>	etc
+T 1510342163 18<OS-1606318>	any staff available?
+T 1510342174 18<tomaw18>	need a cloak?
+T 1510342210 18<qwerty101018>	Hi OS-16063, /stats p will list who is available

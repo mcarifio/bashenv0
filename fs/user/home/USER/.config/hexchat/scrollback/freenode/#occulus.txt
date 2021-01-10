@@ -1,0 +1,7 @@
+T 1492478504 19*	Now talking on 22#occulus
+T 1492478504 22*	26adams.freenode.net sets mode 24+n on 22#occulus
+T 1492478504 22*	26adams.freenode.net sets mode 24+s on 22#occulus
+T 1492781408 20*	Disconnected (20Connection timed out)
+T 1492781433 19*	Now talking on 22#occulus
+T 1492781433 22*	26kornbluth.freenode.net sets mode 24+n on 22#occulus
+T 1492781433 22*	26kornbluth.freenode.net sets mode 24+s on 22#occulus

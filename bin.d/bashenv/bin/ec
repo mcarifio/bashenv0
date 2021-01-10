@@ -1,22 +1,25 @@
 #!/usr/bin/env bash
 
-function emacsclient {
+function _emacsclient {
     local -i _frames=$(command emacsclient --no-wait --eval '(length (frame-list))')
     local _create_frame=''
     (( _frames < 2 )) && _create_frame='--create-frame'
-    local -a _args=($@)
-    (( ${#_args[*]} == 0 )) && _args=(.)
+    local -a _args=($*) ; (( ${#_args[*]} == 0 )) && _args=(.)
     command emacsclient ${_create_frame} --no-wait "${_args[*]}"
 }
 
 function _ec {
     # Expecting systemd emacsd to be running. Reload if not.
     if [[ active != $(systemctl is-active --user emacsd) ]] ; then
-        >&2 printf "Reloading systemd user service emacsd..."
-        systemctl reload --user emacsd
-        >&2 u.status || true
+        >&2 printf "Restarting systemd user service emacsd ... "
+        if systemctl --user deamon-reload && systemctl start --user emacsd ; then
+            printf 'succeeded.\n'
+        else
+            printf 'failed.\n'
+        fi
+        systemctl --user status emacsd
     fi
-    emacsclient "$*" && wmctrl -a emacs || true
+    _emacsclient "$*" && wmctrl -a emacs || true
 }
 
 _$(basename ${BASH_SOURCE} .sh) "$@"

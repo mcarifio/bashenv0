@@ -1,0 +1,520 @@
+T 1600442908 18<V18>	you're being unreasonable here
+T 1600442918 18<JordiGH18>	Put your code where your mouth is.
+T 1600442920 18<JordiGH18>	It's easy, do it.
+T 1600442927 18<V18>	...what
+T 1600442935 18<xensky18>	thanks for the read jordi, didn't realize it was that bad
+T 1600442961 18<xensky18>	I like to pretend humanity isn't as bad as it is
+T 1600443005 18<JordiGH18>	V: You're saying that Mozilla is being lazy, unreasonable, or insincere about handling the abuse problem on Firefox Send. You're saying all of these problems are within grasp and you're giving as an example a one-person team of one such site. Since you've got it all figured out, why don't you bring joy to thousands of people and run Firefox Send yourself?
+T 1600443051 18<V18>	JordiGH: they literally made all of the cool people who're working on advancing the state of firefox & the web redundant
+T 1600443054 18<V18>	show a bit of empathy please
+T 1600443073 18<V18>	plenty of those are my friends
+T 1600443083 18<V18>	this isn't about send
+T 1600443092 18<JordiGH18>	Yes, I'm angry with Mozilla too. But I didn't think an upload-what-you-want website would survive for long. Lots of people have attempted this and failed.
+T 1600443093 18<V18>	this is about mozilla, the general direction it's headed and is heading
+T 1600443112 18<JordiGH18>	And this was about send, you're making it about other things.
+T 1600443141 18<V18>	yes, and you've gone from me saying that there is more to this than what they're implying to arguing that I'm wrong unless I go fix firefox send myself right this very moment
+T 1600443143 18<dlowe18>	in a reasonable internet, when you wanted to share something, you would open a tcp connection and send data through it
+T 1600443145 18<V18>	and that's quite frankly ridiculous
+T 1600443151 18<V18>	dlowe: yes, that's called magic-wormhole
+T 1600443153 18<V18>	it exists today
+T 1600443162 18<V18>	or webwormhole
+T 1600443173 18<V18>	JordiGH: this was about mozilla
+T 1600443178 18<dlowe18>	but we don't have a reasonable internet :p
+T 1600443181 18<JordiGH18>	V: I just said that their justification that this was about is an entirely reasonable justification.
+T 1600443193 18<JordiGH18>	Just about Send.
+T 1600443194 18<V18>	I'm not interested in following this conversation any longer, you're flaming
+T 1600443194 18<V18>	Have a good day.
+T 1600443317 18<mockturtle18>	Pizzly - an open-source API Integrations Manager [api] (cfabianski) - https://lobste.rs/s/xtlemo
+T 1600443337 18<rocx18>	can we just make peer-to-peer sharing mainstream?
+T 1600443347 18<rocx18>	instead of scaring people off with words like "bit-torrent"?
+T 1600443358 18<JordiGH18>	We tried, but then they jailed the Pirate Bay people anyway.
+T 1600443372 18<rocx18>	i mean beyond torrents.
+T 1600443386 18<rocx18>	you'd still need to distribute a torrent file to use it.
+T 1600443398 18<JordiGH18>	Well, or the magnet hash.
+T 1600443405 18<thardin18>	amule is still going strong
+T 1600443415 18<JordiGH18>	I still would like to understand some day how magnet hashes work.
+T 1600443425 18<JordiGH18>	I get a hash and suddenly I can connect to people around the world who have that file.
+T 1600443439 18<rocx18>	isn't there usually still a tracker?
+T 1600443450 18<JordiGH18>	you don't need a tracker with magnet hashes.
+T 1600443453 18<rocx18>	fV:
+T 1600443455 18<JordiGH18>	It's black magic.
+T 1600443483 18<thardin18>	it uses a DHT I think
+T 1600443546 18<JordiGH18>	That's just another word for "black magic" at this moment. :P
+T 1600443559 18<thardin18>	kademlia (the p2p protocol amule uses) addresses  things by hash, combined with IPs in a way which escapes me atm
+T 1600443784 18<rocx18>	JordiGH: okay yeah reading up on magnets URIs, they do sound like blaque magique.
+T 1600443923 18<rocx18>	also TIL limewire was GPL software.
+T 1600443999 18<JordiGH18>	Reading the Wikipedia page on DHT is reminding me that I need to fix the Wikipedia page on Huffman encoding.
+T 1600444497 18<JordiGH18>	To any of you who don't already know what it is: does the Wikipedia page help you understand it at all? https://en.wikipedia.org/wiki/Huffman_coding
+T 1600444497 18<mockturtle18>	[WIKIPEDIA] Huffman coding | "In computer science and information theory, a Huffman code is a particular type of optimal prefix code that is commonly used for lossless data compression. The process of finding or using such a code proceeds by means of Huffman coding, an algorithm developed by David A. Huffman while he was a Sc.D...."
+T 1600444575 18<JordiGH18>	'Cause it didn't help me at all, and when I read an explanation elsewhere, it made up upset with how bad the Wikipedia explanation seemed to me.
+T 1600444990 18<rowbee18>	JordiGH: hm... i think the problem is that the explanation in the article is very abstract.
+T 1600445013 18<wink18>	JordiGH: no, it's not great.
+T 1600445018 18<rowbee18>	once you know what it is, the input, output and goal seem very logical, however you can't infer whatever it's supposed to mean from teh get-go
+T 1600445039 18<wink18>	it's too dense and too much text
+T 1600445047 18<wink18>	just compare the DE/ES version to the EN
+T 1600445052 18<wink18>	half as long
+T 1600445072 18<rowbee18>	https://en.wikipedia.org/wiki/Huffman_coding#Compression this section contains an example image which might be helpful
+T 1600445072 18<mockturtle18>	[WIKIPEDIA] Huffman coding#Compression | "In computer science and information theory, a Huffman code is a particular type of optimal prefix code that is commonly used for lossless data compression. The process of finding or using such a code proceeds by means of Huffman coding, an algorithm developed by David A. Huffman while he was a Sc.D...."
+T 1600445073 18<wink18>	didn't read all 3 just now, but I remember looking something up a while agop
+T 1600445157 18<rowbee18>	basically construct heap -> assign codewords based on heap path from root -> code input based on codewords
+T 1600445282 18<JordiGH18>	rowbee: Here is my explanation: https://mathstodon.xyz/@JordiGH/104727967451038032
+T 1600445283 18<mockturtle18>	[ JordiGH: "I'm going to try to do a better of explaining #Hu…" - Mathstodon ] - mathstodon.xyz
+T 1600445642 18<JordiGH18>	rowbee: I'm angry with the "goal" in the formalised description. They could have just written, "find the code with least weighted length, with the length of each symbol multiplied by the given weights".
+T 1600445662 18<JordiGH18>	There was no need for TeX in there. It just makes it abstruse and takes longer for a human to parse.
+T 1600445679 18<rowbee18>	fzir enough
+T 1600445682 18<JordiGH18>	I mean, maybe some LaTeX, but there's a lot of symbol fetishism in this article.
+T 1600445726 18<JordiGH18>	And also, the article is mostly concerned about how to find a Huffman coding than saying what it is and how to use it.
+T 1600445734 18<JordiGH18>	Gaaah I need to fix it.
+T 1600445784 18<JordiGH18>	One Wikiproblem at a time, though, this was yesterday's sidequest: https://en.wikipedia.org/w/index.php?title=All_your_base_are_belong_to_us&action=history
+T 1600445785 18<mockturtle18>	[ All your base are belong to us: Revision history - Wikipedia ] - en.wikipedia.org
+T 1600448638 18<rowbee18>	rsync.net looks great, why haven't i heard of them before?
+T 1600448661 18<rowbee18>	$2.5/month for 100GB of backups sounds great
+T 1600448670 18<benharri18>	i've been very happy with their borgbackups offering
+T 1600448722 18<rowbee18>	"NO Charges for ingress/egress"
+T 1600448755 18<tylerchambers18>	rsync.net offers special pricing for rclone (very cool: rclone.org) users: https://rsync.net/products/rclone.html
+T 1600448755 18<mockturtle18>	[ Cloud Storage for Offsite Backups - rclone support ] - rsync.net
+T 1600448829 18<V18>	oh, sweet
+T 1600448864 18<companion_cube18>	wow it's cheaper than borgbase, or I am confused?
+T 1600448923 18<rowbee18>	seems like same pricing
+T 1600449054 18<tylerchambers18>	slightly cheaper with the "rclone pricing". for 100gb on rclone annually it's $18, borgbase appears to be $25. keep in mind rsync.net's rclone pricing doesn't include support or a client. but if you're comfortable using ssh based tools to transfer your files then it's a great deal. i use dropbox pro for...familial reasons, but have plenty of friends who speak highly of rsync.net
+T 1600449059 18<companion_cube18>	ah, must be monthly vs yearly
+T 1600449128 18<jaffachief18>	there's a minimum 400GB order on rsync.net
+T 1600449270 18<tylerchambers18>	jeffachief: ya for their normal plans, if you're using the 'rclone' pricing linked above minimum order drops to 100gb.
+T 1600449271 18<tylerchambers18>	 /me considers a career as an rsync.net sales person
+T 1600449329 18<V18>	so... minimum order 1.5€/mo
+T 1600449333 18<V18>	that's extremely cheap
+T 1600449346 18<V18>	or is this $$$ we're speaking
+T 1600449357 18<rowbee18>	looks like $ so even cheaper
+T 1600449362 18<V18>	Because if so then it's cheaper, yeah
+T 1600449382 18<V18>	1.27€ at the current market rates
+T 1600449392 18<V18>	very tempting
+T 1600449404 18<rowbee18>	backblaze is apparently cheaper but no borg
+T 1600449412 18<rowbee18>	check the article comments on lobsters
+T 1600449466 18<dkess18>	however, they recently introduced s3 compatibility
+T 1600449489 18<V18>	I think a friend of mine is using b2 + restic
+T 1600449490 18<dkess18>	which opens some possibilities
+T 1600449499 18<dkess18>	i use b2 + restic and i'm very happy with it
+T 1600449506 18<V18>	I've not looked into pricing, because I don't do backups like the adult I supposedly am
+T 1600449519 18<V18>	it's on the list behind all the other things that are just a little more important
+T 1600449523 18<V18>	Like talking on IRC :)
+T 1600449540 18<Brekkjern18>	To be fair though... IRC does have a very high priority!
+T 1600449544 18<rowbee18>	backups are for nerds
+T 1600449563 18<rowbee18>	i should be yelling at the idiot who hasn't paid me in 2 months to pay me over the phone but i don't feel like it
+T 1600449574 18<rowbee18>	irc it is
+T 1600449600 18<rowbee18>	maybe next time they write a very emotional email about how they're losing business i will get angry enough
+T 1600449606 18<Brekkjern18>	Why would they not pay you? Company folding, or something else?
+T 1600449612 18<rowbee18>	cheap ass
+T 1600449625 18<rowbee18>	"we'll pay you after the bugs are fixed ;)"
+T 1600449628 18<rowbee18>	yeah no
+T 1600449639 18<Brekkjern18>	Send it to collections? :P
+T 1600449644 18<rowbee18>	lol
+T 1600449658 18<V18>	rowbee: see, saying they're for nerds is how you get all the nerds who are self-conscious to do it
+T 1600449680 18<rowbee18>	true
+T 1600450441 18<aleph-18>	Afternoon folks
+T 1600450462 18<aleph-18>	Ah we're talking backups
+T 1600450486 18<rocx18>	i like backups.
+T 1600450514 18<mockturtle18>	Telegram animated stickers file format [graphics] [programming] (pl) - https://lobste.rs/s/zangb5
+T 1600450525 18<rocx18>	backup brûlée, backup parfait, backup roast...
+T 1600450541 18<rocx18>	...okay wtf thunderbird that last e is in a word HOW IS THAT A MENTION?
+T 1600450604 18<Hail_Spacecake18>	I use borg + rclone to a wasabi s3 bucket for backups
+T 1600450638 18<rocx18>	i just have an unorganized external hard disk.
+T 1600450654 18<aleph-18>	B2 is great tbh.
+T 1600450656 18<rocx18>	we're talking "backup" folders in "backup" folders level of unorganized.
+T 1600450665 18<gerikson18>	I had no idea these serives existed
+T 1600450675 18<aleph-18>	$200 a month for 50TB~ stored with traffic
+T 1600450733 18*	gerikson plugs in his timemachine disk
+T 1600450819 18<rocx18>	aleph-: that sounds expensive for a filthy casual like me.
+T 1600451121 18<rowbee18>	frickin after effects
+T 1600451125 18<rowbee18>	hwy, telegram
+T 1600451127 18<mockturtle18>	Your Values are the Rules You Break [practices] (mattrose) - https://lobste.rs/s/wgqlbs
+T 1600451129 18<mockturtle18>	Using Ring Buffer Logging to Help Find Bugs (2000) [pdf] [programming] (hwayne) - https://lobste.rs/s/a3h669
+T 1600451180 18<rowbee18>	is there even any FOSS tools for vector animation?
+T 1600451365 18<rowbee18>	seems like there are a _few_, but nothing that is on the level of krita/gimp/inkscape/whatever
+T 1600451425 18<mockturtle18>	Is program speed less important than X? (2013) [performance] [practices] (hwayne) - https://lobste.rs/s/kpifqr
+T 1600451891 18<rocx18>	rowbee: and even those aren't on the tier of adobe's stuff.
+T 1600451913 18<rocx18>	illustrator's interface and shortcuts were the one thing i wished inkscape had.
+T 1600451928 18<rocx18>	but inkscape's more meant for SVG rather than professional vector artwork.
+T 1600451935 18<rowbee18>	kinda subjective. i feel like kdenlive could get on premiere's level if there was a LITTLE more focus on performance and stability.
+T 1600451974 18<rowbee18>	seriously... kdenlive's scrubbing performance needs some improvement.
+T 1600452015 18<rowbee18>	if you have more than 5 layers with compositing kdenlive's performance goes to spf instead of fps
+T 1600452057 18<rowbee18>	or i am stupid and there's a configurable cache that i have yet to find.
+T 1600452073 18<rowbee18>	part of why premiere's so fast is that it caches already scrubbed frames
+T 1600452088 18<rowbee18>	and no, pre-rendering is buggy as all hell on kdenlive, it's not a solution
+T 1600452093 18<rowbee18>	it should be automatic
+T 1600452148 18<rowbee18>	gimp 2.10 needs a revert on the uncolored icons too
+T 1600452179 18<rowbee18>	even on photoshop you need to get used to them. the colored icons were FINE. gimp shouldn't try to become photoshop.
+T 1600452376 18<rocx18>	rowbee: this is a fault of a lot of libre software. they aim to emulate the proprietary stuff because that's what a lot of people are used to.
+T 1600452393 18<rocx18>	familiarity does not equal intuitiveness.
+T 1600452438 18<rowbee18>	i think another thing to be fixed is THEMES. FOR THE LOVE OF GOD CAN ANY QT APPLICATION BEHAVE PROPERLY OUTSIDE OF KDE
+T 1600452458 18<rowbee18>	k4dirstat just goes black on black
+T 1600452465 18<rowbee18>	virtualbox is white on white
+T 1600452475 18<rowbee18>	kdenlive crashes if you select the fusion theme
+T 1600452586 18<martian67|18>	rocx: you could make an arguement thats exactly what intuitiveness is
+T 1600452598 18<martian67|18>	its not like anyone is born knowing how to operate a graphics editor
+T 1600452603 18<rowbee18>	random irc disconnect
+T 1600452617 18<rocx18>	like with any other software, they had to learn it.
+T 1600452630 18<rocx18>	some are just easier to click something and experiment with (like illustrator)
+T 1600452645 18<rocx18>	others are easier to get by using it (GNOME 3)
+T 1600452651 18<martian67|18>	but its all based on existing concept
+T 1600452662 18<martian67|18>	its not like an alien from mars would have much hope of doing anything
+T 1600452676 18<martian67|18>	not to say humans are aliens from mars
+T 1600452694 18<rocx18>	skeuomorphism to an extent. we're familiar with the concept of a "pen" tool and dodging, burning, and "desktops".
+T 1600452699 18<martian67|18>	just saying the concept of intuitive isnt clear cut, and emulating existing interfaces is a big part about it
+T 1600452704 18<rowbee18>	oh dear, i forgot to renew my mullvad time. that's why it disconnected
+T 1600452737 18<rocx18>	my hypothesis is that intuitiveness is along the lines of how easy something is to learn without prior background.
+T 1600452763 18<martian67|18>	why is a pen a valid comparison to draw from, but say, photoshop isnt
+T 1600452769 18<martian67|18>	both are just tools
+T 1600452792 18<martian67|18>	maybe there is some undiscovered way of writing thats like 10x better than a pen
+T 1600452824 18<rocx18>	they are poor examples in the case of photoshop because the pen tool is how you do more mathematical curves.
+T 1600453127 18<JordiGH18>	Jesus fuck the web is so hostile.
+T 1600453179 18<JordiGH18>	I have to install bypass amp links, hide private browsing, install clean urls, dontfuckwithpaste, and of course, an adblocker where I still have to manually hide a lot of not obviously ads but still annoying stuff in dozens of websites.
+T 1600453204 18<JordiGH18>	It's like every other website views the browser as a threat to guard against.
+T 1600453221 18<mockturtle18>	6 Takeaways From 9 Different Developers Productivity Studies [practices] (qznc) - https://lobste.rs/s/x2xktu
+T 1600453224 18<JordiGH18>	And eyeballs to monetise.
+T 1600453309 18<companion_cube18>	JordiGH: /j #gemini ;)
+T 1600453393 18<benharri18>	that's on tilde.chat btw ^
+T 1600453440 18<JordiGH18>	companion_cube: uwu whats this
+T 1600453488 18<benharri18>	https://gemini.circumlunar.space/
+T 1600453488 18<mockturtle18>	[ Project Gemini ] - gemini.circumlunar.space
+T 1600453500 18<V18>	JordiGH: I gave up on the various preexisting clean urls things and just wrote a bunch of custom redirect rules
+T 1600453507 18<V18>	there's seriously way too much crap
+T 1600453534 18<companion_cube18>	JordiGH: not the web!
+T 1600453536 18<V18>	https://addons.mozilla.org/en-US/firefox/addon/amp2html/ is this the extension you mean
+T 1600453536 18<mockturtle18>	[ Redirect AMP to HTML – Get this Extension for 🦊 Firefox (en-US) ] - addons.mozilla.org
+T 1600453546 18<V18>	(that's what I have)
+T 1600453589 18<JordiGH18>	Oh, gopher revived.
+T 1600453592 18<V18>	oh, and don't forget rel=noopener
+T 1600453593 18<JordiGH18>	I think I've heard about this.
+T 1600453600 18<V18>	gopher did indeed revive, somewhat
+T 1600453609 18<V18>	incl the original gopher
+T 1600453633 18<freddyb18>	gemini looks interesting and fun to toy with (also wrt to side-projects), but I have my doubts it will ever take off :< (I'm just that pessimistic)
+T 1600453633 18<JordiGH18>	Btw, how does Linkedin manage to show Google results but not anyone else?
+T 1600453668 18<JordiGH18>	I've tried everything, so I wonder if they really just have a whitelist of Google IPs.
+T 1600453704 18<freddyb18>	could be a fun side-project to write a gemini parser in JavaScript and stick it into a web extension >;D, but wait, I guess you don't get to do raw TCP Sockets
+T 1600453778 18*	freddyb looks at https://bugzilla.mozilla.org/show_bug.cgi?id=1247628
+T 1600453779 18<mockturtle18>	[ 1247628 - (libdweb-udp) UDP Socket API for WebExtensions ] - bugzilla.mozilla.org
+T 1600453780 18<V18>	you'd need to write a server for that
+T 1600453788 18<V18>	like the existing one for gopher
+T 1600453849 18<freddyb18>	or a native helper, like https://addons.mozilla.org/en-US/firefox/addon/overbitenx/
+T 1600453849 18<mockturtle18>	[ OverbiteNX – Get this Extension for 🦊 Firefox (en-US) ] - addons.mozilla.org
+T 1600453920 18<freddyb18>	...which is basically a server but ran locally
+T 1600454149 18<Teckla18>	This just in: Due to the COVID-19 outbreak, all TCP traffic is being converted to UDP to avoid handshakes.
+T 1600454510 18<rashkov18>	oy
+T 1600454575 18<jle18>	shit
+T 1600454583 18<jle18>	our company just started using a TCP based VPN
+T 1600454587 18<jle18>	what now
+T 1600455012 18<mockturtle18>	Go vs. Rust for back-end development [ask] [go] [rust] (gt) - https://lobste.rs/s/zgwjpg
+T 1600455059 18<jle18>	oh no
+T 1600455156 18<companion_cube18>	oh yes
+T 1600455372 18<Brekkjern18>	I wish that was an article so we could watch the slapfight in the comments about which language is best
+T 1600455523 18<gerikson18>	so because I'm a masochist I figured I'd look at Gemini
+T 1600455541 18<gerikson18>	none of teh console clients seem to be available as a .deb package
+T 1600455544 18<Brekkjern18>	The star sign?
+T 1600455546 18<gerikson18>	maybe some other time
+T 1600455556 18<gerikson18>	Brekkjern: no, the latest text-wankery protocol
+T 1600456225 18<indigo18>	Go vs. Rust always seemed like a weird dichotomy to me
+T 1600456319 18<indigo18>	pushcx gave it a pretty respectful response though :)
+T 1600456676 18<beto18>	Those have been a common comparison in the recent years, also are "modern" which some people may find like a pro. However, if we start moving sideways with the comments, besides explaining why would someone compare rust & go; one could even question what's the real performance requirement
+T 1600456713 18<notriddle18>	Rust isn't similar to Go. It's much closer to Chess.
+T 1600456730 18<varjag18>	so what's the last word on fuchsia
+T 1600456735 18<varjag18>	did google drop it yet
+T 1600456748 18<notriddle18>	The whole experience is built around simple, repeatable patterns, rather than the extremely open-ended nature of the ancient game of stones.
+T 1600456778 18<beto18>	notriddle, I personally wouldn't compare Go with Rust for web purposes. I'd only use Rust for WebAssembly
+T 1600456788 18<varjag18>	"Operating systems don't take just a few years to make. They are taking their time as fuchsia is quite important."
+T 1600456798 18<varjag18>	what do they take then
+T 1600456800 18<notriddle18>	They're still making commits to its repository. https://fuchsia.googlesource.com/fuchsia/
+T 1600456801 18<mockturtle18>	[ fuchsia - Git at Google ] - fuchsia.googlesource.com
+T 1600456871 18<notriddle18>	Also, I have to admit that the thing about Go and Chess is a reference to <https://gist.github.com/oakes/4af1023b6c5162c6f8f0>
+T 1600456934 18<Hail_Spacecake18>	it's not a particularly opaque pun
+T 1600457247 18<companion_cube18>	> build a high performance trading platform
+T 1600457249 18<companion_cube18>	:(
+T 1600457252 18<gerikson18>	oh it's an [ask] post
+T 1600457264 18<notriddle18>	It's a pun, but it's also true. I've done application development in Rust, but I prefer doing application development in GC languages. Doing it in Rust tends to end with me going all "GO AWAY BORROWCK clone() clone() clone()".
+T 1600457279 18<gerikson18>	companion_cube: inb4 "cryptocurrency"
+T 1600457279 18<asy18>	companion_cube: i've completed hello world. now it's time to handle other people's money!
+T 1600457307 18<companion_cube18>	i mean at least with crypto💰 it's only toy money
+T 1600457316 18<companion_cube18>	too bad it's also wasteful energetically
+T 1600457342 18<gerikson18>	anyway no serious crypto *trading* is done on the blockchain
+T 1600457347 18<gerikson18>	just settlement
+T 1600457350 18<notriddle18>	Bitcoin is a tech demo that got deployed into production. The results predictably suck.
+T 1600457373 18<companion_cube18>	gerikson: oh interesting. trading is what happens on the exchanges?
+T 1600457410 18<gerikson18>	yeah
+T 1600457418 18<asy18>	it's a complex reaction that can separate the fool from his money
+T 1600457484 18<gerikson18>	there's no way this kind of stuff is done in blockchain time: https://cryptowat.ch/charts/BINANCE:BTC-USDT
+T 1600457484 18<mockturtle18>	[ BTCUSDT | Binance live chart | Cryptowatch ] - cryptowat.ch
+T 1600457503 18<gerikson18>	it's all internal to the exchange who presumably hold the assets in trust
+T 1600457514 18<gerikson18>	I mean that's how markets work in general
+T 1600457529 18<companion_cube18>	you mean stock exchanges don't have robotic arms that exchange dollar bills? :o
+T 1600457530 18<gerikson18>	frankly, I think it's a solved problem
+T 1600457542 18<gerikson18>	there's got to be off-the-shelf solutions for this
+T 1600457548 18<gerikson18>	with APIs etc
+T 1600457591 18<gerikson18>	lol I just now realized that ticker is BTC/USD*T*
+T 1600457619 18<asy18>	tether are printing out hundreds of million "dollars" a week :D
+T 1600457656 18<gerikson18>	anyway, I'd choose Go for an exchange
+T 1600457666 18<gerikson18>	should be fast enough
+T 1600457687 18<companion_cube18>	I'd pick rust, but well
+T 1600457695 18<companion_cube18>	who cares if it's a toy :D
+T 1600457719 18<beto18>	Yeah, those exchanges have their own pool. there isn't a central bid/ask, but prices tend to be similar
+T 1600457812 18<Hail_Spacecake18>	I would pick rust over go for most software proejcts becuase I like rust's type system better
+T 1600457866 18<asy18>	write your matching engine in q and then give up after 5 minutes because array programming languages are scary
+T 1600457874 18<c355e3b18>	Why not just use java?
+T 1600457884 18<c355e3b18>	It has everything you need as a libary, a solid vm
+T 1600457900 18<c355e3b18>	and a really strong community of vendors to save you from yourself if it gets to that point
+T 1600457901 18<Hail_Spacecake18>	java is not fun to program in
+T 1600457908 18<Hail_Spacecake18>	scala is a little better
+T 1600457912 18<Hail_Spacecake18>	dunno what kotlin is like
+T 1600458014 18<mockturtle18>	Syslog - HelenOS [audio] [osdev] (ethoh) - https://lobste.rs/s/adhoi4
+T 1600458101 18<beto18>	Is people using Kotlin outside android development?
+T 1600458123 18<gerikson18>	just googled "open source trading platforms", found it http://www.traderslaboratory.com/forums/topic/7060-open-source-trading-platforms-master-list/
+T 1600458124 18<mockturtle18>	[ Open Source Trading Platforms (Master List) - Tools of the Trade - Traders Laboratory ] - www.traderslaboratory.com
+T 1600458195 18<asy18>	gerikson: i think that these are tools for traders, to place orders on an exchange and read chart based tea leaves
+T 1600458201 18<asy18>	and the OP of the ask thread probably wanted to build his own exchange
+T 1600458288 18<gerikson18>	mayhap that's true
+T 1600458704 18<Hail_Spacecake18>	beto: beats me
+T 1600459500 18<angersock18>	V.v.V
+T 1600459500 18<mockturtle18>	(\/)_00_v
+T 1600459628 18<angersock18>	how goes it folks?
+T 1600460149 18<geoffwozniak18>	angersock: nasty sinus headache to close out the week
+T 1600460157 18<angersock18>	ah that sucks :(
+T 1600460167 18<angersock18>	hot shower or steam maybe?
+T 1600460171 18<angersock18>	netty pot?
+T 1600460176 18<angersock18>	laudanum?
+T 1600460205 18<geoffwozniak18>	Almost done work, so I'll ride it out then just relax, which tends to be the best medicine for it.  That and sleep
+T 1600460243 18<geoffwozniak18>	I get them somewhat regularly and I'm kind of used to them
+T 1600460413 18<mockturtle18>	GitHub Contributor Graph Generator [javascript] [vcs] (tomb) - https://lobste.rs/s/jrtkow
+T 1600460477 18<beto18>	geoffwozniak, the most common friday antidote. 5pm
+T 1600460745 18<geoffwozniak18>	It certainly doesn't hurt
+T 1600460999 18<Hail_Spacecake18>	hi angersock
+T 1600461173 18<rowbee18>	https://en.wikipedia.org/wiki/High-bandwidth_Digital_Content_Protection this article makes me sad, but not for the reasons you might expect
+T 1600461173 18<mockturtle18>	[WIKIPEDIA] High-bandwidth Digital Content Protection | "High-bandwidth Digital Content Protection (HDCP) is a form of digital copy protection developed by Intel Corporation to prevent copying of digital audio and video content as it travels across connections. Types of connections include DisplayPort (DP), Digital Visual Interface (DVI), and High-Definition..."
+T 1600461217 18<rowbee18>	varjag: there's a fuchsia dev on #osdev
+T 1600461222 18<rowbee18>	if you ask around you might find one
+T 1600461228 18<rowbee18>	err
+T 1600461231 18<rowbee18>	you might find him*
+T 1600461243 18<gerikson18>	why does it make you sad rowbee ?
+T 1600461266 18<rowbee18>	because it's an ineffective protocol which people just walk around
+T 1600461280 18<rowbee18>	and this line: "Intel threatened to sue anyone producing an unlicensed device."
+T 1600461292 18<rowbee18>	which just brings to mind the phrase "old man yells at cloud"
+T 1600461619 18<rowbee18>	cya lobsters, now i reboot to windows to play my precious video games. and a daily fsck you to nvidia for no fermi reclocking on linux.
+T 1600461916 18<mockturtle18>	Precursor - Mobile, Open-Hardware, RISC-V System-on-Chip Development Kit [hardware] [security] (shapr) - https://lobste.rs/s/1yg8rb
+T 1600462420 18<angersock18>	howdy Hail_Spacecake
+T 1600462427 18<angersock18>	alynpost, are you available/lurkin?
+T 1600462672 18<alynpost18>	Moving through my day. How do?
+T 1600462712 18<angersock18>	i do, setting up the actual tech part of business. free for a brief mumble?
+T 1600462745 18<angersock18>	well, sorta tech. mostly organizing business stuff, less than i want to but more than i need to. :)
+T 1600462759 18<alynpost18>	I'll chitter, sure. Be right there.
+T 1600462773 18<angersock18>	wunderbar
+T 1600462855 18<alynpost18>	The server is bouncing me. I know the cert just changed recently but I see nothing in my local configuration to explain my issue.
+T 1600463091 18<shapr18>	bah humbug, this really isn't spam! https://lobste.rs/s/1yg8rb/precursor_mobile_open_hardware_risc_v
+T 1600463091 18<mockturtle18>	[ Precursor - Mobile, Open-Hardware, RISC-V System-on-Chip Development Kit | Lobsters ] - lobste.rs
+T 1600463104 18<shapr18>	Maybe I should have posted the first update? """Why do we trust our computers? I’ve done a lot of thinking on this question. The answer, it turns out, is that we trust our computers mostly because we have no other choice."""
+T 1600463118 18<mockturtle18>	Announcing TypeScript 4.1 Beta [javascript] [release] (joshuacc) - https://lobste.rs/s/mxfubx
+T 1600463147 18<shapr18>	Bunnie is trying to make an open and trustworthy computer, I figured this post supported the "war on general computation" discussion
+T 1600463311 18<shapr18>	I followed the lobsters rules of not modifying the page title, probably should not have :-(
+T 1600463801 18<shapr18>	anyway, this is a really cool project by Bunnie Huang, and should be promoted on lobsters: https://www.crowdsupply.com/sutajio-kosagi/precursor/updates/introducing
+T 1600463802 18<mockturtle18>	[ Precursor - Introducing... | Crowd Supply ] - www.crowdsupply.com
+T 1600463975 18<shapr18>	too bad I can't seem to challenge the spam flag on my submission :-(
+T 1600464537 18<rocx18>	i recognize that name.
+T 1600465213 18<mockturtle18>	Small Computing and the Security Mindset [culture] [philosophy] [security] (enkiv2) - https://lobste.rs/s/0ri4ey
+T 1600465847 18<angersock18>	shapr, we can not trust computers
+T 1600465854 18<angersock18>	they will turn on us and sell us out
+T 1600465859 18<angersock18>	as punishment for our hubris
+T 1600465864 18<angersock18>	in tricking rocks into thinking for us
+T 1600465924 18<aleph-18>	Knew it
+T 1600465929 18<rocx18>	fV:
+T 1600465931 18<aleph-18>	angersock: shapr: Heyo
+T 1600466223 18<angersock18>	heyo aleph-
+T 1600466265 18<aleph-18>	Pinged you in pm
+T 1600466381 18<angersock18>	ah, i see no ping :(
+T 1600466505 18<aleph-18>	Hmm try now
+T 1600466570 18<drakonis18>	angersock...
+T 1600466577 18<drakonis18>	greetings friend, how fares your nix bits
+T 1600466612 18<aleph-18>	alynpost: I had the same issue as well
+T 1600466621 18<aleph-18>	alynpost: No matching ciphers?
+T 1600466693 18<rocx18>	drakonis: some folks' nix bits get chmodded -x if you catch my drift, daddy-o
+T 1600466744 18<drakonis18>	har har
+T 1600466747 18<angersock18>	drakonis, getting the business foundation settled
+T 1600466751 18<angersock18>	very close
+T 1600466810 18<drakonis18>	huh
+T 1600466828 18<drakonis18>	business foundation you say?
+T 1600466828 18<drakonis18>	can you tell me more about that? seems interesting
+T 1600466846 18<rocx18>	drakonis: what's so funny? network security deficiency is a serious problem among us.
+T 1600467404 18<c355e3b18>	alynpost: Want to pm me your IP and I can pull you the log entry?
+T 1600467711 18<alynpost18>	Thank you for the help debugging, c355e3b.
+T 1600467727 18<c355e3b18>	np
+T 1600470952 18<krbtgt18>	goddamn it
+T 1600470960 18<krbtgt18>	fixed
+T 1600471217 18<sam_18>	hmm?
+T 1600471223 18<mockturtle18>	When double.Epsilon can equal 0 [debugging] [dotnet] [math] (calvin) - https://lobste.rs/s/novlfz
+T 1600471227 18<mockturtle18>	How I bypassed Cloudflare's SQL Injection filter [databases] [security] (calvin) - https://lobste.rs/s/bv8zyu
+T 1600472401 18<rowbee18>	linux has better drivers for my audio than windows 10 does
+T 1600472404 18<rowbee18>	windows doesn't understand how the headphone jack works for some reason, and so plugging in headphones results in no sound output
+T 1600472415 18<rowbee18>	it Just Works on linux
+T 1600472428 18<rowbee18>	if fermi reclocking Just Worked it would be 10/10 perfect
+T 1600472516 18<shapr18>	aw, did I miss angersock?
+T 1600472645 18<aleph-18>	Indeed
+T 1600472961 18<pushcx18>	indigo: That wasn't a response, that was a presponse. They DMd to ask me if they could post it and I suggested they hit all those points. They hit none of them, so I reposted the comment as the first response.
+T 1600473064 18<indigo18>	Oof
+T 1600475117 18<mockturtle18>	Don't hate the book because you don't use it [book] [programming] (calvin) - https://lobste.rs/s/erdo6p
+T 1600475414 18<mockturtle18>	Small Computing and the Security Mindset [culture] [philosophy] [security] (enkiv2) - https://lobste.rs/s/svhqph
+T 1600477820 18<rocx18>	kupo: unrelated to anything ever but you'd probably like JordiGH
+T 1600477842 18<JordiGH18>	Moogles! Where?
+T 1600483220 18<mockturtle18>	Monitoring my home network [networking] (mrkaran) - https://lobste.rs/s/ocg4k4
+T 1600486816 18<mockturtle18>	rg3d: Rust 3D game engine with an FPS demo game and scene editor [games] [rust] (learnbyexample) - https://lobste.rs/s/opgslt
+T 1600488318 18<mockturtle18>	Hacking on Bug Bounties for Four Years [security] [web] (drsh0) - https://lobste.rs/s/eqmyw4
+T 1600494013 18<mockturtle18>	Open-source network and infrastructure monitoring and management system [networking] (tankf33der) - https://lobste.rs/s/zmnkre
+T 1600507225 18<mockturtle18>	Coding by voice in Zig [a11y] [video] (kristoff) - https://lobste.rs/s/2ud1td
+T 1600515315 18<mockturtle18>	Why Rust is not a mature programming language [compilers] [rust] (thardin) - https://lobste.rs/s/vsjvkz
+T 1600515329 18<kysse18>	lol
+T 1600515361 18<kysse18>	nah, not lol
+T 1600515636 18<thardin18>	:D
+T 1600515653 18<thardin18>	it's kostya, he tends to title is posts a bit.. spicy
+T 1600515672 18<kysse18>	indeed
+T 1600515683 18<thardin18>	haven't seen him around in ages
+T 1600517416 18<mockturtle18>	C ookieclicker [c++] [games] [show] (raymii) - https://lobste.rs/s/3iuu7k
+T 1600519216 18<mockturtle18>	How to outclass your competition in take-home coding challenges [programming] (geshan) - https://lobste.rs/s/lhlemz
+T 1600519814 18<mockturtle18>	Top 5 pro tips for your next TypeScript code [javascript] (pxlet) - https://lobste.rs/s/g4risu
+T 1600527614 18<mockturtle18>	Dogelang: it's a Python! No, it's a Haskell [plt] [python] (pbsds) - https://lobste.rs/s/epzlu4
+T 1600528220 18<Cadey18>	ah dogelang
+T 1600528225 18<Cadey18>	that one was fun
+T 1600529117 18<mockturtle18>	LLVM's getelementptr, by example [assembly] [c] [compilers] (yossarian) - https://lobste.rs/s/ilpwec
+T 1600530317 18<mockturtle18>	TL;DR Rust [go] [rust] (cadey) - https://lobste.rs/s/dazuih
+T 1600530465 18<V18>	oh no
+T 1600530471 18<V18>	not more go/rust posts
+T 1600530484 18<V18>	wasn't ther literally one yesterday
+T 1600530500 18<asy18>	the world needs to know that my team's language is better!!
+T 1600530536 18<Cadey18>	this is more "go idioms in rust" and a gentle introduction to more advanced things
+T 1600530677 18<rocx18>	V: but this is Cadey's so it's different
+T 1600530683 18<V18>	rocx: oic
+T 1600530686 18<V18>	carry on then
+T 1600531118 18<bsdimp18>	https://bsdimp.blogspot.com/2020/09/freebsd-subversion-to-git-migration.html
+T 1600531118 18<mockturtle18>	[ Warner's Random Hacking Blog: FreeBSD Subversion to Git migration ] - bsdimp.blogspot.com
+T 1600531209 18<Cadey18>	V: the other ones don't have a cute sharkgirl asking clarifying questions
+T 1600531233 18<V18>	it's a shark???
+T 1600531242 18<V18>	looks like a donkey
+T 1600531254 18<V18>	combined with a dragon
+T 1600531263 18<bsdimp18>	context? This is clearly an interested conversation to drop into the middle of
+T 1600531272 18<Cadey18>	bsdimp: https://christine.website/blog/TLDR-rust-2020-09-19
+T 1600531273 18<mockturtle18>	[ TL;DR Rust - Christine Dodrill ] - christine.website
+T 1600531278 18<V18>	bsdimp: most recent mockturtle link
+T 1600533912 18<mockturtle18>	Meta: could we consider banning self-promotion? [meta] (peterbourgon) - https://lobste.rs/s/tnpfea
+T 1600535633 18<gerikson18>	bsdimp: it's possible git will overtake Linux as Thorvald's greatest creation
+T 1600535672 18<Ori_B18>	yeah; git got a lot of things quite right.
+T 1600535687 18<Ori_B18>	in spite of being full of odd quirks that make it feel like a 4AM hack.
+T 1600535825 18<aleph-18>	Which is was, no?
+T 1600535831 18<aleph-18>	I can't remember anymore
+T 1600535948 18<kline\018>	gerikson: i sure hope it doesnt
+T 1600535972 18<kline\018>	git is a good core idea but the UI is beyond shit and its adoption and scope of use suffers for it
+T 1600536054 18<c355e3b18>	I really wish the Darcs community spelled out how their stuff worked a bit better
+T 1600536094 18<Cadey18>	and a lot less haskell woke
+T 1600536119 18<kline\018>	like, im pretty sure something like 5% of gits TRUE POWER is actually ever used
+T 1600536145 18<kline\018>	because the rest of it requires an understanding of how gits plumbing works because the porcelain doesnt appropriate abstract and expose it
+T 1600536154 18<V18>	you're not getting the most out of git unless you're doing surgery on the raw objects
+T 1600536167 18<bsdimp18>	gerikson both were primarily done by others, and many of the bletcherous bits were due to Linus... I'd say both succeeded despite his involvement, rather than because of it...  Or rather, despite his technical involvement. he's a great organizer, and that shouldn't be so blithely dismissed...
+T 1600536171 18<V18>	(I'm not even joking here, really)
+T 1600536195 18<kline\018>	V: i believe you and i think we really agree on the core issue
+T 1600536208 18<V18>	the interface is beyond awful, though
+T 1600536236 18<V18>	if someone would just write a new interface over it that exposed the core concepts in a more... natural way? and had consistent flags, etc
+T 1600536238 18<V18>	That would do a lot
+T 1600536267 18<geoffwozniak18>	Yeah, Git's interface is pretty damn terrible
+T 1600536289 18<geoffwozniak18>	I've been using it for almost 10 years now and I still hate it
+T 1600536319 18<V18>	You need way too much knowledge of how it works internally to do useful stuff with it
+T 1600536335 18<V18>	(or perhaps the issue here is that the internals aren't placed front and center? and rather hidden away?)
+T 1600536346 18<geoffwozniak18>	I think those who say "Git is awesome" are only looking at the "distributed" part of it and all the tooling around it
+T 1600536392 18<geoffwozniak18>	The distributed part isn't novel or anything.  It just happens to be the DVCS that got popular
+T 1600536400 18<aleph-18>	geoffwozniak: We can just reduce "Git is awesome" -> "VCS is awesome"
+T 1600536408 18<aleph-18>	Honestly
+T 1600536414 18<geoffwozniak18>	I'd much rather, yes
+T 1600536479 18<Cadey18>	V: "git surgery" is my new favorite phrase
+T 1600536503 18<geoffwozniak18>	nuke the repo from orbit and start over. It's the only way to be sure.
+T 1600536519 18<geoffwozniak18>	This is a common tactic by some coworkers
+T 1600536544 18<V18>	Cadey: I should add "git surgeon" to my CV
+T 1600536562 18<V18>	geoffwozniak: see, if you actually know what's going on underneath there's no need to nuke it
+T 1600536570 18<geoffwozniak18>	Or they do their changes outside of the repo, copy it in, and then check things because they get confused by the branches and such
+T 1600536618 18<geoffwozniak18>	"index or work tree?" for example
+T 1600536636 18<geoffwozniak18>	Or "why doesn't 'checkout' actually check things out?"
+T 1600536640 18<aleph-18>	Yeah admittedly I've done that when I've really fscked something up >_>
+T 1600536688 18<aleph-18>	Like our remote git system still not allowing me to push a new commit after removing a broken commit
+T 1600536690 18<geoffwozniak18>	Or that "git branch" doesn't switch you to that branch
+T 1600536706 18<aleph-18>	Due to our pre commit hook barfing
+T 1600536712 18<aleph-18>	Somehow...
+T 1600536715 18<geoffwozniak18>	And the myriad of other ridiculous things
+T 1600536806 18<V18>	geoffwozniak: git switch, now :)
+T 1600536825 18<Ori_B18>	aleph-: yeah, though they never really cleaned it up
+T 1600536826 18<geoffwozniak18>	Haven't even tried that
+T 1600536826 18<V18>	(Not apologising for branch's behaviour, of course)
+T 1600536838 18<Ori_B18>	so it has, like, 4 different ways of serializeing integers through the format.
+T 1600536849 18<aleph-18>	How have people screwed up branches?
+T 1600536867 18<Ori_B18>	(ascii, little endian, big endian, and big endian with stolen bits from annother field)
+T 1600536887 18<Ori_B18>	geoffwozniak: hm, curious what you'd do differently.
+T 1600536900 18<Ori_B18>	I'm still poking around at what git9 should be doing.
+T 1600536906 18<geoffwozniak18>	aleph-: merging things then not realizing they have conflicts, etc.
+T 1600536933 18<geoffwozniak18>	I'd call it "git make-branch" or something
+T 1600536952 18<aleph-18>	Yah know I've never actually had that issue
+T 1600536957 18<aleph-18>	How would you solve it?
+T 1600536960 18<Ori_B18>	geoffwozniak: hm, git won't let you merge without telling it you resolved the conflicts.
+T 1600536976 18<Ori_B18>	you need to resolve conficts and then 'git add' the files that conflicted.
+T 1600537027 18<geoffwozniak18>	Well, for whatever reason, I've seen it happen
+T 1600537059 18<geoffwozniak18>	Where they get into a state where they have made changes with a bad merge and have to sort it all out
+T 1600537078 18<Ori_B18>	merges are a pain in the ass
+T 1600537092 18<Ori_B18>	but I don't know of any VCS that makes them easy :/
+T 1600537100 18<Ori_B18>	if you know of one that does, I'm all ears.
+T 1600537102 18<geoffwozniak18>	Also, some are dead set against the idea of rebase and any rewriting of history
+T 1600537124 18<geoffwozniak18>	Even if it's local and never shared
+T 1600537124 18<Ori_B18>	I'd love to steal some ideas.
+T 1600537143 18<Ori_B18>	oh. that's one thing that I should remember to do in git9 when I eventually write rebase.
+T 1600537145 18<aleph-18>	Yeah merges can be awful
+T 1600537151 18<aleph-18>	We usually never have issues here
+T 1600537160 18<aleph-18>	And rebases are fine.
+T 1600537172 18<aleph-18>	arc from phabricator does it automatically when merging a branch
+T 1600537190 18<Ori_B18>	make sure rebase doesn't let you rebase before $remotes/$branch without a '-f' flag to forc e it.
+T 1600537205 18<geoffwozniak18>	I prefer systems where the code review package does the work of rebasing, etc.
+T 1600537217 18<Ori_B18>	aleph-: yeah, though phabricator isn't really doing a branch-based workflow.
+T 1600537225 18<Ori_B18>	it's kind of putting a patch based workflow on top of git.
+T 1600537228 18<Ori_B18>	which is good, IMO.
+T 1600537234 18<aleph-18>	Yeah technically. I can see that
+T 1600537237 18<geoffwozniak18>	I think ultimately I prefer a patch-based one
+T 1600537243 18<aleph-18>	I'd run it at home if I was less lazy
+T 1600537248 18<aleph-18>	But my small gitea setup is fine
+T 1600537271 18<Ori_B18>	yeah, this is also the approach that got is angling towards.
+T 1600537276 18<Ori_B18>	(got: openbsd's git reimplementation)
+T 1600537305 18<geoffwozniak18>	I only use Git because all the tools support it so well
+T 1600537328 18<Ori_B18>	yeah, that's why I wrote an implementation.
+T 1600537348 18<Ori_B18>	you basically need to use git to interact with the bulk of the software wordl.
+T 1600537350 18<geoffwozniak18>	I'd happily use something else if all the CI stuff we use supported it
+T 1600545014 18<mockturtle18>	Two specific CSS selector-isms which will bite you in the rear [web] (indirection) - https://lobste.rs/s/juamaf
+T 1600547417 18<mockturtle18>	Efficient Graph Search [compsci] (jaffachief) - https://lobste.rs/s/t7mysg
+T 1600554316 18<mockturtle18>	HP Nanoprocessor part II: Reverse-engineering the circuits from the masks [hardware] [historical] [reversing] (calvin) - https://lobste.rs/s/l5ehcb
+T 1600558516 18<mockturtle18>	A Cryptologic Mystery [crypto] (fcbsd) - https://lobste.rs/s/cbag2o
+T 1600561812 18<mockturtle18>	Git Internals - Learn by Building Your Own Git [python] [vcs] (calvin) - https://lobste.rs/s/vojwoh
+T 1600566916 18<mockturtle18>	The Apple Notes Protobuf [ios] [reversing] (thesnarky1) - https://lobste.rs/s/nhi236
+T 1600578614 18<mockturtle18>	Clawing Our Way Back To Precision (SpiderMonkey Stack Rooting, 2013) [c++] [javascript] [programming] (andyc) - https://lobste.rs/s/drnuue
+T 1600581325 18<mockturtle18>	Is macOS under the biggest malware attack ever? [mac] [security] (ondrej) - https://lobste.rs/s/i2mfyv
+T 1600583125 18<mockturtle18>	A simple Parser Combinator library in Idris [plt] (calvin) - https://lobste.rs/s/x1ejpt
+T 1600587924 18<mockturtle18>	How not to QR (NHS C19 app) [rant] (raymii) - https://lobste.rs/s/rchhaf
+T 1600589115 18<mockturtle18>	Compose Key and key map generator for macos [mac] [show] (granitosaurus) - https://lobste.rs/s/btyab8
+T 1600597517 18<mockturtle18>	Writing a Ractor-based web server [ruby] (tuhaj) - https://lobste.rs/s/uw9nnk
+T 1600601908 18<scorpil18>	hey everyone. I've been passively reading lobste.rs for a while now, but never really needed an account. Now I wrote this little article on configuring AWS VPC and would like to post it. Can anyone send me an invite? Thanks.
+T 1600602015 18<mockturtle18>	Soupault 2.0.0 release [ml] [show] [web] (dmbaturin) - https://lobste.rs/s/vw3ynl
+T 1600604328 18<scorpil18>	looks like no one's online. If you consider to send me an invite, send it to dev[at]scorpil.com, thanks
+T 1609963182 19*	Now talking on 22#lobsters
+T 1609963182 22*	Topic for 22#lobsters is: lobste.rs is a technology-focused link aggregation site. See https://lobste.rs/chat for details. Join #lobsters-feed for story links without chat. Do not publish channel logs without participants' permission. Mockturtle is a bot which posts stories.
+T 1609963182 22*	Topic for 22#lobsters set by 26c355e3b!sid212298@lobsters/developer/c355e3b (24Sat Aug  8 16:06:42 2020)
+T 1609963182 -18ChanServ-	[#lobsters] lobste.rs is a technology-focused link aggregation site. See https://lobste.rs/chat for details. Join #lobsters-feed for story links without chat. Do not publish channel logs without participants' permission. Mockturtle is a bot which posts stories.
+T 1609966377 18<JordiGH18>	So is the current situation in the US a big deal or just another day? I don't know how to compare this to everything that has been happening past couple of years.
+T 1609966407 18<varjag18>	it looks rather bleak
+T 1609966411 18<rowbee18>	i don't think this is the appropriate channel
+T 1609966442 18<gerikson18>	welcome to ##crustaceans JordiGH
+T 1609966475 18<JordiGH18>	Big deal, got it.
+T 1609966478 18<JordiGH18>	ttyl!
+T 1609966481 18<muyuu[m]18>	I can't deal with following politics these days
+T 1609966502 18<pe18>	It will get worse.
+T 1609966515 18<pe18>	It can only go worse.
+T 1609966588 18<rowbee18>	it's the 6th of january
+T 1609966601 18<rowbee18>	people made fun of me when i said 2020 was the tutorial
+T 1609966769 18<varjag18>	did anyone really
+T 1609966939 18<rowbee18>	yeap
+T 1609967404 18<timetoplatypus18>	V.v.V
+T 1609967404 18<mockturtle18>	V_00_(V)
+T 1609967717 18<gerikson18>	this isn't politics per se, it's civics
+T 1609967721 18<gerikson18>	but still off-topic

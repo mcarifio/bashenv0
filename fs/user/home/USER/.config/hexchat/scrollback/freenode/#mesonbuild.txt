@@ -1,0 +1,502 @@
+T 1589886261 18<toluschr18>	it isn't really a vim issue. I think it's because of clangd
+T 1589892562 18<roxlu18>	Hi, I've been compiling GStreamer with meson (via gst-build). I noticed that it was missing the FFmpeg subproject and it seems that I have to pass `--auto-features=disabled` to this subproject. How can I pass an option to a subproject?
+T 1589892661 18<emersion18>	-Dsubproject:option=value
+T 1589892691 18<emersion18>	can't remember whether auto-features is per-project
+T 1589892753 18<roxlu18>	ok thanks, are the subproject names case sensitive? (FFmpeg / ffmpeg)
+T 1589892773 18*	roxlu sorry I know you understand what I mean with case sensitive ^.^
+T 1589892794 18<emersion18>	hm, probably?
+T 1589893018 18<xclaesse18>	roxlu: you can't pass auto-features to a subproject, it's a global option
+T 1589893029 18<roxlu18>	xclaesse: ok thanks
+T 1589893033 18<Nei18>	another reason to avoid them!
+T 1589893037 18<xclaesse18>	You want to force building ffmpeg subproject?
+T 1589893060 18<roxlu18>	I'm using it now ... let's see if this enables ffmpeg with gstreamer
+T 1589893067 18<xclaesse18>	-Dlibav=enabled
+T 1589893155 18<roxlu18>	xclaesse: do you know if I need `--auto-features=disabled` too?
+T 1589893192 18<xclaesse18>	roxlu: that disable building all plugins
+T 1589893229 18<xclaesse18>	you can use that to do a minimal build of gstreamer when you know exactly which plugins you want to build
+T 1589893248 18<xclaesse18>	you would do --auto-features=disabled -Dsomefeature=enabled
+T 1589893315 18<roxlu18>	ah ok! I was using `-Dgst-libav=enabled`; I use "meson configure" which shows me the gst-libav otion. In meson.option I saw "libav" indeed but wasn't sure what flag I had to use.
+T 1589893977 18<Ericson231418>	eschwartz: yes order-only dependencies should do the trick
+T 1589894136 18<roxlu18>	xclaesse: when I onlu use `-Dlibav=enabled` I get an error: "Dependencies mus tbe external dependencies"
+T 1589894215 18<xclaesse18>	roxlu: sounds like a bug in gstreamer then
+T 1589894244 18<xclaesse18>	roxlu: do you have the file and line number where that happens?
+T 1589894279 18<roxlu18>	I'm just rerunning the script ... lost the error.
+T 1589894297 18<roxlu18>	I'm trying with --auto-features=disabled atm
+T 1589894380 18<roxlu18>	xclaesse: this is the repository though: https://gitlab.freedesktop.org/gstreamer/gst-build/tree/master
+T 1589894752 18<roxlu18>	I thinks this is the meson build repos https://gitlab.freedesktop.org/gstreamer/meson-ports/ffmpeg
+T 1589895099 18<xclaesse18>	roxlu: without a exact error message, cannot help you :/
+T 1589895149 18<roxlu18>	xclaesse: my test just finished (and failed). I'm rerunning to get the exacct error
+T 1589895926 18<roxlu18>	xclaesse: got disconnected; but I removed my builddir because I think that once I've done --auto-features=disabled I couldn't enable them anymore when I run again using --reconfigure.
+T 1589895944 18<roxlu18>	I'm seeing some ffmpeg libs now, but I'm missing some other :#
+T 1589895951 18<roxlu18>	looking into this
+T 1589896192 18<roxlu18>	is there a way to 100% absolutely make sure that everythings gets reconfigured/rebuild w/o havinng to removing my build/source dir?
+T 1589896419 18<__tim18>	roxlu, that sounds like https://gitlab.freedesktop.org/gstreamer/gst-build/-/issues/87 and should be fixed afaict (which branch are you building?)
+T 1589896485 18<roxlu18>	__tim: I did a fresh close a couple of minutes ago.
+T 1589896552 18<roxlu18>	__tim: but atm I'm running into a couple of different issues: `subprojects\win-flex-bison-binaries\meson.build(12,2): error G5BD0DE16: Problem encountered`
+T 1589896564 18<__tim18>	you should probably move that into #gstreamer :)
+T 1589896569 18<roxlu18>	yeah
+T 1589896573 18<roxlu18>	sry.
+T 1589896593 18<eschwartz18>	Ericson2314: so you could use custom_target( depend_files: ['foo.py', 'bar.py', 'baz.py'])
+T 1589896625 18<Ericson231418>	eschwartz: can I override_find_program with a custom target though?
+T 1589896662 18<eschwartz18>	why ask me, ask the docs
+T 1589896664 18<eschwartz18>	> specifies that whenever find_program is used to find a program named progname, Meson should not look it up on the system but instead return program, which may either be the result of find_program, configure_file or executable
+T 1589896726 18<Ericson231418>	sorry a) I forgot to mention that constraint b) I meant to ask that rhetorically but didn't make that obvious enough to spare you looking at the docs yourself
+T 1589896736 18<Ericson231418>	I think I'll make an issue for this
+T 1589896749 18<Ericson231418>	link the gobject-introspection code in question an what not
+T 1589896855 18<eschwartz18>	an issue for what, precisely? Is depend_files good enough?
+T 1589897073 18<Ericson231418>	making it so I can override_find_program with something that will provide the python executable and ensure the extension module is up to date
+T 1589897119 18<Ericson231418>	right now there is conditional code that's basically "if we know the find program is overridden, add these extra deps" but guessing whether something was overridden is not compositional
+T 1589897279 18<roxlu18>	xclaesse: this is the exact error: subprojects\FFmpeg\meson.build(1618,10): error G6B826890: Dependencies must be external dependencies
+T 1589897328 18<Ericson231418>	is there a CLI way to specify the exe_wrapper wrapper?
+T 1589897376 18<roxlu18>	xclaesse: and this is the meson.build file: https://gist.github.com/roxlu/cddd5b7eef84f80b4de396b1d2095b29
+T 1589897502 18<xclaesse18>	Hmm, meson should be more explicit and tell which dep is causing that error
+T 1589897546 18<xclaesse18>	probably one of those dependency is a library() object
+T 1589897559 18<roxlu18>	I do have a 7meg log :)
+T 1589897625 18<roxlu18>	ah that contains the same info as in stdout
+T 1589897642 18<andlabs18>	          has_header = cc.has_header(header, dependencies: extra_deps)
+T 1589897686 18<andlabs18>	I hope this isn't a 1:1 recreation of the useless steps autotools does to support pre-POSIX systems =P
+T 1589897902 18<roxlu18>	I had another question about these subprojects; how do I know what subprojects there are? when I do "meson configure" shows me lots of info.
+T 1589897914 18<xclaesse18>	most probably one of those extra_deps is itself a subproject
+T 1589897916 18<roxlu18>	e.g. it shows me "Subproject FFmpeg" and a list of options
+T 1589897969 18<roxlu18>	and output of my configure step shows me a nice overview (probably generated by gstreamer) about what is being build.
+T 1589897969 18<__tim18>	did you see the bug report I just linked?
+T 1589898048 18<roxlu18>	__tim: yes and it was merged already
+T 1589898061 18<roxlu18>	I'm using latest master
+T 1589898069 18<__tim18>	but is your issue the same?
+T 1589898109 18<roxlu18>	the error message is the same yes
+T 1589898174 18<__tim18>	the issue is the same, because this was not merged properly
+T 1589898194 18<__tim18>	well, only into one branch, and then we switched to a newer branch
+T 1589898247 18<__tim18>	I'll fix it
+T 1589898268 18<roxlu18>	(Y)
+T 1589898282 18<andlabs18>	actually hmm
+T 1589898291 18<andlabs18>	oh wait you fixed it already ok
+T 1589898377 18<roxlu18>	andlabs: where are you looking?
+T 1589898717 18<andlabs18>	this chat =P
+T 1589898747 18<andlabs18>	I did evaluate what populates extra_deps and the reference manual and was going to wonder if find_header() specifically demands dependency() objects, not find_library() objects
+T 1589898771 18<andlabs18>	but I don't know for sure
+T 1589898810 18<roxlu18>	you just said "you fixed it already" ... <-- the errors is still there
+T 1589898828 18<andlabs18>	[10:24:07]  <@__tim>	I'll fix it
+T 1589898838 18<andlabs18>	or is that a different problem
+T 1589898913 18<roxlu18>	hehe ... yes tim said he'll fix it... you said he already did it. Now I'm curious where that fix is :)
+T 1589898956 18<ystreet0018>	roxlu: be patient
+T 1589898972 18<ystreet0018>	https://gitlab.freedesktop.org/gstreamer/meson-ports/ffmpeg/-/merge_requests/33
+T 1589899004 18<roxlu18>	sry, got a bit confused here ^.^
+T 1589899649 18<xclaesse18>	andlabs: find_library() should be fine, but not library() or declare_dependency() which typically happens when dependency() does a fallback
+T 1589899671 18<xclaesse18>	the reason is pretty simple: you need the library binary at configure time, so must come from the system
+T 1589900929 18*	roxlu now running into https://gist.githubusercontent.com/roxlu/9f22e19b1b3b6a8429b76468f099ed84/raw/79ddc408b64833a099b82e96f4ed6987f25f71c3/gistfile1.txt
+T 1589901453 18<roxlu18>	is thiis the right process: first I run `meson [some options]` then my build fails, then I change the `meson [some options]` and add --reconfigure, and run my command again to see if it fixes the issue?
+T 1600044734 19*	Now talking on 22#mesonbuild
+T 1600044734 22*	Topic for 22#mesonbuild is: Meson build system | Buy the manual: https://meson-manual.com/ | 0.55.3 is out, fixes: https://github.com/mesonbuild/meson/milestone/53?closed=1
+T 1600044734 22*	Topic for 22#mesonbuild set by 26jpakkane!~jpakkane@87-92-253-23.rev.dnainternet.fi (24Fri Sep 11 12:22:47 2020)
+T 1600094094 18<derRichard18>	i'm confused. my gcc compiler builds by default all binaries with -pie. why does adding "pie: false" to executable() not emit the linker flag -no-pie?
+T 1600094107 18<derRichard18>	i had to add it manually to link_args
+T 1600094189 18<xclaesse18>	derRichard: there is WIP to fix that from dcbaker[m]: https://github.com/mesonbuild/meson/pull/6415
+T 1600094343 18<derRichard18>	xclaesse: oh. let me check
+T 1600094871 18<xclaesse18>	it got forgotten, I don't remembers the details, sadly
+T 1600095262 18<derRichard18>	xclaesse: it seems to fix exacty what i'm facing
+T 1600095515 18<dcbaker[m]18>	We need to add a default() object (or something) before that can land
+T 1600095540 18<derRichard18>	dcbaker[m]: ok
+T 1600095566 18<derRichard18>	on yocto zeus, gcc builds by default everything with -pie, that's how it noticed
+T 1600095580 18<derRichard18>	one of my applications cannot work as pie binary :(
+T 1600106143 18<nirbheek18>	dcbaker[m], I thought the implementation already had it as a 'tristate'? aka true, false, unset
+T 1600106289 18<dcbaker[m]18>	nirbheek: maybe it was the vs_module_defs that we talked about a default () for then?
+T 1600106330 18<xclaesse18>	I don't remember having seen default() proposal, would be interested to get the link to see what's it's about.
+T 1600107095 18<dcbaker[m]18>	xclaesse: https://github.com/mesonbuild/meson/pull/7243. Apparently we never called it default(), that must be my interjection for name :). The last few comments
+T 1600107189 18<xclaesse18>	ok :D
+T 1600107756 18<xclaesse18>	ok, was going to say to use  kwargs dict, but I see it was suggested already. nevermid.
+T 1600109404 18<xclaesse18>	nirbheek: CI was green on master until https://github.com/mesonbuild/meson/pull/7729. Could it have broken it?
+T 1600110054 18<nirbheek18>	xclaesse, highly improbable, but can check by opening a PR. That code is not called on MSYS2 at all.
+T 1600110709 18<xclaesse18>	nirbheek: ok, I haven't read that PR at all, just took the first red cross in https://github.com/mesonbuild/meson/commits/master
+T 1600112757 18<lazka18>	xclaesse, nirbheek, likely caused by a patch in msys2
+T 1600112768 18<nirbheek18>	yes
+T 1600112779 18<nirbheek18>	That's why I've been ignoring it
+T 1600112813 18<lazka18>	we backported this from binutils to avoid crashes: https://sourceware.org/bugzilla/show_bug.cgi?id=26588
+T 1600113026 18<lazka18>	I've pinged the author here: https://github.com/msys2/MINGW-packages/pull/6971#issuecomment-692276067
+T 1600113663 18<xclaesse18>	are we using msys2 master in our CI?
+T 1600113701 18<xclaesse18>	why did that affected us suddenly ?
+T 1600114503 18<pinchartl18>	jpakkane: what's the policy for the Debian stable backports of meson ? I see it's at 0.52.1 now, I was wondering if 0.53 would get backported at some point
+T 1600114526 18<lazka18>	xclaesse, it's rolling. you can stop syncing the package DB in CI which would freeze the packages until choco updates the installer
+T 1600114566 18<lazka18>	I can try that if wanted
+T 1600114648 18<xclaesse18>	why are we even updating stuff, should all be part of the docker image
+T 1600114670 18<xclaesse18>	We can't have moving targets like that IMHO
+T 1600114745 18<xclaesse18>	lazka: can't we pin a version with choco? Like we do with "pip install meson==0.55.3"
+T 1600114812 18<lazka18>	I was planning to port away from choco here though -> https://github.com/mesonbuild/meson/pull/7572
+T 1600114881 18<xclaesse18>	Choco is really nice, but when used in Dockerfile, not when used in each job run
+T 1600115889 18<lazka18>	I'd consider adding a version option to the github action so you can choose the installer version
+T 1600119302 18<jpakkane18>	pinchartl: I don't have upload rights. Those backports are made by people who volunteer and want to do the work.
+T 1600119451 18<pinchartl18>	jpakkane: ah ok. your name was listed in the Debian changelog, so I thought you were responsible for that
+T 1600119511 18<jpakkane18>	I do the packaging for unstable, but Martin Pitt does the actual uploads. Those backports are done by other people, whose names I don't remember offhand...
+T 1600120535 18<alextee[m]18>	is meson compile prefered over ninja -C build ?
+T 1600120559 18<jpakkane18>	It's mostly personal preference.
+T 1600120572 18<alextee[m]18>	oh ok
+T 1600120914 18<nirbheek18>	xclaesse, lazka, arguably we are testing meson against $framework of today, so we are finding bugs that users would find instead, or when we update to the next version. But MSYS2 has *so many* spurious failures that it feels like we should pin it.
+T 1600120936 18<nirbheek18>	this time it seems like a failure worth looking out for, though
+T 1600120974 18<nirbheek18>	jpakkane, the stable team is a separate team from the package maintainers?
+T 1600120978 18<elibrokeit18>	Or have two CI runs for msys2, one testing something that's supposed to work and one testing the very latest.
+T 1600120996 18<nirbheek18>	elibrokeit, does github have "allowed to fail" jobs?
+T 1600121017 18<nirbheek18>	i.e., will the "merge" button still be green if that job fails?
+T 1600121064 18<nirbheek18>	I guess it's fine if we can just ignore it too
+T 1600121083 18<nirbheek18>	The main obstacle in the current flow is that you have to open the job log and look at the failures to verify that new ones weren't added
+T 1600121099 18<nirbheek18>	So with two jobs we wouldn't need to do that
+T 1600121367 18<eschwartz18>	https://github.com/actions/toolkit/issues/399
+T 1600124036 18<jpakkane18>	nirbheek: in Debian anyone can (in theory) upload any package. If I was an actual maintainer with upload rights I could do the stable ones, too. But I'm not so I leave that to other people.
+T 1600124349 18<eschwartz18>	jpakkane: I thought in debian each package is gated to a list of permitted uploaders, at least by default
+T 1600125644 18<jpakkane18>	That may have changed recently. But non-maintainer uploads (or NMUs) are a thing but doing them without a good reason is frowned upon.
+T 1600125714 18<jpakkane18>	Those backports have been done by someone emailing or ircing me asking if they can do an upload. I say ok. They do that. I have not given them any actual access rights, at least that I'm aware of.
+T 1600167658 18<xclaesse18>	nirbheek I don't think meson should be msys2 's CI. They don't have dev releases where such issue would be catched by their team before it hits us? In their own CI they could test stable release of meson.
+T 1600184368 18<lazka18>	we can't build the toolchain in CI sadly, it takes longer than the 6 hour limit. but running the meson test suite sounds like a good idea
+T 1600196970 18<eschwartz18>	xclaesse: \o/
+T 1600197394 18<xclaesse18>	eschwartz: thanks for the help, I had no idea about those git tricks
+T 1600197450 18<eschwartz18>	I am perhaps a bit freakily interested in all the ways you can (ab)use git internals and plumbing commands :)
+T 1600197554 18<xclaesse18>	pff, CI still failing because I need to wrap all posixpath with str()
+T 1600197574 18<xclaesse18>	I hate using pathlib with python 3.5 :(
+T 1600197632 18<eschwartz18>	just drop python 3.5, problem solved
+T 1600198118 18<xclaesse18>	that's planned for 0.57 AFAIK
+T 1600198147 18<xclaesse18>	IIRC there is already a warning message in master and 0.55.x
+T 1600203295 18<jpakkane18>	https://nibblestew.blogspot.com/2020/09/want-gccs-cleanup-attribute-in-visual.html
+T 1600208459 18<alextee[m]18>	cc.find_library () doesn't seem to be working on freebsd
+T 1600208474 18<alextee[m]18>	does meson look in the default dirs for freebsd?
+T 1600208505 18<alextee[m]18>	also, is there a standard way to pass paths to search for libraries in? or do I have to add a custom option for it?
+T 1600208577 18<alextee[m]18>	is it cmake_prefix_path ?
+T 1600211839 18<dcbaker[m]18>	cmake_prefix_path is for dependency() when it uses cmake as a backend
+T 1600212519 18<alextee[m]18>	oh
+T 1600212542 18<alextee[m]18>	would it make sense to have a global meson config variable for additional standard paths to search for libs?
+T 1600212573 18<alextee[m]18>	i mean for libs that don't have pkgconfig files
+T 1600212595 18<alextee[m]18>	on freebsd i have a problem finding libfftw3_threads.so
+T 1600212634 18<alextee[m]18>	when it allegedly exists. i need to try in a VM
+T 1600213626 18<dcbaker[m]18>	IIRC freebsd devs asked us not to put /usr/local in the default search path, because that's actually configurable and ports does that for you automatically
+T 1600213655 18<anholt18>	my library is unexpectedly compiling using cpp_LINKER, is there an easier way to track down why that decision was made than walking through the dependencies I see in my meson.builds for anything using cpp?
+T 1600213671 18<dcbaker[m]18>	anholt: compiling or linking?
+T 1600213688 18<anholt18>	dcbaker[m]: linking specifically, none of its obvious components are using cpp_COMPILER
+T 1600213713 18<anholt18>	dcbaker[m]: libvulkan_freedreno.so, specifically
+T 1600213765 18<dcbaker[m]18>	the decisions is basically made if any of the dependencies or linked libsa are C++ it links with C++. is there a reason you don't want to link with the c++ compiler?
+T 1600213808 18<anholt18>	dcbaker[m]: I don't believe there's c++ in the dependency chain, or not intentionally.  came up because I'm experimenting with building android binaries, and the c++ dep is giving me a bit of trouble.
+T 1600213827 18<anholt18>	working to kill Android.mk
+T 1600213855 18<dcbaker[m]18>	ahh. Doesn't mesa_util have c++ code in it?
+T 1600213856 18*	anholt wishes meson could generate .bp files, but if I can get a cross build working that may be enough
+T 1600213886 18<dcbaker[m]18>	anholt: you might want to talk to pinchartl before you get too far
+T 1600213887 18<anholt18>	dcbaker[m]: I thought no, but oh hey look.  u_debug_stack_android.cpp
+T 1600213901 18<anholt18>	why?
+T 1600213918 18<dcbaker[m]18>	we'd talked to the android blueprint people at LPC, and they'd suggested writing a meson2bp as basically the only thing they'd accept
+T 1600213979 18<dcbaker[m]18>	I don't know if any code has been written yet, but that's kinda what they were suggesting. They really didn't want it in meson of course, because bp changes so fast that they want that control. Never mind that meson also changes fast...
+T 1600213982 18<anholt18>	that sounds lovely if someone wants to work on it, but that's not where I'm going to put my time.
+T 1600213993 18*	dcbaker[m] is pretty jaded about the whole android thing to be honest
+T 1600214003 18<anholt18>	dcbaker[m]: yes, android mesa very obviously needs to be shipped as blobs
+T 1600214022 18<anholt18>	(to me)
+T 1600214033 18<anholt18>	it's gross, but it's the only maintainable way past their build system requirements imo.
+T 1600214134 18<dcbaker[m]18>	Yeah. I offered to write a meson frontend for blueprint. They said no.
+T 1600214181 18<anholt18>	going back to the original question, though: "manually walk through dependencies" is the only way to figure out the cpp choice?
+T 1600214200 18<alextee[m]18>	<dcbaker[m] "IIRC freebsd devs asked us not t"> ah ok i see
+T 1600214228 18<pinchartl18>	anholt: it won't be limited to meson. libcamera has the same issue. I wonder at what point half of AOSP will need to be shipped as blobs :-)
+T 1600214270 18*	anholt really doesn't care about the purity of their distro's build system as long as we can ship open source software.
+T 1600214270 18<dcbaker[m]18>	anholt: yeah. There's specific code for it in meson you could probably put some print s in. Otherwise, yeah, walk up the tree
+T 1600214286 18<dcbaker[m]18>	Llvm will do it if you get llvm in there, fyi
+T 1600214303 18<pinchartl18>	dcbaker[m]: how is mesa compiled for AOSP when shipping as a blob ? can meson compile mesa against an AOSP staging directory tree ?
+T 1600214379 18<anholt18>	pinchartl: right now aosp has a mesa with our android.mks plus hacks.  there is no blob mesa in aosp at  the moment.  my goal is to use the ndk as a cross compiler to produce a blob and drop it on a phone.
+T 1600214451 18<pinchartl18>	anholt: so I suppose meson will gain support to compile against the android ndk (if it doesn't have it already) ?
+T 1600214452 18<anholt18>	(meson using ndk as cross compiler to build was really reasonable so far, now sorting out how to get the result to load)
+T 1600214524 18<anholt18>	https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/6700 has the scripts for getting the ndk and generating my cross files
+T 1600214922 18<pinchartl18>	looks fairly straightforward. thanks
+T 1600215314 18<anholt18>	pinchartl: also '-static-libstdc++' in the cpp line just helped me.
+T 1600216821 18<pinchartl18>	I have python scripts in my source directory, and they're invoked with a custom_target() to generate sources. this works fine, except that it ends up generating a __pycache__ directory in the sources. is there a way to move it to the build directory ?
+T 1600216899 18<dcbaker[m]18>	pinchartl: with 3.8 or 3.9 I think
+T 1600216994 18<pinchartl18>	PYTHONDONTWRITEBYTECODE=1 could be one option too it seems
+T 1600217075 18<pinchartl18>	ah, https://www.python.org/dev/peps/pep-0304/
+T 1600217077 18<pinchartl18>	neat
+T 1600217099 18<pinchartl18>	I don't think I can depend on python 3.8 though, so I'll likely just disable pyc generation
+T 1600217136 18<pinchartl18>	or maybe make it conditional on the python version
+T 1600217339 18<pinchartl18>	-X pycache_prefix=PATH is neat though
+T 1600217587 18<eschwartz18>	pyc files aren't really "needed", but OTOH why not just .gitignore them?
+T 1600217679 18<pinchartl18>	that would be fine, the issue is that the project needs to compile in environments where the source directory is read-only
+T 1600217698 18<pinchartl18>	python will skip generation of .pyc files then
+T 1600217721 18<pinchartl18>	but the build environment will flag the attempt to create the __pycache__ directory in the source tree as an error
+T 1600217725 18<orbea18>	sometimes they even do it in the file system
+T 1600217732 18<orbea18>	gegl is an example that uses meson
+T 1600217808 18<pinchartl18>	(the build environment being chrome os in this case, they're based on portage, and have added a special mode that compiles packages from the in-tree sources instead of copying the sources to a temporary directory as done in gentoo)
+T 1600217856 18<eschwartz18>	does portage actually fail the build on denying the write, or merely flag it as a warning?
+T 1600217884 18<eschwartz18>	the build system itself should handle actually erroring if the failure to write the file is an error
+T 1600217907 18<orbea18>	i see warnings with sandbox, but im not sure if its different in gentoo
+T 1600217932 18<orbea18>	works outside of gentoo too - https://wiki.gentoo.org/wiki/Project:Sandbox
+T 1600217963 18<pinchartl18>	it's a sandbox warning, I think it causes the build to fail on Chrome OS (that may be specific to them, not necessarily the case in the upstream portage)
+T 1600218007 18<eschwartz18>	I know it works elsewhere -- I heard about it and pondered looking into it to see if it could be integrated as a wrapper for pacman/makepkg
+T 1600218060 18<eschwartz18>	would be kind of cool to have a sandboxed-makepkg that denies writes to /home but whitelists $PWD
+T 1600218095 18<pinchartl18>	sandbox is need for builds, yet
+T 1600218101 18<orbea18>	there is also 'unshare -n' to disable the network, handy for catching when python setup.py files silently downloads egg files to a hidden directory...
+T 1600218742 18<eschwartz18>	I would like all build containers to build without network... but nodejs, rust, golang, make this impossible, and java usually likewise
+T 1600239384 18<epaul18>	im confused; i have files that are listed as input to a custom_target that is a dependency of other custom_targets, all of which are dependencies of the main shared_library
+T 1600239393 18<epaul18>	but if i change one of the files, nothing gets rebuilt
+T 1600239438 18<epaul18>	what might i be doing wrong?
+T 1600252946 18<manojkiraneda18>	Hi all, I am trying to enable lto in my project, and it builds successfully for all the build configurations, but the project fails to link only when i enable " -Db_sanitize=address,undefined -Db_lundef=false" with debug build
+T 1600253048 18<manojkiraneda18>	can any one help me solve this issue ?
+T 1600253094 18<manojkiraneda18>	"undefined reference to `.LC62'" -> this is the error which is thrown during linking stage
+T 1600253143 18<manojkiraneda18>	and if i change the optimization to anything other than -O0, the issue will be solved
+T 1600253888 18<jpakkane18>	What is probably happening is that you have some linking info missing. With optimization enabled the symbol in question gets inlined and thus works (probably).
+T 1600254768 18<manojkiraneda18>	jpakkane:if i remove the -flto, even with -O0 it builds fine.
+T 1600255986 18<jpakkane18>	This may be a toolchain bug also. FWICT lto is still fairly new, at least in GCC.
+T 1600256014 18<jpakkane18>	Typically you don't use lto on regular builds, only for performance testing and final releases.
+T 1600256103 18<manojkiraneda18>	I am trying to port https://github.com/openbmc/bmcweb  to meson, we wanted the webserver binary to be small as much as possible
+T 1600256128 18<manojkiraneda18>	which is why we are enforcing it
+T 1600256164 18<manojkiraneda18>	are you saying that lto should only come with Optimization ?
+T 1600256185 18<manojkiraneda18>	and b_lto cannot be enforced on plain and debug builds ?
+T 1600256733 18<jpakkane18>	You can do something like if get_option('buildtype') == 'debugoptimized' and not get_option('b_lto') \n error('LTO must be enabled when doing optimized builds.')
+T 1600256738 18<jpakkane18>	Depending on what you need.
+T 1600256802 18<jpakkane18>	But usually you want to be careful about mandating things like this. Because there will be people who can't use LTO because they must use a toolchain where it is broken or something similar.
+T 1600258509 18<manojkiraneda18>	yeah, sure ..i would implement a similar check..thanks
+T 1600286166 18<King_DuckZ18>	hey all, with add_languages('cpp') can I still specify the standard of c++ I want to use? like I do in project(blah, default_options: ['cpp_std=gnu++17'])?
+T 1600286335 18<xclaesse18>	King_DuckZ: you can still have the default in project()
+T 1600286350 18<King_DuckZ18>	ah cool :)
+T 1600286483 18<King_DuckZ18>	porting civetweb's cmake file to meson... that's another one where they assigned the build system to a monkey on drugs °_°
+T 1600286929 18<King_DuckZ18>	when I use the dependency() function, is there a way to always force the fallback and never pick up the system lib?
+T 1600288227 18<alextee[m]18>	King_DuckZ: you can do --wrap-mode=forcefallback but that will force the follback for all deps
+T 1600288245 18<alextee[m]18>	fallback*
+T 1600289068 18<King_DuckZ18>	hmm ok, I only wanted to do it for civetweb... I don't think it makes sense to use the system one since I have to set some specific build options
+T 1600289088 18<King_DuckZ18>	I don't think it makes sense to have that one as a system lib in general
+T 1600289368 18<alextee[m]18>	then don't use dependency ()
+T 1600289372 18<alextee[m]18>	you can fetch the dependency from the subproject directly
+T 1600289396 18<alextee[m]18>	https://mesonbuild.com/Reference-manual.html#subproject-object
+T 1600294942 18<BrianD18>	hey folks -- i see this issue asking for documentation of warning levels: https://github.com/mesonbuild/meson/issues/3275 -- but it's not clear to me that this feature is actually documented in any meaningful way beyond "choose a number that feels right"
+T 1600294963 18<BrianD18>	is there anywhere else where warning_levels is documented in a way that translates to specific compiler warning configurations?
+T 1600295848 18<BrianD18>	truth in code, i suppose: https://github.com/mesonbuild/meson/blob/a24fde6fde774092fae7ec544b85ca794baadeb8/mesonbuild/compilers/c.py#L96-L99
+T 1600304814 18<xclaesse18>	lazka: I have a unit test failing with msys2: fatal: '/D:/a/1/s/tmpaw4ayzhn/sub1' does not appear to be a git repository --> It's trying to git clone file:///D:/a/1/s/tmpaw4ayzhn/sub1
+T 1600304891 18<xclaesse18>	Maybe it's a git bug? I tried on my Windows (not msys2) and git clone works with file:///C:/foo
+T 1600304904 18<xclaesse18>	could be an older version of git in our CI
+T 1600306054 18<xclaesse18>	Hmm, no, as far as I can tell the msys2 CI fails with git 2.27, and the vs2019 CI pass with git 2.26
+T 1600323014 18<lazka18>	xclaesse, one difference is that the msys2 git is cygwin based, while the CI one is native
+T 1600323027 18<lazka18>	so the msys2 one likely only deals with unix paths
+T 1600323045 18<lazka18>	and in turn only with unix file URIs
+T 1600323720 18<lazka18>	We'd need to package the Microsoft fork of git for that, which no one had time to so far.
+T 1600340001 18<alextee[m]18>	i get ERROR: Unable to find CMake when I try to use the cmake module
+T 1600340006 18<alextee[m]18>	is there any way to specify its path?
+T 1600340025 18<alextee[m]18>	trying appending to PATH but doesnt seem to work
+T 1600340235 18<jpakkane18>	I _think_ you can specify it with the CMAKE envvar but not sure.
+T 1600340254 18<jpakkane18>	If it is in path and not found, the problem is probably somewhere else. Such as maybe it is too old?
+T 1600341917 18<eschwartz18>	alextee[m]: maybe the log has more info
+T 1600343001 18<alextee[m]18>	hmm I'm trying to cross build using gstreamer's cerbero
+T 1600343008 18<alextee[m]18>	I ended up writing packages for the cmake subprojects instead
+T 1600344515 18<nirbheek18>	alextee[m], which platform are you building on
+T 1600344540 18<alextee[m]18>	nirbheek: debian 10
+T 1600344553 18<alextee[m]18>	here's my cerbero branch https://git.zrythm.org/cgit/cerbero.git
+T 1600344564 18<alextee[m]18>	err, https://git.zrythm.org/cgit/cerbero
+T 1600344568 18<nirbheek18>	alextee[m], cerbero should automatically install cmake or build it if the system cmake is too old during bootstrap
+T 1600344571 18<alextee[m]18>	i saw your patches btw for meson :D
+T 1600344598 18<alextee[m]18>	nirbheek: it doesn't seem to work for meson subprojects. i even added it to the list of build tools
+T 1600344608 18<alextee[m]18>	but for cmake projects on their own it works
+T 1600344632 18<nirbheek18>	Ah
+T 1600344667 18<nirbheek18>	Look inside cerbero/build/build.py there's some code that sets `cmake = 'false'` in the native and cross files
+T 1600344674 18<nirbheek18>	Comment that out and it should be fine
+T 1600344699 18<alextee[m]18>	oooh let me try that
+T 1600346947 18<alextee[m]18>	is there a way to auto-promote wraps?
+T 1600346992 18<alextee[m]18>	eg there's subprojects defined in gtk, which I set as a subproject, and it gives me an error and a warning above saying dependency was not found but it is available in a sub-project
+T 1600347239 18<xclaesse18>	alextee[m]: It's done there: https://github.com/mesonbuild/meson/pull/6968
+T 1600347352 18<xclaesse18>	jpakkane: btw, not sure to understand what's the use case for not allowing autopromote as you suggested there ^
+T 1600347370 18<xclaesse18>	but maybe --wrap-mode=noautopromote ?
+T 1600347419 18<xclaesse18>	was that the only remaining comment in that PR and we are go to merge once we add that option?
+T 1600347423 18<nirbheek18>	The use-case is someone who wants to specify / assert all the deps
+T 1600347431 18<nirbheek18>	Such as a Cargo.lock file
+T 1600347478 18<xclaesse18>	note that wrap files gets copied into main projet, so once they are there, it's "locked"
+T 1600347516 18<xclaesse18>	you can decide to commit them, or keep them locally, and if you edit them it will use the version from main projet
+T 1600347561 18<xclaesse18>	But anyway, I agree an extra --wrap-mode makes sense
+T 1600347584 18<xclaesse18>	nirbheek: --wrap-mode=noautopromote sounds good to you?
+T 1600347670 18<nirbheek18>	xclaesse, the point is to assert *in the repository* that you want to build against. If a dep is missing, that would then be an error.
+T 1600347686 18<nirbheek18>	Can we set wrap-mode in default_options: ?
+T 1600347703 18<nirbheek18>	*that you want to build against XYZ deps at versions ABC
+T 1600347726 18<xclaesse18>	note that we have another PR to add dependency(..., fallback: false) to disable auto fallback
+T 1600347785 18<xclaesse18>	nirbheek: yes wrap-mode can be set in default_options, but not per-subproject
+T 1600347811 18<nirbheek18>	wrap-mode is a global option anyway, not a subproject option, right?
+T 1600347817 18<xclaesse18>	yep
+T 1600347824 18<nirbheek18>	Sounds good to me then
+T 1600347887 18<xclaesse18>	ok, I'll update the PR then, thansk
+T 1600351694 18<alextee[m]18>	oof, recursive subproject
+T 1600351699 18<alextee[m]18>	gtk -> cairo -> librsvg -> cairo
+T 1600351747 18<alextee[m]18>	i'll just make cerbero packages separately, was just curious to see if it would work without building any dependencies
+T 1600351802 18<xclaesse18>	alextee[m]: you discover the mess I felt into a few months ago
+T 1600351822 18<xclaesse18>	I thought we got that fixed in the end, I'm surprised
+T 1600351848 18<alextee[m]18>	xclaesse: is it a misconfiguration in the cairo repo?
+T 1600351871 18<alextee[m]18>	or librsvg i guess
+T 1600351880 18<nirbheek18>	alextee[m], I already have a branch for building gtk
+T 1600351881 18<xclaesse18>	IIRC, it was cycle between cairo - harfbuzz - freetype
+T 1600351900 18<alextee[m]18>	nirbheek: latest one?
+T 1600351905 18<nirbheek18>	alextee[m], https://gitlab.freedesktop.org/gstreamer/cerbero/-/merge_requests/585
+T 1600351910 18<alextee[m]18>	btw i need svg support
+T 1600351920 18<nirbheek18>	yes, cerbero already builds librsvg
+T 1600351923 18<xclaesse18>	alextee[m]: you have to disable cairo support in librsvg or disable librsvg in cairo... choose your poison
+T 1600351932 18<xclaesse18>	IIRC both have an option
+T 1600351950 18<alextee[m]18>	nirbheek: that won't do :/
+T 1600351953 18<alextee[m]18>	it doesn't render svgs properly on windows
+T 1600351960 18<alextee[m]18>	i need latest rsvg, which needs rust
+T 1600351974 18<nirbheek18>	There's also a cerbero branch for rust support
+T 1600351975 18<alextee[m]18>	the one msys uses
+T 1600351982 18<nirbheek18>	https://gitlab.freedesktop.org/gstreamer/cerbero/-/merge_requests/261
+T 1600352002 18<nirbheek18>	The rust support branch is... very out of date
+T 1600352004 18<alextee[m]18>	nirbheek: thanks!!
+T 1600352015 18<nirbheek18>	But it has the right idea, just needs to be rebased
+T 1600352057 18<alextee[m]18>	i'll send a merge request if/when i have everything working. i added fftw and libsamplerate and a few other libs too
+T 1600352075 18<xclaesse18>	cerbero is not building with --wrap-mode=nofallback?
+T 1600352080 18<nirbheek18>	it is
+T 1600352100 18<alextee[m]18>	<xclaesse "cerbero is not building with --w"> i commented that out
+T 1600352139 18<xclaesse18>	ah ok, was assuming you were using gst-build if you had such subproject cycle
+T 1600352180 18<xclaesse18>	it should not happen with cerbero, but since you commented that out...
+T 1600352293 18<xclaesse18>	funny, I tried a while ago to get gtksink build with gst-build, never got that far but that's how I ended up with my auto-promote PR and fixes a few cycles around freetype/cairo
+T 1600352356 18<xclaesse18>	nirbheek: ooc how does cerbero break the rsvg/cairo cycle? it builds one of them twice or disable cairo in rsvg?
+T 1600352379 18<xclaesse18>	or disable rsvg in cairo
+T 1600352460 18<xclaesse18>	Hm, judging by Ubuntu package deps, they disable rsvg in cairo
+T 1600352490 18<nirbheek18>	checking for LIBRSVG... no
+T 1600352490 18<nirbheek18>	configure: WARNING: SVG backend will not be tested since librsvg >= 2.35.0 is not available
+T 1600352496 18<nirbheek18>	cairo's svg backend is disabled
+T 1600352535 18<xclaesse18>	ok, that should be the default in cairo's meson.build then
+T 1600352587 18<alextee[m]18>	yeah rendering to svg should be opt in imo, like xml
+T 1600352758 18<xclaesse18>	Hmm, it is optional: required: get_option('tests')
+T 1600352816 18<xclaesse18>	alextee[m]: did you set -Dcairo:tests=enabled ?
+T 1600352834 18<xclaesse18>	I don't understand why it tried to fallback in your case
+T 1600352870 18<xclaesse18>	sounds like a case for fallback: false
+T 1600352898 18<alextee[m]18>	no but i do have -Dtests=true in my main project
+T 1600352917 18<alextee[m]18>	the rest was just pulled in by the gtk subproject
+T 1600352966 18<alextee[m]18>	https://git.zrythm.org/cgit/zrythm/commit/?h=bugfixes&id=b557e33f885e4bb5585208fb2c06d871383d72d1 here if you want to reproduce
+T 1600352992 18<alextee[m]18>	it fails during configuration of gtk
+T 1600353163 18<alextee[m]18>	(when cross building for windows, not sure if that matters)
+T 1600353300 18<xclaesse18>	weird, cairo's tests option is not yielding, so it should not require librsvg and should thus not fallback
+T 1600353394 18<xclaesse18>	ah, that's why I didn't see meson.build in librsvg: https://gitlab.gnome.org/GNOME/gtk/-/blob/gtk-3-24/subprojects/librsvg.wrap
+T 1600353412 18<xclaesse18>	it's a wip branch from nirbheek
+T 1600353438 18<xclaesse18>	nirbheek: OOC, did that progress to get merged?
+T 1600353449 18<nirbheek18>	xclaesse, librsvg uses rust now, so no
+T 1600353465 18<xclaesse18>	ahh, it's blocked on that... ooh
+T 1600353479 18<nirbheek18>	Yes it's blocked on the unstable-cargo crate
+T 1600353493 18<nirbheek18>	There's always something to do ;)
+T 1600353496 18<xclaesse18>	that should get unblocked now that we got external project in meson, needs to do the final tweaks for cargo
+T 1600353590 18<nirbheek18>	I hate azure CI on github
+T 1600353600 18<nirbheek18>	There's no way to cancel old pipelines, and it doesn't automatically cancel pipelines on push
+T 1600353602 18<nirbheek18>	Useless
+T 1600353620 18<nirbheek18>	It's always backlogged by several hours
+T 1600353998 18<nirbheek18>	alextee[m], btw the gtksink MR is blocked by https://github.com/mesonbuild/meson/pull/4966
+T 1600354007 18<nirbheek18>	Need to rebase that PR and fix test failures
+T 1600354022 18<xclaesse18>	oh it does not cancel on push?? damned, that's a basic feature of a CI....
+T 1600354076 18<xclaesse18>	one day meson will migrate to gitlab.fdo lol :D
+T 1600354094 18<alextee[m]18>	not sure what a 'gtksink' is o.o
+T 1600354143 18<xclaesse18>	alextee[m]: a GStreamer element that uses gtk to render video
+T 1600354169 18<nirbheek18>	a video sink element that can render to a gtk widget
+T 1600354271 18<alextee[m]18>	oh
+T 1600355574 18<xclaesse18>	pfff, the annoying part in writing unit test is you then have to pass the CI :(
+T 1600355616 18<xclaesse18>	in today's pathlib wtf, with python3.5 resolve() checks that the file actually exists
+T 1600355638 18<xclaesse18>	they changed that behaviour in 3.6
+T 1600355694 18<xclaesse18>	pathlib is really a trap until at least 3.6
+T 1600356076 18<nirbheek18>	Did not know that changed in 3.6, I thought it always checks the file/dir exists
+T 1600356412 18*	dcbaker[m] cannot wait to drop 3.5 support
+T 1600356422 18<xclaesse18>	There is no replacement for os.path.abspath() otherwise
+T 1600356436 18<xclaesse18>	or is there?
+T 1600356484 18<nirbheek18>	.resolve() used to also resolve symlinks, does it not anymore?
+T 1600356488 18<xclaesse18>	dcbaker[m]: I was not a big fan if bumping python req without a strong reason, but I think the pathlib mess is a good enough reason to do it now
+T 1600356499 18<nirbheek18>	We are doing it after 0.56
+T 1600356517 18<xclaesse18>	yep
+T 1600356528 18<xclaesse18>	dunno about symlinks
+T 1600356542 18<dcbaker[m]18>	I know
+T 1600356573 18<xclaesse18>	nirbheek: as far as I understand it resolves symlink until it arrives at a node that does not exist, then the rest is just appended as-is
+T 1600356634 18<nirbheek18>	xclaesse, abspath does not resolve symlinks at all
+T 1600368048 18<alextee[m]18>	nirbheek: I'm getting "Couldn't recognize the image file format" during glib-compile-resources so your gtk recipe fails. not sure how to make it see the loaders. they are installed in build/dist/mingw_x86_64/lib/gdk-pixbuf-2.0/2.10.0 and I made a loaders.cache file but doesn't look like the gtk build is picking them up
+T 1600368105 18*	alextee[m] hacks around with cerbero to see if he can find the issue
+T 1600372191 18<alextee[m]18>	ok i see it's trying to use the native glib-compile-resources instead of the one for the target platform
+T 1600376081 18<jeandet18>	dcbaker[m],  https://github.com/mesonbuild/meson/issues/7755 have you already noticed this behavior?
+T 1600376159 18<dcbaker[m]18>	Yeah, I knew that happened. It's... unfortunate. I'll comment on the issue
+T 1600376270 18<jeandet18>	this breaks the rule "just run ninja" :/
+T 1600377230 18<xclaesse18>	same with default_options, fixing that has been on my todo for a while. Meson has all the info it needs.
+T 1600381883 18<xclaesse18>	dcbaker[m]: How do I type annotate a method that takes an argument of its own class type?
+T 1600381899 18<xclaesse18>	I get NameError: name 'Resolver' is not defined
+T 1600381905 18<dcbaker[m]18>	as a string
+T 1600381915 18<dcbaker[m]18>	ie: new(cls) - > 'Foo':
+T 1600381924 18<xclaesse18>	weird, ok
+T 1600381930 18<dcbaker[m]18>	python < 3.7 uses strings for forward declarations
+T 1600381940 18<dcbaker[m]18>	in 3.7 we get __future__.annotations
+T 1600381970 18<dcbaker[m]18>	which makes the parser treat annotations as strings and you can put whatever and it doesn't care
+T 1600381980 18<dcbaker[m]18>	I'm a fan of that :)
+T 1600390495 18<apteryx18>	hello! Is it possible to install a single target for testing?
+T 1600390530 18<apteryx18>	I added a new target generating info manual for QEMU, but don't want to build the whole project just to verify that the info manual gets installed at the right place, if possible.
+T 1600390990 18<elibrokeit18>	apteryx: the install target is all or nothing, but why don't you believe it will install in the directory you specify?
+T 1600391245 18<dcbaker[m]18>	Just comment out the other targets or directories
+T 1600391938 18<apteryx18>	I see.  Well the install target is conditional, so I just wanted to validate it works.
+T 1600391953 18<apteryx18>	Thanks for the ideas
+T 1600405841 18<toasterking18>	lol https://www.youtube.com/watch?v=eXN0gQQi8tI
+T 1600405895 18<toasterking18>	I usually agree with rene but when you think that shell scripting is easier to debug then meson...
+T 1600430359 18<xclaesse18>	he seems to be having a bad day
+T 1600431885 18<elmarco18>	is there a way to disallow usage of some compiler flags? I would like to prevent or remove --coverage for some executable()
+T 1600431958 18<nirbheek18>	I am not even going to watch that video
+T 1600431987 18<nirbheek18>	Anyone who thinks shell scripts constitute a good build system has not actually used build systems outside their specialized use-cases
+T 1600432032 18<elmarco18>	nirbheek: ?
+T 1600432053 18<nirbheek18>	Talking about the video shared by toasterking
+T 1600432056 18<xclaesse18>	elmarco: he's refering to youtube link above
+T 1600432115 18<jpakkane18>	elmarco: you can unset the coverage option (or any option, really) per-target with the override_options kwarg.
+T 1600432154 18<jpakkane18>	If you are setting --coverage manually in the compiler flags, do not do that and use the options instead. :)
+T 1600432547 18<elmarco18>	jpakkane: neat, let's try it! thanks
+T 1600433500 18<elmarco18>	jpakkane: almost there
+T 1600433540 18<elmarco18>	in qemu we have gprof option, currently passed via CFLAGS/add_project_arguemtns
+T 1600433548 18<elmarco18>	meson doesn't have gprof support?
+T 1600437200 18<ajax18>	elmarco: meson has such good gprof support that it knows how to use it for PGO
+T 1600437261 18<ajax18>	https://mesonbuild.com/Builtin-options.html grep for b_pgo
+T 1600437283 18<ajax18>	the 'generate' setting may be what you're after
+T 1600446060 18<elmarco18>	ajax: that's great, but it's not like -pg though
+T 1600447392 18<elmarco18>	I worked around the issue by using a "fake" subproject (and linking bios/options from subprojects/...)
+T 1600449167 18<rabbit991118>	I am getting "ERROR: Module "keyval" does not exist"
+T 1600449185 18<rabbit991118>	On version 0.55.3
+T 1600449247 18<rabbit991118>	keyval = import('keyval')
+T 1600452065 18<dcbaker[m]18>	toasterking: Wanna test some patches on obscure operating systems? :) https://github.com/mesonbuild/meson/pull/7757
+T 1600454832 18<eschwartz18>	what would logically be the best DependencyMethods type for something that might be provided by your libc implementation or might be provided as a DependencyMethods.PKGCONFIG
+T 1600457277 18<jpakkane18>	Which specific dependency is that?
+T 1600457557 18<eschwartz18>	I'm considering to submit a dependency lookup for the ngettext symbol which is in glibc and musl, but not some other libc's, e.g. it is a third-party libintl provided by the gettext package on the MSYS2 runtime
+T 1600457575 18<eschwartz18>	this will simplify pacman's current lookup
+T 1600457610 18<eschwartz18>	  if not cc.has_function('ngettext')
+T 1600457612 18<eschwartz18>	    libintl = cc.find_library('intl', required : false, static: get_option('buildstatic'))
+T 1600457654 18*	eschwartz actually wonders why this cannot be a pkg-config dependency here
+T 1600457671 18*	eschwartz wrote the darned code, why doesn't he know...
+T 1600458782 18<xclaesse18>	eschwartz: definitely would need to clean that mess: https://gitlab.gnome.org/GNOME/glib/-/blob/master/meson.build#L2001
+T 1600458898 18<xclaesse18>	it does not even try pkgconfig, could be improved...
+T 1600458966 18<xclaesse18>	note the subproject fallback there is a noop dummy implementation
+T 1600459434 18<dcbaker[m]18>	eschwartz: two different methods and a dependency factory. Like zlib or the curses dep I just submitted
+T 1600460206 18<eschwartz18>	I'll look into it some more
+T 1600467621 18<elibrokeit18>	dcbaker: note that my particular thought here was I'm not sure DependencyMethods.SYSTEM is correct since you might want the built-in to be preferred, but then look at pkg-config and then bare libraries as a last resort.
+T 1600467838 18<dcbaker[m]18>	elibrokeit: you would want the system method to be preferred always, or one user might want it preferred? you could do either with a factory
+T 1600468146 18<elibrokeit18>	As I understand it, SYSTEM dependency types are for "the system might provide a bad quality one that isn't a proper PkgConfig one"
+T 1600468201 18<elibrokeit18>	But the particular oddness here is that you might want two different types of system dependencies, one of which is preferred, and one of which is inferior to PkgConfig
+T 1600468294 18<elibrokeit18>	(I *think* system ones are usually < PkgConfig ones?)
+T 1600468801 18<dcbaker[m]18>	Yeah, Usually we try pkg-config, cmake, config-tool, then system
+T 1600468824 18<dcbaker[m]18>	but it really isn't a "system ones are bad" so much as "system ones are usually old"
+T 1600468876 18<dcbaker[m]18>	you *could* do that with a dependency_factory, it is just an opened coded python function that returns a list of callables
+T 1600468940 18<dcbaker[m]18>	but that could have corner cases too, like if you're using meson as part of a base OS and you want the thing built against the thing your OS provides and not a newer version from a package/port
+T 1600468959 18<elibrokeit18>	System (built-in) > PkgConfig > System (shared library)
+T 1600468990 18<elibrokeit18>	So... Add a DependencyMethods.BUILTIN ? idk
+T 1600469119 18<dcbaker[m]18>	me either, and I've done a lot of work on that part of meson. I mean, we could use a BUILTIN, which we could also use for making things like dl and m less awful
+T 1600469129 18<dcbaker[m]18>	actually I kinda like that
+T 1600469699 18<elibrokeit18>	Excellent. I'll try to draft something on Monday. I have holidays until then.
+T 1600469864 18<dcbaker[m]18>	sounds good
+T 1600486695 18<toasterking18>	dcbaker[m]: hell yeah dawg, which ones?
+T 1600486868 18<dcbaker[m]18>	I've got free BSD and illumos VMs, but just those, Linux and macos
+T 1600549166 18<jpakkane18>	The joys of computer upgrades. Everything else works except that the Intel 2.5G NIC fails to work in Linux about 50% of the time. :(
+T 1600554414 18<J_Darnley18>	What is the proper way to have meson build an execuatble tests/pixel from tests/pixel.c?
+T 1600554445 18<J_Darnley18>	I get a warning at the moment: "has a path separator in its name"
+T 1600554461 18<jpakkane18>	You have to define the executable target in tests/meson.build.
+T 1600554467 18<J_Darnley18>	what?
+T 1600554473 18<J_Darnley18>	Can't I have a flat file?
+T 1600554523 18<jpakkane18>	Well you can, but then all outputs go to the build root dir.
+T 1600555250 18<J_Darnley18>	Does meson not (yet) support yasm and assembly?
+T 1600555532 18<J_Darnley18>	Or nams
+T 1600555534 18<J_Darnley18>	*nasm
+T 1600555917 18<dcbaker[m]18>	Assembly works if the compiler consumes it directly (gas with gcc or clang, for example) just pass it as a source to the target. It needs a .s extension IIRC. There is nasm support, though I'm not sure how it works, there's some test cases in the meson source tree
+T 1600556001 18<J_Darnley18>	so gas only?
+T 1600556010 18<J_Darnley18>	I'll look at the source then
+T 1600556161 18<dcbaker[m]18>	If it's in another form you probably need to use a generator or a custom_target, but I'm not 100% on that. I've only ever used assembly inline
+T 1600556209 18<J_Darnley18>	https://github.com/mesonbuild/meson/search?q=asm&unscoped_q=asm
+T 1600556219 18<J_Darnley18>	lead me to https://github.com/mesonbuild/meson/blob/master/test%20cases/nasm/1%20configure%20file/meson.build
+T 1600556879 18<__tim18>	there are meson projects using nasm or yasm, e.g. https://gitlab.freedesktop.org/gstreamer/meson-ports/x264 or https://gitlab.freedesktop.org/gstreamer/meson-ports/ffmpeg
+T 1600557054 18<J_Darnley18>	looks much the same as what's in the source test case
+T 1600557076 18<J_Darnley18>	decide what platform, find nasm, config file, generator
+T 1600557545 18<J_Darnley18>	I guess that means I also need my own script(s) to transform other files
+T 1600557637 18<J_Darnley18>	At least this is shorter than Scons
+T 1600560040 18<__tim18>	sure, just thought you might be interested to see some realworld usage
+T 1600565022 18<J_Darnley18>	I had forgotten about a meson file for ffmpeg.
+T 1600565061 18<J_Darnley18>	I'd seen it aound somewhere.
+T 1600565072 18<J_Darnley18>	But clearly forgot about it.
+T 1600597502 18<J_Darnley18>	Is there a function to flatten or join an array into a single string?
+T 1600597601 18<__tim18>	https://mesonbuild.com/Syntax.html#split-join
+T 1600597673 18<J_Darnley18>	It's under the string section in syntax?  I was looking in the wrong place.
+T 1600600846 18<J_Darnley18>	https://mesonbuild.com/Dependencies.html#arbitrary-variables-from-dependencies-that-can-be-found-multiple-ways
+T 1600600858 18<J_Darnley18>	are these variables listed anywhere?
+T 1609963182 19*	Now talking on 22#mesonbuild
+T 1609963182 22*	Topic for 22#mesonbuild is: Meson build system | 0.56.1 is out | The release signing key has changed
+T 1609963182 22*	Topic for 22#mesonbuild set by 26jpakkane!~jpakkane@78-27-108-179.bb.dnainternet.fi (24Wed Jan  6 06:56:11 2021)

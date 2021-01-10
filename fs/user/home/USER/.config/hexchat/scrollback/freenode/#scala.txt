@@ -1,0 +1,502 @@
+T 1587158109 18<livepan18>	never heard 'enfin' in english
+T 1587158116 18<livepan18>	just curious
+T 1587158123 18<qu1j0t318>	English borrows all kinds of words.
+T 1587158127 18<qu1j0t318>	it's kind of its thing.
+T 1587158130 18<livepan18>	ya its my native tongue
+T 1587158134 18<qu1j0t318>	not just from French.
+T 1587158155 18<qu1j0t318>	yes, and Portuguese has enfim
+T 1587158197 18<livepan18>	not too surprising, amazing how much portuguese i can pick up from spanish/french knowledge
+T 1587158201 18<qu1j0t318>	exactly.
+T 1587158250 18<qu1j0t318>	probably about 30% of English is cognate with Portuguese and the sentence structure is the same.
+T 1587158273 18<qu1j0t318>	Also we've been next door to each other for like thousands of years, trading and fighting, so it's no surprise whatsoever. :)
+T 1587158282 18<qu1j0t318>	trading and fighting and marrying 
+T 1587158344 18<qu1j0t318>	livepan: sometimes a foreign word is clearer and more precise than a long clumsy English equivalent.
+T 1587158374 18<livepan18>	true, english is a mess :)
+T 1587230412 19*	Now talking on 22#scala
+T 1587230412 22*	Topic for 22#scala is: The Scala programming language http://www.scala-lang.org/download/ | Please follow the Scala Code of Conduct: http://www.scala-lang.org/conduct/ | Resources: http://www.scala-lang.org/community | See also our chat on gitter https://gitter.im/scala/scala | paste code snippets to http://scastie.org or https://gist.github.com | Issues with the channel? Discuss on #scala-ops
+T 1587230412 22*	Topic for 22#scala set by 26OlegYch|h!~OlegYch|h@178.121.227.182 (24Wed Oct  3 18:26:41 2018)
+T 1587281655 18<[df]18>	I'm having some trouble with invariance and existential types
+T 1587281660 18<[df]18>	https://pastebin.com/terUMLEL
+T 1587281678 18<[df]18>	this infers to: Boolean => Wrapper[_1] forSome { type _1 >: Bar with Baz <: Foo }
+T 1587281708 18<[df]18>	so, if I understand correctly, it is inferring each branch of the if separately to Wrapper[Bar] and Wrapper[Baz]
+T 1587281733 18<[df]18>	so it needs a supertype of those two, and Wrapper[Foo] isn't that because of the invariance
+T 1587281783 18<[df]18>	but because of that invariance, I can't see how *any* type could meet the criteria
+T 1587281810 18<[df]18>	any type that is Wrapper[<something>] that is
+T 1587281822 18<[df]18>	I'd expect it to go looking for a supertype of Wrapper
+T 1587281935 18<[df]18>	but what it's come up with is a Wrapper of an existential type that is a subtype of Bar with Baz and a supertype of Foo
+T 1587282009 18<[df]18>	I'm not sure if the <: Foo is actually important or just an acknowledgement that it is the parent of both types
+T 1587282045 18<[df]18>	I can see how if there were a type that is simultaneously Bar and Baz it would fit the bill
+T 1587282098 18<[df]18>	eurgh, just realised I mixed up subtype and supertype a couple of lines ago :(
+T 1587282181 18<[df]18>	but anyway, if Bar with Baz were possible (which I think the compiler must know it isn't), a supertype of that would surely be no good either, it would have to be exactly that?
+T 1587282653 18<[df]18>	then when calling the function, it seems the compiler does find or invent this type _1, and it's unique each time
+T 1587285593 18<S1100100118>	[df]: first, whether Bar with Baz is "possible", in your terminology, is irrelevant, and therefore "possible" is really the wrong way to think about it; so we say "uninhabited". And if you forget about inhabitance entirely, that would be for the best; even if A with B is uninhabited, it still makes sense to say that A with B with C is a strict subtype of it (assuming C is distinct).
+T 1587285780 18<S1100100118>	[df]: the second problem is  "a supertype of that would surely be no good either"; forgetting for a moment that we've already discarded the premise (because Bar with Baz is a perfectly sensible type), a type being uninhabited surely does not imply that its supertypes are all uninhabited; just for one example, Any is a supertype of Bar with Baz, and you would surely agree that Any is inhabited
+T 1587286187 18<S1100100118>	[df]: thirdly, "I can't see how any type could meet the criteria"; setting aside that in fact there are three apparent candidates that do meet the criteria, two of which you have written in your code thus leading to this inferred type (it would not have inferred this type if your branches didn't fit), and an infinite lattice of somewhat less obvious candidates, *even if there weren't*, it would still be acceptable, because that wouldn't be a 
+T 1587286187 18<S1100100118>	consideration
+T 1587286543 18<[df]18>	S11001001: I think it is the invariance that I'm struggling with then: Any is a supertype of Bar with Baz, but Wrapper[Any] is not a supertype of Wrapper[Bar with Baz] (if I understand variance correctly)
+T 1587286929 18<[df]18>	S11001001: possibly I also don't understand exactly what 'with' means in this context
+T 1587287541 18<[df]18>	ah wait I think I'm getting it... both Bar and Baz are supertypes of Bar with Baz (and subtypes of Foo) so they are both valid types to pick for _1
+T 1587287730 18<[df]18>	and since _1 is not a fixed type, the invariance is not relevant?
+T 1587288417 18<[df]18>	then if the return value from the function is used layer in the program, we don't know exactly what type it is but we know that it meets those criteria, which means that if unwrapped it could be treated as a Foo
+T 1587288424 18<[df]18>	*later
+T 1587291651 18<[df]18>	S11001001: thanks, I think the insight that a type needn't be inhabited to be meaningful/useful is an important one for me (both in this and probably many other cases)
+T 1587302821 18<qu1j0t318>	S11001001: hey! welcome back
+T 1587306742 19*	Now talking on 22#scala
+T 1587306742 22*	Topic for 22#scala is: The Scala programming language http://www.scala-lang.org/download/ | Please follow the Scala Code of Conduct: http://www.scala-lang.org/conduct/ | Resources: http://www.scala-lang.org/community | See also our chat on gitter https://gitter.im/scala/scala | paste code snippets to http://scastie.org or https://gist.github.com | Issues with the channel? Discuss on #scala-ops
+T 1587306742 22*	Topic for 22#scala set by 26OlegYch|h!~OlegYch|h@178.121.227.182 (24Wed Oct  3 18:26:41 2018)
+T 1587316821 18<S1100100118>	[df]: all accurate :)
+T 1587317026 18<S1100100118>	qu1j0t3: howdy
+T 1587326633 18<CorbaTheGeek18>	There are a dozen "Scala Koans" out there. Which one is the "gold standard?"
+T 1587482363 18<tinix18>	hello all. maybe this is a dumb question, but is there a way to use a dynamic object as the type parameter of another object? say i have an array of strings with names of objects that have been imported, or an array of those objects, and i want to write a for loop to iterate over that array, injecting each object into the type parameter of another. is this impossible in scala?
+T 1587482619 18<OlegYch|h18>	not really, why?
+T 1587484600 18<qu1j0t318>	"what are you really trying to do" :)
+T 1587499117 18<tinix18>	OlegYch|h: qu1j0t3: i have this library for turning scala case classes into avro schemas. you need to feed it like this AvroSchema[MyCaseClass] to setup the generator, and then there's some boilerplate code that writes the schema to a file. i want to automate this, so that every time i update or add a model, it automatically generates the schemas. i'm okay not dynamically parsing the imports at runtime, and statically defining a list of c
+T 1587499117 18<tinix18>	lasses that should be fed to the schema generator. i don't want to have to type the same thing over and over and over for every single class.
+T 1587499140 18<tinix18>	instead of this: https://node.zeneval.com/snaps/3c3d3c965331246a099b3b2822713066.png i want to do something like this: https://node.zeneval.com/snaps/f2bf9d32fa133af9f127b812ae733370.png
+T 1587499277 18<tinix18>	it was mostly an issue when i was bootstrapping a pile of existing classes, so i wrote some scala code to output more scala code that i then copy/pasted in. :P now when i add new classes i can add a new generator manually, it's not the end of the world, but the repetitive code kills my soul. there's gotta be a DRY way to do this, or something... if there's a way to just parse all case classes under a given namespace, that would be SWEET, 
+T 1587499277 18<tinix18>	as that's what i'm really trying to do.
+T 1587499279 18<OlegYch|h18>	codegen is a common solution
+T 1587499365 18<tinix18>	so that's normal in the scala world? write some scala that generates more scala? there's no way to do it at runtime or introspectively or something?
+T 1587499471 18<OlegYch|h18>	i would guess you could do that with `val schemas = List(AvroShema[X], AvroSchema[Y], etc)`
+T 1587499543 18<tinix18>	lol
+T 1587499549 18<tinix18>	fair enough, touche
+T 1587499557 18<tinix18>	so you're just moving the static assignment of the type, but i guess that's better than nothing
+T 1587499592 18<OlegYch|h18>	some things can only work at compile time
+T 1587499849 18<tinix18>	i understand, trust me... i just though maybe there was some way to tap into the AST at run time or something. *shrug*
+T 1587499955 18<OlegYch|h18>	macros can do almost anything but that's just bringing runtime to compile time
+T 1587499996 18<OlegYch|h18>	i don't see anything wrong with  `val schemas = List(AvroShema[X], AvroSchema[Y], etc)`
+T 1587500406 18<tinix18>	yeah i'm trying that now, and am having a hard time getting at the needed context... AvroSchema[X] returns a JSON string object. i'm not sure how to get at X from there. :S
+T 1587501537 18<tinix18>	OlegYch|h: thanks for your help, not super jazzed, but this'll do: http://node.zeneval.com/snaps/054c2b79452702e8f3e0f809dea34684.png 
+T 1587501561 18<OlegYch|h18>	looks good
+T 1587504749 18<LyndsySimon18>	I'm in a worksheet, and the first line in `import models._`. That runs without error. The second line is `import DBDriver.api._`, where `DBDriver` is a member of `models`. The autocompletion engine shows several members of `models` but I don't recognize any of them. I assume that the `models` I'm importing isn't the one I want, but don't know how to debug beyond that. Any ideas?
+T 1587504774 18<LyndsySimon18>	I'm using nvim with `coc.nvim` plugin, and `coc-metals` as my LSP source.
+T 1587504972 18<tinix18>	OlegYch|h: this is what i ended up coming up with to do that codegen for me: fgrep "case class" *.scala|grep -v app.scala|sort|sed 's/\(\w.*\).scala:case class /\1\./g'|sed 's/(//g'|sed 's/^\(\w.*\)$/(AvroSchema[\1], \1),/g'
+T 1587505683 18<OlegYch|h18>	less good
+T 1587514160 18<tinix18>	less good, HAHA
+T 1587514180 18<tinix18>	if you have a better idea, i'm all ears.
+T 1587514208 18<tinix18>	i did end up having to break them out into objects grouped by namespace because the method sizes were too large (i hate the JVM)
+T 1587514390 18<tinix18>	https://node.zeneval.com/snaps/3ce92e9a51f6335134e7327ffb264b53.png maybe that give a better idea what it's doing...
+T 1587581667 18<LyndsySimon18>	I'm using sbt, and for some reason sources included under `.metals/` in my project root directory are being included. How do I go about finding out if they're being seen as managed or unmanaged source, and how can I exclude that entire directory?
+T 1587581808 18<OlegYch|h18>	`inspect tree sources`
+T 1587581831 18<LyndsySimon18>	Thank you, that's a start :)
+T 1587582076 18<LyndsySimon18>	That's helpful. I see that sbt.io.hiddenFileFilter doesn't look at the directory hierarchy, only at the file's name.
+T 1587582090 18<LyndsySimon18>	That's _why_ they're being included, at least.
+T 1587620492 18<SethTisue18>	Scala 2.13.2 is out: https://www.scala-lang.org/news/2.13.2
+T 1587620831 19*	Now talking on 22#scala
+T 1587620831 22*	Topic for 22#scala is: The Scala programming language http://www.scala-lang.org/download/ | Please follow the Scala Code of Conduct: http://www.scala-lang.org/conduct/ | Resources: http://www.scala-lang.org/community | See also our chat on gitter https://gitter.im/scala/scala | paste code snippets to http://scastie.org or https://gist.github.com | Issues with the channel? Discuss on #scala-ops
+T 1587620831 22*	Topic for 22#scala set by 26OlegYch|h!~OlegYch|h@178.121.227.182 (24Wed Oct  3 18:26:41 2018)
+T 1587675223 18<kupi18>	hi, is there an online scala repl which has monocle?
+T 1587675477 18<OlegYch|h18>	scastie.org or scalafiddle.io
+T 1587675574 18<kupi18>	thanks a lot
+T 1587675839 18<OlegYch|h18>	np
+T 1587699339 19*	Now talking on 22#scala
+T 1587699339 22*	Topic for 22#scala is: The Scala programming language http://www.scala-lang.org/download/ | Please follow the Scala Code of Conduct: http://www.scala-lang.org/conduct/ | Resources: http://www.scala-lang.org/community | See also our chat on gitter https://gitter.im/scala/scala | paste code snippets to http://scastie.org or https://gist.github.com | Issues with the channel? Discuss on #scala-ops
+T 1587699339 22*	Topic for 22#scala set by 26OlegYch|h!~OlegYch|h@178.121.227.182 (24Wed Oct  3 18:26:41 2018)
+T 1587700052 19*	Now talking on 22#scala
+T 1587700052 22*	Topic for 22#scala is: The Scala programming language http://www.scala-lang.org/download/ | Please follow the Scala Code of Conduct: http://www.scala-lang.org/conduct/ | Resources: http://www.scala-lang.org/community | See also our chat on gitter https://gitter.im/scala/scala | paste code snippets to http://scastie.org or https://gist.github.com | Issues with the channel? Discuss on #scala-ops
+T 1587700052 22*	Topic for 22#scala set by 26OlegYch|h!~OlegYch|h@178.121.227.182 (24Wed Oct  3 18:26:41 2018)
+T 1587752537 18<LyndsySimon18>	I'm three weeks in to using Scala at work now, and I'm still struggling with slow compiles. I just realized that I was issued a MacBook Air instead of the MBP I thought I was getting. Does anyone know how much of a difference there would be between them?
+T 1587752560 18<LyndsySimon18>	I.E, is scala compilation typically bound by CPU or memory?
+T 1587752675 18<qu1j0t318>	cpu
+T 1587752973 18<LyndsySimon18>	Thought so. I'm on a 1.1 Ghz dual core i3. Everyone else on the team apparently has 3.1Ghz dual cores, at least. Sigh
+T 1587752989 18<LyndsySimon18>	Would compile times be impacted more by clock speed or the number of cores?
+T 1587753744 18<qu1j0t318>	that i do not know. would probably need to be benchmarked
+T 1587753985 18<OlegYch__18>	incremental compile rarely requires more than one core, and even full compiles only parallelize well if there are many independent modules
+T 1587754023 18<OlegYch__18>	cache is also very important
+T 1587754109 18<OlegYch__18>	i got 3x speedup moving from 4860HQ to 9750h, and not because of number of cores
+T 1587754188 18<OlegYch__18>	sorry, 6700HQ, not 4860HQ
+T 1587754244 18<LyndsySimon18>	Thanks :)
+T 1587754275 18<LyndsySimon18>	I ordered a new MBP 16". Exact specs depend on what's available, but I'm basically maxing out everything, with the possible exception of "only" 32GB RAM.
+T 1587754301 18<OlegYch__18>	sounds good
+T 1587754353 18<OlegYch__18>	16gb might not be enough if you're working on multiple projects
+T 1587754435 18<LyndsySimon18>	Yeah, I will be disappointed if that's all they have available. "They" being my employer's IT support.
+T 1587754448 18<LyndsySimon18>	If they have to order one in, I'm definitely going to push for it to be maxed out.
+T 1587754479 18<LyndsySimon18>	I've only been here three weeks, but I bet I've already lost enough productivity in coming up to speed with Scala and our projects to pay for the price difference.
+T 1587754554 18<OlegYch__18>	certainly
+T 1587778364 19*	Now talking on 22#scala
+T 1587778364 22*	Topic for 22#scala is: The Scala programming language http://www.scala-lang.org/download/ | Please follow the Scala Code of Conduct: http://www.scala-lang.org/conduct/ | Resources: http://www.scala-lang.org/community | See also our chat on gitter https://gitter.im/scala/scala | paste code snippets to http://scastie.org or https://gist.github.com | Issues with the channel? Discuss on #scala-ops
+T 1587778364 22*	Topic for 22#scala set by 26OlegYch|h!~OlegYch|h@178.121.227.182 (24Wed Oct  3 18:26:41 2018)
+T 1587843307 18<horon18>	Hi. Got this error. https://scastie.scala-lang.org/51sAzU3dQuuvwvD4ItlgtQ
+T 1587843321 18<horon18>	Can't figure out why it doesn't typecheck.
+T 1587843398 18<horon18>	Here. It's better. https://scastie.scala-lang.org/KvWG0fpqS5uMYRjPdKXi5w
+T 1587844414 18<OlegYch_18>	can you add the library to build settings?
+T 1587847492 18<horon18>	OlegYch_: it compiles fine if that's what you mean.
+T 1587847682 18<OlegYch_18>	no i mean can you add the library so that we that the error is reproduced on scastie
+T 1587848953 18<horon18>	OlegYch_: I'll give it a try. Not really familiar with scrastie.
+T 1587848980 18<horon18>	OlegYch_: may take some time...
+T 1587851236 18<OlegYch_18>	it's the same as in sbt
+T 1587852777 18<horon18>	OlegYch_: The library hasn't been released on any repo.
+T 1587852833 18<horon18>	OlegYch_: It's a github repo that compiles just fine but that hasn't published anything. I'll trim down the code to something reusable.
+T 1587852845 18<horon18>	OlegYch_: will take some time.
+T 1587852862 18<OlegYch_18>	yeah that sounds good
+T 1587853926 18<horon18>	OlegYch_: https://scastie.scala-lang.org/F1s2dRJIToCIqWtPzrT1iw
+T 1587853931 18<horon18>	OlegYch_: there you go.
+T 1587853954 18<horon18>	I really do not understand what's happening at the bottom with the Rel type.
+T 1587854114 18<OlegYch_18>	the problem is that No has a too specific type
+T 1587854165 18<OlegYch_18>	so foldLeft thinks r and p are of same type
+T 1587854172 18<OlegYch_18>	https://scastie.scala-lang.org/OlegYch/tgZd087ITcuCTkFCyb2jtA seems to work
+T 1587854318 18<horon18>	If I may impose myself onto your cognitive load... how did you figure that the type was too specific? (So that I may sleep well without too much backlog in my mind...)
+T 1587854654 18<OlegYch_18>	this is a pretty common pitfall with scala2 type inference
+T 1587854687 18<OlegYch_18>	i hear scala3 might be better
+T 1587854746 18<OlegYch_18>	yeah it compiles with dotty https://scastie.scala-lang.org/OlegYch/tgZd087ITcuCTkFCyb2jtA/3
+T 1587869877 19*	Now talking on 22#scala
+T 1587869877 22*	Topic for 22#scala is: The Scala programming language http://www.scala-lang.org/download/ | Please follow the Scala Code of Conduct: http://www.scala-lang.org/conduct/ | Resources: http://www.scala-lang.org/community | See also our chat on gitter https://gitter.im/scala/scala | paste code snippets to http://scastie.org or https://gist.github.com | Issues with the channel? Discuss on #scala-ops
+T 1587869877 22*	Topic for 22#scala set by 26OlegYch|h!~OlegYch|h@178.121.227.182 (24Wed Oct  3 18:26:41 2018)
+T 1587942191 19*	Now talking on 22#scala
+T 1587942191 22*	Topic for 22#scala is: The Scala programming language http://www.scala-lang.org/download/ | Please follow the Scala Code of Conduct: http://www.scala-lang.org/conduct/ | Resources: http://www.scala-lang.org/community | See also our chat on gitter https://gitter.im/scala/scala | paste code snippets to http://scastie.org or https://gist.github.com | Issues with the channel? Discuss on #scala-ops
+T 1587942191 22*	Topic for 22#scala set by 26OlegYch|h!~OlegYch|h@178.121.227.182 (24Wed Oct  3 18:26:41 2018)
+T 1588003278 19*	Now talking on 22#scala
+T 1588003278 22*	Topic for 22#scala is: The Scala programming language http://www.scala-lang.org/download/ | Please follow the Scala Code of Conduct: http://www.scala-lang.org/conduct/ | Resources: http://www.scala-lang.org/community | See also our chat on gitter https://gitter.im/scala/scala | paste code snippets to http://scastie.org or https://gist.github.com | Issues with the channel? Discuss on #scala-ops
+T 1588003278 22*	Topic for 22#scala set by 26OlegYch|h!~OlegYch|h@178.121.227.182 (24Wed Oct  3 18:26:41 2018)
+T 1588081470 18<SethTisue18>	LyndsySimon: I hope your employer isn't still using Scala 2.11? the 2.12 compiler is noticeably faster, especially if you use the latest patch version
+T 1588081498 18<SethTisue18>	that Air seems like an absurdly underpowered machine to give a developer
+T 1588082493 18<LyndsySimon18>	SethTisue: it was issued by mistake.
+T 1588096561 18<indian_yogi18>	hello every1
+T 1588096650 18<indian_yogi18>	how are you guys?
+T 1588097003 18<fabianhjr18>	Meh, having fun breaking stuff by moving from mill 0.5x to 0.6.x and from scala 2.12.10 to 2.12.11
+T 1588097128 18<fabianhjr18>	Weirdly enough, something deadlocks. :|
+T 1588097146 18<fabianhjr18>	(or fails silently and halts?)
+T 1588097198 18<indian_yogi18>	hello fabianhjr: how are you?
+T 1588097343 18<fabianhjr18>	having fun upgrading dependencies and breaking stuff.
+T 1588097457 18<indian_yogi18>	i want to transition like chabge career to IT, should i learn scala or python?
+T 1588097687 18<pipeline18>	python.
+T 1588097969 18<indian_yogi18>	sry, i was disconnected
+T 1588129844 18<indian_yogi18>	hi all
+T 1588179681 18<SethTisue18>	LyndsySimon: whew!
+T 1588181982 18<LyndsySimon18>	SethTisue: I’ve got a 16” MBP with an 8-core i9 and 32GB RAM on its way.
+T 1588192951 18<drdo18>	How do you safely implement AutoCloseable an close inner resources?
+T 1588192994 18<drdo18>	for example: class A extends AutoCloseable { private[this] val b = new B; def close(): Unit = { b.close() } }
+T 1588193017 18<drdo18>	if there's an exception after the B is constructed but before A's constructor finishes, there's a resource leak
+T 1588201529 18<horon18>	is there an annotation or something like that that makes the compiler when you code stuff that access a given method?
+T 1588201539 18<horon18>	makes the compiler fail.
+T 1588201807 18<qu1j0t318>	heh
+T 1588201842 18<LtHummus18>	i'm guessing deleting the method is out of the question?
+T 1588201844 18<qu1j0t318>	horon: there are ways to achieve this that don't involve new compiler features.
+T 1588201851 18<qu1j0t318>	yes, deleting the method is the best way.
+T 1588201864 18<qu1j0t318>	if you can't do that, OOP already provides some answers.
+T 1588201875 18<qu1j0t318>	also, potentially, typeclasses, but sinc eyou haven't given any details... who knows
+T 1588201879 18<LtHummus18>	yup, some access/visibility modifiers might be what you want
+T 1588201885 18<qu1j0t318>	not what i had in mind at all
+T 1588201901 18<qu1j0t318>	if you can change modifiers you presumably could delete the method.
+T 1588201907 18<LtHummus18>	fair
+T 1588201911 18<qu1j0t318>	i mean patterns like façade and so on.
+T 1588201923 18<LtHummus18>	ah yeah
+T 1588201924 18<qu1j0t318>	but typeclasses could also help -- "it depends" what is really being attempted here
+T 1588201937 18<LtHummus18>	right...like, horon what are you trying to accomplish? (or why?)
+T 1588201941 18<qu1j0t318>	^ :)
+T 1588201955 18<horon18>	it's a method from another library. I've adapted the signature and want to forbid user to access the method in the superclass. naively I thoght overriding the method and marking it with an annotation like @forbidden.
+T 1588201986 18<horon18>	so that only the method with an better signature ca be used.
+T 1588201994 18<horon18>	can be used.
+T 1588201996 18<qu1j0t318>	if you want that to happen statically you will need to rethink.
+T 1588202002 18<qu1j0t318>	it smells like OOP badness, tbh
+T 1588202012 18<qu1j0t318>	inadequate modelling
+T 1588202036 18<horon18>	nope. a logic programming library I want to reuse differently.
+T 1588202040 18<qu1j0t318>	which is another way of saying "i can't get statically what i want"
+T 1588202053 18<qu1j0t318>	right, but like i said
+T 1588202064 18<qu1j0t318>	there are established ways to do that 
+T 1588202081 18<qu1j0t318>	if you're subclassing and want to delete a method statically that's pushign water uphill.
+T 1588202106 18<qu1j0t318>	use things that are designed for that
+T 1588202108 18<qu1j0t318>	subclassing isn't
+T 1588202116 18<qu1j0t318>	and is generally a pain in the ass
+T 1588202195 18<horon18>	if I use a facade, then there are all these mixins that I have to hide behind the facade. Feels like a bitter pain to write methods to access the whole userland of the library one by one.
+T 1588202228 18<qu1j0t318>	OOP Heaven
+T 1588202297 18<horon18>	No. FP world. Just logic programming that gets hairy if you have to deal with all the intricacies of the prolog-like execution engine encoded in scala.
+T 1588203954 18<qu1j0t318>	you're dealing with OOP, apparently
+T 1588203983 18<qu1j0t318>	clue: "superclass"
+T 1588204460 18<horon18>	i'm mixin the traits of a library
+T 1588204588 18<horon18>	i'll think it over. thanks.
+T 1588205233 18<arubin18>	"If you're coming from an imperative background, such as Java, C++, or C#, you may think of var as a regular variable and val as a special kind of variable. On the other hand, if you're coming from a functional background, such as Haskell, OCaml, or Erlang, you might think of val as a regular variable and var as akin to blasphemy."
+T 1588205234 18<arubin18>	hah
+T 1588211512 19*	Now talking on 22#scala
+T 1588211512 22*	Topic for 22#scala is: The Scala programming language http://www.scala-lang.org/download/ | Please follow the Scala Code of Conduct: http://www.scala-lang.org/conduct/ | Resources: http://www.scala-lang.org/community | See also our chat on gitter https://gitter.im/scala/scala | paste code snippets to http://scastie.org or https://gist.github.com | Issues with the channel? Discuss on #scala-ops
+T 1588211512 22*	Topic for 22#scala set by 26OlegYch|h!~OlegYch|h@178.121.227.182 (24Wed Oct  3 18:26:41 2018)
+T 1588214349 19*	Now talking on 22#scala
+T 1588214349 22*	Topic for 22#scala is: The Scala programming language http://www.scala-lang.org/download/ | Please follow the Scala Code of Conduct: http://www.scala-lang.org/conduct/ | Resources: http://www.scala-lang.org/community | See also our chat on gitter https://gitter.im/scala/scala | paste code snippets to http://scastie.org or https://gist.github.com | Issues with the channel? Discuss on #scala-ops
+T 1588214349 22*	Topic for 22#scala set by 26OlegYch|h!~OlegYch|h@178.121.227.182 (24Wed Oct  3 18:26:41 2018)
+T 1588232153 18<t0by18>	Hi, absolutely mad question. Is there any conceivable reason at all why in Scala `f(x,y)` could be resolved to one out of  `f(i : Int, obj : Foo)` or  `f(i : Int, obj : Bar)` _at runtime_? I don't think dynamic dispatching is a thing for function overloading, but maybe there is some implementation weirdness that I don't know about.
+T 1588251822 18<qu1j0t318>	are you saying you WANT to do this?
+T 1588251861 18<qu1j0t318>	or are you saying you observed this behaviour?
+T 1588251954 18<SethTisue18>	t0by: maybe if `scala.Dynamic` were involved? that's the only thing I can think of. you're correct that overloading resolution happens at compile time, not at runtime
+T 1588252616 18<t0by18>	qu1j0t3: I'm saying we're seeing something that could be explained by this, which I'd like to rule out
+T 1588252629 18<t0by18>	I know it sounds insane, but we've run out of sane ideas
+T 1588252633 18<t0by18>	SethTisue: thanks
+T 1588254568 18<qu1j0t318>	t0by: you could also look at bytecode
+T 1588255670 18<drdo18>	What's the syntax for an anonymous function with more than one implicit parameter?
+T 1588256006 18<earldouglas18>	Looks like you can curry them: https://stackoverflow.com/questions/14072061/
+T 1588256456 18<drdo18>	earldouglas: Apparently the real answer is that you can't :P
+T 1588256477 18<drdo18>	In a single parameter list
+T 1588260203 18<earldouglas18>	Has anyone found a good fix for unreadable red-on-magenta error messages with vim-metals?  Closest I've found is to change color13 in my .Xresources, but I'd prefer to tell vim/metals to use a different background color altogether.
+T 1588266503 18<earldouglas18>	Answer found in :h coc-highlights
+T 1588272027 18<jsatk18>	anyone have experience using breakpoints/debugging scala either using vim + metals and/or just CLI? I'd rather not use intelliJ for breakpoint debugging.
+T 1588280758 18<earldouglas18>	I haven't yet, but it looks like it is possible (or will be soon): https://www.youtube.com/watch?v=VUOw4thpb1I#t=11m37s
+T 1588352354 18<shadice18>	hello
+T 1588352474 18<qu1j0t318>	o/
+T 1588352530 18<shadice18>	Can I do something like "class Test[A, B] extends TestBase[C]" with "class C[A, B] {}"?
+T 1588352607 18<qu1j0t318>	no, but also there is probably a better way to get what you want
+T 1588352628 18<qu1j0t318>	what are you trying to do?
+T 1588352632 18<qu1j0t318>	achieve*
+T 1588352664 18<shadice18>	I have a class with a generic type C, however, in my program, C is a combination of A and B
+T 1588352926 18<shadice18>	for example: I have a Set[K, V], which I want to extend. I want to extend this Set, however, K is composed of two generic types A and B (class AB extends Ordered[AB] { override compare ... }).
+T 1588353044 18<shadice18>	I'm trying to achieve following style "val x = new MySet[A,B,V] with SortedByAB" where MySet extends the Set[K,V]
+T 1588353087 18<shadice18>	or if you want it sorted the other way around: "val y = new MySet[A,B,V] with SortedByBA"
+T 1588353112 18<qu1j0t318>	extending Set directly probably isn't a great plan
+T 1588353161 18<shadice18>	Set is just an example here
+T 1588353216 18<qu1j0t318>	i wonder what the goal is though, like explained without using any OO keywords
+T 1588353332 18<shadice18>	I have a data structure for tuples. I want to put triples into it.
+T 1588353411 18<shadice18>	And when I create an instance of that data structure, I want to be able to define, how it's sorted in the data structure.
+T 1588353516 18<qu1j0t318>	don't know if it's the whole solution, but would mention typeclasses as an option to consider
+T 1588353959 18<shadice18>	let me check typeclasses
+T 1588356497 18<LyndsySimon18>	Does importing only specific objects from a package decrease compile times? E.g., If I `import  scala.concurrent.ExecutionContext` will that file compile faster than if I'd used `import scala.concurrent._`?
+T 1588356893 18<OlegYch|h18>	probably not
+T 1588430585 18<SethTisue18>	LyndsySimon: no, that won't help
+T 1588492284 18<adaro18>	if you have a class like :  class Foo { type Bar <: Baz } then can you take Bar as a constructor argument ?
+T 1588492375 18<adaro18>	class Foo(qux: Bar) { type Bar <: Baz } does not seem to work
+T 1588493441 18<sim64218>	Why not just make Bar be the generic type parameter instead?
+T 1588495016 18<adaro18>	sim642 in reality the signature looks like type IndexType[TId, TVector, TItem <: Item[TId, TVector], TDistance] <: Index[TId, TVector, TItem, TDistance] and i need to be able to create instances with arbitrary parameters
+T 1588495051 18<adaro18>	with a generic type i pin it to one set of generic parameters
+T 1588515299 18<qu1j0t318>	i'm not sure sim642 's suggeestion isn't the correct one  actually
+T 1588515321 18<qu1j0t318>	can you explain in another way or more detail why it's impossible?
+T 1588557462 19*	Now talking on 22#scala
+T 1588557462 22*	Topic for 22#scala is: The Scala programming language http://www.scala-lang.org/download/ | Please follow the Scala Code of Conduct: http://www.scala-lang.org/conduct/ | Resources: http://www.scala-lang.org/community | See also our chat on gitter https://gitter.im/scala/scala | paste code snippets to http://scastie.org or https://gist.github.com | Issues with the channel? Discuss on #scala-ops
+T 1588557462 22*	Topic for 22#scala set by 26OlegYch|h!~OlegYch|h@178.121.227.182 (24Wed Oct  3 18:26:41 2018)
+T 1588580645 18<dunatotatos18>	Hi there! We inherited of a complex piece of software written in Scala. I'm a complete newbie in Scala and Java (more Ops and Python guy), but I need to understand why our soft gets stuck. Is there something like an advanced `strace` for Scala? I do not need all the features of a debugger (no need for breakpoints and interactivity), but only a
+T 1588580645 18<dunatotatos18>	trace of instructions (syscalls, or better, java instructions), forks, and timing.
+T 1588580683 18<dunatotatos18>	Running on CentOS7. `strace -p` is almost what I need, but it is way too verbose, and the output is unreadable when you have thousands of forks...
+T 1588624094 18<shadice18>	hi
+T 1588624158 18<shadice18>	Can I tell a class that a trait must be added to the class instance?
+T 1588624476 18<qu1j0t318>	shadice: this is one of those "what are you really trying to do" moments i think
+T 1588624572 18<shadice18>	I like the user to give the option to define a hashing algorithm to be used; something like    val x = new X() with MD5Hashing. MD5Hashing defines a hash function that is then used in X
+T 1588624941 18<qu1j0t318>	did you look into typeclasses with your other question?
+T 1588624984 18<qu1j0t318>	shadice: other things you could do here would be to have a hashing implementation be a class member (constructor parameter) 
+T 1588625039 18<earldouglas18>	Is this the cake pattern?
+T 1588625045 18<earldouglas18>	Not that I'm condoning that sort of thing...
+T 1588625050 18<qu1j0t318>	^ :)
+T 1588625061 18<qu1j0t318>	there's a flour shortage, i'm told. NO CAKES.
+T 1588625147 18<shadice18>	yeah, I think, using a constructor parameter is the normal way to go
+T 1588625163 18<shadice18>	I don't know why I have always exotic ways of doing stuff...
+T 1588625175 18<qu1j0t318>	:)
+T 1588625190 18<qu1j0t318>	it's ok to experiment. but yeah keeping it simple is good
+T 1588625235 18<shadice18>	I think, it's just cool to do this that way :S
+T 1588625296 18<shadice18>	I need to drink less kool aid :D
+T 1588625299 18<qu1j0t318>	:)
+T 1588625320 18<qu1j0t318>	Scala's one of those cases where you don't want to use EVERY toy in the toybox.
+T 1588625357 18<earldouglas18>	You want to at first, and then you learn from the pain.
+T 1588625396 18<shadice18>	regarding the other question: I didn't use type classes because it may interfere with the cats library; but I found another way to reach my goal
+T 1588625406 18<qu1j0t318>	earldouglas: yeah that works
+T 1588626597 18<SethTisue18>	shadice: you could have a Hashing trait with at least one abstract method, then have `abstract class X extends Hashing`. now just `new X` will fail, but e.g. `new X with MD5Hashing` will succeed
+T 1588626616 18<SethTisue18>	this doesn't seem exotic at all to me
+T 1588626669 18<SethTisue18>	taking a constructor parameter seems perfectly fine also. I can imagine going either way depending on context
+T 1588626922 18<shadice18>	thanks!
+T 1588627547 18<earldouglas18>	Nice.
+T 1588627599 18<qu1j0t318>	that is interesting.
+T 1588627611 18<qu1j0t318>	even if  i wouldn't go there for this.
+T 1588738810 20*	Disconnected (20Connection timed out)
+T 1588738837 19*	Now talking on 22#scala
+T 1588738837 22*	Topic for 22#scala is: The Scala programming language http://www.scala-lang.org/download/ | Please follow the Scala Code of Conduct: http://www.scala-lang.org/conduct/ | Resources: http://www.scala-lang.org/community | See also our chat on gitter https://gitter.im/scala/scala | paste code snippets to http://scastie.org or https://gist.github.com | Issues with the channel? Discuss on #scala-ops
+T 1588738837 22*	Topic for 22#scala set by 26OlegYch|h!~OlegYch|h@178.121.227.182 (24Wed Oct  3 18:26:41 2018)
+T 1588774695 18<angular_mike18>	is there a way to pattern match all cases of Some(x) except than Some(null)?
+T 1588774814 18<drdo18>	yes
+T 1588774823 18<drdo18>	case Some(x) if x != null
+T 1588774852 18<angular_mike18>	hmm
+T 1588774910 18<angular_mike18>	I'm now getting an error `Some(null) (of class scala.Some)`
+T 1588774927 18<angular_mike18>	https://www.irccloud.com/pastebin/JHYGQobp/
+T 1588774981 18<qu1j0t318>	(i suppose it's not necessary to give the obvious 2 pieces of advice here)
+T 1588774996 18<angular_mike18>	?
+T 1588775081 18<qu1j0t318>	cuz i'm sure there are good reasons for what you're doing: But normally 1) never handle null. have a safety layer keep it out of your code. 2) don't pattern match on Option. https://blog.tmorris.net/posts/scalaoption-cheat-sheet/
+T 1588775286 18<angular_mike18>	I'm parsing json with liftweb and i need to handle the case when the extracted value is null
+T 1588775336 18<tolarz18>	in many cases you can just apply one of the patterns qu1j0t3 showed you
+T 1588775358 18<qu1j0t318>	angular_mike: try to handle that on the edge
+T 1588775368 18<tolarz18>	but can Some(null) exist at all?
+T 1588775371 18<angular_mike18>	edge?
+T 1588775372 18<qu1j0t318>	tolarz: Yes
+T 1588775372 18<tolarz18>	does the Some constructor allow that?
+T 1588775375 18<tolarz18>	okay
+T 1588775384 18<angular_mike18>	I am literally getting it
+T 1588775391 18<qu1j0t318>	angular_mike: yes.
+T 1588775392 18<angular_mike18>	i receive it form extractOpt  method
+T 1588775393 18*	tolarz fears people make their programms null-safe by using Some(null)
+T 1588775395 18<tolarz18>	hah
+T 1588775411 18<qu1j0t318>	tolarz: ...probably.
+T 1588775441 18<angular_mike18>	what is the edge?
+T 1588775473 18<qu1j0t318>	angular_mike: arguably, near where you are doing it. the edge of your program. you shouldn't have to think about null in the bulk of your code
+T 1588775489 18<qu1j0t318>	angular_mike: it's regrettable that a library would give you Some(null) under any circumstances
+T 1588775539 18<qu1j0t318>	e.g. if i am using argonaut, i know i'll never see it, even though my input is json.)
+T 1588775557 18<angular_mike18>	qu1j0t3: hm what would you have it coerce a null value in json to?
+T 1588775569 18<qu1j0t318>	angular_mike: I'd use a type that describes the situation
+T 1588775582 18<angular_mike18>	ValueIsNull type?
+T 1588775589 18<qu1j0t318>	angular_mike: maybe Option is sufficient, i have no idea. you'd have to describe what this value means
+T 1588775608 18<angular_mike18>	it is next url in paginated response
+T 1588775614 18<qu1j0t318>	angular_mike: or you could consider a sum type... whatever corrrectly models the situation.
+T 1588775621 18<angular_mike18>	when it is null there is no next url, im on last page
+T 1588775634 18<qu1j0t318>	if you either have a url or you don't, then Option describes that
+T 1588775653 18<angular_mike18>	the old version didn't have the url field in that case so it would get coerced to None
+T 1588775664 18<angular_mike18>	but now i need to adapt to where it is present but null
+T 1588775671 18<qu1j0t318>	ok, so you can .filter
+T 1588775675 18<angular_mike18>	qu1j0t3: so Option is being used correctly there?
+T 1588775681 18<angular_mike18>	where?
+T 1588775685 18<qu1j0t318>	angular_mike: well sort of
+T 1588775690 18<qu1j0t318>	i'm assuming you get an Option[T]
+T 1588775695 18<qu1j0t318>	but the value could be null
+T 1588775708 18<qu1j0t318>	in that case you can handle a null value with   opt.filter(_ != null)
+T 1588775750 18<angular_mike18>	i specify the type
+T 1588775756 18<qu1j0t318>	regardless.
+T 1588775764 18<angular_mike18>	like this nextUrl = extractOpt[String]
+T 1588775771 18<qu1j0t318>	(and yes this is one of the patterns on the page i linked)
+T 1588775790 18<angular_mike18>	but I am passing the retrieved value to next()
+T 1588775802 18<qu1j0t318>	see if you can use .filter.
+T 1588775820 18<angular_mike18>	welll more like i am assigning it to a member variable and next uses it
+T 1588775911 18<angular_mike18>	qu1j0t3: ok, that seems to work, tho im not sure why
+T 1588775930 18<angular_mike18>	is Some(null) coerced to None with it?
+T 1588775952 18<qu1j0t318>	yes?
+T 1588775965 18<qu1j0t318>	it is worth studying the page i linked.
+T 1588775997 18<angular_mike18>	ok, thanks
+T 1588776112 18<qu1j0t318>	scala> Option.empty[String].filter(_ != null)
+T 1588776115 18<qu1j0t318>	res11: Option[String] = None
+T 1588776117 18<qu1j0t318>	scala> Some[String]("a").filter(_ != null)
+T 1588776119 18<qu1j0t318>	res12: Option[String] = Some(a)
+T 1588776121 18<qu1j0t318>	scala> Some[String](null).filter(_ != null)
+T 1588776123 18<qu1j0t318>	res13: Option[String] = None
+T 1588779428 18<earldouglas18>	Whoa, since when was Some(null) valid?
+T 1588779440 18<qu1j0t318>	always
+T 1588779451 18<qu1j0t318>	any reference member can be null, like java
+T 1588779503 18<qu1j0t318>	earldouglas: You can't _construct_ it with Option.apply --- tht's what you may be thinking.
+T 1588779511 18<earldouglas18>	Oh, that's probably it.
+T 1588779521 18<earldouglas18>	I thought it would throw an exception.
+T 1588779545 18<qu1j0t318>	Option.apply is the simplest null prophylactic
+T 1588779934 18<earldouglas18>	That's so strange.  Some(null) firmly throws an exception according to my terrible memory, but not according to any version of Scala.
+T 1588779951 18<earldouglas18>	Maybe that was back in the Berenstein universe.
+T 1588848891 18<cousteau18>	Hi!  Is there any syntax for "import all definitions starting with Blah"?  Like import mypackage.Blah_
+T 1588848899 18<cousteau18>	Or Blah*
+T 1588851673 18<OlegYch|h18>	nope
+T 1588851730 18<OlegYch|h18>	create a package or object Blah and move the stuff there
+T 1588852943 18<shadice18>	hello
+T 1588855496 18<shadice18>	how can I tell to a class that a generic type has implemented some functions?
+T 1588856204 18<OlegYch|h18>	! trait Methods { def f = 1 }; class Class[T <: Methods]
+T 1588856205 18<multibot18>	trait Methods
+T 1588856206 18<multibot18>	class Class
+T 1588856521 18<shadice18>	thanks
+T 1588856534 18<shadice18>	and if there are multiple traits?
+T 1588856552 18<shadice18>	T <: Methods <: AnotherTrait ?
+T 1588856558 18<qu1j0t318>	works
+T 1588856561 18<qu1j0t318>	try it
+T 1588861717 18<SethTisue18>	shadice: `T <: Methods with AnotherTrait`
+T 1588861835 18<qu1j0t318>	oh yes, heh, i never oop
+T 1588865189 18<shadice18>	SethTisue thanks
+T 1588879230 18<shadice18>	Is AClass[T1 >: T] the same as AClass[T](implicit eq: T =:= T1) ?
+T 1588879243 18<shadice18>	sorry
+T 1588879245 18<shadice18>	Is AClass[T1 >: T] the same as AClass[T1](implicit eq: T =:= T1) ?
+T 1588956155 18<kupi18>	is there any way to state that a function has two parameters: HList and HList elements in a specific container?
+T 1588956208 18<kupi18>	foo: String :: Int :: HNil, bar: Container[String] :: Container[Int] :: HNil? 
+T 1588963936 18<SethTisue18>	I see you already asked on https://gitter.im/milessabin/shapeless :-)
+T 1588970082 18<SethTisue18>	not to mention https://gitter.im/scala/scala and probably some other places I haven't seen yet
+T 1589044064 18<adaro18>	I am struggling with the scala typesystem a bit. The following code https://gist.github.com/jelmerk/caf7e0e9952463a99fe583b5f90f62d0. gives the error "Error:(11, 7) type arguments [MyModel[_]] do not conform to class Bar's type parameter bounds [TModel <: Model[TModel]]  new Bar[MyModel[_]]"
+T 1589044103 18<adaro18>	does anyone understand why this happens and how i can make this compile ?
+T 1589052531 20*	Disconnected (20Connection timed out)
+T 1589052559 19*	Now talking on 22#scala
+T 1589052559 22*	Topic for 22#scala is: The Scala programming language http://www.scala-lang.org/download/ | Please follow the Scala Code of Conduct: http://www.scala-lang.org/conduct/ | Resources: http://www.scala-lang.org/community | See also our chat on gitter https://gitter.im/scala/scala | paste code snippets to http://scastie.org or https://gist.github.com | Issues with the channel? Discuss on #scala-ops
+T 1589052559 22*	Topic for 22#scala set by 26OlegYch|h!~OlegYch|h@178.121.227.182 (24Wed Oct  3 18:26:41 2018)
+T 1589305288 18<jsatk18>	Good morning.
+T 1589379127 18<SethTisue18>	jsatk: mornin'
+T 1589407445 18<harwiltz18>	Hello all. I'm trying to serialize a class I wrote in Scala, but when I try to load the object back, I get a ClassCastException: java.lang.ClassCastException: cannot assign instance of scala.collection.immutable.HashMap$SerializationProxy...
+T 1589407498 18<harwiltz18>	I am serializing by simply extending Serializable. I assume this issue is due to the fact that the Map instances in my Scala class are serialized as java HashMaps. Is there a way to account for this, or do I have to serialize differently?
+T 1589409815 18<OlegYch_18>	harwiltz: best way would be to not use java serialization
+T 1589409845 18<OlegYch_18>	use a better defined format with better libs like json or protobuf
+T 1589416424 18<SethTisue18>	harwiltz: what Scala version? stuff changed between 2.12 and 2.13
+T 1589416445 18<SethTisue18>	and also, I don't know what you mean by "the Map instances in my Scala class are serialized as java HashMaps"
+T 1589416513 18<SethTisue18>	like, you wrote some special code to force that to happen?
+T 1589429907 18<harwiltz18>	OlegYch_: /quit
+T 1589460969 19*	Now talking on 22#scala
+T 1589460969 22*	Topic for 22#scala is: The Scala programming language http://www.scala-lang.org/download/ | Please follow the Scala Code of Conduct: http://www.scala-lang.org/conduct/ | Resources: http://www.scala-lang.org/community | See also our chat on gitter https://gitter.im/scala/scala | paste code snippets to http://scastie.org or https://gist.github.com | Issues with the channel? Discuss on #scala-ops
+T 1589460969 22*	Topic for 22#scala set by 26OlegYch|h!~OlegYch|h@178.121.227.182 (24Wed Oct  3 18:26:41 2018)
+T 1589543922 18<untseac18>	hello. I was under the impression that it was possible to match a tuple, like so : pairs.map((x,y) => x + y)
+T 1589543941 18<untseac18>	but that doesn't seem to work. it looks like x is the pair and y is nothing
+T 1589543963 18<untseac18>	so is it possible or not really? maybe I'm mixing languages here
+T 1589544016 18<untseac18>	do I have to use match for that?
+T 1589549511 18<qu1j0t318>	untseac: you can match a tuple. or anything.
+T 1589549527 18<qu1j0t318>	untseac: you use the other lambda syntax,   .map{ case (x,y) => x + y }
+T 1589549660 18<untseac18>	qu1j0t3, ok thanks. that's what I was looking for.
+T 1589549675 18<untseac18>	I was mixing with haskell. doesn't need the case.
+T 1589549693 18<untseac18>	it was getting hard to google it though :\
+T 1589549760 18<qu1j0t318>	np :)
+T 1589567752 18<mengu18>	hi all
+T 1589567759 18<mengu18>	is anyone using ammonite repl with sbt?
+T 1589801113 19*	Now talking on 22#scala
+T 1589801113 22*	Topic for 22#scala is: The Scala programming language http://www.scala-lang.org/download/ | Please follow the Scala Code of Conduct: http://www.scala-lang.org/conduct/ | Resources: http://www.scala-lang.org/community | See also our chat on gitter https://gitter.im/scala/scala | paste code snippets to http://scastie.org or https://gist.github.com | Issues with the channel? Discuss on #scala-ops
+T 1589801113 22*	Topic for 22#scala set by 26OlegYch|h!~OlegYch|h@178.121.227.182 (24Wed Oct  3 18:26:41 2018)
+T 1600044734 19*	Now talking on 22#scala
+T 1600044734 22*	Topic for 22#scala is: The Scala programming language http://www.scala-lang.org/download/ | Please follow the Scala Code of Conduct: http://www.scala-lang.org/conduct/ | Resources: http://www.scala-lang.org/community | See also our chat on gitter https://gitter.im/scala/scala | paste code snippets to http://scastie.org or https://gist.github.com | Issues with the channel? Discuss on #scala-ops
+T 1600044734 22*	Topic for 22#scala set by 26OlegYch|h!~OlegYch|h@178.121.227.182 (24Wed Oct  3 18:26:41 2018)
+T 1600061363 18<Jetoni18>	Hello folks.  I have a function that doesn't take any params, but returns a `Double`.  I want to pass this to another function, so that its body can call it.
+T 1600061363 18<Jetoni18>	`def doSomething(f: Unit => Double) = if (x > f) log.info("Something happened")`
+T 1600061363 18<Jetoni18>	Obviously, this doesn't work, since there is an issue with the way `f` is being evaluated.
+T 1600061483 18<Jetoni18>	Ah, never mind.  I should have been `f: () => Double`, and then  calling it, like so `f()`.  I really should be going to bed now
+T 1600370186 18<tolarz18>	Jetoni: I guess if you have `f: Unit => Double`, you need `f(unit)` or so
+T 1600370190 18<tolarz18>	or `f(Unit)` idk
+T 1600370217 18<tolarz18>	tbh `f: Unit => Double` vs. `f: => Double` vs. `f: () => Double` is confusing
+T 1600370332 18<Jetoni18>	Yep - `f: Unit => Double` doesn't really make sense ... how do you pass a `Unit` to it?
+T 1600370339 18<Jetoni18>	:-) 
+T 1600370402 18<tolarz18>	by using the one and only constructor of Unit?
+T 1600370409 18<tolarz18>	idk how it's named in Scala
+T 1600370426 18<tolarz18>	but it's like `Inductive True : Prop := I: True` in Coq 
+T 1600370428 18<tolarz18>	^^
+T 1600391307 18<fred-fri18>	Please don't be unkind, I'm not a Scala dev, I'm just trying to fix some tests that have plopped in my lap and my Scala type wrangling skills just aren't there. Any help with this line would be much appreciated. https://pastebin.com/pf4vAm9Q
+T 1600456810 18<madalex18>	good day everyone, could anyone help me with how to go from Future[Seq[Future[A]]] to a Seq[Future[A]] - if it's possible
+T 1600458469 18<madalex18>	code: https://scastie.scala-lang.org/gUXbhtHCQpGhkHOZcg9U7Q
+T 1600464033 18<workisfun18>	hey all, would someone be able to remind me what this function param type is called? `def hello(b: => Future[Unit]) = new AA { def a: Future[Unit] = b }`
+T 1600464185 18<companion_cube18>	call-by-name parameter, is seems
+T 1600464328 18<workisfun18>	thank you!
+T 1600525332 18<SethTisue18>	madalex: `traverse` will convert a `Seq[Future[A]]` into `Future[Seq[A]]`
+T 1600525377 18<madalex18>	thank you, i wanted to keep the Seq[Future[A]] but get rid of the outer Future
+T 1600525409 18<madalex18>	would have to somehow get the outer Future into the Futures inside the Seq
+T 1600525423 18<qu1j0t318>	@adelbergchang: "It's always traverse"
+T 1600525424 18<lambdabot18>	Unknown command, try @list
+T 1600525434 18<SethTisue18>	my first choice in this situation would be to figure out how I ended up with nested `Future`s in the first place, and change the code so the type `Future[Seq[Future[A]]]` never arises in the first place
+T 1600525444 18<madalex18>	Future[Seq[Future[A]]] => Seq[Future[A]]
+T 1600525469 18<qu1j0t318>	going from Future[Future[A]] to Future[A] should be straightforward i think?
+T 1600525470 18<madalex18>	yes, i think i still need that first Future
+T 1600525470 18<SethTisue18>	that's like asking how to get from `Future[Int]` to `Int`, and of course the answer is, you can't without blocking
+T 1600525494 18<madalex18>	ah i see, then i will have to get around this type with some extra code
+T 1600525503 18<qu1j0t318>	well it's not relaly "extra"
+T 1600525512 18<qu1j0t318>	sounds like you need a book like Functional Programming in Scala to provide all the context here
+T 1600525523 18<madalex18>	yes i have it, thanks :)
+T 1600525523 18<qu1j0t318>	it specifically deals with all these questions
+T 1600525525 18<qu1j0t318>	ok
+T 1600525533 18<qu1j0t318>	very good book
+T 1600525540 18<madalex18>	indeed, really nice exercises :)
+T 1600525628 18<SethTisue18>	if you don't have a `Seq` yet, which is what `Future[Seq[...]]` says, then you don't have a `Seq` yet and that's all there is to it.
+T 1600525763 18<SethTisue18>	I have no context on what you're trying to do, but it seems to me that you should be aiming to get `Future[Seq[A]]` out, not `Seq[Future[A]]`. you can do that by `traverse` inside the future, then flatten to eliminate the nesting. (or by refactoring the whole business)
+T 1600525799 18<madalex18>	from the first function i get a Future[Seq[A]] - and i have a second function that i apply which has A => Future[A]
+T 1600525810 18<madalex18>	so i get Future[Seq[Future[A]]
+T 1600525817 18<madalex18>	and i do not want to wait for all the futures 
+T 1600525822 18<madalex18>	inside the Seq
+T 1600525833 18<madalex18>	would like to emit every time there is a completed one
+T 1600525835 18<SethTisue18>	inside the future, call flatMap on the Seq
+T 1600525880 18<SethTisue18>	wait, is that right?
+T 1600525916 18<madalex18>	https://scastie.scala-lang.org/gUXbhtHCQpGhkHOZcg9U7Q
+T 1600526111 18<SethTisue18>	.map(x => Future.sequence(x.map(fn))) will get you a `Future[Seq[A]]`
+T 1600526120 18<SethTisue18>	never mind about flatMap
+T 1600526149 18<madalex18>	yes but then it would have to wait for all the futures inside the Seq to complete, and i would like to not wait for all
+T 1600526183 18<madalex18>	would take a long time. and every time a Future from inside the Seq completes some more things should happen
+T 1600526190 18<madalex18>	that's my usecase at least
+T 1600526282 18<SethTisue18>	okay, so inside the Future, don't call Future.sequence, do something else.
+T 1600526344 18<SethTisue18>	you're telling me that you don't want `Future[Seq[A]]` and okay, I can see that. but your original request, for a `Seq[Future[...]]`, is impossible. so you need to find a third way forward
+T 1600526440 18<SethTisue18>	re "would like to emit every time there is a completed one", that's going to happen regardless. as soon as you create a Future it's eligible to run. it doesn't matter what is downstream
+T 1600526461 18<SethTisue18>	gtg. good luck
+T 1600526473 18<madalex18>	Seq[Future[A]] will have to stay, and i don't see any way of getting the outer Future inside the Futures inside the Seq
+T 1600526480 18<madalex18>	thank you for the help :)
+T 1600526504 18<SethTisue18>	(maybe `Future[Seq[Future[...]]]` is in fact the correct type in the situation you're in)
+T 1600526506 18<SethTisue18>	yw
+T 1600527333 18<companion_cube18>	is "it's always traverse" a meme? :)
+T 1600531178 18<qu1j0t318>	companion_cube: yes
+T 1600531200 18<qu1j0t318>	also, i swear, the solution to 90% of my type tetris problems, historically
+T 1600531298 18<qu1j0t318>	companion_cube: https://twitter.com/adelbertchang/status/1082368272320802816 ; https://twitter.com/adelbertchang/status/914961095944630272 ; https://twitter.com/pagoda_5b/status/1301809384025133058 ; https://twitter.com/kubukoz/status/1298693078530887681 ...
+T 1600531317 18<qu1j0t318>	(2014) https://twitter.com/tpolecat/status/541111126155489280
+T 1600533172 18<SethTisue18>	ah, 2014
+T 1600533269 18<qu1j0t318>	it may date back farther
+T 1600565729 18<companion_cube18>	ahah that's funny
+T 1600565742 18<companion_cube18>	so people use Future[_] and no async/await style stuff?
+T 1600566398 18<qu1j0t318>	scala mercifully doesn't have the latter.
+T 1600566668 18<companion_cube18>	are there plans about loom, btw? :)
+T 1609963181 19*	Now talking on 22#scala
+T 1609963181 22*	Topic for 22#scala is: The Scala programming language http://www.scala-lang.org/download/ | Please follow the Scala Code of Conduct: http://www.scala-lang.org/conduct/ | Resources: http://www.scala-lang.org/community | See also our chat on gitter https://gitter.im/scala/scala | paste code snippets to http://scastie.org or https://gist.github.com | Issues with the channel? Discuss on #scala-ops
+T 1609963181 22*	Topic for 22#scala set by 26OlegYch|h!~OlegYch|h@178.121.227.182 (24Wed Oct  3 18:26:41 2018)

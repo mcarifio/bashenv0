@@ -1,0 +1,502 @@
+T 1587398158 18<user217_18>	ron: look like that code that written in Go get out  empty controllers when I try to generate server by your link
+T 1587398209 18<user217_18>	controllers dont contain logic that is exist in code
+T 1587398241 18<ron18>	user217_: I believe some work has recently been done for go, but not released yet. you can try running the snapshots but if you're not experienced with Java it might take more effort.
+T 1587402765 18<user217_18>	ron: ok. thnks
+T 1587460460 18<ilsuky18>	Hi, can somebody help me, i generated my nodejs server from swaggerhub and codegen, now i try to integrade my mysql connection, but if i try in /service/Member.js function, mysql query doesnt execute
+T 1587460496 18<divya18>	In Swagger Editor, i'm not able to add more than one body parameter and more than one error code under a same https error
+T 1587466729 18<SR_Lut3t1um18>	Is there any way to limit the amount of models the example value has? I'm having quite a complex model structure and swagger literally takes 30 seconds to load.
+T 1587494044 18<RonA18>	I new here. another developer mad the API and I have a question. When I use the URL https://openapi.fcbackground.com/v1/workersActivities/2020-03-01/2020-04-01 how can I pass it the beare toket?
+T 1587494086 18<RonA18>	I have even used the consol to authenticate.
+T 1587494126 18<RonA18>	Bearer headers?
+T 1587524751 18<ops18>	Hi
+T 1587524811 18<ops18>	I have a SSL certificate from trusted organization. Where should I put .pem file in order to make a call from Swagger?
+T 1587524852 18<ops18>	Currently I am getting the following error: unable to verify the first certificate
+T 1587524900 18<ops18>	The certificate was tested on Postman and via Python by using the .pem file, everywhere works fine except in Swagger
+T 1587541188 18<EndaFarrell18>	Morning all. I have spent a few hours looking for an example of an OpenAPI v3.0 spec which has defined a path with a POST operation taking "generic JSON" in a requestBody. Is there one I've missed? I am aware of https://raw.githubusercontent.com/OAI/OpenAPI-Specification/master/examples/v3.0/petstore.yaml but it doesn't define a requestBody.
+T 1587547265 18<Abhsihek18>	Hi
+T 1587547302 18<Abhsihek18>	i am creating external service in salesforce to hit other url in update
+T 1587547314 18<Abhsihek18>	need help on creating json file
+T 1587547325 18<Abhsihek18>	which i can use in external service
+T 1587547357 18<Abhsihek18>	below is the json
+T 1587555953 18<supun18>	Hi
+T 1587580017 18<consumer18>	Hi, we are using SwaggerHub with Swagger 2.0 contract spec.  We really like the cwiki format exportation for documentation.  Do you know if there somes tricks we can use for adding 'formatting tags' that are Swagger 2.0 compliant and offer a great visual formatting in the cwiki documentation output format ?  Thanks !
+T 1587582561 18<ron18>	consumer: hi there, for SwaggerHub related questions, please use the in-app help chat.
+T 1587620831 19*	Now talking on 22#swagger
+T 1587620831 22*	Topic for 22#swagger is: Swagger - REST API Documentation | http://swagger.io | Twitter: @SwaggerAPI | OpenAPI Specification Repo - https://github.com/OAI/OpenAPI-Specification | Community Forums - https://community.smartbear.com/t5/Swagger-Open-Source-Tools/bd-p/SwaggerOSTools
+T 1587620831 22*	Topic for 22#swagger set by 26ron!~ron@unaffiliated/ron (24Mon Sep 23 06:45:42 2019)
+T 1587699339 19*	Now talking on 22#swagger
+T 1587699339 22*	Topic for 22#swagger is: Swagger - REST API Documentation | http://swagger.io | Twitter: @SwaggerAPI | OpenAPI Specification Repo - https://github.com/OAI/OpenAPI-Specification | Community Forums - https://community.smartbear.com/t5/Swagger-Open-Source-Tools/bd-p/SwaggerOSTools
+T 1587699339 22*	Topic for 22#swagger set by 26ron!~ron@unaffiliated/ron (24Mon Sep 23 06:45:42 2019)
+T 1587700051 19*	Now talking on 22#swagger
+T 1587700051 22*	Topic for 22#swagger is: Swagger - REST API Documentation | http://swagger.io | Twitter: @SwaggerAPI | OpenAPI Specification Repo - https://github.com/OAI/OpenAPI-Specification | Community Forums - https://community.smartbear.com/t5/Swagger-Open-Source-Tools/bd-p/SwaggerOSTools
+T 1587700051 22*	Topic for 22#swagger set by 26ron!~ron@unaffiliated/ron (24Mon Sep 23 06:45:42 2019)
+T 1587744573 18<Satishven18>	Hi Team
+T 1587744586 18<Satishven18>	We were trying to use Open API 3 for our rest APIs which have XMLs as payload.  So we want to place xsd in schema and xml in example/examples. But we came across few blogs which suggests it’s not supported by open API 3, instead we need to convert xsd to jschema and use it.
+T 1587747967 18<ron18>	Satishven: you can'd use xsd directly with OAS3. You'd need to convert it sort of to JSON Schema, but not everything in XML is supported so that might not work. As for examples, you should be able to provide XML without an issue.
+T 1587763639 18<Effi18>	?
+T 1587763692 18<Effi18>	I have a question. Ia anyone here?
+T 1587763889 18<Effi18>	Need to know if swagger can host my existing aoi
+T 1587763899 18<Effi18>	Api
+T 1587767450 18<renegadeandy18>	Hi all. If i am using swagger-ui-dist and serving static with express as per (https://swagger.io/docs/open-source-tools/swagger-ui/usage/installation/) -- is there a way to configure the swagger? Such as changing the URL etc?
+T 1587778363 19*	Now talking on 22#swagger
+T 1587778363 22*	Topic for 22#swagger is: Swagger - REST API Documentation | http://swagger.io | Twitter: @SwaggerAPI | OpenAPI Specification Repo - https://github.com/OAI/OpenAPI-Specification | Community Forums - https://community.smartbear.com/t5/Swagger-Open-Source-Tools/bd-p/SwaggerOSTools
+T 1587778363 22*	Topic for 22#swagger set by 26ron!~ron@unaffiliated/ron (24Mon Sep 23 06:45:42 2019)
+T 1587796746 18<Guest3686518>	hi
+T 1587796761 18<Guest3686518>	I am new to Swagger API
+T 1587796778 18<Guest3686518>	how i can use the API functions?
+T 1587839328 18<renegadeandy18>	Hi all. If i am using swagger-ui-dist and serving static with express as per (https://swagger.io/docs/open-source-tools/swagger-ui/usage/installation/) -- is there a way to configure the swagger? Such as changing the URL etc?
+T 1587843200 18<renegadeandy18>	hello?
+T 1587869877 19*	Now talking on 22#swagger
+T 1587869877 22*	Topic for 22#swagger is: Swagger - REST API Documentation | http://swagger.io | Twitter: @SwaggerAPI | OpenAPI Specification Repo - https://github.com/OAI/OpenAPI-Specification | Community Forums - https://community.smartbear.com/t5/Swagger-Open-Source-Tools/bd-p/SwaggerOSTools
+T 1587869877 22*	Topic for 22#swagger set by 26ron!~ron@unaffiliated/ron (24Mon Sep 23 06:45:42 2019)
+T 1587942191 19*	Now talking on 22#swagger
+T 1587942191 22*	Topic for 22#swagger is: Swagger - REST API Documentation | http://swagger.io | Twitter: @SwaggerAPI | OpenAPI Specification Repo - https://github.com/OAI/OpenAPI-Specification | Community Forums - https://community.smartbear.com/t5/Swagger-Open-Source-Tools/bd-p/SwaggerOSTools
+T 1587942191 22*	Topic for 22#swagger set by 26ron!~ron@unaffiliated/ron (24Mon Sep 23 06:45:42 2019)
+T 1588003277 19*	Now talking on 22#swagger
+T 1588003277 22*	Topic for 22#swagger is: Swagger - REST API Documentation | http://swagger.io | Twitter: @SwaggerAPI | OpenAPI Specification Repo - https://github.com/OAI/OpenAPI-Specification | Community Forums - https://community.smartbear.com/t5/Swagger-Open-Source-Tools/bd-p/SwaggerOSTools
+T 1588003277 22*	Topic for 22#swagger set by 26ron!~ron@unaffiliated/ron (24Mon Sep 23 06:45:42 2019)
+T 1588004100 18<joninho18>	hi, how do I activate the swagger ui, now I only have the swagger.json ?
+T 1588004989 18<ron18>	joninho: you just install it, either as part of your app or standalone
+T 1588005028 18<joninho18>	cool, my app is a docker app, so I assume part of the app would be my best option
+T 1588005059 18<joninho18>	how would I do that? Do you have a link
+T 1588005167 18<joninho18>	my app is an golang app
+T 1588005188 18<joninho18>	I have the swagger.json file
+T 1588005534 18<ron18>	swagger ui is a set of static web files, no idea how you deploy those as part of a go app
+T 1588005544 18<ron18>	you can also run it in a separate docker image
+T 1588005575 18<joninho18>	like the docker option, how is that done
+T 1588005701 18<joninho18>	docker run -p 80:8080 -e SWAGGER_JSON=/foo/swagger.json -v /bar:/foo swaggerapi/swagger-ui
+T 1588005722 18<joninho18>	I just have a swagger.yaml file in my project folder, no swagger.json
+T 1588005778 18<ron18>	same thing :)
+T 1588005948 22*	26tolkien.freenode.net gives channel operator status to 18ChanServ
+T 1588006139 18<joninho18>	The path /bar
+T 1588006140 18<joninho18>	is not shared from OS X and is not known to Docker.
+T 1588006169 18<joninho18>	this is the error I get
+T 1588006270 18<joninho18>	is bar a folder or what, does it have to exists?
+T 1588006373 18<joninho18>	was trying to run this locally
+T 1588006501 18<ron18>	(sorry, in a meeting, slow to respond)
+T 1588007050 18<joninho18>	I'm just getting the Swagger Petstore thingy
+T 1588007057 18<joninho18>	not my api
+T 1588007147 18<joninho18>	docker run -p 8080:8080 -e SWAGGER_JSON=/Users/jonma/Development/go/cloud-volumes-network/app/api/swagger.yaml swaggerapi/swagger-ui
+T 1588007167 18<joninho18>	gives me just the default Swagger Petstore
+T 1588008852 18<ron18>	joninho: and if you open that path locally you get the swagger.yaml file?
+T 1588009193 18<joninho18>	yeah, can this not be run locally in docker?
+T 1588009217 18<joninho18>	i jsut get the petsotre :(
+T 1588009338 22*	26tolkien.freenode.net gives channel operator status to 18ChanServ
+T 1588009460 18<ron18>	no, that's fine
+T 1588009494 18<joninho18>	do I need to mount a folder?
+T 1588009534 18<joninho18>	"/Users/jonma/Development/go/cloud-volumes-network/app/api/swagger.yaml"
+T 1588009550 18<joninho18>	this is where my local swagger.yaml file is
+T 1588009596 18<ron18>	aha, you're missing the -v flag
+T 1588009613 18<ron18>	https://github.com/swagger-api/swagger-ui/blob/master/docs/usage/installation.md#docker
+T 1588009644 18<ron18>	(it's been a while since I've used the docker image)
+T 1588009692 18<joninho18>	"docker run -p 8080:8080 -e SWAGGER_JSON=/tmp/swagger.yaml -v /Users/jonma/Development/go/cloud-volumes-network/app/api/swagger:/tmp swaggerapi/swagger-ui"
+T 1588009723 18<joninho18>	what about this /tmp do I need to anything there?
+T 1588009768 18<ron18>	based on what you shared, I believe it needs to be "/Users/jonma/Development/go/cloud-volumes-network/app/api" not  "/Users/jonma/Development/go/cloud-volumes-network/app/api/swagger"
+T 1588009807 18<ron18>	and no, you don't. it'll simply mount your local path to a /tmp path in the docker iimage
+T 1588009827 18<ron18>	and then the SWAGGER_JSON will point to a valid 'local' file
+T 1588069759 18<mloskot18>	Hi, I'm trying to understand development & build workflow of the codegen v3, and I'm no Java developer.
+T 1588069766 18<mloskot18>	I have learned about the split of the swagger-codegen and swagger-codegen-generators and that the former uses the latter.
+T 1588069800 18<mloskot18>	If I patch the swagger-codegen-generators, locally or in my fork on GitHub, how do I make the swagger-codegen use the patched version?
+T 1588069854 18<mloskot18>	Do I just `mvn clean package` inside swagger-codegen-generators and then copy my build of swagger-codegen-generators-1.0.20-SNAPSHOT.jar over to swagger-codegen?
+T 1588069858 18<mloskot18>	Where to exactly?
+T 1588069897 18<mloskot18>	I have looked at obvious places like README.md's, CONTRIBUTING.md, Wiki.,but I can
+T 1588069907 18<mloskot18>	not find any steps for dummies :)
+T 1588069954 18<mloskot18>	I currently have everything set up to mvn package inside both repos, but how to link the two
+T 1588070002 18<mloskot18>	Do I have to modify the pom.xml to point it to my fork, perhaps?
+T 1588088716 18<ron18>	mloskot: let me get back to you on that.
+T 1588088725 18<mloskot18>	@ron
+T 1588088733 18<mloskot18>	thanks, but I think I've managed :)
+T 1588088749 18<ron18>	oh, good, sorry about the delay.
+T 1588088768 18<mloskot18>	I noticed, that swagger-codegen-generators is deployed in `.m2` cache, but it is downloaded
+T 1588088816 18<mloskot18>	What I did was, bump the version number in all `pom.xml` files, then bump it in pom.xml files of swagger-codegen too, so it will not try to download any packages of the swagger-codegen-generators
+T 1588088843 18<mloskot18>	Then, I do `mvn clean packge install` inside swagger-codegen-generators, this deplpys the package in the `.m2` cache
+T 1588088862 18<mloskot18>	Finally, I build swagger-codegen which 'links' against my build of the swagger-codegen-generators
+T 1588088887 18<ron18>	generally speaking, when you `mvn clean install`, it will override the version in your .m2 dir
+T 1588088888 18<mloskot18>	If this is the canonical way to achieve my goal, I have no idea whatsoever, but it works
+T 1588088900 18<ron18>	that's what the 'install' does, it 'installs' it locally.
+T 1588088923 18<ron18>	but bumping the version is not a bad idea
+T 1588088949 18<mloskot18>	Right,  but codegen declares it wants generators of version `1.0.20-SNAPSHOT`, so I wasn't sure if it will download it anyway, despite I installed my own build
+T 1588088964 18<mloskot18>	I bumped the versions as sanity check
+T 1588088971 18<ron18>	sure
+T 1588088998 18<ron18>	generally, if a file is in your .m2 dir, it won't be downloaded again unless you force it (with a flag)
+T 1588089135 18<mloskot18>	I see
+T 1588089137 18<mloskot18>	Thanks!
+T 1588089207 18<ron18>	you probably figured out that maven is a build/repository tool by now
+T 1588089218 18<ron18>	the .m2 dir is pretty much your local repository
+T 1588089348 18<mloskot18>	You know what I did, I looked how I can make mvn command more verbose... and I used -X then I analysed the log to see what it does where it puts things... :-)
+T 1588089435 18<mloskot18>	I know it's probably silly, but I have zero experience with Maven and very little with Java ecosystem in general
+T 1588089448 18<mloskot18>	It did the trick though :)
+T 1588089556 18<ron18>	that's a sign of a good developer. you didn't just give up.
+T 1588090982 18<mloskot18>	Cheers :)
+T 1588149966 18<Marat18>	Hi
+T 1588150146 18<Marat18>	Could somebody help to undestand is is a bug or my misundestanding. I'm trying to annotate my JaxRS method to say that it returns 3 dimension array. How can I do it?
+T 1588150150 18<Marat18>	I use @Operation(responses = @ApiResponse(content = @Content(array = @ArraySchema(arraySchema = @Schema(???)))))
+T 1588150246 18<Marat18>	But It looks like ArrayShema's field Schema arraySchema() default @Schema; should be a type @ArrayShema instead of @Shema to define multi arrays. Thanks.
+T 1588155904 18<giorgia18>	Salve come faccio a provare le Api offerte da Swagger
+T 1588155906 18<giorgia18>	sul mio pc?
+T 1588156883 18<mloskot18>	When I run `mvn clean install -DskipTests` is this supposed to deploy the CLI executable into ~/.m2 repository? I don't think it does
+T 1588157768 18<mloskot18>	Scratch that, it is deployed but in swagger-codegen-cli sub-directory as swagger-codegen-cli-3.0.20-SNAPSHOT.jar, I was expecting generic name swagger-codegen-cli.jar
+T 1588162932 18<Akash18>	hello
+T 1588162953 18<Akash18>	anyone?
+T 1588193339 18<joninho18>	I'm using this command to run the swagger-ui locally: docker run -p 8012:8080 -e SWAGGER_JSON=/swagger-ui/swagger.yaml -v `pwd`:/swagger-ui swaggerapi/swagger-ui
+T 1588193400 18<joninho18>	and everything works fine, how would I incorporate this command in my Dockerfile?
+T 1588193423 18<joninho18>	would that not mean something like running a container within a containerÐ
+T 1588194055 18<ron18>	that's more of a docker question
+T 1588211511 19*	Now talking on 22#swagger
+T 1588211511 22*	Topic for 22#swagger is: Swagger - REST API Documentation | http://swagger.io | Twitter: @SwaggerAPI | OpenAPI Specification Repo - https://github.com/OAI/OpenAPI-Specification | Community Forums - https://community.smartbear.com/t5/Swagger-Open-Source-Tools/bd-p/SwaggerOSTools
+T 1588211511 22*	Topic for 22#swagger set by 26ron!~ron@unaffiliated/ron (24Mon Sep 23 06:45:42 2019)
+T 1588214349 19*	Now talking on 22#swagger
+T 1588214349 22*	Topic for 22#swagger is: Swagger - REST API Documentation | http://swagger.io | Twitter: @SwaggerAPI | OpenAPI Specification Repo - https://github.com/OAI/OpenAPI-Specification | Community Forums - https://community.smartbear.com/t5/Swagger-Open-Source-Tools/bd-p/SwaggerOSTools
+T 1588214349 22*	Topic for 22#swagger set by 26ron!~ron@unaffiliated/ron (24Mon Sep 23 06:45:42 2019)
+T 1588240997 18<Jeon12312312318>	Hello
+T 1588241011 18<Jeon12312312318>	can anyone help me with some info
+T 1588241057 18<Jeon12312312318>	?
+T 1588241143 18<Jeon12312312318>	?
+T 1588250101 18<chele18>	i have nullable: true property on an object in openapi spec. i am stringifying it and i wonder how is this represented in json. key: null, or key: {} ?
+T 1588260179 18<samraj18>	HI
+T 1588260205 18<samraj18>	How to integrate the swagger editor with visual studio
+T 1588268839 18<Wesg18>	What is the appropriate status code of resource does not exot
+T 1588328104 18<jay9918>	Hi
+T 1588328129 18<jay9918>	I have a Azure web app in that I have an API code I need to access that code from Swagger
+T 1588346537 22*	26ChanServ gives channel operator status to 18ron
+T 1588362457 18<barun18>	I'm exploring what open-source options are available for documentation UIs. We're currently using Redoc and I'm not particularly happy with the limited degree of customization it allows. Does anyone know what is used for Swagger explorer? (http://swaggerui.herokuapp.com)
+T 1588363064 18<bar12318>	Ah, I finally found it -- https://github.com/jensoleg/swagger-ui
+T 1588368545 18<geever18>	Hi, I try to create an openAPI definition for a 3rd-party REST API, but I'm stuck at the securitySchemes.
+T 1588368604 18<geever18>	The site uses oauth2 to authenticate, but with quite strict requirements: POST request with JSON body containing username, password keys, which then will return the jwt token - -italso lists mandatory headers
+T 1588368654 18<geever18>	I don't see a way to describe it with openAPI, and a Swagger UI seem to always send OPTION request for the authorization.
+T 1588368674 18<geever18>	Any idea how could I solve this?
+T 1588369021 18<ron18>	geever: swagger ui doesn't send OPTIONS for authorizations exactly. the browser does it as part of the CORS procedure. if the API does not support CORS, and you don't have any way to control the app, you'd have to use a CORS proxy in order to use the UI
+T 1588369484 18<geever18>	thx
+T 1588394574 18<Vitaliy-118>	Hi all! Is anybody know when I used POST (Add a new pet to the store) then I got responses 405 error (Invalid input) but ResponceBody 200 - OK
+T 1588394628 18<Vitaliy-118>	How can resolve this 405 Error ?
+T 1588397432 18<meenu18>	Hi, I want the link to documentation where I can see all the doctrine annotations
+T 1588397463 18<meenu18>	example how many types of these annotations are available OA\Get(
+T 1588397477 18<meenu18>	@OA\Parameter(
+T 1588399140 18<meenu18>	Hi, I need the link to documentation wherre I can see all the properties of swagger
+T 1588557461 19*	Now talking on 22#swagger
+T 1588557461 22*	Topic for 22#swagger is: Swagger - REST API Documentation | http://swagger.io | Twitter: @SwaggerAPI | OpenAPI Specification Repo - https://github.com/OAI/OpenAPI-Specification | Community Forums - https://community.smartbear.com/t5/Swagger-Open-Source-Tools/bd-p/SwaggerOSTools
+T 1588557461 22*	Topic for 22#swagger set by 26ron!~ron@unaffiliated/ron (24Mon Sep 23 06:45:42 2019)
+T 1588581832 18<Ani18>	Hi all,
+T 1588581883 18<Ani18>	I would like to know if there is a configuration for the 3th party services to get the data from it, then use in our API.
+T 1588581983 18<Ani18>	eg.  make a call to the service other then our API, retrieve an e.g email from that service response body, set it in our API as bodyparameter
+T 1588582000 18<Ani18>	How the configuration should be for our openAPI document
+T 1588582006 18<Ani18>	Thanks in advance
+T 1588582401 18<Alaa18>	Hello, I was having an issue and seek your support
+T 1588582412 18<Guest3357718>	Isn't there anyway to change the look and feel of swagger?
+T 1588582432 18<Guest3357718>	Hello, I was having an issue and seek your support
+T 1588587128 18<dark-sun18>	hi there
+T 1588587200 18<dark-sun18>	any idea how to feed a "swagger.json" to "swagger-ui-dist"?? I tried setting URLS env and creating a "swagger-config.yaml" in the root directory but none of them worked :(
+T 1588606694 18<Minall18>	Hello Swagger Community... I'm writing the documentation of my API with the OPENAPI 3.0 specification, and I have some questions.... I have one operation in one path, user. And I can send this path a parameter called id... The thing is, if I send the id, it will give me all information about all users, if a id is given, it will return all the
+T 1588606694 18<Minall18>	information on the user specified...
+T 1588606738 18<Minall18>	The thing is, I'm trying to change the 'required' of the id to false, which gives me an error, and I can't have two of the same operations, for example, one with ID required and one who doesn't...
+T 1588606746 18<Minall18>	How should I approach this?
+T 1588607012 18<ron18>	is the id in the path?
+T 1588607806 18<Minall18>	Yes, it is ron
+T 1588607850 18<ron18>	Minall: path parameters are mandatory. if you need to define a path without the parameter, you'd define it separatetly
+T 1588608063 18<Minall18>	ron I can't add two get actions... I'm looking at the documentation for another way of defining it
+T 1588608447 18<ron18>	Minall: two *paths*
+T 1588608464 18<ron18>	/path/to/my/{id} and /path/to/my
+T 1588609864 18<Minall18>	Thanks ron, It may be that I'm a newbie but, your solution worked well... Now I have a /users path and a /users/id
+T 1588609881 18<ron18>	that's how it's supposed to be
+T 1588626057 18<tgiconnect18>	Hi, quick question for anyone who is around... giving SwaggerHub a try along with the Amazon API Gateway Lambda Sync integration. Everything seems to work fine as long as you don't set operationId. Once you try to set that, then I get errors of "Function already exist" which is interesting considering that this is contrary to the docs. Any ideas?
+T 1588626979 18<ron18>	tgiconnect: this place is more for the open source support. for SwaggerHub related questions, please use the chat icon inside the app. they are better equipped to give you answers.
+T 1588627094 18<tgiconnect18>	thanks @ron I'll give that a try
+T 1588671564 18<MDS18>	Hello; is there a known issue on editor.swagger.io? I keep getting "(screaming face) could not render r, see the console."
+T 1588671583 18<MDS18>	normally if my YAML is the problem it tells me what I did wrong
+T 1588671610 18<MDS18>	hmm
+T 1588671625 18<MDS18>	I can't paste my YAML into this... it says "there was an error with TheP(aste)B.in!"
+T 1588671662 18<MDSagain18>	... (turns off adblockers etc)
+T 1588671676 18<MDSagain18>	no still can't paste my YAML :(
+T 1588671693 18<MDSagain18>	is my work VPN to blame? :thinking
+T 1588672181 18<MDStheThird18>	no, even on my other computer I cannot pastebin. Is there a generic outage on swagger.io affecting both the swagger editor and this chat channel? :thinking
+T 1588689470 18<ron18>	MDStheThird: please use gist.github.com to share your YAML
+T 1588689493 18<ron18>	normally you'd get the 😱 if it's an edge case we didn't tackle
+T 1588706800 18<MDStheThird18>	thank you, here is the mini spec that gets the screaming face
+T 1588706802 18<MDStheThird18>	https://gist.github.com/mdeselincourt/ff85ebcae72dce90b753f4edfecfc101
+T 1588738810 20*	Disconnected (20Connection timed out)
+T 1588738837 19*	Now talking on 22#swagger
+T 1588738837 22*	Topic for 22#swagger is: Swagger - REST API Documentation | http://swagger.io | Twitter: @SwaggerAPI | OpenAPI Specification Repo - https://github.com/OAI/OpenAPI-Specification | Community Forums - https://community.smartbear.com/t5/Swagger-Open-Source-Tools/bd-p/SwaggerOSTools
+T 1588738837 22*	Topic for 22#swagger set by 26ron!~ron@unaffiliated/ron (24Mon Sep 23 06:45:42 2019)
+T 1588747194 18<Edisto18>	how do you deploy openapi on localhost?
+T 1588755822 18<Doqnach18>	Edisto: I don't understand your question? OpenAPI is a specification, so I'm guessing you have some implementation you want to deploy? from where? in what language?
+T 1588786728 18<rpg18>	I have a swagger codegen that requires JSON input, but I have only YAML, so I want a translator. It seems like swagger-codegen does this, but when I try to use it with "-l json", I get an error that there is no json backend.
+T 1588786860 18<rpg18>	I know I could use the swagger editor, but I would like to put this in a pipeline, rather than requiring interaction.
+T 1588787173 18<ron18>	rpg: the codegen doesn't care if it's yaml or json
+T 1588787234 18<rpg18>	@ron: No, I have a different code generator for a language not supported by swagger-codegen.  This other code generator only processes JSON api specs, not YAML. So I need a YAML to JSON translator, and one that runs non-interactively/cli
+T 1588788206 18<ron18>	rpg: there are plenty of cli yaml to json convertors out there
+T 1588788238 18<rpg18>	@ron: I was asking because when I looked I found a zillion online ones, but not CLI. Maybe my query keywords were bad.
+T 1588788306 18<ron18>	https://github.com/mikefarah/yq
+T 1588788322 18<ron18>	one of many :D
+T 1588788520 18<rpg18>	@ron: yq pipes its output to jq and it's not at all clear to me what jq is supposed to be doing for me.
+T 1588788569 18<rpg18>	oh, I see.  Pipe to yq with the argument ".".  Got it! That seems to work!
+T 1588835422 18<eobermuhlner18>	Just tried to generate the "Java Spring Server" with editor.swagger.io and the generated code does not compile. :-(
+T 1588835453 18<eobermuhlner18>	Looking at the mustache template https://github.com/swagger-api/swagger-codegen/blob/master/modules/swagger-codegen/src/main/resources/JavaSpring/api.mustache
+T 1588835504 18<eobermuhlner18>	it looks like the 'jdk8' flag is not set during generation, leading to an illegal combination of flags
+T 1588835554 18<eobermuhlner18>	Is there a way to configure the code generator of http://editor.swagger.io/ ?
+T 1588859497 18<nak18>	Hi, We have a non-Boot spring project with a REST API that we want to add documentation to in our next release. We currently have a working prototype with Springfox 2.9, but we want to migrate to Java 11 and Springfox doesn't yet work well with that. We're considering migrating from Springfox to a pure Swagger-Core 1.6.1 + Swagger-UI 2.X
+T 1588859497 18<nak18>	implementation, since we already have the Swagger annotations in our classes. Are there any resources you can recommend for this?
+T 1588861242 18<ron18>	eobermuhlner: there is not from the editor. if you need to set options, you can use the generator service directly. Which version of the specification do you use?
+T 1588861255 18<ron18>	nak: just didn't get a chance to reply to your tweet :)
+T 1588861276 18<ron18>	nak: what library is at the core of your API?
+T 1588861768 18<nak18>	@ron We use Spring Framework 5.2.2
+T 1588861776 18<ron18>	so Spring MVC?
+T 1588861801 18<nak18>	yeah, Spring MVC
+T 1588861828 18<ron18>	in that case, unfortunately, you can't use Swagger Core. We only support JAX-RS applications.
+T 1588861829 18<nak18>	we have about a dozen Controllers and 2-3 times as many views, with annotations
+T 1588861831 18<nak18>	ah
+T 1588861837 18<nak18>	I see
+T 1588861855 18<ron18>	your options are pretty much Springfox or Springdocs
+T 1588861864 18<nak18>	damn. Well then
+T 1588861872 18<ron18>	sorry about that
+T 1588861896 18<nak18>	No problem, I'd rather know about this before I start migrating
+T 1588861900 18<ron18>	given that there are solid options for Spring, we never got into adding support to those.
+T 1588861934 18<nak18>	Yeah. The problem is that Springfox has problems with Java 11 (split packages), while Springdocs requires Spring Boot
+T 1588861973 18<nak18>	and we currently don't use Spring Boot, so adding that may be too much of a refactor
+T 1588861998 18<nak18>	In addition, Springdocs uses Swagger 3, so it would mean replacing all of our annotations
+T 1588862312 18<ron18>	yeah, that makes sense
+T 1588862323 18<ron18>	are there any tickets in springfox about java 11 support?
+T 1588862386 18<nak18>	yeah, there are, multiple in fact about Java versions beyond Java 8. There is talks of fixing this for Springfox 3, but apparently it's not yet fixed
+T 1588862599 18<nak18>	Also, the lead developer apparently lost his job due to COVID and he's focusing on his job hunt. There are still loads of things that don't work properly in 3.0.0, so it'll probably be a while before a new release
+T 1588862639 18<ron18>	what?! he lost his job?! why would he not reach out to me :( I'll ping him.
+T 1588862641 18<nak18>	I'm done with my day job now, but if you have anything more to say, I'll have this chat open in my work machine so I can get back to it tomorrow
+T 1588862653 18<ron18>	sounds good nak
+T 1588882760 18<eobermuhlner18>	@ron I was experimenting with a simple `swagger: '2.0'` example to evaluate it. I did not expect the first trivial experiment to generate code that does not compile.
+T 1588883913 18<eobermuhlner18>	Downloaded swagger-codegen-cli-2.4.13.jar and it has the same problem generating with `-l spring`
+T 1589052531 20*	Disconnected (20Connection timed out)
+T 1589052559 19*	Now talking on 22#swagger
+T 1589052559 22*	Topic for 22#swagger is: Swagger - REST API Documentation | http://swagger.io | Twitter: @SwaggerAPI | OpenAPI Specification Repo - https://github.com/OAI/OpenAPI-Specification | Community Forums - https://community.smartbear.com/t5/Swagger-Open-Source-Tools/bd-p/SwaggerOSTools
+T 1589052559 22*	Topic for 22#swagger set by 26ron!~ron@unaffiliated/ron (24Mon Sep 23 06:45:42 2019)
+T 1589126458 18<pprasad18>	Hi Guys...I wanted some technical help to write API in nswagger
+T 1589197420 18<Vortex18>	Hey folks, how are you?
+T 1589197463 18<Vortex18>	I am new to Swagger and am trying to use the docker image for swagger-editor so that when I start the container, it already has my Swagger JSON file loaded instead of the PetStore default, I went off what the GitHub repo said and have ended up with the following run command
+T 1589197469 18<Vortex18>	docker run -d -p 8083:8080 -e URL=/foo/swagger.json -v /bar:/usr/share/nginx/html/foo swaggerapi/swagger-editor
+T 1589197492 18<Vortex18>	I have a /bar/ folder with a swagger.json however it still loads the Petstore example when my container starts up and I navigate to http://localhost:8083 ?
+T 1589197583 18<Vortex18>	Not too sure what I am doing wrong?
+T 1589208730 18<ron18>	Vortex: to be honest I've never tried it myself. based on what you describe, it *should* be working.
+T 1589208753 18<ron18>	however, I'm not sure how useful that would be for you, though it depends on your use case.
+T 1589278705 18<rk1018>	I having some problem
+T 1589278717 18<rk1018>	I am working on verion 3.0.0
+T 1589278725 18<rk1018>	*version
+T 1589278738 18<rk1018>	and generted code for nodej
+T 1589278741 18<rk1018>	nodejs
+T 1589278790 18<rk1018>	but whenever making a request whether a post or a get it is sending me the error
+T 1589278801 18<rk1018>	"message": "Route defined in OpenAPI specification (/v1/companies/create) but there is no defined onPOST operation."
+T 1589281392 18<rk1018>	anybody online
+T 1589281410 18<rk1018>	I really want this to be done in this hour
+T 1589312176 18<trav18>	hi all, wonder if you can help - im migrating some docs from swagger 2 to three and whilst i can see that request bodys have changed from using formParams to requestBody i cant see how to make those params as required or optional in the same way that i could previously. Can anyone point me in the right direction please?
+T 1589312632 18<ron18>	trav: which language/framework do you use?
+T 1589312806 18<trav18>	im writing the file in json, but in classic fashion as soon as ive asked the question ive figured the answer out by myself
+T 1589312886 18<ron18>	oh, it's a manual writing
+T 1589312918 18<ron18>	are you aware of the conversions tools that are available and can help with that?
+T 1589313010 18<trav18>	ive just been brought onto a project and have been asked to migrate the docs across from 2->3 looks like they've been written by hand previously. tbh im totally new to swagger but ill take a look for some sort of migration tool :)
+T 1589313141 18<ron18>	no worries
+T 1589313177 18<ron18>	generally speaking, when writing definitions manually, I recommend using YAML over JSON as it's faster, less cluttered and just cleaner.
+T 1589313239 18<ron18>	you can take your definition, paste it into editor.swagger.io and then from the Edit menu, choose convert to OpenAPI 3.
+T 1589313613 18<trav18>	so the challenge i have here is that the existing docs reference many many json files, so i guess my first task would be to reassemble them back into a single file then try and run it through the site you menthioned?
+T 1589313674 18<ron18>	ok, that's different indeed.
+T 1589313689 18<ron18>	there may be some other tools out there that can do that, I'm just not sure.
+T 1589313739 18<trav18>	also with yaml how would you define a json response example, would you have to write the json as yaml?
+T 1589313848 18<ron18>	yaml is a superset of json, so any valid json is actually a valid yaml
+T 1589313869 18<ron18>	(that's 99% accurate, fairly certain you won't hit the 1% that isn't)
+T 1589313902 18<ron18>	you don't have to use yaml, but you can save yourself some effort by not having to use curly braces and quotes all over.
+T 1589313933 18<trav18>	with you, thanks @ron, really appreciated :)
+T 1589313941 18<ron18>	np
+T 1589351080 18<wontrain18>	er...Where am I?
+T 1589351107 18<wontrain18>	Hello!Anyone here?
+T 1589370180 18<jay_sl18>	Hello
+T 1589370254 18<jay_sl18>	anyone here?
+T 1589377293 22*	26ChanServ gives channel operator status to 18ron
+T 1589381841 18<jay_sl18>	hi
+T 1589384445 18<ron18>	jay_sl: hi
+T 1589394317 22*	26ChanServ gives channel operator status to 18ron
+T 1589394469 18<nathanw18>	Hello. I'm using openapi via maven plugin and it's generating a Maven project during the build. Is there a way in maven to add that project to the Maven reactor to build it? I know that I can add the generated source dir to an existing build so I can cobble it on, but I figured it's good to use the pom.xml that the plugin generates.
+T 1589394549 18<nathanw18>	aka I can do this: https://github.com/OpenAPITools/openapi-generator/tree/v4.2.3/modules/openapi-generator-maven-plugin/examples/multi-module  but is there any way to build the generated pom.xml file during the maven build process?
+T 1589395034 18<ron18>	nathanw: that's not our project, so unfortunately we don't know enough to help with that
+T 1589395084 18<nathanw18>	oh, sorry, I thought openapi and swagger were similar/same. I must have gone to the wrong place. Thanks for replying though!
+T 1589407850 18<maxmc18>	hi, how can I get curl statements, like in the swagger ui if I click "Execute" for all paths in a swagger / openapi spec? Preferably via cli.
+T 1589407949 18<maxmc18>	My usecase is to create a simple script which executes these curl statements for a bunch of swagger files and measures the response times.
+T 1589408470 18<Doqnach18>	maxmc: maybe there is some tool that does it, though I don't know one from the top of my head
+T 1589408572 18<maxmc18>	i'm looking for this kind of tool, but so far i did not find anything. The closest option i came across is to open the swagger spec in the swagger-ui und execute some javascript to collect the curl statements from the html
+T 1589408697 18<maxmc18>	but i don't think i can easily automate this.
+T 1589408741 18<ron18>	you might be able to use swagger-client to automate the calls and measure the time
+T 1589408746 18<ron18>	but that's not going to be curl
+T 1589460968 19*	Now talking on 22#swagger
+T 1589460968 22*	Topic for 22#swagger is: Swagger - REST API Documentation | http://swagger.io | Twitter: @SwaggerAPI | OpenAPI Specification Repo - https://github.com/OAI/OpenAPI-Specification | Community Forums - https://community.smartbear.com/t5/Swagger-Open-Source-Tools/bd-p/SwaggerOSTools
+T 1589460968 22*	Topic for 22#swagger set by 26ron!~ron@unaffiliated/ron (24Mon Sep 23 06:45:42 2019)
+T 1589480721 18<PaulAI18>	Hi everyone, is there documentation somewhere of all the warnings/errors that swagger can display. For example "Warning: Deprecated"?
+T 1589482146 18<raj12318>	how to define C# class API<T> in swagger json
+T 1589482162 18<raj12318>	please let me know how to get that
+T 1589547445 18<tankblergh18>	hi! I'm very new at Swagger, and been thrown into a project here, and I have a question. Using swashbuckles iexampleProvider, I want to create a request example which returns a model I have. This I successfully apply to the method using the SwaggerRequestExample decorator, pointing to it. However, I have several methods that uses the same model, an
+T 1589547445 18<tankblergh18>	d they all get the example applied in the swagger ui (localhost/ui/index), which is wrong. However, the example  did not show up on all methods when I loaded the definition into the swagger inspector site and looked at my endpoints there. Does this make sense? If I have an example that returns an instance of model, all methods that uses the same cl
+T 1589547445 18<tankblergh18>	ass will apply that example ?
+T 1589549518 18<ron18>	tankblergh: Unfortunately, Swashbuckle is not one of our projects so we can't help much with it.
+T 1589569525 18<hbz18>	Hi! Does anyone know what the "roadmap" is for Swagger 2? I know nothing is set in stone, but -- in general terms -- how soon will be considered legacy/obsolete in favor of OpenAPI 3?
+T 1589575026 18<ron18>	hbz: Swagger 2?
+T 1589575072 18<ron18>	hbz: OpenAPI 3.1's release is fairly close. however, it's hard to tell how soon vendors would drop support for v2.
+T 1589596970 18<Newyorkadam18>	Hi, I’m using swagger to write my API format and am using slate to display the docs. I’m using widdershins to convert the yaml file to md, but am running into a couple problems
+T 1589597006 18<Newyorkadam18>	The first is that it’s not giving my the right title for an endpoint. it’s automatically getting `get_endpointname`, when I just want it to output a custom title
+T 1589597011 18<Newyorkadam18>	anyone have experience with this?
+T 1589597033 18<Newyorkadam18>	I’m not married to widdershins, if there’s another tool out there I’m open to using it
+T 1589597395 18<Newyorkadam18>	ah, got it. had to use operationId
+T 1589632205 18<Ben_118>	hi
+T 1589632334 18<Ben_118>	is there a way to separate the location where swagger generates the the typescript models and services?
+T 1589770184 18<poppyschmo18>	The github links on https://swagger.io/specification seem to be broken
+T 1589801113 19*	Now talking on 22#swagger
+T 1589801113 22*	Topic for 22#swagger is: Swagger - REST API Documentation | http://swagger.io | Twitter: @SwaggerAPI | OpenAPI Specification Repo - https://github.com/OAI/OpenAPI-Specification | Community Forums - https://community.smartbear.com/t5/Swagger-Open-Source-Tools/bd-p/SwaggerOSTools
+T 1589801113 22*	Topic for 22#swagger set by 26ron!~ron@unaffiliated/ron (24Mon Sep 23 06:45:42 2019)
+T 1589802780 18<QuickWango18>	hi everyone! Has anyone tried to generate a swagger docs page for multiple separate specs?
+T 1589813025 18<ron18>	poppyschmo: we're aware of it and working on fixing it.
+T 1589813045 18<ron18>	QuickWango: what do you mean?
+T 1589815533 18<QuickWango18>	ron: I have a bunch of mircoservices with separate swagger specs and I want to create a single application that hosts the swagger-ui with all the different specs
+T 1589815564 18<ron18>	QuickWango: you can do that. swagger-ui can also accept a list of urls.
+T 1589815814 18<QuickWango18>	ron: is that something I can generate using the swagger codegen project?
+T 1589815829 18<QuickWango18>	or can you reference any documentation that might help with this?
+T 1589815831 18<ron18>	QuickWango: those arre two completely separate tthings
+T 1589815838 18<QuickWango18>	ok
+T 1589815865 18<ron18>	just started a meetiing
+T 1589815869 18<ron18>	will give you the link in a bit
+T 1589815876 18<QuickWango18>	sure, thanks!
+T 1589816042 18<ron18>	QuickWango: look for `urls` under https://github.com/swagger-api/swagger-ui/blob/master/docs/usage/configuration.md#core
+T 1589816106 18<QuickWango18>	can these URLs point to the yaml files?
+T 1589816150 18<QuickWango18>	ah seems so, then on that: does this support file references in the form of shared/some-file.yml#/components/.... ?
+T 1589816165 18<ron18>	yeah, you need to point to urls, not files
+T 1589816389 18<QuickWango18>	ok, I'll try and see how far I get
+T 1589821442 18<QuickWango18>	ron: I'm using the docker container. when using the RUNS environment variable, everything works like a charm. But I've been unable so far to provide a config file. I have CONFIG_FILE=swagger-config.yaml and the browser does successfully load it, but the UI still shows the default petstore spec
+T 1589821474 18<QuickWango18>	I'd prefer to use the config file, because it is easier to maintain when there are a bunch of specs in there
+T 1589821527 18<ron18>	QuickWango: I understand. Can you file a ticket about it?
+T 1589821585 18<QuickWango18>	sure
+T 1589822716 18<QuickWango18>	ron: https://github.com/swagger-api/swagger-ui/issues/6019
+T 1589822723 18<ron18>	QuickWango: thanks
+T 1589822750 18<QuickWango18>	I'll poke this a bit more, maybe I'll find something
+T 1589823209 18<QuickWango18>	ron: it seems the ENV values are always prioritized
+T 1589823248 18<ron18>	that might be true
+T 1589823255 18<QuickWango18>	because they get generates as SwaggerUI arguments, which get prioritized over swagger-config.yaml files
+T 1589823274 18<QuickWango18>	and it seems if you don't provide the ENV vars, it just simply takes their default
+T 1589823329 18<QuickWango18>	instead it would be better, if the values for non-existant ENV vars would not be generated at all
+T 1589825668 18<QuickWango18>	ron: changeing the injectBaseConfig option of the translator from true to false in the index.js fixes the problem
+T 1589825691 18<QuickWango18>	but I have no idea what other side effects that might have
+T 1589825884 18<QuickWango18>	or maybe not... not I'm getting a white page
+T 1589826546 18<QuickWango18>	weird worked once, maybe that was caching
+T 1589830488 18<Kahncode18>	Hi there, i'm adding a new language to swagger-codegen and i'd like to submit a PR, is there anyone here that can help me walk through the requirements to make sure i got everything right before submitting it ?
+T 1589833536 18<Swandog18>	I tried using codegen to make a python library for a Swagger API, but I'm having trouble passing basic auth. I'm trying to set the username/password on my configuration, but it doesn't appear to be passed in...can anyone suggest somewhere for me to start looking?
+T 1589834006 18<Swandog18>	I'm looking at it and I think the problem may be that the configuration.py auth_settings() method returns an empty dictionary...but I'm not sure why that is
+T 1589897517 18<archer12118>	Hi, has anyone set up swagger UI on a springboot server, listening for REST requests, but the request and response classes are protobuf generated classes?
+T 1589897726 18<archer12118>	I have the swagger.json file for the spring boot service I want to setup swagger-ui on. All guides online is using springfox or springdoc in combination with swagger ui. As my request and response are protobug classes, springdoc/fox does not work. Is there a way I can set up swagger ui alone, using the swagger.json file which I am able to generate?
+T 1589899320 18<fdffde18>	hello
+T 1589899327 18<fdffde18>	anybody here
+T 1589899491 18<ron18>	fdffde: sometimes
+T 1589899526 18<fdffde18>	Where are you from?
+T 1589899553 18<ron18>	archer121: so it's a REST api with protobuf payloads?
+T 1589899558 18<ron18>	fdffde: I'm from here!
+T 1589899622 18<fdffde18>	robot？
+T 1589899646 18<ron18>	nah, not cool enough to be a robot
+T 1589899763 18<fdffde18>	Why don't you answer when I ask you whear are you from
+T 1589899844 18<archer12118>	ron: yes, right
+T 1589899866 18<ron18>	fdffde: because it's not relevant
+T 1589899910 18<fdffde18>	Oh! I see
+T 1589899918 18<archer12118>	the payload is of type JSON, but the java classes are generated from protos
+T 1589899976 18<ron18>	archer121: ok, now I'm confused. if the payload is JSON, why is the fact it's generated from protos relevant?
+T 1589900274 18<archer12118>	the payload is json, but the POJOs are proto generated
+T 1589900320 18<ron18>	I understand that, but that doesn't clarify where the issue is
+T 1589900419 18<archer12118>	The issue is that springdoc is not generating the openapi spec properly for swagger to use
+T 1589900600 18<ron18>	if that's the case, you should file a ticket with springdoc. swagger-ui can't fix that.
+T 1589901362 18<archer12118>	ron: Right, swagger-ui can't fix that, but I am wondering if there is a way for me to start a swagger ui on a spring boot service, by manually providing the swagger.json file
+T 1589901427 18<ron18>	archer121: of course. swagger ui is just a set of static files. you can host them like you'd host any static html files as part of your app.
+T 1589901473 18<archer12118>	I see.
+T 1589901554 18<ron18>	you can also run it as a docker image or pretty much any other way you want :D
+T 1589902117 18<archer12118>	this is really cool. How do I generate the content of /dist from a json file?
+T 1589902258 18<ron18>	you don't. you provide swagger ui your json at runtime.
+T 1589902285 18<ron18>	it's a static set of files but the rendering is dynamic
+T 1589902419 18<archer12118>	ok.
+T 1589902423 FiSHLiM plugin unloaded
+T 1600044734 19*	Now talking on 22#swagger
+T 1600044734 22*	Topic for 22#swagger is: Swagger - REST API Documentation | http://swagger.io | Twitter: @SwaggerAPI | OpenAPI Specification Repo - https://github.com/OAI/OpenAPI-Specification | Community Forums - https://community.smartbear.com/t5/Swagger-Open-Source-Tools/bd-p/SwaggerOSTools
+T 1600044734 22*	Topic for 22#swagger set by 26ron!~ron@unaffiliated/ron (24Mon Sep 23 06:45:42 2019)
+T 1600085526 18<qqqqqqeee18>	C# how to receive the array[string] in param
+T 1600085554 18<qqqqqqeee18>	i need  help
+T 1600086318 18<a7md18>	hello
+T 1600086329 18<a7md18>	if anyone can help please,
+T 1600086423 18<a7md18>	i am a java coder, this first time to work with Java Spring, every time i open from browser, it require login info (username, password) of Tomcat, i open from postman to solve it,
+T 1600086462 18<a7md18>	now i need to open swagger-ui.html .. i can't , it require login , and not open in postman, how can i solve it please, ..THX
+T 1600108764 18<Philipp_18>	Hi there, I am trying to devide my openapi.yaml in several files to handle the size. But i am not able to solve this, what seems to be an easy task. Can anyone help me, please? :)
+T 1600108789 18<ron18>	What seems to be the problem?
+T 1600108803 18<Philipp_18>	I have prepared a simple (not working) example
+T 1600108885 18<Philipp_18>	Well, in my openapi.yaml, I am trying this: $ref: '...'
+T 1600108931 18<Philipp_18>	i have a schemas.yaml in the same folder which completly copies what was in the openapi.yaml starting with "components"
+T 1600108968 18<Philipp_18>	I am working with a local instance of the swagger editor
+T 1600109033 18<Philipp_18>	the file to be referenced is: schemas.yaml and it consists of User within components/schemas
+T 1600109044 18<ron18>	swagger editor will not be able to read local files, only hosted ones
+T 1600109064 18<ron18>	the browser doesn't allow access to the file system
+T 1600109083 18<Philipp_18>	oh i see
+T 1600109171 18<Philipp_18>	can you suggest another editor?
+T 1600109257 18<ron18>	you can use SwaggerHub :)
+T 1600109372 18<Philipp_18>	yeah... maybe i will. i personally prefer top work locally :)
+T 1600109376 18<Philipp_18>	yeah... maybe i will. i personally prefer to work locally :)
+T 1600109489 18<Philipp_18>	if it is of any matter: it seems swagger editor does not remove error hints properly when trying to reference to local files. and it gives an error saying something about basePath dispite the fact, the specification says that there is no more basePath in OpenAPI 3.
+T 1600109713 18<Philipp_18>	thank you very much. bye :)
+T 1600152711 18<Boulet18>	Hi everyone, is there a way to add a global response to all paths? I want to add a `default` response to handle errors in all paths. Thanks
+T 1600174629 18<swigusr18>	hi, why isn't https://swagger.io/docs/open-source-tools/swagger-codegen/ updated (version-wise) and have no docker usage information (like swagger ui editor pages do) ?
+T 1600178186 18<ron18>	Boulet: there is not.
+T 1600178208 18<ron18>	swigusr: because we're behind :(
+T 1600178224 18<swigusr18>	:(
+T 1600178263 18<swigusr18>	is there any good codegen tutorial ?
+T 1600178430 18<ron18>	swigusr: pretty much what you'd find in the github readme
+T 1600179852 18<swigusr18>	would be nice like UE4 C++ support to have Unity C# :)
+T 1600241031 18<swigusr18>	hi, the codegen documentation claims for server stub support for c# but I can't find it ?
+T 1600241424 18<swigusr18>	ahh, it seems to be named weridly.. why not <lang>/<client/server>/<platform>
+T 1600255186 18<Tuor18>	Hi, I trying to use a swagger ui which has been implemented into triolio vaul (a redhat virtualization backup solution). I don't know much about APIs. What is the authorize button and what do I have to do with it?
+T 1600258035 18<Naresh18>	Hi
+T 1600289601 18<Guest1761818>	Hello, everyone! I have a question about a feature implemented in PR 5278 for issue 4300. It seems like the changes to add a "copy" button for the request example values was added in version 3.27.0, but I don't see this available in the live swagger ui website. Is there something special that needs to be added in the YAML or some other place to ena
+T 1600289601 18<Guest1761818>	ble this feature?
+T 1600291958 18<Guest1761818>	Or a documentation reference about it would be great as well if anyone knows where it might be written about.
+T 1600346745 18<hngfs5618>	Hi,have people use C#
+T 1600346760 18<hngfs5618>	i hava question
+T 1600346890 18<hngfs5618>	？？？
+T 1600353679 18<Tomer12318>	Hi,
+T 1600353691 18<Tomer12318>	Does anyone knows why upload requests is being blocked by proxy?
+T 1600353834 18<ron18>	how is that related to Swagger? :D
+T 1600353887 18<ron18>	also, come on, it's thursday afternoon, tomorrow's a holiday, take a break ;)
+T 1600363513 18<Bernard_Bernoull18>	Hello!
+T 1600363564 18<Bernard_Bernoull18>	I was wondering if anyone here might have the answer to something I am trying to accomplish with Swagger-UI. Please let me know if this is the right channel for such a question.
+T 1600363790 18<ron18>	Bernard_Bernoull: what's up?
+T 1600363871 18<Bernard_Bernoull18>	Hey @ron - I was reading through some of the issues and PR's on GitHub yesterday and found a feature I am interested in using, but I cannot figure out how to enable it or utilize it.
+T 1600363920 18<Bernard_Bernoull18>	The feature was implemented in PR 5278 in response to issue 4300 - it relates to providing a "copy" button in the request body section of the API examples.
+T 1600363954 18<Bernard_Bernoull18>	I was reading release notes and it looks like that went into version 3.27.0 and version 3.33.0 is live on editor.swagger.io but I cannot figure out the correct YAML to enable it.
+T 1600364115 18<ron18>	it looks like it works out of the box
+T 1600364199 18<Bernard_Bernoull18>	Could you help me understand how? I am looking at https://editor.swagger.io/ as the example. When I expand any of the API requests, I do not see the "copy" button in the region where the example request body exists.
+T 1600364242 18<ron18>	that PR doesn't allow you to copy the example, it allows you to copy the response received when running an operation
+T 1600364260 18<Bernard_Bernoull18>	Oh interesting - so my finding is that it is present in the *response* (after using "try it out"), but it is not available in the *request*.
+T 1600364283 18<ron18>	correct
+T 1600364307 18<ron18>	issue 4300 is talking about responses
+T 1600364385 18<Bernard_Bernoull18>	Is adding that to the request something the team would consider if it were submitted as an issue? My use case looks something like this - we use Swagger UI for the API documentation, but the "try it out" feature is not enabled. So the user copies the request body information from the API example and uses a tool like Postman or Curl to issue the req
+T 1600364385 18<Bernard_Bernoull18>	uest. The "copy" button for this use case would be especially helpful if it would allow us to copy the request body.
+T 1600364450 18<ron18>	so you're saying postman is better than the UI
+T 1600364589 18<Bernard_Bernoull18>	Haha no - I haven't had the opportunity to use the UI "try it out" in my work environment so I don't have a proper base to compare them. Our environment just isn't set up to respond to requests this way. Surely there are ways to configure that but it's not my department. I'm just seeking an optimal way to extract useful information presented in Swa
+T 1600364589 18<Bernard_Bernoull18>	gger UI.
+T 1600364607 18<ron18>	I was kidding.
+T 1600364627 18<ron18>	I'm not opposed to adding that option, so feel free to file a ticket. However, given the amount of tickets we have, I can't guarantee when we'll get around to it.
+T 1600364711 18<Bernard_Bernoull18>	I figured it might have been a joke, but in any case that's kind of where I am at. It certainly would be ideal to be able to use what Swagger UI has to offer in that way, but where I am it's currently not something we are able to do.
+T 1600364770 18<Bernard_Bernoull18>	And excellent, thank you @ron! I will look into what is required to submit this request. I most certainly understand how backlog/priority stuff goes so I am just interested in putting it out there in case others would also find such a feature to be useful.
+T 1600364838 18<ron18>	yup, that's the way to do it, thanks
+T 1600364885 18<Bernard_Bernoull18>	Awesome. Thanks, @ron!
+T 1600380577 18<nagzso18>	Hello, I use springfox-boot-starter in my spring boot application. How can I add additional models to generated api-docs? I have tried the "additionalModels", but it generates 2 model (for request and response as well). I only need it once, because it is a POJO for API errors and I do not want te specify error response types on my methods. you give
+T 1600380577 18<nagzso18>	 me a lift to achive my goals?
+T 1600419398 22*	26ChanServ gives channel operator status to 18ron
+T 1600422027 18<bobthes18>	silly question? pretty non technical want to use our dev teams swagger.json with codegen in a docker. Have the docker running locally brought up in browser all working. How to I show it the swagger.json and get my client sdks?
+T 1600422056 18<bobthes18>	docks say its so easy just use the -i option
+T 1600422068 18<bobthes18>	docs
+T 1600422096 18<bobthes18>	not sure what that means from the context of the docker image
+T 1600422102 18<bobthes18>	any help appreciated
+T 1600422327 18<bobthes18>	ok no one even acknowledges question. I will just try the cli image and hope its more obvious.
+T 1600422644 18<bobthes18>	ok looks like you pass it to the gen server with /api/gen/clients/<language> and a header containing the URL of your swagger JSON
+T 1600422722 18<bobthes18>	sorry for the impatience just read the warning that people might not be active for a few hours
+T 1600422730 18<bobthes18>	good day all
+T 1600440735 18<maniacal18>	Good morning.  Is there a way to represent a key that may or not be in a response.  I have a 'location' key that may or may not be there.  I have a schema for if it is.   if it isn't I'm using a empty schmea of type: object.  but this shows "location": {} in the response.  I would rather not show the location key at all
+T 1600441187 18<maniacal18>	Mabye I found it.  there is a 'required' setting for responses.  never realized that.  If I make all the fields except 'location' required in the response, does that accurately represent that  the location object may not be there?
+T 1600441226 18<maniacal18>	meaning, is that the intent of 'required' on responses?  and is that proper swaggering?
+T 1600473278 18<Guest8599618>	Hi I am using express-swagger-generator ( https://www.npmjs.com/package/express-swagger-generator ) to document my API but currently I get undefined values in my api when I try to execute from the docs generated
+T 1600473341 18<Guest8599618>	could someone help me?
+T 1600504535 18<Ruben318>	How to set a default produce type for all controllers in an asp.net core web api?
+T 1609963181 19*	Now talking on 22#swagger
+T 1609963181 22*	Topic for 22#swagger is: Swagger - REST API Documentation | http://swagger.io | Twitter: @SwaggerAPI | OpenAPI Specification Repo - https://github.com/OAI/OpenAPI-Specification | Community Forums - https://community.smartbear.com/t5/Swagger-Open-Source-Tools/bd-p/SwaggerOSTools
+T 1609963181 22*	Topic for 22#swagger set by 26ron!~ron@unaffiliated/ron (24Mon Sep 23 06:45:42 2019)

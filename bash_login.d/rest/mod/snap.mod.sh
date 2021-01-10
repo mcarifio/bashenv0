@@ -4,31 +4,37 @@
 
 
 function snap.install {
-    local _self=${FUNCNAME[0]};
-    local _mod_name=${_self%%.*};
-    local _mod=${_self%.*};
+    local _self=${FUNCNAME[0]}
+    local _mod_name=${_self%%.*} # snap.mod for mod functions
+    local _mod=${_self%.*} # snap
 
-    sudo snap install $*
+    sudo snap install $* && printf '%s ' ${*} >> $(dirname $(${_mod}.mod.pathname))/${_self}.${HOSTNAME}.list
+
 }
 
 function snap.install.all {
-    local _self=${FUNCNAME[0]};
-    local _mod_name=${_self%%.*};
-    local _mod=${_self%.*};
+    local _self=${FUNCNAME[0]}
+    local _mod_name=${_self%%.*}
+    local _mod=${_self%.*}
 
-    snap.install cacher core core18 core20 direnv doctl emacs-28 gtk-common-themes multipass zoom-client barrier
-    snap.install.classic clion code code-insiders datagrip emacs go goland intellij-idea-ultimate kubectl powershell rider
-    snap.install.edge chromium
+    snap.install $(cat $(dirname $(${_mod}.mod.pathname))/${_self}*.list 2>/dev/null | uniq | sort)
+    # snap.install cacher core core18 core20 direnv doctl emacs-28 gtk-common-themes multipass zoom-client barrier postman
+    # snap.install.classic clion code code-insiders datagrip emacs go goland intellij-idea-ultimate kubectl powershell rider
+    # snap.install.edge chromium
 }
 
 function snap.install.edge {
-    local _self=${FUNCNAME[0]};
-    local _mod_name=${_self%%.*};
-    local _mod=${_self%.*};
+    local _self=${FUNCNAME[0]}
+    local _mod_name=${_self%%.*}
+    local _mod=${_self%.*}
 
-    local _snap=$(f.must.have "$1" "pkg")
-    snap.install ${_snap}
-    snap.install --edge ${_snap}_edge
+    snap.install $*
+    if (set -x; sudo snap set system experimental.parallel-instances=true) ; then
+        snap.install --edge $(printf '%s_edge ' $*)
+    else
+        >&2 echo "can't set experimental.parallel-instances=true, skipping --edge install of $*"
+        return 1
+    fi
 }
 
 function snap.install.classic {

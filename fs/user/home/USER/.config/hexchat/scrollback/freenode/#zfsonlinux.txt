@@ -1,0 +1,506 @@
+T 1600353193 18<Hallcyon18>	I am running proxmox and it seems to run every sunday, so maybe its a default they set
+T 1600353201 18<Lalufu18>	that might be
+T 1600353224 18<Hallcyon18>	Ok I am debating what to do, as I don't trust this anymore :(
+T 1600353234 18<Hallcyon18>	Feels bad :/
+T 1600353251 18<Hallcyon18>	But Replaced SAS cable and have hot spare ready
+T 1600353263 18<Hallcyon18>	might even add it to pool as spare
+T 1600355923 18<catbehemoth18>	for the nvme do I zpool create -f poolname /dev/nvme0 or /dev/nvme0n1 (or whatever wwn or hardware id are)
+T 1600355963 18<gchristensen18>	nvme0 is a controller, n1 is the disk
+T 1600355995 18<gchristensen18>	you shouldn't see any disk by-path or other links to nvme0
+T 1600356045 18<manfromafar18>	nvme just has to be different
+T 1600356064 18<gchristensen18>	heh
+T 1600356069 18<gchristensen18>	it is kind of cool.
+T 1600356070 18<catbehemoth18>	I have I have /dev/disk/by-id
+T 1600356074 18<catbehemoth18>	for nvme
+T 1600356103 18<catbehemoth18>	nvme-eui.6479a7329001732b and nvme-Sabrent_Rocket_Q_7EBD0704036101595018
+T 1600356128 18<catbehemoth18>	I thought of using those
+T 1600356133 18<gchristensen18>	n1 means namespace1, and you can take some drives and split it in to multiple namespaces, as if it were multiple drives -- or  hardware level partitions
+T 1600356176 18<gchristensen18>	this is a fun way to troll bare metal hosting companies who didn't read the full nvme spec, because all of a sudden their big fancy drives are 1G large and they don't automatically destroy the namespace for the next customer who is unhappy.
+T 1600356242 18<catbehemoth18>	ok good to know but in my case I simply want to create a stripe pool then I create the pool on nvme0n1 and nvme1n1? or should I got with /dev/disk/by-id?
+T 1600356260 18<gchristensen18>	m
+T 1600356262 18<gchristensen18>	go with the by-id  link. all the other junk I mentioned is details you don't need to know.
+T 1600356310 18<gchristensen18>	(unless you're a bare metal hosting company who is surprised their 1T drive shrank by 999G
+T 1600356370 18<catbehemoth18>	I also have a 1tb ssd, can I pool it with nvme? I understand Ill be limited by ssd speeds sbut there is no other adverse effects in doing so?
+T 1600356387 18<catbehemoth18>	by ssd I mean sata ssd
+T 1600356396 18<catbehemoth18>	with 2 m.2 nvme
+T 1600356412 18<gchristensen18>	sure
+T 1600356714 18<catbehemoth18>	also can you stripe on top of a stripe? lets say I have 2 x 250 gig ssds and 2 x 125 gig ssds, all I want is to stripe them together to get 750 gigs of writable space, can I do that with zfs?
+T 1600356741 18<gchristensen18>	that is just one stripe
+T 1600356747 18<gchristensen18>	but you could make 2 striped vdevs
+T 1600356778 18<catbehemoth18>	I wan to avoid using my vnmes for torrent scratch so I am thing of what else I could do
+T 1600356788 18<catbehemoth18>	thinking
+T 1600356990 18<catbehemoth18>	ok Im off to create some zpools :D, I went from not using zfs to having everything except root on zfs in a day ...
+T 1600357001 18<gchristensen18>	neat :) You'll move your root soon enough ...
+T 1600357002 18<catbehemoth18>	when I comit to something I commit fully
+T 1600357008 18<catbehemoth18>	so yeah
+T 1600357012 18<catbehemoth18>	probably in a day or so
+T 1600357105 18<catbehemoth18>	is there a way to have lsblk show what disks are part of a zfs pool?
+T 1600357120 18<catbehemoth18>	I know about zpool list -v
+T 1600357129 18<catbehemoth18>	but I want something to show me all together
+T 1600357139 18<catbehemoth18>	to know what disks are in and what are not
+T 1600357353 18<elvishjerricco18>	catbehemoth: The --fs flag for lsblk seems to do it.
+T 1600357400 18<gchristensen18>	lsblk  -O --json has loads of data
+T 1600357542 18<catbehemoth18>	--fs is prettymuch what I was looking for
+T 1600357546 18<catbehemoth18>	thanks guys
+T 1600362299 18<catbehemoth18>	just to be clear about failure scenarios, let's say I have raidz1 with 3 ssds and one fails, I will have a degraded pool, can I simply copy all the data over to another disk or pool and zpool destory, or do I have to add another disk to get to my data before being able to destroy the pool?
+T 1600362386 18<gchristensen18>	either, but I'm not sure why you'd destroy, when replacing one disk is probably easier and faster
+T 1600362389 18<manfromafar18>	if 1 fails you just need to add a replacement disk and rsilver
+T 1600362537 18<catbehemoth18>	ok forget the destroy part, all I want to make sure is that a degraded pool is still accessible if the number of failed disks is less that what raidz level allows
+T 1600362579 18<gchristensen18>	yes
+T 1600362584 18<catbehemoth18>	raidz1 with 3 disks, on fails and I have no spares, I can still access the data and lets say copy it to an external drive or upload it to cloud?
+T 1600362631 18<gchristensen18>	or replace the disk yes
+T 1600362762 18<catbehemoth18>	ok thanks, again sorry for all the dumb questions but I am kinda new to all the raid stuff. I always used snapraid and mergerfs or some other variation on fusefs
+T 1600363140 18<catbehemoth18>	any suggestions for block size or any other optimizations for a pool that will house Plex library?
+T 1600363168 18<DeHackEd18>	most likely a large recordsize. 1M is popular
+T 1600363184 18<DeHackEd18>	I'm not a plex user, but if it has some kind of database directory that should be its own filesystem with a smaller recordsize (probably?)
+T 1600363299 18<catbehemoth18>	by plex library I mean its database, it has lots of small files and uses sqlite
+T 1600363478 18<DeHackEd18>	the sqlite default page size is 1k which is too small for ZFS. what's the pool config. raidz2?
+T 1600363523 18<DeHackEd18>	oh, 4096 in newer versions (2016)
+T 1600363545 18<DeHackEd18>	still. if you're running mirrors/RAID-10 then a recordsize of 4k is likely good. If RAID-Z then I'd go with 16k instead
+T 1600363678 18<catbehemoth18>	ok understood I am thinking of raidz for that library
+T 1600368567 18<catbehemoth18>	finally ram question, since I started using zfs my ram usage shot up. I know zfs loves ram but can I limit it a little? Or is linux smart enough to give ram to vms when they needed it and not to zfs?
+T 1600368787 18<dsockwell18>	ime linux or the zfs module (whichever) is smart enough but not always fast enough
+T 1600368803 18<dsockwell18>	i forget the details of why i forgot that
+T 1600368808 18<dsockwell18>	of why i thought that
+T 1600368848 18<dsockwell18>	and i haven't thought it for a long time, so in general i don't worry about it
+T 1600369272 18<catbehemoth18>	I got 128 gigs of ram, before zfs only 60 was used, now I am sitting at 120, since I have no swap Iam starting to worry
+T 1600369786 18<BtbN18>	That's normal, arc does not count as cache.
+T 1600369791 18<DeHackEd18>	the ZFS cache still behaves like cache. it shrinks under pressure
+T 1600369805 18<BtbN18>	latest htop shows it properly.
+T 1600369850 18<Lalufu18>	how late is "latest"?
+T 1600369857 18<elvishjerricco18>	Isn't the default max ARC size 50% of system ram? 120 out of 128 is well beyond that.
+T 1600369866 18<BtbN18>	Since 2.0
+T 1600369873 18<catbehemoth18>	no it is 60 out of 128
+T 1600369875 18<gchristensen18>	catbehemoth: sounds good, unused ram is wasted ram
+T 1600369878 18<BtbN18>	Or was it 3.0?
+T 1600369881 18<catbehemoth18>	the other 60 is my vms and usual stuff
+T 1600369883 18<BtbN18>	Whatever major version came out latest
+T 1600369888 18<catbehemoth18>	so its all good if it limits to 50%
+T 1600369890 18<elvishjerricco18>	Ah
+T 1600369899 18<dsockwell18>	elvishjerricco: that's half of RAM on top of everything that's already in RAM. 120-60 is close enough to 64
+T 1600369919 18<dsockwell18>	within errors of catbehemoth's estimates
+T 1600369938 18<catbehemoth18>	well thats what cockpit is showing
+T 1600369954 18<catbehemoth18>	was 60/128 used before I brought the pools online
+T 1600369960 18<catbehemoth18>	not 120/128
+T 1600369963 18<catbehemoth18>	now*
+T 1600369977 18<Lalufu18>	I have 2.2 here, which doesn't seem to know about zfs
+T 1600370068 18<dsockwell18>	not finding it on debian buster with 2.2 either
+T 1600370076 18<catbehemoth18>	I am at 0.8.4 I think
+T 1600370092 18<dsockwell18>	oh since zfs 2.0?
+T 1600370121 18<catbehemoth18>	I can get the zfs-dkms-git which is on 2.2 now (I am on arch linux, and zfs is only in AUR)
+T 1600370123 18<dsockwell18>	n/m i just read carefully
+T 1600370126 18<dsockwell18>	funny how that helps all the time
+T 1600370170 18<dsockwell18>	catbehemoth: yeah eating 64G for ARC and not having a way to tell htop accounts for your memory observations
+T 1600370180 18<dsockwell18>	which is normal
+T 1600370196 18<dsockwell18>	it should give up the memory to applications without any trouble, and it's probably a bug if it doesn't
+T 1600370237 18<catbehemoth18>	for now Ill monitor it, Ill try spinning up a few extra vms to make sure it behaves properly
+T 1600370266 18<dsockwell18>	https://htop.dev/downloads.html
+T 1600370266 18<zfs-bot18>	[ htop - an interactive process viewer ] - htop.dev
+T 1600370274 18<dsockwell18>	zfs arc is in the changelog for 3.0
+T 1600370281 18<dsockwell18>	really thinking about upgrading now
+T 1600370338 18<catbehemoth18>	my htop is at 3.0.2
+T 1600370386 18<dsockwell18>	does it show your zfs arc size?]
+T 1600370442 18<catbehemoth18>	yeah it does
+T 1600370451 18<dsockwell18>	is it about 64G?
+T 1600370468 18<catbehemoth18>	arc, used, mfu, mru, anon and hdr
+T 1600370476 18<catbehemoth18>	yup
+T 1600370482 18<catbehemoth18>	63 and change
+T 1600370546 18<catbehemoth18>	there are also CARC stats
+T 1600370777 18<dsockwell18>	proof by direct measurement
+T 1600370782 18<dsockwell18>	everything's fine
+T 1600370802 18<catbehemoth18>	ooh actually zfs took half the ram for ARC but htop says that only 53.4 gigs are used now, ah I get it now, it reserves half but uses only parts of it as needed never releasing any to the system
+T 1600370823 18<CompanionCube18>	there's no reservation
+T 1600370848 18<gchristensen18>	and it can release ~all of it to the system
+T 1600370851 18<CompanionCube18>	it's just that 1/2 of RAM is the initial 'upper limit' for the size
+T 1600370866 18<catbehemoth18>	at least if I read htop correctly, it says ARC 63.9G, Used: 56.0G
+T 1600370892 18<dsockwell18>	used is your normal load
+T 1600370904 18<dsockwell18>	your VMs, the ~60G you said to begin with
+T 1600370919 18<catbehemoth18>	yes
+T 1600370930 18<dsockwell18>	so arc didn't use that, you did
+T 1600370949 18<catbehemoth18>	no thats on the ARC line in htop
+T 1600370961 18<gchristensen18>	does that mean it is showing the ARC max in the first bit?
+T 1600370970 18<catbehemoth18>	mem line shows 120.3/126
+T 1600370976 18<dsockwell18>	idk what that looks like, can you show a screenshot?
+T 1600371058 18<dsockwell18>	https://0bin.net is a good image host
+T 1600371059 18<zfs-bot18>	[ 0bin - encrypted pastebin ] - 0bin.net
+T 1600371076 18<catbehemoth18>	https://imgur.com/A0d0tok
+T 1600371076 18<zfs-bot18>	[ Imgur: The magic of the Internet ] - imgur.com
+T 1600371219 18<dsockwell18>	that's confusing to me too but the ballpark numbers are right, you shouldn't worry about zfs stealing your RAM. you can still use all of it if you want.
+T 1600371254 18<catbehemoth18>	ok
+T 1600371258 18<dsockwell18>	if you make a new VM with 32G memory i bet it'll be fine
+T 1600371579 18<catbehemoth18>	once I am done copying everything to my new zfs pools I will :D
+T 1600389831 18<fling18>	I got a permanent error in a file.
+T 1600389849 18<fling18>	z_wr_iss is using too much cpu
+T 1600389862 18<PMT18>	Those two statements seem unrelated.
+T 1600389893 18<fling18>	dmesg is spammed with zio error to the same offsets
+T 1600389932 18<PMT18>	Sounds like something keeps trying to access that errored region.
+T 1600390290 18<fling18>	Had to reboot, looks like it rolled back a lot on import.
+T 1600390450 18<fling18>	Before the reboot it had 1k adding to write counter each second in zpool status.
+T 1600390798 18<entropygain18>	can you guys help me understand mountpoints? is there a point to mount child datasets?
+T 1600390842 18<entropygain18>	zfs create -o mountpoint=/home/something zroot/home/something
+T 1600390860 18<entropygain18>	zfs create zroot/home/something/child
+T 1600390865 18<entropygain18>	is there a point to mounting child there?
+T 1600390868 18<PMT18>	entropygain: there are many reasons to use child datasets. consider the example of setting a quota of 50G for each person's homedir, or more resource-intensive compression on a directory of textfiles like your logs.
+T 1600390899 18<PMT18>	Or having snapshots on some parts of your pool and not others.
+T 1600390901 18<entropygain18>	can't you do that without having -o mountpoint on it?
+T 1600390916 18<fling18>	entropygain: mount will get inherited and zfs will mount it for you
+T 1600390918 18<entropygain18>	in my case I can create a snapshot at zroot/home/something/child
+T 1600390919 18<DeHackEd18>	sure. but you would set the mount point for the /home mount, then /home/entropygain would just be inherited
+T 1600390934 18<PMT18>	if zroot/home is set to mount at /home, then creating zroot/home/something would be inherited automatically unless you override it.
+T 1600390958 18<PMT18>	*would have the mountpoint inherited ...
+T 1600390966 18<entropygain18>	in my case I had a folder in my zroot/home/something called child
+T 1600390979 18<entropygain18>	so by just creating child off of that folder and not giving it a mount point
+T 1600390992 18<entropygain18>	it will automatically be carried over to /home/something/child is what you are saying right?
+T 1600390998 18<PMT18>	yes.
+T 1600391009 18<entropygain18>	so the only reason I would liketo have an -o mountpoint is to allow me to mount that child somewhere else
+T 1600391017 18<entropygain18>	/home/child for example
+T 1600391019 18<PMT18>	Yes.
+T 1600391019 18<entropygain18>	if I really want to
+T 1600391022 18<entropygain18>	gotcha
+T 1600391033 18<entropygain18>	then I can do a recursive snapshot on my zroot/home/something
+T 1600391037 18<entropygain18>	and it would do one for child as well
+T 1600391041 18<PMT18>	correct.
+T 1600391042 18<entropygain18>	even though it is moutned somewhere else
+T 1600391044 18<entropygain18>	thanks
+T 1600391068 18<entropygain18>	so if my child will in fact always live under /home/something thre is no point at all for me to create a mountpoint
+T 1600391080 18<entropygain18>	does that follow suit when using -o sharesmb=on as well?
+T 1600391105 18<entropygain18>	since /home/something is already shared, /home/something/child will automatically be shared as well
+T 1600391117 18<PMT18>	To be honest, I have no idea how sharesmb works on ZoL, I've always just used smb.conf to configure shares on Linux.
+T 1600391143 18<entropygain18>	i see
+T 1600391150 18<entropygain18>	but is there even a point to making nested shares?
+T 1600391161 18<entropygain18>	i guess you can manage what users are allowed in the nested share?
+T 1600391312 18<fling18>	can reproduce it yay!
+T 1600391324 18<fling18>	the errors pop up when I start writing to a certain file
+T 1600391397 18<PMT18>	writing to other files has no problems?
+T 1600391954 18<fling18>	I will bugreport this.
+T 1600391954 18<fling18>	Is zfs supposed to try overwriting the same sectors again and again even when i/o fails?
+T 1600392572 18<fling18>	Hmm any data written after the error is getting lost on import, I don't like this.
+T 1600392652 18<DeHackEd18>	a write failure (that RAID can't handle) is supposed to freeze writes in the hope that you call `zpool clear` to signal it that the problem has been fixed and it can try again.
+T 1600392661 18<PMT18>	^
+T 1600392705 18<DeHackEd18>	and to be clear, it freezes writes regardless of the `failmode` property
+T 1600392735 18<DeHackEd18>	failmode=wait (default) freezes read and writes. failmode=continue freezes writes only. failmode=panic freezes the whole system
+T 1600392804 18<fling18>	But why is it trying to rewrite the same sectors again and again in a loop?
+T 1600392875 18<PMT18>	What application is doing the writing?
+T 1600392901 18<fling18>	eix
+T 1600393128 18<PMT18>	I'd look into why eix is retrying the writes over and over again, ZFS should just be returning EIO after trying and failing.
+T 1600393285 18<fling18>	I will try writing the file by hand next time after I reproduce this
+T 1600393359 18<PMT18>	I'd be at least a little concerned by getting write errors from an underlying disk, generally you only get those when the disk can't mask them any more.
+T 1600393411 18<fling18>	backup time! :D
+T 1600393422 18<PMT18>	Quite.
+T 1600393526 18<Setsuna-Xero18>	hopefully those 'writes' actually went through too ;)
+T 1600393545 18<Setsuna-Xero18>	and isn't just the drive saying 'yeah all good boss' as it round files your writes
+T 1600393559 18<PMT18>	I would guess they didn't, if they're repeatedly failing.
+T 1600393561 18<Setsuna-Xero18>	had that happen with a few drives...
+T 1600393568 18<Setsuna-Xero18>	no before that failure
+T 1600393583 18<Setsuna-Xero18>	we had one spinner we replaced after a client said they couldn't save files
+T 1600393586 18<fling18>	Setsuna-Xero: no, the errors disappeared on reimport together with the data after the first error
+T 1600393603 18<Setsuna-Xero18>	turns out the disk reports the writes as good, but you check and it never actually wrote...
+T 1600393615 18<fling18>	Setsuna-Xero: with which version?
+T 1600393622 18<fling18>	I never seen this behavior before.
+T 1600393625 18<Setsuna-Xero18>	a few power cycles later that disk just started returning errors
+T 1600393629 18<Setsuna-Xero18>	oh windows ntfs
+T 1600393633 18<PMT18>	Setsuna-Xero: I had a model of hard drive that did that. It was Really Exciting when I discovered this because I had a giant stripe of raidzs and the checksum error count kept going up every scrub...
+T 1600393635 18<Setsuna-Xero18>	old maxtor spinner
+T 1600393648 18<Setsuna-Xero18>	yeah
+T 1600393654 18<Setsuna-Xero18>	no beuno
+T 1600393661 18<PMT18>	(Mine was a firmware bug in all the drives. Thanks Samsung.)
+T 1600393687 18<Setsuna-Xero18>	shamesung
+T 1600393721 18<PMT18>	Well, Seagate owns their HDD business now, I believe, so all the most reliable drive vendors are one company now. :P
+T 1600393813 18<Setsuna-Xero18>	...theres a reliable company since hitatchi sold out?
+T 1600393815 18<Setsuna-Xero18>	who?
+T 1600393833 18<Setsuna-Xero18>	or is this a 'least bad' prospect
+T 1600393861 18<PMT18>	Perhaps if I said "reliable" drive vendors it'd have been clearer
+T 1600393888 18<PMT18>	Toshiba's 3.5s are pretty good these days since they looted Hitachi's 3.5in business.
+T 1600393918 18<Setsuna-Xero18>	oh my only toshibas were stillborn
+T 1600393923 18<PMT18>	oof.
+T 1600393929 18<Setsuna-Xero18>	yeah
+T 1600393949 18<Setsuna-Xero18>	client machines, brand new, powered up... no os, no drive...
+T 1600393960 18<Setsuna-Xero18>	new cables.. no drive...
+T 1600393974 18<Setsuna-Xero18>	into toast... spins up, no bus
+T 1600394056 18<Setsuna-Xero18>	..I still have that toaster actually, it finally killed a usb cable, but the esata works
+T 1600394314 18<PMT18>	I'd be real worried about using a toaster that toasted a cable.
+T 1600396067 18<Setsuna-Xero18>	its bath friendly...
+T 1600396428 18<Christ0pher18>	anyone using gentoo with luks in here? in Grub.. is it root=ZFS=pool/ROOT/gentoo or real_root=ZFS=pool/ROOT/gentoo? The latter right? and then we add "crypt_root=/dev/sdZ#" right? I havent used luks in years on my zfs. I thought I would use it again.
+T 1600396943 18<catbehemoth18>	I am setting up rtorrent to use a zfs pool, should I enable preallocate dick space? does zfs support fallocate ?
+T 1600397026 18<PMT18>	No, and it mostly wouldn't do what you wanted even if you did, because CoW.
+T 1600397090 18<catbehemoth18>	ah ..
+T 1600397203 18<dsockwell18>	it was very unusual to refer your torrent problems to a specific syscall, catbehemoth. that was possibly my first time doing it on zfs in at least 5 years.
+T 1600397250 18<dsockwell18>	most software works perfectly fine, even if the things they're programmed to do are different on zfs
+T 1600397284 18<catbehemoth18>	its not a problem I ma setting up rtorrent and there is an option to preallocate files on disk I simply wonder if it benefits to activate it
+T 1600397291 18<dsockwell18>	rtorrent will never know that its effects are ridiculous on the actual disk
+T 1600397293 18<catbehemoth18>	it uses fallocate call
+T 1600397315 18<dsockwell18>	but to answer practically no it doesn't make much sense to me either to turn it on
+T 1600400615 18<lickalott18>	PMT, had to go with reverting the kernel through grub.  I seem to be missing to many dependencies for building the module using the autogen.sh, and i'm simply not patient enough to wait...lol
+T 1600400778 18<cirdan18>	Setsuna-Xero: hitachi has been ownd by wd since what, 2006 or something?
+T 1600400973 18<PMT18>	lickalott: that works. you could have also done yum build-dep zfs-dkms (or something, I forget the dnf/yum syntax for what Debian calls apt-get build-dep) and had it pull the dependencies for you.
+T 1600401033 18<PMT18>	Apparently dnf builddep is a plugin.
+T 1600401080 18<lickalott18>	i may still....  those 2 pools I was missing are 16tb and I need access to them quickly.  Actually had a usbdrive with FreeNas build up just in case.
+T 1600401130 18<PMT18>	Are you not able to access them from the older kernel?
+T 1600401533 18<lickalott18>	i can now, yes.
+T 1600417955 18<qqqhhh18>	hello, is the value of "hash_collisions" significant when not using dedup? thanks
+T 1600418419 18<PMT18>	I wouldn't be concerned by it unless you have something you're researching that correlates with it for some reason, no.
+T 1600418545 18<qqqhhh18>	PMT: thanks
+T 1600420425 18<doxasticfox18>	How do I disable auto snapshots? I have com.sun:auto-snapshot=false but entries like this keep showing up:
+T 1600420426 18<doxasticfox18>	rpool/0393cdae8325643b2e6bc1cf1e8b269ae429bf68c8a1623500a46e84a8a5af0d@18558480
+T 1600420430 18<doxasticfox18>	rpool/492ff2156083cc310e003ab00bea48dcb6fa2d9b0b950cbbf7d0eee4a8e753dc
+T 1600420441 18<doxasticfox18>	Some of them end with "-init"
+T 1600420489 18<doxasticfox18>	The "entries" I'm talking about are what you see when running "zfs list -t snapshot"
+T 1600420805 18<PMT18>	doxasticfox: that sounds like snapshots being generated by zsys or other processes, not most auto snapshot tools
+T 1600420915 18<PMT18>	If I'm right, zsysctl show should list a lot of the things you're seeing.
+T 1600420964 18<doxasticfox18>	~ % sudo zsysctl
+T 1600420964 18<doxasticfox18>	[sudo] password for christian:
+T 1600420964 18<doxasticfox18>	sudo: zsysctl: command not found
+T 1600420970 18<PMT18>	If I'm wrong (which I might be, since it looks like zsys uses a prefix of autozsys on snapshots it takes), what do you have installed that takes snapshots?
+T 1600420984 18<PMT18>	what distro is this?
+T 1600420990 18<doxasticfox18>	Nothing as far as I know.
+T 1600420993 18<doxasticfox18>	It'd Debian 10
+T 1600420998 18<doxasticfox18>	I just followed these instructions: https://openzfs.github.io/openzfs-docs/Getting%20Started/Debian/Debian%20Buster%20Root%20on%20ZFS.html
+T 1600420999 18<zfs-bot18>	[ Debian Buster Root on ZFS — OpenZFS documentation ] - openzfs.github.io
+T 1600421045 18<PMT18>	Those instructions don't have you install anything to automatically take snapshots, so if you just followed them, you shouldn't be seeing random snapshots appear.
+T 1600421056 18<PMT18>	Though it sounds like you're seeing more than just snapshots.
+T 1600421071 18<PMT18>	Maybe they're boot environments? But I didn't think there was any glue in Debian to do that.
+T 1600421147 18<PMT18>	Are you using Docker?
+T 1600421150 18<doxasticfox18>	Is it possible for "zfs list -t snapshot" to list anything other than snapshots?
+T 1600421154 18<doxasticfox18>	Yeah, I use docker
+T 1600421166 18<PMT18>	zfs list -t snapshot should only list snapshots, I believe.
+T 1600421283 18<PMT18>	doxasticfox: if you're using docker, it's possible they're generating it, though I think those instructions tell you to put docker in its own filesystem, not just rpool/12345
+T 1600421309 18<PMT18>	What do the snapshots you're seeing look like? that is, what are they snapshots _of_?
+T 1600421439 18<doxasticfox18>	I just deleted them all and I'm not sure how to re-create them. The docker thing sounds plausible, so I'll look into it and post back here.
+T 1600421616 18<doxasticfox18>	PMT: Thanks btw.
+T 1600421806 18<PMT18>	np
+T 1600425971 18<Demosthenex18>	so, gotta move my zfs root laptop back to ssd. should i throw the ssd into a usb cage, create the zpool on the current system, and zfs send to the new zpool locally via usb, or try and do DR copy from my server where i do zfs send already?
+T 1600426001 18<ratrace18>	DR?
+T 1600426022 18<Demosthenex18>	disaster recovery
+T 1600426041 18<Demosthenex18>	i currently manually intermittently do a zfs send to my server of all my zfs volumes on my laptop
+T 1600426050 18<Demosthenex18>	looking for a way to script it :P
+T 1600426053 18<ratrace18>	which one has bigger throughput?
+T 1600426060 18<ratrace18>	that one.
+T 1600426066 18<Demosthenex18>	usb or gigabit ethernet? i suppose about the same.
+T 1600426097 18<ratrace18>	only if you assume sequential read for the usb
+T 1600426132 18<ratrace18>	(which then assumes your server disk geometry can staturate 1GBps for random read)
+T 1600426172 18<Demosthenex18>	the diff would be that i'd have to boot from usb stick and create the zpool
+T 1600426294 18<ratrace18>	not if you stick it into the usb cage but then you can do just that and copy off your current pool
+T 1600426325 18<ratrace18>	(and dont' forget different uids, fstab, crypttab, initramfs, grub updates, you know the drill)
+T 1600426451 18<Demosthenex18>	uh... that's why its root on zfs. i don't want to do anything but zfs send ;]
+T 1600433827 18<doxasticfox18>	PMT: I can confirm that Docker was taking the snapshots. Thanks again.
+T 1600459676 18<Christ0pher18>	anyone using luks with zfs on root? 2 questions. Do you have root= or real_root= in your grub? And do you have it set to your root dataset (pool/ROOT/os) or /dev/mapper/pool ?
+T 1600465525 18<mason18>	Christ0pher: 1) root=ZFS=pool/ROOT/default 2) Can you rephrase the question?
+T 1600465585 18<mason18>	Christ0pher: I have, as an example, /dev/mapper/foo as a component of my pool, but I'm not sure what you're asking.
+T 1600467982 18<TwistedFate18>	is it possible to have *everything* on ZFS, including boot?
+T 1600467995 18<TwistedFate18>	 well, /boot
+T 1600468040 18<PMT18>	I believe the answer is 'with MBR, yes; with EFI, not technically'
+T 1600468056 18<PMT18>	(since EFI requires a FAT32 partition to boot from initially)
+T 1600468189 18<TwistedFate18>	PMT: my motherboard supports both legacy and efi
+T 1600468214 18<BtbN18>	Even with MBR, you need a non-zfs area for the bootloader.
+T 1600468221 18<BtbN18>	It's not not a proper partition
+T 1600468229 18<BtbN18>	*just
+T 1600468426 18<manfromafar18>	I would say magic blocks don't count
+T 1600468436 18<manfromafar18>	since every fs has that same limitation
+T 1600468455 18<TwistedFate18>	that sucks, why can't we have everything ZFS :(
+T 1600468462 18<manfromafar18>	TwistedFate for the most part ues
+T 1600468466 18<manfromafar18>	everything can be on zfs
+T 1600468503 18<DeHackEd18>	ZFS includes a lot of unused space for bootloaders. I think something like 3.6 MB in the general start of the disk/partition area. you just need to use it
+T 1600468559 18<TwistedFate18>	how does one make /boot on ZFS?
+T 1600468591 18<manfromafar18>	zpool create -o mountpoint=/boot boot /dev/sda
+T 1600468604 18<DeHackEd18>	the traditional name is bpool
+T 1600468637 18<manfromafar18>	for more indepth guide check ou the zfs wiki to isntall your preferred os
+T 1600471555 18<clever18>	BtbN: with mbr+legacy, grub goes in the unused space between sector 0 and partition 1
+T 1600471574 18<clever18>	BtbN: with gpt+legacy, you need to create a dedicated bios boot partition, it doesnt have a fs, it just holds raw x86 assembly
+T 1600471622 18<BtbN18>	I am well aware of that.
+T 1600471623 18<clever18>	DeHackEd: yep, http://www.giis.co.in/Zfs_ondiskformat.pdf page 14 shows a 3.5mb hole for bootloader stuff, i'm not sure if grub is aware of that or not
+T 1600471639 18<clever18>	that would let you squeeze it into the same partition as zfs
+T 1600471665 18<DeHackEd18>	I believe there's a small (16k?) gap at the start of the labels as well allowing for an MBR-style partition's boot sector
+T 1600471706 18<clever18>	DeHackEd: yeah, page 8, 8kb of "blank space" then 8kb of "boot header"
+T 1600471787 18<clever18>	that would easily let you put the zfs at offset 0 in the disk, then shove the MBR or GPT headers in the 16kb hole at the same offset 0
+T 1600471801 18<clever18>	and then grub's stage 1.5 into the 3.5mb hole later on
+T 1600471840 18<clever18>	so technically, zfs is occupying the entire disk, overlapping the gpt headers, and grub lives within zfs
+T 1600471928 18<BtbN18>	And then someone opens parted on the disk and it shreds whatever was on there
+T 1600471954 18<DeHackEd18>	EBUSY ?
+T 1600472012 18<BtbN18>	block devices don't give you ebusy when writing to them, do they?
+T 1600472014 18<clever18>	BtbN: the GPT headers would clearly say that zfs is occupying the entire range
+T 1600472027 18<BtbN18>	Not if you put it at sector 0 with no gpt or anything on the disk
+T 1600472073 18<clever18>	but zfs has a 16kb hole at the start of its layout, so you could put a gpt header in that hole
+T 1600472080 18<clever18>	and then both gpt and zfs start at sector 0
+T 1600472106 18<BtbN18>	That sounds sketchy
+T 1600472146 18<clever18>	let me pop up a vm and experiment a bit...
+T 1600472169 18<BtbN18>	I mean, it probably works. But I wouldn't trust this to not get accidentially damaged by random tools
+T 1600472177 18<BtbN18>	Not worth the extra 2MB of space
+T 1600472202 18<clever18>	i am also curious what zfs is doing, when you `zpool create tank /dev/sda`
+T 1600472205 18<clever18>	it might already do this?
+T 1600472213 18<BtbN18>	It created a bunch of partitions
+T 1600472215 18<BtbN18>	*s
+T 1600472234 18<clever18>	but is the zfs device at offset 0, or the offset of a partition?
+T 1600472321 18<clever18>	[root@amd-nixos:~]# hexdump -C -s $((1024*4)) -n $((1024*1)) /dev/nvme0n1p1
+T 1600472321 18<clever18>	00001000  80 05 be 4c 7b 73 c8 f3  54 71 91 08 1b e6 36 6b  |...L{s..Tq....6k|
+T 1600472344 18<clever18>	for my primary pool on the desktop, the data starts 4kb into the partition, with the first 4kb being solid nulls
+T 1600472514 18<clever18>	[root@amd-nixos:~]# hexdump -C -s $((1024*128)) -n $((1024*1)) /dev/nvme0n1p1
+T 1600472517 18<clever18>	00020000  0c b1 ba 00 00 00 00 00  88 13 00 00 00 00 00 00  |................|
+T 1600472549 18<clever18>	and i can see the magic number for an uberblock at offset +128kb into the partition, exactly where the pdf says it should be
+T 1600472571 18<clever18>	so my desktop isnt doing anything funny, because i made the partition normally first
+T 1600472691 18<DeHackEd18>	somehow I miss MBR/legacy booting...
+T 1600472734 18<BtbN18>	Not really, way to unflexible
+T 1600472747 18<BtbN18>	Being able to straight up reboot to firmware from the OS is amazing
+T 1600472978 18<clever18>	if the EFI firmware supports zfs, it could also efi boot from zfs
+T 1600472991 18<clever18>	apple for example added HFS+ support to the firmware, so /boot could be HFS+
+T 1600473670 18<ShellcatZero18>	Does anyone here have a favorite cloud backup service? I'm debating on AWS Glacier vs Wasabi at the moment, not sure how I'm going to handle zfs dataset uploads though, was probably going to tarball a snapshot & upload or something like that.
+T 1600473719 18<BtbN18>	Glacier is a trap, don't touch it
+T 1600473731 18<BtbN18>	No idea what Wasabi is. I just store my stuff on Backblaze
+T 1600473813 18<cirdan18>	ShellcatZero: rclone encrypted on unlimited google drive
+T 1600473927 18<clever18>	it helps if you dont leave debug statements in the kernel cmdline, heh, that wasted some 10mins
+T 1600473967 18<DeHackEd18>	this that systemd meme all over again?
+T 1600473992 18<clever18>	unrelated to systemd this time, i left a flag in my test script, that causes it to always fail before mounting the rootfs
+T 1600473994 18<cirdan18>	it's a meme?
+T 1600474000 18<clever18>	and then it offers to launch a shell, without saying whats wrong
+T 1600474002 18<ShellcatZero18>	cirdan: how do you get unlimited google drive space? It looks like it caps at 2TB
+T 1600474011 18<cirdan18>	business account
+T 1600474017 18<ShellcatZero18>	oh
+T 1600474024 18<clever18>	ShellcatZero: linux techtips did a video on it, each user in the business account gets their own cap
+T 1600474037 18<ShellcatZero18>	ah, hmm
+T 1600474042 18<cirdan18>	supposed to be 5 accounts in the domain for unlimited but google doesn't seem to enforce the 5 accounts
+T 1600474072 18<ShellcatZero18>	ah, ok
+T 1600474097 18<cirdan18>	so setup business account, start uploading encrypted data
+T 1600474114 18<ShellcatZero18>	You have to actually have a business though, right?
+T 1600474158 18<cirdan18>	no
+T 1600474168 18<cirdan18>	just a domain name i think
+T 1600474248 18<ShellcatZero18>	hmm, ok, do you have a link for the techtips video, clever?
+T 1600474262 18*	clever looks
+T 1600474298 18<cirdan18>	there's a daily upload limit, I think it's 750gb or 1tb/day
+T 1600474317 18<clever18>	ShellcatZero: https://www.youtube.com/watch?v=y2F0wjoKEhg
+T 1600474318 18<zfs-bot18>	[ I Hope Google Doesn’t Ban Us... - Abusing Unlimited Google Drive - YouTube ] - www.youtube.com
+T 1600474363 18<cirdan18>	https://www.reddit.com/r/DataHoarder/comments/8t7jpw/google_drive_unlimited_limits_and_speeds/
+T 1600474364 18<zfs-bot18>	[REDDIT] Google Drive Unlimited Limits and Speeds (self.DataHoarder) | 8 points (83.0%) | 18 comments | Posted by xoxorockoutloud123 | Created at 2018-06-23 - 04:28:44UTC
+T 1600474366 18<zfs-bot18>	[ Google Drive Unlimited Limits and Speeds : DataHoarder ] - www.reddit.com
+T 1600474392 18<ShellcatZero18>	sweet, thanks
+T 1600474403 18<cirdan18>	you can also get an enterprise account for $25 from someone who has enugh people that google gave him an enterprise account
+T 1600474538 18<clever18>	 -drive index=0,id=drive1,file=dummy_root.qcow2,cache=writeback,werror=report,if=virtio
+T 1600474543 18<clever18>	hmmm, that should have worked
+T 1600474714 18<ShellcatZero18>	Do you know such a person, cirdan? lol
+T 1600474999 18<ShellcatZero18>	BtbN: how do you like the B2 interface? Can you do everything without a GUI, or no?
+T 1600475002 18<manfromafar18>	just get an account for 12 bucks then add additional accounts as needed
+T 1600475008 18<manfromafar18>	each account has a 750gb limit
+T 1600475012 18<BtbN18>	hm?
+T 1600475027 18<ShellcatZero18>	BtbN: Backblaze
+T 1600475040 18<BtbN18>	I'm not sure what you're asking.
+T 1600475052 18<BtbN18>	12$ for 750G seems quite expensive
+T 1600475089 18<BtbN18>	1T on B2 is 5$
+T 1600475131 18<ShellcatZero18>	BtbN: I'm asking about flexibility performing storage and deletion ops on B2 and if there are any limitations you've found.  Looks like they offer CLI and/or GUI
+T 1600475165 18<BtbN18>	I'm only using them to store my backups, so not sure how to answer that. Never used any UI or CLI for it.
+T 1600475254 18<ShellcatZero18>	BtbN: how do you send your backups to B2 then?
+T 1600475265 18<BtbN18>	restic takes care of it.
+T 1600475362 18<ShellcatZero18>	ah, nice, and now I'm reading about restic
+T 1600475404 18<BtbN18>	It seems to be somewhat dead recently sadly
+T 1600475414 18<BtbN18>	So I probably wouldn't use it for a new deployment
+T 1600475429 18<BtbN18>	All my new setups are connected to my BackupPC instance
+T 1600475704 18<clever18>	NAME  MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
+T 1600475706 18<clever18>	vda   254:0    0    20G  0 disk
+T 1600475714 18<clever18>	ok, now i can begin actually testing, heh
+T 1600475724 18<clever18>	virtio_blk and virtio_pci where missing for other reasons
+T 1600475795 18<MilkmanDan18>	clever: Are you being sinful with freebsd again?
+T 1600475808 18<clever18>	MilkmanDan: nixos, using the linux kernel
+T 1600475819 18<ShellcatZero18>	Another popular backup option seems to be Tarsnap: https://www.tarsnap.com/index.html
+T 1600475820 18<zfs-bot18>	[ Tarsnap - Online backups for the truly paranoid ] - www.tarsnap.com
+T 1600475823 18<MilkmanDan18>	What is this vda sorcery?
+T 1600475834 18<DeHackEd18>	virtio disk
+T 1600475842 18<DeHackEd18>	wait'll you see what Xen does
+T 1600475875 18<MilkmanDan18>	Oh duh, I forgot you're doing all sorts of virtualized development too.
+T 1600475879 18<clever18>	qemu can also do virtio
+T 1600475922 18<DeHackEd18>	xen's has its own native virtualization driver aptly naming its disks xda
+T 1600475942 18<DeHackEd18>	of course I haven't used xen since ~2009 back when HVM performance tanked
+T 1600475982 18<clever18>	i used to use xen a lot, but something on nixos broke xen host hard
+T 1600475988 18<clever18>	xen host also breaks my GPU as well
+T 1600476004 18<clever18>	and GPU passthru is kinda useless, when you have to reboot the host every time the guest reboots
+T 1600476040 18<clever18>	Device        Start      End  Sectors Size Type
+T 1600476040 18<clever18>	/dev/vda1      2048 41924607 41922560  20G Solaris /usr & Apple ZFS
+T 1600476040 18<clever18>	/dev/vda9  41924608 41940991    16384   8M Solaris reserved 1
+T 1600476068 18<clever18>	ok, so zfs creates its own GPT headers, as i expected, and it claims the zfs begins 1mb into the disk
+T 1600476108 18<clever18>	[root@kexec:~]# hexdump -C -s $((1024*128)) -n 1024 /dev/vda1
+T 1600476108 18<clever18>	00020000  00 00 00 00 00 00 00 00  88 13 00 00 00 00 00 00  |................|
+T 1600476115 18<clever18>	but i dont see an uberblock at +128kb
+T 1600476247 18<clever18>	00021000  0c b1 ba 00 00 00 00 00  88 13 00 00 00 00 00 00  |................|
+T 1600476257 18<clever18>	ah, there it is
+T 1600476307 18<clever18>	DeHackEd: is it normal that zfs skipped the first uberblock, on a freshly created pool?
+T 1600476320 18<DeHackEd18>	dunno. I don't know that level of detail of ZFS internals
+T 1600476357 18<clever18>	either way, its definitely not putting the zfs at offset0 of the disk, its respecting the partitions it made for itself
+T 1600477665 18<skookum18>	I never seem to have luck with the --dry-run option, keep getting "cannot receive: failed to read from stream". But if I remove the --dry-run and go for it, no problem
+T 1600478662 18<skookum18>	nvm, i'm an idiot
+T 1600491011 18<Christ0pher18>	Anyone using native encryption? Is it worthwhile to encrypt the swap partition as well?
+T 1600493454 18<Lope18>	I've been suspending my host at night, while a KVM VM is running, and the VM gets messed up. The main reason I do this is to stop the HDD's from spinning overnight. This doesn't actually save me any power other than the HDD's because the Intel management engine pulls 50W regardless of whether the system if "off", idle, or suspended.
+T 1600493469 18<Lope18>	So I'm thinking to spindown the disks instead of suspend.
+T 1600493491 18<Lope18>	Will ZFS play ball with me spinning down the disks? or do I need to export the zpools?
+T 1600493512 18<Lope18>	(I don't have any scrubs scheduled to run overnight)
+T 1600493529 18<Lope18>	(Or anything else that would access the disks)
+T 1600493560 18<Lope18>	What I mean is, if I spin down the disks, will ZFS just spin them up again "for no reason" a few minutes later?
+T 1600493623 18<Lope18>	I think I've tried spinning down disks that ZFS was running on in the past. And just doing something trivial like opening a file manager, causes the disks to spin up, even though I don't open the mount directories of the ZFS datasets.
+T 1600493643 18<Lope18>	So the file manager is probably doing a simple `ls` or whatever.
+T 1600493659 18<jasonwc18>	No, but IIRC, when I tried doing the same, it resulted in read errors because the system thinks something is wrong when it takes many seconds to actually read from the disk
+T 1600493673 18<jasonwc18>	as in read IO errors
+T 1600493681 18<Lope18>	But let's say I close krusader and whatever might possibly run a `ls` spin down my disks, and let my PC idle the whole night, would the disks stay spun-down?
+T 1600493723 18<Lope18>	jasonwc, when you say "doing the same" do you mean spinning down disks?
+T 1600493745 18<Lope18>	jasonwc, so if I use hdparm to spin down disks, will ZFS be unaware of this?
+T 1600493763 18<jasonwc18>	Yes, I had the disks spin down after 15 minutes of inactivity. The disks generally stayed spun down but when I initiated a backup, ZFS reported read IO errors since the disks weren't ready
+T 1600493768 18<Lope18>	this suggests to me that I need to export the zpool for the night time.
+T 1600493790 18<Lope18>	export, spin down, then import again.
+T 1600493798 18<jasonwc18>	Yeah, I think exporting the pool would be better.  ZFS expects the disks to be responsive.
+T 1600493832 18<Lope18>	I actually hear at least one of my disks spinning up and down occasionally, but I've not bothered to check/set the power management on them.
+T 1600493852 18<jasonwc18>	Certainly, if you export the pool, nothing should wake the disks
+T 1600493892 18<Lope18>	interesting that ZFS gives IO errors if it has to wait a few seconds for the disks to spin up.
+T 1600493917 18<jasonwc18>	It's possible the behavior has changed, though I think this was with 0.8
+T 1600493931 18<Lope18>	I would imagine that if it notices that the disks take more than 50ms to respond or whatever, that if it is going to take any action at all, it should first check the spindle speed to see what's up...
+T 1600494002 18<Lope18>	does anyone here use ZFS on clearlinux? (not as the rootfs, just for other disks)
+T 1600494034 18<Lope18>	(I've not tried ZFS on clearlinux yet myself)
+T 1600494085 18<jasonwc18>	I just don't think it's that common.  Usually the recommendation is not to spin down the disks at all since doing so repetitively will shorten the drives' lifespan.  Moreover, with a raidz pool, you have to wake all the drivees anyhow, so it's not that beneficial.  I ended up keeping the drives spinning 24/7 and now use zrepl which replicates data from my main pool to my backup pool every 10 minutes to 1 hour depending on the importance of the dataset
+T 1600494109 18<jasonwc18>	If it's just an occasionally accessed backup pool on a USB drive or something, then you can just export the pool
+T 1600494149 18<jasonwc18>	In any case, test it out and see what happens.  But if you see IO errors, you'll know why.
+T 1600494185 18<jasonwc18>	Thankfully, disks have gotten more and more efficient with Helium enclosure and higher density
+T 1600494224 18<jasonwc18>	My backup pool uses 10TB WD white label disks and they only use 2.5-3W idle, so 0.25-0.3W/TB
+T 1600494244 18<jasonwc18>	In contrast my 4TB HGST 7200RPM disks use 7-8W
+T 1600494447 18<jasonwc18>	The 14TB WD disks have similar power consumption and are CMR
+T 1600496341 18<Lope18>	Fair enough. Regarding spinning down the disks, it's not true that "spinning them down causes more wear"... it depends on the context. Yes the drive can do a limited number of spin up/down cycles, but it also has a limited lifespan it can spin for. And also if you look at the number of spin up/down cycles it's rated for, basically if you spin up/down every 30 seconds then yes, it's going to fail within a few years. But if you only spin it down a few times
+T 1600496341 18<Lope18>	a day, it's got probably 15 years worth of spin up/down cycles to handle that.
+T 1600496402 18<Lope18>	So if you spin down/up once per day for 7 hours, the drive should last longer than if you leave it spinning 24/7
+T 1600496475 18<Lope18>	There's risks on both sides. Too long spinning, and risk of failure from spin up/down. Both are just probabilities, there's no guarantee either way. Whatever you do, there are risks, but as long as you're not spinning down in less than 3 hour intervals it's probably fine.
+T 1600508630 18<immae18>	Hey there! Last week, I had slightly bad performances during scrub, which was expected. However, at the end of it (approximately: I looked at zpool status a few minutes before and it was almost at 100%) the server became totally irresponsive. I had a root shell in which I was able to run a "zpool status" (but I never got the answer), and I was not able to ssh to it nor anything; I was forced to
+T 1600508632 18<immae18>	do a hard reboot. Is there anything I can do to try to avoid that happening again tomorrow?
+T 1600508719 18<ratrace18>	first you have to define what "that" is. what cause the symptoms you observed
+T 1600508782 18<immae18>	any way I could figure out that? I have no idea what happens at the end of a scrub
+T 1600508866 18<ratrace18>	immae: you can check the logs from previous boot session. journalctl -b -1 -n 100   will list last 100 entries if you have persistent journal
+T 1600508919 18<ratrace18>	100 here is just example, but probably a good start to see the circumstances around your hard reboot, if they're logged
+T 1600508951 18<immae18>	ratrace: it’s rotated now, but when I looked the journal didn’t have anything meaningful (regular cron jobs). Since the logs are stored on zfs I assume it didn’t manage to write important things at critical time
+T 1600509003 18<ratrace18>	if you don't have persistent journal, you'll have to find the beginning of current boot session, and look backwards from it, in /var/log/messages or wherever your syslog is storing them, if you have such setup. grep "Kernel command line:" will find the beginning of the boot in log files
+T 1600509022 18<ratrace18>	otherwise.... run dmesg -Tw in a terminal and repeat the scrub, see if the kernel is complaining about anything when that happens.
+T 1600509116 18<immae18>	ok I’ll try that
+T 1600509157 18<immae18>	(it takes ~10hours, and all logs are rotated from last week. I waited too long before handling the issue... :( )
+T 1600509202 18<immae18>	I’ll come back tomorrow with the results, thanks ratrace!
+T 1600536207 18<Setsuna-Xero18>	cirdan, they had to keep a legal/manufacturing arms-length till 2018 though
+T 1600536220 18<Setsuna-Xero18>	right around the time the WD Golds showed up
+T 1600536233 18<Setsuna-Xero18>	those were the first WD-hitachi intergrations
+T 1600536254 18<Setsuna-Xero18>	to appease the regulators
+T 1600591890 18<immae18>	ratrace: The scrub just finished and nothing happened this time... I’ll monitor again next week :(
+T 1600592174 18<ratrace18>	immae: it'd be wise to also monitor other server vitals. cpu, memory, disk iops, disk latency, interrupts, ....
+T 1600592228 18<immae18>	ratrace: I had a watch -n 5 "cat /proc/loadavg; echo ''; free -h; echo ''; zpool status" runnning, so load average (which is usually a good indicator of things going wrong during the scrub) and memory
+T 1600592283 18<immae18>	I tried to have the minimal burden so that I have a chance of getting information when things go south
+T 1600592368 18<ratrace18>	that's insufficient. perhaps open multiple terminals (tiling if possible so you can see all at once) and run iostat, vmstat, top, maybe iotop, a watch on /proc/interrupts, /proc/diskstats,   though the last two might need some quickly whipped up perl or pytohn to interpret properly real time.
+T 1600592402 18<ratrace18>	I mean if it takes hours to get to the state you want to test, it's prudent to come in with as many eyes as possible, or else it might take weeks to diagnose...
+T 1600592403 18<immae18>	Ok I’ll prepare that for next time
+T 1600592447 18<ratrace18>	if it takes *10 hours    I think that's what you said last time
+T 1600592454 18<immae18>	yes that’s it
+T 1600592468 18<immae18>	I paused it during the night because I wanted to be there when the crash happened
+T 1600592504 18<ratrace18>	it'd also help to use some server monitoring tools like munin (with 1 minute resolution). at least you can see trends in values changing over time of scrubbing which could give you additional hints, even if it doesn't itself catch the exact moment of hanging
+T 1600592527 18<immae18>	I do have a netdata running
+T 1600592531 18<ratrace18>	I use munin extensively so I recommend it, but it's possible there are better, maybe even real time tools
+T 1600592553 18<ratrace18>	immae: oh so you have graphs of all possible metrics and how they changed during scrub?
+T 1600592576 18<immae18>	I do (I added it this week) but I expect it to hang at the wrong time
+T 1600592593 18<immae18>	Also the scrub ended at 98% so I wasn’t ready to monitor
+T 1600592609 18<immae18>	(I expected to have ~20min before me)
+T 1600592668 18<immae18>	So yeah bad timings for this time
+T 1600592738 18<ratrace18>	well, turn on all the metrics you can, and observe the full scrub run. watching cpu, *stats, /proc/interrupts live in a (tiling) terminal alongside netdata collection is also good, so if it hangs you can see the exact state   (and don't forget dmesg -w)
+T 1600592749 18<ratrace18>	-Tw so you can see wallclock time
+T 1600592807 18<immae18>	All noted yes, thanks
+T 1600592818 18<immae18>	(that will be for next week, enough emotion for this weekend :p )
+T 1609963182 19*	Now talking on 22#zfsonlinux
+T 1609963182 22*	Topic for 22#zfsonlinux is: ZFS on Linux - http://zfsonlinux.org/ - Latest release: 0.8.4 / 2.0.0-rc1 - FAQ: https://github.com/zfsonlinux/zfs/wiki/faq - LiveCD: https://github.com/beren12/zfs-iso - Offtopic (non-computer stuff) should use #zfsonlinux-social - Paste using nopaste - Use -L when sending large blocks, see #6224
+T 1609963182 22*	Topic for 22#zfsonlinux set by 26ryao (24Tue Aug 25 18:46:19 2020)
+T 1609963182 22*	Channel 22#zfsonlinux url: 24http://zfsonlinux.org
+T 1609965118 18<Ninpo18>	root cause of my various issues lately was bad RAM module :|
+T 1609965231 18<lblume18>	Use ECC when possible, always test RAM if not.
+T 1609965689 18<Ninpo18>	indeed

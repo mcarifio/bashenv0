@@ -1,0 +1,503 @@
+T 1551363083 22*	Topic for 22#fedora-unregistered is: This is not a support Channel | You must register to join the fedora channels. See https://freenode.net/kb/answer/registration or /msg nickserv help register |  DO NOT click on spammed links | Depending on your client "/set irc_join_delay 10" to delay joining 10 seconds.
+T 1551363083 22*	Topic for 22#fedora-unregistered set by 26Southern_Gentlem!~notfred@fedora/Southern-Gentleman (24Thu Aug 16 08:44:51 2018)
+T 1551363083 -18ChanServ-	[#fedora-unregistered] You have been redirected to the #fedora-unregistered because you are not registered with freenode. See http://freenode.net/faq.shtml#nicksetup for information on how to do this.
+T 1551365216 20*	Disconnected (20Connection timed out)
+T 1551365243 19*	Now talking on 22#fedora-unregistered
+T 1551365243 22*	Topic for 22#fedora-unregistered is: This is not a support Channel | You must register to join the fedora channels. See https://freenode.net/kb/answer/registration or /msg nickserv help register |  DO NOT click on spammed links | Depending on your client "/set irc_join_delay 10" to delay joining 10 seconds.
+T 1551365243 22*	Topic for 22#fedora-unregistered set by 26Southern_Gentlem!~notfred@fedora/Southern-Gentleman (24Thu Aug 16 08:44:51 2018)
+T 1551365243 -18ChanServ-	[#fedora-unregistered] You have been redirected to the #fedora-unregistered because you are not registered with freenode. See http://freenode.net/faq.shtml#nicksetup for information on how to do this.
+T 1551367819 20*	Disconnected (20Connection timed out)
+T 1551367844 19*	Now talking on 22#fedora-unregistered
+T 1551367844 22*	Topic for 22#fedora-unregistered is: This is not a support Channel | You must register to join the fedora channels. See https://freenode.net/kb/answer/registration or /msg nickserv help register |  DO NOT click on spammed links | Depending on your client "/set irc_join_delay 10" to delay joining 10 seconds.
+T 1551367844 22*	Topic for 22#fedora-unregistered set by 26Southern_Gentlem!~notfred@fedora/Southern-Gentleman (24Thu Aug 16 08:44:51 2018)
+T 1551367844 -18ChanServ-	[#fedora-unregistered] You have been redirected to the #fedora-unregistered because you are not registered with freenode. See http://freenode.net/faq.shtml#nicksetup for information on how to do this.
+T 1551369978 20*	Disconnected (20Connection timed out)
+T 1551370001 19*	Now talking on 22#fedora-unregistered
+T 1551370001 22*	Topic for 22#fedora-unregistered is: This is not a support Channel | You must register to join the fedora channels. See https://freenode.net/kb/answer/registration or /msg nickserv help register |  DO NOT click on spammed links | Depending on your client "/set irc_join_delay 10" to delay joining 10 seconds.
+T 1551370001 22*	Topic for 22#fedora-unregistered set by 26Southern_Gentlem!~notfred@fedora/Southern-Gentleman (24Thu Aug 16 08:44:51 2018)
+T 1551370002 -18ChanServ-	[#fedora-unregistered] You have been redirected to the #fedora-unregistered because you are not registered with freenode. See http://freenode.net/faq.shtml#nicksetup for information on how to do this.
+T 1551372696 20*	Disconnected (20Connection timed out)
+T 1551372720 19*	Now talking on 22#fedora-unregistered
+T 1551372720 22*	Topic for 22#fedora-unregistered is: This is not a support Channel | You must register to join the fedora channels. See https://freenode.net/kb/answer/registration or /msg nickserv help register |  DO NOT click on spammed links | Depending on your client "/set irc_join_delay 10" to delay joining 10 seconds.
+T 1551372720 22*	Topic for 22#fedora-unregistered set by 26Southern_Gentlem!~notfred@fedora/Southern-Gentleman (24Thu Aug 16 08:44:51 2018)
+T 1551372720 -18ChanServ-	[#fedora-unregistered] You have been redirected to the #fedora-unregistered because you are not registered with freenode. See http://freenode.net/faq.shtml#nicksetup for information on how to do this.
+T 1551374737 20*	Disconnected (20Connection timed out)
+T 1551374764 19*	Now talking on 22#fedora-unregistered
+T 1551374764 22*	Topic for 22#fedora-unregistered is: This is not a support Channel | You must register to join the fedora channels. See https://freenode.net/kb/answer/registration or /msg nickserv help register |  DO NOT click on spammed links | Depending on your client "/set irc_join_delay 10" to delay joining 10 seconds.
+T 1551374764 22*	Topic for 22#fedora-unregistered set by 26Southern_Gentlem!~notfred@fedora/Southern-Gentleman (24Thu Aug 16 08:44:51 2018)
+T 1551374765 -18ChanServ-	[#fedora-unregistered] You have been redirected to the #fedora-unregistered because you are not registered with freenode. See http://freenode.net/faq.shtml#nicksetup for information on how to do this.
+T 1551376470 20*	Disconnected (20Invalid argument)
+T 1551376748 20*	Disconnected (20Remote host closed socket)
+T 1551376774 19*	Now talking on 22#fedora-unregistered
+T 1551376774 22*	Topic for 22#fedora-unregistered is: This is not a support Channel | You must register to join the fedora channels. See https://freenode.net/kb/answer/registration or /msg nickserv help register |  DO NOT click on spammed links | Depending on your client "/set irc_join_delay 10" to delay joining 10 seconds.
+T 1551376774 22*	Topic for 22#fedora-unregistered set by 26Southern_Gentlem!~notfred@fedora/Southern-Gentleman (24Thu Aug 16 08:44:51 2018)
+T 1551376774 -18ChanServ-	[#fedora-unregistered] You have been redirected to the #fedora-unregistered because you are not registered with freenode. See http://freenode.net/faq.shtml#nicksetup for information on how to do this.
+T 1551378414 20*	Disconnected (20Connection timed out)
+T 1551378437 19*	Now talking on 22#fedora-unregistered
+T 1551378437 22*	Topic for 22#fedora-unregistered is: This is not a support Channel | You must register to join the fedora channels. See https://freenode.net/kb/answer/registration or /msg nickserv help register |  DO NOT click on spammed links | Depending on your client "/set irc_join_delay 10" to delay joining 10 seconds.
+T 1551378437 22*	Topic for 22#fedora-unregistered set by 26Southern_Gentlem!~notfred@fedora/Southern-Gentleman (24Thu Aug 16 08:44:51 2018)
+T 1551378437 -18ChanServ-	[#fedora-unregistered] You have been redirected to the #fedora-unregistered because you are not registered with freenode. See http://freenode.net/faq.shtml#nicksetup for information on how to do this.
+T 1551379812 20*	Disconnected (20Connection timed out)
+T 1551379839 19*	Now talking on 22#fedora-unregistered
+T 1551379839 22*	Topic for 22#fedora-unregistered is: This is not a support Channel | You must register to join the fedora channels. See https://freenode.net/kb/answer/registration or /msg nickserv help register |  DO NOT click on spammed links | Depending on your client "/set irc_join_delay 10" to delay joining 10 seconds.
+T 1551379839 22*	Topic for 22#fedora-unregistered set by 26Southern_Gentlem!~notfred@fedora/Southern-Gentleman (24Thu Aug 16 08:44:51 2018)
+T 1551379839 -18ChanServ-	[#fedora-unregistered] You have been redirected to the #fedora-unregistered because you are not registered with freenode. See http://freenode.net/faq.shtml#nicksetup for information on how to do this.
+T 1551380869 20*	Disconnected (20Invalid argument)
+T 1551380895 19*	Now talking on 22#fedora-unregistered
+T 1551380895 22*	Topic for 22#fedora-unregistered is: This is not a support Channel | You must register to join the fedora channels. See https://freenode.net/kb/answer/registration or /msg nickserv help register |  DO NOT click on spammed links | Depending on your client "/set irc_join_delay 10" to delay joining 10 seconds.
+T 1551380895 22*	Topic for 22#fedora-unregistered set by 26Southern_Gentlem!~notfred@fedora/Southern-Gentleman (24Thu Aug 16 08:44:51 2018)
+T 1551380895 -18ChanServ-	[#fedora-unregistered] You have been redirected to the #fedora-unregistered because you are not registered with freenode. See http://freenode.net/faq.shtml#nicksetup for information on how to do this.
+T 1551383081 20*	Disconnected (20Connection timed out)
+T 1551383103 19*	Now talking on 22#fedora-unregistered
+T 1551383103 22*	Topic for 22#fedora-unregistered is: This is not a support Channel | You must register to join the fedora channels. See https://freenode.net/kb/answer/registration or /msg nickserv help register |  DO NOT click on spammed links | Depending on your client "/set irc_join_delay 10" to delay joining 10 seconds.
+T 1551383103 22*	Topic for 22#fedora-unregistered set by 26Southern_Gentlem!~notfred@fedora/Southern-Gentleman (24Thu Aug 16 08:44:51 2018)
+T 1551383103 -18ChanServ-	[#fedora-unregistered] You have been redirected to the #fedora-unregistered because you are not registered with freenode. See http://freenode.net/faq.shtml#nicksetup for information on how to do this.
+T 1551384080 20*	Disconnected (20Invalid argument)
+T 1551384104 19*	Now talking on 22#fedora-unregistered
+T 1551384104 22*	Topic for 22#fedora-unregistered is: This is not a support Channel | You must register to join the fedora channels. See https://freenode.net/kb/answer/registration or /msg nickserv help register |  DO NOT click on spammed links | Depending on your client "/set irc_join_delay 10" to delay joining 10 seconds.
+T 1551384104 22*	Topic for 22#fedora-unregistered set by 26Southern_Gentlem!~notfred@fedora/Southern-Gentleman (24Thu Aug 16 08:44:51 2018)
+T 1551384104 -18ChanServ-	[#fedora-unregistered] You have been redirected to the #fedora-unregistered because you are not registered with freenode. See http://freenode.net/faq.shtml#nicksetup for information on how to do this.
+T 1551385823 20*	Disconnected (20Invalid argument)
+T 1551385848 19*	Now talking on 22#fedora-unregistered
+T 1551385848 22*	Topic for 22#fedora-unregistered is: This is not a support Channel | You must register to join the fedora channels. See https://freenode.net/kb/answer/registration or /msg nickserv help register |  DO NOT click on spammed links | Depending on your client "/set irc_join_delay 10" to delay joining 10 seconds.
+T 1551385848 22*	Topic for 22#fedora-unregistered set by 26Southern_Gentlem!~notfred@fedora/Southern-Gentleman (24Thu Aug 16 08:44:51 2018)
+T 1551385848 -18ChanServ-	[#fedora-unregistered] You have been redirected to the #fedora-unregistered because you are not registered with freenode. See http://freenode.net/faq.shtml#nicksetup for information on how to do this.
+T 1551387044 20*	Disconnected (20Invalid argument)
+T 1551387069 19*	Now talking on 22#fedora-unregistered
+T 1551387069 22*	Topic for 22#fedora-unregistered is: This is not a support Channel | You must register to join the fedora channels. See https://freenode.net/kb/answer/registration or /msg nickserv help register |  DO NOT click on spammed links | Depending on your client "/set irc_join_delay 10" to delay joining 10 seconds.
+T 1551387069 22*	Topic for 22#fedora-unregistered set by 26Southern_Gentlem!~notfred@fedora/Southern-Gentleman (24Thu Aug 16 08:44:51 2018)
+T 1551387069 -18ChanServ-	[#fedora-unregistered] You have been redirected to the #fedora-unregistered because you are not registered with freenode. See http://freenode.net/faq.shtml#nicksetup for information on how to do this.
+T 1551388123 20*	Disconnected (20Connection timed out)
+T 1551388149 19*	Now talking on 22#fedora-unregistered
+T 1551388149 22*	Topic for 22#fedora-unregistered is: This is not a support Channel | You must register to join the fedora channels. See https://freenode.net/kb/answer/registration or /msg nickserv help register |  DO NOT click on spammed links | Depending on your client "/set irc_join_delay 10" to delay joining 10 seconds.
+T 1551388149 22*	Topic for 22#fedora-unregistered set by 26Southern_Gentlem!~notfred@fedora/Southern-Gentleman (24Thu Aug 16 08:44:51 2018)
+T 1551388149 -18ChanServ-	[#fedora-unregistered] You have been redirected to the #fedora-unregistered because you are not registered with freenode. See http://freenode.net/faq.shtml#nicksetup for information on how to do this.
+T 1551389506 20*	Disconnected (20Connection timed out)
+T 1551389529 19*	Now talking on 22#fedora-unregistered
+T 1551389529 22*	Topic for 22#fedora-unregistered is: This is not a support Channel | You must register to join the fedora channels. See https://freenode.net/kb/answer/registration or /msg nickserv help register |  DO NOT click on spammed links | Depending on your client "/set irc_join_delay 10" to delay joining 10 seconds.
+T 1551389529 22*	Topic for 22#fedora-unregistered set by 26Southern_Gentlem!~notfred@fedora/Southern-Gentleman (24Thu Aug 16 08:44:51 2018)
+T 1551389529 -18ChanServ-	[#fedora-unregistered] You have been redirected to the #fedora-unregistered because you are not registered with freenode. See http://freenode.net/faq.shtml#nicksetup for information on how to do this.
+T 1551392180 20*	Disconnected (20Connection timed out)
+T 1551392202 19*	Now talking on 22#fedora-unregistered
+T 1551392202 22*	Topic for 22#fedora-unregistered is: This is not a support Channel | You must register to join the fedora channels. See https://freenode.net/kb/answer/registration or /msg nickserv help register |  DO NOT click on spammed links | Depending on your client "/set irc_join_delay 10" to delay joining 10 seconds.
+T 1551392202 22*	Topic for 22#fedora-unregistered set by 26Southern_Gentlem!~notfred@fedora/Southern-Gentleman (24Thu Aug 16 08:44:51 2018)
+T 1551392202 -18ChanServ-	[#fedora-unregistered] You have been redirected to the #fedora-unregistered because you are not registered with freenode. See http://freenode.net/faq.shtml#nicksetup for information on how to do this.
+T 1551393968 20*	Disconnected (20Connection timed out)
+T 1551393992 19*	Now talking on 22#fedora-unregistered
+T 1551393992 22*	Topic for 22#fedora-unregistered is: This is not a support Channel | You must register to join the fedora channels. See https://freenode.net/kb/answer/registration or /msg nickserv help register |  DO NOT click on spammed links | Depending on your client "/set irc_join_delay 10" to delay joining 10 seconds.
+T 1551393992 22*	Topic for 22#fedora-unregistered set by 26Southern_Gentlem!~notfred@fedora/Southern-Gentleman (24Thu Aug 16 08:44:51 2018)
+T 1551393992 -18ChanServ-	[#fedora-unregistered] You have been redirected to the #fedora-unregistered because you are not registered with freenode. See http://freenode.net/faq.shtml#nicksetup for information on how to do this.
+T 1551396493 20*	Disconnected (20Connection timed out)
+T 1551396518 19*	Now talking on 22#fedora-unregistered
+T 1551396518 22*	Topic for 22#fedora-unregistered is: This is not a support Channel | You must register to join the fedora channels. See https://freenode.net/kb/answer/registration or /msg nickserv help register |  DO NOT click on spammed links | Depending on your client "/set irc_join_delay 10" to delay joining 10 seconds.
+T 1551396518 22*	Topic for 22#fedora-unregistered set by 26Southern_Gentlem!~notfred@fedora/Southern-Gentleman (24Thu Aug 16 08:44:51 2018)
+T 1551396518 -18ChanServ-	[#fedora-unregistered] You have been redirected to the #fedora-unregistered because you are not registered with freenode. See http://freenode.net/faq.shtml#nicksetup for information on how to do this.
+T 1551398507 20*	Disconnected (20Connection timed out)
+T 1551398532 19*	Now talking on 22#fedora-unregistered
+T 1551398532 22*	Topic for 22#fedora-unregistered is: This is not a support Channel | You must register to join the fedora channels. See https://freenode.net/kb/answer/registration or /msg nickserv help register |  DO NOT click on spammed links | Depending on your client "/set irc_join_delay 10" to delay joining 10 seconds.
+T 1551398532 22*	Topic for 22#fedora-unregistered set by 26Southern_Gentlem!~notfred@fedora/Southern-Gentleman (24Thu Aug 16 08:44:51 2018)
+T 1551398532 -18ChanServ-	[#fedora-unregistered] You have been redirected to the #fedora-unregistered because you are not registered with freenode. See http://freenode.net/faq.shtml#nicksetup for information on how to do this.
+T 1551401316 20*	Disconnected (20Connection timed out)
+T 1551401343 19*	Now talking on 22#fedora-unregistered
+T 1551401343 22*	Topic for 22#fedora-unregistered is: This is not a support Channel | You must register to join the fedora channels. See https://freenode.net/kb/answer/registration or /msg nickserv help register |  DO NOT click on spammed links | Depending on your client "/set irc_join_delay 10" to delay joining 10 seconds.
+T 1551401343 22*	Topic for 22#fedora-unregistered set by 26Southern_Gentlem!~notfred@fedora/Southern-Gentleman (24Thu Aug 16 08:44:51 2018)
+T 1551401343 -18ChanServ-	[#fedora-unregistered] You have been redirected to the #fedora-unregistered because you are not registered with freenode. See http://freenode.net/faq.shtml#nicksetup for information on how to do this.
+T 1551402646 20*	Disconnected (20Connection timed out)
+T 1551402671 19*	Now talking on 22#fedora-unregistered
+T 1551402671 22*	Topic for 22#fedora-unregistered is: This is not a support Channel | You must register to join the fedora channels. See https://freenode.net/kb/answer/registration or /msg nickserv help register |  DO NOT click on spammed links | Depending on your client "/set irc_join_delay 10" to delay joining 10 seconds.
+T 1551402671 22*	Topic for 22#fedora-unregistered set by 26Southern_Gentlem!~notfred@fedora/Southern-Gentleman (24Thu Aug 16 08:44:51 2018)
+T 1551402671 -18ChanServ-	[#fedora-unregistered] You have been redirected to the #fedora-unregistered because you are not registered with freenode. See http://freenode.net/faq.shtml#nicksetup for information on how to do this.
+T 1551404108 20*	Disconnected (20Connection timed out)
+T 1551404135 19*	Now talking on 22#fedora-unregistered
+T 1551404135 22*	Topic for 22#fedora-unregistered is: This is not a support Channel | You must register to join the fedora channels. See https://freenode.net/kb/answer/registration or /msg nickserv help register |  DO NOT click on spammed links | Depending on your client "/set irc_join_delay 10" to delay joining 10 seconds.
+T 1551404135 22*	Topic for 22#fedora-unregistered set by 26Southern_Gentlem!~notfred@fedora/Southern-Gentleman (24Thu Aug 16 08:44:51 2018)
+T 1551404135 -18ChanServ-	[#fedora-unregistered] You have been redirected to the #fedora-unregistered because you are not registered with freenode. See http://freenode.net/faq.shtml#nicksetup for information on how to do this.
+T 1551405589 20*	Disconnected (20Connection timed out)
+T 1551405612 19*	Now talking on 22#fedora-unregistered
+T 1551405612 22*	Topic for 22#fedora-unregistered is: This is not a support Channel | You must register to join the fedora channels. See https://freenode.net/kb/answer/registration or /msg nickserv help register |  DO NOT click on spammed links | Depending on your client "/set irc_join_delay 10" to delay joining 10 seconds.
+T 1551405612 22*	Topic for 22#fedora-unregistered set by 26Southern_Gentlem!~notfred@fedora/Southern-Gentleman (24Thu Aug 16 08:44:51 2018)
+T 1551405613 -18ChanServ-	[#fedora-unregistered] You have been redirected to the #fedora-unregistered because you are not registered with freenode. See http://freenode.net/faq.shtml#nicksetup for information on how to do this.
+T 1551408855 20*	Disconnected (20Connection timed out)
+T 1551408881 19*	Now talking on 22#fedora-unregistered
+T 1551408881 22*	Topic for 22#fedora-unregistered is: This is not a support Channel | You must register to join the fedora channels. See https://freenode.net/kb/answer/registration or /msg nickserv help register |  DO NOT click on spammed links | Depending on your client "/set irc_join_delay 10" to delay joining 10 seconds.
+T 1551408881 22*	Topic for 22#fedora-unregistered set by 26Southern_Gentlem!~notfred@fedora/Southern-Gentleman (24Thu Aug 16 08:44:51 2018)
+T 1551408882 -18ChanServ-	[#fedora-unregistered] You have been redirected to the #fedora-unregistered because you are not registered with freenode. See http://freenode.net/faq.shtml#nicksetup for information on how to do this.
+T 1551411403 20*	Disconnected (20Connection timed out)
+T 1551411430 19*	Now talking on 22#fedora-unregistered
+T 1551411430 22*	Topic for 22#fedora-unregistered is: This is not a support Channel | You must register to join the fedora channels. See https://freenode.net/kb/answer/registration or /msg nickserv help register |  DO NOT click on spammed links | Depending on your client "/set irc_join_delay 10" to delay joining 10 seconds.
+T 1551411430 22*	Topic for 22#fedora-unregistered set by 26Southern_Gentlem!~notfred@fedora/Southern-Gentleman (24Thu Aug 16 08:44:51 2018)
+T 1551411430 -18ChanServ-	[#fedora-unregistered] You have been redirected to the #fedora-unregistered because you are not registered with freenode. See http://freenode.net/faq.shtml#nicksetup for information on how to do this.
+T 1551413627 20*	Disconnected (20Connection timed out)
+T 1551413650 19*	Now talking on 22#fedora-unregistered
+T 1551413650 22*	Topic for 22#fedora-unregistered is: This is not a support Channel | You must register to join the fedora channels. See https://freenode.net/kb/answer/registration or /msg nickserv help register |  DO NOT click on spammed links | Depending on your client "/set irc_join_delay 10" to delay joining 10 seconds.
+T 1551413650 22*	Topic for 22#fedora-unregistered set by 26Southern_Gentlem!~notfred@fedora/Southern-Gentleman (24Thu Aug 16 08:44:51 2018)
+T 1551413650 -18ChanServ-	[#fedora-unregistered] You have been redirected to the #fedora-unregistered because you are not registered with freenode. See http://freenode.net/faq.shtml#nicksetup for information on how to do this.
+T 1551414671 20*	Disconnected (20Connection timed out)
+T 1551414695 19*	Now talking on 22#fedora-unregistered
+T 1551414695 22*	Topic for 22#fedora-unregistered is: This is not a support Channel | You must register to join the fedora channels. See https://freenode.net/kb/answer/registration or /msg nickserv help register |  DO NOT click on spammed links | Depending on your client "/set irc_join_delay 10" to delay joining 10 seconds.
+T 1551414695 22*	Topic for 22#fedora-unregistered set by 26Southern_Gentlem!~notfred@fedora/Southern-Gentleman (24Thu Aug 16 08:44:51 2018)
+T 1551414695 -18ChanServ-	[#fedora-unregistered] You have been redirected to the #fedora-unregistered because you are not registered with freenode. See http://freenode.net/faq.shtml#nicksetup for information on how to do this.
+T 1551417504 20*	Disconnected (20Connection timed out)
+T 1551417530 19*	Now talking on 22#fedora-unregistered
+T 1551417530 22*	Topic for 22#fedora-unregistered is: This is not a support Channel | You must register to join the fedora channels. See https://freenode.net/kb/answer/registration or /msg nickserv help register |  DO NOT click on spammed links | Depending on your client "/set irc_join_delay 10" to delay joining 10 seconds.
+T 1551417530 22*	Topic for 22#fedora-unregistered set by 26Southern_Gentlem!~notfred@fedora/Southern-Gentleman (24Thu Aug 16 08:44:51 2018)
+T 1551417531 -18ChanServ-	[#fedora-unregistered] You have been redirected to the #fedora-unregistered because you are not registered with freenode. See http://freenode.net/faq.shtml#nicksetup for information on how to do this.
+T 1551420496 20*	Disconnected (20Connection timed out)
+T 1551420521 19*	Now talking on 22#fedora-unregistered
+T 1551420521 22*	Topic for 22#fedora-unregistered is: This is not a support Channel | You must register to join the fedora channels. See https://freenode.net/kb/answer/registration or /msg nickserv help register |  DO NOT click on spammed links | Depending on your client "/set irc_join_delay 10" to delay joining 10 seconds.
+T 1551420521 22*	Topic for 22#fedora-unregistered set by 26Southern_Gentlem!~notfred@fedora/Southern-Gentleman (24Thu Aug 16 08:44:51 2018)
+T 1551420521 -18ChanServ-	[#fedora-unregistered] You have been redirected to the #fedora-unregistered because you are not registered with freenode. See http://freenode.net/faq.shtml#nicksetup for information on how to do this.
+T 1551422634 20*	Disconnected (20Connection timed out)
+T 1551424172 20*	Disconnected (20Connection timed out)
+T 1551425722 20*	Disconnected (20Connection timed out)
+T 1551427191 20*	Disconnected (20Invalid argument)
+T 1551427213 19*	Now talking on 22#fedora-unregistered
+T 1551427213 22*	Topic for 22#fedora-unregistered is: This is not a support Channel | You must register to join the fedora channels. See https://freenode.net/kb/answer/registration or /msg nickserv help register |  DO NOT click on spammed links | Depending on your client "/set irc_join_delay 10" to delay joining 10 seconds.
+T 1551427213 22*	Topic for 22#fedora-unregistered set by 26Southern_Gentlem!~notfred@fedora/Southern-Gentleman (24Thu Aug 16 08:44:51 2018)
+T 1551427213 -18ChanServ-	[#fedora-unregistered] You have been redirected to the #fedora-unregistered because you are not registered with freenode. See http://freenode.net/faq.shtml#nicksetup for information on how to do this.
+T 1551429861 20*	Disconnected (20Connection timed out)
+T 1551429888 19*	Now talking on 22#fedora-unregistered
+T 1551429888 22*	Topic for 22#fedora-unregistered is: This is not a support Channel | You must register to join the fedora channels. See https://freenode.net/kb/answer/registration or /msg nickserv help register |  DO NOT click on spammed links | Depending on your client "/set irc_join_delay 10" to delay joining 10 seconds.
+T 1551429888 22*	Topic for 22#fedora-unregistered set by 26Southern_Gentlem!~notfred@fedora/Southern-Gentleman (24Thu Aug 16 08:44:51 2018)
+T 1551429888 -18ChanServ-	[#fedora-unregistered] You have been redirected to the #fedora-unregistered because you are not registered with freenode. See http://freenode.net/faq.shtml#nicksetup for information on how to do this.
+T 1551431741 20*	Disconnected (20Connection timed out)
+T 1551431767 19*	Now talking on 22#fedora-unregistered
+T 1551431767 22*	Topic for 22#fedora-unregistered is: This is not a support Channel | You must register to join the fedora channels. See https://freenode.net/kb/answer/registration or /msg nickserv help register |  DO NOT click on spammed links | Depending on your client "/set irc_join_delay 10" to delay joining 10 seconds.
+T 1551431767 22*	Topic for 22#fedora-unregistered set by 26Southern_Gentlem!~notfred@fedora/Southern-Gentleman (24Thu Aug 16 08:44:51 2018)
+T 1551431767 -18ChanServ-	[#fedora-unregistered] You have been redirected to the #fedora-unregistered because you are not registered with freenode. See http://freenode.net/faq.shtml#nicksetup for information on how to do this.
+T 1551433392 20*	Disconnected (20Connection timed out)
+T 1551433414 19*	Now talking on 22#fedora-unregistered
+T 1551433414 22*	Topic for 22#fedora-unregistered is: This is not a support Channel | You must register to join the fedora channels. See https://freenode.net/kb/answer/registration or /msg nickserv help register |  DO NOT click on spammed links | Depending on your client "/set irc_join_delay 10" to delay joining 10 seconds.
+T 1551433414 22*	Topic for 22#fedora-unregistered set by 26Southern_Gentlem!~notfred@fedora/Southern-Gentleman (24Thu Aug 16 08:44:51 2018)
+T 1551433414 -18ChanServ-	[#fedora-unregistered] You have been redirected to the #fedora-unregistered because you are not registered with freenode. See http://freenode.net/faq.shtml#nicksetup for information on how to do this.
+T 1551434038 20*	Disconnected (20Connection reset by peer)
+T 1551434064 19*	Now talking on 22#fedora-unregistered
+T 1551434064 22*	Topic for 22#fedora-unregistered is: This is not a support Channel | You must register to join the fedora channels. See https://freenode.net/kb/answer/registration or /msg nickserv help register |  DO NOT click on spammed links | Depending on your client "/set irc_join_delay 10" to delay joining 10 seconds.
+T 1551434064 22*	Topic for 22#fedora-unregistered set by 26Southern_Gentlem!~notfred@fedora/Southern-Gentleman (24Thu Aug 16 08:44:51 2018)
+T 1551434064 -18ChanServ-	[#fedora-unregistered] You have been redirected to the #fedora-unregistered because you are not registered with freenode. See http://freenode.net/faq.shtml#nicksetup for information on how to do this.
+T 1551436687 20*	Disconnected (20Connection timed out)
+T 1551436713 19*	Now talking on 22#fedora-unregistered
+T 1551436713 22*	Topic for 22#fedora-unregistered is: This is not a support Channel | You must register to join the fedora channels. See https://freenode.net/kb/answer/registration or /msg nickserv help register |  DO NOT click on spammed links | Depending on your client "/set irc_join_delay 10" to delay joining 10 seconds.
+T 1551436713 22*	Topic for 22#fedora-unregistered set by 26Southern_Gentlem!~notfred@fedora/Southern-Gentleman (24Thu Aug 16 08:44:51 2018)
+T 1551436713 -18ChanServ-	[#fedora-unregistered] You have been redirected to the #fedora-unregistered because you are not registered with freenode. See http://freenode.net/faq.shtml#nicksetup for information on how to do this.
+T 1551438139 20*	Disconnected (20Connection timed out)
+T 1551438162 19*	Now talking on 22#fedora-unregistered
+T 1551438162 22*	Topic for 22#fedora-unregistered is: This is not a support Channel | You must register to join the fedora channels. See https://freenode.net/kb/answer/registration or /msg nickserv help register |  DO NOT click on spammed links | Depending on your client "/set irc_join_delay 10" to delay joining 10 seconds.
+T 1551438162 22*	Topic for 22#fedora-unregistered set by 26Southern_Gentlem!~notfred@fedora/Southern-Gentleman (24Thu Aug 16 08:44:51 2018)
+T 1551438162 -18ChanServ-	[#fedora-unregistered] You have been redirected to the #fedora-unregistered because you are not registered with freenode. See http://freenode.net/faq.shtml#nicksetup for information on how to do this.
+T 1551439241 20*	Disconnected (20Invalid argument)
+T 1551439264 19*	Now talking on 22#fedora-unregistered
+T 1551439264 22*	Topic for 22#fedora-unregistered is: This is not a support Channel | You must register to join the fedora channels. See https://freenode.net/kb/answer/registration or /msg nickserv help register |  DO NOT click on spammed links | Depending on your client "/set irc_join_delay 10" to delay joining 10 seconds.
+T 1551439264 22*	Topic for 22#fedora-unregistered set by 26Southern_Gentlem!~notfred@fedora/Southern-Gentleman (24Thu Aug 16 08:44:51 2018)
+T 1551439264 -18ChanServ-	[#fedora-unregistered] You have been redirected to the #fedora-unregistered because you are not registered with freenode. See http://freenode.net/faq.shtml#nicksetup for information on how to do this.
+T 1551441834 20*	Disconnected (20Connection timed out)
+T 1551441859 19*	Now talking on 22#fedora-unregistered
+T 1551441859 22*	Topic for 22#fedora-unregistered is: This is not a support Channel | You must register to join the fedora channels. See https://freenode.net/kb/answer/registration or /msg nickserv help register |  DO NOT click on spammed links | Depending on your client "/set irc_join_delay 10" to delay joining 10 seconds.
+T 1551441859 22*	Topic for 22#fedora-unregistered set by 26Southern_Gentlem!~notfred@fedora/Southern-Gentleman (24Thu Aug 16 08:44:51 2018)
+T 1551441859 -18ChanServ-	[#fedora-unregistered] You have been redirected to the #fedora-unregistered because you are not registered with freenode. See http://freenode.net/faq.shtml#nicksetup for information on how to do this.
+T 1551444079 20*	Disconnected (20Invalid argument)
+T 1551444101 19*	Now talking on 22#fedora-unregistered
+T 1551444101 22*	Topic for 22#fedora-unregistered is: This is not a support Channel | You must register to join the fedora channels. See https://freenode.net/kb/answer/registration or /msg nickserv help register |  DO NOT click on spammed links | Depending on your client "/set irc_join_delay 10" to delay joining 10 seconds.
+T 1551444101 22*	Topic for 22#fedora-unregistered set by 26Southern_Gentlem!~notfred@fedora/Southern-Gentleman (24Thu Aug 16 08:44:51 2018)
+T 1551444101 -18ChanServ-	[#fedora-unregistered] You have been redirected to the #fedora-unregistered because you are not registered with freenode. See http://freenode.net/faq.shtml#nicksetup for information on how to do this.
+T 1551446467 20*	Disconnected (20Connection timed out)
+T 1551446493 19*	Now talking on 22#fedora-unregistered
+T 1551446493 22*	Topic for 22#fedora-unregistered is: This is not a support Channel | You must register to join the fedora channels. See https://freenode.net/kb/answer/registration or /msg nickserv help register |  DO NOT click on spammed links | Depending on your client "/set irc_join_delay 10" to delay joining 10 seconds.
+T 1551446493 22*	Topic for 22#fedora-unregistered set by 26Southern_Gentlem!~notfred@fedora/Southern-Gentleman (24Thu Aug 16 08:44:51 2018)
+T 1551446493 -18ChanServ-	[#fedora-unregistered] You have been redirected to the #fedora-unregistered because you are not registered with freenode. See http://freenode.net/faq.shtml#nicksetup for information on how to do this.
+T 1551449405 20*	Disconnected (20Connection timed out)
+T 1551449429 19*	Now talking on 22#fedora-unregistered
+T 1551449429 22*	Topic for 22#fedora-unregistered is: This is not a support Channel | You must register to join the fedora channels. See https://freenode.net/kb/answer/registration or /msg nickserv help register |  DO NOT click on spammed links | Depending on your client "/set irc_join_delay 10" to delay joining 10 seconds.
+T 1551449429 22*	Topic for 22#fedora-unregistered set by 26Southern_Gentlem!~notfred@fedora/Southern-Gentleman (24Thu Aug 16 08:44:51 2018)
+T 1551449429 -18ChanServ-	[#fedora-unregistered] You have been redirected to the #fedora-unregistered because you are not registered with freenode. See http://freenode.net/faq.shtml#nicksetup for information on how to do this.
+T 1551452004 20*	Disconnected (20Connection timed out)
+T 1551452031 19*	Now talking on 22#fedora-unregistered
+T 1551452031 22*	Topic for 22#fedora-unregistered is: This is not a support Channel | You must register to join the fedora channels. See https://freenode.net/kb/answer/registration or /msg nickserv help register |  DO NOT click on spammed links | Depending on your client "/set irc_join_delay 10" to delay joining 10 seconds.
+T 1551452031 22*	Topic for 22#fedora-unregistered set by 26Southern_Gentlem!~notfred@fedora/Southern-Gentleman (24Thu Aug 16 08:44:51 2018)
+T 1551452031 -18ChanServ-	[#fedora-unregistered] You have been redirected to the #fedora-unregistered because you are not registered with freenode. See http://freenode.net/faq.shtml#nicksetup for information on how to do this.
+T 1551453397 20*	Disconnected (20Connection timed out)
+T 1551453422 19*	Now talking on 22#fedora-unregistered
+T 1551453422 22*	Topic for 22#fedora-unregistered is: This is not a support Channel | You must register to join the fedora channels. See https://freenode.net/kb/answer/registration or /msg nickserv help register |  DO NOT click on spammed links | Depending on your client "/set irc_join_delay 10" to delay joining 10 seconds.
+T 1551453422 22*	Topic for 22#fedora-unregistered set by 26Southern_Gentlem!~notfred@fedora/Southern-Gentleman (24Thu Aug 16 08:44:51 2018)
+T 1551453422 -18ChanServ-	[#fedora-unregistered] You have been redirected to the #fedora-unregistered because you are not registered with freenode. See http://freenode.net/faq.shtml#nicksetup for information on how to do this.
+T 1551454581 20*	Disconnected (20Invalid argument)
+T 1551454603 19*	Now talking on 22#fedora-unregistered
+T 1551454603 22*	Topic for 22#fedora-unregistered is: This is not a support Channel | You must register to join the fedora channels. See https://freenode.net/kb/answer/registration or /msg nickserv help register |  DO NOT click on spammed links | Depending on your client "/set irc_join_delay 10" to delay joining 10 seconds.
+T 1551454603 22*	Topic for 22#fedora-unregistered set by 26Southern_Gentlem!~notfred@fedora/Southern-Gentleman (24Thu Aug 16 08:44:51 2018)
+T 1551454604 -18ChanServ-	[#fedora-unregistered] You have been redirected to the #fedora-unregistered because you are not registered with freenode. See http://freenode.net/faq.shtml#nicksetup for information on how to do this.
+T 1551456920 20*	Disconnected (20Connection timed out)
+T 1551456944 19*	Now talking on 22#fedora-unregistered
+T 1551456944 22*	Topic for 22#fedora-unregistered is: This is not a support Channel | You must register to join the fedora channels. See https://freenode.net/kb/answer/registration or /msg nickserv help register |  DO NOT click on spammed links | Depending on your client "/set irc_join_delay 10" to delay joining 10 seconds.
+T 1551456944 22*	Topic for 22#fedora-unregistered set by 26Southern_Gentlem!~notfred@fedora/Southern-Gentleman (24Thu Aug 16 08:44:51 2018)
+T 1551456944 -18ChanServ-	[#fedora-unregistered] You have been redirected to the #fedora-unregistered because you are not registered with freenode. See http://freenode.net/faq.shtml#nicksetup for information on how to do this.
+T 1551459291 20*	Disconnected (20Connection timed out)
+T 1551459315 19*	Now talking on 22#fedora-unregistered
+T 1551459315 22*	Topic for 22#fedora-unregistered is: This is not a support Channel | You must register to join the fedora channels. See https://freenode.net/kb/answer/registration or /msg nickserv help register |  DO NOT click on spammed links | Depending on your client "/set irc_join_delay 10" to delay joining 10 seconds.
+T 1551459315 22*	Topic for 22#fedora-unregistered set by 26Southern_Gentlem!~notfred@fedora/Southern-Gentleman (24Thu Aug 16 08:44:51 2018)
+T 1551459316 -18ChanServ-	[#fedora-unregistered] You have been redirected to the #fedora-unregistered because you are not registered with freenode. See http://freenode.net/faq.shtml#nicksetup for information on how to do this.
+T 1551460782 20*	Disconnected (20Invalid argument)
+T 1551460809 19*	Now talking on 22#fedora-unregistered
+T 1551460809 22*	Topic for 22#fedora-unregistered is: This is not a support Channel | You must register to join the fedora channels. See https://freenode.net/kb/answer/registration or /msg nickserv help register |  DO NOT click on spammed links | Depending on your client "/set irc_join_delay 10" to delay joining 10 seconds.
+T 1551460809 22*	Topic for 22#fedora-unregistered set by 26Southern_Gentlem!~notfred@fedora/Southern-Gentleman (24Thu Aug 16 08:44:51 2018)
+T 1551460809 -18ChanServ-	[#fedora-unregistered] You have been redirected to the #fedora-unregistered because you are not registered with freenode. See http://freenode.net/faq.shtml#nicksetup for information on how to do this.
+T 1551463725 20*	Disconnected (20Connection timed out)
+T 1551463749 19*	Now talking on 22#fedora-unregistered
+T 1551463749 22*	Topic for 22#fedora-unregistered is: This is not a support Channel | You must register to join the fedora channels. See https://freenode.net/kb/answer/registration or /msg nickserv help register |  DO NOT click on spammed links | Depending on your client "/set irc_join_delay 10" to delay joining 10 seconds.
+T 1551463749 22*	Topic for 22#fedora-unregistered set by 26Southern_Gentlem!~notfred@fedora/Southern-Gentleman (24Thu Aug 16 08:44:51 2018)
+T 1551463749 -18ChanServ-	[#fedora-unregistered] You have been redirected to the #fedora-unregistered because you are not registered with freenode. See http://freenode.net/faq.shtml#nicksetup for information on how to do this.
+T 1551465259 20*	Disconnected (20Connection timed out)
+T 1551465284 19*	Now talking on 22#fedora-unregistered
+T 1551465284 22*	Topic for 22#fedora-unregistered is: This is not a support Channel | You must register to join the fedora channels. See https://freenode.net/kb/answer/registration or /msg nickserv help register |  DO NOT click on spammed links | Depending on your client "/set irc_join_delay 10" to delay joining 10 seconds.
+T 1551465284 22*	Topic for 22#fedora-unregistered set by 26Southern_Gentlem!~notfred@fedora/Southern-Gentleman (24Thu Aug 16 08:44:51 2018)
+T 1551465284 -18ChanServ-	[#fedora-unregistered] You have been redirected to the #fedora-unregistered because you are not registered with freenode. See http://freenode.net/faq.shtml#nicksetup for information on how to do this.
+T 1551466666 20*	Disconnected (20Connection timed out)
+T 1551466689 19*	Now talking on 22#fedora-unregistered
+T 1551466689 22*	Topic for 22#fedora-unregistered is: This is not a support Channel | You must register to join the fedora channels. See https://freenode.net/kb/answer/registration or /msg nickserv help register |  DO NOT click on spammed links | Depending on your client "/set irc_join_delay 10" to delay joining 10 seconds.
+T 1551466689 22*	Topic for 22#fedora-unregistered set by 26Southern_Gentlem!~notfred@fedora/Southern-Gentleman (24Thu Aug 16 08:44:51 2018)
+T 1551466689 -18ChanServ-	[#fedora-unregistered] You have been redirected to the #fedora-unregistered because you are not registered with freenode. See http://freenode.net/faq.shtml#nicksetup for information on how to do this.
+T 1551467414 20*	Disconnected (20Connection reset by peer)
+T 1551467437 19*	Now talking on 22#fedora-unregistered
+T 1551467437 22*	Topic for 22#fedora-unregistered is: This is not a support Channel | You must register to join the fedora channels. See https://freenode.net/kb/answer/registration or /msg nickserv help register |  DO NOT click on spammed links | Depending on your client "/set irc_join_delay 10" to delay joining 10 seconds.
+T 1551467437 22*	Topic for 22#fedora-unregistered set by 26Southern_Gentlem!~notfred@fedora/Southern-Gentleman (24Thu Aug 16 08:44:51 2018)
+T 1551467437 -18ChanServ-	[#fedora-unregistered] You have been redirected to the #fedora-unregistered because you are not registered with freenode. See http://freenode.net/faq.shtml#nicksetup for information on how to do this.
+T 1551469902 20*	Disconnected (20Connection timed out)
+T 1551469926 19*	Now talking on 22#fedora-unregistered
+T 1551469926 22*	Topic for 22#fedora-unregistered is: This is not a support Channel | You must register to join the fedora channels. See https://freenode.net/kb/answer/registration or /msg nickserv help register |  DO NOT click on spammed links | Depending on your client "/set irc_join_delay 10" to delay joining 10 seconds.
+T 1551469926 22*	Topic for 22#fedora-unregistered set by 26Southern_Gentlem!~notfred@fedora/Southern-Gentleman (24Thu Aug 16 08:44:51 2018)
+T 1551469926 -18ChanServ-	[#fedora-unregistered] You have been redirected to the #fedora-unregistered because you are not registered with freenode. See http://freenode.net/faq.shtml#nicksetup for information on how to do this.
+T 1551471071 20*	Disconnected (20Invalid argument)
+T 1551471097 19*	Now talking on 22#fedora-unregistered
+T 1551471097 22*	Topic for 22#fedora-unregistered is: This is not a support Channel | You must register to join the fedora channels. See https://freenode.net/kb/answer/registration or /msg nickserv help register |  DO NOT click on spammed links | Depending on your client "/set irc_join_delay 10" to delay joining 10 seconds.
+T 1551471097 22*	Topic for 22#fedora-unregistered set by 26Southern_Gentlem!~notfred@fedora/Southern-Gentleman (24Thu Aug 16 08:44:51 2018)
+T 1551471098 -18ChanServ-	[#fedora-unregistered] You have been redirected to the #fedora-unregistered because you are not registered with freenode. See http://freenode.net/faq.shtml#nicksetup for information on how to do this.
+T 1551472902 20*	Disconnected (20Connection timed out)
+T 1551716927 19*	Now talking on 22#fedora-unregistered
+T 1551716927 22*	Topic for 22#fedora-unregistered is: This is not a support Channel | You must register to join the fedora channels. See https://freenode.net/kb/answer/registration or /msg nickserv help register |  DO NOT click on spammed links | Depending on your client "/set irc_join_delay 10" to delay joining 10 seconds.
+T 1551716927 22*	Topic for 22#fedora-unregistered set by 26Southern_Gentlem!~notfred@fedora/Southern-Gentleman (24Thu Aug 16 08:44:51 2018)
+T 1551716928 -18ChanServ-	[#fedora-unregistered] You have been redirected to the #fedora-unregistered because you are not registered with freenode. See http://freenode.net/faq.shtml#nicksetup for information on how to do this.
+T 1551718511 20*	Disconnected (20Connection timed out)
+T 1551718536 19*	Now talking on 22#fedora-unregistered
+T 1551718536 22*	Topic for 22#fedora-unregistered is: This is not a support Channel | You must register to join the fedora channels. See https://freenode.net/kb/answer/registration or /msg nickserv help register |  DO NOT click on spammed links | Depending on your client "/set irc_join_delay 10" to delay joining 10 seconds.
+T 1551718536 22*	Topic for 22#fedora-unregistered set by 26Southern_Gentlem!~notfred@fedora/Southern-Gentleman (24Thu Aug 16 08:44:51 2018)
+T 1551718536 -18ChanServ-	[#fedora-unregistered] You have been redirected to the #fedora-unregistered because you are not registered with freenode. See http://freenode.net/faq.shtml#nicksetup for information on how to do this.
+T 1551719713 20*	Disconnected (20Connection timed out)
+T 1551719736 19*	Now talking on 22#fedora-unregistered
+T 1551719736 22*	Topic for 22#fedora-unregistered is: This is not a support Channel | You must register to join the fedora channels. See https://freenode.net/kb/answer/registration or /msg nickserv help register |  DO NOT click on spammed links | Depending on your client "/set irc_join_delay 10" to delay joining 10 seconds.
+T 1551719736 22*	Topic for 22#fedora-unregistered set by 26Southern_Gentlem!~notfred@fedora/Southern-Gentleman (24Thu Aug 16 08:44:51 2018)
+T 1551719736 -18ChanServ-	[#fedora-unregistered] You have been redirected to the #fedora-unregistered because you are not registered with freenode. See http://freenode.net/faq.shtml#nicksetup for information on how to do this.
+T 1551720995 20*	Disconnected (20Invalid argument)
+T 1551721017 19*	Now talking on 22#fedora-unregistered
+T 1551721017 22*	Topic for 22#fedora-unregistered is: This is not a support Channel | You must register to join the fedora channels. See https://freenode.net/kb/answer/registration or /msg nickserv help register |  DO NOT click on spammed links | Depending on your client "/set irc_join_delay 10" to delay joining 10 seconds.
+T 1551721017 22*	Topic for 22#fedora-unregistered set by 26Southern_Gentlem!~notfred@fedora/Southern-Gentleman (24Thu Aug 16 08:44:51 2018)
+T 1551721017 -18ChanServ-	[#fedora-unregistered] You have been redirected to the #fedora-unregistered because you are not registered with freenode. See http://freenode.net/faq.shtml#nicksetup for information on how to do this.
+T 1551724368 20*	Disconnected (20Connection timed out)
+T 1551724394 19*	Now talking on 22#fedora-unregistered
+T 1551724394 22*	Topic for 22#fedora-unregistered is: This is not a support Channel | You must register to join the fedora channels. See https://freenode.net/kb/answer/registration or /msg nickserv help register |  DO NOT click on spammed links | Depending on your client "/set irc_join_delay 10" to delay joining 10 seconds.
+T 1551724394 22*	Topic for 22#fedora-unregistered set by 26Southern_Gentlem!~notfred@fedora/Southern-Gentleman (24Thu Aug 16 08:44:51 2018)
+T 1551724394 -18ChanServ-	[#fedora-unregistered] You have been redirected to the #fedora-unregistered because you are not registered with freenode. See http://freenode.net/faq.shtml#nicksetup for information on how to do this.
+T 1551725447 20*	Disconnected (20Invalid argument)
+T 1551725471 19*	Now talking on 22#fedora-unregistered
+T 1551725471 22*	Topic for 22#fedora-unregistered is: This is not a support Channel | You must register to join the fedora channels. See https://freenode.net/kb/answer/registration or /msg nickserv help register |  DO NOT click on spammed links | Depending on your client "/set irc_join_delay 10" to delay joining 10 seconds.
+T 1551725471 22*	Topic for 22#fedora-unregistered set by 26Southern_Gentlem!~notfred@fedora/Southern-Gentleman (24Thu Aug 16 08:44:51 2018)
+T 1551725472 -18ChanServ-	[#fedora-unregistered] You have been redirected to the #fedora-unregistered because you are not registered with freenode. See http://freenode.net/faq.shtml#nicksetup for information on how to do this.
+T 1551726735 20*	Disconnected (20Invalid argument)
+T 1551727796 20*	Disconnected (20Connection timed out)
+T 1551729052 20*	Disconnected (20Connection timed out)
+T 1551730315 20*	Disconnected (20Invalid argument)
+T 1551732101 20*	Disconnected (20Connection timed out)
+T 1551732439 20*	Disconnected (20Remote host closed socket)
+T 1551734215 20*	Disconnected (20Connection timed out)
+T 1551736455 20*	Disconnected (20Connection timed out)
+T 1551737963 20*	Disconnected (20Connection timed out)
+T 1551739363 20*	Disconnected (20Connection timed out)
+T 1551739778 20*	Disconnected (20Remote host closed socket)
+T 1551740141 20*	Disconnected (20Remote host closed socket)
+T 1551740824 20*	Disconnected (20Remote host closed socket)
+T 1551741187 20*	Disconnected (20Remote host closed socket)
+T 1551744223 20*	Disconnected (20Connection timed out)
+T 1551745999 20*	Disconnected (20Connection timed out)
+T 1551747557 20*	Disconnected (20Connection timed out)
+T 1551749237 20*	Disconnected (20Connection timed out)
+T 1551751006 20*	Disconnected (20Connection timed out)
+T 1551752284 20*	Disconnected (20Invalid argument)
+T 1551752588 20*	Disconnected (20Remote host closed socket)
+T 1551754447 20*	Disconnected (20Connection timed out)
+T 1551755977 20*	Disconnected (20Connection timed out)
+T 1551757300 20*	Disconnected (20Connection timed out)
+T 1551758961 20*	Disconnected (20Connection timed out)
+T 1551759527 20*	Disconnected (20Remote host closed socket)
+T 1551761816 20*	Disconnected (20Connection timed out)
+T 1551763317 20*	Disconnected (20Connection timed out)
+T 1551764503 20*	Disconnected (20Invalid argument)
+T 1551766702 20*	Disconnected (20Connection timed out)
+T 1551767188 20*	Disconnected (20Remote host closed socket)
+T 1551769930 20*	Disconnected (20Connection timed out)
+T 1551771053 20*	Disconnected (20Remote host closed socket)
+T 1551772723 20*	Disconnected (20Connection timed out)
+T 1551772790 20*	Disconnected (20Remote host closed socket)
+T 1551774886 20*	Disconnected (20Connection timed out)
+T 1551777520 20*	Disconnected (20Connection timed out)
+T 1551778533 20*	Disconnected (20Invalid argument)
+T 1551780172 20*	Disconnected (20Invalid argument)
+T 1551781542 20*	Disconnected (20Invalid argument)
+T 1551784442 20*	Disconnected (20Connection timed out)
+T 1551785027 20*	Disconnected (20Remote host closed socket)
+T 1551786463 20*	Disconnected (20Invalid argument)
+T 1551787080 20*	Disconnected (20Connection reset by peer)
+T 1551788495 20*	Disconnected (20Connection reset by peer)
+T 1551790725 20*	Disconnected (20Connection timed out)
+T 1551793576 20*	Disconnected (20Connection timed out)
+T 1551795812 20*	Disconnected (20Connection timed out)
+T 1551797211 20*	Disconnected (20Connection timed out)
+T 1551798710 20*	Disconnected (20Connection timed out)
+T 1551800207 20*	Disconnected (20Connection timed out)
+T 1551800837 20*	Disconnected (20Remote host closed socket)
+T 1551803146 20*	Disconnected (20Connection timed out)
+T 1551804832 20*	Disconnected (20Connection timed out)
+T 1551806505 20*	Disconnected (20Connection timed out)
+T 1551808098 20*	Disconnected (20Connection timed out)
+T 1551809565 20*	Disconnected (20Connection timed out)
+T 1551811107 20*	Disconnected (20Connection timed out)
+T 1551812512 20*	Disconnected (20Connection timed out)
+T 1551814160 20*	Disconnected (20Connection timed out)
+T 1551815686 20*	Disconnected (20Connection timed out)
+T 1551817392 20*	Disconnected (20Connection timed out)
+T 1551818924 20*	Disconnected (20Connection timed out)
+T 1551820341 20*	Disconnected (20Connection timed out)
+T 1551821902 20*	Disconnected (20Connection timed out)
+T 1551823401 20*	Disconnected (20Connection timed out)
+T 1551823733 20*	Disconnected (20Remote host closed socket)
+T 1551825078 20*	Disconnected (20Connection timed out)
+T 1551826526 20*	Disconnected (20Invalid argument)
+T 1551827962 20*	Disconnected (20Connection timed out)
+T 1551829230 20*	Disconnected (20Invalid argument)
+T 1551829507 20*	Disconnected (20Remote host closed socket)
+T 1551832285 20*	Disconnected (20Connection timed out)
+T 1551834497 20*	Disconnected (20Connection timed out)
+T 1551836062 20*	Disconnected (20Connection timed out)
+T 1551837315 20*	Disconnected (20Connection timed out)
+T 1551839625 20*	Disconnected (20Connection timed out)
+T 1551840856 20*	Disconnected (20Invalid argument)
+T 1551841731 20*	Disconnected (20Remote host closed socket)
+T 1551842904 20*	Disconnected (20Connection timed out)
+T 1551843480 20*	Disconnected (20Connection reset by peer)
+T 1551844387 20*	Disconnected (20Remote host closed socket)
+T 1551845853 20*	Disconnected (20Invalid argument)
+T 1551847692 20*	Disconnected (20Connection timed out)
+T 1551849406 20*	Disconnected (20Connection timed out)
+T 1551850893 20*	Disconnected (20Invalid argument)
+T 1551852947 20*	Disconnected (20Connection timed out)
+T 1551854504 20*	Disconnected (20Invalid argument)
+T 1551855026 20*	Disconnected (20Remote host closed socket)
+T 1551856851 20*	Disconnected (20Connection timed out)
+T 1551859333 20*	Disconnected (20Connection timed out)
+T 1551859807 20*	Disconnected (20Remote host closed socket)
+T 1551861713 20*	Disconnected (20Connection timed out)
+T 1551863058 20*	Disconnected (20Invalid argument)
+T 1551865426 20*	Disconnected (20Connection timed out)
+T 1551866847 20*	Disconnected (20Connection timed out)
+T 1551868070 20*	Disconnected (20Invalid argument)
+T 1551868127 20*	Disconnected (20Remote host closed socket)
+T 1551870081 20*	Disconnected (20Connection timed out)
+T 1551870727 20*	Disconnected (20Remote host closed socket)
+T 1551873266 20*	Disconnected (20Connection timed out)
+T 1551873312 20*	Disconnected (20Remote host closed socket)
+T 1551873370 20*	Disconnected (20Remote host closed socket)
+T 1551874910 20*	Disconnected (20Connection timed out)
+T 1551877478 20*	Disconnected (20Connection timed out)
+T 1551880821 20*	Disconnected (20Connection timed out)
+T 1551883149 20*	Disconnected (20Connection timed out)
+T 1551885230 20*	Disconnected (20Connection timed out)
+T 1551886838 20*	Disconnected (20Connection timed out)
+T 1551888355 20*	Disconnected (20Invalid argument)
+T 1551888647 20*	Disconnected (20Remote host closed socket)
+T 1551889541 20*	Disconnected (20Connection reset by peer)
+T 1551891433 20*	Disconnected (20Connection timed out)
+T 1551892207 20*	Disconnected (20Remote host closed socket)
+T 1551894522 20*	Disconnected (20Connection timed out)
+T 1551896273 20*	Disconnected (20Connection timed out)
+T 1551897553 20*	Disconnected (20Connection timed out)
+T 1551898722 20*	Disconnected (20Remote host closed socket)
+T 1551900152 20*	Disconnected (20Invalid argument)
+T 1551901999 20*	Disconnected (20Connection timed out)
+T 1551904303 20*	Disconnected (20Connection timed out)
+T 1551904353 20*	Disconnected (20Remote host closed socket)
+T 1551905604 20*	Disconnected (20Connection timed out)
+T 1551906601 20*	Disconnected (20Connection timed out)
+T 1551907175 20*	Disconnected (20Remote host closed socket)
+T 1551908680 20*	Disconnected (20Connection timed out)
+T 1551910304 20*	Disconnected (20Connection timed out)
+T 1551911414 20*	Disconnected (20Invalid argument)
+T 1551913607 20*	Disconnected (20Connection timed out)
+T 1551914867 20*	Disconnected (20Remote host closed socket)
+T 1551915997 20*	Disconnected (20Connection timed out)
+T 1551916273 20*	Disconnected (20Remote host closed socket)
+T 1551916297 19*	Now talking on 22#fedora-unregistered
+T 1551916297 22*	Topic for 22#fedora-unregistered is: This is not a support Channel | You must register to join the fedora channels. See https://freenode.net/kb/answer/registration or /msg nickserv help register |  DO NOT click on spammed links | Depending on your client "/set irc_join_delay 10" to delay joining 10 seconds.
+T 1551916297 22*	Topic for 22#fedora-unregistered set by 26Southern_Gentlem!~notfred@fedora/Southern-Gentleman (24Thu Aug 16 08:44:51 2018)
+T 1551916297 -18ChanServ-	[#fedora-unregistered] You have been redirected to the #fedora-unregistered because you are not registered with freenode. See http://freenode.net/faq.shtml#nicksetup for information on how to do this.
+T 1551918168 20*	Disconnected (20Connection timed out)
+T 1551918190 19*	Now talking on 22#fedora-unregistered
+T 1551918190 22*	Topic for 22#fedora-unregistered is: This is not a support Channel | You must register to join the fedora channels. See https://freenode.net/kb/answer/registration or /msg nickserv help register |  DO NOT click on spammed links | Depending on your client "/set irc_join_delay 10" to delay joining 10 seconds.
+T 1551918190 22*	Topic for 22#fedora-unregistered set by 26Southern_Gentlem!~notfred@fedora/Southern-Gentleman (24Thu Aug 16 08:44:51 2018)
+T 1551918190 -18ChanServ-	[#fedora-unregistered] You have been redirected to the #fedora-unregistered because you are not registered with freenode. See http://freenode.net/faq.shtml#nicksetup for information on how to do this.
+T 1551919667 20*	Disconnected (20Connection timed out)
+T 1551919689 19*	Now talking on 22#fedora-unregistered
+T 1551919689 22*	Topic for 22#fedora-unregistered is: This is not a support Channel | You must register to join the fedora channels. See https://freenode.net/kb/answer/registration or /msg nickserv help register |  DO NOT click on spammed links | Depending on your client "/set irc_join_delay 10" to delay joining 10 seconds.
+T 1551919689 22*	Topic for 22#fedora-unregistered set by 26Southern_Gentlem!~notfred@fedora/Southern-Gentleman (24Thu Aug 16 08:44:51 2018)
+T 1551919689 -18ChanServ-	[#fedora-unregistered] You have been redirected to the #fedora-unregistered because you are not registered with freenode. See http://freenode.net/faq.shtml#nicksetup for information on how to do this.
+T 1551920824 20*	Disconnected (20Connection timed out)
+T 1551920851 19*	Now talking on 22#fedora-unregistered
+T 1551920851 22*	Topic for 22#fedora-unregistered is: This is not a support Channel | You must register to join the fedora channels. See https://freenode.net/kb/answer/registration or /msg nickserv help register |  DO NOT click on spammed links | Depending on your client "/set irc_join_delay 10" to delay joining 10 seconds.
+T 1551920851 22*	Topic for 22#fedora-unregistered set by 26Southern_Gentlem!~notfred@fedora/Southern-Gentleman (24Thu Aug 16 08:44:51 2018)
+T 1551920852 -18ChanServ-	[#fedora-unregistered] You have been redirected to the #fedora-unregistered because you are not registered with freenode. See http://freenode.net/faq.shtml#nicksetup for information on how to do this.
+T 1551920867 24*	drakor has quit (Ping timeout: 240 seconds)
+T 1551921096 24*	ssitani has quit (Ping timeout: 252 seconds)
+T 1551923030 20*	Disconnected (20Connection timed out)
+T 1551923055 19*	Now talking on 22#fedora-unregistered
+T 1551923055 22*	Topic for 22#fedora-unregistered is: This is not a support Channel | You must register to join the fedora channels. See https://freenode.net/kb/answer/registration or /msg nickserv help register |  DO NOT click on spammed links | Depending on your client "/set irc_join_delay 10" to delay joining 10 seconds.
+T 1551923055 22*	Topic for 22#fedora-unregistered set by 26Southern_Gentlem!~notfred@fedora/Southern-Gentleman (24Thu Aug 16 08:44:51 2018)
+T 1551923055 -18ChanServ-	[#fedora-unregistered] You have been redirected to the #fedora-unregistered because you are not registered with freenode. See http://freenode.net/faq.shtml#nicksetup for information on how to do this.
+T 1551923909 23*	guppy_ (~redhat@c-68-46-151-183.hsd1.mi.comcast.net23) has joined
+T 1551923942 23*	cqi (~cqi@124.64.246.11323) has joined
+T 1551925688 20*	Disconnected (20Connection timed out)
+T 1551925714 19*	Now talking on 22#fedora-unregistered
+T 1551925714 22*	Topic for 22#fedora-unregistered is: This is not a support Channel | You must register to join the fedora channels. See https://freenode.net/kb/answer/registration or /msg nickserv help register |  DO NOT click on spammed links | Depending on your client "/set irc_join_delay 10" to delay joining 10 seconds.
+T 1551925714 22*	Topic for 22#fedora-unregistered set by 26Southern_Gentlem!~notfred@fedora/Southern-Gentleman (24Thu Aug 16 08:44:51 2018)
+T 1551925714 -18ChanServ-	[#fedora-unregistered] You have been redirected to the #fedora-unregistered because you are not registered with freenode. See http://freenode.net/faq.shtml#nicksetup for information on how to do this.
+T 1551926074 23*	liveuser (~liveuser@51-249-11.connect.netcom.no23) has joined
+T 1551926186 24*	liveuser has quit (Client Quit)
+T 1551926216 23*	thor (~SirPhobos@51-249-11.connect.netcom.no23) has joined
+T 1551926390 20*	Disconnected (20)
+T 1551926407 19*	Now talking on 22#fedora-unregistered
+T 1551926407 22*	Topic for 22#fedora-unregistered is: This is not a support Channel | You must register to join the fedora channels. See https://freenode.net/kb/answer/registration or /msg nickserv help register |  DO NOT click on spammed links | Depending on your client "/set irc_join_delay 10" to delay joining 10 seconds.
+T 1551926407 22*	Topic for 22#fedora-unregistered set by 26Southern_Gentlem!~notfred@fedora/Southern-Gentleman (24Thu Aug 16 08:44:51 2018)
+T 1551926407 -18ChanServ-	[#fedora-unregistered] You have been redirected to the #fedora-unregistered because you are not registered with freenode. See http://freenode.net/faq.shtml#nicksetup for information on how to do this.
+T 1551926462 24*	SirPhobos has quit (Client Quit)
+T 1551926479 23*	hopland (~hopland@51-249-11.connect.netcom.no23) has joined
+T 1551926502 24*	carif has quit (Ping timeout: 245 seconds)
+T 1551926557 20*	Disconnected (20)
+T 1551926575 19*	Now talking on 22#fedora-unregistered
+T 1551926575 22*	Topic for 22#fedora-unregistered is: This is not a support Channel | You must register to join the fedora channels. See https://freenode.net/kb/answer/registration or /msg nickserv help register |  DO NOT click on spammed links | Depending on your client "/set irc_join_delay 10" to delay joining 10 seconds.
+T 1551926575 22*	Topic for 22#fedora-unregistered set by 26Southern_Gentlem!~notfred@fedora/Southern-Gentleman (24Thu Aug 16 08:44:51 2018)
+T 1551926575 -18ChanServ-	[#fedora-unregistered] You have been redirected to the #fedora-unregistered because you are not registered with freenode. See http://freenode.net/faq.shtml#nicksetup for information on how to do this.
+T 1551926609 24*	hopland has quit (Client Quit)
+T 1551926632 20*	Disconnected (20)
+T 1551926665 19*	Now talking on 22#fedora-unregistered
+T 1551926665 22*	Topic for 22#fedora-unregistered is: This is not a support Channel | You must register to join the fedora channels. See https://freenode.net/kb/answer/registration or /msg nickserv help register |  DO NOT click on spammed links | Depending on your client "/set irc_join_delay 10" to delay joining 10 seconds.
+T 1551926665 22*	Topic for 22#fedora-unregistered set by 26Southern_Gentlem!~notfred@fedora/Southern-Gentleman (24Thu Aug 16 08:44:51 2018)
+T 1551926665 -18ChanServ-	[#fedora-unregistered] You have been redirected to the #fedora-unregistered because you are not registered with freenode. See http://freenode.net/faq.shtml#nicksetup for information on how to do this.
+T 1551928292 20*	Disconnected (20Connection reset by peer)
+T 1551928325 19*	Now talking on 22#fedora-unregistered
+T 1551928325 22*	Topic for 22#fedora-unregistered is: This is not a support Channel | You must register to join the fedora channels. See https://freenode.net/kb/answer/registration or /msg nickserv help register |  DO NOT click on spammed links | Depending on your client "/set irc_join_delay 10" to delay joining 10 seconds.
+T 1551928325 22*	Topic for 22#fedora-unregistered set by 26Southern_Gentlem!~notfred@fedora/Southern-Gentleman (24Thu Aug 16 08:44:51 2018)
+T 1551928326 -18ChanServ-	[#fedora-unregistered] You have been redirected to the #fedora-unregistered because you are not registered with freenode. See http://freenode.net/faq.shtml#nicksetup for information on how to do this.
+T 1551928958 20*	Disconnected (20)
+T 1551929084 19*	Now talking on 22#fedora-unregistered
+T 1551929084 22*	Topic for 22#fedora-unregistered is: This is not a support Channel | You must register to join the fedora channels. See https://freenode.net/kb/answer/registration or /msg nickserv help register |  DO NOT click on spammed links | Depending on your client "/set irc_join_delay 10" to delay joining 10 seconds.
+T 1551929084 22*	Topic for 22#fedora-unregistered set by 26Southern_Gentlem!~notfred@fedora/Southern-Gentleman (24Thu Aug 16 08:44:51 2018)
+T 1551929085 -18ChanServ-	[#fedora-unregistered] You have been redirected to the #fedora-unregistered because you are not registered with freenode. See http://freenode.net/faq.shtml#nicksetup for information on how to do this.
+T 1551929959 19*	Now talking on 22#fedora-unregistered
+T 1551929959 22*	Topic for 22#fedora-unregistered is: This is not a support Channel | You must register to join the fedora channels. See https://freenode.net/kb/answer/registration or /msg nickserv help register |  DO NOT click on spammed links | Depending on your client "/set irc_join_delay 10" to delay joining 10 seconds.
+T 1551929959 22*	Topic for 22#fedora-unregistered set by 26Southern_Gentlem!~notfred@fedora/Southern-Gentleman (24Thu Aug 16 08:44:51 2018)
+T 1551929959 -18ChanServ-	[#fedora-unregistered] You have been redirected to the #fedora-unregistered because you are not registered with freenode. See http://freenode.net/faq.shtml#nicksetup for information on how to do this.

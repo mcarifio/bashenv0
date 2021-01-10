@@ -1,0 +1,674 @@
+T 1600574542 18<ski18>	no, lechner
+T 1600574560 18<ski18>	the whole `do'-expression will still have type `IO T', for some type `T'
+T 1600574567 18<ski18>	(you can't escape)
+T 1600574630 18<ski18>	btw, probably it's better to give a name to `Char8.pack contents', in order to not recompute it ?
+T 1600574639 18<ski18>	(in `main', i mean)
+T 1600574702 18<ski18>	sepi : also .. if you care to tell, what is `memb' supposed to compute ?
+T 1600574715 18<lechner18>	i thought perhaps the compiler would be smart enough not to, although I thought that the 'effect' from readFile may force it.
+T 1600574753 18<ski18>	lechner : anyway, if you move the `readFile' out of `compute', you can probably avoid the `IO' in its return type
+T 1600574782 18<lechner18>	i will, but bear with me for a minute please. i changed the code the way you said, but now the code below fails even though i did not change it.
+T 1600574785 18<sepi18>	like if x = ["abc", "def"].    memb says is ["def"] in x?
+T 1600574794 18<sepi18>	True
+T 1600574811 18<lechner18>	https://dpaste.com/553FLPZG5
+T 1600574814 18<ski18>	lechner : smart enough not to do what ? recompute the calls to `Char8.pack' ? or reread the file ?
+T 1600574837 18<ski18>	sepi : now try `memb "ghij" x'
+T 1600574867 18<lechner18>	ski: i thought the effectful action of readFile might retrigger the remaining computation, but without that the compiler should not repack
+T 1600574896 18<ski18>	GHC only does limited CSE
+T 1600574962 18<ski18>	lechner : anyway, the second error message is because you still have a mistake in `compute'. but perhaps you want to keep the `IO' out of it ?
+T 1600574962 18<sepi18>	It'll just sit there and I have to suspend it rather than being false
+T 1600574994 18<ski18>	(in that case, it would be better to fix that first. although, if you want to, you could fix the other error)
+T 1600575002 18<ski18>	sepi : and why's that ?
+T 1600575018 18<lechner18>	ski: i see. sorry i misread the error message. it's my first day with Haskell
+T 1600575033 18<ski18>	it's okay
+T 1600575055 18<ski18>	it's not that uncommon that fixing an error in one place will trigger an error to be flagged in another location
+T 1600575088 18<ski18>	sometimes it can be hard to know whether one will get out of the "tunnel(s) of error", fixing one after the other
+T 1600575100 18<ski18>	with more experience, you should be able to tell this, quicker
+T 1600575145 18<lechner18>	ski: How do I add the IO to the result?
+T 1600575183 18<sepi18>	its going to keep looking for the match because recursion, because I suppose there isn't a "if it reaches end, false" statement 
+T 1600575198 18<lechner18>	and why is the expected type now without the IO even though I just added it up top?
+T 1600575236 18<ski18>	(this effect can also be noticed, when refactoring, changing the type signature. this can often trigger an error in other places, and fixing those can trigger further errors, like a ripple effect. this is normally a good thing, the implementation telling you all places you must fix, after having changed one place, in order to not encounter problems when running the code)
+T 1600575292 18<lechner18>	but why did it not accept the actual type without the IO in the first place. just because of the 'do'?
+T 1600575316 18<ski18>	sepi : there is a "if it reaches end, false" case, that's `memb x [] = False'. the problem is that you never take a step closer to it, you're moving your legs up and down, standing still
+T 1600575364 18<ski18>	lechner : "but why did it not accept the actual type without the IO in the first place. just because of the 'do'?" -- no, because of the `readFile'
+T 1600575392 18<ski18>	"How do I add the IO to the result?" -- result of what ? `compute' ?
+T 1600575410 18<lechner18>	hashMethod $ Char8.pack contents
+T 1600575427 18<ski18>	"and why is the expected type now without the IO even though I just added it up top?" -- what do you mean ? in <https://dpaste.com/553FLPZG5>, the expected type does have an `IO'
+T 1600575440 18<ski18>	lechner : `return :: a -> IO a'
+T 1600575446 18<lechner18>	yes, but only because I added it up top
+T 1600575486 18<lechner18>	thanks. where do I place this return statement, please? and do I retain the name 'a'?
+T 1600575492 18<ski18>	it's complaining that `hashMethod :: Char8.ByteString -> Char8.ByteString', while you're attempting to use it as if it was `hashMethod :: Char8.ByteString -> IO Char8.ByteString'
+T 1600575504 18<lechner18>	right
+T 1600575524 18<ski18>	`a' is a type variable. in your case, `a' would become `Char8.ByteString'
+T 1600575541 18<ski18>	(so that you get `return :: Char8.ByteString -> IO Char8.ByteString' ..)
+T 1600575625 18<ski18>	(another way to fix the type mismatch for `hashMethod' would be to change the signature of `compute' so that the specified callback (that's `hashMethod'), actually had type `Char8.ByteString -> IO Char8.ByteString' .. but i'm not convinced you actually want to do this)
+T 1600575669 18<lechner18>	I will eventually remove the IO out of that function. right now, I am just learning. Where does that return statement go, please?
+T 1600575689 18<lechner18>	and is this thing still called a function?
+T 1600575712 18<ski18>	(usually, especially as a beginner, one should think twice, before putting `IO' inside argument types. it's not that it's dangerous, but rather that it adds extra power, with possibility for extra confusion, that one relatively rarely needs)
+T 1600575721 18<ski18>	`compute' ? sure
+T 1600575731 18<ski18>	`hashMethod' as well
+T 1600575731 18<lechner18>	i agree with that
+T 1600575754 18<lechner18>	i thought perhaps the 'do' would turn compute into a monad
+T 1600575758 18<ski18>	no
+T 1600575775 18<ski18>	monads are not values that you deal with, at run-time
+T 1600575778 18*	hackage reanimate 1.0.0.0 - Animation library based on SVGs.  https://hackage.haskell.org/package/reanimate-1.0.0.0 (DavidHimmelstrup)
+T 1600575786 18<ski18>	take e.g. `getLine :: IO String'
+T 1600575795 18<ski18>	`getLine' is not a monad. `IO' is the monad
+T 1600575803 18<lechner18>	i see. that's not a monad either
+T 1600575808 18<lechner18>	or is it?
+T 1600575808 18<ski18>	`getLine' is a monadic action, or just action, for short
+T 1600575815 18<ski18>	if you have
+T 1600575819 18<ski18>	  compute :: (Char8.ByteString -> Char8.ByteString) -> String -> IO Char8.ByteString
+T 1600575823 18<lechner18>	the IO is the monad?
+T 1600575837 18<ski18>	then `compute hashMethod fileName' will also be an action. an `IO'-action (since `IO' is the monad here)
+T 1600575840 18<ski18>	yes
+T 1600575872 18<ski18>	the type `IO' (together with its instance of the `Monad' type class) is the monad
+T 1600575907 18<lechner18>	okay, sorry to be persistent. in which line do i stick that return statement, please?
+T 1600575917 18<ski18>	so .. `compute' is a function that computes/returns an action
+T 1600575941 18<sepi18>	I know I would want  (y:ys) to be where y gets thrown out, next in ys becomes y. Now I'm trying to figure out how to translate that over
+T 1600575950 18<ski18>	the line in which you currently need `IO Blah', while you actually only have something of type `Blah' in
+T 1600575972 18<ski18>	sepi : perhaps try throwing out `y', then
+T 1600575973 18<lechner18>	so it goes before, which makes it kind of ling
+T 1600575979 18<lechner18>	long
+T 1600576011 18<ski18>	you mean the line of code ?
+T 1600576036 18<lechner18>	i am sticking in before the last line of compute
+T 1600576085 18<lechner18>	something is wrong
+T 1600576194 18<ski18>	sepi : btw, you didn't say what `memb' is supposed to compute
+T 1600576290 18*	ski idly wonders what lechner is trying
+T 1600576335 18<sepi18>	its supposed to compute true or false, saying true"abc" is in there, or false it isn't in there 
+T 1600576340 18<lechner18>	i feel so dumb. i can't put this line in the right place:  return :: Char8.ByteString -> IO Char8.ByteString
+T 1600576342 18<sepi18>	I think I got it though 
+T 1600576380 18<sepi18>	Thanks I was here for a few hours to get to this point, appreciate your push in the right direction 
+T 1600576383 18<ski18>	sepi : what is `memb x ys' supposed to compute, for an arbitrary `x' and list `ys' ?
+T 1600576449 18<ski18>	lechner : oh, i should clarify that i only intended you to use `return'. the `:: Char8.ByteString -> IO Char8.ByteString' was only a clarification, to tell you what type it would have, in your case
+T 1600576468 18<ski18>	sepi : show the code ?
+T 1600576536 18<ski18>	(if you really want to, you could type in `return :: Char8.ByteString -> IO Char8.ByteString' .. but you'd have to bracket it like `(return :: Char8.ByteString -> IO Char8.ByteString)')
+T 1600576653 18<lechner18>	i was just missing some parentheses (or perhaps a dollar sign). return is a function!
+T 1600576659 18<ski18>	yes, of course
+T 1600576664 18<ski18>	it has a `->' in its type
+T 1600576688 18<ski18>	all values whose types are of the general shape `... -> ...' are functions
+T 1600576689 18<lechner18>	doesn't everything in Haskell? :)
+T 1600576694 18<ski18>	(and only those are functions)
+T 1600576698 18<lechner18>	just kidding
+T 1600576726 18<ski18>	yea .. "Everything is a function" does not hold in the Functional Programming paradigm
+T 1600576738 18<lechner18>	it was a bad joke
+T 1600576795 18<ski18>	see <http://conal.net/blog/posts/everything-is-a-function-in-haskell> :)
+T 1600576860 18<ski18>	lechner : so .. how does your `compute' look, now ?
+T 1600576875 18<sepi18>	memb x [] = Falsememb x (y:ys) | x `elem` y:ys = True              | otherwise = mMemb              where mMemb = memb x (ys)
+T 1600576916 18<ski18>	that's better
+T 1600576937 18<lechner18>	ski: it's working. https://dpaste.com/CBE8R6EU2
+T 1600576940 18<ski18>	sepi : although that code not had redundant functionality
+T 1600576942 18<ski18>	er
+T 1600576945 18<ski18>	sepi : although that code now had redundant functionality
+T 1600576952 18<lechner18>	ski: I am just getting the hang of it. thanks so much for your help.
+T 1600576988 18<lechner18>	ski: i'll be back. my first day with haskell is ending, and it's time to call it a night.
+T 1600576989 18<sepi18>	the extra where part?
+T 1600576990 18<ski18>	lechner : yea. btw, i would probably write that last line as `return (hashMethod (Char8.pack contents))'
+T 1600577007 18<lechner18>	that's what I had. why is that superior, please?
+T 1600577013 18<ski18>	sepi : no, not that
+T 1600577052 18<ski18>	sepi : can you tell me, in words, what `memb x ys' is supposed to compute/check ?
+T 1600577064 18<ski18>	lechner : it uses less `$'s :)
+T 1600577087 18<ski18>	`$' rarely improve code, imho
+T 1600577098 18<sepi18>	the x = y:ys ?
+T 1600577126 18<ski18>	sepi : that question was not about your code, but about what behaviour your code is supposed to have
+T 1600577163 18<lechner18>	thanks again for all your help! unfortunately, i have to go but thanks to you my experience in this channel was super
+T 1600577166 18<sepi18>	Its supposed to check if what's given in x is in the ys list
+T 1600577194 18<ski18>	lechner : in general, it's probably better to replace `f $ g $ h $ x' with `f . g . h $ x' or (i prefer) `(f . g . h) x' .. or just `f (g (h x))' (brackets are nothing to be afraid of)
+T 1600577242 18<ski18>	lechner : the `f . g . h' "chain"/"pipeline" is better, since you can break out and factor away any part of it, giving it a new name. not so with the repeated `$'s
+T 1600577278 18<ski18>	lechner : have fun, and good luck with your continued learning
+T 1600577288 18<ski18>	sepi : yes, thank you
+T 1600577319 18<ski18>	sepi : now, what is  x `elem` ys  supposed to compute/check ?
+T 1600577607 18*	hackage tagstew 0 - Black magic tagsoup  https://hackage.haskell.org/package/tagstew-0 (FumiakiKinoshita)
+T 1600577862 18<sepi18>	I see that is my redundant part 😅
+T 1600577949 18<sepi18>	I'm not sure without my = true, my | becomes a parse error input
+T 1600577980 18<ski18>	how do you mean ?
+T 1600578135 18<sepi18>	does it need a true or false claim before using otherwise?
+T 1600578152 18<ski18>	a guard, introduced by the 
+T 1600578176 18<ski18>	`|' symbol, expects an expresion evaluating to `True' or `False', after it, yes
+T 1600578358 18<sepi18>	memb x (y:ys) | x == y = True              | otherwise = mMemb
+T 1600578381 18<sepi18>	that gets rid of redundancy correct
+T 1600578382 18<ski18>	yay :)
+T 1600578388 18<ski18>	yes
+T 1600578431 18<sepi18>	💀💀 thank you
+T 1600578436 18<ski18>	now, do you know how to express this using, say, `if'-`then'-`else', instead of guards ?
+T 1600578444 18<ski18>	(or any other way ?)
+T 1600578448 18*	hackage typesafe-precure 0.7.9.1 - Type-safe transformations and purifications of PreCures (Japanese Battle Heroine)  https://hackage.haskell.org/package/typesafe-precure-0.7.9.1 (igrep)
+T 1600578991 18<sepi18>	I know how I'd want to do it conceptually but I'm not too sure on the syntax
+T 1600579380 18<sepi18>	If you could show an example or reference that's similar to my function that'd be cool. I'll be heading to bed for the night soon
+T 1600579639 18<c_wraith18>	sepi: it's easier than you might think.    memb x (y:ys) = if ... then ... else ...
+T 1600585437 18*	hackage webauthn 0 - Web Authentication API  https://hackage.haskell.org/package/webauthn-0 (FumiakiKinoshita)
+T 1600588220 18<perdent18>	How would you decode this Cistercian Monk Numerals cipher from this image programtically? https://imgur.com/lWxfMHf https://www.dcode.fr/cistercian-numbers
+T 1600588807 18<cheater18>	you mean with OCR?
+T 1600588902 18<perdent18>	cheater: yeah, or is there an easier way?
+T 1600588930 18<perdent18>	Can't ffind any on github
+T 1600588936 18<perdent18>	That do this
+T 1600588951 18<cheater18>	why not just enter the data by hand?
+T 1600588961 18<cheater18>	do you have huge amounts of data to OCR?
+T 1600589009 18<perdent18>	I could doit by hand, would be nice to have a script to do it though
+T 1600589032 18<perdent18>	What did you get by hand?
+T 1600589616 18<shad0w_18>	Hi. i was following up on a link i was suggested to read here yesterday. https://wiki.haskell.org/How_to_write_a_Haskell_program
+T 1600589648 18<shad0w_18>	in the `program structure` section, it gives you a link for reading more about monad transformers.
+T 1600589654 18<shad0w_18>	that link seems to be dead.
+T 1600589680 18<cheater18>	are you new to haskell?
+T 1600589688 18<shad0w_18>	sure
+T 1600589704 18<cheater18>	don't read about monad transformers
+T 1600589715 18<shad0w_18>	lmao
+T 1600589737 18<cheater18>	just saving you a headache
+T 1600589747 18<shad0w_18>	just out of curosity. why ?
+T 1600589770 18<shad0w_18>	are they more complex than they are worth ? or they arent the preffered way anymore ?
+T 1600589777 18<perdent18>	i solved it
+T 1600589787 18<cheater18>	because it's an advanced topic you most certainly will not need for a long time, and any explanation you'll come across will likely be way over your head
+T 1600589809 18<shad0w_18>	gotcha
+T 1600589814 18<shad0w_18>	seems fair.
+T 1600589869 18<perdent18>	HTB{m0Nks_kN3w!}
+T 1600589874 18<perdent18>	is what i got
+T 1600589895 18<cheater18>	perdent: 🤷‍♂️
+T 1600589923 18<perdent18>	capital M
+T 1600590389 18<shad0w_18>	i had another question. is cabal sandboxing still a thing ?
+T 1600590475 18<shad0w_18>	i can only find 1 command `v1-sandbox` in cabal help and its listed under `legacy commands`
+T 1600590555 18<cheater18>	yes, v1-sandbox is still a thing, it's what sandbox used to be
+T 1600590567 18<cheater18>	if you use v2-* commands, they work like a sandbox now
+T 1600590569 18<int-e18>	shad0w_: Barely, it'll be removed in version 3.4. You can presumably get a similar effect by manipulating the store directory.
+T 1600590571 18<cheater18>	but the sandboxes are global
+T 1600590575 18<cheater18>	ish
+T 1600590579 18<cheater18>	it's not really like that
+T 1600590591 18<cheater18>	but for what you want, using v2-* commands is what you want if you were using sandboxes before
+T 1600590606 18<cheater18>	int-e's suggestion of manipulating the store dir isn't necessary
+T 1600590629 18<int-e18>	cheater: I *wanted* to keep local build artefacts.
+T 1600590688 18<cheater18>	int-e: shad0w_ is just a person new to haskell doing some basic projects. shad0w_ doesn't need to do any of that crazy stuff.
+T 1600590689 18<shad0w_18>	so, if hypothetically, i am writing a new project, doing cabal init will sandbox it to the very folder ?
+T 1600590705 18<shad0w_18>	cheater: +1
+T 1600590709 18<cheater18>	shad0w_: not really, no. it will be global. but it will be done so that you don't get cabal hell
+T 1600590747 18<shad0w_18>	now suppose if 2 of my projects depend on the  same dep but different version ?
+T 1600590768 18<shad0w_18>	for eg:- say hlint.
+T 1600590777 18<shad0w_18>	i just updated to 3.2 recently
+T 1600590780 18<cheater18>	you used to get cabal hell due to conflicting library versions. you don't get that anymore. every combination of versions is kept separate, so to speak. so two projects using the same exact lib versions will use the same build artefacts. but two projects using different lib versions will use separate lib artefacts and won't know about each other.
+T 1600590815 18<shad0w_18>	and globals can only be 1 copy right ?
+T 1600590827 18<shad0w_18>	like hlint is installed in .cabal/bin/hlint
+T 1600590837 18<shad0w_18>	it seems to be a symlink to a store folder
+T 1600590946 18<cheater18>	i forgot how that works
+T 1600590953 18<cheater18>	i just know you can set it up to work
+T 1600590970 18<shad0w_18>	cool
+T 1600590989 18<shad0w_18>	tl;dr, sandboxing isn't necessary now ?
+T 1600591009 18<cheater18>	yes
+T 1600591010 18<int-e18>	cheater: fair enough, I should've asked why they want sandboxes first.
+T 1600591012 18<cheater18>	use v2-*
+T 1600591018 18<cheater18>	int-e: it's okay :)
+T 1600591028 18<shad0w_18>	thanks @cheater
+T 1600591029 18<cheater18>	int-e: you were trying to help, that's what matters :)
+T 1600591032 18<cheater18>	yw shad0w_ 
+T 1600591071 18<shad0w_18>	one more thing
+T 1600591079 18<shad0w_18>	there are v2- commands like you said.
+T 1600591092 18<shad0w_18>	there also happens to be some `new-` commands
+T 1600591107 18<shad0w_18>	do they succeed `v2-` commands ?
+T 1600591139 18<shad0w_18>	thanks @int-e too : )
+T 1600591190 18<int-e18>	shad0w_: no, the new- command are the v2- commands
+T 1600591246 18<cheater18>	new-* is the current new stuff. once we have v3, new will refer to v3 and not v2 any more.
+T 1600591249 18<cheater18>	v2 is forever v2.
+T 1600591252 18<cheater18>	until it gets removed.
+T 1600591252 18<int-e18>	For historical reasons, the old commands were there, then the 'new-' commands were added. Then somebody realized that this will make the switch awkward, and the 'v1-' aliases for the old commands and the 'v2-' aliases for the new commands were added.
+T 1600591269 18<int-e18>	By now the 'v2-' commands are the default, and the 'new-' prefix is confusing.
+T 1600591299 18<shad0w_18>	so the new- seems like a pointer to the newest stuff, which just happens to be v2- in this case ?
+T 1600591313 18<shad0w_18>	while v2- is always hard v2-
+T 1600591324 18<cheater18>	yes
+T 1600591329 18<shad0w_18>	got it. 
+T 1600591341 18<shad0w_18>	damn you guys are helpful.
+T 1600591345 18<shad0w_18>	: )
+T 1600591368 18<shad0w_18>	happy weekend guys.
+T 1600591378 18<int-e18>	cheater: please tell me there are no current plans for a v3 set of cabal commands.
+T 1600591389 18<cheater18>	int-e: not that i know of
+T 1600591400 18<cheater18>	int-e: but that's what i was told some time ago
+T 1600591406 18<cheater18>	you too shad0w_ 
+T 1600592438 18<kicov18>	Hi, was just wondering how to approach doing things with State monad and liquid haskell. Let's say our state is int, and we'd like a check for a function `successor` that checks whether the current int is mod 2. If it is, then we return state+1, if it isn't, boom.
+T 1600593901 18<ski18>	kicov : sounds like you want to encode precondition and postcondition on the state, that is some kind of Hoare triple ?
+T 1600595286 18<dminuoso18>	kicov: What is "boom"?
+T 1600595737 18<kicov18>	dminuoso: failed constraint
+T 1600595979 18<ski18>	kicov : so, what does "checks whether the current int is mod 2" mean ?
+T 1600596035 18<kicov18>	ski: Never heard of them, but that would be possible. Maybe continuation passing style could have a similiar problem
+T 1600596077 18<kicov18>	ski: i (the state) `mod` 2 == 0
+T 1600596099 18<kicov18>	sorry, should be more clear
+T 1600596103 18<dminuoso18>	kicov: So what you're proposing is `successor :: State Int ()` with a matching LH signature that suggests that the *input* state is always even?
+T 1600596111 18<ski18>	kicov : <https://en.wikipedia.org/wiki/Hoare_logic>
+T 1600596118 18<dminuoso18>	kicov: Did I get that right?
+T 1600596143 18<kicov18>	dminuoso : yep!
+T 1600596148 18<ski18>	presumably also that the output state is always odd, i'd gather
+T 1600596184 18<dminuoso18>	Mmm, I wonder, is there some `liftState :: a -> a -> StateT a ()` function perhaps?
+T 1600596185 18<ski18>	(or maybe even that it's just the successor of the input)
+T 1600596199 18<dminuoso18>	Oh, State rather
+T 1600596205 18<ski18>	what would it do ?
+T 1600596244 18<dminuoso18>	Oh hah, that's just modify I guess
+T 1600596259 18<ski18>	oh .. i was beginning to wonder if it was missing some brackets
+T 1600596308 18<dminuoso18>	Ah indeed, weird.
+T 1600597731 18<siraben18>	What a good alternative to the monad-gen package?
+T 1600598872 18<random18>	hey guys, am I not getting this right or there is no phone parser library for Haskell
+T 1600598879 18<random18>	besides the one that requires libphonenumber?
+T 1600598927 18<Rembane18>	random: Is that US phone numbers?
+T 1600598937 18<random18>	I need for european ones
+T 1600598957 18<random18>	but there doesn't seem to be anything for US phones as well
+T 1600598964 18<random18>	thought this was quite a common usecase
+T 1600598983 18<Rembane18>	random: Got it. Maybe it is too simple to write a parser using Megaparsec that everyone does that instead?
+T 1600599009 18<Rembane18>	siraben: I have used this: https://hackage.haskell.org/package/quickcheck-transformer What is good for you?
+T 1600599032 18<random18>	Rembane: I guess not too simple but I'll be doing it as well lol...
+T 1600599059 18<random18>	the country code numbers are quite variable
+T 1600599144 18<Rembane18>	random: Yeah. :) 
+T 1600599159 18<Rembane18>	random: Just out of curiosity, do you have some examples of country code numbers?
+T 1600599173 18<random18>	https://countrycode.org/
+T 1600599309 18<cheater18>	random: phone numbers are a very difficult thing to parse, like time zone data and time strings, if there's going to be a competent library there's only going to be one
+T 1600599329 18<random18>	cheater: yeah but it relies on a C dep
+T 1600599334 18<random18>	we're in AWS Lambda so that hurts
+T 1600599342 18<random18>	I'll fix it of course, just found it weird
+T 1600599343 18<Rembane18>	random: Dashes! Why?! <- rhetorical question
+T 1600599346 18<cheater18>	that's pretty tough
+T 1600599347 18<cheater18>	sorry
+T 1600599380 18<random18>	alright, putting on my devops gloves
+T 1600599385 18<random18>	wish me luck guys *cries*
+T 1600599520 18<Rembane18>	random: GL HF!
+T 1600599619 18<edwardk18>	Forgive me, father, for I have sinned. It has been 33 years since my last confession. I used an overlapping instance, and looked lustfully upon another man's type system. What is my penance?
+T 1600600448 18<phadej18>	recite "why functional programming matters" ten times, and contribute to GHC.
+T 1600600555 18<edwardk18>	tough but fair
+T 1600600955 18<gpvs18>	Hello. I can't make this compile:
+T 1600600955 18<gpvs18>	Class (Show type_self, AWord type_word) => Animal type_self where
+T 1600600955 18<gpvs18>	  say :: type_self -> [type_word]
+T 1600600955 18<gpvs18>	I tried:
+T 1600600955 18<gpvs18>	Class Show type_self => Animal type_self where
+T 1600600956 18<gpvs18>	  say :: AWord type_word => type_self -> [type_word]
+T 1600600956 18<gpvs18>	and it compiled, but then
+T 1600600957 18<gpvs18>	instance Animal AnimalSpecific where
+T 1600600957 18<gpvs18>	  say (AnimalSpecific arrayOfInstancesOfAWord) = arrayOfInstanceOfAWord
+T 1600601028 22*	26ChanServ gives channel operator status to 18ski
+T 1600601034 18<Cale18>	oops
+T 1600601055 18<gpvs18>	Hello. How do I paste multiline here not getting banned?
+T 1600601066 18<Rembane18>	gpvs: What error message do you get? Can you put it in a pastebin? See topic for information.
+T 1600601073 18<Rembane18>	gpvs: You can access topic by running the command /topic 
+T 1600601073 18<Cale18>	try https://dpaste.com/
+T 1600601079 18<niko18>	ski: already lifted
+T 1600601090 22*	26ChanServ removes channel operator status from 18ski
+T 1600601093 18<ski18>	ok
+T 1600601112 18<Rembane18>	edwardk: Was it 33 years since you used an overlapping instance last time?! :O 
+T 1600601130 18<edwardk18>	pretty close
+T 1600601136 18<edwardk18>	i used one other really
+T 1600601162 18<int-e18>	Overlapping instances is the devil's way of leading you towards incoherent instances.
+T 1600601163 18<edwardk18>	but i was granted an indulgence by one of the simons, so that sin never existed to be forgiven
+T 1600601200 18<phadej18>	I think that my overlapped instance count is negative
+T 1600601220 18<edwardk18>	here i'm trying to hack around the fact that 1 + isn't injective for Nat.
+T 1600601225 18<edwardk18>	So I've had to get creative
+T 1600601228 18<Rembane18>	edwardk: Seems legit
+T 1600601258 18<edwardk18>	There appears to be a pattern synonym I _can't_ write without injectivity on succ, despite the fact that the GADT version typechecks, i can't emulate the GADT right.
+T 1600601286 18<Rembane18>	I'm probably extremely dense here, but I cannot see why 1 + isn't injective. What have I missed?
+T 1600601300 18<phadej18>	nobody told GHC
+T 1600601317 18<Rembane18>	Oh
+T 1600601324 18<edwardk18>	in theory if i can get the type information at just the right point so that names are in scopes maybe i can unsafeCoerce a :~~: to make the proof i need
+T 1600601343 18<edwardk18>	Rembane: the builtin Nat kind is crippled
+T 1600601360 18<edwardk18>	+ only computes will fully grounded numbers
+T 1600601384 18<Cale18>	At the term level, you have infinity = Succ infinity, which also messes up the injectivity of 1+
+T 1600601388 18<Rembane18>	edwardk: How terrible is it to uncripple it?
+T 1600601391 18<edwardk18>	so i wind up in situations where i need to know 0 and 1+x are disjoint, or that 1+x = 1 + y => x + y
+T 1600601398 18<Cale18>	er, nevermind
+T 1600601403 18<Cale18>	It's just a fixed point
+T 1600601432 18<phadej18>	I think though that GHC knows some weak version of injectivity for (+) though, as otherwise one would get a lot more ambiguous type erros
+T 1600601436 18<edwardk18>	Rembane: that is a ghc hq thing. nats have been terrible for several years, so i'm not holding my breath.
+T 1600601459 18<ski18>	gpvs : do you understand the problem you're getting ? perhaps you want to make `Animal' a MPTC, parameterized by both `type_self' and `type_word' ? do you really need to make a type class at all ?
+T 1600601466 18<Rembane18>	edwardk: Got it. Then I assume that it isn't "just" to e-mail a patch and hope for the best. 
+T 1600601473 18<edwardk18>	phadej: oh? afaict all it does it leave it dangling there as a stuck type family
+T 1600601503 18<edwardk18>	unless the args are fully grounded out by previous applications of the magic rule for the type family
+T 1600601598 18<gpvs18>	ski: wait a second please, forming dpaste from another PC
+T 1600601635 18<phadej18>	edwardk: if you write foo :: Proxy (x + y) -> Proxy x -> (); foo _ _ = () -- it is accepted
+T 1600601661 18<phadej18>	clearly means that (+ y) is injective.
+T 1600601671 18<phadej18>	"clearly"
+T 1600601750 18<edwardk18>	hrmm
+T 1600601852 18<edwardk18>	the (+) type family is weird
+T 1600601858 18<phadej18>	git grep -i "interaction with inerts" in GHC code
+T 1600601869 18<phadej18>	I just know that makes that `foo` code type-checks
+T 1600601889 18<phadej18>	but how, ask someone else
+T 1600601902 18<phadej18>	(e.g. why it doesn't make partially applied + injective)
+T 1600601936 18<phadej18>	but yes, wired-in magic type-families are weird.
+T 1600601945 18<edwardk18>	the fact that + has some kind of privileged f'd up position explains a bit of how i get errors with it i can't get elsewhere
+T 1600601971 18<phadej18>	re ground terms
+T 1600601980 18<phadej18>	5 + n ~ 8 does simplify to n ~ 3
+T 1600601989 18<gpvs18>	I seek to explain to GHC that I want a Class. Class's requirement has a function. Function's "return" type must be instance of another specific Class. Here is what I tried and errors I got: dpaste.com/FTAG9S4MQ , dpaste.com/EG5RM5HXY
+T 1600602024 18<edwardk18>	yet it can't figure out 1 + n ~ 1 + m => n ~ m
+T 1600602029 18<phadej18>	no
+T 1600602034 18<phadej18>	nobody told it *that* :)
+T 1600602042 18<phadej18>	there isn't ring-solver in GHC
+T 1600602053 18<phadej18>	(it's available as a plugin)
+T 1600602069 18<phadej18>	https://hackage.haskell.org/package/ghc-typelits-natnormalise
+T 1600602072 18<edwardk18>	yeah
+T 1600602085 18<edwardk18>	was going to try the natnormalize plugin to see if i could use it to compile the pattern i need
+T 1600602118 18<phadej18>	I guess Christiaan would appreaciate if you tell him that *it works for you* ;)
+T 1600602148 18<ski18>	gpvs : so you want to associate each `type_self', that you make an instance for, with a particular `type_word'
+T 1600602174 18<edwardk18>	let me add the example i'm fighting with to the repo
+T 1600602257 18<gpvs18>	ski: If I got you correctly: I may, but where is no need to. AWord is good enough abstraction for Animal-s to work with, there is no need to bind particular animals to particular words
+T 1600602269 18<kicov18>	Got a few cpsy + liquid haskell examples: https://dpaste.com/3YX484ND7 and https://dpaste.com/FHMQ5DZ44 - just wondering how both examples could work using single cpsy annotation.
+T 1600602281 18<gpvs18>	ski: and if I must to associate it, how would I do that?
+T 1600602286 18<edwardk18>	oh weeee, more regressions
+T 1600602342 18<ski18>	gpvs : so you definitely don't want the `class Show type_self => Animal type_self where say :: AWord type_word => type_self -> [type_word]' version, since it means that if you pass a `AnimalSpecific' to `say', then `say' will have to be able to compute a list of `type_word's for any instance of `AWord' `type_word', that the caller wants, not just for the `AWordDog' instance
+T 1600602347 18<edwardk18>	phadej: https://github.com/ekmett/haskell/tree/master/types is the project in question
+T 1600602370 18<edwardk18>	if i compile with -f-injectiveSucc then examples/Vec.hs goes to hell
+T 1600602413 18<ski18>	gpvs : so, it seems you either want an existential (but i suspect you don't actually want that here), or else you want to make `type_word' an additional parameter of `Animal' (possibly with a Functional Dependency)
+T 1600602424 18<gpvs18>	ski: oh, now I got it. Any reason first approach should not work?
+T 1600602425 18<edwardk18>	you may need to disable the construction of the SingI instances in Data.Type.Internal.TH as well here https://github.com/ekmett/haskell/blob/master/types/src/Data/Type/Internal/TH.hs#L122
+T 1600602434 18<ski18>	gpvs : hmm
+T 1600602465 18<edwardk18>	but if i write a manual data type that does it rather than emulate a GADT with my pattern synonym i can make it work *headdesk*
+T 1600602499 18<ski18>	gpvs : "AWord is good enough abstraction for Animal-s to work with, there is no need to bind particular animals to particular words" -- but you just tried to associate `AnimalSpecific', not to arbitrary instances of `AWord', but specifically to `AWordDog'
+T 1600602504 18<edwardk18>	but i can't have the actual data type because i need a homogeneous representation for my singletons or i lose a huge performance tax.
+T 1600602531 18<ski18>	gpvs : that is, your implementation of `say' tried to do that
+T 1600602540 18<phadej18>	edwardk: I only understood "right and slow vs. doesn't work fast"
+T 1600602549 18<gpvs18>	ski: what's existential? could you provide a link or googling term please? I'm truing two avoid making type_word a parameter to Animal not to bind them
+T 1600602561 18<edwardk18>	the cost is linear vs O(1)
+T 1600602569 18<edwardk18>	i have hacked around every other obstacle in the way
+T 1600602578 18<edwardk18>	this is the last farking leg
+T 1600602612 18<ski18>	gpvs : do you want to require `say' to return a list of `type_word's, for some `type_word' that's an instance of `AWord' (but each `say' implementation should be allowed to pick which such `type_word' it wants) ?
+T 1600602644 18<edwardk18>	in the process i dragged the Nat kind and hacked it to work like Natural as a type (which will just work when ghc does it for real), hacked Type to look like TypeRep, hacked Symbol to look like String, used stuck data families to get me ways to use Int and Char meaningfully as kinds.
+T 1600602660 18<edwardk18>	and came up with a way to get constant time singletons
+T 1600602673 18<edwardk18>	which works for everything except when my singleton gets fancy enough
+T 1600602677 18<edwardk18>	and Nat is involved
+T 1600602680 18<edwardk18>	because Nat is awful
+T 1600602690 18<gpvs18>	ski: exactly. Any Animal's 'say' may return *any* value which is instance of AWord
+T 1600602700 18<gpvs18>	ski: * a list
+T 1600602740 18<ski18>	gpvs : could different elements of the list be of different types `type_word', provided all are instances of `AWord' ? or should all elements in the list be of the same type `type_word' ?
+T 1600602790 18<gpvs18>	ski: I don't have requirement for/against it at the moment. could you please provide both verions?
+T 1600602799 18<edwardk18>	phadej: that said, i really like using Type as Typeable.TypeRep. and then Type.Reflection.TypeRep becomes its singleton
+T 1600602820 18<edwardk18>	very pretty code results
+T 1600602902 18<ski18>	gpvs : hm, let's consider alternatives, and what they would mean
+T 1600602935 18<Cale18>	I'm pretty sure from the looks of the code that made it into the channel that gpvs wants a fundep
+T 1600602946 18<Cale18>	But maybe I missed something
+T 1600602964 18<ski18>	gpvs : `class Show type_self => Animal type_self where say :: AWord type_word => type_self -> [type_word]' means that the caller of `say' will decide which `type_word' to pick, can pick any, as long as its an instance of `AWord'. and you said you don't want that
+T 1600603002 18<Cale18>	gpvs: The type of the result should depend on the type of the input, right?
+T 1600603057 18<edwardk18>	looks like ghc-typelits-natnormalise isn't able to help solve the 1 + n ~ 1 + m    ==> n ~ m problem
+T 1600603076 18<edwardk18>	i get the same issue with the plugin enabled
+T 1600603108 18<gpvs18>	ski: I don't want the rigid return type to be defined at type instantiation moment. I'm interesting in both version where return type is define on call or by implementation itself
+T 1600603119 18<Cale18>	edwardk: Can you use unsafeCoerce to get yourself out of that?
+T 1600603121 18<edwardk18>	the problem is that i'm neck deep in a pattern synonym at the time it happens and can't. really get both n and m in type in scope to unsafeCoerce my way to glory
+T 1600603123 18<ski18>	gpvs : `class (Show type_self, AWord type_word) => Animal type_self where say :: type_self -> [type_word]' means that you have associations between particular `type_self's and particular `type_word'. so, for a particular `type_self', you don't need to have all possible instances `type_word' of `AWord' to consider. you could just have some of them, if you'd like to. also, you could enforce it to be at most one `type_word', if you'd want to
+T 1600603135 18<Cale18>	ahh
+T 1600603138 18<edwardk18>	i've been trying ever more esoteric dances to make that work
+T 1600603165 18<Cale18>	Pattern synonyms are jankier than I ever imagined they might be
+T 1600603171 18<gpvs18>	Cale: optionaly, but I don't want to bind Animal instances to particular AWord-s instances
+T 1600603199 18<edwardk18>	https://github.com/ekmett/haskell/blob/master/types/example/Vec.hs#L49 the issue is it can't figure out ys is well typed there.
+T 1600603223 18<Cale18>	gpvs: Maybe the solution is just a simple two parameter type class then
+T 1600603238 18<edwardk18>	there is another issue involving the SingI instance but i can hack around that by moving the type synonym around
+T 1600603249 18<Cale18>	gpvs: Though, that won't be terribly *convenient* since you'll probably have to annotate the type of the result a lot, given that it can't be determined by the type of the input
+T 1600603258 18<edwardk18>	Cale: i'm doing evil things in there
+T 1600603287 18<ski18>	gpvs : the last option is existentials, which here would be either `class Show type_self => Animal type_self where say :: type_self -> exists type_word. AWord type_word *> [type_word]' or `class Show type_self => Animal type_self where say :: type_self -> [exists type_word. AWord type_word *> type_word]'. both of these will allow the choice of `type_word' to depend on the run-time input to `say' (if you don't want that, that could be corrected)
+T 1600603287 18<edwardk18>	Cale: in particular i'm emulating GADTs on a non GADT using pattern synonyms and another GADT as a helper to sort of scaffold all the equalities i need
+T 1600603300 18<gpvs18>	Cale: resulting types will bind particula Animals to particular Words then, wouldn't they?
+T 1600603303 18<ski18>	(er, possibly cut off part was "(if you don't want that, that could be corrected)")
+T 1600603304 18<edwardk18>	the scaffolding GADT is just unsafeCoerced to offer what i need
+T 1600603347 18<gpvs18>	Cale: I've just read what fundeps are and I believe it's not what I want
+T 1600603419 18<edwardk18>	pattern SVCons :: forall k (n :: Nat) (r :: Vec k (1 + n)). () => forall (x :: k) (xs :: Vec k n). r ~ 'VCons x xs => Sing x -> Sing xs -> Sing r; pattern SVCons y ys <- ( upSVec -> SVCons' y ys) where SVCons (Sing y) (Sing ys) = UnsafeSing (VCons y ys); should basically faithfully emulate the GADT constructor that it delegates down to for proof
+T 1600603427 18<Cale18>	gpvs: It would mean that, say, given that you have a list of Cats as input, then the type of words that Cats produce would be determined by the fact that they are Cats
+T 1600603440 18<Cale18>	For example, maybe Cats produce Text
+T 1600603443 18<edwardk18>	upSVec casts from Sing x -> SVec' x
+T 1600603447 18<gpvs18>	ski: "means that the caller of `say' will decide which `type_word' to pick, can pick any" how do I express it in Haskell from the callers perspective?
+T 1600603454 18<edwardk18>	but the constructor for SVec' is well typed and happy
+T 1600603469 18<edwardk18>	i just can't figure out the right way to pass through the lesson from SVec' to Sing
+T 1600603476 18<Cale18>	gpvs: That's just the two-parameter class with no functional dependencies
+T 1600603483 18<edwardk18>	when it matches it learns a heterogeneous type equality
+T 1600603507 18<Cale18>	gpvs: and you can write type annotations like (say cats :: [Text]) to determine the type of result then
+T 1600603524 18<Cale18>	(or if it's determined by how the result is used, that's also fine
+T 1600603526 18<Cale18>	)
+T 1600603527 18<ski18>	gpvs : that option was already expressed in Haskell. i dunno what you mean by "from the callers perspective" (i was already talking there about it being the caller who got to pick `type_word' there)
+T 1600603527 18<edwardk18>	that the output type is carrying an argument of kind Vec k (S n) relative to Vec k n for the inside argument to the vector.
+T 1600603667 18<edwardk18>	-- just works (S n = 1 + n as a type synonym, Z = 0) -- so now what i want is a pattern synonym as a next step that just basically wraps SVCons0  https://www.irccloud.com/pastebin/j3dAUDko/svec0
+T 1600603678 18*	hackage binaryen 0.0.4.0 - Haskell bindings to binaryen  https://hackage.haskell.org/package/binaryen-0.0.4.0 (terrorjack)
+T 1600603698 18<edwardk18>	if that data type didn't type check this wouldn't be so infuriating
+T 1600603703 18<edwardk18>	because i'd know it was impossible
+T 1600603707 18<gpvs18>	ski: `class Show type_self => Animal type_self where say :: AWord type_word => type_self -> [type_word]' I got error trying to compile it. It's in https://dpaste.com/EG5RM5HXY . Did I missed some required extensions?
+T 1600603709 18<edwardk18>	but that is just hunky dory
+T 1600603725 18<Cale18>	edwardk: hmm, think I'll have to fire up ghci here... :)
+T 1600603815 18<gpvs18>	ski: this `class (Show type_self, AWord type_word) => Animal type_self where say :: type_self -> [type_word]' got me compile error too. https://dpaste.com/FTAG9S4MQ
+T 1600603816 18<ski18>	gpvs : no, your `say' implementation doesn't satisfy that type signature
+T 1600603834 18<ski18>	(the `say :: AWord type_word => type_self -> [type_word]' one, i mean)
+T 1600603863 18<Cale18>	gpvs: You need another parameter on the class there
+T 1600603889 18<Cale18>	gpvs: class (Show s, AWord w) => Animal s w where say :: [s] -> [w]
+T 1600603890 18<ski18>	gpvs : oh, sorry. the middle alternative should have been `class (Show type_self, AWord type_word) => Animal type_self type_word where say :: type_self -> [type_word]' .. iow MPTC
+T 1600603904 18<ski18>	Cale : no list input
+T 1600603927 18<Cale18>	oh
+T 1600603929 18<Cale18>	okay
+T 1600603937 18<Cale18>	yeah, just s -> [w] in that case
+T 1600604008 18<ski18>	gpvs : anyway, perhaps we should first try to determine what you want, before diving into the how ?
+T 1600604020 18<edwardk18>	Cale: i have it boiled down to one file now
+T 1600604048 18<edwardk18>	https://www.irccloud.com/pastebin/KHWDco0s/BrokenVec.hs
+T 1600604063 18<edwardk18>	that is standalone and doesn't need the types library i'm writing
+T 1600604085 18<Cale18>	ah, cool
+T 1600604131 18<gpvs18>	Cale, ski: ok, as far as I can see to get a uniform list of instances I *must* bind types like with multiparam class. What about getting a non-uniform list? Like when Cat can say [WordType0, WordType2].
+T 1600604157 18<Cale18>	gpvs: Well, what do those word types have in common? What are you going to do with the resulting list?
+T 1600604179 18<ski18>	gpvs : you could do that, too, with existentials
+T 1600604182 18<gpvs18>	ski: I want something like returning an array of objects confirming to interface in OO-kind stuff
+T 1600604186 18<Cale18>	gpvs: You can think of a type as representing permissions to use the corresponding values in particular ways. If you don't know what type something is, it becomes impossible to observe
+T 1600604196 18<ski18>	gpvs : yea, that sounds like existentials
+T 1600604209 18<gpvs18>	Cale: those word types all are instances of AWord class
+T 1600604213 18<ski18>	gpvs : however, often this is not a good idea / overkill. but you can do it
+T 1600604213 18<PropositionJoe18>	Why do I have to write "`div`" instead of just div?
+T 1600604224 18<Cale18>	Yeah, existentials give you one way to discard information about what type of thing you have
+T 1600604231 18<ski18>	> div 18 7  -- PropositionJoe
+T 1600604234 18<lambdabot18>	 2
+T 1600604234 18<edwardk18>	> div 4 3
+T 1600604237 18<lambdabot18>	 1
+T 1600604238 18<edwardk18>	works for me
+T 1600604251 18<PropositionJoe18>	so div is prefix "`div`" is infix?
+T 1600604254 18<ski18>	yep
+T 1600604255 18<Cale18>	data SomeWord where MkSomeWord :: AWord w => w -> SomeWord
+T 1600604260 18<PropositionJoe18>	thanks ski
+T 1600604268 18<edwardk18>	putting backticks on makes anything infix
+T 1600604270 18<ski18>	PropositionJoe : works for any identifier
+T 1600604271 18<Cale18>	(that uses the GADTs extension)
+T 1600604381 18<ski18>	gpvs : `AWord' class currently has no methods (and no superclasses). so `exists type_word. AWord type_word *> ..type_word..' is kind of pointless, you can't get any information out. but perhaps your shown `AWord' was a mockup, and you'll actually have useful methods or superclasses ?
+T 1600604462 18<Cale18>	gpvs: In my example, applying the MkSomeWord data constructor to a value whose type w is an instance of AWord will result in forgetting everything about which type w was, except that it had an instance of AWord, and then the only things you'll be allowed to do with the value when you get it out will be things you could do with any unknown instance of AWord
+T 1600604467 18<ski18>	gpvs : "I want something like returning an array of objects confirming to interface in OO-kind stuff" -- do you actually need that ? how are you going to use the result of calls to `say' ? (Cale's question)
+T 1600604498 18<gpvs18>	Cale, ski: looks like downcasting to me. Seems like I getting closer. I understand it doesn't make a lot sense in Haskell, just trying of how far it can extend. Yes, AWord is a mockup
+T 1600604504 18<Cale18>	If you want to be more like OO, it might be more sensible just to make object types which correspond to whatever your classes would have been
+T 1600604522 18<ski18>	gpvs : there is no downcasting in Haskell, really
+T 1600604524 18<Cale18>	Don't try to use Haskell classes as OO classes, they're not the same thing
+T 1600604549 18<Cale18>	Instances of OO classes are values, instances of Haskell classes are types.
+T 1600604549 18<gpvs18>	ski: yes, I sayed that making a parallel to what it would be for me in OO
+T 1600604552 18<ski18>	gpvs : and how would you use downcasting, anyway ? test for particular types ? why not use a sum type ?
+T 1600604585 18<Cale18>	Haskell classes are a good bit like interfaces though
+T 1600604597 18<Cale18>	But usually it makes more sense not to start from there
+T 1600604620 18<Cale18>	What methods were you going to put in the AWord class?
+T 1600604621 18<ski18>	gpvs : if `AWord' is beefy enough for you to be able to do something sensible with values of an unknown type `type_word' that's an instance of `AWord', then existentials start to make more sense
+T 1600604630 18<gpvs18>	ski, Cale: "data SomeWord where MkSomeWord :: AWord w => w -> SomeWord" ok, maybe 'downcasting' is not the best term. Let me call it 'specialization' then.
+T 1600604682 18<gpvs18>	ski: yes, AWord in dpaste is a mockup
+T 1600604690 18<ski18>	yea, i got that
+T 1600604728 18<ski18>	gpvs : by "downcasting" i meant being able to do e.g. `toAWordDog :: AWord w => w -> Maybe AWordDog'
+T 1600604748 18<gpvs18>	Cale: I will not try to do OO with Haskell, pinkie-promise! :) Just looking at cases while learning.
+T 1600604754 18<ski18>	gpvs : that is the kind of thing you had in mind, yes ?
+T 1600604817 18<gpvs18>	ski: nodes of graph of different types and constructs which can reference each other regardless, relying on fact that all of them confirm to the basic interface
+T 1600604845 18<ski18>	gpvs : which question is that an answer to ?
+T 1600604878 18<ski18>	(it doesn't seem to obviously be about how to use downcasts, e.g.)
+T 1600604935 18<Cale18>	gpvs: Well, I think doing OO with Haskell can be quite good in some cases. The encoding, if you do it right, is indistinguishable from ordinary functional programming. You have first class functions and you have record types. Put those together, and you can make records of methods which can be defined differently for each value you construct.
+T 1600604946 18<ski18>	Cale : although you call interface methods on an object :)
+T 1600604954 18<Cale18>	gpvs: i.e. you don't need subclasses to override method implementations
+T 1600604964 18<Cale18>	(which is good, since you don't have subclasses)
+T 1600604995 18<gpvs18>	ski: I misread 'that' as 'what', sorry. It seems like that. Have to research existentials and try in ghc.
+T 1600605015 18<Cale18>	I would honestly avoid existentials initially
+T 1600605026 18<Cale18>	Most of the time, you won't really need them
+T 1600605037 18<ski18>	@where existential-antipattern
+T 1600605037 18<lambdabot18>	"Haskell Antipattern: Existential Typeclass" by Luke Palmer at <http://lukepalmer.wordpress.com/2010/01/24/haskell-antipattern-existential-typeclass/>
+T 1600605096 18<gpvs18>	ski, Cale: thank you for your help! Will research existentials and try them for my case, just to know it's there. If you wondering, the original idea was "nodes of graph of different types and constructs which can reference each other regardless, relying on fact that all of them confirm to the basic interface"
+T 1600605096 18<Cale18>	gpvs: The important question to think about first is "what am I allowed to do with these things?" -- if you can figure out all the things you're allowed to do with a thing, then one of the ways of defining its type is just as a collection of the results of those operations
+T 1600605099 18<ski18>	gpvs : if we saw the actual `AWord' class, or if you told how you were going to use the results of `say', or both, we might be able to give better advice
+T 1600605161 18<ski18>	gpvs : that's a pretty vague, non-committal description
+T 1600605181 18<gpvs18>	lamdabot: thanks for the link
+T 1600605245 18<ski18>	gpvs : (a) often you don't want/need OO-style things; (b) if you do, ordinary lexical scoping with records commonly suffice; (c) sometimes existentials may be required
+T 1600605270 18<bicho_rastrero18>	I'm learning haskell and I saw this syntax in a function "merge list1@(x: xs) list2@(y : ys)", what is the name of the @ operator there? How is that structure named?
+T 1600605276 18<ski18>	gpvs : you should probably not reach for existentials, unless you really need them
+T 1600605325 18<ski18>	bicho_rastrero : "as-patterns"
+T 1600605330 18<gpvs18>	ski: part I stumbled on is the last part of description. Any type of class node should be able to return a list of nodes it's connected to, these nodes might be of different types, but of the same base class.
+T 1600605348 18<bicho_rastrero18>	Thank you, ski 
+T 1600605376 18<ski18>	bicho_rastrero : it's both giving a name to the whole input, and simultaneously matching it with a pattern, so that you can check its shape, and name parts
+T 1600605386 Python interface unloaded
+T 1609963182 19*	Now talking on 22#haskell
+T 1609963182 22*	Topic for 22#haskell is: https://www.haskell.org | https://wiki.haskell.org/IRC_channel | Paste code/errors: https://gist.github.com/ | Logs: http://tunes.org/~nef/logs/haskell/?C=M;O=D | https://www.reddit.com/r/haskell | Admin: #haskell-ops | Offtopic: #haskell-offtopic | https://downloads.haskell.org
+T 1609963182 22*	Topic for 22#haskell set by 26glguy (24Wed Jan  6 11:44:54 2021)
+T 1609963182 22*	Channel 22#haskell url: 24http://www.haskell.org/
+T 1609963189 18<ski18>	it was just a point re "like mutual recursion without a base case", not about large or infinite types
+T 1609963218 18<ski18>	(or long typechecking time)
+T 1609963392 18<gedda18>	i might have expressed myself clumsily
+T 1609964336 18<melkornms18>	hey guys, I was digging a little more into the Monoid (a -> b) and stumbled upon something I can't understand, I have made a little gist - https://gist.github.com/MelkorNemesis/b53535f298d478aa437853c8180dbbd9
+T 1609964345 18<melkornms18>	would the implementation on line 4 work?
+T 1609964362 18<melkornms18>	mappend is a binary function and here it takes 3 arguments
+T 1609964406 18<ski18>	yes it would
+T 1609964411 18<melkornms18>	does it have something to do with partial application? I can understand it on the line 11 where it clearly reads f <> g
+T 1609964419 18<merijn18>	melkornms: Question: What's the difference between a function taking 2 arguments and one taking 1 argument and returning a lambda?
+T 1609964434 18<ski18>	  mappend :: (a -> b) -> (a -> b) -> (a -> b)  -- where `Monoid b' is known
+T 1609964436 18<ski18>	in that case
+T 1609964440 18<melkornms18>	merijn: I would say none?
+T 1609964444 18<merijn18>	melkornms: Right
+T 1609964453 18<ski18>	  mappend f g x =  f x `mappend` g x
+T 1609964455 18<ski18>	is equivalent to
+T 1609964462 18<ski18>	  mappend f g = \x -> f x `mappend` g x
+T 1609964469 18<merijn18>	melkornms: Now keep in mind that "mappend x f = ..." is the same as "mappend = \x -> \y -> ..."
+T 1609964484 18<melkornms18>	right, thanks guys
+T 1609964497 18<merijn18>	melkornms: So, by extension "mappend f g = \x -> f x <> g x" is equivalent to "mappend f g x = f x <> g x"
+T 1609964525 18<merijn18>	melkornms: Haskell doesn't really have a notion of "number of arguments", GHC just cares "do the types match?"
+T 1609964540 18<melkornms18>	brilliant, thanks for the help
+T 1609964545 18<merijn18>	So if the "return" is a function, then GHC is perfectly happy if you move that argument to the left of the =
+T 1609964547 18<ski18>	melkornms : if you turn on the `InstanceSigs' extension, you can actually put the signature i mentioned in your code (inside the `instance' declaration)
+T 1609964572 18<melkornms18>	been coding for 15 years, but it was time to dig into some haskell, haha
+T 1609964594 18<ski18>	(and note that that signature means the same thing as `mappend :: (a -> b) -> (a -> b) -> a -> b')
+T 1609964605 18<ephemient18>	let f () _ = undefined in f undefined `seq` ()
+T 1609964613 18<ephemient18>	let f () = \_ -> undefined in f undefined `seq` ()
+T 1609964619 18<ephemient18>	have different behavior though
+T 1609964628 18<ski18>	yes
+T 1609964680 18<ski18>	(but if you're just matching on variables, wildcards, and `as'-patterns nested around those, then there's no difference)
+T 1609964707 18<ski18>	(you could also throw in irrefutable/lazy patterns)
+T 1609964744 18<manjaro-user_18>	I'm trying to use `rand l = (l!) <$> randomRIO (1, length l)` with the type def of `[String] -> IO String` inside a do block of type `IO ()` and the exact usage is `rand bg'` where bg' is a `[String]`
+T 1609964779 18<manjaro-user_18>	And I'm getting the error of Expected pyte: X String     Actual type: IO String
+T 1609964786 18<manjaro-user_18>	type*
+T 1609964806 18<manjaro-user_18>	If I change it to type X String then it gives me the error:
+T 1609964836 18<ski18>	looks like you're not executing `rand l' in `IO', but rather in `X'
+T 1609964873 18<ski18>	also, i suspect you'd prefer `(0,length l - 1)' ?
+T 1609964873 18<manjaro-user_18>	Expected type: X String     Actual type: IO String ... in the expression (l!...
+T 1609964937 18<manjaro-user_18>	Good catch there, but the error still persists
+T 1609964938 18<ski18>	(i also presume you mean `!!', rather than `!' ?)
+T 1609964972 18<manjaro-user_18>	No
+T 1609964980 18<ephemient18>	what is X?
+T 1609964983 18<ski18>	@type (!)
+T 1609964985 18<lambdabot18>	Ix i => Array i e -> i -> e
+T 1609964987 18<ski18>	@type (!!)
+T 1609964989 18<lambdabot18>	[a] -> Int -> a
+T 1609964991 18<manjaro-user_18>	I set ! as l ! n = l!!(n-1)
+T 1609965000 18<ski18>	which `!' are you using ?
+T 1609965003 18<ski18>	oh, ok
+T 1609965039 18<manjaro-user_18>	ephemient: X is an Xmonad function type (I think)
+T 1609965050 18<ski18>	well, then i guess `(1,length l)' wouldn't error out (assuming the list is non-empty)
+T 1609965080 18<ski18>	(not a function type. it would be a monad. in this case for doing X Windows stuff, for Xmonad)
+T 1609965096 18<manjaro-user_18>	^ Yeah, that makes more sense
+T 1609965105 18<ski18>	manjaro-user_ : and you actually put a type signature for `rand' in the coded ?
+T 1609965112 18<ski18>	s/coded/code/
+T 1609965161 18<manjaro-user_18>	in the coded?
+T 1609965172 18<manjaro-user_18>	Sorry, fairly new to haskell, I'm not sure what that means
+T 1609965195 18<ephemient18>	are you writing `rand :: [String] -> X String` before the declaration or something like that
+T 1609965201 18<ski18>	in the code, "coded" was a typo
+T 1609965210 18<manjaro-user_18>	at the end of the same file, so seperate, yes
+T 1609965229 18<ski18>	could you paste your code ?
+T 1609965232 18<ski18>	@where paste
+T 1609965232 18<lambdabot18>	Help us help you: please paste full code, input and/or output at eg https://paste.tomsmeding.com
+T 1609965275 18<manjaro-user_18>	Sure, I actually have a slightly older version located at https://github.com/techtiger255/xbronad
+T 1609965292 18<ski18>	(if you could cut down on the code a bit, such that the error still persists, that might be nice. but unless it's a lot of code, it could still be fine)
+T 1609965307 18<manjaro-user_18>	the files in question are lib/Custom/Grid.hs <- rand is defined here
+T 1609965325 18<manjaro-user_18>	xmonad.hs <- the do block with rand bg' is here
+T 1609965330 18*	geekosaur is guessing that the real problem is a missing liftIO
+T 1609965348 18<ski18>	there's no type signature for `rand' in that file
+T 1609965353 18<ephemient18>	you can't separate the signature from the declaration like that
+T 1609965360 18<manjaro-user_18>	yeah, slightly different version
+T 1609965363 18<ski18>	yes, you can, ephemient
+T 1609965373 18<monochrom18>	Prelude does it all the time.
+T 1609965378 18<ski18>	(but most people don't)
+T 1609965379 18<manjaro-user_18>	in that one I have way less type definitions
+T 1609965387 18<geekosaur18>	ghci won't let you but that's because it's ghci
+T 1609965392 18<manjaro-user_18>	I do it so I can read my config reasonably
+T 1609965450 18<ephemient18>	huh. TIL
+T 1609965451 18<manjaro-user_18>	again, the supposed type is `[String] -> IO String` or X String instead of IO String
+T 1609965495 18<ephemient18>	well, the generic type would be `rand :: (MonadIO m) => [a] -> m a`
+T 1609965503 18<ski18>	manjaro-user_ : in place of `maybe (pure ()) fn', you could say `traverse_ fn'
+T 1609965544 18<ski18>	@index traverse_
+T 1609965545 18<lambdabot18>	Data.Foldable
+T 1609965560 18<monochrom18>	It can be a reasonable use if you have "f, g, h :: Int -> Int" on one line because they are so closely related, and then define f, g, h, respectively.
+T 1609965605 18<ski18>	or to have separate `f :: Foo' and `g :: Bar -> Baz', with a definition like `(f,g) = ...' or `Blah f g = ...'
+T 1609965612 18<manjaro-user_18>	Yeah, in a regular program I'd probably do that, but if they're all basic types like that then I've ommited them in my config
+T 1609965639 18<manjaro-user_18>	slightly increases compile times (by fractions of seconds, but eh)
+T 1609965677 18<ski18>	manjaro-user_ : anyway, i see no type error relating to `rand' in that file
+T 1609965687 18<manjaro-user_18>	in xmonad.hs?
+T 1609965690 18<ski18>	manjaro-user_ : perhaps paste the code that gives the error ?
+T 1609965717 18<ski18>	oh. sorry, i was looking at `Grid.hs'. missed you also mentioned `xmonad.hs' as relevant to look at
+T 1609965746 18<manjaro-user_18>	it's very close to the bottom btw
+T 1609965771 18<manjaro-user_18>	ephemient: that type you gave me didn't work
+T 1609965783 18<ski18>	manjaro-user_ : what happens if you add a type signature for `rand' ?
+T 1609965819 18<manjaro-user_18>	ski: thanks for the traverse_ tip
+T 1609965885 18<manjaro-user_18>	The errors I described happen (the one with X String vs IO String, and vice versa, at definition time, vs usage time)
+T 1609965914 18<manjaro-user_18>	I'm thinking I need to change my definition to accept both X String and IO String, is there any way I can do that?
+T 1609965924 18<pie_18>	bitonic: can i pull my inline-c-cpp inline c++ code from a file?
+T 1609965933 18<manjaro-user_18>	the error also occurs if I don't add a type definition
+T 1609966055 18<ski18>	manjaro-user_ : anyway, in `colors', you're using `rand (..)' as an `X' action, while in `main', you're using it as an `IO' action. you can only use the same `rand' in both those two different contexts, if it's overloaded to work for both `IO' and `X', which the signature ephemient would achieve (this is the signature that the system would infer from your `rand' definition, if you don't have a type signature 
+T 1609966061 18<ski18>	written)
+T 1609966064 18<ski18>	@type randomRIO
+T 1609966066 18<lambdabot18>	(Random a, MonadIO m) => (a, a) -> m a
+T 1609966073 18<ggVGc18>	can someone give me a real-world useful example of using fix?
+T 1609966094 18<ski18>	this can work, both for `m' being `IO', and for it being `X', since both of those are instances of `MonadIO'
+T 1609966097 18<ggVGc18>	I don't understand why you'd ever use it instead of explicit recursion. I think I might be missing a bigger picture though
+T 1609966151 18<ski18>	in some cases, it can be a handy shorthand over writing an explicitly recursive definition
+T 1609966198 18<ggVGc18>	well... with the added baggage of whoever reading it needing to understand fix?
+T 1609966210 18<ggVGc18>	and introducing a lambda?
+T 1609966222 18<ggVGc18>	(which I think reads worse in general)
+T 1609966226 18<ski18>	if you want to encode "open recursion", you use `T -> T', rather than plain `T', and only at the "last possible point" do you use `fix' ("instantiating the object from the class") to get a `T'
+T 1609966239 18<manjaro-user_18>	IDK, I like shorthands, and there's a fair amount of them in haskell
+T 1609966260 18<ski18>	if you use `fix', then it's easier to swap it out for an instrumented version that e.g. memoizes, or traces
+T 1609966283 18<ggVGc18>	yeah I guess I can see that point
+T 1609966289 18<ski18>	not all uses of `fix' would be applied to a lambda expression
+T 1609966290 18<manjaro-user_18>	idk why, but that typo in 'memorizes
+T 1609966296 18<ggVGc18>	abstracting away the recursion does have some value I guess
+T 1609966303 18<manjaro-user_18>	+' reminds me heavily of a boston accent
+T 1609966312 18<ski18>	(no, it's supposed to be "memoizes", not "memorizes")
+T 1609966323 18<ggVGc18>	yeah, those are different things :)
+T 1609966325 18<manjaro-user_18>	ok, well, boston accent
+T 1609966349 18<ephemient18>	https://en.wikipedia.org/wiki/Memoization > Not to be confused with Memorization.
+T 1609966393 18<ggVGc18>	ski: do you have an example of your own when you've opted for using fix?
+T 1609966398 18<manjaro-user_18>	That's quite an interesting word, never heard it before
+T 1609966419 18<ski18>	ggVGc : i had one on <lpaste.net> ..
+T 1609966453 18<ggVGc18>	what happened to lpaste.net?
+T 1609966490 18<manjaro-user_18>	anyway, adding `(MonadIO m) => [a] -> m a` is erroring w/ couldn't match type `m' with `IO'
+T 1609966520 18<ski18>	iirc, the maintainer wanted to do other things, and afaik noone else at the time stepped up
+T 1609966532 18<ski18>	(there was also a spamming problem, i think)
+T 1609966537 18*	ski . o O ( Sic Transit Gloria Mundi )
+T 1609966550 18<ski18>	manjaro-user_ : adding it, where ?
+T 1609966566 18<ephemient18>	sounds like a fix is needed at the call site, not rand
+T 1609966607 18<ski18>	  rand :: MonadIO m => [a] -> m a  -- like this, at the end of `Grid' ?
+T 1609966615 18<manjaro-user_18>	indeed
+T 1609966648 18<manjaro-user_18>	and geekosaur mentioned (or rather thought outloud) about liftIO from XMonad
+T 1609966695 18<ski18>	@type let l ! n = l!!(n-1); rand l = (l!) <$> randomRIO (1,length l) in rand
+T 1609966696 18<lambdabot18>	error:
+T 1609966696 18<lambdabot18>	    • Couldn't match expected type ‘[a1]’ with actual type ‘Int -> a1’
+T 1609966697 18<lambdabot18>	    • In the expression:
+T 1609966845 18<urb18>	Is there a Haskell library that automates selection from a database into a Haskell datatype? I'm looking at Opaleye, but it seems it just selects into tuples
+T 1609966867 18<urb18>	perhaps there's a reason to want to do it like that. I don't know
+T 1609966886 18<manjaro-user_18>	adding liftIO to xmonad.hs didn't seem to effect the call, I also attempted to add it in the colors definition in grid.hs via `fg {- & bg -} <- liftIO <$> rand bg'`
+T 1609966924 18<manjaro-user_18>	now it's complaining about expected type IO (IO Char) vs IO [Char] -- so that's probably not the right place
+T 1609966970 18<ski18>	@type let l !!! n = l!!(n-1); rand l = (l!!!) <$> randomRIO (1,length l) in rand  -- oh, fun
+T 1609966971 18<lambdabot18>	MonadIO f => [a] -> f a
+T 1609966995 18<ephemient18>	... what version of random is this using, manjaro-user_
+T 1609967004 18<ephemient18>	the type of randomRIO has changed between releases
+T 1609967027 18<manjaro-user_18>	whatever the latest is on nixpkgs (from the nix package manager)
+T 1609967054 18<manjaro-user_18>	last time this particular config worked was a few months ago, so should I downgrade then?
+T 1609967079 18<ski18>	@type let (!) l n = l!!(n-1); rand l = (l!) <$> randomRIO (1,length l) in rand
+T 1609967080 18<lambdabot18>	MonadIO f => [a] -> f a
+T 1609967098 18<manjaro-user_18>	orr, just try to rip the function from the library, and keep the rest updated?
+T 1609967105 18<ephemient18>	nixpkgs uses stackage lts for curation which which is currently at random 1.1, so... it's not MonadIO yet
+T 1609967109 18<manjaro-user_18>	from the older version*
+T 1609967113 18<ski18>	manjaro-user_ : could you show the exact error you get, when you place `rand :: MonadIO m => [a] -> m a' in `Grid' ?
+T 1609967123 18<manjaro-user_18>	sure, I'll get you a paste
+T 1609967139 18<ephemient18>	type `rand :: [a] -> IO a` and add `liftIO (rand l)` when you're using it inside an `X`
+T 1609967159 18<ephemient18>	or update to newer random, either way
+T 1609967164 18<ski18>	`liftIO' oughtn't be necessary here (but would be one way around it, yes)
+T 1609967210 18<ephemient18>	https://hackage.haskell.org/package/random-1.1/docs/System-Random.html#v:randomRIO randomRIO :: (a, a) -> IO a
+T 1609967223 18<ephemient18>	https://hackage.haskell.org/package/random-1.2.0/docs/System-Random.html#v:randomRIO randomRIO :: (MonadIO m) => (a, a) -> m a
+T 1609967237 18<ski18>	it's a backward-compatible change
+T 1609967265 18<ephemient18>	as long as you're not defining your own random instances, but yes
+T 1609967273 18<ski18>	yea
+T 1609967283 18<ephemient18>	it does mean you can't use the MonadIO version on with the older release
+T 1609967358 18<ski18>	(ok, `Vars' contains the definition of `!')
+T 1609967436 18<manjaro-user_18>	after fiddling around with what you two just said, to no avail, here's the paste, according to your specifications: https://paste.ee/p/WiFbw#b3dSINZxG7znzL6KEezVScDTshvhSFoo
+T 1609967503 18<manjaro-user_18>	oh wait, gimme a sec
+T 1609967609 18<manjaro-user_18>	ok, nvm, using liftIO <$> didn't work in colors
+T 1609967646 18<monochrom18>	liftIO (rand foo) ?
+T 1609967749 18<manjaro-user_18>	ok, well, the parenthesis fixed it...
