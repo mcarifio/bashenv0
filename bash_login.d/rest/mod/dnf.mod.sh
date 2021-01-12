@@ -33,7 +33,9 @@ function dnf.install {
 function dnf.repo {
     local _repo=$1
     # sudo yum-config-manager --add-repo https://pkg.osquery.io/rpm/osquery-s3-rpm.repo
-    sudo yum-config-manager --add-repo ${_repo} # assume enabled
+    # sudo yum-config-manager --add-repo ${_repo} # assume enabled
+    # sudo dnf install dnf-utils, see below
+    sudo dnf config-manager --add-repo ${_repo} # placed in /etc/yum.repo.d/, enabled with signing file.
 }
 
 function dnf.sign {
@@ -56,7 +58,7 @@ function dnf.install.all {
                 vdpauinfo libva-vdpau-driver libva-utils sox mosh autossh wireshark wireguard-dkms wireguard-tools nushell cockpit openssl-devel automake libtool \
                 gperf libpng-devel dotnet-sdk-5.0 texinfo libjpeg-turbo-devel libtiff-devel giflib-devel libXpm-devel gtk3-devel gnutls-devel ncurses-devel \
                 libxml2-devel libXt-devel @development-tools automake clang clang-devel highlight vlc remmina vokoscreenNG gstreamer1-plugin-openh264 opam ocaml nmap\
-                editorconfig java-latest-openjdk{,-devel} hwinfo stack gh
+                editorconfig java-latest-openjdk{,-devel} hwinfo stack gh dnf-utils
 }
 
 

@@ -55,6 +55,9 @@ function apt.install.all {
     apt.install --key=1484120AC4E9F8A1A577AEEE97A80C63C9D8B80B --repo='https://pkg.osquery.io/deb' --suffix='deb main' osquery
     apt.install --sign='https://download.opensuse.org/repositories/hardware:razer/xUbuntu_20.10/Release.key' --repo='http://download.opensuse.org/repositories/hardware:/razer/xUbuntu_20.10/' --suffix='/' razergenie
 
+    # https://github.com/cli/cli/blob/trunk/docs/install_linux.md
+    apt.install --key=C99B11DEB97541F0 --repo='https://cli.github.com/packages' gh 
+
     # install eternal terminal
     # apt.install --ppa=jgmath2000/et et
     : 'install list of packages from other machines if they are listed locally'

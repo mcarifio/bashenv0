@@ -1,0 +1,130 @@
+#!/usr/bin/env bash
+# -*- mode: shell-script; -*- # eval: (setq-local indent-tabs-mode nil tab-width 4 indent-line-function 'insert-tab) -*-
+#!/usr/bin/env -S sudo -i /usr/bin/env bash # run as root under sudo
+
+# ecc ${name} will open the pathname that defined ${name} if it can deduce the location. Otherwise
+# it will create a new file "in the right place" based on file extension and populate that file
+# with some useful template, if it can find one.
+
+
+
+# Simulate installation. Gross.
+shopt -s extglob
+[[ -z "${BASHENV}" && -f ~/.bash_login ]] && source ~/.bash_login || true
+if [[ -z "${BASHENV}" ]] ; then
+    local _xdg_data_home=${XDG_DATA_HOME:-~/.local/share}
+    [[ -d ${_xdg_data_home} ]] || { >&2 echo "${xdg_data_home} not found."; return 1; }
+    export BASHENV=${_xdg_data_home}
+    source ${BASHENV}/load.mod.sh
+    path.add $(path.bins)
+fi
+
+
+# __fw__ framework
+source __fw__.sh || { >&2 echo "$0 cannot find __fw__.sh"; exit 1; }
+# trap '_catch --lineno default-catcher $?' ERR
+
+# Specific option parsing
+function _fw_start {
+    local _self=${FUNCNAME[0]}
+
+    # declare -Ag _flags+=([--template-flag]=default)  # orig
+    declare -Ag _flags+=()
+    local -a _rest=()
+    
+    while (( $# )); do
+        local _it=${1}
+        case "${_it}" in
+            # --template-flag=*) _flags[--template-flag]=${_it#--template-flag=};;
+            # --template-flag=*) _flags[--template-flag]=${_it#--template-flag=};;
+            --) shift; _rest+=($*); break ;;
+            -*|--*) _catch --exit=1 --print --lineno "${_it} unknown flag" ;;
+            *) _rest+=(${_it}) ;;
+        esac
+        shift
+    done
+
+    # echo the command line with default flags added.
+    if (( ${_flags[--verbose]} )) ; then
+        printf "${_self} "
+        local _k; for _k in ${!_flags[*]}; do printf '%s=%s ' ${_k} ${_flags[${_k}]}; done;
+        printf '%s ' ${_rest[*]}
+        echo
+    fi
+
+    # All options parsed (or defaulted). Do the work.
+    ${_flags[--forward]} ${_rest[*]}
+}
+
+
+# Specific work.
+function _start-echo {
+    declare -Ag _flags
+    local _k; for _k in  ${!_flags[*]}; do printf '%s:%s ' ${_k} ${_flags[${_k}]}; done
+    echo $*
+}
+
+function _fn2pn {
+    : 'fn2pn ${function-name} => pathname for the function definition ${function-name} if it can deduce one. Otherwise "".'
+    local _fn=$(f.must.have "$1" "name") || return $(f.err "expecting a function name")
+    [[ $(type -f "${${_fn}}") = 'function' ]] || return $(f.err "no function defined for ${_fn}")
+    # try some locations
+    local _pn=$(declare -F ${name} || awk '{print $3;}')
+    [[ -n "${_pn}" ]] && return $(echo ${_pn})
+    _pn=$(${_f%.mod.*}.mod.pathname)
+    [[ -n "${_pn}" ]] && return $(echo ${_pn})
+    return 1
+}
+
+
+function _cp+chmod {
+    local _template=$(f.must.have "$1" "template patname") || return $(f.err "missing template pathname")
+    local _instance=$(f.must.have "$2" "instance pathname") || return $(f.err "missing instance pathname")
+    local _perm=${3:-'a+x'}
+    cp -v ${_template} ${_instance} && chmod ${_perm} ${_instance}
+}
+
+function _populate {
+    : '_populate ${pathname} populates ${pathname} with default contents iff the file does not already exist.'
+    local _pn=$(f.must.have "$1" "name") || return $(f.err "expecting a function name")
+    [[ -f "${_pn}" ]] && return $(f.warn "${_pn} already populated.")
+    local _extension="${_pn##*.}"
+    case "${_extension}" in
+        # add other extensions here
+        py) _cp+chmod ${_here}/__template__.${_extension} ${_pn} ;;
+        sh|*) _cp+chmod ${_here}/__fw__template.${_extension} ${_pn} ;;
+    esac || true
+}
+
+
+function _start-ecc {
+    local _self=${FUNCNAME[0]}
+    declare -Ag _flags
+
+    local _code_name=$(f.must.have "${_rest[0]}" "code name") || return $(f.err "missing script/object name, e.g. 'ecc'")
+    local _pathname="${_rest[1]:-${_here}}"
+
+    local _pn='' # pathname to edit
+
+    # type -t ${name} # => 'alias', 'keyword', 'function', `builtin', 'file'
+    _code_name_type=$(type -t ${_code_name})
+    case "${_code_name_type}" in
+        alias|keyword|builtin) return $(f.err "'${_code_name}' is a '${_code_name_type}' so there's nothing to edit.") ;;
+        function) _pn=$(_fn2pn "${_code_name}") || return $(f.err "Can't deduce file pathname for function '${_code_name}'.") ;;
+        file) _pn=$(type -p ${_code_name}) || return $(f.err "Can't deduce file pathname for file '${_code_name}'.") ;;
+        *) _pn=${_rest[1]:-${_here}}/${_code_name} ;  _populate $(__template__.sh) ${_pn} ; chmod a+x ${_pn} ;;
+    esac
+
+    ec ${_pn}
+        
+}
+
+# skip specific option parsing
+# _start_at --start=_start $@
+
+# add specific option parsing
+# _start_at --start=_fw_start --forward=_start-${_basename}
+_start_at --start=_fw_start --forward=_start-${_basename} $@
+
+
+

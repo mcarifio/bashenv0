@@ -90,12 +90,17 @@ def browse(remote:str='origin', dir:str=os.getcwd(), debug:bool=False, loglevel:
 
     # The specific place to browse.
     _branch = str(_repo.active_branch)
-    _back = '/' + _rest
-    _front = 'https://www.github.com/' + _p.pathname.removesuffix('.git') + '/tree/'
 
     # Fix up an ssh url.
 
-    if _p.protocol == 'ssh' and _p.user == 'git' and _p.resource.endswith('github.com'):
+    # remove ssh protocol and redo repositories as well.
+    # if (_p.protocol == 'ssh' and _p.user == 'git') or (_p.protocol == 'https' or _p.protocol == 'http') and _p.resource.endswith('github.com'):
+    if _p.resource.endswith('github.com'):
+        if _p.protocol = 'ssh':
+            rl.error(f"ssh {_p.resource} access not supported")
+            exit(1)
+        _back = '/' + _rest
+        _front = f'{_p.protocol}://{_p.resource}{_p.pathname.removesuffix(".git")}tree/'
         # map names -> known branches
         _known_branches=dict((_r.name, _r) for _r in _repo.branches)
         # try known and hypothetical branches in a certain order
@@ -111,13 +116,16 @@ def browse(remote:str='origin', dir:str=os.getcwd(), debug:bool=False, loglevel:
             exit(6)
     else:
         # Use the url directly.
-        _url = _p.resource
+        _url = _p.href()
 
     rl.info(f"Selected {_url}")
     # if rq.head(_url).status_code == 200:
         # Open the url in a browser.
     rl.info(f"Opening {_url}")
-    _b = webbrowser.get(using='chromium-browser')
+
+    _browser_profile = _p.user
+    # _b = webbrowser.get(using='vivaldi-snapshot')
+    _b = webbrowser.get()
     _b.open(_url, new=2, autoraise=True)
     # else:
     #     rl.error(f"Can't open {_url}")

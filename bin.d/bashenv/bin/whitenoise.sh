@@ -6,7 +6,7 @@
 source __fw__.sh || { >&2 echo "$0 cannot find __fw__.sh"; exit 1; }
 trap '_catch --lineno default-catcher $?' ERR
 
-declare _whitenoise=$(xdg-user-dir MUSIC)/whitenoise/calming-seas-11h.ogg} 
+declare _whitenoise=$(xdg-user-dir MUSIC)/whitenoise/calming-seas-11h.ogg
 
 function --help {
     >&2 echo "${_name} [\$1:-'${_whitenoise}'}] # play whitenoise to improve focus"

@@ -235,4 +235,3 @@ function pn2mod { local _result=${1##*/}; echo ${_result%%.*}; }
 # Augment functions above with "module" conventions.
 mod.mkmod $(pn2mod ${1:-${BASH_SOURCE[0]}}) ${2:-$(realpath -s ${BASH_SOURCE[0]})}
 
-

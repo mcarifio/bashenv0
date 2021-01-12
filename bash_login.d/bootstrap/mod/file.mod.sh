@@ -130,7 +130,7 @@ function file.mkdir {
     local _mod=${_self%.*};
 
     local _d=$(f.must.have "$1" "directory") || return 1; shift
-    [[ -d "${_d}" ]] || install $* --directory ${_d} || return 1
+    [[ -d "${_d}" ]] || install --directory ${_d} || return 1
     echo "${_d}"
 }
 

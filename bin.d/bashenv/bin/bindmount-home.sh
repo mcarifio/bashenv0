@@ -17,7 +17,7 @@
 # __fw__ framework
 [[ -z "${BASHENV}" ]] && source ~/.bash_login
 source __fw__.sh || { >&2 echo "$0 cannot find __fw__.sh"; exit 1; }
-trap '_catch --lineno default-catcher $?' ERR
+# trap '_catch --lineno default-catcher $?' ERR
 
 # bindmount-home.sh options parsing
 function _fw_start {
@@ -62,7 +62,7 @@ function _start-echo {
 function bindmount-home-zfs {
     # snap chromium doesn't let user see files outside $HOME
     # for all zfs pool mount points mp ...
-    local _mnt=$(f.must.have "$1" "mount point" "-d") || return 1
+    local _mnt=$(f.must.have "$1" "mount point") || return 1
     file.mkdir ${_mnt}
 
     local _zfsmp
