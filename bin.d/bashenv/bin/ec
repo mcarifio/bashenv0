@@ -5,13 +5,16 @@ function _emacsclient {
     local _create_frame=''
     (( _frames < 2 )) && _create_frame='--create-frame'
     local -a _args=($*) ; (( ${#_args[*]} == 0 )) && _args=(.)
-    command emacsclient ${_create_frame} --no-wait "${_args[*]}"
+    /opt/emacs-mirror-emacs/current/bin/emacsclient ${_create_frame} --no-wait "${_args[*]}"
 }
 
 function _ec {
     # Expecting systemd emacsd to be running. Reload if not.
     if [[ active != $(systemctl is-active --user emacsd) ]] ; then
         >&2 printf "Restarting systemd user service emacsd ... "
+
+        # Checking systemctl start status is probably bogus since starting the service and the service
+        #   successfully starting are two different things.
         if systemctl --user deamon-reload && systemctl start --user emacsd ; then
             printf 'succeeded.\n'
         else
@@ -19,7 +22,11 @@ function _ec {
         fi
         systemctl --user status emacsd
     fi
-    _emacsclient "$*" && wmctrl -a emacs || true
+
+    # Note: relying on the window title to raise the right emacs window is brittle.
+    # emacsclient should do this?
+    # _emacsclient "$*" && wmctrl -a "emacs@${HOSTNAME}" || true
+    _emacsclient "$*" || true
 }
 
 _$(basename ${BASH_SOURCE} .sh) "$@"

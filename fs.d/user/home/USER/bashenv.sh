@@ -1,3 +1,5 @@
+# @debug: bashdb -s 'source ~/bashenv.sh'
+
 shopt -s extglob
 export BASHENV=$(realpath -s $(dirname $(realpath ${BASH_SOURCE[0]}))/../../../..)
 if source $BASHENV/load.mod.sh ; then

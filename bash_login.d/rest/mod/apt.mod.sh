@@ -36,7 +36,7 @@ function apt.install {
     sudo apt update || return 1
     sudo apt upgrade -y || return 1
     sudo apt install -y ${_rest[*]} || return 1
-    sudo apt-mark auto ${_rest[*]} || return 1
+    # sudo apt-mark auto ${_rest[*]} || return 1
     : 'remember installed pkgs'
     printf '%s ' ${_rest[*]} >> $(dirname $(${_mod}.mod.pathname))/${_self}.${HOSTNAME}.list
 }

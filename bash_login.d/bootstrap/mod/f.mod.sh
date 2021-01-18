@@ -186,6 +186,7 @@ function f.apply {
     [[ "${_f}" =~ ^"function " ]] && _f=$(eval "${_f}")
 
     local -a _all=($*)
+    (( ${#_all[@]} )) || return 0  # no arguments 
     local _a
     for _a in ${_all[@]::${#_all}}; do printf '%s ' $(${_f} ${_a}) ; done
     printf '%s' $(${_f} ${_all[-1]})

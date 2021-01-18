@@ -59,16 +59,11 @@ function _start-ln.sh {
     shopt -s nullglob
     declare -Ag _flags
 
-    ln -vsf ${_flags[--force]} -t ${HOME} ${_here}/.bash_log* || true
+    ln -vsf ${_flags[--force]} -t ${HOME} ${_here}/bashenv.sh || true
     ln -vsf ${_flags[--force]} -t ${HOME} ${_here}/.gdbinit || true
-    ln -vsf ${_flags[--force]} -t ${HOME} ${_here}/.tool-versions || true
-    stat --printf='%N\n' ${HOME}/.bash_log*
+    # ln -vsf ${_flags[--force]} -t ${HOME} ${_here}/.tool-versions || true
+    stat --printf='%N\n' ${HOME}/bashenv.sh 
     stat --printf='%N\n' ${HOME}/.gdbinit
-    stat --printf='%N\n' ${HOME}/.gdbinit
-
-    if [[ ~/.bash_profile ]] ; then
-        xz ~/.bash_profile && >&2 echo "compressed ~/.bash_profile. It would precedes ~/.bash_login."
-    fi
 
     [[ -d ~/.asdf ]] || >&2 echo "~/.asdf is missing. path.bins looks for it and gets confused."
 
