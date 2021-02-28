@@ -3,4 +3,9 @@ source $(dirname ${BASH_SOURCE[0]})/bash_login.d/bootstrap/$(basename ${BASH_SOU
 # u.source.tree $(me.here bash_login.d/rest) $(me.here bash_completion.d)
 for __ in $(find $(dirname ${BASH_SOURCE[0]})/bash_login.d/rest -name \*.sh -perm /222) ; do source ${__}; done
 
+# why not some source?
+return 0
+
+
+
 
