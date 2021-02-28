@@ -1,3 +1,7 @@
+case $- in
+*i*) >&2 echo "Don't source ${BASH_SOURCE} interactively." ; return 1; ;;
+esac
+
 shopt -s extglob
 [[ -z "${BASHENV}" ]] && { >&2 echo "BASHENV not defined. bashenv isn't loaded?"; return 1; }
 
@@ -9,6 +13,7 @@ IFS=$'\n\t'
 
 let _bottom=$(( ${#BASH_SOURCE[*]} - 1 ))
 [[ $0 != ${BASH_SOURCE[${_bottom}]} ]] && (( _bottom-- ))
+
 _here=$(cd $(dirname $0) && pwd)
 _me=${_here}/$(basename $0)
 _basename=$(basename ${_me})

@@ -21,7 +21,7 @@ fi
 
 
 # __fw__ framework
-source __fw__.sh || { >&2 echo "$0 cannot find __fw__.sh"; exit 1; }
+source __fw__.sh
 # trap '_catch --lineno default-catcher $?' ERR
 
 # Specific option parsing
@@ -37,6 +37,7 @@ function _fw_start {
         case "${_it}" in
             # --template-flag=*) _flags[--template-flag]=${_it#--template-flag=};;
             # --template-flag=*) _flags[--template-flag]=${_it#--template-flag=};;
+            --forward=*) _flags[--forward]=${_it#--forward=} ;;
             --) shift; _rest+=($*); break ;;
             -*|--*) _catch --exit=1 --print --lineno "${_it} unknown flag" ;;
             *) _rest+=(${_it}) ;;
@@ -52,6 +53,7 @@ function _fw_start {
         echo
     fi
 
+    [[ -z "${_flags[--forward]}" ]] && _error "No forwarding function"
     # All options parsed (or defaulted). Do the work.
     ${_flags[--forward]} ${_rest[*]}
 }
@@ -64,11 +66,12 @@ function _start-echo {
     echo $*
 }
 
+
 function _fn2pn {
     : 'fn2pn ${function-name} => pathname for the function definition ${function-name} if it can deduce one. Otherwise "".'
     local _fn=$(f.must.have "$1" "name") || return $(f.err "expecting a function name")
     local _ref=$(echo \$$_fn)
-    [[ $(type -f "${_ref}") = 'function' ]] || return $(f.err "no function defined for ${_ref")
+    [[ $(type -f "${_ref}") = 'function' ]] || return $(f.err "no function defined for ${_ref}")
     # try some locations
     local _pn=$(declare -F ${_ref} || awk '{print $3;}')
     [[ -n "${_pn}" ]] && return $(echo ${_pn})
@@ -93,25 +96,25 @@ function _populate {
     case "${_extension}" in
         # add other extensions here
         py) _cp+chmod ${_here}/__template__.${_extension} ${_pn} ;;
-        sh|*) _cp+chmod ${_here}/__fw__template.${_extension} ${_pn} ;;
+        sh|*) _cp+chmod ${_here}/__fw__template__.${_extension} ${_pn} ;;
     esac || true
 }
 
 
 function _start-ecc {
-    local _self=${FUNCNAME[0]}
-    declare -Ag _flags
+    local -r _self=${FUNCNAME[0]}
+    declare -Arg _flags _rest
 
     local _code_name=$(f.must.have "${_rest[0]}" "code name") || return $(f.err "missing script/object name, e.g. ecc")
     local _pathname="${_rest[1]:-${_here}}"
     local _pn=""
 
-    _code_name_type=$(type -t "${_code_name}")
+    local _code_name_type=$(type -t "${_code_name}")
     case "${_code_name_type}" in
         alias|keyword|builtin) return $(f.err "'${_code_name}' is a '${_code_name_type}' so there's nothing to edit.") ;;
         function) _pn=$(_fn2pn "${_code_name}") || return $(f.err "Can't deduce file pathname for function '${_code_name}'.") ;;
         file) _pn=$(type -p ${_code_name}) || return $(f.err "Can't deduce file pathname for file '${_code_name}'.") ;;
-        *) _pn=${_rest[1]:-${_here}}/${_code_name} ;  _populate $(__template__.sh) ${_pn} ; chmod a+x ${_pn} ;;
+        *) _pn=${_rest[1]:-${_here}}/${_code_name} ;  _populate ${_pn} ; chmod a+x ${_pn} ;;
     esac
 
     ec ${_pn}
