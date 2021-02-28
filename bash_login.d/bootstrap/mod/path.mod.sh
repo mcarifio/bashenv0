@@ -84,6 +84,17 @@ function path.path {
     sed 's/:/\n/g' <<< $PATH
 }
 
+# technically not a path command
+function path.from.command {
+    local _self=${FUNCNAME[0]};
+    local _mod_name=${_self%%.*};
+    local _mod=${_self%.*};
+
+    _path=$(type -p $1)
+    [[ -z "${_path}" ]] && return 0
+    echo ${_path%/bin/*}
+}
+
 # Make this file a "module".
 # Extract mod from pathname.
 function pn2mod { local _result=${1##*/}; echo ${_result%%.*}; }

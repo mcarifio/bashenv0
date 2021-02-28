@@ -1,4 +1,5 @@
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
+return 0
 
 # export DOTNET_ROOT=/snap/dotnet-sdk/current
 # version=$(${DOTNET_ROOT}/dotnet --version)
