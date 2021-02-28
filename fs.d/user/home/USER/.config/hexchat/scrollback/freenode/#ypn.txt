@@ -1,4 +1,0 @@
-T 1609963720 19*	Now talking on 22#ypn
-T 1609963720 22*	Topic for 22#ypn is: I will not cease from Mental Fight, / Nor shall my Sword sleep in my hand: / Till we have built the Lisp Machine, / in Linux' green & pleasant Land -- <terpri> i'm going to be the vladimir lenin of emacs
-T 1609963720 22*	Topic for 22#ypn set by 26Robert!~robert@unaffiliated/robert (24Wed Feb 12 03:36:01 2020)
-T 1609963720 22*	Channel 22#ypn url: 24www.youngprogrammers.net

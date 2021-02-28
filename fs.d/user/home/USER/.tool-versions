@@ -1,5 +1,5 @@
 # python 3.8.1
-python 3.9.0
+python 3.9.2
 # graalvm 19.3.0-java11
 maven 3.6.3
 scala 2.13.1
@@ -7,4 +7,8 @@ groovy apache-groovy-binary-3.0.0-rc-2
 # mill 0.5.6
 mill 0.5.6
 nodejs 14.11.0
-
+elixir 1.11.3-otp-23
+guile 3.0.5
+elm 0.19.1
+erlang 23.2.4
+stack 2.5.1

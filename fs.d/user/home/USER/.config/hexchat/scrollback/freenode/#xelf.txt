@@ -1,3 +1,0 @@
-T 1609963723 19*	Now talking on 22#xelf
-T 1609963723 22*	Topic for 22#xelf is: official channel for XELF projects. http://xelf.me/guide.html http://xelf.me/scheme-mosaic.html http://xelf.me/emacs-mosaic.html http://xelf.me/demo-collection.mp3 http://xelf.me/scheme-mosaic-demos.mp3 https://gitlab.com/dto/cell-mode
-T 1609963723 22*	Topic for 22#xelf set by 26dto!sid344636@gateway/web/irccloud.com/x-knvzaxdymxvdyuuq (24Fri Dec 11 09:49:01 2020)

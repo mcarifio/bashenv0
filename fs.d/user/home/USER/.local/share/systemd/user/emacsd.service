@@ -1,4 +1,4 @@
-I# https://wikemacs.org/wiki/Emacs_server#Using_Clients
+# https://wikemacs.org/wiki/Emacs_server#Using_Clients
 # pathname: ~/.config/systemd/user/emacsd.service
 # systemctl enable --user emacsd
 # then:

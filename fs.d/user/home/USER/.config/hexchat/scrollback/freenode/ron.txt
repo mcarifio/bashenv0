@@ -1,7 +1,0 @@
-T 1534190397 23*	28[18ron28] 30(24~ron@unaffiliated/ron30): 18Ron
-T 1534190397 23*	28[18ron28] @#swagger 
-T 1534190397 23*	28[18ron28] 29tolkien.freenode.net :Sanford, NC, US
-T 1534190397 23*	28[18ron28] is using a secure connection
-T 1534190397 23*	28[18ron28] idle 2300:29:27, signon: 23Mon May  7 09:08:49
-T 1534190397 23*	28[18ron28] is logged in as 18ron
-T 1534190397 23*	28[18ron28] End of WHOIS list.
