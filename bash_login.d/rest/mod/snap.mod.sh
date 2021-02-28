@@ -4,6 +4,7 @@
 
 
 function snap.install {
+    : 'snap.install ${snap}... # install all snaps with strict (default) confinement, @see snap.install.*'
     local _self=${FUNCNAME[0]}
     local _mod_name=${_self%%.*} # snap.mod for mod functions
     local _mod=${_self%.*} # snap
@@ -13,6 +14,7 @@ function snap.install {
 }
 
 function snap.install.all {
+    : 'snap.install.all # install all the snaps I want without remembering the enumeration'
     local _self=${FUNCNAME[0]}
     local _mod_name=${_self%%.*}
     local _mod=${_self%.*}
@@ -24,6 +26,7 @@ function snap.install.all {
 }
 
 function snap.install.edge {
+    : 'snap.install.edge ${snap}... # install a snap from the edge channel (i.e. the latest version) with strict confinement'
     local _self=${FUNCNAME[0]}
     local _mod_name=${_self%%.*}
     local _mod=${_self%.*}
@@ -38,12 +41,23 @@ function snap.install.edge {
 }
 
 function snap.install.classic {
+    : 'snap.install.classic ${snap}... # install a snap with classic confinement'
     local _self=${FUNCNAME[0]};
     local _mod_name=${_self%%.*};
     local _mod=${_self%.*};
 
     snap.install --classic $*
 
+}
+
+function snap.env {
+    # https://forum.snapcraft.io/t/snap-which-chromium/17278/6
+    : 'snap.env ${command} [${SNAP_something:-SNAP}] # prints out the snap environment variables for a snap'
+    local _self=${FUNCNAME[0]}
+    local _mod_name=${_self%%.*}
+    local _mod=${_self%.*}
+
+    snap run --shell ${1:-$(return 1)} -c "env | grep ${2:-SNAP}"
 }
 
 # Make this file a "module".

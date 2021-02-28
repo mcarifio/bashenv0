@@ -15,12 +15,12 @@ function _ec {
 
         # Checking systemctl start status is probably bogus since starting the service and the service
         #   successfully starting are two different things.
-        if systemctl --user deamon-reload && systemctl start --user emacsd ; then
+        if systemctl --user daemon-reload && systemctl start --user emacsd ; then
             printf 'succeeded.\n'
         else
             printf 'failed.\n'
         fi
-        systemctl --user status emacsd
+        >&2 systemctl --user status emacsd
     fi
 
     # Note: relying on the window title to raise the right emacs window is brittle.

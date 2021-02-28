@@ -124,16 +124,16 @@ _start() {
 
     # snap chromium doesn't let user see files outside $HOME
     # for all zfs pool mount points mp ...
-    for mp in $(zfs list -o mountpoint|tail -n1); do
-        # ... if that mount point has a "user area" for $USER ...
-        local from=${mp}/${USER}
-        if [[ -d ${from} ]] ; then
-            local to=${HOME}/pools/${mp}
-            mkdir -p ${to}
-            sudo mount --bind ${from} ${to}
-        fi
-    done
-    
+    # for mp in $(zfs list -o mountpoint|tail -n1); do
+    #     # ... if that mount point has a "user area" for $USER ...
+    #     local from=${mp}/${USER}
+    #     if [[ -d ${from} ]] ; then
+    #         local to=${HOME}/pools/${mp}
+    #         mkdir -p ${to}
+    #         sudo mount --bind ${from} ${to}
+    #     fi
+    # done
+    sudo mount --bind /tank/${USER} ~/mnt/zfs 
 
 }
 

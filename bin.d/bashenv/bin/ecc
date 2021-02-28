@@ -67,9 +67,10 @@ function _start-echo {
 function _fn2pn {
     : 'fn2pn ${function-name} => pathname for the function definition ${function-name} if it can deduce one. Otherwise "".'
     local _fn=$(f.must.have "$1" "name") || return $(f.err "expecting a function name")
-    [[ $(type -f "${${_fn}}") = 'function' ]] || return $(f.err "no function defined for ${_fn}")
+    local _ref=$(echo \$$_fn)
+    [[ $(type -f "${_ref}") = 'function' ]] || return $(f.err "no function defined for ${_ref")
     # try some locations
-    local _pn=$(declare -F ${name} || awk '{print $3;}')
+    local _pn=$(declare -F ${_ref} || awk '{print $3;}')
     [[ -n "${_pn}" ]] && return $(echo ${_pn})
     _pn=$(${_f%.mod.*}.mod.pathname)
     [[ -n "${_pn}" ]] && return $(echo ${_pn})
@@ -101,13 +102,11 @@ function _start-ecc {
     local _self=${FUNCNAME[0]}
     declare -Ag _flags
 
-    local _code_name=$(f.must.have "${_rest[0]}" "code name") || return $(f.err "missing script/object name, e.g. 'ecc'")
+    local _code_name=$(f.must.have "${_rest[0]}" "code name") || return $(f.err "missing script/object name, e.g. ecc")
     local _pathname="${_rest[1]:-${_here}}"
+    local _pn=""
 
-    local _pn='' # pathname to edit
-
-    # type -t ${name} # => 'alias', 'keyword', 'function', `builtin', 'file'
-    _code_name_type=$(type -t ${_code_name})
+    _code_name_type=$(type -t "${_code_name}")
     case "${_code_name_type}" in
         alias|keyword|builtin) return $(f.err "'${_code_name}' is a '${_code_name_type}' so there's nothing to edit.") ;;
         function) _pn=$(_fn2pn "${_code_name}") || return $(f.err "Can't deduce file pathname for function '${_code_name}'.") ;;
