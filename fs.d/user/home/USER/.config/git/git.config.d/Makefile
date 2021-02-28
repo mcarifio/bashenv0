@@ -20,8 +20,8 @@ BANNER := Rebuilding manifest.config with $(ROOT)/$(lastword $(MAKEFILE_LIST))
 # set with git config --list [--show-origin]
 $(TARGET) : $(CONFIG_TREE)
 	test -f $@ && mkdir -p $(@D) && mv --backup=numbered --update $@ $(@D)/.attic || true	
-	printf "# $(BANNER) on $$(date -I)\n[$$USER.$(@F)]\n    generated = $$(date)\n    abspath = $@\n\n[include]" > $(TARGET)
-	printf '\tpath = %s\n' $(RCONFIG_TREE) >> $(TARGET)
-	printf '\n# eof\n" >> $(TARGET)
+	printf "# $(BANNER) on $$(date -I)\n[$$USER.$(@F)]\n    generated = $$(date)\n    abspath = $@\n\n[include]\n" > $(TARGET)
+	printf "    path = %s\n" $(RCONFIG_TREE) >> $(TARGET)
+	printf "\n# eof\n" >> $(TARGET)
 
 
